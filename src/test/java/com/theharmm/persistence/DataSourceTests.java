@@ -33,4 +33,4 @@ public class DataSourceTests {
 			fail(e.getMessage());
 		} // end try
 	}// end test
-}// end class
+}// end class.
