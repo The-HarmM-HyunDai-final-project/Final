@@ -10,7 +10,6 @@ import java.sql.SQLException;
 
 import org.junit.Test;
 
-
 @Log4j
 public class JDBCTests {	
 	static {
