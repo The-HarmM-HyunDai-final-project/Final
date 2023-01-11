@@ -139,14 +139,9 @@
 					<div class="header_main" data-v-147586e1="">
 						<div class="main_inner" data-v-147586e1="">
 							<h1 data-v-147586e1="">
-								<a href="/" aria-label="홈" class="logo" data-v-147586e1=""><svg
-										xmlns="http://www.w3.org/2000/svg"
-										class="logo-kream icon sprite-icons" data-v-147586e1="">
-                                        <use
-											href="/resources/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-logo-kream"
-											xlink:href="/resources/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-logo-kream"
-											data-v-147586e1=""></use>
-                                    </svg></a>
+								<a href="/" aria-label="홈" class="logo" data-v-147586e1="">
+									<img src="${pageContext.request.contextPath}/resources/images/THEHAM.jpg"/>	
+								</a>
 							</h1>
 							<div class="gnb_area" data-v-147586e1="">
 								<nav class="gnb" data-v-147586e1="">
