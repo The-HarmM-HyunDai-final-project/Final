@@ -102,7 +102,7 @@
 			<div data-v-34025556="" tabindex="0" class="wrap win_os md">
 				<!---->
 				<div data-v-34025556="">
-					<%@ include file="/WEB-INF/views/header.jsp"%>
+					<%@ include file="/WEB-INF/views/common/header.jsp"%>
 					<div data-v-34025556="" class="social_header">
 						<div data-v-0bd1a56f="" data-v-34025556="" class="style_tab_list">
 							<a data-v-0bd1a56f="" href="#" class="tab_item tab_on"> 인기 </a><a
@@ -182,7 +182,7 @@
 						</div>
 					</div>
 				</div>
-				<%@ include file="/WEB-INF/views/footer.jsp"%>
+				<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 				<div data-v-34025556="">
 					<!---->
 					<div data-v-66ae1b7c="" id="toast" class="toast md">

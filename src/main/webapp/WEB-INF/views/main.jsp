@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/header.jsp"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
+<script src="${pageContext.request.contextPath}/resources/js/banner.js" defer=""></script>
+
+<link href="${pageContext.request.contextPath}/resources/css/banner.css" rel="stylesheet" type="text/css">
 <div class="container" data-v-7f67e7a6="" data-v-3007c576="">
 	<div class="home lg" data-v-7f67e7a6="">
 		<div class="download_banner lg" data-v-1b035e08="" data-v-7f67e7a6=""
@@ -29,223 +32,37 @@
 			</div>
 		</div>
 		<div class="home_card_list" data-v-2e68e8ca="" data-v-7f67e7a6="">
-			<div data-v-3d1a4f76="" data-v-994663ec="" data-v-2e68e8ca=""
-				dir="ltr"
-				class="banner_slide slick-slider slick-initialized banner_slide_light"
-				container-index="0">
-				<button data-v-21137603="" data-v-3d1a4f76="" type="button"
-					data-role="none" class="slick-arrow slick-prev"
-					style="display: block;">Previous</button>
-				<div data-v-3d1a4f76="" class="slick-list">
-					<div data-v-e4caeaf8="" data-v-3d1a4f76="" class="slick-track"
-						style="width: 27341px; opacity: 1;">
-						<div data-v-e4caeaf8="" tabindex="-1" data-index="0"
-							aria-hidden="true" class="slick-slide"
-							style="outline: none; width: 1439px; position: relative; left: 0px; opacity: 0; transition: opacity 600ms ease 0s, visibility 600ms ease 0s;">
-							<div data-v-e4caeaf8="">
-								<div data-v-6e8d05c4="" data-v-994663ec="" class="banner lg"
-									tabindex="-1" data-v-e4caeaf8=""
-									style="width: 100%; display: inline-block;">
-									<div data-v-6e8d05c4="" class="banner_item"
-										style="background-color: rgb(248, 240, 236);">
-										<div data-v-6e8d05c4="" class="item_inner">
-											<div data-v-6e8d05c4="" class="img_box">
-												<img data-v-6e8d05c4=""
-													src="https://kream-phinf.pstatic.net/MjAyMzAxMDlfMTc1/MDAxNjczMjQyMzkzMzI0.8R72vA2yGVO-4bxgtno0GhHs9RmLHweXe4jEHBjXseAg.7q7MYT8NbLrfm-kxJw1VIeOo5sFhpwQLb6N1PAoXAxEg.JPEG/a_84f0cdc3928745ccb9d8e641d48a41ab.jpg?type=m_2560_webp"
-													alt="banner" loading="auto" fetchpriority="high"
-													class="banner_img">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div data-v-e4caeaf8="" tabindex="-1" data-index="1"
-							aria-hidden="false"
-							class="slick-slide slick-active slick-current"
-							style="outline: none; width: 1439px; position: relative; left: -1439px; opacity: 1; transition: opacity 600ms ease 0s, visibility 600ms ease 0s;">
-							<div data-v-e4caeaf8="">
-								<div data-v-6e8d05c4="" data-v-994663ec="" class="banner lg"
-									tabindex="-1" data-v-e4caeaf8=""
-									style="width: 100%; display: inline-block;">
-									<div data-v-6e8d05c4="" class="banner_item"
-										style="background-color: rgb(235, 218, 227);">
-										<div data-v-6e8d05c4="" class="item_inner">
-											<div data-v-6e8d05c4="" class="img_box">
-												<img data-v-6e8d05c4=""
-													src="https://kream-phinf.pstatic.net/MjAyMzAxMDZfMTMx/MDAxNjcyOTY2MjU1Nzg3.gYgYGJY4ujne4oA2ByXVMb0cJlNVfZ2DBkKlIb-V0uAg.xdfSEURQUK7_YUPoGcdKWNLKgAcezcLfdN39H0me4jkg.JPEG/a_a6bb0bf69eb543c9a896f10c0ea2d5be.jpg?type=m_2560_webp"
-													alt="banner" loading="lazy" fetchpriority="high"
-													class="banner_img">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div data-v-e4caeaf8="" tabindex="-1" data-index="2"
-							aria-hidden="true" class="slick-slide"
-							style="outline: none; width: 1439px; position: relative; left: -2878px; opacity: 0; transition: opacity 600ms ease 0s, visibility 600ms ease 0s;">
-							<div data-v-e4caeaf8="">
-								<div data-v-6e8d05c4="" data-v-994663ec="" class="banner lg"
-									tabindex="-1" data-v-e4caeaf8=""
-									style="width: 100%; display: inline-block;">
-									<div data-v-6e8d05c4="" class="banner_item"
-										style="background-color: rgb(236, 241, 248);">
-										<div data-v-6e8d05c4="" class="item_inner">
-											<div data-v-6e8d05c4="" class="img_box">
-												<img data-v-6e8d05c4=""
-													src="https://kream-phinf.pstatic.net/MjAyMzAxMDZfMTgz/MDAxNjcyOTgyMjY4MTQ0.cMZNM6LsCJAMrD34iZvK4TUXFuiWqz_BqqriESoaBEog.PQGIm_yYreNA3JYOCkFwU9OK9X3-c-r-D5_cAlbnpKgg.JPEG/a_d0cd4768731e40f880eccf310348a211.jpg?type=m_2560_webp"
-													alt="banner" loading="lazy" fetchpriority="high"
-													class="banner_img">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div data-v-e4caeaf8="" tabindex="-1" data-index="3"
-							aria-hidden="true" class="slick-slide"
-							style="outline: none; width: 1439px; position: relative; left: -4317px; opacity: 0; transition: opacity 600ms ease 0s, visibility 600ms ease 0s;">
-							<div data-v-e4caeaf8="">
-								<div data-v-6e8d05c4="" data-v-994663ec="" class="banner lg"
-									tabindex="-1" data-v-e4caeaf8=""
-									style="width: 100%; display: inline-block;">
-									<div data-v-6e8d05c4="" class="banner_item"
-										style="background-color: rgb(246, 248, 233);">
-										<div data-v-6e8d05c4="" class="item_inner">
-											<div data-v-6e8d05c4="" class="img_box">
-												<img data-v-6e8d05c4=""
-													src="https://kream-phinf.pstatic.net/MjAyMzAxMDZfMTgy/MDAxNjcyOTc0NDUzMDAx.l2NxJSXvaRzNqQYuj7IAJKLrV9y8jN7YlJ7SXbwNU0Ug._ozOJDQvUYmT61t8OLNpGHn4O56ZcczsWFaJ0lzG5rwg.JPEG/a_ee3f372e268f4e958840a0c3d2a37250.jpg?type=m_2560_webp"
-													alt="banner" loading="lazy" fetchpriority="high"
-													class="banner_img">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div data-v-e4caeaf8="" tabindex="-1" data-index="4"
-							aria-hidden="true" class="slick-slide"
-							style="outline: none; width: 1439px; position: relative; left: -5756px; opacity: 0; transition: opacity 600ms ease 0s, visibility 600ms ease 0s;">
-							<div data-v-e4caeaf8="">
-								<div data-v-6e8d05c4="" data-v-994663ec="" class="banner lg"
-									tabindex="-1" data-v-e4caeaf8=""
-									style="width: 100%; display: inline-block;">
-									<div data-v-6e8d05c4="" class="banner_item"
-										style="background-color: rgb(0, 0, 0);">
-										<div data-v-6e8d05c4="" class="item_inner">
-											<div data-v-6e8d05c4="" class="img_box">
-												<img data-v-6e8d05c4=""
-													src="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMTQy/MDAxNjcyODI0MDU5MzM1.fL4FxZQnvNOaMUSup5rWwpfdE_7FlV6VpiWMKu2Qwq8g.INldY96C8vxSW_9zOYxH-hTThuocfcUKIjp4eAF7AN4g.JPEG/a_762c3484f5a84f0c8e5409c4c0c9f2d4.jpg?type=m_2560_webp"
-													alt="banner" loading="lazy" fetchpriority="high"
-													class="banner_img">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div data-v-e4caeaf8="" tabindex="-1" data-index="5"
-							aria-hidden="true" class="slick-slide"
-							style="outline: none; width: 1439px; position: relative; left: -7195px; opacity: 0; transition: opacity 600ms ease 0s, visibility 600ms ease 0s;">
-							<div data-v-e4caeaf8="">
-								<div data-v-6e8d05c4="" data-v-994663ec="" class="banner lg"
-									tabindex="-1" data-v-e4caeaf8=""
-									style="width: 100%; display: inline-block;">
-									<div data-v-6e8d05c4="" class="banner_item"
-										style="background-color: rgb(0, 0, 0);">
-										<div data-v-6e8d05c4="" class="item_inner">
-											<div data-v-6e8d05c4="" class="img_box">
-												<img data-v-6e8d05c4=""
-													src="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMTAz/MDAxNjcyODE5OTk1ODI4.9bPKStYHwracpxUGvM_1CZ4jeIZ1zVkJoZYr52wHDfcg._K1lFfWmef3ViK-RW7SWO6p_UTX43XKn07IWzCIYa1Yg.JPEG/a_b5568640aa1c431e931a871c30242d71.jpg?type=m_2560_webp"
-													alt="banner" loading="lazy" fetchpriority="high"
-													class="banner_img">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div data-v-e4caeaf8="" tabindex="-1" data-index="6"
-							aria-hidden="true" class="slick-slide"
-							style="outline: none; width: 1439px; position: relative; left: -8634px; opacity: 0; transition: opacity 600ms ease 0s, visibility 600ms ease 0s;">
-							<div data-v-e4caeaf8="">
-								<div data-v-6e8d05c4="" data-v-994663ec="" class="banner lg"
-									tabindex="-1" data-v-e4caeaf8=""
-									style="width: 100%; display: inline-block;">
-									<div data-v-6e8d05c4="" class="banner_item"
-										style="background-color: rgb(95, 63, 222);">
-										<div data-v-6e8d05c4="" class="item_inner">
-											<div data-v-6e8d05c4="" class="img_box">
-												<img data-v-6e8d05c4=""
-													src="https://kream-phinf.pstatic.net/MjAyMzAxMDNfMjYy/MDAxNjcyNzMyNTkyMzY3.PwjJEptkS6xHvQHPLgeFmk43NfwHFih_OeuquPfIDVEg.sjGDsRhjYbY0PR8DTXoVIllhkVCqW4WSDc72w3wPyysg.JPEG/a_8c8fe6e3c7b3429a809dee9bd4cb18d4.jpg?type=m_2560_webp"
-													alt="banner" loading="lazy" fetchpriority="high"
-													class="banner_img">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div data-v-e4caeaf8="" tabindex="-1" data-index="7"
-							aria-hidden="true" class="slick-slide"
-							style="outline: none; width: 1439px; position: relative; left: -10073px; opacity: 0; transition: opacity 600ms ease 0s, visibility 600ms ease 0s;">
-							<div data-v-e4caeaf8="">
-								<div data-v-6e8d05c4="" data-v-994663ec="" class="banner lg"
-									tabindex="-1" data-v-e4caeaf8=""
-									style="width: 100%; display: inline-block;">
-									<div data-v-6e8d05c4="" class="banner_item"
-										style="background-color: rgb(116, 89, 193);">
-										<div data-v-6e8d05c4="" class="item_inner">
-											<div data-v-6e8d05c4="" class="img_box">
-												<img data-v-6e8d05c4=""
-													src="https://kream-phinf.pstatic.net/MjAyMzAxMDZfMTIw/MDAxNjcyOTY1MzEwOTU3.UajEiXOly5eDO6R-xrtqE0DCD0QB5nzp3lpV3OGrae0g.Mdlo1MUsuu_Mec13kLjUwRzMc3JUSNRjMknfBBIK-Vkg.JPEG/a_5aee2dfbc72e4e30acce285db55cf185.jpg?type=m_2560_webp"
-													alt="banner" loading="lazy" fetchpriority="high"
-													class="banner_img">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div data-v-e4caeaf8="" tabindex="-1" data-index="8"
-							aria-hidden="true" class="slick-slide"
-							style="outline: none; width: 1439px; position: relative; left: -11512px; opacity: 0; transition: opacity 600ms ease 0s, visibility 600ms ease 0s;">
-							<div data-v-e4caeaf8="">
-								<div data-v-6e8d05c4="" data-v-994663ec="" class="banner lg"
-									tabindex="-1" data-v-e4caeaf8=""
-									style="width: 100%; display: inline-block;">
-									<div data-v-6e8d05c4="" class="banner_item"
-										style="background-color: rgb(248, 246, 220);">
-										<div data-v-6e8d05c4="" class="item_inner">
-											<div data-v-6e8d05c4="" class="img_box">
-												<img data-v-6e8d05c4=""
-													src="https://kream-phinf.pstatic.net/MjAyMjEyMzBfMTQ1/MDAxNjcyMzcwMjY4MzM0.dbfn6_xJ2ll168pEBdjXlYefm-tK-kzfWwLSCjknAagg.7rpmHe1Jt8hWh-o89WSP_EcS80oY-f0rnux7ayzAeTQg.JPEG/a_561ff12c5cdc42d9afee130f314a6ccb.jpg?type=m_2560_webp"
-													alt="banner" loading="lazy" fetchpriority="high"
-													class="banner_img">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+		
+		<!-- banner -->
+			<div class="slideshow-container">
+
+				<div class="mySlides fade">
+					<div class="numbertext">1 / 3</div>
+					<img src="${pageContext.request.contextPath}/resources/images/test2.jpg" style="width: 100%">
+					
 				</div>
-				<button data-v-21137603="" data-v-3d1a4f76="" type="button"
-					data-role="none" class="slick-arrow slick-next"
-					style="display: block;">Next</button>
-				<ul data-v-3d1a4f76="" class="slick-dots" style="display: block;">
-					<li class=""><button>1</button></li>
-					<li class="slick-active"><button>2</button></li>
-					<li class=""><button>3</button></li>
-					<li class=""><button>4</button></li>
-					<li class=""><button>5</button></li>
-					<li class=""><button>6</button></li>
-					<li class=""><button>7</button></li>
-					<li class=""><button>8</button></li>
-					<li class=""><button>9</button></li>
-				</ul>
+
+				<div class="mySlides fade">
+					<div class="numbertext">2 / 3</div>
+					<img src="${pageContext.request.contextPath}/resources/images/test2.jpg" style="width: 100%">
+					
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">3 / 3</div>
+					<img src="${pageContext.request.contextPath}/resources/images/test2.jpg" style="width: 100%">
+					
+				</div>
+
 			</div>
+			<br>
+
+			<div style="text-align: center">
+				<span class="dot"></span> <span class="dot"></span> <span
+					class="dot"></span>
+			</div>
+
+
 			<div container-index="1" class="shortcut_collection"
 				data-v-281f2319="" data-v-2e68e8ca="">
 				<!---->
@@ -253,36 +70,26 @@
 					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
 						<div class="shortcut_item_img_wrap" data-v-155cff51="">
 							<picture class="picture shortcut_item_img_bg"
-								style="background-color:#5F3FDE;" data-v-878ec45c=""
+								style="background-color:#f4f4f4;" data-v-878ec45c=""
 								data-v-155cff51="">
-							<source type="image/webp"
-								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDNfMjEy/MDAxNjcyNzExNTQxNDky.iKQJTWsKEpMw5-2dl7VYZUsLJ-m_ubqcuuN1ciOPEtIg.Y5YksTIeuM2VLfLU2Yj7Kpy7Vq6JtDiphUCh7pJiAcsg.JPEG/a_a62960e64df84a2aba1d3b7c9a81847d.jpg?type=m_webp"
-								data-v-878ec45c="">
-							<source
-								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDNfMjEy/MDAxNjcyNzExNTQxNDky.iKQJTWsKEpMw5-2dl7VYZUsLJ-m_ubqcuuN1ciOPEtIg.Y5YksTIeuM2VLfLU2Yj7Kpy7Vq6JtDiphUCh7pJiAcsg.JPEG/a_a62960e64df84a2aba1d3b7c9a81847d.jpg?type=m"
-								data-v-878ec45c="">
+							
 							<img
-								src="https://kream-phinf.pstatic.net/MjAyMzAxMDNfMjEy/MDAxNjcyNzExNTQxNDky.iKQJTWsKEpMw5-2dl7VYZUsLJ-m_ubqcuuN1ciOPEtIg.Y5YksTIeuM2VLfLU2Yj7Kpy7Vq6JtDiphUCh7pJiAcsg.JPEG/a_a62960e64df84a2aba1d3b7c9a81847d.jpg?type=m"
+								src="${pageContext.request.contextPath}/resources/images/live.jpg"
 								loading="lazy" class="image" data-v-878ec45c=""></picture>
 						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">경매관</p>
+						<p class="shortcut_item_title" data-v-155cff51=""><strong>경매관</strong></p>
 					</div>
 					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
 						<div class="shortcut_item_img_wrap" data-v-155cff51="">
 							<picture class="picture shortcut_item_img_bg"
 								style="background-color:#f1f1db;" data-v-878ec45c=""
 								data-v-155cff51="">
-							<source type="image/webp"
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMzBfMTMw/MDAxNjcyMzcxMzQwOTk2.YksXyLWLaNn5QsJuIIS2VgfXAHtZZZgXHrfx1Zh71TQg.yJeyIAzt53GM0BS6Rmpt_trq0X79JPrU9lpuBciwUJAg.JPEG/a_deaaebd3722b43eaa36f5f23237e4cf2.jpg?type=m_webp"
-								data-v-878ec45c="">
-							<source
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMzBfMTMw/MDAxNjcyMzcxMzQwOTk2.YksXyLWLaNn5QsJuIIS2VgfXAHtZZZgXHrfx1Zh71TQg.yJeyIAzt53GM0BS6Rmpt_trq0X79JPrU9lpuBciwUJAg.JPEG/a_deaaebd3722b43eaa36f5f23237e4cf2.jpg?type=m"
-								data-v-878ec45c="">
+							
 							<img
-								src="https://kream-phinf.pstatic.net/MjAyMjEyMzBfMTMw/MDAxNjcyMzcxMzQwOTk2.YksXyLWLaNn5QsJuIIS2VgfXAHtZZZgXHrfx1Zh71TQg.yJeyIAzt53GM0BS6Rmpt_trq0X79JPrU9lpuBciwUJAg.JPEG/a_deaaebd3722b43eaa36f5f23237e4cf2.jpg?type=m"
+								src="${pageContext.request.contextPath}/resources/images/thehansome.jpg"
 								loading="lazy" class="image" data-v-878ec45c=""></picture>
 						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">현대관</p>
+						<p class="shortcut_item_title" data-v-155cff51=""><strong>현대관</strong></p>
 					</div>
 				</div>
 			</div>
@@ -505,256 +312,69 @@
 							<picture class="picture shortcut_item_img_bg"
 								style="background-color:#f4f4f4;" data-v-878ec45c=""
 								data-v-155cff51="">
-							<source type="image/webp"
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjZfMjU3/MDAxNjcyMDQ5MzI2ODY4.WdKrbrndxZPpjpekhE1evnprY0b1r4EMIyWLtrMeJKog.kTXWFN9YdjheMWZe_lGmmRtAuLAHcXVWgMDoKw8nDecg.JPEG/a_280777eb1ba440bc9bc6112000c541da.jpg?type=m_webp"
-								data-v-878ec45c="">
-							<source
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjZfMjU3/MDAxNjcyMDQ5MzI2ODY4.WdKrbrndxZPpjpekhE1evnprY0b1r4EMIyWLtrMeJKog.kTXWFN9YdjheMWZe_lGmmRtAuLAHcXVWgMDoKw8nDecg.JPEG/a_280777eb1ba440bc9bc6112000c541da.jpg?type=m"
-								data-v-878ec45c="">
+							
 							<img
-								src="https://kream-phinf.pstatic.net/MjAyMjEyMjZfMjU3/MDAxNjcyMDQ5MzI2ODY4.WdKrbrndxZPpjpekhE1evnprY0b1r4EMIyWLtrMeJKog.kTXWFN9YdjheMWZe_lGmmRtAuLAHcXVWgMDoKw8nDecg.JPEG/a_280777eb1ba440bc9bc6112000c541da.jpg?type=m"
+								src="${pageContext.request.contextPath}/resources/images/adidas.jpg"
 								loading="lazy" class="image" data-v-878ec45c=""></picture>
 						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">롤렉스</p>
+						<p class="shortcut_item_title" data-v-155cff51="">아디다스</p>
 					</div>
 					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
 						<div class="shortcut_item_img_wrap" data-v-155cff51="">
 							<picture class="picture shortcut_item_img_bg"
 								style="background-color:#f4f4f4;" data-v-878ec45c=""
 								data-v-155cff51="">
-							<source type="image/webp"
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjlfMTM1/MDAxNjcyMjk0NjkxOTg3.m4db5MCZ__qLpL5w1IBAT6imUx52DaEAKf4BdrGzwTMg.PA2UMGP9ivKPTuFcasu9PhzguGKGW0iOBLKoWR2m-Nwg.JPEG/a_161ffacfba1444bebff2d70541e29b13.jpg?type=m_webp"
-								data-v-878ec45c="">
-							<source
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjlfMTM1/MDAxNjcyMjk0NjkxOTg3.m4db5MCZ__qLpL5w1IBAT6imUx52DaEAKf4BdrGzwTMg.PA2UMGP9ivKPTuFcasu9PhzguGKGW0iOBLKoWR2m-Nwg.JPEG/a_161ffacfba1444bebff2d70541e29b13.jpg?type=m"
-								data-v-878ec45c="">
+					
 							<img
-								src="https://kream-phinf.pstatic.net/MjAyMjEyMjlfMTM1/MDAxNjcyMjk0NjkxOTg3.m4db5MCZ__qLpL5w1IBAT6imUx52DaEAKf4BdrGzwTMg.PA2UMGP9ivKPTuFcasu9PhzguGKGW0iOBLKoWR2m-Nwg.JPEG/a_161ffacfba1444bebff2d70541e29b13.jpg?type=m"
+								src="${pageContext.request.contextPath}/resources/images/jordan.jpg"
 								loading="lazy" class="image" data-v-878ec45c=""></picture>
 						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">샤넬</p>
+						<p class="shortcut_item_title" data-v-155cff51="">조던</p>
 					</div>
 					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
 						<div class="shortcut_item_img_wrap" data-v-155cff51="">
 							<picture class="picture shortcut_item_img_bg"
 								style="background-color:#f4f4f4;" data-v-878ec45c=""
 								data-v-155cff51="">
-							<source type="image/webp"
-								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMjU0/MDAxNjcyODMyODA2MDQ5.usQUMYQqcyPJf5wsDJYYZ2kduCmWcgU0-76DOLD5o5sg.pcDjp3eBiYvr3lXJ8i8jfRVLu_hCxWqOUIpInIgeDzEg.JPEG/a_d78da16f12634d88b64fcac1a4c416d0.jpg?type=m_webp"
-								data-v-878ec45c="">
-							<source
-								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMjU0/MDAxNjcyODMyODA2MDQ5.usQUMYQqcyPJf5wsDJYYZ2kduCmWcgU0-76DOLD5o5sg.pcDjp3eBiYvr3lXJ8i8jfRVLu_hCxWqOUIpInIgeDzEg.JPEG/a_d78da16f12634d88b64fcac1a4c416d0.jpg?type=m"
-								data-v-878ec45c="">
+							
 							<img
-								src="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMjU0/MDAxNjcyODMyODA2MDQ5.usQUMYQqcyPJf5wsDJYYZ2kduCmWcgU0-76DOLD5o5sg.pcDjp3eBiYvr3lXJ8i8jfRVLu_hCxWqOUIpInIgeDzEg.JPEG/a_d78da16f12634d88b64fcac1a4c416d0.jpg?type=m"
+								src="${pageContext.request.contextPath}/resources/images/prada.jpg"
 								loading="lazy" class="image" data-v-878ec45c=""></picture>
 						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">비비안 웨스트우드</p>
+						<p class="shortcut_item_title" data-v-155cff51="">프라다</p>
 					</div>
 					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
 						<div class="shortcut_item_img_wrap" data-v-155cff51="">
 							<picture class="picture shortcut_item_img_bg"
 								style="background-color:#f4f4f4;" data-v-878ec45c=""
 								data-v-155cff51="">
-							<source type="image/webp"
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjlfMjA4/MDAxNjcyMjk1MzY2ODcz.hzR7FpnHIQuM4KcTB-M1Ccyoa4TYY3RsBPHPxSnBW34g.RnbLuFHgtDKusx1nJigD4HDD5fc4TXawPytkn9ZyU-og.JPEG/a_3d6c79eecf3945e89e76888df6b8e13e.jpg?type=m_webp"
-								data-v-878ec45c="">
-							<source
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjlfMjA4/MDAxNjcyMjk1MzY2ODcz.hzR7FpnHIQuM4KcTB-M1Ccyoa4TYY3RsBPHPxSnBW34g.RnbLuFHgtDKusx1nJigD4HDD5fc4TXawPytkn9ZyU-og.JPEG/a_3d6c79eecf3945e89e76888df6b8e13e.jpg?type=m"
-								data-v-878ec45c="">
+						
 							<img
-								src="https://kream-phinf.pstatic.net/MjAyMjEyMjlfMjA4/MDAxNjcyMjk1MzY2ODcz.hzR7FpnHIQuM4KcTB-M1Ccyoa4TYY3RsBPHPxSnBW34g.RnbLuFHgtDKusx1nJigD4HDD5fc4TXawPytkn9ZyU-og.JPEG/a_3d6c79eecf3945e89e76888df6b8e13e.jpg?type=m"
+								src="${pageContext.request.contextPath}/resources/images/supreme.jpg"
 								loading="lazy" class="image" data-v-878ec45c=""></picture>
 						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">소니</p>
+						<p class="shortcut_item_title" data-v-155cff51="">슈프림</p>
 					</div>
 					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
 						<div class="shortcut_item_img_wrap" data-v-155cff51="">
 							<picture class="picture shortcut_item_img_bg"
 								style="background-color:#f4f4f4;" data-v-878ec45c=""
 								data-v-155cff51="">
-							<source type="image/webp"
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjZfMjIy/MDAxNjcyMDQ5NTI2NDIy.dtjmWgFAvfSTSiGoZfGKnEK0HIjAQaN_sZgn9k9JpZIg.RSwlr4G4qD9kOZrFjz7uSiHjhegtauyNPKDQSaXhf_Ag.JPEG/a_e380321a12e04ec88efc2a698fd245cd.jpg?type=m_webp"
-								data-v-878ec45c="">
-							<source
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjZfMjIy/MDAxNjcyMDQ5NTI2NDIy.dtjmWgFAvfSTSiGoZfGKnEK0HIjAQaN_sZgn9k9JpZIg.RSwlr4G4qD9kOZrFjz7uSiHjhegtauyNPKDQSaXhf_Ag.JPEG/a_e380321a12e04ec88efc2a698fd245cd.jpg?type=m"
-								data-v-878ec45c="">
+							
 							<img
-								src="https://kream-phinf.pstatic.net/MjAyMjEyMjZfMjIy/MDAxNjcyMDQ5NTI2NDIy.dtjmWgFAvfSTSiGoZfGKnEK0HIjAQaN_sZgn9k9JpZIg.RSwlr4G4qD9kOZrFjz7uSiHjhegtauyNPKDQSaXhf_Ag.JPEG/a_e380321a12e04ec88efc2a698fd245cd.jpg?type=m"
+								src="${pageContext.request.contextPath}/resources/images/ysl_logo.jpg"
 								loading="lazy" class="image" data-v-878ec45c=""></picture>
 						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">루이비통</p>
+						<p class="shortcut_item_title" data-v-155cff51="">생 로랑</p>
 					</div>
-					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
-						<div class="shortcut_item_img_wrap" data-v-155cff51="">
-							<picture class="picture shortcut_item_img_bg"
-								style="background-color:#f4f4f4;" data-v-878ec45c=""
-								data-v-155cff51="">
-							<source type="image/webp"
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMTJfMjc5/MDAxNjcwODQyMDQ0OTI0.8HN3_o_GCyk-ov8qsATszJCGnTy-2pYJ_ZQFvqsfZScg.H4gfPrefbbCweJcpNd1PvF7iBkKFuUSW7YZLo9cPSuUg.JPEG/a_f0d4d704970647c9b1d7a055ff254888.jpg?type=m_webp"
-								data-v-878ec45c="">
-							<source
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMTJfMjc5/MDAxNjcwODQyMDQ0OTI0.8HN3_o_GCyk-ov8qsATszJCGnTy-2pYJ_ZQFvqsfZScg.H4gfPrefbbCweJcpNd1PvF7iBkKFuUSW7YZLo9cPSuUg.JPEG/a_f0d4d704970647c9b1d7a055ff254888.jpg?type=m"
-								data-v-878ec45c="">
-							<img
-								src="https://kream-phinf.pstatic.net/MjAyMjEyMTJfMjc5/MDAxNjcwODQyMDQ0OTI0.8HN3_o_GCyk-ov8qsATszJCGnTy-2pYJ_ZQFvqsfZScg.H4gfPrefbbCweJcpNd1PvF7iBkKFuUSW7YZLo9cPSuUg.JPEG/a_f0d4d704970647c9b1d7a055ff254888.jpg?type=m"
-								loading="lazy" class="image" data-v-878ec45c=""></picture>
-						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">애플</p>
-					</div>
-					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
-						<div class="shortcut_item_img_wrap" data-v-155cff51="">
-							<picture class="picture shortcut_item_img_bg"
-								style="background-color:#f4f4f4;" data-v-878ec45c=""
-								data-v-155cff51="">
-							<source type="image/webp"
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjZfMjI0/MDAxNjcyMDQ5MzA4MDY4.9Y4Cj-UFXAQI9AxNqIUz5hnQ1iPPUihYGx2VEFCdKqgg.7ldCyNJOSjLT2cbxiR2gW840rZq6PIYh7IAPSwLPQYsg.JPEG/a_cd958f3faa344e0f9a6d320c30802fe6.jpg?type=m_webp"
-								data-v-878ec45c="">
-							<source
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjZfMjI0/MDAxNjcyMDQ5MzA4MDY4.9Y4Cj-UFXAQI9AxNqIUz5hnQ1iPPUihYGx2VEFCdKqgg.7ldCyNJOSjLT2cbxiR2gW840rZq6PIYh7IAPSwLPQYsg.JPEG/a_cd958f3faa344e0f9a6d320c30802fe6.jpg?type=m"
-								data-v-878ec45c="">
-							<img
-								src="https://kream-phinf.pstatic.net/MjAyMjEyMjZfMjI0/MDAxNjcyMDQ5MzA4MDY4.9Y4Cj-UFXAQI9AxNqIUz5hnQ1iPPUihYGx2VEFCdKqgg.7ldCyNJOSjLT2cbxiR2gW840rZq6PIYh7IAPSwLPQYsg.JPEG/a_cd958f3faa344e0f9a6d320c30802fe6.jpg?type=m"
-								loading="lazy" class="image" data-v-878ec45c=""></picture>
-						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">레고</p>
-					</div>
-					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
-						<div class="shortcut_item_img_wrap" data-v-155cff51="">
-							<picture class="picture shortcut_item_img_bg"
-								style="background-color:#f4f4f4;" data-v-878ec45c=""
-								data-v-155cff51="">
-							<source type="image/webp"
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjlfNzIg/MDAxNjcyMjk1Mjc3NTQw.Torn0xxKdY41Hu5mItcoPmc2nt-Ig-ZDuBQnUi1p21Ag.0xE15JeSyDhSy4OPNRrUrmq4iyk4VCrV_Zac8jo4ok8g.JPEG/a_e8f2892f2f73488892f800a3ceb8c132.jpg?type=m_webp"
-								data-v-878ec45c="">
-							<source
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjlfNzIg/MDAxNjcyMjk1Mjc3NTQw.Torn0xxKdY41Hu5mItcoPmc2nt-Ig-ZDuBQnUi1p21Ag.0xE15JeSyDhSy4OPNRrUrmq4iyk4VCrV_Zac8jo4ok8g.JPEG/a_e8f2892f2f73488892f800a3ceb8c132.jpg?type=m"
-								data-v-878ec45c="">
-							<img
-								src="https://kream-phinf.pstatic.net/MjAyMjEyMjlfNzIg/MDAxNjcyMjk1Mjc3NTQw.Torn0xxKdY41Hu5mItcoPmc2nt-Ig-ZDuBQnUi1p21Ag.0xE15JeSyDhSy4OPNRrUrmq4iyk4VCrV_Zac8jo4ok8g.JPEG/a_e8f2892f2f73488892f800a3ceb8c132.jpg?type=m"
-								loading="lazy" class="image" data-v-878ec45c=""></picture>
-						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">아크네</p>
-					</div>
-					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
-						<div class="shortcut_item_img_wrap" data-v-155cff51="">
-							<picture class="picture shortcut_item_img_bg"
-								style="background-color:#f4f4f4;" data-v-878ec45c=""
-								data-v-155cff51="">
-							<source type="image/webp"
-								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMTgg/MDAxNjcyODMzMTg0ODQy.sIHlpAVRkn8cF8ZL8LoggRl5TM5GRxbgs0-HKWpOdcMg.OKKTPOyq5kDPkA-Bhn_tkaCgfRgzBLP7jfNbGMBed3wg.JPEG/a_d609a091ecf847439823b20b75364051.jpg?type=m_webp"
-								data-v-878ec45c="">
-							<source
-								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMTgg/MDAxNjcyODMzMTg0ODQy.sIHlpAVRkn8cF8ZL8LoggRl5TM5GRxbgs0-HKWpOdcMg.OKKTPOyq5kDPkA-Bhn_tkaCgfRgzBLP7jfNbGMBed3wg.JPEG/a_d609a091ecf847439823b20b75364051.jpg?type=m"
-								data-v-878ec45c="">
-							<img
-								src="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMTgg/MDAxNjcyODMzMTg0ODQy.sIHlpAVRkn8cF8ZL8LoggRl5TM5GRxbgs0-HKWpOdcMg.OKKTPOyq5kDPkA-Bhn_tkaCgfRgzBLP7jfNbGMBed3wg.JPEG/a_d609a091ecf847439823b20b75364051.jpg?type=m"
-								loading="lazy" class="image" data-v-878ec45c=""></picture>
-						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">아미</p>
-					</div>
-					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
-						<div class="shortcut_item_img_wrap" data-v-155cff51="">
-							<picture class="picture shortcut_item_img_bg"
-								style="background-color:#f4f4f4;" data-v-878ec45c=""
-								data-v-155cff51="">
-							<source type="image/webp"
-								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMjky/MDAxNjcyODMzMjkyMDYy.4xHUJlvAYKUK5k7L9ZSDMkZUd5jjiOqnNFeiwMAwN-8g.IjZNilFknLLL4HgAorviW_rnqu0JLkYdJ5IKmp2niTYg.JPEG/a_6fda5af2e4964892a902cab50125a8c0.jpg?type=m_webp"
-								data-v-878ec45c="">
-							<source
-								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMjky/MDAxNjcyODMzMjkyMDYy.4xHUJlvAYKUK5k7L9ZSDMkZUd5jjiOqnNFeiwMAwN-8g.IjZNilFknLLL4HgAorviW_rnqu0JLkYdJ5IKmp2niTYg.JPEG/a_6fda5af2e4964892a902cab50125a8c0.jpg?type=m"
-								data-v-878ec45c="">
-							<img
-								src="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMjky/MDAxNjcyODMzMjkyMDYy.4xHUJlvAYKUK5k7L9ZSDMkZUd5jjiOqnNFeiwMAwN-8g.IjZNilFknLLL4HgAorviW_rnqu0JLkYdJ5IKmp2niTYg.JPEG/a_6fda5af2e4964892a902cab50125a8c0.jpg?type=m"
-								loading="lazy" class="image" data-v-878ec45c=""></picture>
-						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">스톤 아일랜드</p>
-					</div>
-					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
-						<div class="shortcut_item_img_wrap" data-v-155cff51="">
-							<picture class="picture shortcut_item_img_bg"
-								style="background-color:#ffffff;" data-v-878ec45c=""
-								data-v-155cff51="">
-							<source type="image/webp"
-								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDZfMjc5/MDAxNjcyOTcwNjU0NDYx.64qSF596MlgQuhQfzMYM47d7FqNbqTzuXaG3IzkV2Iog.jA7r9V4t2IshLQdPFRC8djb-pyKN5ewzcYlpm8VqZBgg.JPEG/a_5ef87c51cc874e1591e6757de9c45221.jpg?type=m_webp"
-								data-v-878ec45c="">
-							<source
-								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDZfMjc5/MDAxNjcyOTcwNjU0NDYx.64qSF596MlgQuhQfzMYM47d7FqNbqTzuXaG3IzkV2Iog.jA7r9V4t2IshLQdPFRC8djb-pyKN5ewzcYlpm8VqZBgg.JPEG/a_5ef87c51cc874e1591e6757de9c45221.jpg?type=m"
-								data-v-878ec45c="">
-							<img
-								src="https://kream-phinf.pstatic.net/MjAyMzAxMDZfMjc5/MDAxNjcyOTcwNjU0NDYx.64qSF596MlgQuhQfzMYM47d7FqNbqTzuXaG3IzkV2Iog.jA7r9V4t2IshLQdPFRC8djb-pyKN5ewzcYlpm8VqZBgg.JPEG/a_5ef87c51cc874e1591e6757de9c45221.jpg?type=m"
-								loading="lazy" class="image" data-v-878ec45c=""></picture>
-						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">렉토</p>
-					</div>
-					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
-						<div class="shortcut_item_img_wrap" data-v-155cff51="">
-							<picture class="picture shortcut_item_img_bg"
-								style="background-color:#f4f4f4;" data-v-878ec45c=""
-								data-v-155cff51="">
-							<source type="image/webp"
-								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMjMz/MDAxNjcyODMzNTc0MjMw.RXALBc_lp2zVt_TSDuddr1KGgQ3tYlcWgDNSaimgvWIg.IMNScYWywVPygt0RibVd8wMj4n_cL3eDIafAv4gSynMg.JPEG/a_a7cfd042374948c79d7214c2479c1436.jpg?type=m_webp"
-								data-v-878ec45c="">
-							<source
-								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMjMz/MDAxNjcyODMzNTc0MjMw.RXALBc_lp2zVt_TSDuddr1KGgQ3tYlcWgDNSaimgvWIg.IMNScYWywVPygt0RibVd8wMj4n_cL3eDIafAv4gSynMg.JPEG/a_a7cfd042374948c79d7214c2479c1436.jpg?type=m"
-								data-v-878ec45c="">
-							<img
-								src="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMjMz/MDAxNjcyODMzNTc0MjMw.RXALBc_lp2zVt_TSDuddr1KGgQ3tYlcWgDNSaimgvWIg.IMNScYWywVPygt0RibVd8wMj4n_cL3eDIafAv4gSynMg.JPEG/a_a7cfd042374948c79d7214c2479c1436.jpg?type=m"
-								loading="lazy" class="image" data-v-878ec45c=""></picture>
-						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">우영미</p>
-					</div>
-					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
-						<div class="shortcut_item_img_wrap" data-v-155cff51="">
-							<picture class="picture shortcut_item_img_bg"
-								style="background-color:#f4f4f4;" data-v-878ec45c=""
-								data-v-155cff51="">
-							<source type="image/webp"
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMTJfNiAg/MDAxNjcwODQxODY2NTQ2.JvNwev2NP79pPibAPoJNLpgvhs6D35tSjsXqqEC7R18g.X0IWhYWOGZFHoSA854Q4aclLVutOog4MI_IqETo4l8cg.JPEG/a_f1dd9728843d4be49c68930ce9369d49.jpg?type=m_webp"
-								data-v-878ec45c="">
-							<source
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMTJfNiAg/MDAxNjcwODQxODY2NTQ2.JvNwev2NP79pPibAPoJNLpgvhs6D35tSjsXqqEC7R18g.X0IWhYWOGZFHoSA854Q4aclLVutOog4MI_IqETo4l8cg.JPEG/a_f1dd9728843d4be49c68930ce9369d49.jpg?type=m"
-								data-v-878ec45c="">
-							<img
-								src="https://kream-phinf.pstatic.net/MjAyMjEyMTJfNiAg/MDAxNjcwODQxODY2NTQ2.JvNwev2NP79pPibAPoJNLpgvhs6D35tSjsXqqEC7R18g.X0IWhYWOGZFHoSA854Q4aclLVutOog4MI_IqETo4l8cg.JPEG/a_f1dd9728843d4be49c68930ce9369d49.jpg?type=m"
-								loading="lazy" class="image" data-v-878ec45c=""></picture>
-						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">에르메스</p>
-					</div>
-					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
-						<div class="shortcut_item_img_wrap" data-v-155cff51="">
-							<picture class="picture shortcut_item_img_bg"
-								style="background-color:#f4f4f4;" data-v-878ec45c=""
-								data-v-155cff51="">
-							<source type="image/webp"
-								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMTQy/MDAxNjcyODMyMzUxNjky.TINcrWMXqoEUaxX9HAzwSfkVqgi8WCyc1MfsJTYDE10g.DCobBGFxBHtsG2rnxJaNo7mOAswjDN2ZRpXOhcjD5Pgg.JPEG/a_3d25a38400be4fbf9fcb0494e2087e59.jpg?type=m_webp"
-								data-v-878ec45c="">
-							<source
-								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMTQy/MDAxNjcyODMyMzUxNjky.TINcrWMXqoEUaxX9HAzwSfkVqgi8WCyc1MfsJTYDE10g.DCobBGFxBHtsG2rnxJaNo7mOAswjDN2ZRpXOhcjD5Pgg.JPEG/a_3d25a38400be4fbf9fcb0494e2087e59.jpg?type=m"
-								data-v-878ec45c="">
-							<img
-								src="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMTQy/MDAxNjcyODMyMzUxNjky.TINcrWMXqoEUaxX9HAzwSfkVqgi8WCyc1MfsJTYDE10g.DCobBGFxBHtsG2rnxJaNo7mOAswjDN2ZRpXOhcjD5Pgg.JPEG/a_3d25a38400be4fbf9fcb0494e2087e59.jpg?type=m"
-								loading="lazy" class="image" data-v-878ec45c=""></picture>
-						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">펜디</p>
-					</div>
-					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
-						<div class="shortcut_item_img_wrap" data-v-155cff51="">
-							<picture class="picture shortcut_item_img_bg"
-								style="background-color:#f4f4f4;" data-v-878ec45c=""
-								data-v-155cff51="">
-							<source type="image/webp"
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjlfMjI1/MDAxNjcyMjk1NDE4MTE4._4JKfvrg7FDq7tDCtO3tRRyI0KlV5r_BHcR6vFusKUcg.oil8jyyGnNtxkWP_yRG4-rCg_1dBwPPigSKJFUNiQPkg.JPEG/a_b9fb063fd8dd4071b617395fe5fa54da.jpg?type=m_webp"
-								data-v-878ec45c="">
-							<source
-								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjlfMjI1/MDAxNjcyMjk1NDE4MTE4._4JKfvrg7FDq7tDCtO3tRRyI0KlV5r_BHcR6vFusKUcg.oil8jyyGnNtxkWP_yRG4-rCg_1dBwPPigSKJFUNiQPkg.JPEG/a_b9fb063fd8dd4071b617395fe5fa54da.jpg?type=m"
-								data-v-878ec45c="">
-							<img
-								src="https://kream-phinf.pstatic.net/MjAyMjEyMjlfMjI1/MDAxNjcyMjk1NDE4MTE4._4JKfvrg7FDq7tDCtO3tRRyI0KlV5r_BHcR6vFusKUcg.oil8jyyGnNtxkWP_yRG4-rCg_1dBwPPigSKJFUNiQPkg.JPEG/a_b9fb063fd8dd4071b617395fe5fa54da.jpg?type=m"
-								loading="lazy" class="image" data-v-878ec45c=""></picture>
-						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">몽클레르</p>
-					</div>
+					
+				
+					
+					
+					
+					2
+					
+					
 				</div>
 			</div>
 
@@ -1563,4 +1183,4 @@
 				</div>
 			</div>
 
-			<%@ include file="/WEB-INF/views/footer.jsp"%>
+			<%@ include file="/WEB-INF/views/common/footer.jsp"%>

@@ -104,7 +104,7 @@
             
             </div>
             <!---->
-            <%@ include file="/WEB-INF/views/header.jsp"%>
+            <%@ include file="/WEB-INF/views/common/header.jsp"%>
             <div data-v-b6b7a1e8="" data-v-34b11929="" class="container buy lg">
                <div data-v-b6b7a1e8="" class="content_area">
                   <div data-v-b6b7a1e8="" class="buy_before">
@@ -199,7 +199,7 @@
                <!---->
             </div>
             <div data-v-34b11929="">
-            <%@ include file="/WEB-INF/views/footer.jsp"%>
+            <%@ include file="/WEB-INF/views/common/footer.jsp"%>
             </div>
             
             <!---->

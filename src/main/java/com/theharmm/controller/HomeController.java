@@ -28,6 +28,6 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "product/productlist";
+		return "main";
 	}	
 }

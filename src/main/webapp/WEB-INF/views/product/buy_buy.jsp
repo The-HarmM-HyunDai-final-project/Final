@@ -101,7 +101,7 @@
 		<!---->
 		<div id="__layout">
 			<div data-v-34b11929="" tabindex="0" class="wrap lg win_os">
-				<%@ include file="/WEB-INF/views/header.jsp"%>
+				<%@ include file="/WEB-INF/views/common/header.jsp"%>
 				<!---->
 				<div data-v-63d14162="" data-v-34b11929=""
 					class="container buy lg step-1">
@@ -239,7 +239,7 @@
 					<!---->
 					<!---->
 				</div>
-				 <%@ include file="/WEB-INF/views/footer.jsp"%>
+				 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
 				<!---->
 				<div data-v-34b11929="">
 					<!---->
