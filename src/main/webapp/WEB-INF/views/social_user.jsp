@@ -109,7 +109,7 @@
 		<div id="__layout">
 			<div data-v-34025556="" tabindex="0" class="wrap win_os lg">
 				
-			     <%@ include file="/WEB-INF/views/header.jsp"%>
+			     <%@ include file="/WEB-INF/views/common/header.jsp"%>
 				<!---->
 				<div data-v-47cbe816="" data-v-34025556="" social=""
 					class="container social lg">
@@ -184,7 +184,7 @@
 						<!---->
 					</div>
 				</div>
-			     <%@ include file="/WEB-INF/views/footer.jsp"%>
+			     <%@ include file="/WEB-INF/views/common/footer.jsp"%>
 				<div data-v-34025556="">
 					<!---->
 					<div data-v-66ae1b7c="" id="toast" class="toast lg">

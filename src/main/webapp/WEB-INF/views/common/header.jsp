@@ -59,6 +59,8 @@
             ]
         }
     </script>
+<script type="text/javascript" async=""
+	src="src/main/webapp/js/banner.js"></script>
 <script data-n-head="ssr" type="application/ld+json">
         {
             "@context": "https://schema.org",
