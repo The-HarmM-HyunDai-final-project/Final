@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/header.jsp"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 <link
 	href="${pageContext.request.contextPath}/resources/css/b69f662.css"
 	rel="stylesheet" type="text/css">
-	
+
 <div class="container detail lg" data-v-01e212dd="" data-v-3007c576="">
 	<div class="content" data-v-01e212dd="">
 		<h2 class="blind" data-v-01e212dd="">상품 상세</h2>
 		<div class="column_bind" data-v-01e212dd="">
 			<div class="column is_fixed" data-v-01e212dd="">
 				<div class="spread" data-v-01e212dd=""></div>
-				<div class="column_box" data-v-01e212dd="" style="width: 560px;">
+				<div class="column_box" data-v-01e212dd="">
 					<div class="detail_banner_area lg" data-v-07f24dc5=""
 						data-v-01e212dd="">
 						<div data-v-3d1a4f76="" data-v-07f24dc5="" dir="ltr"
@@ -33,21 +33,17 @@
 												style="width: 100%; display: inline-block;">
 												<div data-v-07f24dc5="" data-v-e4caeaf8="" href="/"
 													class="slide_item"
-													style="background-color: rgb(246, 238, 237);">
+													style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 													<div data-v-07f24dc5="" data-v-e4caeaf8=""
 														class="item_inner">
 														<div data-v-09fbcf09="" data-v-07f24dc5="" class="product"
 															data-v-e4caeaf8=""
-															style="background-color: rgb(246, 238, 237);">
+															style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 															<picture data-v-878ec45c="" data-v-09fbcf09=""
 																class="picture product_img">
-															<source data-v-878ec45c="" type="image/webp"
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfMTkw/MDAxNjY3NTQzNTAxNjcw.yXF_j7EUnejzPqHyxvoziRB8ukEBpGX7RgDL8ziMtOEg.tjPT99BA1fdYa1THeylVQhNonJ_gqkCMxCTyqSEGhdQg.PNG/a_9388c64f95f54d29834d8fc13082a68e.png?type=l_webp">
-															<source data-v-878ec45c=""
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfMTkw/MDAxNjY3NTQzNTAxNjcw.yXF_j7EUnejzPqHyxvoziRB8ukEBpGX7RgDL8ziMtOEg.tjPT99BA1fdYa1THeylVQhNonJ_gqkCMxCTyqSEGhdQg.PNG/a_9388c64f95f54d29834d8fc13082a68e.png?type=l">
-															<img data-v-878ec45c="" alt="상품 이미지"
-																src="https://kream-phinf.pstatic.net/MjAyMjExMDRfMTkw/MDAxNjY3NTQzNTAxNjcw.yXF_j7EUnejzPqHyxvoziRB8ukEBpGX7RgDL8ziMtOEg.tjPT99BA1fdYa1THeylVQhNonJ_gqkCMxCTyqSEGhdQg.PNG/a_9388c64f95f54d29834d8fc13082a68e.png?type=l"
-																loading="auto" fetchpriority="high" class="image"></picture>
+															<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="상품 이미지" 
+																src="${productDetailDTO.img1}"
+																loading="lazy" fetchpriority="high" class="image"></picture>
 															<!---->
 															<!---->
 															<!---->
@@ -67,20 +63,16 @@
 												style="width: 100%; display: inline-block;">
 												<div data-v-07f24dc5="" data-v-e4caeaf8="" href="/"
 													class="slide_item"
-													style="background-color: rgb(246, 238, 237);">
+													style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 													<div data-v-07f24dc5="" data-v-e4caeaf8=""
 														class="item_inner">
 														<div data-v-09fbcf09="" data-v-07f24dc5="" class="product"
 															data-v-e4caeaf8=""
-															style="background-color: rgb(246, 238, 237);">
+															style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 															<picture data-v-878ec45c="" data-v-09fbcf09=""
 																class="picture product_img">
-															<source data-v-878ec45c="" type="image/webp"
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfNjMg/MDAxNjY3NTQzNTAxNjMw.M03Jy-K6ghQXo-2TspOUFHarWRD2vhuKamPWTmxBjeAg.h6yK8chQW5-9u0amGAGjieM4wRWE_17U-JeiA7QiI8wg.PNG/a_bf9cd66211524e0b87923abbaaa97a1f.png?type=l_webp">
-															<source data-v-878ec45c=""
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfNjMg/MDAxNjY3NTQzNTAxNjMw.M03Jy-K6ghQXo-2TspOUFHarWRD2vhuKamPWTmxBjeAg.h6yK8chQW5-9u0amGAGjieM4wRWE_17U-JeiA7QiI8wg.PNG/a_bf9cd66211524e0b87923abbaaa97a1f.png?type=l">
-															<img data-v-878ec45c="" alt="상품 이미지"
-																src="https://kream-phinf.pstatic.net/MjAyMjExMDRfNjMg/MDAxNjY3NTQzNTAxNjMw.M03Jy-K6ghQXo-2TspOUFHarWRD2vhuKamPWTmxBjeAg.h6yK8chQW5-9u0amGAGjieM4wRWE_17U-JeiA7QiI8wg.PNG/a_bf9cd66211524e0b87923abbaaa97a1f.png?type=l"
+															<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="상품 이미지" 
+																src="${productDetailDTO.img2}"
 																loading="lazy" fetchpriority="high" class="image"></picture>
 															<!---->
 															<!---->
@@ -101,20 +93,16 @@
 												style="width: 100%; display: inline-block;">
 												<div data-v-07f24dc5="" data-v-e4caeaf8="" href="/"
 													class="slide_item"
-													style="background-color: rgb(246, 238, 237);">
+													style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 													<div data-v-07f24dc5="" data-v-e4caeaf8=""
 														class="item_inner">
 														<div data-v-09fbcf09="" data-v-07f24dc5="" class="product"
 															data-v-e4caeaf8=""
-															style="background-color: rgb(246, 238, 237);">
+															style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 															<picture data-v-878ec45c="" data-v-09fbcf09=""
 																class="picture product_img">
-															<source data-v-878ec45c="" type="image/webp"
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfNzkg/MDAxNjY3NTQ0MDk1MjAy.Oq7cUaOKYhHrhg5oRpuK7nxnD2-1OrOqss9jyw51hS8g.3opal-BErjNi9zTWYjzxm72eCX2oSLvFwM0aPg2PaLkg.PNG/a_282526dd6bc843518832f6f84630fa25.png?type=l_webp">
-															<source data-v-878ec45c=""
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfNzkg/MDAxNjY3NTQ0MDk1MjAy.Oq7cUaOKYhHrhg5oRpuK7nxnD2-1OrOqss9jyw51hS8g.3opal-BErjNi9zTWYjzxm72eCX2oSLvFwM0aPg2PaLkg.PNG/a_282526dd6bc843518832f6f84630fa25.png?type=l">
-															<img data-v-878ec45c="" alt="상품 이미지"
-																src="https://kream-phinf.pstatic.net/MjAyMjExMDRfNzkg/MDAxNjY3NTQ0MDk1MjAy.Oq7cUaOKYhHrhg5oRpuK7nxnD2-1OrOqss9jyw51hS8g.3opal-BErjNi9zTWYjzxm72eCX2oSLvFwM0aPg2PaLkg.PNG/a_282526dd6bc843518832f6f84630fa25.png?type=l"
+															<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="상품 이미지" 
+																src="${productDetailDTO.img3}"
 																loading="lazy" fetchpriority="high" class="image"></picture>
 															<!---->
 															<!---->
@@ -135,20 +123,16 @@
 												style="width: 100%; display: inline-block;">
 												<div data-v-07f24dc5="" data-v-e4caeaf8="" href="/"
 													class="slide_item"
-													style="background-color: rgb(246, 238, 237);">
+													style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 													<div data-v-07f24dc5="" data-v-e4caeaf8=""
 														class="item_inner">
 														<div data-v-09fbcf09="" data-v-07f24dc5="" class="product"
 															data-v-e4caeaf8=""
-															style="background-color: rgb(246, 238, 237);">
+															style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 															<picture data-v-878ec45c="" data-v-09fbcf09=""
 																class="picture product_img">
-															<source data-v-878ec45c="" type="image/webp"
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfMjQy/MDAxNjY3NTQzNTAxNzE2.28SL2ADmE0cypOZVP6BPghe55mFVzQUv2dp9Ri-uFUkg.1bEHEugEUyhlt_vtYUQgCVO50PSwz3u1uyIaqfJCwx0g.PNG/a_6ae6cc0c6b384ef0b6c547134fcba07c.png?type=l_webp">
-															<source data-v-878ec45c=""
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfMjQy/MDAxNjY3NTQzNTAxNzE2.28SL2ADmE0cypOZVP6BPghe55mFVzQUv2dp9Ri-uFUkg.1bEHEugEUyhlt_vtYUQgCVO50PSwz3u1uyIaqfJCwx0g.PNG/a_6ae6cc0c6b384ef0b6c547134fcba07c.png?type=l">
-															<img data-v-878ec45c="" alt="상품 이미지"
-																src="https://kream-phinf.pstatic.net/MjAyMjExMDRfMjQy/MDAxNjY3NTQzNTAxNzE2.28SL2ADmE0cypOZVP6BPghe55mFVzQUv2dp9Ri-uFUkg.1bEHEugEUyhlt_vtYUQgCVO50PSwz3u1uyIaqfJCwx0g.PNG/a_6ae6cc0c6b384ef0b6c547134fcba07c.png?type=l"
+															<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="상품 이미지" 
+																src="${productDetailDTO.img4}"
 																loading="lazy" fetchpriority="high" class="image"></picture>
 															<!---->
 															<!---->
@@ -169,20 +153,16 @@
 												style="width: 100%; display: inline-block;">
 												<div data-v-07f24dc5="" data-v-e4caeaf8="" href="/"
 													class="slide_item"
-													style="background-color: rgb(246, 238, 237);">
+													style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 													<div data-v-07f24dc5="" data-v-e4caeaf8=""
 														class="item_inner">
 														<div data-v-09fbcf09="" data-v-07f24dc5="" class="product"
 															data-v-e4caeaf8=""
-															style="background-color: rgb(246, 238, 237);">
+															style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 															<picture data-v-878ec45c="" data-v-09fbcf09=""
 																class="picture product_img">
-															<source data-v-878ec45c="" type="image/webp"
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfMTE1/MDAxNjY3NTQzNTAxNjM3.ccTbGI3BCmqGlEnzB_VA6nchvPur-3_6zWSCKNBFN6sg.0KncqpKV16-ELLW-Sx05NQhmZZMv62ZcN-4kFRwZhUog.PNG/a_2bb917328b2a4bb4bc89814ed849e7ab.png?type=l_webp">
-															<source data-v-878ec45c=""
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfMTE1/MDAxNjY3NTQzNTAxNjM3.ccTbGI3BCmqGlEnzB_VA6nchvPur-3_6zWSCKNBFN6sg.0KncqpKV16-ELLW-Sx05NQhmZZMv62ZcN-4kFRwZhUog.PNG/a_2bb917328b2a4bb4bc89814ed849e7ab.png?type=l">
-															<img data-v-878ec45c="" alt="상품 이미지"
-																src="https://kream-phinf.pstatic.net/MjAyMjExMDRfMTE1/MDAxNjY3NTQzNTAxNjM3.ccTbGI3BCmqGlEnzB_VA6nchvPur-3_6zWSCKNBFN6sg.0KncqpKV16-ELLW-Sx05NQhmZZMv62ZcN-4kFRwZhUog.PNG/a_2bb917328b2a4bb4bc89814ed849e7ab.png?type=l"
+															<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="상품 이미지" 
+																src="${productDetailDTO.img5}"
 																loading="lazy" fetchpriority="high" class="image"></picture>
 															<!---->
 															<!---->
@@ -238,13 +218,11 @@
 							<div class="main_title_box" data-v-6e865099="">
 								<div data-v-6e865099="">
 									<a href="/brands/jordan" click.prevent="onClickBrand"
-										class="brand" data-v-6e865099=""> Jordan </a>
+										class="brand" data-v-6e865099="">${productDetailDTO.brand}</a>
 									<!---->
 								</div>
-								<p class="title" data-v-6e865099="">Jordan 1 Retro High OG
-									Chicago 2022</p>
-								<p class="sub_title" data-v-6e865099="">조던 1 레트로 하이 OG 시카고
-									2022</p>
+								<p class="title" data-v-6e865099="">${productDetailDTO.pname_e}</p>
+								<p class="sub_title" data-v-6e865099="">${productDetailDTO.pname_k}</p>
 							</div>
 						</div>
 						<div class="product_figure_wrap lg" data-v-3900a1a2="">
@@ -256,8 +234,8 @@
 								<div class="size" data-v-ddee2978="">
 									<a href="#" class="btn_size" data-v-6c6430ce=""
 										data-v-ddee2978=""><span class="btn_text"
-										data-v-6c6430ce="">모든 사이즈</span>
-									<svg xmlns="http://www.w3.org/2000/svg"
+										data-v-6c6430ce="">모든 사이즈</span> <svg
+											xmlns="http://www.w3.org/2000/svg"
 											class="ico-arr-dir-down-circle icon sprite-icons"
 											data-v-6c6430ce="">
 											<use
@@ -272,12 +250,13 @@
 								</div>
 								<div class="price" data-v-679b6792="">
 									<div class="amount" data-v-679b6792="">
-										<span class="num" data-v-679b6792="">419,000</span><span
+										<span class="num" data-v-679b6792="">${productDetailDTO.release_price}</span><span
 											class="won" data-v-679b6792="">원</span>
 									</div>
-									<div class="fluctuation increase" data-v-679b6792="">
+									<!-- 가격변화 추세 주석처리(임시) -->
+									<!-- <div class="fluctuation increase" data-v-679b6792="">
 										<p data-v-679b6792="">21,000원 (+5.3%)</p>
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>
@@ -286,14 +265,14 @@
 								class="division_btn_box lg">
 								<a data-v-23bbaa82="" href="#" class="btn_division buy"><strong
 									data-v-23bbaa82="" class="title">구매</strong>
-								<div data-v-23bbaa82="" class="price">
+									<div data-v-23bbaa82="" class="price">
 										<span data-v-23bbaa82="" class="amount"><em
 											data-v-23bbaa82="" class="num">405,000</em><span
 											data-v-23bbaa82="" class="won">원</span></span><span
 											data-v-23bbaa82="" class="desc">즉시 구매가</span>
 									</div></a><a data-v-23bbaa82="" href="#" class="btn_division sell"><strong
 									data-v-23bbaa82="" class="title">판매</strong>
-								<div data-v-23bbaa82="" class="price">
+									<div data-v-23bbaa82="" class="price">
 										<span data-v-23bbaa82="" class="amount"><em
 											data-v-23bbaa82="" class="num">554,000</em><span
 											data-v-23bbaa82="" class="won">원</span></span><span
@@ -320,20 +299,19 @@
 							<dl class="detail_product" data-v-b809b0a6="">
 								<div class="detail_box model_num" data-v-b809b0a6="">
 									<dt class="product_title" data-v-b809b0a6="">모델번호</dt>
-									<dd class="product_info" data-v-b809b0a6="">DZ5485-612</dd>
+									<dd class="product_info" data-v-b809b0a6="">${productDetailDTO.model_number}</dd>
 								</div>
 								<div class="detail_box" data-v-b809b0a6="">
 									<dt class="product_title" data-v-b809b0a6="">출시일</dt>
-									<dd class="product_info" data-v-b809b0a6="">22/12/01</dd>
+									<dd class="product_info" data-v-b809b0a6="">${productDetailDTO.release_date}</dd>
 								</div>
 								<div class="detail_box" data-v-b809b0a6="">
 									<dt class="product_title" data-v-b809b0a6="">컬러</dt>
-									<dd class="product_info" data-v-b809b0a6="">VARSITY
-										RED/BLACK/SAIL/MUSLIN</dd>
+									<dd class="product_info" data-v-b809b0a6="">${productDetailDTO.color}</dd>
 								</div>
 								<div class="detail_box" data-v-b809b0a6="">
 									<dt class="product_title" data-v-b809b0a6="">발매가</dt>
-									<dd class="product_info" data-v-b809b0a6="">209,000원</dd>
+									<dd class="product_info" data-v-b809b0a6="">${productDetailDTO.release_price}원</dd>
 								</div>
 							</dl>
 						</div>
@@ -412,133 +390,10 @@
 							<!---->
 						</div>
 					</div>
-					<div class="banner_box" data-v-e6ad1d2a="" data-v-3900a1a2="">
-						<div data-v-3d1a4f76="" data-v-e6ad1d2a=""
-							class="banner_slide detail_slide slick-slider slick-initialized">
-							<div data-v-3d1a4f76="" class="slick-list">
-								<div data-v-e4caeaf8="" data-v-3d1a4f76="" class="slick-track"
-									style="width: 560px; opacity: 1;">
-									<div data-v-e4caeaf8="" tabindex="-1" data-index="0"
-										aria-hidden="false"
-										class="slick-slide slick-active slick-current"
-										style="outline: none; width: 560px; position: relative; left: 0px; opacity: 1; transition: opacity 600ms ease 0s, visibility 600ms ease 0s;">
-										<div data-v-e4caeaf8="">
-											<div data-v-e6ad1d2a="" data-v-e4caeaf8="" tabindex="-1"
-												class="detail_banner"
-												style="width: 100%; display: inline-block;">
-												<a data-v-e6ad1d2a="" data-v-e4caeaf8=""
-													href="https://kream.co.kr/promotions/648"
-													class="banner_link" style="background-color: rgb(0, 0, 0);"><picture
-														data-v-878ec45c="" data-v-e6ad1d2a="" class="picture"
-														data-v-e4caeaf8="">
-													<source data-v-878ec45c="" type="image/webp"
-														srcset="https://kream-phinf.pstatic.net/MjAyMjEwMjBfMjA5/MDAxNjY2MjU0Mjg1ODIz.LKarZwdDkvAwrNhfCDbZpoUkQGMtMxA9Tjw74siMzIgg.MhtRTf8nzthOBfwROA_rgyXM22gghqZD-TXpG2RGf6og.JPEG/a_18fddeaeffa04fb6963fb6e50041055c.jpg?type=l_webp">
-													<source data-v-878ec45c=""
-														srcset="https://kream-phinf.pstatic.net/MjAyMjEwMjBfMjA5/MDAxNjY2MjU0Mjg1ODIz.LKarZwdDkvAwrNhfCDbZpoUkQGMtMxA9Tjw74siMzIgg.MhtRTf8nzthOBfwROA_rgyXM22gghqZD-TXpG2RGf6og.JPEG/a_18fddeaeffa04fb6963fb6e50041055c.jpg?type=l">
-													<img data-v-878ec45c="" alt="배너"
-														src="https://kream-phinf.pstatic.net/MjAyMjEwMjBfMjA5/MDAxNjY2MjU0Mjg1ODIz.LKarZwdDkvAwrNhfCDbZpoUkQGMtMxA9Tjw74siMzIgg.MhtRTf8nzthOBfwROA_rgyXM22gghqZD-TXpG2RGf6og.JPEG/a_18fddeaeffa04fb6963fb6e50041055c.jpg?type=l"
-														loading="auto" fetchpriority="high"
-														class="image auto_width center"></picture></a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!---->
-					</div>
-					<div class="detail_wrap" data-v-3900a1a2="">
+
+					<div class="detail_wrap" data-v-3900a1a2=""
+						style="margin-top: 30px">
 						<div class="product_sales_graph" data-v-3900a1a2="">
-							<div class="title" data-v-3900a1a2="">
-								<h3 class="detail_title lg" data-v-52dd777b=""
-									data-v-3900a1a2="">시세</h3>
-								<div class="sales_filter lg" data-v-3900a1a2="">
-									<div class="filter_unit">
-										<button type="button" slot="button" class="btn btn_select"
-											data-v-575aff82="">
-											<span class="select_text layer_open">모든 사이즈</span>
-										</button>
-										<!---->
-									</div>
-									<!---->
-								</div>
-							</div>
-							<div class="wrap_sales" data-v-69832834="" data-v-3900a1a2="">
-								<div class="tab_area" data-v-b6b2883e="" data-v-69832834="">
-									<ul role="tablist" class="tab_list" data-v-b6b2883e="">
-										<li data-v-b6b2883e="" role="tab" aria-selected="false"
-											aria-controls="sales_panel1" class="item"><a
-											data-v-b6b2883e="" href="#" class="item_link">1개월</a></li>
-										<li data-v-b6b2883e="" role="tab" aria-selected="false"
-											aria-controls="sales_panel2" class="item"><a
-											data-v-b6b2883e="" href="#" class="item_link">3개월</a></li>
-										<li data-v-b6b2883e="" role="tab" aria-selected="false"
-											aria-controls="sales_panel3" class="item"><a
-											data-v-b6b2883e="" href="#" class="item_link">6개월</a></li>
-										<li data-v-b6b2883e="" role="tab" aria-selected="false"
-											aria-controls="sales_panel4" class="item"><a
-											data-v-b6b2883e="" href="#" class="item_link">1년</a></li>
-										<li data-v-b6b2883e="" role="tab" aria-selected="true"
-											aria-controls="sales_panel5" class="item on"><a
-											data-v-b6b2883e="" href="#" class="item_link">전체</a></li>
-									</ul>
-									<div id="sales_panel1" role="tabpanel" span="1m"
-										class="tab_content" data-v-3c9dd7e9="" data-v-69832834=""
-										data-v-b6b2883e="">
-										<div class="graph" data-v-04d43b10="" data-v-69832834=""
-											data-v-3c9dd7e9="">
-											<canvas data-v-04d43b10=""
-												id="c93d4bbe-56c9-4e5e-9ce7-56305d61f5ca" height="0"
-												style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
-												width="0"></canvas>
-										</div>
-									</div>
-									<div id="sales_panel2" role="tabpanel" span="3m"
-										class="tab_content" data-v-3c9dd7e9="" data-v-69832834=""
-										data-v-b6b2883e="">
-										<div class="graph" data-v-04d43b10="" data-v-69832834=""
-											data-v-3c9dd7e9="">
-											<canvas data-v-04d43b10=""
-												id="3a47aaa0-f81f-46b5-b939-5fde97c845ee" height="0"
-												style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
-												width="0"></canvas>
-										</div>
-									</div>
-									<div id="sales_panel3" role="tabpanel" span="6m"
-										class="tab_content" data-v-3c9dd7e9="" data-v-69832834=""
-										data-v-b6b2883e="">
-										<div class="graph" data-v-04d43b10="" data-v-69832834=""
-											data-v-3c9dd7e9="">
-											<canvas data-v-04d43b10=""
-												id="292ab308-6f12-43b8-9813-b93af8fa87f8" height="0"
-												style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
-												width="0"></canvas>
-										</div>
-									</div>
-									<div id="sales_panel4" role="tabpanel" span="1y"
-										class="tab_content" data-v-3c9dd7e9="" data-v-69832834=""
-										data-v-b6b2883e="">
-										<div class="graph" data-v-04d43b10="" data-v-69832834=""
-											data-v-3c9dd7e9="">
-											<canvas data-v-04d43b10=""
-												id="a8448f13-69c6-408a-ada9-67c223bf2933" height="0"
-												style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
-												width="0"></canvas>
-										</div>
-									</div>
-									<div id="sales_panel5" role="tabpanel" span="all"
-										class="tab_content show" data-v-3c9dd7e9="" data-v-69832834=""
-										data-v-b6b2883e="">
-										<div class="graph" data-v-04d43b10="" data-v-69832834=""
-											data-v-3c9dd7e9="">
-											<canvas data-v-04d43b10=""
-												id="8a945367-f8b9-46b7-8dfa-86cd6231910c" width="746"
-												height="266"
-												style="display: block; box-sizing: border-box; height: 199.5px; width: 559.5px;"></canvas>
-										</div>
-									</div>
-								</div>
-							</div>
 							<div class="wrap_bids" data-v-4379daa7="" data-v-3900a1a2="">
 								<div class="tab_area" data-v-b6b2883e="" data-v-4379daa7="">
 									<ul role="tablist" class="tab_list" data-v-b6b2883e="">
@@ -825,249 +680,6 @@
 							<!---->
 						</div>
 						<!---->
-						<div data-v-3900a1a2="">
-							<div data-v-49cb27d0="" data-v-3900a1a2="" class="confirm_wrap">
-								<h3 data-v-49cb27d0="" class="confirm_title">구매 전 꼭 확인해주세요!</h3>
-								<div data-v-49cb27d0="" class="confirm_content">
-									<ul data-v-49cb27d0="" class="dropdown_list">
-										<li data-v-49cb27d0="" class=""><div data-v-49cb27d0=""
-												class="dropdown">
-												<div data-v-49cb27d0="" class="dropdown_head">
-													<p data-v-49cb27d0="" class="title">배송 기간 안내</p>
-													<svg data-v-49cb27d0="" xmlns="http://www.w3.org/2000/svg"
-														class="icon sprite-icons ico-arr-down-gray">
-														<use data-v-49cb27d0=""
-															href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-down-gray"
-															xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-down-gray"></use></svg>
-												</div>
-												<div data-v-49cb27d0="" class="dropdown_content">
-													<div data-v-49cb27d0="" class="content">
-														<div data-v-49cb27d0="" class="content_box">
-															<div data-v-49cb27d0="" class="emphasis_box">
-																<strong data-v-49cb27d0="" class="emphasis">KREAM은
-																	최대한 빠르게 모든 상품을 배송하기 위해 노력하고 있습니다. 배송 시간은 판매자가 검수를 위하여
-																	상품을 검수센터로 보내는 속도에 따라 차이가 있습니다.</strong>
-																<!---->
-															</div>
-															<ul data-v-49cb27d0="" class="content_list">
-																<li data-v-49cb27d0="" class="content_item"><p
-																		data-v-49cb27d0="" class="title_txt">[빠른배송 구매]</p>
-																	<!---->
-																	<!----></li>
-																<li data-v-49cb27d0="" class="content_item">
-																	<!---->
-																	<p data-v-49cb27d0="" class="main_txt">
-																		- 판매자가 보관 신청한 상품 중 검수에 합격한 상품을 KREAM의 전용 창고에 보관합니다. 보관
-																		상품에 한하여 바로 구매와 95점 구매가 가능합니다.
-																		<!---->
-																	</p>
-																	<!---->
-																</li>
-																<li data-v-49cb27d0="" class="content_item">
-																	<!---->
-																	<p data-v-49cb27d0="" class="main_txt">
-																		- 오늘(오후 11:59까지) 결제하면 내일 바로 출고되어 빠른 배송이 가능합니다. (연휴 및
-																		공휴일, 천재지변, 택배사 사유 등 예외적으로 출고일이 변경될 수 있습니다. <a
-																			data-v-49cb27d0="" target="_blank"
-																			href="/about/inventory?type=stocked" class="txt_link">
-																			빠른배송 안내 </a>
-																	</p>
-																	<!---->
-																</li>
-																<li data-v-49cb27d0="" class="content_item"><p
-																		data-v-49cb27d0="" class="title_txt">[일반 구매]</p>
-																	<!---->
-																	<!----></li>
-																<li data-v-49cb27d0="" class="content_item">
-																	<!---->
-																	<p data-v-49cb27d0="" class="main_txt">
-																		- 거래가 체결된 시점부터 48시간(일요일•공휴일 제외) 내에 판매자가 상품을 발송해야 하며,
-																		통상적으로 발송 후 1-2일 내에 KREAM 검수센터에 도착합니다.
-																		<!---->
-																	</p>
-																	<!---->
-																</li>
-																<li data-v-49cb27d0="" class="content_item">
-																	<!---->
-																	<p data-v-49cb27d0="" class="main_txt">
-																		- 검수센터에 도착한 상품은 입고 완료 후 3영업일 이내에 검수를 진행합니다. 검수 합격시 배송을
-																		준비합니다.
-																		<!---->
-																	</p>
-																	<p data-v-49cb27d0="" class="sub_txt">* 상품 종류 및 상태에
-																		따라 검수 소요 시간은 상이할 수 있으며, 구매의사 확인에 해당할 경우 구매자와 상담 진행으로
-																		인해 지연이 발생할 수 있습니다.</p>
-																</li>
-																<li data-v-49cb27d0="" class="content_item">
-																	<!---->
-																	<p data-v-49cb27d0="" class="main_txt">
-																		- 검수센터 출고는 매 영업일에 진행하고 있으며, 출고 마감시간은 오후 5시입니다. 출고 마감시간
-																		이후 검수 완료건은 운송장번호는 입력되지만 다음 영업일에 출고됩니다.
-																		<!---->
-																	</p>
-																	<!---->
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div></li>
-										<li data-v-49cb27d0="" class=""><div data-v-49cb27d0=""
-												class="dropdown">
-												<div data-v-49cb27d0="" class="dropdown_head">
-													<p data-v-49cb27d0="" class="title">검수 안내</p>
-													<svg data-v-49cb27d0="" xmlns="http://www.w3.org/2000/svg"
-														class="icon sprite-icons ico-arr-down-gray">
-														<use data-v-49cb27d0=""
-															href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-down-gray"
-															xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-down-gray"></use></svg>
-												</div>
-												<div data-v-49cb27d0="" class="dropdown_content">
-													<div data-v-49cb27d0="" class="content">
-														<div data-v-49cb27d0="" class="content_box">
-															<div data-v-49cb27d0="" class="emphasis_box">
-																<strong data-v-49cb27d0="" class="emphasis">판매자의
-																	상품이 검수센터에 도착하면 전담 검수팀이 철저한 분석과 검사로 정가품 확인을 진행합니다.</strong>
-																<!---->
-															</div>
-															<ul data-v-49cb27d0="" class="content_list">
-																<li data-v-49cb27d0="" class="content_item">
-																	<!---->
-																	<p data-v-49cb27d0="" class="main_txt">
-																		- 검수센터에서는 정가품 여부를 확인하기 위하여, 지속적으로 데이터를 쌓고 분석하여 기록하고
-																		있습니다.
-																		<!---->
-																	</p>
-																	<!---->
-																</li>
-																<li data-v-49cb27d0="" class="content_item">
-																	<!---->
-																	<p data-v-49cb27d0="" class="main_txt">
-																		- 업계 전문가로 구성된 검수팀은 박스와 상품의 라벨에서 바느질, 접착, 소재 등 모든 것을
-																		검수합니다.
-																		<!---->
-																	</p>
-																	<!---->
-																</li>
-															</ul>
-														</div>
-														<div data-v-49cb27d0="" class="content_box">
-															<div data-v-49cb27d0="" class="emphasis_box">
-																<strong data-v-49cb27d0="" class="emphasis">검수
-																	결과는 불합격•검수 보류•합격의 세가지 상태로 결과가 변경됩니다.</strong><a
-																	data-v-49cb27d0="" href="#" class="txt_link"> 검수기준
-																	보기 </a>
-															</div>
-															<ul data-v-49cb27d0="" class="content_list">
-																<li data-v-49cb27d0="" class="content_item">
-																	<!---->
-																	<!---->
-																	<p data-v-49cb27d0="" class="sub_txt">* 검수 합격:
-																		KREAM 검수택(Tag)이 부착되어 배송을 준비함</p>
-																</li>
-																<li data-v-49cb27d0="" class="content_item">
-																	<!---->
-																	<!---->
-																	<p data-v-49cb27d0="" class="sub_txt">* 검수 보류: 앱에서
-																		사진으로 상품의 상태 확인 및 구매 여부를 선택. (24시간 이후 자동 검수 합격)</p>
-																</li>
-																<li data-v-49cb27d0="" class="content_item">
-																	<!---->
-																	<!---->
-																	<p data-v-49cb27d0="" class="sub_txt">* 검수 불합격: 즉시
-																		거래가 취소되고 구매하신 금액을 환불 처리함.(환불 수단은 결제 수단과 동일)</p>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div></li>
-										<li data-v-49cb27d0="" class=""><div data-v-49cb27d0=""
-												class="dropdown">
-												<div data-v-49cb27d0="" class="dropdown_head">
-													<p data-v-49cb27d0="" class="title">구매 환불/취소/교환 안내</p>
-													<svg data-v-49cb27d0="" xmlns="http://www.w3.org/2000/svg"
-														class="icon sprite-icons ico-arr-down-gray">
-														<use data-v-49cb27d0=""
-															href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-down-gray"
-															xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-down-gray"></use></svg>
-												</div>
-												<div data-v-49cb27d0="" class="dropdown_content">
-													<div data-v-49cb27d0="" class="content">
-														<div data-v-49cb27d0="" class="content_box">
-															<div data-v-49cb27d0="" class="emphasis_box">
-																<strong data-v-49cb27d0="" class="emphasis">KREAM은
-																	익명 거래를 기반으로 판매자가 판매하는 상품을 구매자가 실시간으로 구매하여 거래를 체결합니다.</strong>
-																<!---->
-															</div>
-															<ul data-v-49cb27d0="" class="content_list">
-																<li data-v-49cb27d0="" class="content_item">
-																	<!---->
-																	<p data-v-49cb27d0="" class="main_txt">
-																		- 단순 변심이나 실수에 의한 취소/교환/반품이 불가능합니다. 상품을 원하지 않으시는 경우
-																		언제든지 KREAM에서 재판매를 하실 수 있습니다.
-																		<!---->
-																	</p>
-																	<!---->
-																</li>
-																<li data-v-49cb27d0="" class="content_item">
-																	<!---->
-																	<p data-v-49cb27d0="" class="main_txt">
-																		- 상품 수령 후, 이상이 있는 경우 KREAM 고객센터로 문의해주시기 바랍니다.
-																		<!---->
-																	</p>
-																	<!---->
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div></li>
-									</ul>
-								</div>
-							</div>
-							<div data-v-53b73c92="" data-v-3900a1a2="" class="point_guide lg">
-								<ul data-v-53b73c92="" class="guide_list">
-									<li data-v-53b73c92="" class="guide_item"><div
-											data-v-53b73c92="" class="thumb_area">
-											<img data-v-53b73c92=""
-												src="/_nuxt/img/img-guide-item-01.fa306b8.svg" alt=""
-												class="img">
-										</div>
-										<div data-v-53b73c92="" class="text_area">
-											<strong data-v-53b73c92="" class="title">100% 정품 보증</strong>
-											<p data-v-53b73c92="" class="desc">KREAM에서 검수한 상품이 정품이 아닐
-												경우, 구매가의 3배를 보상합니다.</p>
-										</div></li>
-									<li data-v-53b73c92="" class="guide_item"><div
-											data-v-53b73c92="" class="thumb_area">
-											<img data-v-53b73c92=""
-												src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCA0MCAzNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE3LjUgMjYuM0MxMS41MzUzIDI2LjMgNi43IDIxLjQ2NDcgNi43IDE1LjVDNi43IDkuNTM1MzMgMTEuNTM1MyA0LjcgMTcuNSA0LjdDMjMuNDY0NyA0LjcgMjguMyA5LjUzNTMzIDI4LjMgMTUuNUMyOC4zIDIxLjQ2NDcgMjMuNDY0NyAyNi4zIDE3LjUgMjYuM1oiIGZpbGw9IndoaXRlIiBzdHJva2U9IiMyMjIyMjIiIHN0cm9rZS13aWR0aD0iMS40IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik0yNSAyM0wzMSAyOSIgc3Ryb2tlPSIjMjIyMjIyIiBzdHJva2Utd2lkdGg9IjEuNSIvPgo8cGF0aCBkPSJNMTYgMTMuMzMzM0wyMC43NzI3IDE4TDMxIDgiIHN0cm9rZT0iIzIyMjIyMiIgc3Ryb2tlLXdpZHRoPSIyLjIiLz4KPC9zdmc+Cg=="
-												alt="" class="img">
-										</div>
-										<div data-v-53b73c92="" class="text_area">
-											<strong data-v-53b73c92="" class="title">엄격한 다중 검수</strong>
-											<p data-v-53b73c92="" class="desc">모든 상품은 검수센터에 도착한 후,
-												상품별 전문가 그룹의 체계적인 시스템을 거쳐 검수를 진행합니다.</p>
-										</div></li>
-									<li data-v-53b73c92="" class="guide_item"><div
-											data-v-53b73c92="" class="thumb_area">
-											<img data-v-53b73c92=""
-												src="/_nuxt/img/img-guide-item-03.963fee7.svg" alt=""
-												class="img">
-										</div>
-										<div data-v-53b73c92="" class="text_area">
-											<strong data-v-53b73c92="" class="title">정품 인증 패키지</strong>
-											<p data-v-53b73c92="" class="desc">검수에 합격한 경우에 한하여 KREAM의
-												정품 인증 패키지가 포함된 상품이 배송됩니다.</p>
-										</div></li>
-								</ul>
-							</div>
-							<p data-v-8fa836d2="" data-v-3900a1a2=""
-								class="meditaion_notice_product">크림(주)는 통신판매 중개자로서 통신판매의
-								당사자가 아닙니다. 본 상품은 개별판매자가 등록한 상품으로 상품, 상품정보, 거래에 관한 의무와 책임은 각
-								판매자에게 있습니다. 단, 거래과정에서 검수하고 보증하는 내용에 대한 책임은 크림(주)에 있습니다.</p>
-						</div>
 					</div>
 					<!---->
 					<!---->
@@ -1105,21 +717,20 @@
 										<use
 											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-off"
 											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-off"
-											data-v-2d0ab5c1=""></use></svg>
-									<!---->
-									<span class="wish_count_num" data-v-2d0ab5c1="">3.2만</span></a>
+											data-v-2d0ab5c1=""></use></svg> <!----> <span
+									class="wish_count_num" data-v-2d0ab5c1="">3.2만</span></a>
 								<div class="division_btn_box lg" data-v-23bbaa82=""
 									data-v-07cd4e36="">
 									<a href="#" class="btn_division buy" data-v-23bbaa82=""><strong
 										class="title" data-v-23bbaa82="">구매</strong>
-									<div class="price" data-v-23bbaa82="">
+										<div class="price" data-v-23bbaa82="">
 											<span class="amount" data-v-23bbaa82=""><em
 												class="num" data-v-23bbaa82="">405,000</em><span class="won"
 												data-v-23bbaa82="">원</span></span><span class="desc"
 												data-v-23bbaa82="">즉시 구매가</span>
 										</div></a><a href="#" class="btn_division sell" data-v-23bbaa82=""><strong
 										class="title" data-v-23bbaa82="">판매</strong>
-									<div class="price" data-v-23bbaa82="">
+										<div class="price" data-v-23bbaa82="">
 											<span class="amount" data-v-23bbaa82=""><em
 												class="num" data-v-23bbaa82="">554,000</em><span class="won"
 												data-v-23bbaa82="">원</span></span><span class="desc"
@@ -1629,8 +1240,7 @@
 									<p data-v-47728778="" class="text_box">질러버림 #조던1하이 #시카고2022</p>
 									<!---->
 								</div>
-							</div>
-							<!----></a>
+							</div> <!----></a>
 					</div>
 					<div data-v-47728778="" data-v-013cc4d0=""
 						class="feed_card item square"
@@ -1673,8 +1283,7 @@
 										#chicago2022 #lostandfound</p>
 									<!---->
 								</div>
-							</div>
-							<!----></a>
+							</div> <!----></a>
 					</div>
 					<div data-v-47728778="" data-v-013cc4d0=""
 						class="feed_card item vertical"
@@ -1810,8 +1419,7 @@
 										#전신샷 #아디다스 #무채색코디 #결산템챌린지 #컬렉션 #이름다모름 #조던</p>
 									<!---->
 								</div>
-							</div>
-							<!----></a>
+							</div> <!----></a>
 					</div>
 					<div data-v-47728778="" data-v-013cc4d0=""
 						class="feed_card item vertical"
@@ -1853,8 +1461,7 @@
 									<p data-v-47728778="" class="text_box">중졸</p>
 									<!---->
 								</div>
-							</div>
-							<!----></a>
+							</div> <!----></a>
 					</div>
 					<div data-v-47728778="" data-v-013cc4d0=""
 						class="feed_card item square"
@@ -1896,8 +1503,7 @@
 									<!---->
 									<!---->
 								</div>
-							</div>
-							<!----></a>
+							</div> <!----></a>
 					</div>
 					<div data-v-47728778="" data-v-013cc4d0=""
 						class="feed_card item vertical"
@@ -1956,1000 +1562,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="normal_exhibitions" data-v-01e212dd="">
-			<div id="83900" class="detail_exhibitions_wrap more border"
-				data-v-f9390060="" data-v-01e212dd="">
-				<div class="detail_item_title" data-v-4840a0ee="" data-v-f9390060="">
-					<p class="product_detail_item_title exhibitions" data-v-4840a0ee="">
-						관련 기획전</p>
-					<!---->
-				</div>
-				<div class="detail_exhibitions" data-v-f9390060="">
-					<a href="https://kream.co.kr/exhibitions/630"
-						class="detail_exhibition_item" data-v-088ddeb0=""
-						data-v-f9390060=""><picture class="picture image"
-							data-v-878ec45c="" data-v-088ddeb0="">
-						<source type="image/webp"
-							srcset="https://kream-phinf.pstatic.net/MjAyMjEyMTJfMjY5/MDAxNjcwODMxOTA2NjMz.RqkeK3HuBI99msIUhTmofSVGSqVpY_oJq0dPnns2Ybkg.nH0UdRwWMOMfKmPuVLkBDWiTpCgYlmf9T2SX8MZWAzwg.JPEG/a_c1fb5634f4a44166bd7bda36e6d3cb4f.jpg?type=m_webp"
-							data-v-878ec45c="">
-						<source
-							srcset="https://kream-phinf.pstatic.net/MjAyMjEyMTJfMjY5/MDAxNjcwODMxOTA2NjMz.RqkeK3HuBI99msIUhTmofSVGSqVpY_oJq0dPnns2Ybkg.nH0UdRwWMOMfKmPuVLkBDWiTpCgYlmf9T2SX8MZWAzwg.JPEG/a_c1fb5634f4a44166bd7bda36e6d3cb4f.jpg?type=m"
-							data-v-878ec45c="">
-						<img
-							src="https://kream-phinf.pstatic.net/MjAyMjEyMTJfMjY5/MDAxNjcwODMxOTA2NjMz.RqkeK3HuBI99msIUhTmofSVGSqVpY_oJq0dPnns2Ybkg.nH0UdRwWMOMfKmPuVLkBDWiTpCgYlmf9T2SX8MZWAzwg.JPEG/a_c1fb5634f4a44166bd7bda36e6d3cb4f.jpg?type=m"
-							loading="lazy" class="image" data-v-878ec45c=""></picture>
-						<p class="detail_exhibition_title" data-v-088ddeb0="">Most
-							Wish-Listed Items</p>
-						<p class="detail_exhibition_description" data-v-088ddeb0="">위클리
-							탑 10 위시리스트</p></a><a href="https://kream.co.kr/exhibitions/629"
-						class="detail_exhibition_item" data-v-088ddeb0=""
-						data-v-f9390060=""><picture class="picture image"
-							data-v-878ec45c="" data-v-088ddeb0="">
-						<source type="image/webp"
-							srcset="https://kream-phinf.pstatic.net/MjAyMjEyMTJfODcg/MDAxNjcwODMxNzQ4NzM4.qs-KQUyncMAOSfBlJkryXJ2FMdQDndkcG9HCPZbJAccg.p8bleWsXyitqlnDt3RdUU7xpOcDKoUbb87k6qOj-iKkg.JPEG/a_1be29b8d5e21459db50cd9b530ac3447.jpg?type=m_webp"
-							data-v-878ec45c="">
-						<source
-							srcset="https://kream-phinf.pstatic.net/MjAyMjEyMTJfODcg/MDAxNjcwODMxNzQ4NzM4.qs-KQUyncMAOSfBlJkryXJ2FMdQDndkcG9HCPZbJAccg.p8bleWsXyitqlnDt3RdUU7xpOcDKoUbb87k6qOj-iKkg.JPEG/a_1be29b8d5e21459db50cd9b530ac3447.jpg?type=m"
-							data-v-878ec45c="">
-						<img
-							src="https://kream-phinf.pstatic.net/MjAyMjEyMTJfODcg/MDAxNjcwODMxNzQ4NzM4.qs-KQUyncMAOSfBlJkryXJ2FMdQDndkcG9HCPZbJAccg.p8bleWsXyitqlnDt3RdUU7xpOcDKoUbb87k6qOj-iKkg.JPEG/a_1be29b8d5e21459db50cd9b530ac3447.jpg?type=m"
-							loading="lazy" class="image" data-v-878ec45c=""></picture>
-						<p class="detail_exhibition_title" data-v-088ddeb0="">Holiday
-							Gift Ideas</p>
-						<p class="detail_exhibition_description" data-v-088ddeb0="">2022
-							연말 선물 가이드</p></a><a href="https://kream.co.kr/exhibitions/620"
-						class="detail_exhibition_item" data-v-088ddeb0=""
-						data-v-f9390060=""><picture class="picture image"
-							data-v-878ec45c="" data-v-088ddeb0="">
-						<source type="image/webp"
-							srcset="https://kream-phinf.pstatic.net/MjAyMjEyMDVfMjEg/MDAxNjcwMjIxNTU1MjIy.gnIqFW1RYiZSJOIsXFyzMeZOmAwqnYXDsYg_LrB_Biwg.TQKu6HvCviUxSeo2gTvRfxdPdF02tQ8KU7nWTUN5wpwg.JPEG/a_9e9faa2f06f140b6941abe9c05c36b6b.jpg?type=m_webp"
-							data-v-878ec45c="">
-						<source
-							srcset="https://kream-phinf.pstatic.net/MjAyMjEyMDVfMjEg/MDAxNjcwMjIxNTU1MjIy.gnIqFW1RYiZSJOIsXFyzMeZOmAwqnYXDsYg_LrB_Biwg.TQKu6HvCviUxSeo2gTvRfxdPdF02tQ8KU7nWTUN5wpwg.JPEG/a_9e9faa2f06f140b6941abe9c05c36b6b.jpg?type=m"
-							data-v-878ec45c="">
-						<img
-							src="https://kream-phinf.pstatic.net/MjAyMjEyMDVfMjEg/MDAxNjcwMjIxNTU1MjIy.gnIqFW1RYiZSJOIsXFyzMeZOmAwqnYXDsYg_LrB_Biwg.TQKu6HvCviUxSeo2gTvRfxdPdF02tQ8KU7nWTUN5wpwg.JPEG/a_9e9faa2f06f140b6941abe9c05c36b6b.jpg?type=m"
-							loading="lazy" class="image" data-v-878ec45c=""></picture>
-						<p class="detail_exhibition_title" data-v-088ddeb0="">Christmas
-							Season</p>
-						<p class="detail_exhibition_description" data-v-088ddeb0="">설레임
-							가득한 연말 준비</p></a><a href="https://kream.co.kr/exhibitions/594"
-						class="detail_exhibition_item" data-v-088ddeb0=""
-						data-v-f9390060=""><picture class="picture image"
-							data-v-878ec45c="" data-v-088ddeb0="">
-						<source type="image/webp"
-							srcset="https://kream-phinf.pstatic.net/MjAyMjExMjhfMTQ5/MDAxNjY5NjI2NTAzNDk2.tMAvjtraOcowRH8y3YXxYn6gjKUOBI0KmjWSjVcOlZwg.ojqKy11h7U2sGCO0UBpl6nL55KPemjBAnqVMD_uy5Hog.JPEG/a_ea72c52b23c549ff87979a2d6bde9782.jpg?type=m_webp"
-							data-v-878ec45c="">
-						<source
-							srcset="https://kream-phinf.pstatic.net/MjAyMjExMjhfMTQ5/MDAxNjY5NjI2NTAzNDk2.tMAvjtraOcowRH8y3YXxYn6gjKUOBI0KmjWSjVcOlZwg.ojqKy11h7U2sGCO0UBpl6nL55KPemjBAnqVMD_uy5Hog.JPEG/a_ea72c52b23c549ff87979a2d6bde9782.jpg?type=m"
-							data-v-878ec45c="">
-						<img
-							src="https://kream-phinf.pstatic.net/MjAyMjExMjhfMTQ5/MDAxNjY5NjI2NTAzNDk2.tMAvjtraOcowRH8y3YXxYn6gjKUOBI0KmjWSjVcOlZwg.ojqKy11h7U2sGCO0UBpl6nL55KPemjBAnqVMD_uy5Hog.JPEG/a_ea72c52b23c549ff87979a2d6bde9782.jpg?type=m"
-							loading="lazy" class="image" data-v-878ec45c=""></picture>
-						<p class="detail_exhibition_title" data-v-088ddeb0="">The Best
-							Sneakers</p>
-						<p class="detail_exhibition_description" data-v-088ddeb0="">브랜드를
-							대표하는 스니커즈</p></a>
-				</div>
-			</div>
-		</div>
-		<div class="other_product_area" data-v-01e212dd="">
-			<h3 class="more_title" data-v-384c5177="" data-v-01e212dd="">
-				<svg xmlns="http://www.w3.org/2000/svg"
-					class="icon sprite-icons ico-express" data-v-384c5177="">
-					<use
-						href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-						xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-						data-v-384c5177=""></use></svg>
-				<span class="owner" data-v-384c5177="">빠른배송</span><span
-					class="title_txt" data-v-384c5177="">&nbsp;추천 상품</span><a
-					href="/search?immediate_delivery_only=true" class="btn_more"
-					data-v-384c5177=""><span class="btn_txt" data-v-384c5177="">더보기</span>
-				<svg xmlns="http://www.w3.org/2000/svg"
-						class="icon sprite-icons arr-right-gray" data-v-384c5177="">
-						<use
-							href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-arr-right-gray"
-							xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-arr-right-gray"
-							data-v-384c5177=""></use></svg></a>
-			</h3>
-			<div class="other_products" data-v-01e212dd="">
-				<div class="product_list" data-v-01e212dd="">
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/26344" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #f1f1ea;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMjA1MDNfNDcg/MDAxNjUxNTcxMzczNjY1.7_5uAFAC-O7LWDO8AmYuJxfhO6qwHNBopoci6A-1XzYg.EyYmxX6c0AUcpZQKIXC1OFym1fl9bRlZvmTso43Xqg8g.PNG/a_095f2500bc074b81867e777cf9ad8da0.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMjA1MDNfNDcg/MDAxNjUxNTcxMzczNjY1.7_5uAFAC-O7LWDO8AmYuJxfhO6qwHNBopoci6A-1XzYg.EyYmxX6c0AUcpZQKIXC1OFym1fl9bRlZvmTso43Xqg8g.PNG/a_095f2500bc074b81867e777cf9ad8da0.png?type=m"
-										data-v-878ec45c="">
-									<img alt="아디다스 슈퍼스타 코어 블랙 화이트"
-										src="https://kream-phinf.pstatic.net/MjAyMjA1MDNfNDcg/MDAxNjUxNTcxMzczNjY1.7_5uAFAC-O7LWDO8AmYuJxfhO6qwHNBopoci6A-1XzYg.EyYmxX6c0AUcpZQKIXC1OFym1fl9bRlZvmTso43Xqg8g.PNG/a_095f2500bc074b81867e777cf9ad8da0.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">
-										Adidas</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">Adidas Superstar Core
-									Black White</p>
-								<div class="badge badge_product shipping_express"
-									data-v-6da6dff3="" data-v-a6a1a7c0="">빠른배송</div>
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 100,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/26349" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #f4f4f4;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMjA1MTdfNTkg/MDAxNjUyNzY3OTM0Nzgw.mosVkk87QC0RKASEoHhjPvLok45h9nI-aoqyEIxMBAcg.f0n41OVgsZyw3lpEYUSwPW_3MrEmeZBfiyfXsglseiEg.PNG/a_92ff6668258242a79cf29e9893671e15.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMjA1MTdfNTkg/MDAxNjUyNzY3OTM0Nzgw.mosVkk87QC0RKASEoHhjPvLok45h9nI-aoqyEIxMBAcg.f0n41OVgsZyw3lpEYUSwPW_3MrEmeZBfiyfXsglseiEg.PNG/a_92ff6668258242a79cf29e9893671e15.png?type=m"
-										data-v-878ec45c="">
-									<img alt="뉴발란스 327 화이트 블랙"
-										src="https://kream-phinf.pstatic.net/MjAyMjA1MTdfNTkg/MDAxNjUyNzY3OTM0Nzgw.mosVkk87QC0RKASEoHhjPvLok45h9nI-aoqyEIxMBAcg.f0n41OVgsZyw3lpEYUSwPW_3MrEmeZBfiyfXsglseiEg.PNG/a_92ff6668258242a79cf29e9893671e15.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">New
-										Balance</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">New Balance 327 White
-									Black</p>
-								<div class="badge badge_product shipping_express"
-									data-v-6da6dff3="" data-v-a6a1a7c0="">빠른배송</div>
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 105,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/48530" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #f4f4f4;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMjA0MDVfMjk5/MDAxNjQ5MTM3NDQ5MjY4.BIoHTNfEkTCYp0YfBdqaG0tIYaFaFVVfzLGMpRtULP4g.EMxQLUkt9XeRVzCvRjY9DdpszDseeIDC5nSqKV5NssQg.PNG/a_90cb2bcf79ff4415b00e810259e2aa78.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMjA0MDVfMjk5/MDAxNjQ5MTM3NDQ5MjY4.BIoHTNfEkTCYp0YfBdqaG0tIYaFaFVVfzLGMpRtULP4g.EMxQLUkt9XeRVzCvRjY9DdpszDseeIDC5nSqKV5NssQg.PNG/a_90cb2bcf79ff4415b00e810259e2aa78.png?type=m"
-										data-v-878ec45c="">
-									<img alt="(W) 오트리 메달리스트 로우 고트스킨 스니커즈 화이트"
-										src="https://kream-phinf.pstatic.net/MjAyMjA0MDVfMjk5/MDAxNjQ5MTM3NDQ5MjY4.BIoHTNfEkTCYp0YfBdqaG0tIYaFaFVVfzLGMpRtULP4g.EMxQLUkt9XeRVzCvRjY9DdpszDseeIDC5nSqKV5NssQg.PNG/a_90cb2bcf79ff4415b00e810259e2aa78.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">
-										Autry</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">(W) Autry Medalist Low
-									Goatskin Sneakers White</p>
-								<div class="badge badge_product shipping_express"
-									data-v-6da6dff3="" data-v-a6a1a7c0="">빠른배송</div>
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 150,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/48705" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #f6eeed;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMjAxMDZfMTE4/MDAxNjQxNDUwMTUzNDIy.N1nSV-2PiS4npiAFQParxaaA-DITGy1vPPGJshd7Rrkg.sZTvwDUSDVpn0uUeI992DwZ9FgbJzAPiglO9a8KYdGgg.PNG/a_4a82955d66cd43d4b518b614d41118b9.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMjAxMDZfMTE4/MDAxNjQxNDUwMTUzNDIy.N1nSV-2PiS4npiAFQParxaaA-DITGy1vPPGJshd7Rrkg.sZTvwDUSDVpn0uUeI992DwZ9FgbJzAPiglO9a8KYdGgg.PNG/a_4a82955d66cd43d4b518b614d41118b9.png?type=m"
-										data-v-878ec45c="">
-									<img alt="조던 1 로우 골프 울프 그레이"
-										src="https://kream-phinf.pstatic.net/MjAyMjAxMDZfMTE4/MDAxNjQxNDUwMTUzNDIy.N1nSV-2PiS4npiAFQParxaaA-DITGy1vPPGJshd7Rrkg.sZTvwDUSDVpn0uUeI992DwZ9FgbJzAPiglO9a8KYdGgg.PNG/a_4a82955d66cd43d4b518b614d41118b9.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">
-										Jordan</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">Jordan 1 Low Golf Wolf
-									Grey</p>
-								<div class="badge badge_product shipping_express"
-									data-v-6da6dff3="" data-v-a6a1a7c0="">빠른배송</div>
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 233,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/52006" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #f6eeed;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMjAyMThfMTky/MDAxNjQ1MTc5Njg3NTY4.xSj3PMStirXDeh2pLcEwmGfQDuOwl4iaNyTeydjjLY0g.SLlhZ0dFytiDDIBb7Ic0YAje5WVAUdyEnq_6glhjjBgg.PNG/a_c58524c536274739bbd7c7f78f729d82.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMjAyMThfMTky/MDAxNjQ1MTc5Njg3NTY4.xSj3PMStirXDeh2pLcEwmGfQDuOwl4iaNyTeydjjLY0g.SLlhZ0dFytiDDIBb7Ic0YAje5WVAUdyEnq_6glhjjBgg.PNG/a_c58524c536274739bbd7c7f78f729d82.png?type=m"
-										data-v-878ec45c="">
-									<img alt="(W) 조던 1 엘리베이트 로우 화이트 앤 울프 그레이"
-										src="https://kream-phinf.pstatic.net/MjAyMjAyMThfMTky/MDAxNjQ1MTc5Njg3NTY4.xSj3PMStirXDeh2pLcEwmGfQDuOwl4iaNyTeydjjLY0g.SLlhZ0dFytiDDIBb7Ic0YAje5WVAUdyEnq_6glhjjBgg.PNG/a_c58524c536274739bbd7c7f78f729d82.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">
-										Jordan</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">(W) Jordan 1 Elevate Low
-									White and Wolf Grey</p>
-								<div class="badge badge_product shipping_express"
-									data-v-6da6dff3="" data-v-a6a1a7c0="">빠른배송</div>
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 194,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/52608" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #ebf0f5;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMjAzMThfMjk1/MDAxNjQ3NTg0MTg3NTQx.HL6eBecuGClh_atAtIs42QA4HSktHTiamvcNCk9JTzYg.5GP0p--nD9Mepwvke_AkG_NwCFz7rmdovkwaLfkyHoQg.PNG/a_bfca1d575ac0433fa0a04a82e585f97d.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMjAzMThfMjk1/MDAxNjQ3NTg0MTg3NTQx.HL6eBecuGClh_atAtIs42QA4HSktHTiamvcNCk9JTzYg.5GP0p--nD9Mepwvke_AkG_NwCFz7rmdovkwaLfkyHoQg.PNG/a_bfca1d575ac0433fa0a04a82e585f97d.png?type=m"
-										data-v-878ec45c="">
-									<img alt="나이키 ACG 마운틴 플라이 로우 고어텍스 SE 다크 스모크 그레이"
-										src="https://kream-phinf.pstatic.net/MjAyMjAzMThfMjk1/MDAxNjQ3NTg0MTg3NTQx.HL6eBecuGClh_atAtIs42QA4HSktHTiamvcNCk9JTzYg.5GP0p--nD9Mepwvke_AkG_NwCFz7rmdovkwaLfkyHoQg.PNG/a_bfca1d575ac0433fa0a04a82e585f97d.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">Nike
-									</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">Nike ACG Mountain Fly Low
-									Gore-Tex SE Dark Smoke Grey</p>
-								<div class="badge badge_product shipping_express"
-									data-v-6da6dff3="" data-v-a6a1a7c0="">빠른배송</div>
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 218,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/59968" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #ebf0f5;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMjA1MDNfMTUy/MDAxNjUxNTY4MDUxNzY1.w1KCMofig1opHcNEDvTeZtnbtWjDrN70lLjt2ln2VSkg.7OD_dk8FjazEsdgoHfc3PvBiHkKns3KScRRN4l-I6Q0g.PNG/a_53f2e4b2b988457c9badf087e0e8838c.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMjA1MDNfMTUy/MDAxNjUxNTY4MDUxNzY1.w1KCMofig1opHcNEDvTeZtnbtWjDrN70lLjt2ln2VSkg.7OD_dk8FjazEsdgoHfc3PvBiHkKns3KScRRN4l-I6Q0g.PNG/a_53f2e4b2b988457c9badf087e0e8838c.png?type=m"
-										data-v-878ec45c="">
-									<img alt="나이키 덩크 로우 레트로 발레리안 블루"
-										src="https://kream-phinf.pstatic.net/MjAyMjA1MDNfMTUy/MDAxNjUxNTY4MDUxNzY1.w1KCMofig1opHcNEDvTeZtnbtWjDrN70lLjt2ln2VSkg.7OD_dk8FjazEsdgoHfc3PvBiHkKns3KScRRN4l-I6Q0g.PNG/a_53f2e4b2b988457c9badf087e0e8838c.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">Nike
-									</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">Nike Dunk Low Retro
-									Valerian Blue</p>
-								<div class="badge badge_product shipping_express"
-									data-v-6da6dff3="" data-v-a6a1a7c0="">빠른배송</div>
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 235,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/72385" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #f6eeed;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMjA4MDJfNTQg/MDAxNjU5NDAyMDU4ODM1.W4H8p1yYWRNTUq6isGD8oTUWeWJf7_lKjm9goz-4I6Ig.yRfkMRtyYCY2910pPEDQcRzc8WayhOJSZp-kLa4L6I8g.PNG/a_13620f7088d541489477729d3110a313.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMjA4MDJfNTQg/MDAxNjU5NDAyMDU4ODM1.W4H8p1yYWRNTUq6isGD8oTUWeWJf7_lKjm9goz-4I6Ig.yRfkMRtyYCY2910pPEDQcRzc8WayhOJSZp-kLa4L6I8g.PNG/a_13620f7088d541489477729d3110a313.png?type=m"
-										data-v-878ec45c="">
-									<img alt="조던 1 레트로 하이 OG 택시"
-										src="https://kream-phinf.pstatic.net/MjAyMjA4MDJfNTQg/MDAxNjU5NDAyMDU4ODM1.W4H8p1yYWRNTUq6isGD8oTUWeWJf7_lKjm9goz-4I6Ig.yRfkMRtyYCY2910pPEDQcRzc8WayhOJSZp-kLa4L6I8g.PNG/a_13620f7088d541489477729d3110a313.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">
-										Jordan</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">Jordan 1 Retro High OG
-									Taxi</p>
-								<div class="badge badge_product shipping_express"
-									data-v-6da6dff3="" data-v-a6a1a7c0="">빠른배송</div>
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 196,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/82107" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #f4f4f4;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMjEwMjFfMjMy/MDAxNjY2MzQzNzk1MTEz.5TrRdMgv6tIFN_WiVoC5YyPNSHD6VLHibYr6IhOkxvYg.i7QtPjmp3wp10CVqNVA6dajIDj8axCRpGaGqKK_AOlog.PNG/a_88f24903a3b140d08eeb99094ab86281.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMjEwMjFfMjMy/MDAxNjY2MzQzNzk1MTEz.5TrRdMgv6tIFN_WiVoC5YyPNSHD6VLHibYr6IhOkxvYg.i7QtPjmp3wp10CVqNVA6dajIDj8axCRpGaGqKK_AOlog.PNG/a_88f24903a3b140d08eeb99094ab86281.png?type=m"
-										data-v-878ec45c="">
-									<img alt="살로몬 RX 스너그 모스 그레이"
-										src="https://kream-phinf.pstatic.net/MjAyMjEwMjFfMjMy/MDAxNjY2MzQzNzk1MTEz.5TrRdMgv6tIFN_WiVoC5YyPNSHD6VLHibYr6IhOkxvYg.i7QtPjmp3wp10CVqNVA6dajIDj8axCRpGaGqKK_AOlog.PNG/a_88f24903a3b140d08eeb99094ab86281.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">
-										Salomon</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">Salomon RX Snug Moss Gray</p>
-								<div class="badge badge_product shipping_express"
-									data-v-6da6dff3="" data-v-a6a1a7c0="">빠른배송</div>
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 132,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/88078" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #f6eeed;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMjEyMDJfMTcy/MDAxNjY5OTQ4MDM0NDI0.cQV5tkKWjPHxwNjnV2Jcf5tSo328Li18nr-G0pL6iicg.jcy8FxVlAPYgEQ8Dx3e2jtzwDfbpMVvwYT9xOUtI5jUg.PNG/a_89f5d456fbe44790a5a5e44f5c4a5075.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMjEyMDJfMTcy/MDAxNjY5OTQ4MDM0NDI0.cQV5tkKWjPHxwNjnV2Jcf5tSo328Li18nr-G0pL6iicg.jcy8FxVlAPYgEQ8Dx3e2jtzwDfbpMVvwYT9xOUtI5jUg.PNG/a_89f5d456fbe44790a5a5e44f5c4a5075.png?type=m"
-										data-v-878ec45c="">
-									<img alt="(W) 조던 1 엘리베이트 로우 SE 럭키 그린"
-										src="https://kream-phinf.pstatic.net/MjAyMjEyMDJfMTcy/MDAxNjY5OTQ4MDM0NDI0.cQV5tkKWjPHxwNjnV2Jcf5tSo328Li18nr-G0pL6iicg.jcy8FxVlAPYgEQ8Dx3e2jtzwDfbpMVvwYT9xOUtI5jUg.PNG/a_89f5d456fbe44790a5a5e44f5c4a5075.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">
-										Jordan</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">(W) Jordan 1 Elevate Low
-									SE Lucky Green</p>
-								<div class="badge badge_product shipping_express"
-									data-v-6da6dff3="" data-v-a6a1a7c0="">빠른배송</div>
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 179,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="other_product_area" data-v-01e212dd="">
-			<h3 class="more_title" data-v-384c5177="" data-v-01e212dd="">
-				<!---->
-				<span class="owner" data-v-384c5177="">Jordan</span><span
-					class="title_txt" data-v-384c5177="">의 다른 상품</span><a
-					href="/brands/jordan" class="btn_more" data-v-384c5177=""><span
-					class="btn_txt" data-v-384c5177="">더보기</span>
-				<svg xmlns="http://www.w3.org/2000/svg"
-						class="icon sprite-icons arr-right-gray" data-v-384c5177="">
-						<use
-							href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-arr-right-gray"
-							xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-arr-right-gray"
-							data-v-384c5177=""></use></svg></a>
-			</h3>
-			<div class="other_products" data-v-01e212dd="">
-				<div class="product_list" data-v-01e212dd="">
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/93198" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #f6eeed;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDNfNSAg/MDAxNjcyNzA5NjkwMjA5.Y_yJ42RrT-P2IIDQUAAd2ly_vsvXFlSAzG5p51_lxRIg.jyLa3jpNy9Gm5KwOqxz0sjk59SRiC-5kZPyOLJIk1_wg.PNG/a_0c8538b8782a4db79cd14960a56a5acd.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDNfNSAg/MDAxNjcyNzA5NjkwMjA5.Y_yJ42RrT-P2IIDQUAAd2ly_vsvXFlSAzG5p51_lxRIg.jyLa3jpNy9Gm5KwOqxz0sjk59SRiC-5kZPyOLJIk1_wg.PNG/a_0c8538b8782a4db79cd14960a56a5acd.png?type=m"
-										data-v-878ec45c="">
-									<img alt="조던 1 레트로 하이 OG 트루 블루"
-										src="https://kream-phinf.pstatic.net/MjAyMzAxMDNfNSAg/MDAxNjcyNzA5NjkwMjA5.Y_yJ42RrT-P2IIDQUAAd2ly_vsvXFlSAzG5p51_lxRIg.jyLa3jpNy9Gm5KwOqxz0sjk59SRiC-5kZPyOLJIk1_wg.PNG/a_0c8538b8782a4db79cd14960a56a5acd.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">
-										Jordan</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">Jordan 1 Retro High OG
-									True Blue</p>
-								<!---->
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 247,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/85179" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #f6eeed;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMjExMTRfMTU0/MDAxNjY4NDA5MjU2NDc0.dnoZHmT1xMXti7XJrE2yQ_NQxNOs_cJ-_6qVmMbURFYg.Uf9U8I4AcbhSiW0zVT-8IGzJXrPC5RQ-_MXDXi4CH9Qg.PNG/a_3fea36c3eea94ec69c02e67c9ea8b5ee.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMjExMTRfMTU0/MDAxNjY4NDA5MjU2NDc0.dnoZHmT1xMXti7XJrE2yQ_NQxNOs_cJ-_6qVmMbURFYg.Uf9U8I4AcbhSiW0zVT-8IGzJXrPC5RQ-_MXDXi4CH9Qg.PNG/a_3fea36c3eea94ec69c02e67c9ea8b5ee.png?type=m"
-										data-v-878ec45c="">
-									<img alt="조던 1 레트로 하이 OG 골지 그린"
-										src="https://kream-phinf.pstatic.net/MjAyMjExMTRfMTU0/MDAxNjY4NDA5MjU2NDc0.dnoZHmT1xMXti7XJrE2yQ_NQxNOs_cJ-_6qVmMbURFYg.Uf9U8I4AcbhSiW0zVT-8IGzJXrPC5RQ-_MXDXi4CH9Qg.PNG/a_3fea36c3eea94ec69c02e67c9ea8b5ee.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">
-										Jordan</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">Jordan 1 Retro High OG
-									Gorge Green</p>
-								<div class="badge badge_product shipping_express"
-									data-v-6da6dff3="" data-v-a6a1a7c0="">빠른배송</div>
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 260,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/93502" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #f6eeed;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMjY5/MDAxNjcyNzk2NTE5NDE0.z36UzWD59rmd_U1Ab2tvT-J3WpoJF-O95e6Pr5Vl5ksg.TgCECTDoUu6WgNzVaiIYLgL4A0g0ICx8f9_NhyFRMTEg.PNG/a_57414f0157424da8b48c903c3e0d6eec.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMjY5/MDAxNjcyNzk2NTE5NDE0.z36UzWD59rmd_U1Ab2tvT-J3WpoJF-O95e6Pr5Vl5ksg.TgCECTDoUu6WgNzVaiIYLgL4A0g0ICx8f9_NhyFRMTEg.PNG/a_57414f0157424da8b48c903c3e0d6eec.png?type=m"
-										data-v-878ec45c="">
-									<img alt="(TD) 조던 1 레트로 하이 OG 트루 블루"
-										src="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMjY5/MDAxNjcyNzk2NTE5NDE0.z36UzWD59rmd_U1Ab2tvT-J3WpoJF-O95e6Pr5Vl5ksg.TgCECTDoUu6WgNzVaiIYLgL4A0g0ICx8f9_NhyFRMTEg.PNG/a_57414f0157424da8b48c903c3e0d6eec.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">
-										Jordan</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">(TD) Jordan 1 Retro High
-									OG True Blue</p>
-								<!---->
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 179,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/94003" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #f6eeed;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDlfNDIg/MDAxNjczMjI5MTM5MTU0.WEj-qEqiY3F8TfZHrWRccy9mIOH9OdGA0r9PCwjh9Log.lahvGEgsPQlfjGQiR_KBEiVcsFZBBgge5d5kxYs8WSQg.PNG/a_7ce310d8c23c415d9c1c85b0c19819f0.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDlfNDIg/MDAxNjczMjI5MTM5MTU0.WEj-qEqiY3F8TfZHrWRccy9mIOH9OdGA0r9PCwjh9Log.lahvGEgsPQlfjGQiR_KBEiVcsFZBBgge5d5kxYs8WSQg.PNG/a_7ce310d8c23c415d9c1c85b0c19819f0.png?type=m"
-										data-v-878ec45c="">
-									<img alt="(GS) 조던 1 레트로 하이 OG 트루 블루"
-										src="https://kream-phinf.pstatic.net/MjAyMzAxMDlfNDIg/MDAxNjczMjI5MTM5MTU0.WEj-qEqiY3F8TfZHrWRccy9mIOH9OdGA0r9PCwjh9Log.lahvGEgsPQlfjGQiR_KBEiVcsFZBBgge5d5kxYs8WSQg.PNG/a_7ce310d8c23c415d9c1c85b0c19819f0.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">
-										Jordan</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">(GS) Jordan 1 Retro High
-									OG True Blue</p>
-								<!---->
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 286,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/93500" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #f6eeed;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMTcy/MDAxNjcyNzk2MjkxNzQ3.oNEsZCJ-e7Ym5196tSBhLnOmeHNAb3B3YtJOKhBy3x8g.QpFCU5aMHUEd3Gx_wB5I1V1lXjvQiwLXFh_AcQseiv4g.PNG/a_8f2f6bb8f24e47a6bdf47ece4f25f775.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMTcy/MDAxNjcyNzk2MjkxNzQ3.oNEsZCJ-e7Ym5196tSBhLnOmeHNAb3B3YtJOKhBy3x8g.QpFCU5aMHUEd3Gx_wB5I1V1lXjvQiwLXFh_AcQseiv4g.PNG/a_8f2f6bb8f24e47a6bdf47ece4f25f775.png?type=m"
-										data-v-878ec45c="">
-									<img alt="(PS) 조던 1 레트로 하이 OG 트루 블루"
-										src="https://kream-phinf.pstatic.net/MjAyMzAxMDRfMTcy/MDAxNjcyNzk2MjkxNzQ3.oNEsZCJ-e7Ym5196tSBhLnOmeHNAb3B3YtJOKhBy3x8g.QpFCU5aMHUEd3Gx_wB5I1V1lXjvQiwLXFh_AcQseiv4g.PNG/a_8f2f6bb8f24e47a6bdf47ece4f25f775.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">
-										Jordan</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">(PS) Jordan 1 Retro High
-									OG True Blue</p>
-								<!---->
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 249,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/90221" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #f6eeed;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMjEyMTVfNSAg/MDAxNjcxMDgxNTM2MDU4.6q3lUyTmyZ2AD5mrB6dzBu3Z2FPEErk67wwysg5jVpIg.-xaByqLKI5dUAGY2_PVOsRx56YS6AvWTNimgc8afvugg.PNG/a_846cb71b9b094564b6d79161dbe4797a.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMjEyMTVfNSAg/MDAxNjcxMDgxNTM2MDU4.6q3lUyTmyZ2AD5mrB6dzBu3Z2FPEErk67wwysg5jVpIg.-xaByqLKI5dUAGY2_PVOsRx56YS6AvWTNimgc8afvugg.PNG/a_846cb71b9b094564b6d79161dbe4797a.png?type=m"
-										data-v-878ec45c="">
-									<img alt="(W) 조던 1 레트로 하이 OG 미디움 그레이"
-										src="https://kream-phinf.pstatic.net/MjAyMjEyMTVfNSAg/MDAxNjcxMDgxNTM2MDU4.6q3lUyTmyZ2AD5mrB6dzBu3Z2FPEErk67wwysg5jVpIg.-xaByqLKI5dUAGY2_PVOsRx56YS6AvWTNimgc8afvugg.PNG/a_846cb71b9b094564b6d79161dbe4797a.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">
-										Jordan</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">(W) Jordan 1 Retro High
-									OG Medium Grey</p>
-								<div class="badge badge_product shipping_express"
-									data-v-6da6dff3="" data-v-a6a1a7c0="">빠른배송</div>
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 168,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/91286" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #f6eeed;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjJfMjcz/MDAxNjcxNzAwMDg1NTQ2.4AnMUjJCMwVwPE3uXW9MvLFaz5fiXwakrcHQhCBgHS4g.bg_uA4RyScPUHlyon2LC1KI1mUmACghG_uT00ouxxDIg.PNG/a_aeaf08c53429494db5303a0f5353e20e.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjJfMjcz/MDAxNjcxNzAwMDg1NTQ2.4AnMUjJCMwVwPE3uXW9MvLFaz5fiXwakrcHQhCBgHS4g.bg_uA4RyScPUHlyon2LC1KI1mUmACghG_uT00ouxxDIg.PNG/a_aeaf08c53429494db5303a0f5353e20e.png?type=m"
-										data-v-878ec45c="">
-									<img alt="(TD) 조던 1 레트로 하이 OG 미디움 그레이"
-										src="https://kream-phinf.pstatic.net/MjAyMjEyMjJfMjcz/MDAxNjcxNzAwMDg1NTQ2.4AnMUjJCMwVwPE3uXW9MvLFaz5fiXwakrcHQhCBgHS4g.bg_uA4RyScPUHlyon2LC1KI1mUmACghG_uT00ouxxDIg.PNG/a_aeaf08c53429494db5303a0f5353e20e.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">
-										Jordan</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">(TD) Jordan 1 Retro High
-									OG Medium Grey</p>
-								<!---->
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 130,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/84904" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #f6eeed;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMjExMTBfNzAg/MDAxNjY4MDY0ODQwNzMw.z46HRe4zGktT2y_oxto5Hc21HB4_k4lxPnlnwvoEQy0g.0ZphIIRGXAKZEdsUooUCN8bPRcbHMbE-ieQNSrXomXgg.PNG/a_2b1026fcfb394e17b323211fbd85d764.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMjExMTBfNzAg/MDAxNjY4MDY0ODQwNzMw.z46HRe4zGktT2y_oxto5Hc21HB4_k4lxPnlnwvoEQy0g.0ZphIIRGXAKZEdsUooUCN8bPRcbHMbE-ieQNSrXomXgg.PNG/a_2b1026fcfb394e17b323211fbd85d764.png?type=m"
-										data-v-878ec45c="">
-									<img alt="(GS) 조던 1 레트로 하이 OG 시카고 2022"
-										src="https://kream-phinf.pstatic.net/MjAyMjExMTBfNzAg/MDAxNjY4MDY0ODQwNzMw.z46HRe4zGktT2y_oxto5Hc21HB4_k4lxPnlnwvoEQy0g.0ZphIIRGXAKZEdsUooUCN8bPRcbHMbE-ieQNSrXomXgg.PNG/a_2b1026fcfb394e17b323211fbd85d764.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">
-										Jordan</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">(GS) Jordan 1 Retro High
-									OG Chicago 2022</p>
-								<div class="badge badge_product shipping_express"
-									data-v-6da6dff3="" data-v-a6a1a7c0="">빠른배송</div>
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 208,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/84905" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #f6eeed;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMjExMTBfMTIy/MDAxNjY4MDY0ODY5NDM3.ybOUdFL6WSa_UV0OJYLS1E-3eKkzUKGkOdY1ljNGF7Yg.DMn3VBI3KX9Qetp5EaDTQc_8sM4cJrz5LQzSl4T8Azog.PNG/a_9afbdaceca924f51ab750362690177bc.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMjExMTBfMTIy/MDAxNjY4MDY0ODY5NDM3.ybOUdFL6WSa_UV0OJYLS1E-3eKkzUKGkOdY1ljNGF7Yg.DMn3VBI3KX9Qetp5EaDTQc_8sM4cJrz5LQzSl4T8Azog.PNG/a_9afbdaceca924f51ab750362690177bc.png?type=m"
-										data-v-878ec45c="">
-									<img alt="(PS) 조던 1 레트로 하이 OG 시카고 2022"
-										src="https://kream-phinf.pstatic.net/MjAyMjExMTBfMTIy/MDAxNjY4MDY0ODY5NDM3.ybOUdFL6WSa_UV0OJYLS1E-3eKkzUKGkOdY1ljNGF7Yg.DMn3VBI3KX9Qetp5EaDTQc_8sM4cJrz5LQzSl4T8Azog.PNG/a_9afbdaceca924f51ab750362690177bc.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">
-										Jordan</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">(PS) Jordan 1 Retro High
-									OG Chicago 2022</p>
-								<div class="badge badge_product shipping_express"
-									data-v-6da6dff3="" data-v-a6a1a7c0="">빠른배송</div>
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 128,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-					<div class="product_item" data-v-a6a1a7c0="" data-v-01e212dd="">
-						<a href="/products/84906" class="item_inner" data-v-a6a1a7c0=""><div
-								class="thumb_box" data-v-a6a1a7c0="">
-								<div class="product" style="background-color: #f6eeed;"
-									data-v-09fbcf09="" data-v-a6a1a7c0="">
-									<picture class="picture product_img" data-v-878ec45c=""
-										data-v-09fbcf09="">
-									<source type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMjExMTBfMjA5/MDAxNjY4MDY0ODg5OTEy.4OFTynPK70hfPodLSIzinLsItcB9kHocDTthACTHNwUg.f9MOdkREsWehEPZo-h0DCXtvQiddYALcGuzE3YmO8-gg.PNG/a_0226d5892fe74cf5bc2d51a4be1bcc87.png?type=m_webp"
-										data-v-878ec45c="">
-									<source
-										srcset="https://kream-phinf.pstatic.net/MjAyMjExMTBfMjA5/MDAxNjY4MDY0ODg5OTEy.4OFTynPK70hfPodLSIzinLsItcB9kHocDTthACTHNwUg.f9MOdkREsWehEPZo-h0DCXtvQiddYALcGuzE3YmO8-gg.PNG/a_0226d5892fe74cf5bc2d51a4be1bcc87.png?type=m"
-										data-v-878ec45c="">
-									<img alt="(TD) 조던 1 레트로 하이 OG 시카고 2022"
-										src="https://kream-phinf.pstatic.net/MjAyMjExMTBfMjA5/MDAxNjY4MDY0ODg5OTEy.4OFTynPK70hfPodLSIzinLsItcB9kHocDTthACTHNwUg.f9MOdkREsWehEPZo-h0DCXtvQiddYALcGuzE3YmO8-gg.PNG/a_0226d5892fe74cf5bc2d51a4be1bcc87.png?type=m"
-										loading="lazy" class="image" data-v-878ec45c=""></picture>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-								</div>
-							</div>
-							<div class="info_box" data-v-a6a1a7c0="">
-								<div class="brand" data-v-a6a1a7c0="">
-									<!---->
-									<p class="brand-text without-wish" data-v-a6a1a7c0="">
-										Jordan</p>
-									<!---->
-								</div>
-								<p class="name" data-v-a6a1a7c0="">(TD) Jordan 1 Retro High
-									OG Chicago 2022</p>
-								<div class="badge badge_product shipping_express"
-									data-v-6da6dff3="" data-v-a6a1a7c0="">빠른배송</div>
-								<div class="price" data-v-a6a1a7c0="">
-									<div class="amount lg" data-v-a6a1a7c0="">
-										<!---->
-										<em class="num" data-v-a6a1a7c0=""> 99,000원 </em>
-									</div>
-									<div class="desc" data-v-a6a1a7c0="">
-										<p data-v-a6a1a7c0="">즉시 구매가</p>
-									</div>
-								</div>
-							</div></a>
-					</div>
-				</div>
-			</div>
-		</div>
+	
 		<!---->
 	</div>
 	<div data-v-01e212dd="">
@@ -2958,7 +1571,7 @@
 				data-v-e5d8b6f4="" src="/_nuxt/img/home_banner_bottom1.79549cb.png"
 				loading="lazy" width="350" height="200" alt="SERVICE GUIDE"
 				class="bg">
-			<div data-v-e5d8b6f4="" class="banner_info">
+				<div data-v-e5d8b6f4="" class="banner_info">
 					<strong data-v-e5d8b6f4="" class="info_subtitle">service
 						guide</strong>
 					<p data-v-e5d8b6f4="" class="info_title">
@@ -2969,7 +1582,7 @@
 				data-v-e5d8b6f4="" src="/_nuxt/img/home_banner_bottom2.0077547.png"
 				loading="lazy" width="350" height="200" alt="DOWNLOAD THE APP"
 				class="bg">
-			<div data-v-e5d8b6f4="" class="banner_info">
+				<div data-v-e5d8b6f4="" class="banner_info">
 					<strong data-v-e5d8b6f4="" class="info_subtitle">download
 						the app</strong>
 					<p data-v-e5d8b6f4="" class="info_title">
@@ -2988,4 +1601,4 @@
 	<!---->
 </div>
 
-<%@ include file="/WEB-INF/views/footer.jsp"%>
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>

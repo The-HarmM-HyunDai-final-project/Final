@@ -7523,8 +7523,8 @@ li[data-v-9c9138be]:before {
 }
 
 .is_fixed .column_box[data-v-01e212dd] {
-	position: fixed;
-	top: 130px
+	position: static;
+	top: 0
 }
 
 .supported_alert .is_fixed .column_box[data-v-01e212dd] {
@@ -7602,7 +7602,7 @@ li[data-v-9c9138be]:before {
 	{
 	position: static;
 	display: block;
-	height: 560px;
+	/* height: 560px; */
 	background-color: transparent
 }
 
