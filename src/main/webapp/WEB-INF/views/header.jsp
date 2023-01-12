@@ -127,10 +127,10 @@
 									class="top_link" data-v-147586e1=""> 고객센터 </a></li>
 								<li class="top_item" data-v-147586e1=""><a href="/my/wish"
 									class="top_link" data-v-147586e1=""> 관심상품 </a></li>
-								<li class="top_item" data-v-147586e1=""><a href="/my"
+								<li class="top_item" data-v-147586e1=""><a href="/member/my"
 									class="top_link" data-v-147586e1=""> 마이페이지 </a></li>
 								<li class="top_item" style="display:;" data-v-147586e1=""><a
-									href="/login" class="top_link" data-v-147586e1=""> 로그인 </a></li>
+									href="/member/loginpage" class="top_link" data-v-147586e1=""> 로그인 </a></li>
 								<li class="top_item" style="display: none;" data-v-147586e1=""><a
 									href="/" class="top_link" data-v-147586e1=""> 로그아웃 </a></li>
 							</ul>

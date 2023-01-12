@@ -42,7 +42,7 @@
 					영문, 숫자, 특수문자를 조합해서 입력해주세요. (8-16자)</p>
 			</div>
 			<div class="login_btn_box" data-v-464f7370="">
-				<a disabled="disabled" href="#" class="btn full solid disabled"
+				<a href="home" class="btn full solid disabled"
 					data-v-575aff82="" data-v-464f7370=""> 로그인 </a>
 			</div>
 			<ul class="look_box" data-v-464f7370="">

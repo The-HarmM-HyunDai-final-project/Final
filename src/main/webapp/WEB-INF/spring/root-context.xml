@@ -29,9 +29,15 @@
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
 	
-	<mybatis-spring:scan base-package="com.theharmm.mapper" />
-	
+	<mybatis-spring:scan
+		base-package="com.theharmm.mapper" />
+
 	<context:component-scan
 		base-package="com.theharmm.service"></context:component-scan>
 

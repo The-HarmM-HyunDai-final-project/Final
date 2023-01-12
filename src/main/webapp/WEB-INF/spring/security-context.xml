@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="customLoginSuccess"
+		class="com.theharmm.security.CustomLoginSuccessHandler">
+	</bean>
+	<bean id="customPasswordEncoder"
+		class="com.theharmm.security.CustomNoOpPasswordEncoder">
+	</bean>
+
+	<security:http>
+
+
+		<security:intercept-url pattern="/*"
+			access="permitAll" />
+
+		<security:intercept-url pattern="/member/my"
+			access="hasRole('ROLE_MEMBER')" />
+
+		<!-- 로그인 할 일이 있다면 member/loginpage로 보내고 인증 확인을 customLoginSuccess 핸들러가 
+			받아서 처리 -->
+		<security:form-login
+			login-page="/member/loginpage"
+			authentication-success-handler-ref="customLoginSuccess" />
+
+		<!-- 로그아웃하면 세션을 날린다는 것 같음 -->
+		<security:logout logout-url="/member/myLogout"
+			invalidate-session="true" />
+
+
+	</security:http>
+
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:jdbc-user-service
+				data-source-ref="dataSource" />
+			<security:password-encoder
+				ref="customPasswordEncoder" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+
+
+
+</beans>
