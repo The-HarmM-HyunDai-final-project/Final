@@ -1,7 +1,5 @@
 package com.theharmm.persistence;
 
-import lombok.extern.log4j.Log4j;
-
 import static org.junit.Assert.fail;
 
 import java.sql.Connection;
@@ -9,6 +7,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import org.junit.Test;
+
+import lombok.extern.log4j.Log4j;
 
 @Log4j
 public class JDBCTests {	

@@ -1,5 +1,4 @@
 package com.theharmm.persistence;
-
 import static org.junit.Assert.fail;
 
 import java.sql.Connection;
@@ -19,18 +18,18 @@ import lombok.extern.log4j.Log4j;
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
 public class DataSourceTests {
-
+	
 	@Autowired
 	private DataSource dataSource;
-
+	
 	@Test
-	public void testConnection() {
-
+	public void testConnection() {	
+		
 		try {
 			Connection con = dataSource.getConnection();
 			log.info(con);
 		} catch (SQLException e) {
 			fail(e.getMessage());
-		} // end try
-	}// end test
-}// end class.
+		}//end try					
+	}//end test
+}//end class
