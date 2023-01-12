@@ -1,0 +1,57 @@
+.order_btn_area[data-v-744cecc2] {
+	display: -webkit-box;
+	display: flex;
+	padding-top: 20px;
+	border-top: 1px solid #ebebeb;
+	background-color: #fff
+}
+
+.mo .order_btn_area[data-v-744cecc2], .sm .order_btn_area[data-v-744cecc2]
+	{
+	padding: 8px 8px 20px;
+	margin-top: 0;
+	overflow-x: auto
+}
+
+.container.sell[data-v-3f89f857] {
+	background-color: #fafafa
+}
+
+.container.sell.mo[data-v-3f89f857], .container.sell.sm[data-v-3f89f857]
+	{
+	background-color: #fff
+}
+
+.container.sell.mo .content_area[data-v-3f89f857], .container.sell.sm .content_area[data-v-3f89f857]
+	{
+	padding: 0
+}
+
+body[data-v-3f89f857] {
+	background-color: #fafafa
+}
+
+.content_area[data-v-3f89f857] {
+	overflow: hidden;
+	max-width: 780px;
+	min-height: 900px;
+	margin: 0 auto;
+	padding: 20px 40px 160px
+}
+
+.sell_before[data-v-3f89f857] {
+	padding: 32px 32px 28px;
+	-webkit-box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .1);
+	box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .1);
+	background-color: #fff
+}
+
+.sell_before[data-v-3f89f857] .product_info {
+	padding-bottom: 19px
+}
+
+.sell_before_select[data-v-3f89f857] {
+	position: relative;
+	min-height: 484px;
+	border-top: 1px solid #ebebeb
+}
