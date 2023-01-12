@@ -55,28 +55,7 @@
 					href="/login/find_password" class="look_link" data-v-464f7370="">
 						비밀번호 찾기 </a></li>
 			</ul>
-			<div class="social_login" data-v-464f7370="">
-				<button type="button" class="btn btn_login_naver full outline"
-					data-v-575aff82="" data-v-464f7370="">
-					<svg xmlns="http://www.w3.org/2000/svg"
-						class="logo-social icon sprite-icons" data-v-464f7370="">
-										<use
-							href="/controller/resources/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-logo-naver"
-							xlink:href="/controller/resources/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-logo-naver"
-							data-v-464f7370=""></use></svg>
-					네이버로 로그인
-				</button>
-				<button type="button" class="btn btn_login_apple full outline"
-					data-v-575aff82="" data-v-464f7370="">
-					<svg xmlns="http://www.w3.org/2000/svg"
-						class="logo-social icon sprite-icons" data-v-464f7370="">
-										<use
-							href="/controller/resources/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-logo-apple"
-							xlink:href="/controller/resources/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-logo-apple"
-							data-v-464f7370=""></use></svg>
-					Apple로 로그인
-				</button>
-			</div>
+
 		</div>
 	</div>
 	<div class="banner_bottom lg" data-v-e5d8b6f4="" data-v-464f7370="">
