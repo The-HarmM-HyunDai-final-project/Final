@@ -139,8 +139,8 @@
 					<div class="header_main" data-v-147586e1="">
 						<div class="main_inner" data-v-147586e1="">
 							<h1 data-v-147586e1="">
-								<a href="/" aria-label="홈" class="logo" data-v-147586e1="">
-									<img src="${pageContext.request.contextPath}/resources/images/THEHAM.jpg"/>	
+								<a href="/" aria-label="홈" class="logo logo-kream icon sprite-icons" data-v-147586e1="">
+									<img class="logo logo-kream icon sprite-icons" src="${pageContext.request.contextPath}/resources/images/THEHAM.jpg"/>	
 								</a>
 							</h1>
 							<div class="gnb_area" data-v-147586e1="">
