@@ -13,6 +13,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 
 public class TestMapperTest {
+	
 	@Autowired
 	private TestMapper mapper;
 	
