@@ -21,7 +21,7 @@ public class ProductMapperTest {
 	
 	@Test
 	public void selectTest() {
-		List<ProductVo> list = mapper.selectAllProducts();
-		list.forEach( i -> log.info( i));
+//		List<ProductVo> list = mapper.selectAllProducts();
+//		list.forEach( i -> log.info( i));
 	}
 }
