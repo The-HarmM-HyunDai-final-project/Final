@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/header.jsp"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 <link
 	href="${pageContext.request.contextPath}/resources/css/b69f662.css"
@@ -33,21 +33,17 @@
 												style="width: 100%; display: inline-block;">
 												<div data-v-07f24dc5="" data-v-e4caeaf8="" href="/"
 													class="slide_item"
-													style="background-color: rgb(246, 238, 237);">
+													style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 													<div data-v-07f24dc5="" data-v-e4caeaf8=""
 														class="item_inner">
 														<div data-v-09fbcf09="" data-v-07f24dc5="" class="product"
 															data-v-e4caeaf8=""
-															style="background-color: rgb(246, 238, 237);">
+															style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 															<picture data-v-878ec45c="" data-v-09fbcf09=""
 																class="picture product_img">
-															<source data-v-878ec45c="" type="image/webp"
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfMTkw/MDAxNjY3NTQzNTAxNjcw.yXF_j7EUnejzPqHyxvoziRB8ukEBpGX7RgDL8ziMtOEg.tjPT99BA1fdYa1THeylVQhNonJ_gqkCMxCTyqSEGhdQg.PNG/a_9388c64f95f54d29834d8fc13082a68e.png?type=l_webp">
-															<source data-v-878ec45c=""
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfMTkw/MDAxNjY3NTQzNTAxNjcw.yXF_j7EUnejzPqHyxvoziRB8ukEBpGX7RgDL8ziMtOEg.tjPT99BA1fdYa1THeylVQhNonJ_gqkCMxCTyqSEGhdQg.PNG/a_9388c64f95f54d29834d8fc13082a68e.png?type=l">
-															<img data-v-878ec45c="" alt="상품 이미지"
-																src="https://kream-phinf.pstatic.net/MjAyMjExMDRfMTkw/MDAxNjY3NTQzNTAxNjcw.yXF_j7EUnejzPqHyxvoziRB8ukEBpGX7RgDL8ziMtOEg.tjPT99BA1fdYa1THeylVQhNonJ_gqkCMxCTyqSEGhdQg.PNG/a_9388c64f95f54d29834d8fc13082a68e.png?type=l"
-																loading="auto" fetchpriority="high" class="image"></picture>
+															<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="상품 이미지" 
+																src="${productDetailDTO.img1}"
+																loading="lazy" fetchpriority="high" class="image"></picture>
 															<!---->
 															<!---->
 															<!---->
@@ -67,20 +63,16 @@
 												style="width: 100%; display: inline-block;">
 												<div data-v-07f24dc5="" data-v-e4caeaf8="" href="/"
 													class="slide_item"
-													style="background-color: rgb(246, 238, 237);">
+													style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 													<div data-v-07f24dc5="" data-v-e4caeaf8=""
 														class="item_inner">
 														<div data-v-09fbcf09="" data-v-07f24dc5="" class="product"
 															data-v-e4caeaf8=""
-															style="background-color: rgb(246, 238, 237);">
+															style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 															<picture data-v-878ec45c="" data-v-09fbcf09=""
 																class="picture product_img">
-															<source data-v-878ec45c="" type="image/webp"
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfNjMg/MDAxNjY3NTQzNTAxNjMw.M03Jy-K6ghQXo-2TspOUFHarWRD2vhuKamPWTmxBjeAg.h6yK8chQW5-9u0amGAGjieM4wRWE_17U-JeiA7QiI8wg.PNG/a_bf9cd66211524e0b87923abbaaa97a1f.png?type=l_webp">
-															<source data-v-878ec45c=""
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfNjMg/MDAxNjY3NTQzNTAxNjMw.M03Jy-K6ghQXo-2TspOUFHarWRD2vhuKamPWTmxBjeAg.h6yK8chQW5-9u0amGAGjieM4wRWE_17U-JeiA7QiI8wg.PNG/a_bf9cd66211524e0b87923abbaaa97a1f.png?type=l">
-															<img data-v-878ec45c="" alt="상품 이미지"
-																src="https://kream-phinf.pstatic.net/MjAyMjExMDRfNjMg/MDAxNjY3NTQzNTAxNjMw.M03Jy-K6ghQXo-2TspOUFHarWRD2vhuKamPWTmxBjeAg.h6yK8chQW5-9u0amGAGjieM4wRWE_17U-JeiA7QiI8wg.PNG/a_bf9cd66211524e0b87923abbaaa97a1f.png?type=l"
+															<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="상품 이미지" 
+																src="${productDetailDTO.img2}"
 																loading="lazy" fetchpriority="high" class="image"></picture>
 															<!---->
 															<!---->
@@ -101,20 +93,16 @@
 												style="width: 100%; display: inline-block;">
 												<div data-v-07f24dc5="" data-v-e4caeaf8="" href="/"
 													class="slide_item"
-													style="background-color: rgb(246, 238, 237);">
+													style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 													<div data-v-07f24dc5="" data-v-e4caeaf8=""
 														class="item_inner">
 														<div data-v-09fbcf09="" data-v-07f24dc5="" class="product"
 															data-v-e4caeaf8=""
-															style="background-color: rgb(246, 238, 237);">
+															style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 															<picture data-v-878ec45c="" data-v-09fbcf09=""
 																class="picture product_img">
-															<source data-v-878ec45c="" type="image/webp"
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfNzkg/MDAxNjY3NTQ0MDk1MjAy.Oq7cUaOKYhHrhg5oRpuK7nxnD2-1OrOqss9jyw51hS8g.3opal-BErjNi9zTWYjzxm72eCX2oSLvFwM0aPg2PaLkg.PNG/a_282526dd6bc843518832f6f84630fa25.png?type=l_webp">
-															<source data-v-878ec45c=""
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfNzkg/MDAxNjY3NTQ0MDk1MjAy.Oq7cUaOKYhHrhg5oRpuK7nxnD2-1OrOqss9jyw51hS8g.3opal-BErjNi9zTWYjzxm72eCX2oSLvFwM0aPg2PaLkg.PNG/a_282526dd6bc843518832f6f84630fa25.png?type=l">
-															<img data-v-878ec45c="" alt="상품 이미지"
-																src="https://kream-phinf.pstatic.net/MjAyMjExMDRfNzkg/MDAxNjY3NTQ0MDk1MjAy.Oq7cUaOKYhHrhg5oRpuK7nxnD2-1OrOqss9jyw51hS8g.3opal-BErjNi9zTWYjzxm72eCX2oSLvFwM0aPg2PaLkg.PNG/a_282526dd6bc843518832f6f84630fa25.png?type=l"
+															<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="상품 이미지" 
+																src="${productDetailDTO.img3}"
 																loading="lazy" fetchpriority="high" class="image"></picture>
 															<!---->
 															<!---->
@@ -135,20 +123,16 @@
 												style="width: 100%; display: inline-block;">
 												<div data-v-07f24dc5="" data-v-e4caeaf8="" href="/"
 													class="slide_item"
-													style="background-color: rgb(246, 238, 237);">
+													style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 													<div data-v-07f24dc5="" data-v-e4caeaf8=""
 														class="item_inner">
 														<div data-v-09fbcf09="" data-v-07f24dc5="" class="product"
 															data-v-e4caeaf8=""
-															style="background-color: rgb(246, 238, 237);">
+															style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 															<picture data-v-878ec45c="" data-v-09fbcf09=""
 																class="picture product_img">
-															<source data-v-878ec45c="" type="image/webp"
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfMjQy/MDAxNjY3NTQzNTAxNzE2.28SL2ADmE0cypOZVP6BPghe55mFVzQUv2dp9Ri-uFUkg.1bEHEugEUyhlt_vtYUQgCVO50PSwz3u1uyIaqfJCwx0g.PNG/a_6ae6cc0c6b384ef0b6c547134fcba07c.png?type=l_webp">
-															<source data-v-878ec45c=""
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfMjQy/MDAxNjY3NTQzNTAxNzE2.28SL2ADmE0cypOZVP6BPghe55mFVzQUv2dp9Ri-uFUkg.1bEHEugEUyhlt_vtYUQgCVO50PSwz3u1uyIaqfJCwx0g.PNG/a_6ae6cc0c6b384ef0b6c547134fcba07c.png?type=l">
-															<img data-v-878ec45c="" alt="상품 이미지"
-																src="https://kream-phinf.pstatic.net/MjAyMjExMDRfMjQy/MDAxNjY3NTQzNTAxNzE2.28SL2ADmE0cypOZVP6BPghe55mFVzQUv2dp9Ri-uFUkg.1bEHEugEUyhlt_vtYUQgCVO50PSwz3u1uyIaqfJCwx0g.PNG/a_6ae6cc0c6b384ef0b6c547134fcba07c.png?type=l"
+															<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="상품 이미지" 
+																src="${productDetailDTO.img4}"
 																loading="lazy" fetchpriority="high" class="image"></picture>
 															<!---->
 															<!---->
@@ -169,20 +153,16 @@
 												style="width: 100%; display: inline-block;">
 												<div data-v-07f24dc5="" data-v-e4caeaf8="" href="/"
 													class="slide_item"
-													style="background-color: rgb(246, 238, 237);">
+													style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 													<div data-v-07f24dc5="" data-v-e4caeaf8=""
 														class="item_inner">
 														<div data-v-09fbcf09="" data-v-07f24dc5="" class="product"
 															data-v-e4caeaf8=""
-															style="background-color: rgb(246, 238, 237);">
+															style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
 															<picture data-v-878ec45c="" data-v-09fbcf09=""
 																class="picture product_img">
-															<source data-v-878ec45c="" type="image/webp"
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfMTE1/MDAxNjY3NTQzNTAxNjM3.ccTbGI3BCmqGlEnzB_VA6nchvPur-3_6zWSCKNBFN6sg.0KncqpKV16-ELLW-Sx05NQhmZZMv62ZcN-4kFRwZhUog.PNG/a_2bb917328b2a4bb4bc89814ed849e7ab.png?type=l_webp">
-															<source data-v-878ec45c=""
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfMTE1/MDAxNjY3NTQzNTAxNjM3.ccTbGI3BCmqGlEnzB_VA6nchvPur-3_6zWSCKNBFN6sg.0KncqpKV16-ELLW-Sx05NQhmZZMv62ZcN-4kFRwZhUog.PNG/a_2bb917328b2a4bb4bc89814ed849e7ab.png?type=l">
-															<img data-v-878ec45c="" alt="상품 이미지"
-																src="https://kream-phinf.pstatic.net/MjAyMjExMDRfMTE1/MDAxNjY3NTQzNTAxNjM3.ccTbGI3BCmqGlEnzB_VA6nchvPur-3_6zWSCKNBFN6sg.0KncqpKV16-ELLW-Sx05NQhmZZMv62ZcN-4kFRwZhUog.PNG/a_2bb917328b2a4bb4bc89814ed849e7ab.png?type=l"
+															<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="상품 이미지" 
+																src="${productDetailDTO.img5}"
 																loading="lazy" fetchpriority="high" class="image"></picture>
 															<!---->
 															<!---->
@@ -238,13 +218,11 @@
 							<div class="main_title_box" data-v-6e865099="">
 								<div data-v-6e865099="">
 									<a href="/brands/jordan" click.prevent="onClickBrand"
-										class="brand" data-v-6e865099=""> Jordan </a>
+										class="brand" data-v-6e865099="">${productDetailDTO.brand}</a>
 									<!---->
 								</div>
-								<p class="title" data-v-6e865099="">Jordan 1 Retro High OG
-									Chicago 2022</p>
-								<p class="sub_title" data-v-6e865099="">조던 1 레트로 하이 OG 시카고
-									2022</p>
+								<p class="title" data-v-6e865099="">${productDetailDTO.pname_e}</p>
+								<p class="sub_title" data-v-6e865099="">${productDetailDTO.pname_k}</p>
 							</div>
 						</div>
 						<div class="product_figure_wrap lg" data-v-3900a1a2="">
@@ -272,12 +250,13 @@
 								</div>
 								<div class="price" data-v-679b6792="">
 									<div class="amount" data-v-679b6792="">
-										<span class="num" data-v-679b6792="">419,000</span><span
+										<span class="num" data-v-679b6792="">${productDetailDTO.release_price}</span><span
 											class="won" data-v-679b6792="">원</span>
 									</div>
-									<div class="fluctuation increase" data-v-679b6792="">
+									<!-- 가격변화 추세 주석처리(임시) -->
+									<!-- <div class="fluctuation increase" data-v-679b6792="">
 										<p data-v-679b6792="">21,000원 (+5.3%)</p>
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>
@@ -320,20 +299,19 @@
 							<dl class="detail_product" data-v-b809b0a6="">
 								<div class="detail_box model_num" data-v-b809b0a6="">
 									<dt class="product_title" data-v-b809b0a6="">모델번호</dt>
-									<dd class="product_info" data-v-b809b0a6="">DZ5485-612</dd>
+									<dd class="product_info" data-v-b809b0a6="">${productDetailDTO.model_number}</dd>
 								</div>
 								<div class="detail_box" data-v-b809b0a6="">
 									<dt class="product_title" data-v-b809b0a6="">출시일</dt>
-									<dd class="product_info" data-v-b809b0a6="">22/12/01</dd>
+									<dd class="product_info" data-v-b809b0a6="">${productDetailDTO.release_date}</dd>
 								</div>
 								<div class="detail_box" data-v-b809b0a6="">
 									<dt class="product_title" data-v-b809b0a6="">컬러</dt>
-									<dd class="product_info" data-v-b809b0a6="">VARSITY
-										RED/BLACK/SAIL/MUSLIN</dd>
+									<dd class="product_info" data-v-b809b0a6="">${productDetailDTO.color}</dd>
 								</div>
 								<div class="detail_box" data-v-b809b0a6="">
 									<dt class="product_title" data-v-b809b0a6="">발매가</dt>
-									<dd class="product_info" data-v-b809b0a6="">209,000원</dd>
+									<dd class="product_info" data-v-b809b0a6="">${productDetailDTO.release_price}원</dd>
 								</div>
 							</dl>
 						</div>
@@ -1623,4 +1601,4 @@
 	<!---->
 </div>
 
-<%@ include file="/WEB-INF/views/footer.jsp"%>
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>
