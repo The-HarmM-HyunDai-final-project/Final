@@ -15,6 +15,11 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		class="com.theharmm.security.CustomLoginSuccessHandler">
 	</bean>
 
+	<!-- 이거는 로그아웃 하고 이전 url로 안돌아가서 안씀 -->
+	<bean id="customLogoutSuccess"
+		class="com.theharmm.security.CustomLogoutSuccessHandler">
+	</bean>
+
 	<bean id="bcryptPasswordEncoder"
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 
@@ -38,15 +43,26 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 			login-page="/member/loginpage"
 			authentication-success-handler-ref="customLoginSuccess" />
 
-		<!-- 로그아웃하면 세션을 날린다는 것 같음 -->
+		<!-- 로그아웃하면 세션다 날리고 customLogoutSuccess로 처리해서 이전 uri로 돌아가게끔! -> 그냥 핸들러 안쓰고 홈uri로 변경 -->
 		<security:logout logout-url="/member/myLogout"
-			invalidate-session="true" delete-cookies="JSESSION_ID" />
+			invalidate-session="true"
+			delete-cookies="JSESSION_ID"
+			logout-success-url="/"
+			 />
+
+		<!-- 권한이 없다든가 하는 경우 에러페이지를 보내줘야할 때 아래로 내가만든 경로로 보낼 수 있음 -->
+		<!-- 일단은 따로 없으니 보류 -->
+		<security:access-denied-handler
+			error-page="/member/accessError" />
+
 	</security:http>
 
 	<security:authentication-manager>
 
-		<security:authentication-provider user-service-ref="customUserDetailsService">
-			<security:password-encoder ref="bcryptPasswordEncoder" />
+		<security:authentication-provider
+			user-service-ref="customUserDetailsService">
+			<security:password-encoder
+				ref="bcryptPasswordEncoder" />
 		</security:authentication-provider>
 
 	</security:authentication-manager>
