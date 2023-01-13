@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>    
 <html lang="ko" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22ko%22%7D%7D">
 
 <head>
@@ -47,8 +48,9 @@
 <script async="" src="https://websdk.appsflyer.com?st=pba&amp;"></script>
 <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
 
-<!-- 제이쿼리 cdn -->   
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- 제이쿼리 cdn -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script data-n-head="ssr" type="application/ld+json">
         {
             "@context": "http://schema.org",
@@ -82,30 +84,51 @@
 <link rel="preload" href="/resources/4fbacaa.js" as="script">
 <link rel="preload" href="/resources/c348f6a.js" as="script">
 <link rel="preload" href="/resources/e6f69f8.js" as="script">
-<link rel="preload" href="${pageContext.request.contextPath}/resources/css/acdef89.css" as="style">
-<link rel="preload" href="${pageContext.request.contextPath}/resources/css/4a42468.css" as="style">
+<link rel="preload"
+	href="${pageContext.request.contextPath}/resources/css/acdef89.css"
+	as="style">
+<link rel="preload"
+	href="${pageContext.request.contextPath}/resources/css/4a42468.css"
+	as="style">
 <link rel="preload" href="/resources/b777585.js" as="script">
-<link rel="preload" href="${pageContext.request.contextPath}/resources/css/734fa9a.css" as="style">
+<link rel="preload"
+	href="${pageContext.request.contextPath}/resources/css/734fa9a.css"
+	as="style">
 <link rel="preload" href="/resources/1c84866.js" as="script">
 <link rel="preload" href="/resources/f33c07a.js" as="script">
-<link rel="preload" href="${pageContext.request.contextPath}/resources/css/325de86.css" as="style">
+<link rel="preload"
+	href="${pageContext.request.contextPath}/resources/css/325de86.css"
+	as="style">
 <link rel="preload" href="/resources/1b4c860.js" as="script">
-<link rel="preload" href="${pageContext.request.contextPath}/resources/css/a52fa45.css" as="style">
+<link rel="preload"
+	href="${pageContext.request.contextPath}/resources/css/a52fa45.css"
+	as="style">
 <link rel="preload" href="/resources/0baa4c5.js" as="script">
 <link rel="preload" href="/resources/4296a15.js" as="script">
-<link rel="preload" href="${pageContext.request.contextPath}/resources/css/48656c7.css" as="style">
+<link rel="preload"
+	href="${pageContext.request.contextPath}/resources/css/48656c7.css"
+	as="style">
 <link rel="preload" href="/resources/b64a9b6.js" as="script">
 <link rel="preload" href="/resources/ed97882.js" as="script">
-<link rel="preload" href="${pageContext.request.contextPath}/resources/css/ae12c7f.css" as="style">
+<link rel="preload"
+	href="${pageContext.request.contextPath}/resources/css/ae12c7f.css"
+	as="style">
 <link rel="preload" href="/resources/b78c628.js" as="script">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/acdef89.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/4a42468.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/734fa9a.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/325de86.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/a52fa45.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/48656c7.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ae12c7f.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/acdef89.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/4a42468.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/734fa9a.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/325de86.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/a52fa45.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/48656c7.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/ae12c7f.css">
 <style type="text/css">
 /*# sourceMappingURL=contenteditable.vue.map */
 </style>
@@ -132,24 +155,33 @@
 									class="top_link" data-v-147586e1=""> 고객센터 </a></li>
 								<li class="top_item" data-v-147586e1=""><a href="/my/wish"
 									class="top_link" data-v-147586e1=""> 관심상품 </a></li>
-								<li class="top_item" data-v-147586e1=""><a href="/member/my"
-									class="top_link" data-v-147586e1=""> 마이페이지 </a></li>
-									
+								<li class="top_item" data-v-147586e1=""><a
+									href="/member/my" class="top_link" data-v-147586e1="">
+										마이페이지 </a></li>
+
 								<!-- 로그인 안돼있으면 로그인버튼 -->
 								<sec:authorize access="isAnonymous()">
 									<li class="top_item" style="display:;" data-v-147586e1=""><a
-									href="/member/loginpage" class="top_link" data-v-147586e1=""> 로그인 </a></li>
+										href="/member/loginpage" class="top_link" data-v-147586e1="">
+											로그인 </a></li>
 								</sec:authorize>
 
 								<!-- 세션에 값이 있으면 로그아웃리으 출력 -->
 								<sec:authorize access="isAuthenticated()">
-									<li class="top_item" style="display: none;" data-v-147586e1=""><a
-									href="/" class="top_link" data-v-147586e1=""> 로그아웃 </a></li>
-									<form id='logoutAction' action="/member/customLogout" method='post'>
-										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+									<li class="top_item" data-v-147586e1=""><a 
+										href="javascript:logoutAction();" class="top_link" data-v-147586e1=""> 로그아웃 </a></li>
+									<form id='logoutAction' action="/member/myLogout"
+										method='post'>
+										<input type="hidden" name="${_csrf.parameterName}"
+											value="${_csrf.token}" />
 									</form>
 								</sec:authorize>
-								
+								<script>
+									function logoutAction(){
+										$("#logoutAction").submit();
+									}
+								</script>
+
 								<!-- <li class="top_item" style="display:;" data-v-147586e1=""><a
 									href="/member/loginpage" class="top_link" data-v-147586e1=""> 로그인 </a></li>
 								<li class="top_item" style="display: none;" data-v-147586e1=""><a
@@ -161,7 +193,8 @@
 						<div class="main_inner" data-v-147586e1="">
 							<h1 data-v-147586e1="">
 								<a href="/" aria-label="홈" class="logo" data-v-147586e1="">
-									<img src="${pageContext.request.contextPath}/resources/images/THEHAM.jpg"/>	
+									<img
+									src="${pageContext.request.contextPath}/resources/images/THEHAM.jpg" />
 								</a>
 							</h1>
 							<div class="gnb_area" data-v-147586e1="">
