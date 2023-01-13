@@ -12,6 +12,11 @@ import lombok.extern.log4j.Log4j;
 @ControllerAdvice
 public class MemberController {
 
+	@GetMapping("/join")
+	public String Join() {
+		return "/member/join";
+	}
+		
 	@GetMapping("/loginpage")
 	public void LoginPage() {
 		
