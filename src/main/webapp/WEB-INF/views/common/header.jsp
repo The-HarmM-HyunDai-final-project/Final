@@ -46,6 +46,9 @@
 	src="https://www.googletagmanager.com/gtag/js?id=UA-153398119-1&amp;l=dataLayer&amp;cx=c"></script>
 <script async="" src="https://websdk.appsflyer.com?st=pba&amp;"></script>
 <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
+
+<!-- 제이쿼리 cdn -->   
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script data-n-head="ssr" type="application/ld+json">
         {
             "@context": "http://schema.org",
@@ -131,10 +134,26 @@
 									class="top_link" data-v-147586e1=""> 관심상품 </a></li>
 								<li class="top_item" data-v-147586e1=""><a href="/member/my"
 									class="top_link" data-v-147586e1=""> 마이페이지 </a></li>
-								<li class="top_item" style="display:;" data-v-147586e1=""><a
+									
+								<!-- 로그인 안돼있으면 로그인버튼 -->
+								<sec:authorize access="isAnonymous()">
+									<li class="top_item" style="display:;" data-v-147586e1=""><a
+									href="/member/loginpage" class="top_link" data-v-147586e1=""> 로그인 </a></li>
+								</sec:authorize>
+
+								<!-- 세션에 값이 있으면 로그아웃리으 출력 -->
+								<sec:authorize access="isAuthenticated()">
+									<li class="top_item" style="display: none;" data-v-147586e1=""><a
+									href="/" class="top_link" data-v-147586e1=""> 로그아웃 </a></li>
+									<form id='logoutAction' action="/member/customLogout" method='post'>
+										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+									</form>
+								</sec:authorize>
+								
+								<!-- <li class="top_item" style="display:;" data-v-147586e1=""><a
 									href="/member/loginpage" class="top_link" data-v-147586e1=""> 로그인 </a></li>
 								<li class="top_item" style="display: none;" data-v-147586e1=""><a
-									href="/" class="top_link" data-v-147586e1=""> 로그아웃 </a></li>
+									href="/" class="top_link" data-v-147586e1=""> 로그아웃 </a></li> -->
 							</ul>
 						</div>
 					</div>
