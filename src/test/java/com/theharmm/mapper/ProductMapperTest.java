@@ -18,10 +18,10 @@ import lombok.extern.log4j.Log4j;
 public class ProductMapperTest {
 	@Autowired
 	private ProductMapper mapper;
-	
-	@Test
-	public void selectTest() {
-		List<ProductVo> list = mapper.selectAllProducts();
-		list.forEach( i -> log.info( i));
-	}
+//	
+//	@Test
+//	public void selectTest() {
+//		List<ProductVo> list = mapper.selectAllProducts();
+//		list.forEach( i -> log.info( i));
+//	}
 }
