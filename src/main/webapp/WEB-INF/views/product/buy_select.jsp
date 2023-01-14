@@ -115,12 +115,8 @@
                                  style="background-color: rgb(244, 244, 244);">
                                  <picture data-v-878ec45c="" data-v-09fbcf09=""
                                     class="picture product_img">
-                                 <source data-v-878ec45c="" type="image/webp"
-                                    srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjhfNTAg/MDAxNjcyMTkyNjE0NTQ5.QxO6lVphyqxuRIZnpbwqOV6ESMkV_AR4bhR4wSxhTzwg.Jjy2PoC7xiJD-VL41pl9foRfaTjvgOkGKpiT1tOkYrAg.JPEG/a_018da96e3e9447da930ab111f7605ab2.jpg?type=m_webp">
-                                 <source data-v-878ec45c=""
-                                    srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjhfNTAg/MDAxNjcyMTkyNjE0NTQ5.QxO6lVphyqxuRIZnpbwqOV6ESMkV_AR4bhR4wSxhTzwg.Jjy2PoC7xiJD-VL41pl9foRfaTjvgOkGKpiT1tOkYrAg.JPEG/a_018da96e3e9447da930ab111f7605ab2.jpg?type=m">
-                                 <img data-v-878ec45c="" alt="상품 이미지"
-                                    src="https://kream-phinf.pstatic.net/MjAyMjEyMjhfNTAg/MDAxNjcyMTkyNjE0NTQ5.QxO6lVphyqxuRIZnpbwqOV6ESMkV_AR4bhR4wSxhTzwg.Jjy2PoC7xiJD-VL41pl9foRfaTjvgOkGKpiT1tOkYrAg.JPEG/a_018da96e3e9447da930ab111f7605ab2.jpg?type=m"
+                                 <img data-v-878ec45c="" referrerpolicy="no-referrer" alt="상품 이미지"
+                                    src="${productDetailDTO.img1}"
                                     loading="lazy" class="image"></picture>
                                  <!---->
                                  <!---->
@@ -129,11 +125,9 @@
                               </div>
                            </div>
                            <div data-v-33a8744d="" class="product_detail">
-                              <p data-v-33a8744d="" class="code">10025391-A01</p>
-                              <p data-v-33a8744d="" class="name">Ader Error x Converse
-                                 Shapes Varsity Jacket Cobalt</p>
-                              <p data-v-33a8744d="" class="translated_name">아더에러 x 컨버스
-                                 쉐입스 바시티 자켓 코발트</p>
+                              <p data-v-33a8744d="" class="code">${productDetailDTO.model_number}</p>
+                              <p data-v-33a8744d="" class="name">${productDetailDTO.pname_e}</p>
+                              <p data-v-33a8744d="" class="translated_name">${productDetailDTO.pname_k}</p>
                               <!---->
                               <!---->
                            </div>
@@ -143,51 +137,25 @@
                               class="select_area lg">
                               <!---->
                               <ul data-v-28805923="" class="select_list">
-                                 <li data-v-28805923="" class="select_item"><button
-                                       data-v-28805923="" role="button" aria-selected="false"
-                                       class="select_link buy">
-                                       <div data-v-28805923="" class="link_inner">
-                                          <span data-v-28805923="" class="size">
-                                             <!----> S
-                                          </span><span data-v-28805923="" class="price">608,000</span>
-                                       </div>
-                                    </button></li>
-                                 <li data-v-28805923="" class="select_item"><button
-                                       data-v-28805923="" role="button" aria-selected="false"
-                                       class="select_link buy">
-                                       <div data-v-28805923="" class="link_inner">
-                                          <span data-v-28805923="" class="size">
-                                             <!----> M
-                                          </span><span data-v-28805923="" class="price">574,000</span>
-                                       </div>
-                                    </button></li>
-                                 <li data-v-28805923="" class="select_item"><button
-                                       data-v-28805923="" role="button" aria-selected="false"
-                                       class="select_link buy">
-                                       <div data-v-28805923="" class="link_inner">
-                                          <span data-v-28805923="" class="size">
-                                             <!----> L
-                                          </span><span data-v-28805923="" class="price">550,000</span>
-                                       </div>
-                                    </button></li>
-                                 <li data-v-28805923="" class="select_item"><button
-                                       data-v-28805923="" role="button" aria-selected="false"
-                                       class="select_link buy">
-                                       <div data-v-28805923="" class="link_inner">
-                                          <span data-v-28805923="" class="size">
-                                             <!----> XL
-                                          </span><span data-v-28805923="" class="price">575,000</span>
-                                       </div>
-                                    </button></li>
-                                 <li data-v-28805923="" class="select_item"><button
-                                       data-v-28805923="" role="button" aria-selected="false"
-                                       class="select_link buy">
-                                       <div data-v-28805923="" class="link_inner">
-                                          <span data-v-28805923="" class="size">
-                                             <!----> XXL
-                                          </span><span data-v-28805923="" class="price">518,000</span>
-                                       </div>
-                                    </button></li>
+									<c:forEach var="productSize" items="${productSizeList}">
+										<li data-v-28805923="" class="select_item">
+											<button data-v-28805923="" role="button" aria-selected="false" class="select_link buy">
+                                       		<div data-v-28805923="" class="link_inner">
+                                          		<span data-v-28805923="" class="size">
+                                            	 <!----> ${productSize.model_size}
+                                          		</span>
+                                          		<span data-v-28805923="" class="price">
+	                                          		<c:if test="${productSize.price eq 0}">
+	    												<c:out value="구매입찰" />
+	    											</c:if>
+	    											<c:if test="${productSize.price ne 0}">
+	    												<fmt:formatNumber type="number" maxFractionDigits="3" value="${productSize.price}" />
+	    											</c:if>
+                                          		</span>
+                                       		</div>
+                                    		</button>
+                                    	</li>
+									</c:forEach>
                               </ul>
                            </div>
                            <!---->
