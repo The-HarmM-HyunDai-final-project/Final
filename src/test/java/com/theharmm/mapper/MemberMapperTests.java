@@ -36,7 +36,7 @@ public class MemberMapperTests {
 		log.warn("---------------------pw------------" + password);
 		
 		MemberVO member = new MemberVO();
-		member.setMember_email("asd");
+		member.setMember_email("asd@naver.com");
 		member.setMember_password(password);
 		member.setMember_name("¹Ú¿©¸í");
 		member.setMember_nickname("¿©¶ò");
