@@ -9,6 +9,10 @@ public interface MemberMapper {
 	public int joinMember(MemberVO member);
 	//회원가입에서 인증까지 주기
 	public int joinMemberAuthority(AuthVO auth);
+	//이메일 중복 여부
+	public int checkEmail(MemberVO member);
+	//닉네임 중복 여부
+	public int checkNickName(MemberVO member);
 	//로그인
 	public MemberVO login(MemberVO member);
 	//회원정보, 인증 가져오기

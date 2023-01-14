@@ -30,7 +30,25 @@ public class MemberServiceTests {
 	@Autowired
 	private MemberService service;
 	
+	//이메일 중복확인
+	//@Test
+	public void checkEmail() throws Exception{
+		MemberVO member = new MemberVO();
+		member.setMember_email("asd");
+		
+		log.info(" 이메일은 중복? :" + service.checkEmail(member));
+	}
+	
+	//닉네임 중복확인
 	@Test
+	public void checkNickName() throws Exception{
+		MemberVO member = new MemberVO();
+		member.setMember_nickname("여띵");
+		
+		log.info(" 닉네임 중복? :" + service.checkNickName(member));
+	}
+	
+	//@Test
 	public void Join() throws Exception{
 		BCryptPasswordEncoder scpwd = new BCryptPasswordEncoder();
 		String password = scpwd.encode("asd");

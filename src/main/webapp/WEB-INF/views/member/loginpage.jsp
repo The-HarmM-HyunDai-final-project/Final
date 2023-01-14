@@ -51,7 +51,7 @@
 				</div>
 
 				<ul class="look_box" data-v-464f7370="">
-					<li class="look_list" data-v-464f7370=""><a href="/join"
+					<li class="look_list" data-v-464f7370=""><a href="/member/join"
 						class="look_link" data-v-464f7370=""> 이메일 가입 </a></li>
 					<li class="look_list" data-v-464f7370=""><a
 						href="/login/find_email" class="look_link" data-v-464f7370="">
