@@ -72,7 +72,7 @@
 				<h3 data-v-429a8655="" data-v-1c44afeb="" class="input_title">신발
 					사이즈</h3>
 				<div data-v-1c44afeb="" class="input_item">
-					<input data-v-1c44afeb="" type="text" placeholder="숫자만 입력하세요"
+					<input data-v-1c44afeb="" id="input_shosesize" type="text" placeholder="숫자만 입력하세요"
 						autocomplete="off" class="input_txt hover">
 					<!-- <button data-v-575aff82="" data-v-429a8655="" type="button"
 						class="btn btn_size_select" data-v-1c44afeb="">
@@ -203,7 +203,7 @@
 					</div>
 				</div>
 			</div>
-			<a data-v-575aff82="" data-v-429a8655="" disabled="disabled" href="#"
+			<a data-v-575aff82="" id="joinBtn" data-v-429a8655="" href="javascript:void(0)"
 				class="btn btn_join full solid disabled"> 가입하기 </a>
 		</div>
 		<div data-v-1a009402="" data-v-feb03f9c="" data-v-429a8655=""
@@ -1469,6 +1469,9 @@
 </div>
 <script>
 	$(document).ready(function(){
+		
+		var checkEmail = false;
+		var checkNickName = false;
 		//Email 입력 변경시 이벤트 (이메일 형식 검사 + 중복검사 진행)
 		var prevEmail = '';
 		$("#input_email").on("propertychange change keyup paste input", function() {
@@ -1495,14 +1498,16 @@
 						success: function(result){			//result는 controller에서 넘어 온 결과 값
 							console.log(result);
 							if(result == 'true'){//사용가능
+								checkEmail = true;
 								//아닐 경우 주변을 붉게 만들어버렷!
-								$('#input_email').css('border-bottom-color','#ebebeb');
+								$('#input_email').css('border-bottom-color','#222');
 								$("#title_email").css('color', '#222');
 								//경고메시지를 안보여지게 
 								if($("#error_email").css('display')=='block'){
 									$("#error_email").css('display', 'none');
 								}
 							} else {//사용 불가능
+								checkEmail = false;
 								//아닐 경우 주변을 붉게 만들어버렷!
 								$('#input_email').css('border-bottom-color','#f15746');
 								$("#title_email").css('color', '#f15746');
@@ -1556,8 +1561,9 @@
 					success: function(result){			//result는 controller에서 넘어 온 결과 값
 						console.log(result);
 						if(result == 'true'){			//사용가능
+							checkNickName = true;
 							//아닐 경우 주변을 붉게 만들어버렷!
-							$('#input_nickname').css('border-bottom-color','#ebebeb');
+							$('#input_nickname').css('border-bottom-color','#222');
 							$("#title_nickname").css('color', '#222');
 							//경고메시지를 안보여지게 
 							if($("#error_nickname").css('display')=='block'){
@@ -1565,6 +1571,7 @@
 							}
 						} else {						//사용 불가능
 							//아닐 경우 주변을 붉게 만들어버렷!
+							checkNickName = false;
 							$('#input_nickname').css('border-bottom-color','#f15746');
 							$("#title_nickname").css('color', '#f15746');
 							$("#error_nickname").text("이미 사용 중인 닉네임입니다.")
@@ -1582,7 +1589,32 @@
 				});
 			}
 		});
+		
+		//가입버튼 눌렀을시 항목 모두 조건에 맞게 채웠는지 확인후 가입절차 밟기
+		$("#joinBtn").click(function(){
+			//모든 항목들이 잘 입력 되어있는지 확인
+			//var input_email = $("#input_email").val();
+			var input_pw = $("#input_pw").val();
+			var input_name = $("#input_name").val();
+			//var input_nickname = $("#input_nickname").val();
+			var input_phone = $("#input_phone").val();
+			var input_shosesize = $("#input_shosesize").val();
+			
+			console.log(checkEmail);
+			console.log(checkNickName);
+			console.log(input_name);
+			//하나라도 하자가 있다면 안된다고 경고 
+			if(checkEmail && checkNickName && input_pw && input_name  && input_phone && input_shosesize){
+				//여기에 컨트롤러로 회원가입하는 로직 채우기
+				
+			}else{
+				alert("모든 항목을 알맞게 채워주세요!");
+			}
+		});
+		
 	});
 
+
+	
 </script>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
