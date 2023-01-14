@@ -1,5 +1,7 @@
 package com.theharmm.dto.product;
 
+import java.sql.Date;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +14,9 @@ public class BuyDTO {
 	private int pid; 
 	private int price; 
 	private String size_type; 
-	private String b; 
-	
+	private String status1;
+	private String status2;
+	private String status3;
+	private Date regdate;
+	private int member_sale_no;  
 }
