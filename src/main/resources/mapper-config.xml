@@ -14,5 +14,7 @@
 	<typeAliases>
 		<typeAlias alias="ProductDetailDTO"
 			type="com.theharmm.dto.product.ProductDetailDTO" />
+		<typeAlias alias="ProductSizeDTO"
+			type="com.theharmm.dto.product.ProductSizeDTO" />
 	</typeAliases>
 </configuration>
