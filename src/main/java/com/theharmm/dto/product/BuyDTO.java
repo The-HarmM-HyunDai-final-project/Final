@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Data 
 @NoArgsConstructor
-public class PurchaseDTO {
+public class BuyDTO {
 
 	private String buyid; 
 	private String member_email; 
@@ -13,6 +13,5 @@ public class PurchaseDTO {
 	private int price; 
 	private String size_type; 
 	private String b; 
-	private String buyid; 
 	
 }

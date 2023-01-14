@@ -11,13 +11,13 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Controller
-@RequestMapping("/purchase/*")
+@RequestMapping("/buy/*")
 @RequiredArgsConstructor
-public class PurchaseController {
+public class BuyController {
 
 	@GetMapping("/{pid}")
-	 public String  selectProductPrice(@PathVariable int pid, Model model) {
+	 public String selectProductPrice(@PathVariable int pid, Model model) {
 		log.info("selectProductPrice 실행");
-		
+		return "";
 	}
 }
