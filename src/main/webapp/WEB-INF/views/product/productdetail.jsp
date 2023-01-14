@@ -264,7 +264,7 @@
 						<div data-v-3900a1a2="" class="btn_wrap">
 							<div data-v-23bbaa82="" data-v-3900a1a2=""
 								class="division_btn_box lg">
-								<a data-v-23bbaa82="" href="#" class="btn_division buy"><strong
+								<a data-v-23bbaa82="" href="/buy/select/${productDetailDTO.pid}?size=${size}" class="btn_division buy"><strong
 									data-v-23bbaa82="" class="title">구매</strong>
 									<div data-v-23bbaa82="" class="price">
 										<span data-v-23bbaa82="" class="amount"><em
@@ -673,7 +673,7 @@
 									class="wish_count_num" data-v-2d0ab5c1="">3.2만</span></a>
 								<div class="division_btn_box lg" data-v-23bbaa82=""
 									data-v-07cd4e36="">
-									<a href="#" class="btn_division buy" data-v-23bbaa82=""><strong
+									<a href="/buy/select/${productDetailDTO.pid}?size=${size}" class="btn_division buy" data-v-23bbaa82=""><strong
 										class="title" data-v-23bbaa82="">구매</strong>
 										<div class="price" data-v-23bbaa82="">
 											<span class="amount" data-v-23bbaa82=""><em

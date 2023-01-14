@@ -36,6 +36,8 @@ public class BuyController {
 		log.info("selectBuyProductSize 실행");
 		ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 		List<ProductSizeDTO> productSizeList = productDetailService.selectProductSizeList(productDetailDTO);
+		log.info("productDetailDTO : "+productDetailDTO.toString());
+		log.info("productSizeList : "+ productSizeList.toString());
 		
 		model.addAttribute("productDetailDTO",productDetailDTO);
 		model.addAttribute("productSizeList",productSizeList);
@@ -53,6 +55,9 @@ public class BuyController {
 		productInfoMap.put("size", size);
 		productInfoMap.put("pid", productDetailDTO.getPid());
 		ProductSizeDTO productSizeDTO = productDetailService.selectProductSize(productInfoMap);
+		
+		log.info("productDetailDTO : "+productDetailDTO.toString());
+		log.info("productSizeDTO : "+ productSizeDTO.toString());
 		
 		model.addAttribute("productDetailDTO",productDetailDTO);
 		model.addAttribute("productSizeDTO",productSizeDTO);
