@@ -10,6 +10,7 @@
 	<div class="content" data-v-01e212dd="">
 		<h2 class="blind" data-v-01e212dd="">상품 상세</h2>
 		<div class="column_bind" data-v-01e212dd="">
+			
 			<div class="column is_fixed" data-v-01e212dd="">
 				<div class="spread" data-v-01e212dd=""></div>
 				<div class="column_box" data-v-01e212dd="">
@@ -319,37 +320,12 @@
 					<div class="delivery_way_wrap" data-v-3900a1a2="">
 						<h3 class="detail_title lg" data-v-52dd777b="" data-v-3900a1a2="">
 							배송 정보</h3>
+						
 						<div class="delivery_way" data-v-3584e297="" data-v-3900a1a2="">
 							<div class="way_info" data-v-3584e297="">
 								<div class="way_status_thumb" data-v-3584e297="">
 									<img
-										src="https://kream-phinf.pstatic.net/MjAyMTExMjFfMjU5/MDAxNjM3NDczNzU0MjA1.ON3pvFYAq_xSSaNWDgUWe1YfIx-C0fm91PDtcsUn3AEg.Q4EbbNWl_ua916jg0NQ0dWOS3h7W9eiiI2kK9YPWlgwg.PNG/a_120a84f036724d0d97a2343aafff4ecf.png"
-										alt="5,000원" class="way_img" data-v-3584e297="">
-								</div>
-								<div class="way_desc" data-v-3584e297="">
-									<p class="company" data-v-3584e297="">
-										<span class="badge_title" data-v-3584e297="">빠른배송 </span><span
-											class="title" data-v-3584e297="">5,000원</span><span
-											role="button" aria-label="배송안내" data-v-3584e297=""><svg
-												xmlns="http://www.w3.org/2000/svg"
-												class="ico-help icon sprite-icons" data-v-3584e297="">
-												<use
-													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-help"
-													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-help"
-													data-v-3584e297=""></use></svg></span>
-									</p>
-									<p class="sub_text" data-v-3584e297="">
-										지금 결제시 <em>내일 1/12(목) 도착 예정</em>
-									</p>
-								</div>
-							</div>
-							<!---->
-						</div>
-						<div class="delivery_way" data-v-3584e297="" data-v-3900a1a2="">
-							<div class="way_info" data-v-3584e297="">
-								<div class="way_status_thumb" data-v-3584e297="">
-									<img
-										src="https://kream-phinf.pstatic.net/MjAyMTExMjlfMTQ4/MDAxNjM4MTc4MjI5NTk3.2phJLPtRvFqViNfhZu06HzNRiUBlT4cmZR4_Ukqsyesg.ikrfWOrL7WXCVO0Rqy5kMvOn3B2YpjLUj6RuJqosPX0g.PNG/a_8b54cbca40e945f4abf1ee24bdd031f7.png"
+										src="${pageContext.request.contextPath}/resources/images/delivery.jpg"
 										alt="3,000원" class="way_img" data-v-3584e297="">
 								</div>
 								<div class="way_desc" data-v-3584e297="">
@@ -364,31 +340,7 @@
 							</div>
 							<!---->
 						</div>
-						<div class="delivery_way" data-v-3584e297="" data-v-3900a1a2="">
-							<div class="way_info" data-v-3584e297="">
-								<div class="way_status_thumb" data-v-3584e297="">
-									<img
-										src="https://kream-phinf.pstatic.net/MjAyMTExMjFfMjE5/MDAxNjM3NDczODM5MTg0.K9c0FOdeJAbdW_bXJhclA3yN45iwcP4kpqkaspFLEJAg.TeEwjmB0EDj7ll3uQVR4GRw5IRVCpQ8-iiibQEMf-KYg.PNG/a_f82951f1984b404db30b9c4fca4bd695.png"
-										alt="첫 30일 무료" class="way_img" data-v-3584e297="">
-								</div>
-								<div class="way_desc" data-v-3584e297="">
-									<p class="company" data-v-3584e297="">
-										<span class="badge_title" data-v-3584e297="">창고보관 </span><span
-											class="title" data-v-3584e297="">첫 30일 무료</span><span
-											role="button" aria-label="배송안내" data-v-3584e297=""><svg
-												xmlns="http://www.w3.org/2000/svg"
-												class="ico-help icon sprite-icons" data-v-3584e297="">
-												<use
-													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-help"
-													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-help"
-													data-v-3584e297=""></use></svg></span>
-									</p>
-									<p class="sub_text" data-v-3584e297="">배송 없이 창고에 보관 ・ 빠르게
-										판매 가능</p>
-								</div>
-							</div>
-							<!---->
-						</div>
+						
 					</div>
 
 					<div class="detail_wrap" data-v-3900a1a2=""

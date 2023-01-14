@@ -18,8 +18,5 @@ import lombok.extern.log4j.Log4j;
 public class ProductService {
 	private ProductMapper mapper;
 	
-	// 제품 코드로 제품 별 색상 가져오기
-//	public List<ProductPageDTO> getAllProduct(Criteria cri) {
-//		/* return mapper.selectAllProducts(); */
-//	}
+
 }
