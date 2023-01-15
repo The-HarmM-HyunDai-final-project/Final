@@ -16,6 +16,11 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String main() {
+		return "home";
+	}
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -28,6 +33,18 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "product/productlist";
+		return "main";
 	}	
+	
+	@RequestMapping("/test")
+	public String test() {
+		logger.info("test 실행");
+		return "/test";
+	}
+	
+	@RequestMapping("/social")
+	public String social() {
+		logger.info("social 실행");
+		return "/social_user";
+	}
 }

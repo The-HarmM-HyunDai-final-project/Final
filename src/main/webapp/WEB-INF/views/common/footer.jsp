@@ -911,16 +911,7 @@
 						"내용", "none", "최근 2개월", "lastTwoMonths", "2022-11-11",
 						"2023-01-11", -1));
 	</script>
-	<script src="${pageContext.request.contextPath}/resources/4fbacaa.js" defer=""></script>
-	<script src="${pageContext.request.contextPath}/resources/1c84866.js" defer=""></script>
-	<script src="${pageContext.request.contextPath}/resources/f33c07a.js" defer=""></script>
-	<script src="${pageContext.request.contextPath}/resources/1b4c860.js" defer=""></script>
-	<script src="${pageContext.request.contextPath}/resources/0baa4c5.js" defer=""></script>
-	<script src="${pageContext.request.contextPath}/resources/4296a15.js" defer=""></script>
-	<script src="${pageContext.request.contextPath}/resources/f985a3f.js" defer=""></script>
-	<script src="${pageContext.request.contextPath}/resources/c348f6a.js" defer=""></script>
-	<script src="${pageContext.request.contextPath}/resources/e6f69f8.js" defer=""></script>
-	<script src="${pageContext.request.contextPath}/resources/b777585.js" defer=""></script>
+
 
 
 	<link href="${pageContext.request.contextPath}/resources/css/325de86.css" rel="stylesheet" type="text/css">

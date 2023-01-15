@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:security="http://www.springframework.org/schema/security" xmlns:context="http://www.springframework.org/schema/context" 
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd 
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd"> -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="customLoginSuccess"
+		class="com.theharmm.security.CustomLoginSuccessHandler">
+	</bean>
+
+	<!-- 이거는 로그아웃 하고 이전 url로 안돌아가서 안씀 -->
+	<bean id="customLogoutSuccess"
+		class="com.theharmm.security.CustomLogoutSuccessHandler">
+	</bean>
+
+	<bean id="bcryptPasswordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
+	<!-- 인증 provider가 사용할 custom한 detailService 빈으로 만들기! -->
+	<bean id="customUserDetailsService"
+		class="com.theharmm.security.CustomUserDetailsService">
+	</bean>
+
+	<security:http>
+
+
+		<security:intercept-url pattern="/*"
+			access="permitAll" />
+
+		<security:intercept-url pattern="/member/my"
+			access="hasRole('ROLE_MEMBER')" />
+
+		<!-- 로그인 할 일이 있다면 member/loginpage로 보내고 인증 확인을 customLoginSuccess 핸들러가 
+			받아서 처리 -->
+		<security:form-login
+			login-page="/member/loginpage"
+			authentication-success-handler-ref="customLoginSuccess" />
+
+		<!-- 로그아웃하면 세션다 날리고 customLogoutSuccess로 처리해서 이전 uri로 돌아가게끔! -> 그냥 핸들러 안쓰고 홈uri로 변경 -->
+		<security:logout logout-url="/member/myLogout"
+			invalidate-session="true"
+			delete-cookies="JSESSION_ID"
+			logout-success-url="/"
+			 />
+
+		<!-- 권한이 없다든가 하는 경우 에러페이지를 보내줘야할 때 아래로 내가만든 경로로 보낼 수 있음 -->
+		<!-- 일단은 따로 없으니 보류 -->
+		<security:access-denied-handler
+			error-page="/member/accessError" />
+
+	</security:http>
+
+	<security:authentication-manager>
+
+		<security:authentication-provider
+			user-service-ref="customUserDetailsService">
+			<security:password-encoder
+				ref="bcryptPasswordEncoder" />
+		</security:authentication-provider>
+
+	</security:authentication-manager>
+
+</beans>
