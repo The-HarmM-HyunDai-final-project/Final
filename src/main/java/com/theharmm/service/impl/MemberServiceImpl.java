@@ -21,7 +21,7 @@ public class MemberServiceImpl implements MemberService{
 	private MemberMapper mapper;
 	//회원가입 (회원과 인증테이블 동시에 값을 넣음)
 	@Override
-	public void joinMember(MemberVO member) {
+	public int joinMember(MemberVO member) {
 		//위의 어노테이션으로 하나의 Transaction으로 묶임
 		//따라서 둘중 하나의 테이블에만 삽입 되었을때 다 취소 
 		
@@ -34,6 +34,8 @@ public class MemberServiceImpl implements MemberService{
 		if( result1 == 1 && result2 == 1) {
 			log.info("회원가입이 잘 되었네용");
 		}
+		
+		return result1 + result2;
 	}
 	//이메일 중복 체크
 	@Override

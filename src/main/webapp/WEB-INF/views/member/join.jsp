@@ -7,204 +7,207 @@
 <div data-v-429a8655="" data-v-3007c576="" class="container join">
 	<div data-v-429a8655="" class="content md">
 		<div data-v-429a8655="" class="join_area">
-			<h2 data-v-429a8655="" class="join_title">회원가입</h2>
-			
-			<div data-v-1c44afeb="" data-v-429a8655="" class="input_box">
-				<h3 data-v-429a8655="" id="title_email" data-v-1c44afeb="" class="input_title ess">이메일
-					주소</h3>
-				<div data-v-1c44afeb="" class="input_item">
-					<input data-v-1c44afeb="" id="input_email" type="email"
-						placeholder="예) kream@kream.co.kr" autocomplete="off"
-						class="input_txt">
+			<form method="post" action="/member/joinAction" id="joinForm">
+				<h2 data-v-429a8655="" class="join_title">회원가입</h2>
+				<!-- 이메일 -->
+				<div data-v-1c44afeb="" data-v-429a8655="" class="input_box">
+					<h3 data-v-429a8655="" id="title_email" data-v-1c44afeb="" class="input_title ess">이메일
+						주소</h3>
+					<div data-v-1c44afeb="" class="input_item">
+						<input data-v-1c44afeb="" id="input_email" type="email"
+							placeholder="예) kream@kream.co.kr" autocomplete="off" name="newEmail" class="input_txt">
+					</div>
+					<p data-v-429a8655="" id="error_email" data-v-1c44afeb="" class="input_error" style="font-size: 11px; color: #f15746" ></p>
 				</div>
-				<p data-v-429a8655="" id="error_email" data-v-1c44afeb="" class="input_error" style="font-size: 11px; color: #f15746" ></p>
-			</div>
-			<!-- 비밀번호-->
-			<div data-v-1c44afeb="" data-v-429a8655=""
-				class="input_box has_button">
-				<h3 data-v-429a8655="" data-v-1c44afeb="" class="input_title ess">비밀번호</h3>
-				<div data-v-1c44afeb="" class="input_item">
-					<input data-v-1c44afeb="" id="input_pw" type="password"
-						placeholder="영문, 숫자, 특수문자 조합 8-16자" autocomplete="off"
-						class="input_txt">
+				<!-- 비밀번호-->
+				<div data-v-1c44afeb="" data-v-429a8655=""
+					class="input_box has_button">
+					<h3 data-v-429a8655="" data-v-1c44afeb="" class="input_title ess">비밀번호</h3>
+					<div data-v-1c44afeb="" class="input_item">
+						<input data-v-1c44afeb="" id="input_pw" type="password"
+							placeholder="영문, 숫자, 특수문자 조합 8-16자" autocomplete="off"
+							class="input_txt" name="newPwd" >
+					</div>
+					<p data-v-429a8655="" data-v-1c44afeb="" class="input_error">
+						영문, 숫자, 특수문자를 조합하여 입력해주세요. (8-16자)</p>
 				</div>
-				<p data-v-429a8655="" data-v-1c44afeb="" class="input_error">
-					영문, 숫자, 특수문자를 조합하여 입력해주세요. (8-16자)</p>
-			</div>
-			<!-- 이름-->
-			<div data-v-1c44afeb="" data-v-429a8655=""
-				class="input_box has_button">
-				<h3 data-v-429a8655="" data-v-1c44afeb="" class="input_title ess">이름</h3>
-				<div data-v-1c44afeb="" class="input_item">
-					<input data-v-1c44afeb=""  id="input_name" type="text"
-						placeholder="예) 홍길동" autocomplete="off"
-						class="input_txt">
+				<!-- 이름-->
+				<div data-v-1c44afeb="" data-v-429a8655=""
+					class="input_box has_button">
+					<h3 data-v-429a8655="" data-v-1c44afeb="" class="input_title ess">이름</h3>
+					<div data-v-1c44afeb="" class="input_item">
+						<input data-v-1c44afeb=""  id="input_name" type="text"
+							placeholder="예) 홍길동" autocomplete="off"
+							class="input_txt" name="newName">
+					</div>
+					<p data-v-429a8655="" data-v-1c44afeb="" class="input_error">
+						올바르게 입력해주세요. (8-16자)</p>
 				</div>
-				<p data-v-429a8655="" data-v-1c44afeb="" class="input_error">
-					올바르게 입력해주세요. (8-16자)</p>
-			</div>
-			<!-- 닉네임-->
-			<div data-v-1c44afeb="" data-v-429a8655=""
-				class="input_box has_button">
-				<h3 data-v-429a8655="" id="title_nickname" data-v-1c44afeb="" class="input_title ess">닉네임</h3>
-				<div data-v-1c44afeb="" class="input_item">
-					<input data-v-1c44afeb="" id="input_nickname" type="text"
-						placeholder="예) 울랄랄랄라" autocomplete="off"
-						class="input_txt">
+				<!-- 닉네임-->
+				<div data-v-1c44afeb="" data-v-429a8655=""
+					class="input_box has_button">
+					<h3 data-v-429a8655="" id="title_nickname" data-v-1c44afeb="" class="input_title ess">닉네임</h3>
+					<div data-v-1c44afeb="" class="input_item">
+						<input data-v-1c44afeb="" id="input_nickname" type="text"
+							placeholder="예) 울랄랄랄라" autocomplete="off"
+							class="input_txt" name="newNickName">
+					</div>
+					<p data-v-429a8655="" id="error_nickname" data-v-1c44afeb="" class="input_error" style="font-size: 11px; color: #f15746">
+						이미 사용 중인 닉네임입니다.</p>
 				</div>
-				<p data-v-429a8655="" id="error_nickname" data-v-1c44afeb="" class="input_error" style="font-size: 11px; color: #f15746">
-					이미 사용 중인 닉네임입니다.</p>
-			</div>
-			<!-- 핸드폰번호 -->
-			<div data-v-1c44afeb="" data-v-429a8655=""
-				class="input_box has_button">
-				<h3 data-v-429a8655="" data-v-1c44afeb="" class="input_title ess">핸드폰번호</h3>
-				<div data-v-1c44afeb="" class="input_item">
-					<input data-v-1c44afeb="" id="input_phone" type="text"
-						placeholder="-를 뺴고 입력" autocomplete="off"
-						class="input_txt">
+				<!-- 핸드폰번호 -->
+				<div data-v-1c44afeb="" data-v-429a8655=""
+					class="input_box has_button">
+					<h3 data-v-429a8655="" data-v-1c44afeb="" class="input_title ess">핸드폰번호</h3>
+					<div data-v-1c44afeb="" class="input_item">
+						<input data-v-1c44afeb="" id="input_phone" type="text"
+							placeholder="-를 뺴고 입력" autocomplete="off"
+							class="input_txt" name="newPhone">
+					</div>
+					<p data-v-429a8655="" data-v-1c44afeb="" class="input_error">
+						영문, 숫자, 특수문자를 조합하여 입력해주세요. (8-16자)</p>
 				</div>
-				<p data-v-429a8655="" data-v-1c44afeb="" class="input_error">
-					영문, 숫자, 특수문자를 조합하여 입력해주세요. (8-16자)</p>
-			</div>
-			<!-- 사이즈 -->
-			<div data-v-1c44afeb="" data-v-429a8655="" class="input_box">
-				<h3 data-v-429a8655="" data-v-1c44afeb="" class="input_title">신발
-					사이즈</h3>
-				<div data-v-1c44afeb="" class="input_item">
-					<input data-v-1c44afeb="" id="input_shosesize" type="text" placeholder="숫자만 입력하세요"
-						autocomplete="off" class="input_txt hover">
-					<!-- <button data-v-575aff82="" data-v-429a8655="" type="button"
-						class="btn btn_size_select" data-v-1c44afeb="">
-						<svg data-v-429a8655="" xmlns="http://www.w3.org/2000/svg"
-							class="ico-arr-right icon sprite-icons">
-							<use data-v-429a8655=""
-								href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-right"
-								xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-right"></use></svg>
-					</button> -->
-				</div>
-			</div>
-			<div data-v-429a8655="" class="join_terms">
-				<div data-v-429a8655="" class="terms_box">
-					<div data-v-429a8655="" class="check_main">
-						<div data-v-4c714e9f="" data-v-429a8655="" class="checkbox_item">
-							<input data-v-4c714e9f="" id="group_check_1" type="checkbox"
-								name="" class="blind"><label data-v-4c714e9f=""
-								for="group_check_1" class="check_label"><svg
-									data-v-4c714e9f="" xmlns="http://www.w3.org/2000/svg"
-									class="icon sprite-icons ico-check-active">
-									<use data-v-4c714e9f=""
-										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"
-										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"></use></svg><span
-								data-v-4c714e9f="" class="label_txt">[필수] 만 14세 이상이며 모두
-									동의합니다.</span>
-							<!----></label>
-						</div>
-						<button data-v-575aff82="" data-v-429a8655="" type="button"
-							class="btn">
+				<!-- 사이즈 -->
+				<div data-v-1c44afeb="" data-v-429a8655="" class="input_box">
+					<h3 data-v-429a8655="" data-v-1c44afeb="" class="input_title">신발
+						사이즈</h3>
+					<div data-v-1c44afeb="" class="input_item">
+						<input data-v-1c44afeb="" id="input_shosesize" type="text" placeholder="숫자만 입력하세요"
+							autocomplete="off" class="input_txt hover" name="newShoes">
+						<!-- <button data-v-575aff82="" data-v-429a8655="" type="button"
+							class="btn btn_size_select" data-v-1c44afeb="">
 							<svg data-v-429a8655="" xmlns="http://www.w3.org/2000/svg"
-								class="icon sprite-icons ico-plus">
+								class="ico-arr-right icon sprite-icons">
 								<use data-v-429a8655=""
-									href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-plus"
-									xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-plus"></use></svg>
-						</button>
+									href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-right"
+									xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-right"></use></svg>
+						</button> -->
 					</div>
-					<div data-v-429a8655="" class="check_sub">
-						<div data-v-4c714e9f="" data-v-429a8655="" class="checkbox_item">
-							<input data-v-4c714e9f="" id="agreement" type="checkbox" name=""
-								class="blind"><label data-v-4c714e9f="" for="agreement"
-								class="check_label"><svg data-v-4c714e9f=""
-									xmlns="http://www.w3.org/2000/svg"
-									class="icon sprite-icons ico-check-active">
-									<use data-v-4c714e9f=""
-										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"
-										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"></use></svg><span
-								data-v-4c714e9f="" class="label_txt">이용약관 동의</span>
-							<!----></label><a data-v-429a8655="" data-v-4c714e9f="" href="#"
-								class="btn_view"> 내용 보기 </a>
+				</div>
+				<div data-v-429a8655="" class="join_terms">
+					<div data-v-429a8655="" class="terms_box">
+						<div data-v-429a8655="" class="check_main">
+							<div data-v-4c714e9f="" data-v-429a8655="" class="checkbox_item">
+								<input data-v-4c714e9f="" id="group_check_1" type="checkbox"
+									name="" class="blind"><label data-v-4c714e9f=""
+									for="group_check_1" class="check_label"><svg
+										data-v-4c714e9f="" xmlns="http://www.w3.org/2000/svg"
+										class="icon sprite-icons ico-check-active">
+										<use data-v-4c714e9f=""
+											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"
+											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"></use></svg><span
+									data-v-4c714e9f="" class="label_txt">[필수] 만 14세 이상이며 모두
+										동의합니다.</span>
+								<!----></label>
+							</div>
+							<button data-v-575aff82="" data-v-429a8655="" type="button"
+								class="btn">
+								<svg data-v-429a8655="" xmlns="http://www.w3.org/2000/svg"
+									class="icon sprite-icons ico-plus">
+									<use data-v-429a8655=""
+										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-plus"
+										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-plus"></use></svg>
+							</button>
 						</div>
-						<div data-v-4c714e9f="" data-v-429a8655="" class="checkbox_item">
-							<input data-v-4c714e9f="" id="privacy" type="checkbox" name=""
-								class="blind"><label data-v-4c714e9f="" for="privacy"
-								class="check_label"><svg data-v-4c714e9f=""
-									xmlns="http://www.w3.org/2000/svg"
-									class="icon sprite-icons ico-check-active">
-									<use data-v-4c714e9f=""
-										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"
-										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"></use></svg><span
-								data-v-4c714e9f="" class="label_txt">개인정보 수집 및 이용 동의</span>
-							<!----></label><a data-v-429a8655="" data-v-4c714e9f="" href="#"
-								class="btn_view"> 내용 보기 </a>
+						<div data-v-429a8655="" class="check_sub">
+							<div data-v-4c714e9f="" data-v-429a8655="" class="checkbox_item">
+								<input data-v-4c714e9f="" id="agreement" type="checkbox" name=""
+									class="blind"><label data-v-4c714e9f="" for="agreement"
+									class="check_label"><svg data-v-4c714e9f=""
+										xmlns="http://www.w3.org/2000/svg"
+										class="icon sprite-icons ico-check-active">
+										<use data-v-4c714e9f=""
+											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"
+											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"></use></svg><span
+									data-v-4c714e9f="" class="label_txt">이용약관 동의</span>
+								<!----></label><a data-v-429a8655="" data-v-4c714e9f="" href="#"
+									class="btn_view"> 내용 보기 </a>
+							</div>
+							<div data-v-4c714e9f="" data-v-429a8655="" class="checkbox_item">
+								<input data-v-4c714e9f="" id="privacy" type="checkbox" name=""
+									class="blind"><label data-v-4c714e9f="" for="privacy"
+									class="check_label"><svg data-v-4c714e9f=""
+										xmlns="http://www.w3.org/2000/svg"
+										class="icon sprite-icons ico-check-active">
+										<use data-v-4c714e9f=""
+											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"
+											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"></use></svg><span
+									data-v-4c714e9f="" class="label_txt">개인정보 수집 및 이용 동의</span>
+								<!----></label><a data-v-429a8655="" data-v-4c714e9f="" href="#"
+									class="btn_view"> 내용 보기 </a>
+							</div>
+						</div>
+					</div>
+					<div data-v-429a8655="" class="terms_box">
+						<div data-v-429a8655="" class="check_main">
+							<div data-v-4c714e9f="" data-v-429a8655="" class="checkbox_item">
+								<input data-v-4c714e9f="" id="group_check_2" type="checkbox"
+									name="" class="blind"><label data-v-4c714e9f=""
+									for="group_check_2" class="check_label"><svg
+										data-v-4c714e9f="" xmlns="http://www.w3.org/2000/svg"
+										class="icon sprite-icons ico-check-active">
+										<use data-v-4c714e9f=""
+											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"
+											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"></use></svg><span
+									data-v-4c714e9f="" class="label_txt">[선택] 광고성 정보 수신에 모두
+										동의합니다.</span>
+								<!----></label>
+							</div>
+							<button data-v-575aff82="" data-v-429a8655="" type="button"
+								class="btn">
+								<svg data-v-429a8655="" xmlns="http://www.w3.org/2000/svg"
+									class="icon sprite-icons ico-plus">
+									<use data-v-429a8655=""
+										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-plus"
+										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-plus"></use></svg>
+							</button>
+						</div>
+						<div data-v-429a8655="" class="check_sub">
+							<div data-v-4c714e9f="" data-v-429a8655="" class="checkbox_item">
+								<input data-v-4c714e9f="" id="allow_marketing" type="checkbox"
+									name="" class="blind"><label data-v-4c714e9f=""
+									for="allow_marketing" class="check_label"><svg
+										data-v-4c714e9f="" xmlns="http://www.w3.org/2000/svg"
+										class="icon sprite-icons ico-check-active">
+										<use data-v-4c714e9f=""
+											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"
+											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"></use></svg><span
+									data-v-4c714e9f="" class="label_txt">앱 푸시</span>
+								<!----></label>
+							</div>
+							<div data-v-4c714e9f="" data-v-429a8655="" class="checkbox_item">
+								<input data-v-4c714e9f="" id="allow_marketing_sms"
+									type="checkbox" name="" class="blind"><label
+									data-v-4c714e9f="" for="allow_marketing_sms" class="check_label"><svg
+										data-v-4c714e9f="" xmlns="http://www.w3.org/2000/svg"
+										class="icon sprite-icons ico-check-active">
+										<use data-v-4c714e9f=""
+											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"
+											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"></use></svg><span
+									data-v-4c714e9f="" class="label_txt">문자 메시지</span>
+								<!----></label>
+							</div>
+							<div data-v-4c714e9f="" data-v-429a8655="" class="checkbox_item">
+								<input data-v-4c714e9f="" id="allow_marketing_email"
+									type="checkbox" name="" class="blind"><label
+									data-v-4c714e9f="" for="allow_marketing_email"
+									class="check_label"><svg data-v-4c714e9f=""
+										xmlns="http://www.w3.org/2000/svg"
+										class="icon sprite-icons ico-check-active">
+										<use data-v-4c714e9f=""
+											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"
+											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"></use></svg><span
+									data-v-4c714e9f="" class="label_txt">이메일</span>
+								<!----></label>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div data-v-429a8655="" class="terms_box">
-					<div data-v-429a8655="" class="check_main">
-						<div data-v-4c714e9f="" data-v-429a8655="" class="checkbox_item">
-							<input data-v-4c714e9f="" id="group_check_2" type="checkbox"
-								name="" class="blind"><label data-v-4c714e9f=""
-								for="group_check_2" class="check_label"><svg
-									data-v-4c714e9f="" xmlns="http://www.w3.org/2000/svg"
-									class="icon sprite-icons ico-check-active">
-									<use data-v-4c714e9f=""
-										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"
-										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"></use></svg><span
-								data-v-4c714e9f="" class="label_txt">[선택] 광고성 정보 수신에 모두
-									동의합니다.</span>
-							<!----></label>
-						</div>
-						<button data-v-575aff82="" data-v-429a8655="" type="button"
-							class="btn">
-							<svg data-v-429a8655="" xmlns="http://www.w3.org/2000/svg"
-								class="icon sprite-icons ico-plus">
-								<use data-v-429a8655=""
-									href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-plus"
-									xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-plus"></use></svg>
-						</button>
-					</div>
-					<div data-v-429a8655="" class="check_sub">
-						<div data-v-4c714e9f="" data-v-429a8655="" class="checkbox_item">
-							<input data-v-4c714e9f="" id="allow_marketing" type="checkbox"
-								name="" class="blind"><label data-v-4c714e9f=""
-								for="allow_marketing" class="check_label"><svg
-									data-v-4c714e9f="" xmlns="http://www.w3.org/2000/svg"
-									class="icon sprite-icons ico-check-active">
-									<use data-v-4c714e9f=""
-										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"
-										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"></use></svg><span
-								data-v-4c714e9f="" class="label_txt">앱 푸시</span>
-							<!----></label>
-						</div>
-						<div data-v-4c714e9f="" data-v-429a8655="" class="checkbox_item">
-							<input data-v-4c714e9f="" id="allow_marketing_sms"
-								type="checkbox" name="" class="blind"><label
-								data-v-4c714e9f="" for="allow_marketing_sms" class="check_label"><svg
-									data-v-4c714e9f="" xmlns="http://www.w3.org/2000/svg"
-									class="icon sprite-icons ico-check-active">
-									<use data-v-4c714e9f=""
-										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"
-										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"></use></svg><span
-								data-v-4c714e9f="" class="label_txt">문자 메시지</span>
-							<!----></label>
-						</div>
-						<div data-v-4c714e9f="" data-v-429a8655="" class="checkbox_item">
-							<input data-v-4c714e9f="" id="allow_marketing_email"
-								type="checkbox" name="" class="blind"><label
-								data-v-4c714e9f="" for="allow_marketing_email"
-								class="check_label"><svg data-v-4c714e9f=""
-									xmlns="http://www.w3.org/2000/svg"
-									class="icon sprite-icons ico-check-active">
-									<use data-v-4c714e9f=""
-										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"
-										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-active"></use></svg><span
-								data-v-4c714e9f="" class="label_txt">이메일</span>
-							<!----></label>
-						</div>
-					</div>
-				</div>
-			</div>
-			<a data-v-575aff82="" id="joinBtn" data-v-429a8655="" href="javascript:void(0)"
-				class="btn btn_join full solid disabled"> 가입하기 </a>
+				<!-- 시큐리티 사용 토큰 발급 룰루~ -->
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				<a data-v-575aff82="" id="joinBtn" data-v-429a8655="" href="javascript:void(0)"
+					class="btn btn_join full solid disabled"> 가입하기 </a>
+			</form>
 		</div>
 		<div data-v-1a009402="" data-v-feb03f9c="" data-v-429a8655=""
 			class="layer md" style="display: none;">
@@ -1606,6 +1609,7 @@
 			//하나라도 하자가 있다면 안된다고 경고 
 			if(checkEmail && checkNickName && input_pw && input_name  && input_phone && input_shosesize){
 				//여기에 컨트롤러로 회원가입하는 로직 채우기
+				$("#joinForm").submit();
 				
 			}else{
 				alert("모든 항목을 알맞게 채워주세요!");
