@@ -30,7 +30,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication auth)
 			throws IOException, ServletException {
 
-		log.warn("Login Success");
+		log.warn("Login Success, Hello! "+ auth.getName());
 
 		clearSession(request);
         SavedRequest savedRequest = requestCache.getRequest(request, response);

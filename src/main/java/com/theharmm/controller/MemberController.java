@@ -69,16 +69,15 @@ public class MemberController {
 		
 		log.warn(member.toString());
 		
-		return "member/join";
-//		int result = memberService.joinMember(member);
-//
-//		if(result < 2) {
-//			log.warn("회원가입이 제대로 안되었습니다!!!");
-//			return "member/join";
-//		}
-//		
-//		log.info(request.getParameter("newEmail") + "님 회원가입을 축하드립니다~");
-//		return "member/loginpage";
+		int result = memberService.joinMember(member);
+
+		if(result < 2) {
+			log.warn("회원가입이 제대로 안되었습니다!!!");
+			return "member/join";
+		}
+		
+		log.info(request.getParameter("newEmail") + "님 회원가입을 축하드립니다~");
+		return "member/loginpage";
 	}
 		
 	@RequestMapping(value = "/loginpage", method = RequestMethod.GET)
