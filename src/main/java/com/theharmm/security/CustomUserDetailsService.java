@@ -24,9 +24,9 @@ public class CustomUserDetailsService implements UserDetailsService{
 		m.setMember_email(username);
 		
 		
-		log.warn("Query by username :" + username);
+//		log.warn("Query by username :" + username);
 		MemberVO vo = member.read(m);		
-		log.warn("Query by memebr maper :" +vo);
+//		log.warn("Query by memebr maper :" +vo);
 			
 		//»ïÇ×½Ä
 		return ( vo == null 
