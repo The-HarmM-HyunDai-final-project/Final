@@ -32,14 +32,14 @@ public class MemberController {
 	public String Join() {
 		return "member/join";
 	}
-	//�̸��� �ߺ�Ȯ��
+	//이메일 중복확인
 	@RequestMapping(value = "/checkEmail", method = RequestMethod.POST)
 	@ResponseBody
 	public String checkEmail(MemberVO member) {
 		int cnt = memberService.checkEmail(member);
 		return (cnt == 0 ? "true" : "false");
 	}
-	//�г��� �ߺ�Ȯ��
+	//닉네임 중복확인
 	@RequestMapping(value = "/checkNickName", method = RequestMethod.POST)
 	@ResponseBody
 	public String checkNickName(MemberVO member) {
@@ -51,7 +51,7 @@ public class MemberController {
 	public String JoinAction(MemberVO member, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		BCryptPasswordEncoder scpwd = new BCryptPasswordEncoder();
-		String curdate = JoinUtil.builder().build().GetCurDate();// ȸ�������� ��¥�� �ֱ����� Ŀ���� ��ƿ �޼���
+		String curdate = JoinUtil.builder().build().GetCurDate();// 회원가입한 날짜를 넣기위한 커스텀 유틸 메서드
 		
 		member.setMember_email(request.getParameter("newEmail")); 
 		member.setMember_password(request.getParameter("newPwd"));
@@ -72,17 +72,17 @@ public class MemberController {
 		int result = memberService.joinMember(member);
 
 		if(result < 2) {
-			log.warn("ȸ�������� ����� �ȵǾ����ϴ�!!!");
+			log.warn("회원가입이 제대로 안되었습니다");
 			return "member/join";
 		}
 		
-		log.info(request.getParameter("newEmail") + "�� ȸ�������� ���ϵ帳�ϴ�~");
+		log.info(request.getParameter("newEmail") + "님 회원가입을 축하드립니다~");
 		return "member/loginpage";
 	}
 		
 	@RequestMapping(value = "/loginpage", method = RequestMethod.GET)
 	public String LoginPage(HttpServletRequest request, Model mode) {
-		//�α��� ���� �������� ���ư������� Referer�����(���� URL)�� ������ prevPage��� �̸����� ����
+		//로그인 전에 페이지로 돌아가기위한 Referer헤더값(이전 URL)을 세션의 prevPage라는 이름으로 저장
 		String uri = request.getHeader("Referer");
 		if(uri != null && uri.contains("/loginpage")) {
 			request.getSession().setAttribute("prevPage", uri);
@@ -95,7 +95,7 @@ public class MemberController {
 	@RequestMapping(value = "/accessError", method = RequestMethod.GET)
 	public String accessDenied(Authentication auth, Model model) {
 		
-		log.info("access Denied, ȸ������ ������� �Դϴ�. : " + auth );
+		log.info("access Denied, 회원님은 다음등급 입니다: " + auth );
 		
 		return "/";
 	}
