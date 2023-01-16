@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Mapper;
 import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.ProductSizeDTO;
 
-
 @Mapper
 public interface ProductDetailMapper {
 	

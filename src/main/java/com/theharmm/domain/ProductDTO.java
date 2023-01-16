@@ -3,7 +3,7 @@ package com.theharmm.domain;
 import lombok.Data;
 
 @Data
-public class ProductVo {
+public class ProductDTO {
 	private int pid;
 	private int category; 
 	private String brand;

@@ -19,6 +19,8 @@
 	href="${pageContext.request.contextPath}/resources/css/ae12c7f.css"
 	rel="stylesheet" type="text/css">
 
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+
 <div data-v-692bb569="" data-v-3007c576="" class="container search lg">
 	<div data-v-692bb569="" class="search_top">
 		<div data-v-692bb569="" class="top_box">
@@ -82,7 +84,7 @@
 						srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDZfMTkw/MDAxNjcyOTc4NzI2MzMx.01ugFbCeq9G0WE7nPlAmagoLPcvukIx-3VZI5EGu2JIg.uDIOvb8J0VF4Q6hvzKQ_HtZF0YOQdTnCPuRqefquQh8g.PNG/a_3ae6a377bfab45e0a2045350f87704b7.png?type=s_webp">
 					<source data-v-878ec45c=""
 						srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDZfMTkw/MDAxNjcyOTc4NzI2MzMx.01ugFbCeq9G0WE7nPlAmagoLPcvukIx-3VZI5EGu2JIg.uDIOvb8J0VF4Q6hvzKQ_HtZF0YOQdTnCPuRqefquQh8g.PNG/a_3ae6a377bfab45e0a2045350f87704b7.png?type=s">
-					<img data-v-878ec45c=""referrerpolicy="no-referrer"  alt="아크테릭스"
+					<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="아크테릭스"
 						src="https://kream-phinf.pstatic.net/MjAyMzAxMDZfMTkw/MDAxNjcyOTc4NzI2MzMx.01ugFbCeq9G0WE7nPlAmagoLPcvukIx-3VZI5EGu2JIg.uDIOvb8J0VF4Q6hvzKQ_HtZF0YOQdTnCPuRqefquQh8g.PNG/a_3ae6a377bfab45e0a2045350f87704b7.png?type=s"
 						loading="lazy" class="image"></picture>
 					<p data-v-696f3a51="" class="brand_name">아크테릭스</p></a></li>
@@ -200,11 +202,13 @@
 				<!---->
 			</div>
 			<div data-v-7227e9f0="" data-v-75a99100=""
-				class="filter_list filter_open">
+				class="filter_list filter_open" onclick="openMenu(this);">
 				<div data-v-7227e9f0="" class="filter_title">
 					<div data-v-7227e9f0="" class="title_box">
 						<span data-v-7227e9f0="" class="main_title">카테고리</span>
 						<!---->
+						<span data-v-7227e9f0="" class="placeholder" id="allcategory">모든
+							카테고리</span>
 					</div>
 					<div data-v-7227e9f0="" class="ico_box">
 						<svg data-v-7227e9f0="" xmlns="http://www.w3.org/2000/svg"
@@ -214,69 +218,18 @@
 								xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-minus-gray"></use></svg>
 					</div>
 				</div>
-				<div data-v-7227e9f0="" class="filter_menu" style="">
+
+				<div data-v-7227e9f0="" class="filter_menu" id="categoty_menu"
+					style="display: none">
 					<ul data-v-7227e9f0="" class="menu_list">
 						<li data-v-424b2562="" data-v-7227e9f0="" class="menu"><a
 							data-v-424b2562="" href="#" class="menu_link"><svg
 									data-v-424b2562="" xmlns="http://www.w3.org/2000/svg"
 									class="icon sprite-icons checkbox-inactive">
 									<use data-v-424b2562=""
-										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-								data-v-424b2562="" class="link_txt">신발</span></a>
-							<ul data-v-424b2562="" class="menu_list menu_2depth"
-								style="display: none;">
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">스니커즈</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">부츠</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">더비/레이스업</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">로퍼/플랫</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">샌들/슬리퍼</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-							</ul></li>
+										href="${pageContext.request.contextPath}/resources/images/ic_blank.png"
+										xlink:href="${pageContext.request.contextPath}/resources/images/ic_blank.png"></use></svg><span
+								data-v-424b2562="" class="link_txt">신발</span></a></li>
 						<li data-v-424b2562="" data-v-7227e9f0="" class="menu"><a
 							data-v-424b2562="" href="#" class="menu_link"><svg
 									data-v-424b2562="" xmlns="http://www.w3.org/2000/svg"
@@ -284,140 +237,7 @@
 									<use data-v-424b2562=""
 										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
 										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-								data-v-424b2562="" class="link_txt">의류</span></a>
-							<ul data-v-424b2562="" class="menu_list menu_2depth"
-								style="display: none;">
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">패딩</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">코트</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">니트웨어</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">자켓</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">후드</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">스웨트셔츠</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">긴팔 티셔츠</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">반팔 티셔츠</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">셔츠</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">바지</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">반바지</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">스커트</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">기타</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-							</ul></li>
+								data-v-424b2562="" class="link_txt">의류</span></a></li>
 						<li data-v-424b2562="" data-v-7227e9f0="" class="menu"><a
 							data-v-424b2562="" href="#" class="menu_link"><svg
 									data-v-424b2562="" xmlns="http://www.w3.org/2000/svg"
@@ -425,317 +245,12 @@
 									<use data-v-424b2562=""
 										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
 										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-								data-v-424b2562="" class="link_txt">패션잡화</span></a>
-							<ul data-v-424b2562="" class="menu_list menu_2depth"
-								style="display: none;">
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">프리미엄시계</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">프리미엄가방</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">스몰레더</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">가방</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">시계</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">주얼리</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">모자</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">스카프</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">아이웨어</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">벨트</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">기타</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-							</ul></li>
-						<li data-v-424b2562="" data-v-7227e9f0="" class="menu"><a
-							data-v-424b2562="" href="#" class="menu_link"><svg
-									data-v-424b2562="" xmlns="http://www.w3.org/2000/svg"
-									class="icon sprite-icons checkbox-inactive">
-									<use data-v-424b2562=""
-										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-								data-v-424b2562="" class="link_txt">라이프</span></a>
-							<ul data-v-424b2562="" class="menu_list menu_2depth"
-								style="display: none;">
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">레고</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">향수</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">아트토이/피규어</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">캠핑</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">리빙/인테리어</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">트레이딩 카드</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">뮤직/굿즈</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">기타</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-							</ul></li>
-						<li data-v-424b2562="" data-v-7227e9f0="" class="menu"><a
-							data-v-424b2562="" href="#" class="menu_link"><svg
-									data-v-424b2562="" xmlns="http://www.w3.org/2000/svg"
-									class="icon sprite-icons checkbox-inactive">
-									<use data-v-424b2562=""
-										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-								data-v-424b2562="" class="link_txt">테크</span></a>
-							<ul data-v-424b2562="" class="menu_list menu_2depth"
-								style="display: none;">
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">스마트폰</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">스마트워치</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">태블릿</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">음향기기</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">게이밍</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">그래픽카드</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">테크 액세서리</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">리뉴드 테크</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-								<li data-v-424b2562="" class="menu"><a data-v-424b2562=""
-									href="#" class="menu_link"><svg data-v-424b2562=""
-											xmlns="http://www.w3.org/2000/svg"
-											class="icon sprite-icons checkbox-inactive">
-											<use data-v-424b2562=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-checkbox-inactive"></use></svg><span
-										data-v-424b2562="" class="link_txt">기타</span></a>
-									<ul data-v-424b2562="" class="menu_list menu_2depth"
-										style="display: none;"></ul></li>
-							</ul></li>
+								data-v-424b2562="" class="link_txt">패션잡화</span></a></li>
 					</ul>
 				</div>
 			</div>
 			<div data-v-7227e9f0="" data-v-75a99100=""
-				class="filter_list filter_open">
+				class="filter_list filter_open" onclick="openMenu(this);">
 				<div data-v-7227e9f0="" class="filter_title">
 					<div data-v-7227e9f0="" class="title_box">
 						<span data-v-7227e9f0="" class="main_title">브랜드</span>
@@ -3678,807 +3193,35 @@
 			</div>
 			<div data-v-692bb569="">
 				<div data-v-9bcf6292="" data-v-692bb569="">
-					<div data-v-9bcf6292="" class="filter_tag" style="display: none;"></div>
+					<div data-v-9bcf6292="" id = "filter_tag" class="filter_tag" style="">
+						<div data-v-9bcf6292="" class="tag_item">
+							<span data-v-9bcf6292="" class="tag">여기</span>
+							<svg data-v-9bcf6292="" xmlns="http://www.w3.org/2000/svg"
+								class="ico-delete-gray icon sprite-icons">
+								<use data-v-9bcf6292=""
+									href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-delete-gray"
+									xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-delete-gray"></use></svg>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div data-v-01f4e1bc="" data-v-692bb569="" class="search_result lg">
-				<div data-v-01f4e1bc="" class="search_result_list">
-					<div data-v-19fda891="" data-v-01f4e1bc="" class="product_card">
-						<a data-v-19fda891="" href="/products/78865" class="item_inner"><div
-								data-v-09fbcf09="" class="product"
-								style="background-color: rgb(244, 244, 244);">
-								<picture data-v-878ec45c="" data-v-09fbcf09=""
-									class="picture product_img">
-								<source data-v-878ec45c="" type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjA5MjhfMTI0/MDAxNjY0MzM1MDk2NDIy.abRN9zF_i2LZtZ2yqYsWxKF8TTO1fT7WHMVVIJltfsgg.SU9A4D1XQ4vMvV51BpOphwvKuODQ4Vi5dYj-ACisYgEg.JPEG/a_b2ae43c3b0fe4f22a86ac803d16419c5.jpg?type=m_webp">
-								<source data-v-878ec45c=""
-									srcset="https://kream-phinf.pstatic.net/MjAyMjA5MjhfMTI0/MDAxNjY0MzM1MDk2NDIy.abRN9zF_i2LZtZ2yqYsWxKF8TTO1fT7WHMVVIJltfsgg.SU9A4D1XQ4vMvV51BpOphwvKuODQ4Vi5dYj-ACisYgEg.JPEG/a_b2ae43c3b0fe4f22a86ac803d16419c5.jpg?type=m">
-								<img data-v-878ec45c=""
-									alt="애플 아이폰 14 프로 128기가 스페이스 블랙 (국내 정식 발매 제품)"
-									src="https://kream-phinf.pstatic.net/MjAyMjA5MjhfMTI0/MDAxNjY0MzM1MDk2NDIy.abRN9zF_i2LZtZ2yqYsWxKF8TTO1fT7WHMVVIJltfsgg.SU9A4D1XQ4vMvV51BpOphwvKuODQ4Vi5dYj-ACisYgEg.JPEG/a_b2ae43c3b0fe4f22a86ac803d16419c5.jpg?type=m"
-									loading="lazy" class="image"></picture>
-								<!---->
-								<!---->
-								<!---->
-								<!---->
-							</div>
-							<div data-v-c90cb1da="" class="product_info_area">
-								<div data-v-c90cb1da="" class="title">
-									<p data-v-878934fe="" data-v-c90cb1da=""
-										class="product_info_brand brand">
-										Apple
-										<!---->
-									</p>
-									<div data-v-36b5d8fb="" data-v-c90cb1da=""
-										class="product_info_product_name">
-										<p data-v-36b5d8fb="" class="name">Apple iPhone 14 Pro
-											128GB Space Black&nbsp;(Korean Ver.)</p>
-										<p data-v-36b5d8fb="" class="translated_name">애플 아이폰 14 프로
-											128기가 스페이스 블랙 (국내 정식 발매 제품)</p>
-									</div>
-								</div>
-								<div data-v-6da6dff3="" data-v-c90cb1da=""
-									class="badge badge_product shipping_express">빠른배송</div>
-							</div>
-							<div data-v-ef71e3ac="" data-v-7dab533a=""
-								class="price price_area">
-								<p data-v-ef71e3ac="" class="amount">
-									<!---->
-									1,428,000원
-								</p>
-								<p data-v-ef71e3ac="" class="desc">즉시 구매가</p>
-							</div></a>
-						<div data-v-152760b3="" class="action_wish_review"
-							data-v-19fda891="">
-							<span data-v-152760b3="" class="wish_figure"><span
-								data-v-7b8861c4="" data-v-152760b3="" aria-label="관심상품"
-								role="button" class="btn_wish" icon-name="ico-wish-grey"><svg
-										data-v-152760b3="" data-v-7b8861c4="" width="14" height="16"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3="" data-v-7b8861c4=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"></use></svg></span><span
-								data-v-152760b3="" class="text">1,492</span></span><span
-								data-v-152760b3="" class="review_figure"><span
-								data-v-152760b3="" class="review_link"
-								aria-label="애플 아이폰 14 프로 128기가 스페이스 블랙 (국내 정식 발매 제품) 리뷰"
-								role="button"><svg data-v-152760b3="" width="15"
-										height="15" xmlns="http://www.w3.org/2000/svg"
-										class="icon sprite-icons">
-										<use data-v-152760b3=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"></use></svg></span><span
-								data-v-152760b3="" class="text">42</span></span>
-						</div>
-					</div>
-					<div data-v-19fda891="" data-v-01f4e1bc="" class="product_card">
-						<a data-v-19fda891="" href="/products/83900" class="item_inner"><div
-								data-v-09fbcf09="" class="product"
-								style="background-color: rgb(246, 238, 237);">
-								<picture data-v-878ec45c="" data-v-09fbcf09=""
-									class="picture product_img">
-								<source data-v-878ec45c="" type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfMTkw/MDAxNjY3NTQzNTAxNjcw.yXF_j7EUnejzPqHyxvoziRB8ukEBpGX7RgDL8ziMtOEg.tjPT99BA1fdYa1THeylVQhNonJ_gqkCMxCTyqSEGhdQg.PNG/a_9388c64f95f54d29834d8fc13082a68e.png?type=m_webp">
-								<source data-v-878ec45c=""
-									srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfMTkw/MDAxNjY3NTQzNTAxNjcw.yXF_j7EUnejzPqHyxvoziRB8ukEBpGX7RgDL8ziMtOEg.tjPT99BA1fdYa1THeylVQhNonJ_gqkCMxCTyqSEGhdQg.PNG/a_9388c64f95f54d29834d8fc13082a68e.png?type=m">
-								<img data-v-878ec45c="" alt="조던 1 레트로 하이 OG 시카고 2022"
-									src="https://kream-phinf.pstatic.net/MjAyMjExMDRfMTkw/MDAxNjY3NTQzNTAxNjcw.yXF_j7EUnejzPqHyxvoziRB8ukEBpGX7RgDL8ziMtOEg.tjPT99BA1fdYa1THeylVQhNonJ_gqkCMxCTyqSEGhdQg.PNG/a_9388c64f95f54d29834d8fc13082a68e.png?type=m"
-									loading="lazy" class="image"></picture>
-								<!---->
-								<!---->
-								<!---->
-								<!---->
-							</div>
-							<div data-v-c90cb1da="" class="product_info_area">
-								<div data-v-c90cb1da="" class="title">
-									<p data-v-878934fe="" data-v-c90cb1da=""
-										class="product_info_brand brand">
-										Jordan
-										<!---->
-									</p>
-									<div data-v-36b5d8fb="" data-v-c90cb1da=""
-										class="product_info_product_name">
-										<p data-v-36b5d8fb="" class="name">Jordan 1 Retro High OG
-											Chicago 2022</p>
-										<p data-v-36b5d8fb="" class="translated_name">조던 1 레트로 하이
-											OG 시카고 2022</p>
-									</div>
-								</div>
-								<div data-v-6da6dff3="" data-v-c90cb1da=""
-									class="badge badge_product shipping_express">빠른배송</div>
-							</div>
-							<div data-v-ef71e3ac="" data-v-7dab533a=""
-								class="price price_area">
-								<p data-v-ef71e3ac="" class="amount">
-									<!---->
-									400,000원
-								</p>
-								<p data-v-ef71e3ac="" class="desc">즉시 구매가</p>
-							</div></a>
-						<div data-v-152760b3="" class="action_wish_review"
-							data-v-19fda891="">
-							<span data-v-152760b3="" class="wish_figure"><span
-								data-v-7b8861c4="" data-v-152760b3="" aria-label="관심상품"
-								role="button" class="btn_wish" icon-name="ico-wish-grey"><svg
-										data-v-152760b3="" data-v-7b8861c4="" width="14" height="16"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3="" data-v-7b8861c4=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"></use></svg></span><span
-								data-v-152760b3="" class="text">3.2만</span></span><span
-								data-v-152760b3="" class="review_figure"><span
-								data-v-152760b3="" class="review_link"
-								aria-label="조던 1 레트로 하이 OG 시카고 2022 리뷰" role="button"><svg
-										data-v-152760b3="" width="15" height="15"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"></use></svg></span><span
-								data-v-152760b3="" class="text">2,554</span></span>
-						</div>
-					</div>
-					<div data-v-19fda891="" data-v-01f4e1bc="" class="product_card">
-						<a data-v-19fda891="" href="/products/12831" class="item_inner"><div
-								data-v-09fbcf09="" class="product"
-								style="background-color: rgb(235, 240, 245);">
-								<picture data-v-878ec45c="" data-v-09fbcf09=""
-									class="picture product_img">
-								<source data-v-878ec45c="" type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjA2MTVfMjYw/MDAxNjU1MjgzNjk2Mzk3.gh8n5rs7p-pWVqzIhNh7yj_KdyjLFBeJr9QbsDumoFEg.KdvPfvgBYmjm7MKKhcbIEQIP6FGeuof_GnmcDUgrvyAg.PNG/a_baa1ccea3726495badba419dfede63f9.png?type=m_webp">
-								<source data-v-878ec45c=""
-									srcset="https://kream-phinf.pstatic.net/MjAyMjA2MTVfMjYw/MDAxNjU1MjgzNjk2Mzk3.gh8n5rs7p-pWVqzIhNh7yj_KdyjLFBeJr9QbsDumoFEg.KdvPfvgBYmjm7MKKhcbIEQIP6FGeuof_GnmcDUgrvyAg.PNG/a_baa1ccea3726495badba419dfede63f9.png?type=m">
-								<img data-v-878ec45c="" alt="나이키 에어포스 1 '07 로우 화이트"
-									src="https://kream-phinf.pstatic.net/MjAyMjA2MTVfMjYw/MDAxNjU1MjgzNjk2Mzk3.gh8n5rs7p-pWVqzIhNh7yj_KdyjLFBeJr9QbsDumoFEg.KdvPfvgBYmjm7MKKhcbIEQIP6FGeuof_GnmcDUgrvyAg.PNG/a_baa1ccea3726495badba419dfede63f9.png?type=m"
-									loading="lazy" class="image"></picture>
-								<!---->
-								<!---->
-								<!---->
-								<!---->
-							</div>
-							<div data-v-c90cb1da="" class="product_info_area">
-								<div data-v-c90cb1da="" class="title">
-									<p data-v-878934fe="" data-v-c90cb1da=""
-										class="product_info_brand brand">
-										Nike
-										<!---->
-									</p>
-									<div data-v-36b5d8fb="" data-v-c90cb1da=""
-										class="product_info_product_name">
-										<p data-v-36b5d8fb="" class="name">Nike Air Force 1 '07
-											Low White</p>
-										<p data-v-36b5d8fb="" class="translated_name">나이키 에어포스 1
-											'07 로우 화이트</p>
-									</div>
-								</div>
-								<div data-v-6da6dff3="" data-v-c90cb1da=""
-									class="badge badge_product shipping_express">빠른배송</div>
-							</div>
-							<div data-v-ef71e3ac="" data-v-7dab533a=""
-								class="price price_area">
-								<p data-v-ef71e3ac="" class="amount">
-									<!---->
-									128,000원
-								</p>
-								<p data-v-ef71e3ac="" class="desc">즉시 구매가</p>
-							</div></a>
-						<div data-v-152760b3="" class="action_wish_review"
-							data-v-19fda891="">
-							<span data-v-152760b3="" class="wish_figure"><span
-								data-v-7b8861c4="" data-v-152760b3="" aria-label="관심상품"
-								role="button" class="btn_wish" icon-name="ico-wish-grey"><svg
-										data-v-152760b3="" data-v-7b8861c4="" width="14" height="16"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3="" data-v-7b8861c4=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"></use></svg></span><span
-								data-v-152760b3="" class="text">14.8만</span></span><span
-								data-v-152760b3="" class="review_figure"><span
-								data-v-152760b3="" class="review_link"
-								aria-label="나이키 에어포스 1 '07 로우 화이트 리뷰" role="button"><svg
-										data-v-152760b3="" width="15" height="15"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"></use></svg></span><span
-								data-v-152760b3="" class="text">5,941</span></span>
-						</div>
-					</div>
-					<div data-v-19fda891="" data-v-01f4e1bc="" class="product_card">
-						<a data-v-19fda891="" href="/products/28029" class="item_inner"><div
-								data-v-09fbcf09="" class="product"
-								style="background-color: rgb(235, 240, 245);">
-								<picture data-v-878ec45c="" data-v-09fbcf09=""
-									class="picture product_img">
-								<source data-v-878ec45c="" type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMTA3MjhfMjIg/MDAxNjI3NDQxMDA1NjE5.HOgIYywGZaaBJDqUzx2OnX9HAxoOWPvuWHqUn_LZGcgg.VYIuOfA5_GgjBGRowv6dmQuAOPtUvmAxbGpOyUCOCtYg.PNG/p_9d8ed1a74d2540ab9842e63363607bf4.png?type=m_webp">
-								<source data-v-878ec45c=""
-									srcset="https://kream-phinf.pstatic.net/MjAyMTA3MjhfMjIg/MDAxNjI3NDQxMDA1NjE5.HOgIYywGZaaBJDqUzx2OnX9HAxoOWPvuWHqUn_LZGcgg.VYIuOfA5_GgjBGRowv6dmQuAOPtUvmAxbGpOyUCOCtYg.PNG/p_9d8ed1a74d2540ab9842e63363607bf4.png?type=m">
-								<img data-v-878ec45c="" alt="나이키 덩크 로우 레트로 블랙"
-									src="https://kream-phinf.pstatic.net/MjAyMTA3MjhfMjIg/MDAxNjI3NDQxMDA1NjE5.HOgIYywGZaaBJDqUzx2OnX9HAxoOWPvuWHqUn_LZGcgg.VYIuOfA5_GgjBGRowv6dmQuAOPtUvmAxbGpOyUCOCtYg.PNG/p_9d8ed1a74d2540ab9842e63363607bf4.png?type=m"
-									loading="lazy" class="image"></picture>
-								<!---->
-								<!---->
-								<!---->
-								<!---->
-							</div>
-							<div data-v-c90cb1da="" class="product_info_area">
-								<div data-v-c90cb1da="" class="title">
-									<p data-v-878934fe="" data-v-c90cb1da=""
-										class="product_info_brand brand">
-										Nike
-										<!---->
-									</p>
-									<div data-v-36b5d8fb="" data-v-c90cb1da=""
-										class="product_info_product_name">
-										<p data-v-36b5d8fb="" class="name">Nike Dunk Low Retro
-											Black</p>
-										<p data-v-36b5d8fb="" class="translated_name">나이키 덩크 로우
-											레트로 블랙</p>
-									</div>
-								</div>
-								<div data-v-6da6dff3="" data-v-c90cb1da=""
-									class="badge badge_product shipping_express">빠른배송</div>
-							</div>
-							<div data-v-ef71e3ac="" data-v-7dab533a=""
-								class="price price_area">
-								<p data-v-ef71e3ac="" class="amount">
-									<!---->
-									159,000원
-								</p>
-								<p data-v-ef71e3ac="" class="desc">즉시 구매가</p>
-							</div></a>
-						<div data-v-152760b3="" class="action_wish_review"
-							data-v-19fda891="">
-							<span data-v-152760b3="" class="wish_figure"><span
-								data-v-7b8861c4="" data-v-152760b3="" aria-label="관심상품"
-								role="button" class="btn_wish" icon-name="ico-wish-grey"><svg
-										data-v-152760b3="" data-v-7b8861c4="" width="14" height="16"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3="" data-v-7b8861c4=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"></use></svg></span><span
-								data-v-152760b3="" class="text">12.2만</span></span><span
-								data-v-152760b3="" class="review_figure"><span
-								data-v-152760b3="" class="review_link"
-								aria-label="나이키 덩크 로우 레트로 블랙 리뷰" role="button"><svg
-										data-v-152760b3="" width="15" height="15"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"></use></svg></span><span
-								data-v-152760b3="" class="text">1.3만</span></span>
-						</div>
-					</div>
-					<div data-v-19fda891="" data-v-01f4e1bc="" class="product_card">
-						<a data-v-19fda891="" href="/products/32975" class="item_inner"><div
-								data-v-09fbcf09="" class="product"
-								style="background-color: rgb(244, 244, 244);">
-								<picture data-v-878ec45c="" data-v-09fbcf09=""
-									class="picture product_img">
-								<source data-v-878ec45c="" type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMTA0MTNfMjM5/MDAxNjE4MzA1NjQ5Njcx.qGF5MPGEHr5yQByc2hLBB1JnBL1kfapB1wRtiU2Xktkg.CBEkrcM3_hF5FY20Jq96ET6rw0UJmyLYAa1Y_QlrtR4g.JPEG/p_a66e54a33e6449f283317fa1d3e8ce8a.jpg?type=m_webp">
-								<source data-v-878ec45c=""
-									srcset="https://kream-phinf.pstatic.net/MjAyMTA0MTNfMjM5/MDAxNjE4MzA1NjQ5Njcx.qGF5MPGEHr5yQByc2hLBB1JnBL1kfapB1wRtiU2Xktkg.CBEkrcM3_hF5FY20Jq96ET6rw0UJmyLYAa1Y_QlrtR4g.JPEG/p_a66e54a33e6449f283317fa1d3e8ce8a.jpg?type=m">
-								<img data-v-878ec45c=""
-									alt="소니 플레이스테이션 5 블루레이 에디션 (국내 정식 발매 제품)"
-									src="https://kream-phinf.pstatic.net/MjAyMTA0MTNfMjM5/MDAxNjE4MzA1NjQ5Njcx.qGF5MPGEHr5yQByc2hLBB1JnBL1kfapB1wRtiU2Xktkg.CBEkrcM3_hF5FY20Jq96ET6rw0UJmyLYAa1Y_QlrtR4g.JPEG/p_a66e54a33e6449f283317fa1d3e8ce8a.jpg?type=m"
-									loading="lazy" class="image"></picture>
-								<!---->
-								<!---->
-								<!---->
-								<!---->
-							</div>
-							<div data-v-c90cb1da="" class="product_info_area">
-								<div data-v-c90cb1da="" class="title">
-									<p data-v-878934fe="" data-v-c90cb1da=""
-										class="product_info_brand brand">
-										Sony
-										<!---->
-									</p>
-									<div data-v-36b5d8fb="" data-v-c90cb1da=""
-										class="product_info_product_name">
-										<p data-v-36b5d8fb="" class="name">Sony Playstation 5
-											Blu-ray Edition (SIEK 220V)</p>
-										<p data-v-36b5d8fb="" class="translated_name">소니 플레이스테이션 5
-											블루레이 에디션 (국내 정식 발매 제품)</p>
-									</div>
-								</div>
-								<div data-v-6da6dff3="" data-v-c90cb1da=""
-									class="badge badge_product shipping_express">빠른배송</div>
-							</div>
-							<div data-v-ef71e3ac="" data-v-7dab533a=""
-								class="price price_area">
-								<p data-v-ef71e3ac="" class="amount">
-									<!---->
-									610,000원
-								</p>
-								<p data-v-ef71e3ac="" class="desc">즉시 구매가</p>
-							</div></a>
-						<div data-v-152760b3="" class="action_wish_review"
-							data-v-19fda891="">
-							<span data-v-152760b3="" class="wish_figure"><span
-								data-v-7b8861c4="" data-v-152760b3="" aria-label="관심상품"
-								role="button" class="btn_wish" icon-name="ico-wish-grey"><svg
-										data-v-152760b3="" data-v-7b8861c4="" width="14" height="16"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3="" data-v-7b8861c4=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"></use></svg></span><span
-								data-v-152760b3="" class="text">4,091</span></span><span
-								data-v-152760b3="" class="review_figure"><span
-								data-v-152760b3="" class="review_link"
-								aria-label="소니 플레이스테이션 5 블루레이 에디션 (국내 정식 발매 제품) 리뷰"
-								role="button"><svg data-v-152760b3="" width="15"
-										height="15" xmlns="http://www.w3.org/2000/svg"
-										class="icon sprite-icons">
-										<use data-v-152760b3=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"></use></svg></span><span
-								data-v-152760b3="" class="text">104</span></span>
-						</div>
-					</div>
-					<div data-v-19fda891="" data-v-01f4e1bc="" class="product_card">
-						<a data-v-19fda891="" href="/products/92301" class="item_inner"><div
-								data-v-09fbcf09="" class="product"
-								style="background-color: rgb(244, 244, 244);">
-								<picture data-v-878ec45c="" data-v-09fbcf09=""
-									class="picture product_img">
-								<source data-v-878ec45c="" type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjhfMTU4/MDAxNjcyMTkwNzE4Mzky.SPqeNYfzezcCRbH6Z4cQbVfy-OygvEG4QmI7qJ_HflEg.J9HV0R3MluRJMOfOGKLNEVAyly7hZtazHUiIDmIRUoMg.PNG/a_df278a514bf941d3b6b75868e86d56e4.png?type=m_webp">
-								<source data-v-878ec45c=""
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjhfMTU4/MDAxNjcyMTkwNzE4Mzky.SPqeNYfzezcCRbH6Z4cQbVfy-OygvEG4QmI7qJ_HflEg.J9HV0R3MluRJMOfOGKLNEVAyly7hZtazHUiIDmIRUoMg.PNG/a_df278a514bf941d3b6b75868e86d56e4.png?type=m">
-								<img data-v-878ec45c="" alt="컨버스 x 아더에러 척 70 하이 화이트"
-									src="https://kream-phinf.pstatic.net/MjAyMjEyMjhfMTU4/MDAxNjcyMTkwNzE4Mzky.SPqeNYfzezcCRbH6Z4cQbVfy-OygvEG4QmI7qJ_HflEg.J9HV0R3MluRJMOfOGKLNEVAyly7hZtazHUiIDmIRUoMg.PNG/a_df278a514bf941d3b6b75868e86d56e4.png?type=m"
-									loading="lazy" class="image"></picture>
-								<!---->
-								<!---->
-								<!---->
-								<!---->
-							</div>
-							<div data-v-c90cb1da="" class="product_info_area">
-								<div data-v-c90cb1da="" class="title">
-									<p data-v-878934fe="" data-v-c90cb1da=""
-										class="product_info_brand brand">
-										Converse
-										<!---->
-									</p>
-									<div data-v-36b5d8fb="" data-v-c90cb1da=""
-										class="product_info_product_name">
-										<p data-v-36b5d8fb="" class="name">Converse x Ader Error
-											Chuck 70 High White</p>
-										<p data-v-36b5d8fb="" class="translated_name">컨버스 x 아더에러 척
-											70 하이 화이트</p>
-									</div>
-								</div>
-								<!---->
-							</div>
-							<div data-v-ef71e3ac="" data-v-7dab533a=""
-								class="price price_area">
-								<p data-v-ef71e3ac="" class="amount">
-									<!---->
-									334,000원
-								</p>
-								<p data-v-ef71e3ac="" class="desc">즉시 구매가</p>
-							</div></a>
-						<div data-v-152760b3="" class="action_wish_review"
-							data-v-19fda891="">
-							<span data-v-152760b3="" class="wish_figure"><span
-								data-v-7b8861c4="" data-v-152760b3="" aria-label="관심상품"
-								role="button" class="btn_wish" icon-name="ico-wish-grey"><svg
-										data-v-152760b3="" data-v-7b8861c4="" width="14" height="16"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3="" data-v-7b8861c4=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"></use></svg></span><span
-								data-v-152760b3="" class="text">4,886</span></span><span
-								data-v-152760b3="" class="review_figure"><span
-								data-v-152760b3="" class="review_link"
-								aria-label="컨버스 x 아더에러 척 70 하이 화이트 리뷰" role="button"><svg
-										data-v-152760b3="" width="15" height="15"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"></use></svg></span><span
-								data-v-152760b3="" class="text">11</span></span>
-						</div>
-					</div>
-					<div data-v-19fda891="" data-v-01f4e1bc="" class="product_card">
-						<a data-v-19fda891="" href="/products/21935" class="item_inner"><div
-								data-v-09fbcf09="" class="product"
-								style="background-color: rgb(235, 240, 245);">
-								<picture data-v-878ec45c="" data-v-09fbcf09=""
-									class="picture product_img">
-								<source data-v-878ec45c="" type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjA4MDFfMTIx/MDAxNjU5MzQwODMzMDc3.PzhWN_CoGllmWG7XgAaifLpEXzt6mI_koqrP43iaEUEg.ESuJOcRJB9Ox4pObNyTz2hv-isp0iuzHNGy-LAZy7esg.PNG/a_ad597a3bae0f4eaaada28e57b1ab6592.png?type=m_webp">
-								<source data-v-878ec45c=""
-									srcset="https://kream-phinf.pstatic.net/MjAyMjA4MDFfMTIx/MDAxNjU5MzQwODMzMDc3.PzhWN_CoGllmWG7XgAaifLpEXzt6mI_koqrP43iaEUEg.ESuJOcRJB9Ox4pObNyTz2hv-isp0iuzHNGy-LAZy7esg.PNG/a_ad597a3bae0f4eaaada28e57b1ab6592.png?type=m">
-								<img data-v-878ec45c="" alt="나이키 에어포스 1 '07 WB 플랙스"
-									src="https://kream-phinf.pstatic.net/MjAyMjA4MDFfMTIx/MDAxNjU5MzQwODMzMDc3.PzhWN_CoGllmWG7XgAaifLpEXzt6mI_koqrP43iaEUEg.ESuJOcRJB9Ox4pObNyTz2hv-isp0iuzHNGy-LAZy7esg.PNG/a_ad597a3bae0f4eaaada28e57b1ab6592.png?type=m"
-									loading="lazy" class="image"></picture>
-								<!---->
-								<!---->
-								<!---->
-								<!---->
-							</div>
-							<div data-v-c90cb1da="" class="product_info_area">
-								<div data-v-c90cb1da="" class="title">
-									<p data-v-878934fe="" data-v-c90cb1da=""
-										class="product_info_brand brand">
-										Nike
-										<!---->
-									</p>
-									<div data-v-36b5d8fb="" data-v-c90cb1da=""
-										class="product_info_product_name">
-										<p data-v-36b5d8fb="" class="name">Nike Air Force 1 '07 WB
-											Flax</p>
-										<p data-v-36b5d8fb="" class="translated_name">나이키 에어포스 1
-											'07 WB 플랙스</p>
-									</div>
-								</div>
-								<div data-v-6da6dff3="" data-v-c90cb1da=""
-									class="badge badge_product shipping_express">빠른배송</div>
-							</div>
-							<div data-v-ef71e3ac="" data-v-7dab533a=""
-								class="price price_area">
-								<p data-v-ef71e3ac="" class="amount">
-									<!---->
-									173,000원
-								</p>
-								<p data-v-ef71e3ac="" class="desc">즉시 구매가</p>
-							</div></a>
-						<div data-v-152760b3="" class="action_wish_review"
-							data-v-19fda891="">
-							<span data-v-152760b3="" class="wish_figure"><span
-								data-v-7b8861c4="" data-v-152760b3="" aria-label="관심상품"
-								role="button" class="btn_wish" icon-name="ico-wish-grey"><svg
-										data-v-152760b3="" data-v-7b8861c4="" width="14" height="16"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3="" data-v-7b8861c4=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"></use></svg></span><span
-								data-v-152760b3="" class="text">6.5만</span></span><span
-								data-v-152760b3="" class="review_figure"><span
-								data-v-152760b3="" class="review_link"
-								aria-label="나이키 에어포스 1 '07 WB 플랙스 리뷰" role="button"><svg
-										data-v-152760b3="" width="15" height="15"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"></use></svg></span><span
-								data-v-152760b3="" class="text">1,281</span></span>
-						</div>
-					</div>
-					<div data-v-19fda891="" data-v-01f4e1bc="" class="product_card">
-						<a data-v-19fda891="" href="/products/28030" class="item_inner"><div
-								data-v-09fbcf09="" class="product"
-								style="background-color: rgb(235, 240, 245);">
-								<picture data-v-878ec45c="" data-v-09fbcf09=""
-									class="picture product_img">
-								<source data-v-878ec45c="" type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMTA3MjhfMjcz/MDAxNjI3NDQxMDI4OTQz.FUajQFp09YVc_uLkwLnhQslwbgiRxTm-LTxQgi5IJNcg.erY1xk-3dvoOCW8r65BCusQYco2d6ln7BSBpD2Yld9Ug.PNG/p_0ec4e132925345f48fa832f2283cf454.png?type=m_webp">
-								<source data-v-878ec45c=""
-									srcset="https://kream-phinf.pstatic.net/MjAyMTA3MjhfMjcz/MDAxNjI3NDQxMDI4OTQz.FUajQFp09YVc_uLkwLnhQslwbgiRxTm-LTxQgi5IJNcg.erY1xk-3dvoOCW8r65BCusQYco2d6ln7BSBpD2Yld9Ug.PNG/p_0ec4e132925345f48fa832f2283cf454.png?type=m">
-								<img data-v-878ec45c="" alt="(W) 나이키 덩크 로우 블랙"
-									src="https://kream-phinf.pstatic.net/MjAyMTA3MjhfMjcz/MDAxNjI3NDQxMDI4OTQz.FUajQFp09YVc_uLkwLnhQslwbgiRxTm-LTxQgi5IJNcg.erY1xk-3dvoOCW8r65BCusQYco2d6ln7BSBpD2Yld9Ug.PNG/p_0ec4e132925345f48fa832f2283cf454.png?type=m"
-									loading="lazy" class="image"></picture>
-								<!---->
-								<!---->
-								<!---->
-								<!---->
-							</div>
-							<div data-v-c90cb1da="" class="product_info_area">
-								<div data-v-c90cb1da="" class="title">
-									<p data-v-878934fe="" data-v-c90cb1da=""
-										class="product_info_brand brand">
-										Nike
-										<!---->
-									</p>
-									<div data-v-36b5d8fb="" data-v-c90cb1da=""
-										class="product_info_product_name">
-										<p data-v-36b5d8fb="" class="name">(W) Nike Dunk Low Black</p>
-										<p data-v-36b5d8fb="" class="translated_name">(W) 나이키 덩크
-											로우 블랙</p>
-									</div>
-								</div>
-								<div data-v-6da6dff3="" data-v-c90cb1da=""
-									class="badge badge_product shipping_express">빠른배송</div>
-							</div>
-							<div data-v-ef71e3ac="" data-v-7dab533a=""
-								class="price price_area">
-								<p data-v-ef71e3ac="" class="amount">
-									<!---->
-									152,000원
-								</p>
-								<p data-v-ef71e3ac="" class="desc">즉시 구매가</p>
-							</div></a>
-						<div data-v-152760b3="" class="action_wish_review"
-							data-v-19fda891="">
-							<span data-v-152760b3="" class="wish_figure"><span
-								data-v-7b8861c4="" data-v-152760b3="" aria-label="관심상품"
-								role="button" class="btn_wish" icon-name="ico-wish-grey"><svg
-										data-v-152760b3="" data-v-7b8861c4="" width="14" height="16"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3="" data-v-7b8861c4=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"></use></svg></span><span
-								data-v-152760b3="" class="text">6.7만</span></span><span
-								data-v-152760b3="" class="review_figure"><span
-								data-v-152760b3="" class="review_link"
-								aria-label="(W) 나이키 덩크 로우 블랙 리뷰" role="button"><svg
-										data-v-152760b3="" width="15" height="15"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"></use></svg></span><span
-								data-v-152760b3="" class="text">4,603</span></span>
-						</div>
-					</div>
-					<div data-v-19fda891="" data-v-01f4e1bc="" class="product_card">
-						<a data-v-19fda891="" href="/products/80110" class="item_inner"><div
-								data-v-09fbcf09="" class="product"
-								style="background-color: rgb(244, 244, 244);">
-								<picture data-v-878ec45c="" data-v-09fbcf09=""
-									class="picture product_img">
-								<source data-v-878ec45c="" type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEwMDdfMjUy/MDAxNjY1MTIyOTA5ODc3.QE2gpcMai02v9hpWQRYPkh03Zd4CyeX4SVOy1yjht28g.QUfdZBeZe-EjVv7NgbrZzmNd0imP0jOmYOAOFDk2zJsg.JPEG/a_5dd8fc37dbf74510bb36d1c370fff93b.jpg?type=m_webp">
-								<source data-v-878ec45c=""
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEwMDdfMjUy/MDAxNjY1MTIyOTA5ODc3.QE2gpcMai02v9hpWQRYPkh03Zd4CyeX4SVOy1yjht28g.QUfdZBeZe-EjVv7NgbrZzmNd0imP0jOmYOAOFDk2zJsg.JPEG/a_5dd8fc37dbf74510bb36d1c370fff93b.jpg?type=m">
-								<img data-v-878ec45c="" alt="애플 에어팟 프로 2세대 (국내 정식 발매 제품)"
-									src="https://kream-phinf.pstatic.net/MjAyMjEwMDdfMjUy/MDAxNjY1MTIyOTA5ODc3.QE2gpcMai02v9hpWQRYPkh03Zd4CyeX4SVOy1yjht28g.QUfdZBeZe-EjVv7NgbrZzmNd0imP0jOmYOAOFDk2zJsg.JPEG/a_5dd8fc37dbf74510bb36d1c370fff93b.jpg?type=m"
-									loading="lazy" class="image"></picture>
-								<!---->
-								<!---->
-								<!---->
-								<!---->
-							</div>
-							<div data-v-c90cb1da="" class="product_info_area">
-								<div data-v-c90cb1da="" class="title">
-									<p data-v-878934fe="" data-v-c90cb1da=""
-										class="product_info_brand brand">
-										Apple
-										<!---->
-									</p>
-									<div data-v-36b5d8fb="" data-v-c90cb1da=""
-										class="product_info_product_name">
-										<p data-v-36b5d8fb="" class="name">Apple AirPods Pro 2nd
-											Gen (Korean Ver.)</p>
-										<p data-v-36b5d8fb="" class="translated_name">애플 에어팟 프로
-											2세대 (국내 정식 발매 제품)</p>
-									</div>
-								</div>
-								<div data-v-6da6dff3="" data-v-c90cb1da=""
-									class="badge badge_product shipping_express">빠른배송</div>
-							</div>
-							<div data-v-ef71e3ac="" data-v-7dab533a=""
-								class="price price_area">
-								<p data-v-ef71e3ac="" class="amount">
-									<!---->
-									300,000원
-								</p>
-								<p data-v-ef71e3ac="" class="desc">즉시 구매가</p>
-							</div></a>
-						<div data-v-152760b3="" class="action_wish_review"
-							data-v-19fda891="">
-							<span data-v-152760b3="" class="wish_figure"><span
-								data-v-7b8861c4="" data-v-152760b3="" aria-label="관심상품"
-								role="button" class="btn_wish" icon-name="ico-wish-grey"><svg
-										data-v-152760b3="" data-v-7b8861c4="" width="14" height="16"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3="" data-v-7b8861c4=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"></use></svg></span><span
-								data-v-152760b3="" class="text">6,810</span></span><span
-								data-v-152760b3="" class="review_figure"><span
-								data-v-152760b3="" class="review_link"
-								aria-label="애플 에어팟 프로 2세대 (국내 정식 발매 제품) 리뷰" role="button"><svg
-										data-v-152760b3="" width="15" height="15"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"></use></svg></span><span
-								data-v-152760b3="" class="text">76</span></span>
-						</div>
-					</div>
-					<div data-v-19fda891="" data-v-01f4e1bc="" class="product_card">
-						<a data-v-19fda891="" href="/products/44653" class="item_inner"><div
-								data-v-09fbcf09="" class="product"
-								style="background-color: rgb(235, 240, 245);">
-								<picture data-v-878ec45c="" data-v-09fbcf09=""
-									class="picture product_img">
-								<source data-v-878ec45c="" type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjAzMDdfOTkg/MDAxNjQ2NjM5MjUzMDE4.R2PABNuAC0ziUrcKM_vYlh_zO_b12wJ36sUh-04oPxIg.DctG0ViKFhVbI0I01ZETcT6cZhqgv2nqXblies3KFMgg.PNG/a_076dbed9f7594fe0a47ba197a54a50ff.png?type=m_webp">
-								<source data-v-878ec45c=""
-									srcset="https://kream-phinf.pstatic.net/MjAyMjAzMDdfOTkg/MDAxNjQ2NjM5MjUzMDE4.R2PABNuAC0ziUrcKM_vYlh_zO_b12wJ36sUh-04oPxIg.DctG0ViKFhVbI0I01ZETcT6cZhqgv2nqXblies3KFMgg.PNG/a_076dbed9f7594fe0a47ba197a54a50ff.png?type=m">
-								<img data-v-878ec45c="" alt="나이키 x 슈프림 에어포스 1 로우 플랙스"
-									src="https://kream-phinf.pstatic.net/MjAyMjAzMDdfOTkg/MDAxNjQ2NjM5MjUzMDE4.R2PABNuAC0ziUrcKM_vYlh_zO_b12wJ36sUh-04oPxIg.DctG0ViKFhVbI0I01ZETcT6cZhqgv2nqXblies3KFMgg.PNG/a_076dbed9f7594fe0a47ba197a54a50ff.png?type=m"
-									loading="lazy" class="image"></picture>
-								<!---->
-								<!---->
-								<!---->
-								<!---->
-							</div>
-							<div data-v-c90cb1da="" class="product_info_area">
-								<div data-v-c90cb1da="" class="title">
-									<p data-v-878934fe="" data-v-c90cb1da=""
-										class="product_info_brand brand">
-										Nike
-										<!---->
-									</p>
-									<div data-v-36b5d8fb="" data-v-c90cb1da=""
-										class="product_info_product_name">
-										<p data-v-36b5d8fb="" class="name">Nike x Supreme Air
-											Force 1 Low Flax</p>
-										<p data-v-36b5d8fb="" class="translated_name">나이키 x 슈프림
-											에어포스 1 로우 플랙스</p>
-									</div>
-								</div>
-								<div data-v-6da6dff3="" data-v-c90cb1da=""
-									class="badge badge_product shipping_express">빠른배송</div>
-							</div>
-							<div data-v-ef71e3ac="" data-v-7dab533a=""
-								class="price price_area">
-								<p data-v-ef71e3ac="" class="amount">
-									<!---->
-									270,000원
-								</p>
-								<p data-v-ef71e3ac="" class="desc">즉시 구매가</p>
-							</div></a>
-						<div data-v-152760b3="" class="action_wish_review"
-							data-v-19fda891="">
-							<span data-v-152760b3="" class="wish_figure"><span
-								data-v-7b8861c4="" data-v-152760b3="" aria-label="관심상품"
-								role="button" class="btn_wish" icon-name="ico-wish-grey"><svg
-										data-v-152760b3="" data-v-7b8861c4="" width="14" height="16"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3="" data-v-7b8861c4=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"></use></svg></span><span
-								data-v-152760b3="" class="text">2.6만</span></span><span
-								data-v-152760b3="" class="review_figure"><span
-								data-v-152760b3="" class="review_link"
-								aria-label="나이키 x 슈프림 에어포스 1 로우 플랙스 리뷰" role="button"><svg
-										data-v-152760b3="" width="15" height="15"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"></use></svg></span><span
-								data-v-152760b3="" class="text">1,041</span></span>
-						</div>
-					</div>
-					<div data-v-19fda891="" data-v-01f4e1bc="" class="product_card">
-						<a data-v-19fda891="" href="/products/36" class="item_inner"><div
-								data-v-09fbcf09="" class="product"
-								style="background-color: rgb(235, 240, 245);">
-								<picture data-v-878ec45c="" data-v-09fbcf09=""
-									class="picture product_img">
-								<source data-v-878ec45c="" type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjAzMDdfMTIx/MDAxNjQ2NjQxMDU1NDc1.c77jplnpNHq-2N5-GudMhJzoAMTzPxEOZlOeFkQEPLUg.vSMM4ODMmfnrYrejZua_BdydREeajGTUc6j27ihw8wUg.PNG/a_234006fa45804fae85bc5933eb146f27.png?type=m_webp">
-								<source data-v-878ec45c=""
-									srcset="https://kream-phinf.pstatic.net/MjAyMjAzMDdfMTIx/MDAxNjQ2NjQxMDU1NDc1.c77jplnpNHq-2N5-GudMhJzoAMTzPxEOZlOeFkQEPLUg.vSMM4ODMmfnrYrejZua_BdydREeajGTUc6j27ihw8wUg.PNG/a_234006fa45804fae85bc5933eb146f27.png?type=m">
-								<img data-v-878ec45c="" alt="나이키 에어포스 1 '07 로우 트리플 블랙"
-									src="https://kream-phinf.pstatic.net/MjAyMjAzMDdfMTIx/MDAxNjQ2NjQxMDU1NDc1.c77jplnpNHq-2N5-GudMhJzoAMTzPxEOZlOeFkQEPLUg.vSMM4ODMmfnrYrejZua_BdydREeajGTUc6j27ihw8wUg.PNG/a_234006fa45804fae85bc5933eb146f27.png?type=m"
-									loading="lazy" class="image"></picture>
-								<!---->
-								<!---->
-								<!---->
-								<!---->
-							</div>
-							<div data-v-c90cb1da="" class="product_info_area">
-								<div data-v-c90cb1da="" class="title">
-									<p data-v-878934fe="" data-v-c90cb1da=""
-										class="product_info_brand brand">
-										Nike
-										<!---->
-									</p>
-									<div data-v-36b5d8fb="" data-v-c90cb1da=""
-										class="product_info_product_name">
-										<p data-v-36b5d8fb="" class="name">Nike Air Force 1 '07
-											Low Triple Black</p>
-										<p data-v-36b5d8fb="" class="translated_name">나이키 에어포스 1
-											'07 로우 트리플 블랙</p>
-									</div>
-								</div>
-								<div data-v-6da6dff3="" data-v-c90cb1da=""
-									class="badge badge_product shipping_express">빠른배송</div>
-							</div>
-							<div data-v-ef71e3ac="" data-v-7dab533a=""
-								class="price price_area">
-								<p data-v-ef71e3ac="" class="amount">
-									<!---->
-									143,000원
-								</p>
-								<p data-v-ef71e3ac="" class="desc">즉시 구매가</p>
-							</div></a>
-						<div data-v-152760b3="" class="action_wish_review"
-							data-v-19fda891="">
-							<span data-v-152760b3="" class="wish_figure"><span
-								data-v-7b8861c4="" data-v-152760b3="" aria-label="관심상품"
-								role="button" class="btn_wish" icon-name="ico-wish-grey"><svg
-										data-v-152760b3="" data-v-7b8861c4="" width="14" height="16"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3="" data-v-7b8861c4=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"></use></svg></span><span
-								data-v-152760b3="" class="text">4.8만</span></span><span
-								data-v-152760b3="" class="review_figure"><span
-								data-v-152760b3="" class="review_link"
-								aria-label="나이키 에어포스 1 '07 로우 트리플 블랙 리뷰" role="button"><svg
-										data-v-152760b3="" width="15" height="15"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"></use></svg></span><span
-								data-v-152760b3="" class="text">922</span></span>
-						</div>
-					</div>
-					<div data-v-19fda891="" data-v-01f4e1bc="" class="product_card">
-						<a data-v-19fda891="" href="/products/23354" class="item_inner"><div
-								data-v-09fbcf09="" class="product"
-								style="background-color: rgb(246, 238, 237);">
-								<picture data-v-878ec45c="" data-v-09fbcf09=""
-									class="picture product_img">
-								<source data-v-878ec45c="" type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMDEwMjJfMjQx/MDAxNjAzMzMzOTcxMjA2.NLAl4nRfdAudviapGlPw9N5eTa9m5huHpltGWW6Hprcg.6ne1MDyc5kUpczjwkfQd6OlaUPPphxTCN_xjI29c2Bsg.PNG/p_23354_0_b7ec97887406476dad205d9fd6268b79.png?type=m_webp">
-								<source data-v-878ec45c=""
-									srcset="https://kream-phinf.pstatic.net/MjAyMDEwMjJfMjQx/MDAxNjAzMzMzOTcxMjA2.NLAl4nRfdAudviapGlPw9N5eTa9m5huHpltGWW6Hprcg.6ne1MDyc5kUpczjwkfQd6OlaUPPphxTCN_xjI29c2Bsg.PNG/p_23354_0_b7ec97887406476dad205d9fd6268b79.png?type=m">
-								<img data-v-878ec45c="" alt="조던 1 미드 라이트 스모크 그레이"
-									src="https://kream-phinf.pstatic.net/MjAyMDEwMjJfMjQx/MDAxNjAzMzMzOTcxMjA2.NLAl4nRfdAudviapGlPw9N5eTa9m5huHpltGWW6Hprcg.6ne1MDyc5kUpczjwkfQd6OlaUPPphxTCN_xjI29c2Bsg.PNG/p_23354_0_b7ec97887406476dad205d9fd6268b79.png?type=m"
-									loading="lazy" class="image"></picture>
-								<!---->
-								<!---->
-								<!---->
-								<!---->
-							</div>
-							<div data-v-c90cb1da="" class="product_info_area">
-								<div data-v-c90cb1da="" class="title">
-									<p data-v-878934fe="" data-v-c90cb1da=""
-										class="product_info_brand brand">
-										Jordan
-										<!---->
-									</p>
-									<div data-v-36b5d8fb="" data-v-c90cb1da=""
-										class="product_info_product_name">
-										<p data-v-36b5d8fb="" class="name">Jordan 1 Mid Light
-											Smoke Grey</p>
-										<p data-v-36b5d8fb="" class="translated_name">조던 1 미드 라이트
-											스모크 그레이</p>
-									</div>
-								</div>
-								<div data-v-6da6dff3="" data-v-c90cb1da=""
-									class="badge badge_product shipping_express">빠른배송</div>
-							</div>
-							<div data-v-ef71e3ac="" data-v-7dab533a=""
-								class="price price_area">
-								<p data-v-ef71e3ac="" class="amount">
-									<!---->
-									233,000원
-								</p>
-								<p data-v-ef71e3ac="" class="desc">즉시 구매가</p>
-							</div></a>
-						<div data-v-152760b3="" class="action_wish_review"
-							data-v-19fda891="">
-							<span data-v-152760b3="" class="wish_figure"><span
-								data-v-7b8861c4="" data-v-152760b3="" aria-label="관심상품"
-								role="button" class="btn_wish" icon-name="ico-wish-grey"><svg
-										data-v-152760b3="" data-v-7b8861c4="" width="14" height="16"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3="" data-v-7b8861c4=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off"></use></svg></span><span
-								data-v-152760b3="" class="text">4.7만</span></span><span
-								data-v-152760b3="" class="review_figure"><span
-								data-v-152760b3="" class="review_link"
-								aria-label="조던 1 미드 라이트 스모크 그레이 리뷰" role="button"><svg
-										data-v-152760b3="" width="15" height="15"
-										xmlns="http://www.w3.org/2000/svg" class="icon sprite-icons">
-										<use data-v-152760b3=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey"></use></svg></span><span
-								data-v-152760b3="" class="text">2,300</span></span>
-						</div>
-					</div>
+				<div data-v-01f4e1bc="" class="search_result_list" id="listBody">
+					<!-- ----------------------------------------------------------------------------------- -->
 
+					<!-- ----------------------------------------------------------------- -->
 				</div>
+				<!-- ----------------------------------------------------------------- -->
+				<div class="paging" style="display: block;">
+					<!-- 					<a class="prev2" href="javascript:void(0);">처음 페이지로 이동</a><a
+						href="javascript:void(0);" class="prev">이전 페이지로 이동</a><span
+						class="num" style="vertical-align: top"><a href="javascript:void(0);"
+						class="pageBtn  on  " pagenum="1">1</a><a
+						href="javascript:void(0);" class="pageBtn  " pagenum="2">2</a></span><a
+						href="javascript:void(0);" class="next">다음 페이지로 이동</a><a
+						href="javascript:void(0);" class="next2">마지막 페이지로 이동</a> -->
+				</div>
+				<!-- ----------------------------------------------------------------- -->
 				<div data-v-5f3540d5="" data-v-01f4e1bc="" class="list_loading"
 					style="display: none;">
 					<img data-v-5f3540d5="" src="/_nuxt/img/loading.410eb77.gif"
@@ -4517,5 +3260,461 @@
 	<!---->
 	<!---->
 </div>
+<script type="text/javascript">
+	$(window)
+			.ready(
+					function() {
 
+						console.log("제품 띄우기 실행1 ");
+
+						// 카테고리 띄우기
+
+						let type = "";
+						let keyword = "";
+						let brand = "";
+						let category = "";
+						let startp = "";
+						let endp = "";
+						let ssize = "";
+						let lsize = "";
+
+						// 바로 상품 띄우기
+						showList(1, type, keyword, brand, category, startp,
+								endp, ssize, lsize);
+
+						let CatTmp = "";
+						let arr = new Array();
+
+						// ajax로 제품 띄우기
+						function showList(page, type, keyword, brand, category,
+								startp, endp, ssize, lsize) {
+
+							console.log("제품 띄우기 실행2 ");
+
+							let product_array;
+							let totalCnt;
+
+							$
+									.ajax(
+											{
+												url : "${pageContext.request.contextPath}/product/getProductList?&page="
+														+ page,
+												data : {
+													"type" : type,
+													"keyword" : keyword,
+													"bkeyword" : brand,
+													"ckeyword" : category,
+													"startp" : startp,
+													"endp" : endp,
+													"ssize" : ssize,
+													"lsize" : lsize
+
+												}
+											})
+									.done(
+											function(data) {
+												console.log("data :" + data);
+												product_array = data.products;
+												totalCnt = data.totalCnt;
+
+												let html_tmp = "";
+
+												if (product_array == null
+														|| product_array.length == 0) {
+													$("#listBody").html("");
+													return;
+												}
+
+												for (let i = 0; i < product_array.length; i++) {
+													let product = product_array
+															.at(i);
+
+													let tmp = "";
+
+													tmp += "<div data-v-19fda891='' data-v-01f4e1bc='' class='product_card'>";
+													tmp += "	<a data-v-19fda891='' href='productdetail?pid="
+															+ product_array
+																	.at(i).product.pid
+															+ " class='item_inner'>";
+													tmp += "		<div data-v-09fbcf09='' class='product' style='background-color: rgb(244, 244, 244);'>"
+													tmp += "			<picture data-v-878ec45c='' data-v-09fbcf09='' class='picture product_img'>"
+													tmp += "				<source data-v-878ec45c='' type='image/webp'"
+													tmp += "					srcset='"
+															+ product_array
+																	.at(i).product.img1
+															+ "'>"
+													tmp += "				<source data-v-878ec45c=''";
+													tmp += "					srcset='"
+															+ product_array
+																	.at(i).product.img1
+															+ "'>"
+													tmp += "				<img data-v-878ec45c='' alt='#'"
+													tmp += "					referrerpolicy='no-referrer' loading='lazy' class='image' src='"
+															+ product_array
+																	.at(i).product.img1
+															+ "'>"
+													tmp += "			</picture>"
+													tmp += "		</div>"
+													tmp += "		<div data-v-c90cb1da='' class='product_info_area'>"
+
+													tmp += "			<div data-v-c90cb1da='' class='title'>"
+													tmp += "				<p data-v-878934fe='' data-v-c90cb1da='' class='product_info_brand brand'>"
+															+ product_array
+																	.at(i).product.brand
+															+ "</p>"
+
+													tmp += "				<div data-v-36b5d8fb='' data-v-c90cb1da='' class='product_info_product_name'>"
+													tmp += "					<p data-v-36b5d8fb='' class='name'>"
+															+ product_array
+																	.at(i).product.pname_e
+															+ "</p>"
+													tmp += "					<p data-v-36b5d8fb='' class='translated_name'>"
+															+ product_array
+																	.at(i).product.pname_k
+															+ "</p>"
+													tmp += "				</div>"
+													tmp += "			</div>"
+													tmp += "			<div data-v-6da6dff3='' data-v-c90cb1da='' class='badge badge_product shipping_express'>빠른배송</div>"
+
+													tmp += "		</div>"
+
+													tmp += "		<div data-v-ef71e3ac='' data-v-7dab533a='' class='price price_area'>"
+													tmp += "			 <p data-v-ef71e3ac='' class='amount'>"
+															+ product_array
+																	.at(i).product.pname_k
+															+ "</p>"
+													tmp += "			 <p data-v-ef71e3ac='' class='desc'>즉시 구매가</p>"
+													tmp += "		</div>"
+
+													tmp += "	</a>";
+
+													tmp += "	<div data-v-152760b3='' class='action_wish_review' data-v-19fda891=''>"
+													tmp += "		<span data-v-152760b3='' class='wish_figure'>"
+													tmp += " 			<span data-v-7b8861c4='' data-v-152760b3='' aria-label='관심상품' role='button' class='btn_wish' icon-name='ico-wish-grey'>"
+													tmp += "			<svg data-v-152760b3='' data-v-7b8861c4=''";
+										tmp += " 			width='14' height='16' xmlns='http://www.w3.org/2000/svg' class='icon sprite-icons'>";
+
+													tmp += " 			<use data-v-152760b3='' data-v-7b8861c4=''";
+										tmp += " 				href='/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off'";
+										tmp += " 				xlink:href='/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-grey-off'>";
+													tmp += " 			</use>";
+													tmp += " 			</svg>";
+													tmp += "			</span>";
+													tmp += "			<span data-v-152760b3='' class='text'>스크랩수</span>"
+													tmp += "		</span>";
+
+													tmp += "		<span data-v-152760b3=''";
+										tmp += "		class='review_figure'>";
+													tmp += "			<span data-v-152760b3='' class='review_link'aria-label='"
+															+ product_array
+																	.at(i).product.pname_k
+															+ "' role='button'>"
+													tmp += "				<svg data-v-152760b3=''"
+										tmp += "					width='15' height='15' xmlns='http://www.w3.org/2000/svg' class='icon sprite-icons'>"
+													tmp += "					<use data-v-152760b3='' href='/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey'"
+										tmp += "						xlink:href='/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-review-grey'>"
+													tmp += "					</use>"
+													tmp += "				</svg>"
+													tmp += "			</span>";
+													tmp += "			<span data-v-152760b3='' class='text'>리뷰 갯수</span>";
+													tmp += "		</span>";
+
+													tmp += "	</div>";
+
+													tmp += "</div>";
+													html_tmp += tmp
+												}
+												$("#listBody").html(html_tmp);
+												console
+														.log("-------totalCnt----------------"
+																+ totalCnt);
+
+												// 페이징 출력
+												showProductPage(totalCnt);
+
+											});
+
+						}
+
+						// 페이징 표시 자바스크립트
+						var pageNum = 1;
+						var pageNation = $(".paging");
+
+						function showProductPage(totalCnt) {
+							// 시작 페이지, 마지막 페이지, 이전페이지, 다음 페이지 구현
+							var endNum = Math.ceil(pageNum / 10.0) * 10;
+							var startNum = endNum - 9;
+							var prev = startNum != 1;
+							var next = false; // 기본 값은 false 
+							// 현재 보이는 pagenation의 마지막 숫자의 *12은 현재 까지의 데이터 갯수인데
+							// 이것보다 total 갯수가 더 적다면 -> 페이지 조정이 필요
+							if (endNum * 12 >= totalCnt) { //마지막페이지계산
+								endNum = Math.ceil(totalCnt / 12.0);
+							} //end if	      
+							if (endNum * 12 < totalCnt) { //다음페이지 가능
+								next = true;
+							} //end if	 
+
+							console.log("t");
+							console.log("PpageNum " + pageNum);
+							console.log("PendNum " + endNum);
+							console.log("PstartNum " + startNum);
+							// 페이지 네이션 표시
+							var str = "";
+							str += "<a class='prev2' href='1'> 처음 페이지 </a>";
+							if (pageNum <= 0) {
+								str += "<a class='prev' href='1'> 이전 페이지 </a>";
+							} else {
+								str += "<a class='prev' href='" + (pageNum - 1)
+										+ "'> 이전 페이지 </a>";
+							}
+							str += "<span class = 'num' style='vertical-align: top' >";
+							for (var i = startNum; i <= endNum; i++) {
+								// 현재 페이지 active
+								var active = pageNum == i ? "on" : "";
+								str += "<a href='" + i + "'class='pageBtn " + active + "'>"
+										+ i + "</a>";
+							}
+							str += "</span>";
+
+							str += "<a class='next' href='"
+									+ (parseInt(pageNum) + 1)
+									+ "'> 다음 페이지 </a>";
+							if (next) {
+								str += "<a class='next2' href='" + (endNum + 1)
+										+ "'> 마지막 페이지 </a>";
+							}
+							pageNation.html(str);
+						}
+
+						//페이지 번호 클릭	
+						//반드시 on함수 사용해야 한다. - js에 의해 새로 생긴 태그에는 이벤트가 주어지지 않기 때문에 찾아서 이벤트를 넣어줘야 한다.
+						pageNation
+								.on(
+										"click",
+										"a",
+										function(e) {
+											// 링크 이동 행동 무시
+											e.preventDefault(); //<a> 동작 중지
+											console.log("page click");
+											var targetPageNum = $(this).attr(
+													"href"); //페이지넘버 가져오기	       
+											console.log("targetPageNum: "
+													+ targetPageNum);
+											if (targetPageNum <= 0) {
+												targetPageNum = 1;
+											}
+											console.log("targetPageNum: "
+													+ targetPageNum);
+											// 전역 변수에 값 전달
+											pageNum = targetPageNum; //값전달
+
+											let type = "";
+											let brand = $("#brandCurrent")
+													.html();
+											let color = $("#colorCurrent")
+													.html();
+											let price = $("#priceCurrent")
+													.html();
+											let sort = $("#sortCurrent").html();
+											let startp = 0;
+											let endp = 0;
+
+											if (price == ' ￦100,000 이하') {
+												startp = 0;
+												endp = 100000;
+											} else if (price == '￦100,000 ~ ￦300,000') {
+												startp = 100000;
+												endp = 300000;
+											} else if (price == '￦300,000 ~ ￦500,000') {
+												startp = 300000;
+												endp = 500000;
+											} else if (price == '￦500,000 ~ ￦1,000,000') {
+												startp = 500000;
+												endp = 1000000;
+											} else if (price == '￦1,000,000 이상') {
+												startp = 1000000;
+												endp = 100000000;
+											} else {
+												starp = 0;
+												endp = 0;
+											}
+
+											if (brand == "" && color == ""
+													&& endp == "") {
+												type = " ";
+												console.log("null 실행");
+											} else if (brand != ""
+													&& color == ""
+													&& endp == "") {
+												type = "B";
+												console.log("b 실행");
+											} else if (brand == ""
+													&& color != ""
+													&& endp == "") {
+												type = "C";
+												console.log("c 실행");
+											} else if (brand == ""
+													&& color == ""
+													&& endp != "") {
+												type = "P";
+												console.log("p 실행");
+											} else if (brand != ""
+													&& color != ""
+													&& endp == "") {
+												type = "BC";
+												console.log("bc 실행");
+											} else if (brand != ""
+													&& color == ""
+													&& endp != "") {
+												type = "BP";
+												console.log("bp 실행");
+											} else if (brand == ""
+													&& color != ""
+													&& endp != "") {
+												type = "CP";
+												console.log("cp 실행");
+											} else {
+												type = "CBP";
+												console.log("cbp 실행");
+											}
+
+											if (sort == '고가순') {
+												type += "H";
+											} else {
+												type += "L";
+											}
+
+											// 바로 상품 띄우기
+											showList(pageNum, "", "", "", "",
+													"", "", "", "");
+											//showList(pageNum, type, brand,color, startp, endp); //페이지 리스트 다시 출력
+										});
+
+						let filterBtn = $(".menu_link");
+
+						filterBtn
+								.on(
+										"click",
+										function(e) {
+											console.log("필터링 클릭!!!!!");
+											console.log(e.currentTarget);
+											
+										});
+
+						let resetBtn = $("#reset");
+
+						resetBtn.on("click", function(e) {
+							let type = "";
+							let startp = 0;
+							let endp = 0;
+
+							$("#brandCurrent").html("");
+							$("#colorCurrent").html("");
+							$("#priceCurrent").html("");
+							$("#sortCurrent").html("저가순");
+
+							console.log("r실행 : " + type);
+							console.log("r실행 : " + brand);
+							console.log("r실행 : " + color);
+							showList(1, type, brand, color, startp, endp);
+						});
+						
+						
+					});
+</script>
+<style>
+.paging {
+	margin-top: 40px;
+	text-align: center;
+}
+
+.paging>a {
+	display: inline-block;
+	width: 15px;
+	margin: 0 5px;
+	height: 13px;
+	background:
+		url("http://www.thehandsome.com/_ui/desktop/common/images/common/ico_paging.png")
+		0 0 no-repeat;
+	text-indent: -999em;
+	cursor: pointer;
+} /*200702 수정*/
+.paging .prev {
+	background-position: -25px -4px;
+}
+
+.paging .next {
+	background-position: -62px -4px;
+}
+
+.paging .prev2 {
+	background-position: 0 -4px;
+}
+
+.paging .next2 {
+	background-position: -86px -4px;
+}
+
+.paging .num {
+	margin-top: -4px;
+	margin-top: -3px\9;
+	display: inline-block;
+}
+
+.paging .num a {
+	display: inline-block;
+	padding: 0 5px;
+	vertical-align: top;
+	cursor: pointer;
+} /*페이징 마우스 포인터 속성 추가 200701*/
+.paging .num a.on {
+	font-weight: bold
+}
+</style>
+
+<script>
+	function openMenu(element) {
+		console.log('filter_menu');
+		const menu = element.getElementsByClassName('filter_menu')[0];
+		const all = element.getElementsByClassName('placeholder')[0];
+		console.log(menu.style.display);
+		if (menu.style.display == 'none') {
+			menu.style.display = 'block';
+			all.style.display = 'none';
+		} /* else {
+			menu.style.display = 'none';
+			all.style.display = 'block';
+		} */
+	}
+
+	var newDiv;
+	
+/* 	function Ccheck(element) {
+		console.log("카테고리 함수");
+		const category = element.getElementsByClassName('link_txt')[0].innerHTML;
+		console.log(category);
+		console.log(element.parentNode.parentNode.parentNode);
+		const tmp = element.parentNode.parentNode.parentNode;
+		console.log(tmp.getElementsByClassName('placeholder')[0].innerHTML);
+		tmp.getElementsByClassName('placeholder')[0].innerHTML = category;
+		console.log("변경후"+ tmp.getElementsByClassName('placeholder')[0].innerHTML);
+		
+		var newDiv = document.createElement("div");
+		let html_tmp = ""
+		html_tmp += "<div data-v-9bcf6292='' class='tag_item'>";
+		html_tmp += "	<span data-v-9bcf6292='' class='tag'>"+ category +"</span>";
+		html_tmp += "	<svg data-v-9bcf6292='' xmlns='http://www.w3.org/2000/svg' class='ico-delete-gray icon sprite-icons'>";
+		html_tmp += "		<use data-v-9bcf6292='' href='/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-delete-gray'";
+		html_tmp += "			xlink:href='/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-delete-gray'>";
+		html_tmp += "		</use>";
+		html_tmp += "	</svg>";
+		html_tmp += "</div>";
+		newDiv.innerHTML = html_tmp;
+		
+		var p = document.getElementById("filter_tag"); // <p "id=p"> 태그의 DOM 객체 찾기
+		p.appendChild(newDiv);
+		
+	} */
+</script>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

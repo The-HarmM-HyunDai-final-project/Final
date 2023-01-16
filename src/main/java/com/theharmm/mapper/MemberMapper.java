@@ -1,20 +1,20 @@
 package com.theharmm.mapper;
 
-import com.theharmm.domain.AuthVO;
+import com.theharmm.domain.MemberAuthVO;
 import com.theharmm.domain.MemberVO;
 
 public interface MemberMapper {
 	
-	//È¸¿ø°¡ÀÔ
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public int joinMember(MemberVO member);
-	//È¸¿ø°¡ÀÔ¿¡¼­ ÀÎÁõ±îÁö ÁÖ±â
-	public int joinMemberAuthority(AuthVO auth);
-	//ÀÌ¸ÞÀÏ Áßº¹ ¿©ºÎ
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö±ï¿½
+	public int joinMemberAuthority(MemberAuthVO auth);
+	//ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int checkEmail(MemberVO member);
-	//´Ð³×ÀÓ Áßº¹ ¿©ºÎ
+	//ï¿½Ð³ï¿½ï¿½ï¿½ ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int checkNickName(MemberVO member);
-	//·Î±×ÀÎ
+	//ï¿½Î±ï¿½ï¿½ï¿½
 	public MemberVO login(MemberVO member);
-	//È¸¿øÁ¤º¸, ÀÎÁõ °¡Á®¿À±â
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public MemberVO read(MemberVO member);
 }

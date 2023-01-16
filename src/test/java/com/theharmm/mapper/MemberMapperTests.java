@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.theharmm.service.MemberService;
-import com.theharmm.domain.AuthVO;
+import com.theharmm.domain.MemberAuthVO;
 import com.theharmm.domain.MemberVO;
 import com.theharmm.mapper.MemberMapper;
 
@@ -38,16 +38,16 @@ public class MemberMapperTests {
 		MemberVO member = new MemberVO();
 		member.setMember_email("asd@naver.com");
 		member.setMember_password(password);
-		member.setMember_name("¹Ú¿©¸í");
-		member.setMember_nickname("¿©¶ò");
+		member.setMember_name("ï¿½Ú¿ï¿½ï¿½ï¿½");
+		member.setMember_nickname("ï¿½ï¿½ï¿½ï¿½");
 		member.setMember_phone("01040818409");
 		member.setMember_shoes_size(275);
 		member.setMember_register("2020-01-01");
 		member.setMember_login("2020-01-01");
-		member.setMember_messege_info("ÀÌ°Ç ¹¹ÇÏ´Â ÄÃ·³ÀÌ¾ß");
-		member.setMember_email_info("ÀÌ°Ç ¹¹ÇÏ´Â ÄÃ·³ÀÌ¾ß");
+		member.setMember_messege_info("ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½");
+		member.setMember_email_info("ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½");
 		
-		AuthVO auth = new AuthVO();
+		MemberAuthVO auth = new MemberAuthVO();
 		auth.setUsername("asd");
 		auth.setAuthority("ROLE_MEMBER");
 		
