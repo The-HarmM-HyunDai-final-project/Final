@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.theharmm.dto.product.ProductDetailDTO;
 import com.theharmm.dto.product.ProductSizeDTO;
-import com.theharmm.dto.product.ProductVo;
+import com.theharmm.dto.product.ProductDTO;
 
 
 @Mapper
