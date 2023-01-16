@@ -31,11 +31,17 @@ public class ProductController {
 			, @RequestParam(defaultValue = "0") int startp, @RequestParam(defaultValue = "0") int endp, String ssize, String lsize) {
 		
 		log.info("ajax 제품 리스트 출력");
+		log.info(type);
+		log.info(keyword);
+		log.info(bkeyword);
+		log.info(ckeyword);
+		log.info(ssize);
 		Criteria cri = new Criteria();
+		
 		cri.setAmount(12);
 		cri.setPageNum(page);
 		cri.setType(type);
-		cri.setType(keyword);
+		//cri.setCkeyword(ckeyword)
 		cri.setBkeyword(bkeyword);
 		cri.setCkeyword(ckeyword);
 		cri.setStartp(startp);
@@ -43,7 +49,9 @@ public class ProductController {
 		cri.setSsize(ssize);
 		cri.setLsize(lsize);
 		
+		log.info(cri);
 		ProductPageDTO products = productservice.getProducts(cri);
+		log.info(products);
 		
 		JSONObject jsonObject = new JSONObject();
 		JSONArray jsonArray = new JSONArray();
@@ -67,6 +75,7 @@ public class ProductController {
 		jsonObject.put("totalCnt", products.getTotalCnt());
 		
 		String json = jsonObject.toString();
+		log.info(json);
 		return json;
 	}
 	
