@@ -6,27 +6,52 @@
 
 	<!-- 키워드는 무조건 대문자 소문자 구분!!!! -->
 	<sql id="criteria">
-		<trim prefix=" AND (" suffix=")" prefixOverrides="AND">
+		<trim prefix=" AND (" suffix=")" prefixOverrides="AND | OR">
 			<foreach item="type" collection="cri.typeArr"> 
 				<trim prefix="AND">
-					<choose>					      
+					<choose>
+						<when test="type== 'D'.toString()">
+							pname_k like '%' || #{cri.keyword} || '%'
+						</when>	
+						
+				      
 						<when test="type== 'B'.toString()">
-							bname like '%' || #{cri.bkeyword} || '%'
+							<trim prefix="(" suffix=")" prefixOverrides="OR">
+								<foreach item="bkeyword" collection="cri.bkeywordArr"> 
+									<trim prefix="OR">
+										brand like '%' || #{bkeyword} || '%'
+									</trim>
+								</foreach>
+							</trim>							
 						</when>
+												
 						<when test="type== 'C'.toString()">
 							category = #{cri.ckeyword} 
 						</when>
+						
 						<when test="type== 'S'.toString()">
-							size like '%' || #{cri.ssize} || '%'
-							and category = 1
+							<trim prefix="(" suffix=") and category = 1" prefixOverrides="OR">
+								<foreach item="ssize" collection="cri.SsizeArr"> 
+									<trim prefix="OR">
+										model_size like  '%' || #{ssize} || '%'
+									</trim>
+								</foreach>
+							</trim>							
 						</when>
+						
 						<when test="type== 'L'.toString()">
-							size like '%' || #{cri.lsize} || '%'
-							and category = 2
+							<trim prefix="(" suffix=") and category = 2" prefixOverrides="OR">
+								<foreach item="lsize" collection="cri.LsizeArr"> 
+									<trim prefix="OR">
+										model_size like  '%' || #{lsize} || '%'
+									</trim>
+								</foreach>
+							</trim>							
 						</when>
+						
 						<when test="type== 'P'.toString()">
 						  <![CDATA[  
-							pcprice >= #{cri.startp} and s_price < #{cri.endp}						
+							RELEASE_PRICE >= #{cri.startp} and RELEASE_PRICE < #{cri.endp}						
 						    ]]>
 						</when>
 					</choose> <!-- end choose -->
@@ -37,27 +62,37 @@
 
 	<!--  제품 리스트 가져오기 -->
 	<select id="selectProducts"
-		resultType="com.theharmm.dto.product.ProductVo"
+		resultType="com.theharmm.domain.ProductDTO"
 		parameterType="HashMap">
-		select pid,category,brand,pname_e,pname_k,model_number,release_date
-		,color,release_price,img1,img2,img3,img4,img5
-		from resell_product
-		<!-- <![CDATA[ where rownum <= 12 ]]> -->
+		<![CDATA[ 
+		select pid,category,brand,pname_e,pname_k,model_number,release_date ,color,release_price,img1,img2,img3,img4,img5
+		     from (select rownum as rnum, pid,category,brand,pname_e,pname_k,model_number,release_date ,color,release_price,img1,img2,img3,img4,img5
+		        from (select distinct pid,category,brand,pname_e,pname_k,model_number,release_date
+		            ,color,release_price,img1,img2,img3,img4,img5
+		            from (select p.pid,category,brand,pname_e,pname_k,p.model_number,release_date
+		                ,color,release_price,img1,img2,img3,img4,img5,s.model_size
+		                from resell_product p, resell_product_size s
+		                where p.pid = s.pid
+		                ]]>
+		                <include refid="criteria"/>
+		                )
+		        <![CDATA[        
+		        )
+		        where rownum <= #{cri.pageNum} * #{cri.amount}
+		    )
+		where rnum > (#{cri.pageNum} - 1) * #{cri.amount}
+		]]>
 	</select>
 
 	<!--  제품 리스트 갯수 가져오기 -->
 	<select id="countProducts" resultType="int"
 		parameterType="HashMap">
-        select count(distinct pid)
-            from (
-            	select pv.pid
-            	from productVO_view pv, product_color pc
-            	WHERE pv.pid = pc.pid
-                AND depth1name = #{category.depth1name}
-                AND depth2name LIKE '%'
-                AND depth3name LIKE '%'
-                <include refid="criteria"> </include>
-                )
+		select count(distinct pid)
+		    from (select p.pid,category,brand,pname_e,pname_k,p.model_number,release_date,color,release_price,img1,img2,img3,img4,img5,s.model_size
+		            from resell_product p, resell_product_size s
+		            where p.pid = s.pid
+		            <include refid="criteria"> </include>
+		        )
 	</select>
 
 </mapper>

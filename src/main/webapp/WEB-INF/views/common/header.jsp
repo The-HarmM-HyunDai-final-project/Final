@@ -142,7 +142,6 @@
 </style>
 <script type="text/javascript" async=""
 	src="https://wcs.naver.net/wcslog.js" id="naver-ads" data-loaded="true">
-	
 </script>
 <script
 	src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-SRFKTMTR0R"
@@ -211,7 +210,7 @@
 										<li class="gnb_item" data-v-147586e1=""><a
 											href="/social/trending" class="gnb_link" data-v-147586e1="">
 												STYLE </a></li>
-										<li class="gnb_item" data-v-147586e1=""><a href="#"
+										<li class="gnb_item" data-v-147586e1=""><a href="${pageContext.request.contextPath}/product/productlist?page=1"
 											class="gnb_link" data-v-147586e1=""> SHOP </a></li>
 										<li class="gnb_item" data-v-147586e1=""><a href="/about"
 											target="_blank" class="gnb_link" data-v-147586e1="">
@@ -287,7 +286,7 @@
 											<ul class="nav_list" data-v-0eda3817="">
 												<li class="nav_item" data-v-0eda3817=""><a href="#"
 													class="nav_link" data-v-0eda3817=""> STYLE </a></li>
-												<li class="nav_item" data-v-0eda3817=""><a href="#"
+												<li class="nav_item" data-v-0eda3817=""><a href="${pageContext.request.contextPath}/product/productlist?page=1"
 													class="nav_link" data-v-0eda3817=""> SHOP </a></li>
 												<li class="nav_item" data-v-0eda3817=""><a href="#"
 													class="nav_link" data-v-0eda3817=""> 자주 묻는 질문 </a></li>

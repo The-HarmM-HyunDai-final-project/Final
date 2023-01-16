@@ -1,4 +1,4 @@
-package com.theharmm.dto.product;
+package com.theharmm.domain;
 
 import java.sql.Date;
 

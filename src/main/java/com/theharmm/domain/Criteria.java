@@ -1,4 +1,4 @@
-package com.theharmm.dto.product;
+package com.theharmm.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +14,7 @@ public class Criteria {
 
 	// 검색을 위한 변수
 	private String type; // 검색할 항목을 저장 - key
+	private String keyword; // 제일 처음 키워드
 	private String bkeyword;  //브랜드
 	private int ckeyword;  //카테고리
 	private int startp;
@@ -27,6 +28,20 @@ public class Criteria {
 		// 삼항식[Condition Operator] ? TURE : FALSE
 		return (type == null) ? new String[] {} : type.split("");
 	}// end getType..
+	
+	public String[] getSsizeArr() {
+		return (ssize == null) ? new String[] {} : ssize.split(",");
+	}
+	
+	public String[] getLsizeArr() {
+		return (lsize == null) ? new String[] {} : lsize.split(",");
+	}
+	
+	public String[] getBkeywordArr() {
+		return (bkeyword == null) ? new String[] {} : bkeyword.split(",");
+	}
+	
+	
 
 	public Criteria() {
 		this(1, 10);

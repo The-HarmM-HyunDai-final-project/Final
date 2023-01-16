@@ -1,11 +1,11 @@
-package com.theharmm.dto.member;
+package com.theharmm.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class AddressDTO {
+public class MemberAddressDTO {
 	
 	
 	private String member_email;

@@ -1,4 +1,4 @@
-package com.theharmm.dto.product;
+package com.theharmm.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductSizeDTO {
 	
-	//resell_product_size 테이블
+	//resell_product_size 
 	private int psid;         
 	private int pid;
 	private String model_number;
@@ -15,7 +15,7 @@ public class ProductSizeDTO {
 	private int s_price;
 	private int s_stock;
 	
-	//sale 테이블
+	//sale
 	private int saleid;
 	private int price;
 

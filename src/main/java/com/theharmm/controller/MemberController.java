@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.theharmm.domain.AuthVO;
+import com.theharmm.domain.MemberAuthVO;
 import com.theharmm.domain.MemberVO;
 import com.theharmm.service.MemberService;
 import com.theharmm.util.JoinUtil;
@@ -32,14 +32,14 @@ public class MemberController {
 	public String Join() {
 		return "member/join";
 	}
-	//ÀÌ¸ŞÀÏ Áßº¹È®ÀÎ
+	//ì´ë©”ì¼ ì¤‘ë³µí™•ì¸
 	@RequestMapping(value = "/checkEmail", method = RequestMethod.POST)
 	@ResponseBody
 	public String checkEmail(MemberVO member) {
 		int cnt = memberService.checkEmail(member);
 		return (cnt == 0 ? "true" : "false");
 	}
-	//´Ğ³×ÀÓ Áßº¹È®ÀÎ
+	//ë‹‰ë„¤ì„ ì¤‘ë³µí™•ì¸
 	@RequestMapping(value = "/checkNickName", method = RequestMethod.POST)
 	@ResponseBody
 	public String checkNickName(MemberVO member) {
@@ -51,7 +51,7 @@ public class MemberController {
 	public String JoinAction(MemberVO member, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		BCryptPasswordEncoder scpwd = new BCryptPasswordEncoder();
-		String curdate = JoinUtil.builder().build().GetCurDate();// È¸¿ø°¡ÀÔÇÑ ³¯Â¥¸¦ ³Ö±âÀ§ÇÑ Ä¿½ºÅÒ À¯Æ¿ ¸Ş¼­µå
+		String curdate = JoinUtil.builder().build().GetCurDate();// íšŒì›ê°€ì…í•œ ë‚ ì§œë¥¼ ë„£ê¸°ìœ„í•œ ì»¤ìŠ¤í…€ ìœ í‹¸ ë©”ì„œë“œ
 		
 		member.setMember_email(request.getParameter("newEmail")); 
 		member.setMember_password(request.getParameter("newPwd"));
@@ -63,7 +63,7 @@ public class MemberController {
 		member.setMember_login(curdate);
 		member.setMember_messege_info("true");
 		member.setMember_email_info("true");
-		//pw ¾ÏÈ£È­
+		//pw ï¿½ï¿½È£È­
 		String password = scpwd.encode(member.getMember_password());
 		member.setMember_password(password);
 		
@@ -72,17 +72,17 @@ public class MemberController {
 		int result = memberService.joinMember(member);
 
 		if(result < 2) {
-			log.warn("È¸¿ø°¡ÀÔÀÌ Á¦´ë·Î ¾ÈµÇ¾ú½À´Ï´Ù!!!");
+			log.warn("íšŒì›ê°€ì…ì´ ì œëŒ€ë¡œ ì•ˆë˜ì—ˆìŠµë‹ˆë‹¤");
 			return "member/join";
 		}
 		
-		log.info(request.getParameter("newEmail") + "´Ô È¸¿ø°¡ÀÔÀ» ÃàÇÏµå¸³´Ï´Ù~");
+		log.info(request.getParameter("newEmail") + "ë‹˜ íšŒì›ê°€ì…ì„ ì¶•í•˜ë“œë¦½ë‹ˆë‹¤~");
 		return "member/loginpage";
 	}
 		
 	@RequestMapping(value = "/loginpage", method = RequestMethod.GET)
 	public String LoginPage(HttpServletRequest request, Model mode) {
-		//·Î±×ÀÎ Àü¿¡ ÆäÀÌÁö·Î µ¹¾Æ°¡±âÀ§ÇÑ RefererÇì´õ°ª(ÀÌÀü URL)À» ¼¼¼ÇÀÇ prevPage¶ó´Â ÀÌ¸§À¸·Î ÀúÀå
+		//ë¡œê·¸ì¸ ì „ì— í˜ì´ì§€ë¡œ ëŒì•„ê°€ê¸°ìœ„í•œ Refererí—¤ë”ê°’(ì´ì „ URL)ì„ ì„¸ì…˜ì˜ prevPageë¼ëŠ” ì´ë¦„ìœ¼ë¡œ ì €ì¥
 		String uri = request.getHeader("Referer");
 		if(uri != null && uri.contains("/loginpage")) {
 			request.getSession().setAttribute("prevPage", uri);
@@ -90,15 +90,12 @@ public class MemberController {
 		return "member/loginpage";
 	}
 	
-//	@RequestMapping(value = "/login", method = RequestMethod.POST)
-//	public void LoginAction() {
-//		
-//	}
+
 	
 	@RequestMapping(value = "/accessError", method = RequestMethod.GET)
 	public String accessDenied(Authentication auth, Model model) {
 		
-		log.info("access Denied, È¸¿ø´ÔÀº ´ÙÀ½µî±Ş ÀÔ´Ï´Ù. : " + auth );
+		log.info("access Denied, íšŒì›ë‹˜ì€ ë‹¤ìŒë“±ê¸‰ ì…ë‹ˆë‹¤: " + auth );
 		
 		return "/";
 	}

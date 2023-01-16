@@ -18,7 +18,7 @@
 		</collection>
 	</resultMap>
 
-	<resultMap type="com.theharmm.domain.AuthVO" id="authMap">
+	<resultMap type="com.theharmm.domain.MemberAuthVO" id="authMap">
 		<result property="username" column="member_email" />
 		<result property="authority" column="authority" />
 	</resultMap>

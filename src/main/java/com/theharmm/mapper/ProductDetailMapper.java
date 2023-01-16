@@ -6,10 +6,8 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.theharmm.dto.product.ProductDetailDTO;
-import com.theharmm.dto.product.ProductSizeDTO;
-import com.theharmm.dto.product.ProductVo;
-
+import com.theharmm.domain.ProductDetailDTO;
+import com.theharmm.domain.ProductSizeDTO;
 
 @Mapper
 public interface ProductDetailMapper {
