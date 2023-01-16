@@ -1,5 +1,6 @@
 package com.theharmm.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.junit.Test;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.theharmm.vo.product.Criteria;
 import com.theharmm.vo.product.ProductVo;
 
 import lombok.extern.log4j.Log4j;
@@ -21,7 +23,31 @@ public class ProductMapperTest {
 	
 	@Test
 	public void selectTest() {
-		List<ProductVo> list = mapper.selectAllProducts();
+		Criteria cri = new Criteria();
+		cri.setAmount(12);
+		cri.setPageNum(1);
+		cri.setType("BSC");
+		cri.setBkeyword("Adidas,Prada");
+		cri.setSsize("240,250");
+		cri.setCkeyword(2);
+		
+		HashMap<String, Object> categoryPager = new HashMap<String, Object>();
+		categoryPager.put("cri",cri);
+		
+		List<ProductVo> list = mapper.selectProducts(categoryPager);
 		list.forEach( i -> log.info( i));
+	}
+	
+	@Test
+	public void countTest() {
+		Criteria cri = new Criteria();
+		cri.setAmount(12);
+		cri.setPageNum(1);
+		
+		HashMap<String, Object> categoryPager = new HashMap<String, Object>();
+		categoryPager.put("cri",cri);
+		
+		int count = mapper.countProducts(categoryPager);
+		log.info(count);
 	}
 }
