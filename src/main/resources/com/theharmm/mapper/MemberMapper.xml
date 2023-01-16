@@ -63,4 +63,5 @@
 		on mem.member_email = auth.username
 		WHERE mem.member_email = #{member_email}
 	</select>
+	
 </mapper>

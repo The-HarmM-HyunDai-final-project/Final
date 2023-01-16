@@ -220,32 +220,53 @@
 			</exclusions>
 		</dependency>
 
-	<!-- 스프링 시큐리티 동일한 버전으로 -->
-	<dependency>
-	    <groupId>org.springframework.security</groupId>
-	    <artifactId>spring-security-web</artifactId>
-	    <version>5.0.7.RELEASE</version>
-	</dependency>
-	
-	<dependency>
-	    <groupId>org.springframework.security</groupId>
-	    <artifactId>spring-security-config</artifactId>
-	    <version>5.0.7.RELEASE</version>
-	</dependency>
-	
-	<dependency>
-	    <groupId>org.springframework.security</groupId>
-	    <artifactId>spring-security-core</artifactId>
-	    <version>5.0.7.RELEASE</version>
-	</dependency>
-	
-	<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
-	<dependency>
-	    <groupId>org.springframework.security</groupId>
-	    <artifactId>spring-security-taglibs</artifactId>
-	    <version>5.0.7.RELEASE</version>
-	</dependency>
-	
+		<!-- 스프링 시큐리티 동일한 버전으로 -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.12.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.dataformat</groupId>
+		    <artifactId>jackson-dataformat-xml</artifactId>
+		    <version>2.12.1</version>
+		</dependency>
+		
+		<!-- thumbnail -->
+		<!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
+		<dependency>
+		    <groupId>net.coobird</groupId>
+		    <artifactId>thumbnailator</artifactId>
+		    <version>0.4.13</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>

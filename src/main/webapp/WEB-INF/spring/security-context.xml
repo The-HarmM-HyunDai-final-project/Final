@@ -49,6 +49,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 			delete-cookies="JSESSION_ID"
 			logout-success-url="/"
 			 />
+			 
+		<security:intercept-url pattern = "/social/user" access="permitAll"/>
 
 		<!-- 권한이 없다든가 하는 경우 에러페이지를 보내줘야할 때 아래로 내가만든 경로로 보낼 수 있음 -->
 		<!-- 일단은 따로 없으니 보류 -->

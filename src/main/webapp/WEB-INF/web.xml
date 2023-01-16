@@ -29,6 +29,13 @@
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		<!-- 업로드 관련 설정 -->
+		<multipart-config>
+			<location>C:\\upload\\temp</location>
+			<max-file-size>20971520</max-file-size>					<!-- 1MB * 20 -->
+			<max-request-size>41943040</max-request-size>			<!-- 40MB -->
+			<file-size-threshold>20971520</file-size-threshold>		<!-- 20MB -->
+		</multipart-config>
 	</servlet>
 
 	<servlet-mapping>
@@ -41,7 +48,7 @@
 		<url-pattern>/WEB-INF/views/*</url-pattern>
 	</servlet-mapping>
 
-		<!--적용 순서 주의 -->
+
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

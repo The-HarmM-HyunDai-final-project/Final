@@ -2,6 +2,8 @@ package com.theharmm.domain;
 
 import java.util.List;
 
+import com.theharmm.domain.SocialVO;
+
 import lombok.Data;
 
 @Data
@@ -20,4 +22,5 @@ public class MemberVO {
 	private String member_email_info;
 	
 	private List<AuthVO> authList;
+	
 }
