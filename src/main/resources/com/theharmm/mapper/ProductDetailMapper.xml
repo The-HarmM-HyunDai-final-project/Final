@@ -33,10 +33,11 @@
            ON T1.PID = T2.PID AND T1.MODEL_SIZE = T2.SIZE_TYPE 
         WHERE T1.pid = #{pid}
         GROUP BY T1.PSID,T1.PID,T1.MODEL_NUMBER, T1.MODEL_SIZE, T1.S_PRICE, T1.S_STOCK,T2.PRICE
+        ORDER BY T1.MODEL_SIZE ASC
 		  ]]>
 	</select>
 	
-	<!--  제품 사이즈 조회 -->
+	<!-- 하나의 제품 사이즈 조회 -->
 	<select id="selectProductSize"
 		resultType="ProductSizeDTO"
 		parameterType="Map">

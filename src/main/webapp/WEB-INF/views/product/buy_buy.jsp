@@ -95,6 +95,11 @@
 <script charset="utf-8" src="/_nuxt/979fe8d.js"></script>
 <link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/1942381.css">
 <script charset="utf-8" src="/_nuxt/7202568.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/buytab.js" defer=""></script>
+<script src="${pageContext.request.contextPath}/resources/js/buy_btn_tab.js" defer=""></script>
+<script src="${pageContext.request.contextPath}/resources/js/price_check.js" defer=""></script>
+
 </head>
 <body>
 	<div id="__nuxt">
@@ -115,12 +120,8 @@
 										style="background-color: rgb(244, 244, 244);">
 										<picture data-v-878ec45c="" data-v-09fbcf09=""
 											class="picture product_img">
-										<source data-v-878ec45c="" type="image/webp"
-											srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjhfNTAg/MDAxNjcyMTkyNjE0NTQ5.QxO6lVphyqxuRIZnpbwqOV6ESMkV_AR4bhR4wSxhTzwg.Jjy2PoC7xiJD-VL41pl9foRfaTjvgOkGKpiT1tOkYrAg.JPEG/a_018da96e3e9447da930ab111f7605ab2.jpg?type=l_webp">
-										<source data-v-878ec45c=""
-											srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjhfNTAg/MDAxNjcyMTkyNjE0NTQ5.QxO6lVphyqxuRIZnpbwqOV6ESMkV_AR4bhR4wSxhTzwg.Jjy2PoC7xiJD-VL41pl9foRfaTjvgOkGKpiT1tOkYrAg.JPEG/a_018da96e3e9447da930ab111f7605ab2.jpg?type=l">
-										<img data-v-878ec45c="" alt="상품 이미지"
-											src="https://kream-phinf.pstatic.net/MjAyMjEyMjhfNTAg/MDAxNjcyMTkyNjE0NTQ5.QxO6lVphyqxuRIZnpbwqOV6ESMkV_AR4bhR4wSxhTzwg.Jjy2PoC7xiJD-VL41pl9foRfaTjvgOkGKpiT1tOkYrAg.JPEG/a_018da96e3e9447da930ab111f7605ab2.jpg?type=l"
+										<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="상품 이미지"
+											src="${productDetailDTO.img1}"
 											loading="lazy" class="image"></picture>
 										<!---->
 										<!---->
@@ -129,14 +130,12 @@
 									</div>
 									<div data-v-2b95d831="" class="product_detail">
 										<strong data-v-2b95d831="" class="model_number">
-											<!---->10025391-A01
+											<!---->${productDetailDTO.model_number}
 										</strong>
-										<p data-v-2b95d831="" class="model_title">Ader Error x
-											Converse Shapes Varsity Jacket Cobalt</p>
-										<p data-v-2b95d831="" class="model_ko">아더에러 x 컨버스 쉐입스 바시티
-											자켓 코발트</p>
+										<p data-v-2b95d831="" class="model_title">${productDetailDTO.pname_e}</p>
+										<p data-v-2b95d831="" class="model_ko"> ${productDetailDTO.pname_k}</p>
 										<div data-v-2b95d831="" class="model_desc">
-											<p data-v-2b95d831="" class="size_txt">M</p>
+											<p data-v-2b95d831="" class="size_txt">${productSizeDTO.model_size}</p>
 											<!---->
 										</div>
 									</div>
@@ -147,8 +146,18 @@
 								<ul data-v-638c1354="" data-v-158ed304="" class="price_list">
 									<li data-v-638c1354="" class="list_item"><p
 											data-v-638c1354="" class="title">즉시 구매가</p>
-										<span data-v-638c1354="" class="price">600,000</span><span
-										data-v-638c1354="" class="unit">원</span></li>
+										
+										<c:if test="${productSizeDTO.price eq 0}">
+										<span data-v-638c1354="" class="price"> 
+											-
+											</span>
+										</c:if>
+										<c:if test="${productSizeDTO.price ne 0}">
+										<span data-v-638c1354="" class="price"> 
+											<fmt:formatNumber type="number" maxFractionDigits="3" value="${productSizeDTO.price}" />
+	    												</span><span
+										data-v-638c1354="" class="unit">원</span>
+										</c:if></li>
 									<li data-v-638c1354="" class="list_item"><p
 											data-v-638c1354="" class="title">즉시 판매가</p>
 										<span data-v-638c1354="" class="price">520,000</span><span
@@ -162,7 +171,7 @@
 												aria-controls="panel1" class="item on"><a
 												data-v-b6b2883e="" href="#" class="item_link">구매 입찰</a></li>
 											<li data-v-b6b2883e="" role="tab" aria-selected="false"
-												aria-controls="panel2" class="item"><a
+												aria-controls="panel2" class="item <c:if test='${productSizeDTO.price eq 0}'>disabled </c:if>"><a
 												data-v-b6b2883e="" href="#" class="item_link">즉시 구매</a></li>
 										</ul>
 										<!---->
@@ -176,7 +185,8 @@
 												<input data-v-15aa5096="" type="text"
 													pattern="([0-9]+.{0,1}[0-9]*,{0,1})*[0-9]"
 													required="required" placeholder="희망가 입력" autocomplete="off"
-													class="input_amount"><span data-v-15aa5096=""
+													class="input_amount">
+												<span data-v-15aa5096="" class="amount"><fmt:formatNumber type="number" maxFractionDigits="3" value="${productSizeDTO.price}" /></span><span data-v-15aa5096=""
 													class="unit">원</span>
 											</dd>
 										</dl>
@@ -185,12 +195,15 @@
 											<!---->
 										</div>
 									</div>
+									
+
 									<div data-v-158ed304="" class="price_bind">
 										<p data-v-158ed304="" class="price_bind_empty">총 결제금액은 다음
 											화면에서 계산됩니다.</p>
 									</div>
 								</div>
 							</div>
+							<!-- 구매입찰을 누르면 생겨남 -->
 							<div data-v-6bc9d8c2="" data-v-e0394b7a=""
 								class="deadline_info_area">
 								<div data-v-6bc9d8c2="" class="section_title">
@@ -198,8 +211,7 @@
 								</div>
 								<div data-v-6bc9d8c2="" class="section_content">
 									<div data-v-6bc9d8c2="" class="bid_deadline">
-										<p data-v-6bc9d8c2="" class="deadline_txt">30일 (2023/02/11
-											마감)</p>
+										
 										<div data-v-6bc9d8c2="" class="deadline_tab">
 											<a data-v-575aff82="" data-v-6bc9d8c2="" href="#"
 												class="btn outlinegrey medium"> 1일 </a><a data-v-575aff82=""
@@ -229,7 +241,8 @@
 								<div data-v-14995178="" class="btn_confirm">
 									<a data-v-575aff82="" data-v-14995178="" href="#"
 										class="btn full solid false disabled" disabled="disabled">
-										구매 입찰 계속 </a>
+										구매 입찰 계속 </a> 
+									
 								</div>
 							</div>
 						</div>
