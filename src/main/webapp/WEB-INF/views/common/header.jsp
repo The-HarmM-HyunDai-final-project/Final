@@ -9,10 +9,10 @@
 <html lang="ko" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22ko%22%7D%7D">
 
 <head>
-<title>KREAM | 한정판 거래의 FLEX</title>
+<title>theharmm | 한정판 거래의 FLEX</title>
+<link rel="shortcut icon" href="#">
 <!-- 한글 깨짐방지로 넣어봄 -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <meta data-n-head="ssr" charset="utf-8">
 <meta data-n-head="ssr" data-hid="viewport" name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
@@ -89,40 +89,28 @@
             }
         }
     </script>
-<link rel="preload" href="/resources/4fbacaa.js" as="script">
-<link rel="preload" href="/resources/c348f6a.js" as="script">
-<link rel="preload" href="/resources/e6f69f8.js" as="script">
+
 <link rel="preload"
 	href="${pageContext.request.contextPath}/resources/css/acdef89.css"
 	as="style">
 <link rel="preload"
 	href="${pageContext.request.contextPath}/resources/css/4a42468.css"
 	as="style">
-<link rel="preload" href="/resources/b777585.js" as="script">
 <link rel="preload"
 	href="${pageContext.request.contextPath}/resources/css/734fa9a.css"
 	as="style">
-<link rel="preload" href="/resources/1c84866.js" as="script">
-<link rel="preload" href="/resources/f33c07a.js" as="script">
 <link rel="preload"
 	href="${pageContext.request.contextPath}/resources/css/325de86.css"
 	as="style">
-<link rel="preload" href="/resources/1b4c860.js" as="script">
 <link rel="preload"
 	href="${pageContext.request.contextPath}/resources/css/a52fa45.css"
 	as="style">
-<link rel="preload" href="/resources/0baa4c5.js" as="script">
-<link rel="preload" href="/resources/4296a15.js" as="script">
 <link rel="preload"
 	href="${pageContext.request.contextPath}/resources/css/48656c7.css"
 	as="style">
-<link rel="preload" href="/resources/b64a9b6.js" as="script">
-<link rel="preload" href="/resources/ed97882.js" as="script">
 <link rel="preload"
 	href="${pageContext.request.contextPath}/resources/css/ae12c7f.css"
 	as="style">
-<link rel="preload" href="/resources/b78c628.js" as="script">
-
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/acdef89.css">
 <link rel="stylesheet"
