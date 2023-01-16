@@ -3,7 +3,7 @@ package com.theharmm.dto.product;
 import lombok.Data;
 
 @Data
-public class ProductVo {
+public class ProductDTO {
 	private int pid;
 	private int category; // view 만들어서 가져와야 함
 	private String brand;
