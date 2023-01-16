@@ -1,11 +1,11 @@
-package com.theharmm.dto.product;
+package com.theharmm.domain;
 
 import lombok.Data;
 
 @Data
 public class ProductVo {
 	private int pid;
-	private int category; // view 만들어서 가져와야 함
+	private int category; 
 	private String brand;
 	private String pname_e;
 	private String pname_k;

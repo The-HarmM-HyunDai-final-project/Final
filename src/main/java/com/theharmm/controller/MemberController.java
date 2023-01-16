@@ -90,10 +90,7 @@ public class MemberController {
 		return "member/loginpage";
 	}
 	
-//	@RequestMapping(value = "/login", method = RequestMethod.POST)
-//	public void LoginAction() {
-//		
-//	}
+
 	
 	@RequestMapping(value = "/accessError", method = RequestMethod.GET)
 	public String accessDenied(Authentication auth, Model model) {

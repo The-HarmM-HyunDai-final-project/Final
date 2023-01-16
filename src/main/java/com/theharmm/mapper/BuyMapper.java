@@ -5,8 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.theharmm.dto.product.ProductDetailDTO;
-import com.theharmm.dto.product.ProductVo;
+import com.theharmm.domain.ProductDetailDTO;
 
 
 @Mapper
