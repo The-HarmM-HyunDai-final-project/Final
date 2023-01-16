@@ -5,9 +5,9 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.theharmm.dto.product.Criteria;
-import com.theharmm.dto.product.ProductDetailDTO;
-import com.theharmm.dto.product.ProductSizeDTO;
+
+import com.theharmm.domain.ProductDetailDTO;
+import com.theharmm.domain.ProductSizeDTO;
 import com.theharmm.mapper.ProductDetailMapper;
 import com.theharmm.service.ProductDetailService;
 

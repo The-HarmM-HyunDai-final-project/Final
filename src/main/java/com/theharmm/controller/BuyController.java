@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.theharmm.dto.product.ProductDetailDTO;
-import com.theharmm.dto.product.ProductSizeDTO;
+import com.theharmm.domain.ProductDetailDTO;
+import com.theharmm.domain.ProductSizeDTO;
 import com.theharmm.service.ProductDetailService;
 
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.theharmm.dto.product;
+package com.theharmm.domain;
 
 import java.util.List;
 
@@ -11,5 +11,5 @@ import lombok.Getter;
 @Getter
 public class ProductPageDTO {
 	private int totalCnt;
-	private List<ProductVo> list;
+	private List<ProductDTO> list;
 }
