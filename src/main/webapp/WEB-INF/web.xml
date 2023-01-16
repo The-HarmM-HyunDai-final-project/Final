@@ -8,6 +8,7 @@
 
 	<!-- The definition of the Root Spring Container shared by all Servlets 
 		and Filters -->
+
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
@@ -32,7 +33,7 @@
 
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>
@@ -40,7 +41,7 @@
 		<url-pattern>/WEB-INF/views/*</url-pattern>
 	</servlet-mapping>
 
-	<!--적용 순서 주의 -->
+		<!--적용 순서 주의 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -48,6 +49,11 @@
 			<param-name>encoding</param-name>
 			<param-value>UTF-8</param-value>
 		</init-param>
+		<!-- 이거 안해주니까 post로 넘어온 한글을 한글로 못받네?! -->
+		<init-param>		             
+			<param-name>forceEncoding</param-name>		             
+			<param-value>true</param-value>		          
+		</init-param>	
 	</filter>
 
 	<filter-mapping>
@@ -64,4 +70,26 @@
 		<filter-name>xssEscapeServletFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<!-- 시큐리티부분 룰루~ -->
+	<!-- 시큐리티 Bean을 먼저 생성하고 ~ -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- 그걸 가져와서 사용해야 오류가 안남 -->
+	<!-- 이렇게 하는이유 : 전자정부프레임워크 3.8버전 이후로는 그렇게 해야한다고 함 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/root-context.xml
+		  /WEB-INF/spring/security-context.xml
+		</param-value>
+	</context-param>
+	
+
 </web-app>

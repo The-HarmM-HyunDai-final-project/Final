@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.theharmm.dto.product.Criteria;
+import com.theharmm.dto.product.ProductPageDTO;
+import com.theharmm.dto.product.ProductDTO;
 import com.theharmm.service.ProductService;
-import com.theharmm.vo.product.Criteria;
-import com.theharmm.vo.product.ProductPageDTO;
-import com.theharmm.vo.product.ProductVo;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -48,7 +48,7 @@ public class ProductController {
 		JSONObject jsonObject = new JSONObject();
 		JSONArray jsonArray = new JSONArray();
 		
-		for (ProductVo p : products.getList()) {
+		for (ProductDTO p : products.getList()) {
 			JSONObject tmpObject = new JSONObject();
 			
 			JSONObject pObject = new JSONObject(); // 제품 정보 담을 json

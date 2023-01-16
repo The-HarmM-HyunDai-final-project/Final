@@ -1,4 +1,4 @@
-package com.theharmm.vo.product;
+package com.theharmm.dto.product;
 
 import lombok.Getter;
 import lombok.Setter;

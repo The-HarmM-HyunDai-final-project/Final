@@ -1588,11 +1588,11 @@
 }
 
 .btn_order.brand .box[data-v-c631041c] {
-	background-color: #ef6253 !important
+	background-color: #f8da45 !important
 }
 
 .btn_order.buy_100 .box[data-v-c631041c] {
-	background-color: #ef6253
+	background-color: #f8da45
 }
 
 .btn_order.inventory_ask .box[data-v-c631041c], .btn_order.order_buy.bid .box[data-v-c631041c],
@@ -2262,7 +2262,7 @@
 }
 
 .division_btn_box .btn_division.buy[data-v-23bbaa82] {
-	background-color: #ef6253
+	background-color: #f8da45
 }
 
 .division_btn_box .btn_division.sell[data-v-23bbaa82] {
@@ -2540,7 +2540,7 @@
 .tab_area.buy_tab .item.on .item_link[data-v-b6b2883e] {
 	color: #fff;
 	font-weight: 700;
-	background-color: #ef6253
+	background-color: #f8da45
 }
 
 .container.sell .tab_area.buy_tab .item.on .item_link[data-v-b6b2883e] {
@@ -2861,7 +2861,7 @@
 	text-align: center;
 	border-radius: 10px;
 	color: #fff;
-	background-color: #ef6253;
+	background-color: #f8da45;
 	font-size: 18px;
 	letter-spacing: -.09px;
 	font-weight: 700;

@@ -1,5 +1,7 @@
 package com.theharmm.mapper;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.theharmm.vo.product.Criteria;
-import com.theharmm.vo.product.ProductVo;
+import com.theharmm.dto.product.Criteria;
+import com.theharmm.dto.product.ProductDTO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -34,7 +36,7 @@ public class ProductMapperTest {
 		HashMap<String, Object> categoryPager = new HashMap<String, Object>();
 		categoryPager.put("cri",cri);
 		
-		List<ProductVo> list = mapper.selectProducts(categoryPager);
+		List<ProductDTO> list = mapper.selectProducts(categoryPager);
 		list.forEach( i -> log.info( i));
 	}
 	

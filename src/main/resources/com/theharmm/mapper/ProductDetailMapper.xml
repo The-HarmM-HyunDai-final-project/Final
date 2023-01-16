@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.theharmm.mapper.ProductDetailMapper">
+
+	
+	<!--  제품 상세 조회 -->
+	<select id="selectProductDetail"
+		resultType="ProductDetailDTO"
+		parameterType="Integer">
+		 <![CDATA[
+		 SELECT *
+		   FROM RESELL_PRODUCT
+		  WHERE PID = #{pid}
+		  ]]>
+	</select>
+	
+	<!--  제품 사이즈 리스트 조회 -->
+	<select id="selectProductSizeList"
+		resultType="ProductSizeDTO"
+		parameterType="ProductDetailDTO">
+		 <![CDATA[
+		SELECT T1.PSID,T1.PID,T1.MODEL_NUMBER, T1.MODEL_SIZE, T1.S_PRICE, T1.S_STOCK, MIN(T2.SALEID) AS SALEID,T2.PRICE
+		  FROM RESELL_PRODUCT_SIZE T1 
+		  LEFT JOIN (SELECT * 
+                       FROM SALE T2
+                      WHERE (T2.SIZE_TYPE,T2.PRICE) IN (SELECT SIZE_TYPE,MIN(PRICE) 
+                                                          FROM SALE 
+                                                         WHERE STATUS1='판매입찰' 
+                                                         GROUP BY SIZE_TYPE )
+                     ) T2 
+           ON T1.PID = T2.PID AND T1.MODEL_SIZE = T2.SIZE_TYPE 
+        WHERE T1.pid = #{pid}
+        GROUP BY T1.PSID,T1.PID,T1.MODEL_NUMBER, T1.MODEL_SIZE, T1.S_PRICE, T1.S_STOCK,T2.PRICE
+		  ]]>
+	</select>
+	
+	<!--  제품 사이즈 조회 -->
+	<select id="selectProductSize"
+		resultType="ProductSizeDTO"
+		parameterType="Map">
+		 <![CDATA[
+		 SELECT T1.PSID,T1.PID,T1.MODEL_NUMBER, T1.MODEL_SIZE, T1.S_PRICE, T1.S_STOCK, MIN(T2.SALEID) AS SALEID,T2.PRICE
+           FROM RESELL_PRODUCT_SIZE T1 
+           LEFT JOIN (SELECT * 
+                        FROM SALE T2
+                       WHERE (T2.PRICE) IN (SELECT MIN(PRICE) 
+                                              FROM SALE 
+                                             WHERE STATUS1='판매입찰'
+                                               AND SIZE_TYPE=#{size} )
+                      ) T2 
+            ON T1.PID = T2.PID AND T1.MODEL_SIZE = T2.SIZE_TYPE 
+         WHERE T1.pid = #{pid}
+           AND T1.MODEL_SIZE = #{size}
+         GROUP BY T1.PSID,T1.PID,T1.MODEL_NUMBER, T1.MODEL_SIZE, T1.S_PRICE, T1.S_STOCK,T2.PRICE
+		  ]]>
+	</select>
+	
+	
+
+
+
+</mapper>
