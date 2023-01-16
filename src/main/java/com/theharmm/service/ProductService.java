@@ -5,8 +5,10 @@ import java.util.HashMap;
 import org.springframework.stereotype.Service;
 
 import com.theharmm.domain.Criteria;
-import com.theharmm.domain.ProductCriteria;
+
 import com.theharmm.domain.ProductPageDTO;
+import com.theharmm.domain.ProductDTO;
+
 import com.theharmm.mapper.ProductMapper;
 
 import lombok.AllArgsConstructor;
