@@ -19,5 +19,5 @@ public class MemberVO {
 	private String member_messege_info;
 	private String member_email_info;
 	
-	private List<AuthVO> authList;
+	private List<MemberAuthVO> authList;
 }

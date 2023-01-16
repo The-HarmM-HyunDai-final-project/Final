@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.theharmm.domain.AuthVO;
+import com.theharmm.domain.MemberAuthVO;
 import com.theharmm.domain.MemberVO;
 import com.theharmm.mapper.MemberMapper;
 import com.theharmm.service.MemberService;
@@ -19,42 +19,42 @@ public class MemberServiceImpl implements MemberService{
 
 	@Autowired
 	private MemberMapper mapper;
-	//È¸¿ø°¡ÀÔ (È¸¿ø°ú ÀÎÁõÅ×ÀÌºí µ¿½Ã¿¡ °ªÀ» ³ÖÀ½)
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½Ã¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 	@Override
 	public int joinMember(MemberVO member) {
-		//À§ÀÇ ¾î³ëÅ×ÀÌ¼ÇÀ¸·Î ÇÏ³ªÀÇ TransactionÀ¸·Î ¹­ÀÓ
-		//µû¶ó¼­ µÑÁß ÇÏ³ªÀÇ Å×ÀÌºí¿¡¸¸ »ðÀÔ µÇ¾úÀ»¶§ ´Ù Ãë¼Ò 
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ Transactionï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ 
 		
-		AuthVO auth = new AuthVO();
+		MemberAuthVO auth = new MemberAuthVO();
 		auth.setUsername(member.getMember_email());
 		auth.setAuthority("ROLE_MEMBER");
 		
 		int result1 = mapper.joinMember(member);
 		int result2 = mapper.joinMemberAuthority(auth);
 		if( result1 == 1 && result2 == 1) {
-			log.info("È¸¿ø°¡ÀÔÀÌ Àß µÇ¾ú³×¿ë");
+			log.info("È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½×¿ï¿½");
 		}
 		
 		return result1 + result2;
 	}
-	//ÀÌ¸ÞÀÏ Áßº¹ Ã¼Å©
+	//ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ßºï¿½ Ã¼Å©
 	@Override
 	public int checkEmail(MemberVO member) {
 		return mapper.checkEmail(member);
 	}
-	//´Ð³×ÀÓ Áßº¹ Ã¼Å©
+	//ï¿½Ð³ï¿½ï¿½ï¿½ ï¿½ßºï¿½ Ã¼Å©
 	@Override
 	public int checkNickName(MemberVO member) {
 		// TODO Auto-generated method stub
 		return mapper.checkNickName(member);
 	}
 
-	//·Î±×ÀÎ
+	//ï¿½Î±ï¿½ï¿½ï¿½
 	@Override
 	public MemberVO login(MemberVO member) {
 		return mapper.login(member);
 	}
-	//È¸¿øÁ¤º¸ ¹× ±ÇÇÑ±îÁö °¡Á®¿À±â
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public MemberVO read(MemberVO member) {
 		return mapper.read(member);
