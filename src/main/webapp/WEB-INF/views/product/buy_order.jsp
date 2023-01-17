@@ -111,8 +111,11 @@ var IMP = window.IMP;   // 생략 가능
 IMP.init("imp30137302"); // 예: imp00000000 
 
 function requestPay() {
-	var token = $("meta[name='_csrf']").attr("content");
-	var header = $("meta[name='_csrf_header']").attr("content");
+	/* var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content"); */
+
+	let csrfHeaderName ="${_csrf.headerName}";
+    let csrfTokenValue="${_csrf.token}";
 	
     IMP.request_pay({
       pg: "kcp.T0000",
@@ -131,11 +134,11 @@ function requestPay() {
         // 결제 성공 시 로직
         jQuery.ajax({
         url: "/buy/order", 
-        method: "POST",
-        /* beforeSend : function(xhr){
-    		xhr.setRequestHeader(header, token);
-    	}, */
-        headers: { "Content-Type": "application/json" },
+        method: 'post',
+        beforeSend : function(xhr){
+            xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+    	}, 
+        /* headers: { "Content-Type": "application/json" }, */
         data: {
           imp_uid: rsp.imp_uid,            // 결제 고유번호
           merchant_uid: rsp.merchant_uid,   // 주문번호
@@ -520,9 +523,9 @@ function requestPay() {
 										</em></span>
 									</div>
 									 <button onclick="requestPay()">결제하기</button> 
-									 <input type="hidden" name="CSRFToken"
-										value="${_csrf.token}">
+									
 								</div>
+							
 								
 							</section>
 							<!---->

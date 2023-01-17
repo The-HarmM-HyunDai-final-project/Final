@@ -65,17 +65,20 @@
 							</c:forEach>
 						</ul>
 					</div>
-					<div data-v-744cecc2="" data-v-3f89f857="" class="order_btn_area">
-						<a data-v-c631041c="" data-v-744cecc2="" href="sell?pid=${productDetailDTO.pid}"
-							class="btn_order order_sell sell clickable"><div
-								data-v-c631041c="" class="box">
-								<!---->
-								<div data-v-c631041c="" class="order_case_info">
-									<span data-v-c631041c="" class="order_price">상품 판매</span><span
-										data-v-c631041c="" class="order_desc">선불발송</span>
-								</div>
-							</div></a>
-					</div>
+					<form id = "selectSellSizeAction" method = "get" action="/sell/${productDetailDTO.pid}">
+						<input type="hidden" id="selectSellSize" name="size"/>
+						<div data-v-744cecc2="" data-v-3f89f857="" class="order_btn_area">
+							<a data-v-c631041c="" data-v-744cecc2="" href="#" onclick ="document.getElementById('selectSellSizeAction').submit()"
+								class="btn_order order_sell sell clickable"><div
+									data-v-c631041c="" class="box">
+									<!---->
+									<div data-v-c631041c="" class="order_case_info">
+										<span data-v-c631041c="" class="order_price">상품 판매</span><span
+											data-v-c631041c="" class="order_desc">선불발송</span>
+									</div>
+								</div></a>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
