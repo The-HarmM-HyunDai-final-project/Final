@@ -236,7 +236,8 @@
 							</div>
 						</c:if>
 						<c:if test="${listcheck != 'empty'}">
-							<div data-v-013cc4d0="" data-v-47cbe816="" class="social_feeds" style="height: 550px;">
+							<div data-v-013cc4d0="" data-v-47cbe816="" class="social_feeds"
+								style="height: 550px;">
 								<div data-v-013cc4d0="" transition-duration="0"
 									item-selector=".item" gutter=".gutter_item"
 									horizontal-order="true" class="masonry_posts"
@@ -245,7 +246,7 @@
 									<!-- <div>${list}</div>
 									<div>${pageMaker }</div>-->
 									<c:forEach items="${list}" var="item" varStatus="status">
-										<c:set var="i" value="${i+300}"/>
+										<c:set var="i" value="${i+300}" />
 										<div data-v-47728778="" data-v-013cc4d0=""
 											class="feed_card item vertical"
 											style="position: absolute; left: ${i}px; top: 0px;">
@@ -258,9 +259,8 @@
 															srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDlfMTM2/MDAxNjczMjUyOTU4NjYy.XZI5_sL9RiGTEhewHhiHpbvuiwZem2DNfFSIjbPXFaog.MNMS7qpnWQG-VHnBIi6_2A-BUa0AHktNyvNSB66oKyMg.JPEG/p_687b725862c549e2b1401032e209f15f.jpeg?type=m_webp">
 														<source data-v-878ec45c=""
 															srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDlfMTM2/MDAxNjczMjUyOTU4NjYy.XZI5_sL9RiGTEhewHhiHpbvuiwZem2DNfFSIjbPXFaog.MNMS7qpnWQG-VHnBIi6_2A-BUa0AHktNyvNSB66oKyMg.JPEG/p_687b725862c549e2b1401032e209f15f.jpeg?type=m">
-														<img data-v-878ec45c="" referrerpolicy="no-referrer"
-															alt="소셜이미지"
-															src="C:/upload/${item.upload_path}/${item.uuid}_${item.file_name}"
+														<img
+															src="${pageContext.request.contextPath}/${item.upload_path}/${item.uuid}_${item.file_name}"
 															loading="auto" class="image"></picture>
 													</div>
 													<div data-v-47728778="" class="card_detail">
@@ -271,7 +271,8 @@
 																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDlfMjU2/MDAxNjY3OTU3ODY0MzY4.t3fpARn1DEJYhj-d0iTQwdakC1caQ_JQ0UsTg-pFpe4g.2RbzvEDyow1eUoRDMgLPnVncL8HG069N_242c-aQuyMg.JPEG/p_174ceb2e78124c53ac64163decaad402.jpeg?type=s_webp">
 															<source data-v-878ec45c=""
 																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDlfMjU2/MDAxNjY3OTU3ODY0MzY4.t3fpARn1DEJYhj-d0iTQwdakC1caQ_JQ0UsTg-pFpe4g.2RbzvEDyow1eUoRDMgLPnVncL8HG069N_242c-aQuyMg.JPEG/p_174ceb2e78124c53ac64163decaad402.jpeg?type=s">
-															<img data-v-878ec45c="" alt="사용자 프로필 이미지" referrerpolicy="no-referrer"
+															<img data-v-878ec45c="" alt="사용자 프로필 이미지"
+																referrerpolicy="no-referrer"
 																src="https://kream-phinf.pstatic.net/MjAyMjExMDlfMjU2/MDAxNjY3OTU3ODY0MzY4.t3fpARn1DEJYhj-d0iTQwdakC1caQ_JQ0UsTg-pFpe4g.2RbzvEDyow1eUoRDMgLPnVncL8HG069N_242c-aQuyMg.JPEG/p_174ceb2e78124c53ac64163decaad402.jpeg?type=s"
 																loading="auto" class="image"></picture>
 															<p data-v-47728778="" class="user_name">${item.member_email}</p>
@@ -294,7 +295,7 @@
 													<span data-v-47728778="" class="count">+5</span>
 												</div></a>
 										</div>
-										
+
 									</c:forEach>
 								</div>
 							</div>
