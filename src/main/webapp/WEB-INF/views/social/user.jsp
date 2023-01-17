@@ -217,138 +217,88 @@
 										data-v-392ec340="" class="menu_count">0</span></a></li>
 							</ul>
 						</div>
-						<div data-v-6c53047a="" data-v-47cbe816=""
-							class="social_feeds_empty top_line">
-							<div data-v-6c53047a="" class="empty_box">
-								<svg data-v-6c53047a="" xmlns="http://www.w3.org/2000/svg"
-									class="empty_icon icon sprite-icons">
+						<c:if test="${listCheck == 'empty'}">
+							<div data-v-6c53047a="" data-v-47cbe816=""
+								class="social_feeds_empty top_line">
+								<div data-v-6c53047a="" class="empty_box">
+									<svg data-v-6c53047a="" xmlns="http://www.w3.org/2000/svg"
+										class="empty_icon icon sprite-icons">
 									<use data-v-6c53047a=""
-										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-camera-big"
-										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-camera-big"></use></svg>
-								<strong data-v-6c53047a="" class="empty_title">게시물 없음</strong>
-								<p data-v-6c53047a="" class="empty_txt">앱에서 사진을 공유하면 내 프로필에
-									표시됩니다.</p>
-								<!-- <img data-v-45542174=""
+											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-camera-big"
+											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-camera-big"></use></svg>
+									<strong data-v-6c53047a="" class="empty_title">게시물 없음</strong>
+									<p data-v-6c53047a="" class="empty_txt">앱에서 사진을 공유하면 내 프로필에
+										표시됩니다.</p>
+									<!-- <img data-v-45542174=""
 										src="${pageContext.request.contextPath}/resources/images/button.jpg">-->
 
-							</div>
-						</div>
-						<div data-v-013cc4d0="" data-v-47cbe816="" class="social_feeds">
-							<div data-v-013cc4d0="" transition-duration="0"
-								item-selector=".item" gutter=".gutter_item"
-								horizontal-order="true" class="masonry_posts"
-								style="position: relative; height: 1462px;">
-								<div data-v-013cc4d0="" class="gutter_item"></div>
-								<div data-v-47728778="" data-v-013cc4d0=""
-									class="feed_card item vertical"
-									style="position: absolute; left: 0px; top: 0px;">
-									<a data-v-47728778=""><div data-v-47728778=""
-											class="card_box">
-											<div data-v-47728778="" class="social_img_box vertical">
-												<picture data-v-878ec45c="" data-v-47728778=""
-													class="picture social_img">
-												<source data-v-878ec45c="" type="image/webp"
-													srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDlfMTM2/MDAxNjczMjUyOTU4NjYy.XZI5_sL9RiGTEhewHhiHpbvuiwZem2DNfFSIjbPXFaog.MNMS7qpnWQG-VHnBIi6_2A-BUa0AHktNyvNSB66oKyMg.JPEG/p_687b725862c549e2b1401032e209f15f.jpeg?type=m_webp">
-												<source data-v-878ec45c=""
-													srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDlfMTM2/MDAxNjczMjUyOTU4NjYy.XZI5_sL9RiGTEhewHhiHpbvuiwZem2DNfFSIjbPXFaog.MNMS7qpnWQG-VHnBIi6_2A-BUa0AHktNyvNSB66oKyMg.JPEG/p_687b725862c549e2b1401032e209f15f.jpeg?type=m">
-												<img data-v-878ec45c="" referrerpolicy="no-referrer"
-													alt="소셜이미지"
-													src="https://kream-phinf.pstatic.net/MjAyMzAxMDlfMTM2/MDAxNjczMjUyOTU4NjYy.XZI5_sL9RiGTEhewHhiHpbvuiwZem2DNfFSIjbPXFaog.MNMS7qpnWQG-VHnBIi6_2A-BUa0AHktNyvNSB66oKyMg.JPEG/p_687b725862c549e2b1401032e209f15f.jpeg?type=m"
-													loading="auto" class="image"></picture>
-											</div>
-											<div data-v-47728778="" class="card_detail">
-												<div data-v-47728778="" class="user_box">
-													<picture data-v-878ec45c="" data-v-47728778=""
-														class="picture img_profile">
-													<source data-v-878ec45c="" type="image/webp"
-														srcset="https://kream-phinf.pstatic.net/MjAyMjExMDlfMjU2/MDAxNjY3OTU3ODY0MzY4.t3fpARn1DEJYhj-d0iTQwdakC1caQ_JQ0UsTg-pFpe4g.2RbzvEDyow1eUoRDMgLPnVncL8HG069N_242c-aQuyMg.JPEG/p_174ceb2e78124c53ac64163decaad402.jpeg?type=s_webp">
-													<source data-v-878ec45c=""
-														srcset="https://kream-phinf.pstatic.net/MjAyMjExMDlfMjU2/MDAxNjY3OTU3ODY0MzY4.t3fpARn1DEJYhj-d0iTQwdakC1caQ_JQ0UsTg-pFpe4g.2RbzvEDyow1eUoRDMgLPnVncL8HG069N_242c-aQuyMg.JPEG/p_174ceb2e78124c53ac64163decaad402.jpeg?type=s">
-													<img data-v-878ec45c="" alt="사용자 프로필 이미지"
-														src="https://kream-phinf.pstatic.net/MjAyMjExMDlfMjU2/MDAxNjY3OTU3ODY0MzY4.t3fpARn1DEJYhj-d0iTQwdakC1caQ_JQ0UsTg-pFpe4g.2RbzvEDyow1eUoRDMgLPnVncL8HG069N_242c-aQuyMg.JPEG/p_174ceb2e78124c53ac64163decaad402.jpeg?type=s"
-														loading="auto" class="image"></picture>
-													<p data-v-47728778="" class="user_name">moo_min_seo_</p>
-													<span data-v-47728778="" aria-label="좋아요" role="button"
-														class="btn like"><svg data-v-47728778=""
-															xmlns="http://www.w3.org/2000/svg"
-															class="icon sprite-icons social-like-gray-sm">
-															<use data-v-47728778=""
-																href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"
-																xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"></use></svg><span
-														data-v-47728778="" class="like_count">37</span></span>
-												</div>
-												<p data-v-47728778="" class="text_box">재미있었던 스타일컬렉터 🔥
-													마무리는 꼼맥스로 @kream.challenge #KREAM스타일 #kream #꼼데가르송옴므플러스에어맥스
-													#꼼데가르송옴므플러스 #꼼데가르송맥스 #에어팟맥스</p>
-												<!---->
-											</div>
-										</div>
-										<div data-v-47728778="" class="img_count">
-											<span data-v-47728778="" class="count">+5</span>
-										</div></a>
 								</div>
-								<div data-v-47728778="" data-v-013cc4d0=""
-									class="feed_card item vertical"
-									style="position: absolute; left: 307px; top: 0px;">
-									<a data-v-47728778=""><div data-v-47728778=""
-											class="card_box">
-											<div data-v-47728778="" class="social_img_box vertical">
-												<picture data-v-878ec45c="" data-v-47728778=""
-													class="picture social_img">
-												<source data-v-878ec45c="" type="image/webp"
-													srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDlfMjQ3/MDAxNjczMjIxNzgxMDcw.eZZmVO1ZJluxxEhXA90F6BRDD4Mh-6L5lvZ_geDVMKgg.fhWuIYeMrrVLvAKf9P8w4HD4OI1DXMwOGAc2NTdRd2og.JPEG/p_0092f1161cc64620bdc36b18cfe11994.jpeg?type=m_webp">
-												<source data-v-878ec45c=""
-													srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDlfMjQ3/MDAxNjczMjIxNzgxMDcw.eZZmVO1ZJluxxEhXA90F6BRDD4Mh-6L5lvZ_geDVMKgg.fhWuIYeMrrVLvAKf9P8w4HD4OI1DXMwOGAc2NTdRd2og.JPEG/p_0092f1161cc64620bdc36b18cfe11994.jpeg?type=m">
-												<img data-v-878ec45c="" referrerpolicy="no-referrer"
-													alt="소셜이미지"
-													src="https://kream-phinf.pstatic.net/MjAyMzAxMDlfMjQ3/MDAxNjczMjIxNzgxMDcw.eZZmVO1ZJluxxEhXA90F6BRDD4Mh-6L5lvZ_geDVMKgg.fhWuIYeMrrVLvAKf9P8w4HD4OI1DXMwOGAc2NTdRd2og.JPEG/p_0092f1161cc64620bdc36b18cfe11994.jpeg?type=m"
-													loading="auto" class="image"></picture>
-											</div>
-											<div data-v-47728778="" class="card_detail">
-												<div data-v-47728778="" class="user_box">
-													<picture data-v-878ec45c="" data-v-47728778=""
-														class="picture img_profile">
-													<source data-v-878ec45c="" type="image/webp"
-														srcset="https://kream-phinf.pstatic.net/MjAyMjExMDlfMjU2/MDAxNjY3OTU3ODY0MzY4.t3fpARn1DEJYhj-d0iTQwdakC1caQ_JQ0UsTg-pFpe4g.2RbzvEDyow1eUoRDMgLPnVncL8HG069N_242c-aQuyMg.JPEG/p_174ceb2e78124c53ac64163decaad402.jpeg?type=s_webp">
-													<source data-v-878ec45c=""
-														srcset="https://kream-phinf.pstatic.net/MjAyMjExMDlfMjU2/MDAxNjY3OTU3ODY0MzY4.t3fpARn1DEJYhj-d0iTQwdakC1caQ_JQ0UsTg-pFpe4g.2RbzvEDyow1eUoRDMgLPnVncL8HG069N_242c-aQuyMg.JPEG/p_174ceb2e78124c53ac64163decaad402.jpeg?type=s">
-													<img data-v-878ec45c="" alt="사용자 프로필 이미지"
-														src="https://kream-phinf.pstatic.net/MjAyMjExMDlfMjU2/MDAxNjY3OTU3ODY0MzY4.t3fpARn1DEJYhj-d0iTQwdakC1caQ_JQ0UsTg-pFpe4g.2RbzvEDyow1eUoRDMgLPnVncL8HG069N_242c-aQuyMg.JPEG/p_174ceb2e78124c53ac64163decaad402.jpeg?type=s"
-														loading="auto" class="image"></picture>
-													<p data-v-47728778="" class="user_name">moo_min_seo_</p>
-													<span data-v-47728778="" aria-label="좋아요" role="button"
-														class="btn like"><svg data-v-47728778=""
-															xmlns="http://www.w3.org/2000/svg"
-															class="icon sprite-icons social-like-gray-sm">
-															<use data-v-47728778=""
-																href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"
-																xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"></use></svg><span
-														data-v-47728778="" class="like_count">32</span></span>
+							</div>
+						</c:if>
+						<c:if test="${listcheck != 'empty'}">
+							<div data-v-013cc4d0="" data-v-47cbe816="" class="social_feeds" style="height: 550px;">
+								<div data-v-013cc4d0="" transition-duration="0"
+									item-selector=".item" gutter=".gutter_item"
+									horizontal-order="true" class="masonry_posts"
+									style="position: relative; height: 1462px;">
+									<div data-v-013cc4d0="" class="gutter_item"></div>
+									<!-- <div>${list}</div>
+									<div>${pageMaker }</div>-->
+									<c:forEach items="${list}" var="item" varStatus="status">
+										<c:set var="i" value="${i+300}"/>
+										<div data-v-47728778="" data-v-013cc4d0=""
+											class="feed_card item vertical"
+											style="position: absolute; left: ${i}px; top: 0px;">
+											<a data-v-47728778=""><div data-v-47728778=""
+													class="card_box">
+													<div data-v-47728778="" class="social_img_box vertical">
+														<picture data-v-878ec45c="" data-v-47728778=""
+															class="picture social_img">
+														<source data-v-878ec45c="" type="image/webp"
+															srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDlfMTM2/MDAxNjczMjUyOTU4NjYy.XZI5_sL9RiGTEhewHhiHpbvuiwZem2DNfFSIjbPXFaog.MNMS7qpnWQG-VHnBIi6_2A-BUa0AHktNyvNSB66oKyMg.JPEG/p_687b725862c549e2b1401032e209f15f.jpeg?type=m_webp">
+														<source data-v-878ec45c=""
+															srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDlfMTM2/MDAxNjczMjUyOTU4NjYy.XZI5_sL9RiGTEhewHhiHpbvuiwZem2DNfFSIjbPXFaog.MNMS7qpnWQG-VHnBIi6_2A-BUa0AHktNyvNSB66oKyMg.JPEG/p_687b725862c549e2b1401032e209f15f.jpeg?type=m">
+														<img data-v-878ec45c="" referrerpolicy="no-referrer"
+															alt="소셜이미지"
+															src="C:/upload/${item.upload_path}/${item.uuid}_${item.file_name}"
+															loading="auto" class="image"></picture>
+													</div>
+													<div data-v-47728778="" class="card_detail">
+														<div data-v-47728778="" class="user_box">
+															<picture data-v-878ec45c="" data-v-47728778=""
+																class="picture img_profile">
+															<source data-v-878ec45c="" type="image/webp"
+																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDlfMjU2/MDAxNjY3OTU3ODY0MzY4.t3fpARn1DEJYhj-d0iTQwdakC1caQ_JQ0UsTg-pFpe4g.2RbzvEDyow1eUoRDMgLPnVncL8HG069N_242c-aQuyMg.JPEG/p_174ceb2e78124c53ac64163decaad402.jpeg?type=s_webp">
+															<source data-v-878ec45c=""
+																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDlfMjU2/MDAxNjY3OTU3ODY0MzY4.t3fpARn1DEJYhj-d0iTQwdakC1caQ_JQ0UsTg-pFpe4g.2RbzvEDyow1eUoRDMgLPnVncL8HG069N_242c-aQuyMg.JPEG/p_174ceb2e78124c53ac64163decaad402.jpeg?type=s">
+															<img data-v-878ec45c="" alt="사용자 프로필 이미지" referrerpolicy="no-referrer"
+																src="https://kream-phinf.pstatic.net/MjAyMjExMDlfMjU2/MDAxNjY3OTU3ODY0MzY4.t3fpARn1DEJYhj-d0iTQwdakC1caQ_JQ0UsTg-pFpe4g.2RbzvEDyow1eUoRDMgLPnVncL8HG069N_242c-aQuyMg.JPEG/p_174ceb2e78124c53ac64163decaad402.jpeg?type=s"
+																loading="auto" class="image"></picture>
+															<p data-v-47728778="" class="user_name">${item.member_email}</p>
+															<span data-v-47728778="" aria-label="좋아요" role="button"
+																class="btn like"><svg data-v-47728778=""
+																	xmlns="http://www.w3.org/2000/svg"
+																	class="icon sprite-icons social-like-gray-sm">
+														<use data-v-47728778=""
+																		href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"
+																		xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"></use></svg><span
+																data-v-47728778="" class="like_count">${item.post_id}</span></span>
+														</div>
+														<p data-v-47728778="" class="text_box">재미있었던 스타일컬렉터 🔥
+															마무리는 꼼맥스로 @kream.challenge #KREAM스타일 #kream
+															#꼼데가르송옴므플러스에어맥스 #꼼데가르송옴므플러스 #꼼데가르송맥스 #에어팟맥스</p>
+														<!---->
+													</div>
 												</div>
-												<p data-v-47728778="" class="text_box">#KREAM스타일 #아크테릭스
-													#스타일컬렉터</p>
-												<!---->
-											</div>
-
-
-											<c:forEach items="${list}" var="list">
-												<c:out value="${list.post_id}"></c:out>
-												<a class="move" href='<c:out value="${list.post_id}"/>'>
-												</a>
-											</c:forEach>
+												<div data-v-47728778="" class="img_count">
+													<span data-v-47728778="" class="count">+5</span>
+												</div></a>
 										</div>
-										<div data-v-47728778="" class="img_count">
-											<span data-v-47728778="" class="count">+5</span>
-										</div></a>
+										
+									</c:forEach>
 								</div>
-
 							</div>
-							<div data-v-5f3540d5="" data-v-013cc4d0="" class="list_loading"
-								style="display: none;">
-								<img data-v-5f3540d5="" src="/_nuxt/img/loading.410eb77.gif"
-									loading="lazy" alt="리스트 로딩중입니다." class="loading_img">
-							</div>
-						</div>
+						</c:if>
 						<form action="/social/user/postEnroll" method="post"
 							id="enrollForm">
 							<div data-v-1a009402="" data-v-71b8d4b9="" data-v-61d3533a=""
@@ -409,15 +359,10 @@
 											data-v-1a009402=""> 확인<input type="hidden"
 											name="${_csrf.parameterName}" value="${_csrf.token}"}></a>
 									</div>
-									<!-- <div>${list}</div>
-									<div>${pageMaker }</div>-->
 								</div>
 							</div>
 						</form>
 					</div>
-
-					<!---->
-					<!---->
 				</div>
 			</div>
 			<%@ include file="/WEB-INF/views/common/footer.jsp"%>
@@ -470,8 +415,11 @@
 			if($(".imgDeleteBtn").length > 0){
 				deleteFile();
 			}
-			let formData = new FormData();
+			//let formData = new FormData();
 			let fileInput = $('input[name="uploadFile"]');
+			for (let i = 0; i < fileInput.length; i++){
+				
+			}
 			let fileList = fileInput[0].files;
 			let fileObj = fileList[0];
 			
@@ -481,24 +429,28 @@
 			if (!fileCheck(fileObj.name, fileObj.size)) {
 				return false;
 			}
-			formData.append("uploadFile", fileObj);	
-			$.ajax({
-				url : '/social/user/uploadAjaxAction',
-				processData : false,
-				contentType : false,
-				data : formData,
-				type : 'post',
-				dataType : 'json',
-				beforeSend: function(xhr) {
-	                 xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
-	            success : function(result){
-	      	   		console.log(result);
-	      	   		showUploadImage(result);
-	      	   	},
-	      	   	error : function(result){
-	      	   		alert("이미지 파일이 아닙니다.");
-	      	   	}
-	      	});
+			for (let i = 0; i < fileList.length; i++){
+				let fileObj = fileList[i];
+				let formData = new FormData();
+				formData.append("uploadFile", fileObj);	
+				$.ajax({
+					url : '/social/user/uploadAjaxAction',
+					processData : false,
+					contentType : false,
+					data : formData,
+					type : 'post',
+					dataType : 'json',
+					beforeSend: function(xhr) {
+		                 xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
+		            success : function(result){
+		      	   		console.log(result);
+		      	   		showUploadImage(result);
+		      	   	},
+		      	   	error : function(result){
+		      	   		alert("이미지 파일이 아닙니다.");
+		      	   	}
+		      	});
+			}
 		});
 
 		/* var, method related with attachFile */

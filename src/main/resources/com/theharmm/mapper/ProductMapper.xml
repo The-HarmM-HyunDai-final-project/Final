@@ -10,11 +10,15 @@
 			<foreach item="type" collection="cri.typeArr"> 
 				<trim prefix="AND">
 					<choose>
-						<when test="type== 'D'.toString()">
-							pname_k like '%' || #{cri.keyword} || '%'
-						</when>	
 						
-				      
+						<when test="type== 'K'.toString()">
+							(pname_k like '%' || #{cri.keyword} || '%'
+							OR
+							brand like '%' || #{cri.keyword} || '%'
+							OR
+							p.MODEL_NUMBER like '%' || #{cri.keyword} || '%')
+						</when>	
+										      
 						<when test="type== 'B'.toString()">
 							<trim prefix="(" suffix=")" prefixOverrides="OR">
 								<foreach item="bkeyword" collection="cri.bkeywordArr"> 

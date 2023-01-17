@@ -70,20 +70,20 @@ public class PostCriteria {
 		this.keyword = keyword;
 	}
 
-	public String[] getpostArr() {
+	public String[] getPostArr() {
 		return postArr;
 	}
 
-	public void setpostArr(String[] postArr) {
+	public void setPostArr(String[] postArr) {
 		this.postArr = postArr;
 	}
 
 	
-	public int getpostId() {
+	public int getPost_id() {
 		return post_id;
 	}
 
-	public void setpostId(int post_id) {
+	public void setPost_id(int post_id) {
 		this.post_id = post_id;
 	}
 

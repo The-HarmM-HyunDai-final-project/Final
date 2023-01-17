@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.theharmm.domain.PostCriteria;
 import com.theharmm.domain.PostPageDTO;
 import com.theharmm.domain.PostVO;
+import com.theharmm.domain.SocialVO;
+import com.theharmm.mapper.AttachMapper;
+import com.theharmm.service.AttachService;
 import com.theharmm.service.PostService;
 
 @Controller
@@ -32,19 +36,20 @@ public class PostController {
 	@Autowired
 	private PostService postService;
 	
+	@Autowired
+	private AttachService attachService;
+	
 	/* 포스트 관리(포스트목록) 페이지 접속 */
 	@RequestMapping(value = "/social/user", method = RequestMethod.GET)
 	public void postManageGET(PostCriteria postcri, Model model) throws Exception{
 		/* 포스트 리스트 데이터 */
 		List list = postService.postGetList(postcri);
-		
 		if(!list.isEmpty()) {
 			model.addAttribute("list", list);
 		} else {
 			model.addAttribute("listCheck", "empty");
 			return;
 		}
-		
 		/* 페이지 인터페이스 데이터 */
 		model.addAttribute("pageMaker", new PostPageDTO(postcri, postService.postGetTotal(postcri)));
 
@@ -65,6 +70,14 @@ public class PostController {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	/* 이미지 정보 반환 */
+	@GetMapping(value="/social/user/getSocialList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<List<SocialVO>> getSocialList(int post_id){
+		logger.info("getSocialList.........." + post_id);
+		return new ResponseEntity<List<SocialVO>>(attachService.getSocialList(post_id), HttpStatus.OK);
+		
 	}
 	
 	/* 포스트 등록 */

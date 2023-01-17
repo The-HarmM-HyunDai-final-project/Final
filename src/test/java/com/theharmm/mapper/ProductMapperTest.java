@@ -28,10 +28,12 @@ public class ProductMapperTest {
 		Criteria cri = new Criteria();
 		cri.setAmount(12);
 		cri.setPageNum(1);
-		cri.setType("C");
+		cri.setType("KP");
 		//cri.setBkeyword("A.P.C. Golf,Acqua Di Parma");
 		//cri.setSsize("240,250");
-		cri.setCkeyword(3);
+		cri.setKeyword("눕시");
+		cri.setStartp(500000);
+		cri.setEndp(1000000);
 		
 		HashMap<String, Object> categoryPager = new HashMap<String, Object>();
 		categoryPager.put("cri",cri);
