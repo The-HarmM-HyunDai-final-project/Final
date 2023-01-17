@@ -31,7 +31,7 @@ public class BuyController {
 	@Autowired
 	ProductDetailService productDetailService;
 
-	//상품사이즈 리스트 띄우기
+	//구매 - 상품사이즈 리스트 띄우기
 	@GetMapping("/select/{pid}")
 	 public String selectBuyProductSize(@PathVariable int pid,@RequestParam(required = false) String size, Model model) {
 		log.info("selectBuyProductSize 실행");

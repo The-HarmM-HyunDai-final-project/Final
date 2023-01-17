@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/header.jsp"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 <link
 	href="${pageContext.request.contextPath}/resources/css/5e180f7.css"
@@ -33,9 +33,9 @@
 						</div>
 					</div>
 					<div data-v-33a8744d="" class="product_detail">
-						<p data-v-33a8744d="" class="code">DD1391-100</p>
-						<p data-v-33a8744d="" class="name">Nike Dunk Low Retro Black</p>
-						<p data-v-33a8744d="" class="translated_name">나이키 덩크 로우 레트로 블랙</p>
+						<p data-v-33a8744d="" class="code">${productDetailDTO.model_number}</p>
+						<p data-v-33a8744d="" class="name">${productDetailDTO.pname_e}</p>
+						<p data-v-33a8744d="" class="translated_name">${productDetailDTO.pname_k}</p>
 						<!---->
 						<div data-v-6da6dff3="" data-v-33a8744d=""
 							class="badge badge_product shipping_express">빠른배송</div>
@@ -45,178 +45,26 @@
 					<div data-v-28805923="" data-v-3f89f857="" class="select_area lg">
 						<!---->
 						<ul data-v-28805923="" class="select_list">
+						   <c:forEach var="productSize" items="${productSizeList}">
 							<li data-v-28805923="" class="select_item"><button
 									data-v-28805923="" role="button" aria-selected="false"
 									class="select_link sell">
 									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 230
-										</span><span data-v-28805923="" class="price">159,000</span>
+										<span data-v-28805923="" class="size">
+										   ${productSize.model_size}
+										</span>
+										  <span data-v-28805923="" class="price">
+	                                          		<c:if test="${productSize.price eq 0}">
+	    												<c:out value="판매입찰" />
+	    											</c:if>
+	    											<c:if test="${productSize.price ne 0}">
+	    												<fmt:formatNumber type="number" maxFractionDigits="3" value="${productSize.price}" />
+	    											</c:if>
+                                          </span>
 									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 235(US
-											4.5)
-										</span><span data-v-28805923="" class="price">200,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item active"><button
-									data-v-28805923="" role="button" aria-selected="true"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 235(US
-											5)
-										</span><span data-v-28805923="" class="price">185,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 240(US
-											5.5)
-										</span><span data-v-28805923="" class="price">172,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 240(US
-											6)
-										</span><span data-v-28805923="" class="price">190,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 245
-										</span><span data-v-28805923="" class="price">189,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 250
-										</span><span data-v-28805923="" class="price">170,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 255
-										</span><span data-v-28805923="" class="price">165,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 260
-										</span><span data-v-28805923="" class="price">159,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 265
-										</span><span data-v-28805923="" class="price">157,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 270
-										</span><span data-v-28805923="" class="price">153,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 275
-										</span><span data-v-28805923="" class="price">155,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 280
-										</span><span data-v-28805923="" class="price">159,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 285
-										</span><span data-v-28805923="" class="price">172,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 290
-										</span><span data-v-28805923="" class="price">178,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 295
-										</span><span data-v-28805923="" class="price">186,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 300
-										</span><span data-v-28805923="" class="price">188,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 305
-										</span><span data-v-28805923="" class="price">214,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 310
-										</span><span data-v-28805923="" class="price">185,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 320
-										</span><span data-v-28805923="" class="price">200,000</span>
-									</div>
-								</button></li>
-							<li data-v-28805923="" class="select_item"><button
-									data-v-28805923="" role="button" aria-selected="false"
-									class="select_link sell">
-									<div data-v-28805923="" class="link_inner">
-										<span data-v-28805923="" class="size"> <!----> 330
-										</span><span data-v-28805923="" class="price">150,000</span>
-									</div>
-								</button></li>
+								</button>
+								</li>
+							</c:forEach>
 						</ul>
 					</div>
 					<div data-v-744cecc2="" data-v-3f89f857="" class="order_btn_area">
@@ -237,4 +85,4 @@
 	<!---->
 </div>
 
-<%@ include file="/WEB-INF/views/footer.jsp"%>
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>
