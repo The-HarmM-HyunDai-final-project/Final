@@ -1,3 +1,4 @@
+
 package com.theharmm.security.domain;
 
 import java.util.Collection;

@@ -45,25 +45,22 @@
 
 	<context:component-scan
 		base-package="com.theharmm.service"></context:component-scan>
+		
+	<context:component-scan
+		base-package="com.theharmm.showlive"></context:component-scan>
 
-	<tx:annotation-driven transaction-manager="txManager"/>
-	
 	<!-- 이눔의 정확한 위치를 모르겠다.. -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-
 	
+	<tx:annotation-driven />	
+	
+	<task:annotation-driven/>
 
-<!-- 	<context:component-scan
-		base-package="com.theharmm.aop"></context:component-scan>
-
-	<context:component-scan
-		base-package="com.theharmm.task"></context:component-scan>
-
-	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-
-	<task:annotation-driven /> -->
+	<!-- <context:component-scan base-package="com.theharmm.aop"></context:component-scan> 
+		<context:component-scan base-package="com.theharmm.task"></context:component-scan> 
+		<aop:aspectj-autoproxy></aop:aspectj-autoproxy> <task:annotation-driven /> -->
 
 </beans>

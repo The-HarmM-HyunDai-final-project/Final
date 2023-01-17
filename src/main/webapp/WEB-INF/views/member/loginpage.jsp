@@ -46,7 +46,7 @@
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" /> 
 						<a href="javascript:void(0);"
-						onclick="btn_click();" class="btn full solid disabled"
+						onclick="btn_click();" class="btn full solid"
 						data-v-575aff82="" data-v-464f7370=""> 로그인 </a>
 				</div>
 

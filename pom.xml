@@ -74,9 +74,9 @@
 
 		<!-- 채팅을 위한 웹소켓 가져오기~ -->
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-websocket</artifactId>
-		    <version>5.0.7.RELEASE</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>5.0.7.RELEASE</version>
 		</dependency>
 
 		<!-- HikariCP -->
@@ -106,7 +106,7 @@
 			<artifactId>log4jdbc-log4j2-jdbc4</artifactId>
 			<version>1.16</version>
 		</dependency>
-		
+
 
 
 		<!-- json 데이터를 처리하기위한 라이브러리 -->
@@ -228,32 +228,40 @@
 			</exclusions>
 		</dependency>
 
-	<!-- 스프링 시큐리티 동일한 버전으로 -->
-	<dependency>
-	    <groupId>org.springframework.security</groupId>
-	    <artifactId>spring-security-web</artifactId>
-	    <version>5.0.7.RELEASE</version>
-	</dependency>
-	
-	<dependency>
-	    <groupId>org.springframework.security</groupId>
-	    <artifactId>spring-security-config</artifactId>
-	    <version>5.0.7.RELEASE</version>
-	</dependency>
-	
-	<dependency>
-	    <groupId>org.springframework.security</groupId>
-	    <artifactId>spring-security-core</artifactId>
-	    <version>5.0.7.RELEASE</version>
-	</dependency>
-	
-	<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
-	<dependency>
-	    <groupId>org.springframework.security</groupId>
-	    <artifactId>spring-security-taglibs</artifactId>
-	    <version>5.0.7.RELEASE</version>
-	</dependency>
-	
+		<!-- 스프링 시큐리티 동일한 버전으로 -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
+		
+		<!-- thumbnail -->
+		<!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
+		<dependency>
+		    <groupId>net.coobird</groupId>
+		    <artifactId>thumbnailator</artifactId>
+		    <version>0.4.13</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>

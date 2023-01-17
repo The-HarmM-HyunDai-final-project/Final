@@ -51,7 +51,7 @@
 						
 						<when test="type== 'P'.toString()">
 						  <![CDATA[  
-							pcprice >= #{cri.startp} and s_price < #{cri.endp}						
+							RELEASE_PRICE >= #{cri.startp} and RELEASE_PRICE < #{cri.endp}						
 						    ]]>
 						</when>
 					</choose> <!-- end choose -->

@@ -58,6 +58,8 @@ function onMessage(msg) {
 	
 	var arr = data.split(":");
 	
+	console.log(msg);
+	
 	for(var i=0; i<arr.length; i++){
 		console.log('arr[' + i + ']: ' + arr[i]);
 	}
@@ -93,7 +95,7 @@ function onMessage(msg) {
 		str += "<b>" + sessionId + " : " + message + "</b>";
 		str += "</div></div>"; */
 		
-		$("#msgArea").append(str);
+		//$("#msgArea").append(str);
 	}
 	
 }
@@ -113,5 +115,4 @@ function onOpen(evt) {
 	
 	$("#msgArea").append(str);
 }
-
 </script>
