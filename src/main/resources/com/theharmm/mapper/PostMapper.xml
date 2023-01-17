@@ -6,7 +6,29 @@
 <mapper namespace="com.theharmm.mapper.PostMapper">
 
 	<insert id="postEnroll">
-		insert into post values(post_seq.nextval, #{member_email})
+		insert into post values(post_seq.nextval, 'asd', sysdate)
 	</insert>
 	
+	
+	<!-- 포스트 리스트 -->
+  	<select id="postGetList" resultType="com.theharmm.domain.PostVO">
+  	
+	  	<![CDATA[
+		select * from(
+		    select rownum as rn, post_id
+		    from post 
+		    where 
+		]]>         
+		<![CDATA[    
+		    rownum <= #{pageNum} * #{amount} 
+		    )
+		where rn > (#{pageNum} -1) * #{amount}		  	
+  		]]>
+  	
+  	</select>
+	
+	<!-- 포스트 총 개수 -->
+  	<select id="postGetTotal" resultType="int">
+  		select count(*) from post
+  	</select> 
 </mapper>

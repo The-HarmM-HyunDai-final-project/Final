@@ -7,6 +7,7 @@
 	
 	<!-- 피드 등록 -->
 	<insert id="socialEnroll">
-		insert into social values(#{post_id}, #{file_name}, #{upload_path}, #{uuid})
+	
+		insert into social values((select max(post_id) from post), #{file_name}, #{upload_path}, #{uuid}, sysdate)
 	</insert>
 </mapper>

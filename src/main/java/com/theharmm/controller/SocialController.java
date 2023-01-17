@@ -44,15 +44,6 @@ import net.coobird.thumbnailator.Thumbnails;
 public class SocialController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	@Autowired
-	private MemberService memberService;
-
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
-	public String social() {
-		logger.info("social 실행");
-		return "social/user";
-	}
-
 	/* 첨부 파일 업로드 */
 	@PostMapping(value = "/user/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<SocialVO>> uploadAjaxActionPOST(MultipartFile[] uploadFile) {

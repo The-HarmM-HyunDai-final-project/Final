@@ -329,6 +329,13 @@
 													#스타일컬렉터</p>
 												<!---->
 											</div>
+
+
+											<c:forEach items="${list}" var="list">
+												<c:out value="${list.post_id}"></c:out>
+												<a class="move" href='<c:out value="${list.post_id}"/>'>
+												</a>
+											</c:forEach>
 										</div>
 										<div data-v-47728778="" class="img_count">
 											<span data-v-47728778="" class="count">+5</span>
@@ -342,7 +349,8 @@
 									loading="lazy" alt="리스트 로딩중입니다." class="loading_img">
 							</div>
 						</div>
-						<form action="/social" method="post" id="enrollForm">
+						<form action="/social/user/postEnroll" method="post"
+							id="enrollForm">
 							<div data-v-1a009402="" data-v-71b8d4b9="" data-v-61d3533a=""
 								class="layer_delivery layer lg" style="display: none;">
 								<div data-v-1a009402="" class="layer_container">
@@ -384,8 +392,7 @@
 												</div>
 											</div>
 											<div class="form_section">
-												<div class="form_section_title">
-												</div>
+												<div class="form_section_title"></div>
 												<div class="form_section_content bct">
 													<textarea name="postContents" id="postContents_textarea"></textarea>
 													<span class="ck_warn postContents_warn">해시태그 작성</span>
@@ -399,8 +406,11 @@
 											class="btn btn_delete outlinegrey medium" data-v-1a009402="">
 											취소 </a><a data-v-575aff82="" data-v-71b8d4b9="" id="btn_save"
 											disabled="disabled" class="btn btn_save solid medium"
-											data-v-1a009402=""> 확인</a>
+											data-v-1a009402=""> 확인<input type="hidden"
+											name="${_csrf.parameterName}" value="${_csrf.token}"}></a>
 									</div>
+									<!-- <div>${list}</div>
+									<div>${pageMaker }</div>-->
 								</div>
 							</div>
 						</form>
@@ -417,9 +427,7 @@
 					<div data-v-66ae1b7c="" class="wrap">
 						<svg data-v-66ae1b7c="" xmlns="http://www.w3.org/2000/svg"
 							class="icon sprite-icons toast-icon toast-success">
-								<use data-v-66ae1b7c=""
-								href=""
-								xlink:href=""></use></svg>
+								<use data-v-66ae1b7c="" href="" xlink:href=""></use></svg>
 						<div data-v-66ae1b7c="" class="toast-content">
 							<p data-v-66ae1b7c="">내용</p>
 						</div>
@@ -453,6 +461,7 @@
 				'click',
 				function() {
 					enrollForm.submit();
+					alert("등록이 완료되었습니다.");
 				});
 
 		/* 이미지 업로드 */

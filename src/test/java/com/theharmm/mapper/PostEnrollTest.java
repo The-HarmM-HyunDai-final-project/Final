@@ -21,7 +21,10 @@ import com.theharmm.domain.SocialVO;
 public class PostEnrollTest {
 
 	@Autowired
-	private PostMapper mapper;
+	private PostMapper postmapper;
+	
+	@Autowired
+	private SocialMapper socialmapper;
 
 	@Test
 	public void postenrolltest() {
@@ -49,7 +52,10 @@ public class PostEnrollTest {
 
 		post.setSocialList(socialList);
 
-		mapper.postEnroll(post);
+		postmapper.postEnroll(post);
+		
+		socialmapper.socialEnroll(social1);
+		socialmapper.socialEnroll(social2);
 		
 		System.out.println("등록된 VO : " + post);
 	}
