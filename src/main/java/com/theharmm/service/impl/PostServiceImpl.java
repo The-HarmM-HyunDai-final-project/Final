@@ -30,13 +30,15 @@ public class PostServiceImpl implements PostService {
 	@Transactional
 	@Override
 	public void postEnroll(PostVO post) {
-		log.info("(service)postEnroll........");
+		log.info("(serviceImpl)postEnroll........");
+		System.out.println("(serviceImpl)postEnroll");
 		postMapper.postEnroll(post);
 		if(post.getSocialList() == null || post.getSocialList().size() <= 0) {
 			return;
 		}
 		post.getSocialList().forEach(s ->{	
 			s.setPost_id(post.getPost_id());
+			log.info(s.getPost_id());
 			socialMapper.socialEnroll(s);
 		});	
 	}

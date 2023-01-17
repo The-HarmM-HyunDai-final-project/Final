@@ -4,10 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.theharmm.mapper.SocialMapper">
-	
 	<!-- 피드 등록 -->
 	<insert id="socialEnroll">
-	
 		insert into social values((select max(post_id) from post), #{file_name}, #{upload_path}, #{uuid}, sysdate)
 	</insert>
 </mapper>

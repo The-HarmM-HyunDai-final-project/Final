@@ -19,7 +19,7 @@ import com.theharmm.domain.PostCriteria;
 public class PostMapperTest2 {
 	@Autowired
 	private PostMapper postmapper;
-	/* 상품 리스트 & 상품 총 갯수 */
+	/* 포스트 리스트 & 포스트 총 갯수 */
 	@Test
 	public void goodsGetListTest() {
 		
