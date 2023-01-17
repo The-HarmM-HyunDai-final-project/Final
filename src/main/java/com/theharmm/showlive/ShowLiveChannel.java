@@ -60,13 +60,13 @@ public class ShowLiveChannel {
 		}else if(showliveMessage.getType() == MessageType.ENTER) {		//접속 했을시
 			connectedUsers++;
 			sessionsRoomNo.put(session, userId);
-			showliveMessage.setMessage("access:" + userId + "님 입장하셨습니다");
-			log.warn(roomNum + "번방 접속자 수" + connectedUsers);
-		}else if(showliveMessage.getType() == MessageType.TALK) {		//방 나갔을 때
+			showliveMessage.setMessage(userId + " 님이 입장하셨습니다");
+			log.warn(roomNum + "번방 접속자 수 :" + connectedUsers);
+		}else if(showliveMessage.getType() == MessageType.LEAVE) {		//방 나갔을 때
 			connectedUsers--;
 			sessionsRoomNo.remove(session);
-			showliveMessage.setMessage("access:" + userId + "님 퇴장하셨습니다");
-			log.warn(roomNum + "번방 접속자 수" + connectedUsers);
+			showliveMessage.setMessage(userId + " 님이 퇴장하셨습니다");
+			log.warn(roomNum + "번방 접속자 수 :" + connectedUsers);
 		}
 		
 		sendMessage(showliveMessage);
