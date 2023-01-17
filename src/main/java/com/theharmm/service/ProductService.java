@@ -5,9 +5,8 @@ import java.util.HashMap;
 import org.springframework.stereotype.Service;
 
 import com.theharmm.domain.Criteria;
-
-import com.theharmm.domain.ProductPageDTO;
 import com.theharmm.domain.ProductDTO;
+import com.theharmm.domain.ProductPageDTO;
 
 import com.theharmm.mapper.ProductMapper;
 
@@ -27,5 +26,13 @@ public class ProductService {
 		categoryPager.put("cri", cri);
 		return new ProductPageDTO(mapper.countProducts(categoryPager), mapper.selectProducts(categoryPager));
 	}
+	
+	/*
+	 * // 필터링 적용 후 데이터 가져오기 public ProductDTO searchProducts(Criteria cri) {
+	 * log.info("searchProductService.............." + cri); HashMap<String, Object>
+	 * categoryPager = new HashMap<String, Object>(); categoryPager.put("cri", cri);
+	 * return new ProductPageDTO(mapper.countProducts(categoryPager),
+	 * mapper.selectProducts(categoryPager)); }
+	 */
 
 }

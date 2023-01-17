@@ -41,7 +41,7 @@ public class ProductController {
 		cri.setAmount(12);
 		cri.setPageNum(page);
 		cri.setType(type);
-		//cri.setCkeyword(ckeyword)
+		cri.setKeyword(keyword);
 		cri.setBkeyword(bkeyword);
 		cri.setCkeyword(ckeyword);
 		cri.setStartp(startp);
@@ -89,6 +89,56 @@ public class ProductController {
 		//model.addAttribute("wishCnt",count);
 		//model.addAttribute("mid", mid);
 		return "product/productlist";
+	}
+	
+	@GetMapping(value = "/searchProductList", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public String searchProductList(@RequestParam(defaultValue = "1") int page, String type, String keyword) {
+		
+		log.info("ajax 검색 리스트 출력");
+		log.info(type);
+		log.info(keyword);
+		Criteria cri = new Criteria();
+		
+		cri.setAmount(5);
+		cri.setPageNum(page);
+		cri.setType("K");
+		cri.setKeyword(keyword);
+		//cri.setBkeyword("");
+		//cri.setCkeyword(1);
+		//cri.setStartp(0);
+		//cri.setEndp(0);
+		//cri.setSsize("");
+		//cri.setLsize("");
+		
+		log.info(cri);
+		ProductPageDTO products = productservice.getProducts(cri);
+		log.info(products);
+		
+		JSONObject jsonObject = new JSONObject();
+		JSONArray jsonArray = new JSONArray();
+		
+		for (ProductDTO p : products.getList()) {
+			JSONObject tmpObject = new JSONObject();
+			
+			JSONObject pObject = new JSONObject(); // 제품 정보 담을 json
+			pObject.put("pid", p.getPid());
+			pObject.put("brand", p.getBrand());
+			pObject.put("pname_e", p.getPname_e());
+			pObject.put("pname_k", p.getPname_k());
+			pObject.put("release_price", p.getRelease_price());
+			pObject.put("img1", p.getImg1());
+			
+			tmpObject.put("product", pObject);
+			jsonArray.put(tmpObject);
+		}
+		jsonObject.put("products", jsonArray);
+		jsonObject.put("result", "success");
+		jsonObject.put("totalCnt", products.getTotalCnt());
+		
+		String json = jsonObject.toString();
+		log.info(json);
+		return json;
 	}
 	
 }

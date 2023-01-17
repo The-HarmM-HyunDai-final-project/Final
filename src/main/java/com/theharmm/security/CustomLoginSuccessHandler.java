@@ -36,26 +36,26 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
         SavedRequest savedRequest = requestCache.getRequest(request, response);
         
         /**
-         * prevPage°¡ Á¸ÀçÇÏ´Â °æ¿ì = »ç¿ëÀÚ°¡ Á÷Á¢ /member/loginpage °æ·Î·Î ·Î±×ÀÎ ¿äÃ»
-         * ±âÁ¸ SessionÀÇ prevPage attribute Á¦°Å( ÀÌÀü url »©¿ÔÀ¸´Ï±î ÇÊ¿ä¾øÀ¸´Ï Á¦°Å)
+         * prevPageï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ = ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ï¿½ï¿½ /member/loginpage ï¿½ï¿½Î·ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»
+         * ï¿½ï¿½ï¿½ï¿½ Sessionï¿½ï¿½ prevPage attribute ï¿½ï¿½ï¿½ï¿½( ï¿½ï¿½ï¿½ï¿½ url ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
          */
         String prevPage = (String) request.getSession().getAttribute("prevPage");
         if (prevPage != null) {
             request.getSession().removeAttribute("prevPage");
         }
 
-        // ±âº» URI
+        // ï¿½âº» URI
         String uri = "/";
         
         /**
-         * savedRequest Á¸ÀçÇÏ´Â °æ¿ì = ÀÎÁõ ±ÇÇÑÀÌ ¾ø´Â ÆäÀÌÁö Á¢±Ù (ÀÌ°Ô¹º¸»ÀÌÁö?)
-         * Security Filter°¡ ÀÎÅÍ¼ÁÆ®ÇÏ¿© savedRequest¿¡ ¼¼¼Ç ÀúÀå (ÀÎÅÍ¼ÁÆ®ÇØ¼­ ÀúÀåÀ» ÇßÀ¸´Ï °á±¹ ±ÇÇÑÀÌ ÇÊ¿äÇØ¼­ ·Î±×ÀÎÀ» Çß´Ù´Â°Í ! -> ±×·³ ÀÌÀü urlÀÌ ÀÖ¾î¾ßÁö)
+         * savedRequest ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ = ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½Ì°Ô¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?)
+         * Security Filterï¿½ï¿½ ï¿½ï¿½ï¿½Í¼ï¿½Æ®ï¿½Ï¿ï¿½ savedRequestï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½Í¼ï¿½Æ®ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½á±¹ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½Ø¼ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß´Ù´Â°ï¿½ ! -> ï¿½×·ï¿½ ï¿½ï¿½ï¿½ï¿½ urlï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½)
          */
         if (savedRequest != null) {
             uri = savedRequest.getRedirectUrl();
         } else if (prevPage != null && !prevPage.equals("")) {
-            // È¸¿ø°¡ÀÔ - ·Î±×ÀÎÀ¸·Î ³Ñ¾î¿Â °æ¿ì "/"·Î redirect
-            if (prevPage.contains("/member/join")) {
+            //ì´ì „í˜ì´ì§€ê°€ íšŒì›ê°€ì…ì´ê±°ë‚˜ ë¡œê·¸ì¸í˜ì´ì§€ ì¼ë–„ëŠ” ê·¸ëƒ¥ í™ˆìœ¼ë¡œ ê°€ë²„ë ¤ë¦¬ê²Œ!
+            if (prevPage.contains("/member/join") || prevPage.contains("/member/loginpage")) {
                 uri = "/";
             } else {
                 uri = prevPage;
@@ -71,7 +71,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
 		});//end auth.getAuthorities
 
-		log.warn("°èÁ¤ÀÇ ¿ªÇÒ: " + roleNames);
+		log.warn("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: " + roleNames);
 
 //		response.sendRedirect("/");
 		
@@ -88,7 +88,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
 	}//end onAuthenticationSuccess
 	
-    // ·Î±×ÀÎ ½ÇÆĞ ÈÄ¿¡ ¼º°ø ½Ã ³²¾ÆÀÖ´Â ¿¡·¯ ¼¼¼Ç Á¦°Å
+    // ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     protected void clearSession(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {
