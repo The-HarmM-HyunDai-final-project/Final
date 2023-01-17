@@ -38,7 +38,6 @@
 //전송 버튼 누르는 이벤트
 $("#button-send").on("click", function(e) {
 	sendMessage();
-	console.log($('#msg').val())
 	$('#msg').val('')
 });
 
@@ -72,19 +71,27 @@ function onMessage(msg) {
     //로그인 한 클라이언트와 타 클라이언트를 분류하기 위함
 	if(sessionId == cur_session){
 		
-		var str = "<div class='col-6'>";
-		str += "<div class='alert alert-secondary'>";
-		str += "<b>" + sessionId + " : " + message + "</b>";
-		str += "</div></div>";
+		var str = 
+		`<div class='col-6'>
+		<div class='alert alert-secondary'>
+		<b>\${sessionId} : \${message}</b>
+		</div></div>`
 		
 		$("#msgArea").append(str);
 	}
 	else{
-		
-		var str = "<div class='col-6'>";
+		var str = 
+			`<div class='col-6'>
+			<div class='alert alert-secondary'>
+			<b>\${sessionId} : \${message}</b>
+			</div></div>`
+			
+			$("#msgArea").append(str);
+			
+		/* 	"<div class='col-6'>";
 		str += "<div class='alert alert-warning'>";
 		str += "<b>" + sessionId + " : " + message + "</b>";
-		str += "</div></div>";
+		str += "</div></div>"; */
 		
 		$("#msgArea").append(str);
 	}

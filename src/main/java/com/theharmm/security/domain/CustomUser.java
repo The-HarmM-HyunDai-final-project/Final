@@ -9,15 +9,19 @@ import org.springframework.security.core.userdetails.User;
 
 import com.theharmm.domain.MemberVO;
 
+import lombok.Data;
 import lombok.Getter;
 
-@Getter
+//@Getter
+@Data
 public class CustomUser  extends User{
 	
 	//Serialization
 	private static final long serialVersionUID = 1L;
 	
 	private MemberVO member;
+	
+	private String roomNo;
 	
 	public CustomUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
 		super(username, password, authorities);
