@@ -33,7 +33,9 @@
 		<websocket:sockjs></websocket:sockjs>
 	</websocket:handlers>
 
-	
+	<!-- 업로드 관련 빈 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></beans:bean>
 	
 	<context:component-scan base-package="com.theharmm.controller" />	
 </beans:beans>
