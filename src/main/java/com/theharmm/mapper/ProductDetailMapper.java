@@ -10,7 +10,7 @@ import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.ProductSizeDTO;
 
 
-public interface ProductDetailMapper {
+public interface ProductDetailMapper{
 	
 		public ProductDetailDTO selectProductDetail(int pid);
 

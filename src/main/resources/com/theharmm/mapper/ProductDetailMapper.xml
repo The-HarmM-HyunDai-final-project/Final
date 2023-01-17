@@ -37,7 +37,7 @@
 		  ]]>
 	</select>
 	
-	<!-- 하나의 제품 사이즈 조회 -->
+	<!-- 구매 하나의 제품 사이즈 조회 -->
 	<select id="selectProductSize"
 		resultType="ProductSizeDTO"
 		parameterType="Map">
@@ -64,7 +64,7 @@
 	    resultType="ProductSizeDTO"
 		parameterType="ProductDetailDTO">
 		<![CDATA[
-		SELECT T1.PSID,T1.PID,T1.MODEL_NUMBER, T1.MODEL_SIZE, T1.S_PRICE, T1.S_STOCK, MAX(T2.SALEID) AS SALEID,T2.PRICE
+		SELECT T1.PSID,T1.PID,T1.MODEL_NUMBER, T1.MODEL_SIZE, T1.S_PRICE, T1.S_STOCK, MAX(T2.BUYID) AS SALEID,T2.PRICE
 		  FROM RESELL_PRODUCT_SIZE T1 
 		  LEFT JOIN (SELECT * 
                        FROM buy T2
@@ -76,8 +76,30 @@
            ON T1.PID = T2.PID AND T1.MODEL_SIZE = T2.SIZE_TYPE 
         WHERE T1.pid = #{pid}
         GROUP BY T1.PSID,T1.PID,T1.MODEL_NUMBER, T1.MODEL_SIZE, T1.S_PRICE, T1.S_STOCK,T2.PRICE
-        ORDER BY T1.MODEL_SIZE ASC
+        ORDER BY T1.MODEL_SIZE ASC 
 		]]>
+	</select>
+	
+	
+	<!-- 판매 하나의 제품 사이즈 조회 -->
+	<select id="selectSellProductSize"
+		resultType="ProductSizeDTO"
+		parameterType="Map">
+		 <![CDATA[
+			 SELECT T1.PSID,T1.PID,T1.MODEL_NUMBER, T1.MODEL_SIZE, T1.S_PRICE, T1.S_STOCK, MAX(T2.BUYID) AS BUYID,T2.PRICE
+	           FROM RESELL_PRODUCT_SIZE T1 
+	           LEFT JOIN (SELECT * 
+	                        FROM BUY T2
+	                       WHERE (T2.PRICE) IN (SELECT MAX(PRICE) 
+	                                              FROM BUY 
+	                                             WHERE STATUS1='구매입찰'
+	                                               AND SIZE_TYPE=#{size} )
+	                      ) T2 
+	            ON T1.PID = T2.PID AND T1.MODEL_SIZE = T2.SIZE_TYPE 
+	         WHERE T1.pid =#{pid}
+	           AND T1.MODEL_SIZE =#{size}
+	         GROUP BY T1.PSID,T1.PID,T1.MODEL_NUMBER, T1.MODEL_SIZE, T1.S_PRICE, T1.S_STOCK,T2.PRICE
+		  ]]>
 	</select>
 	
 	

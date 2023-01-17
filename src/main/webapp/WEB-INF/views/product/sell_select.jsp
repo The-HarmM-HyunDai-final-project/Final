@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
-
+<script src="${pageContext.request.contextPath}/resources/js/price_list_check.js" defer=""></script>
 <link
 	href="${pageContext.request.contextPath}/resources/css/5e180f7.css"
 	rel="stylesheet" type="text/css">
@@ -19,12 +19,9 @@
 							style="background-color: rgb(235, 240, 245);">
 							<picture data-v-878ec45c="" data-v-09fbcf09=""
 								class="picture product_img">
-							<source data-v-878ec45c="" type="image/webp"
-								srcset="https://kream-phinf.pstatic.net/MjAyMTA3MjhfMjIg/MDAxNjI3NDQxMDA1NjE5.HOgIYywGZaaBJDqUzx2OnX9HAxoOWPvuWHqUn_LZGcgg.VYIuOfA5_GgjBGRowv6dmQuAOPtUvmAxbGpOyUCOCtYg.PNG/p_9d8ed1a74d2540ab9842e63363607bf4.png?type=m_webp">
-							<source data-v-878ec45c=""
-								srcset="https://kream-phinf.pstatic.net/MjAyMTA3MjhfMjIg/MDAxNjI3NDQxMDA1NjE5.HOgIYywGZaaBJDqUzx2OnX9HAxoOWPvuWHqUn_LZGcgg.VYIuOfA5_GgjBGRowv6dmQuAOPtUvmAxbGpOyUCOCtYg.PNG/p_9d8ed1a74d2540ab9842e63363607bf4.png?type=m">
-							<img data-v-878ec45c="" alt="상품 이미지"
-								src="https://kream-phinf.pstatic.net/MjAyMTA3MjhfMjIg/MDAxNjI3NDQxMDA1NjE5.HOgIYywGZaaBJDqUzx2OnX9HAxoOWPvuWHqUn_LZGcgg.VYIuOfA5_GgjBGRowv6dmQuAOPtUvmAxbGpOyUCOCtYg.PNG/p_9d8ed1a74d2540ab9842e63363607bf4.png?type=m"
+							
+							<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="상품 이미지"
+								src="${productDetailDTO.img1}"
 								loading="lazy" class="image"></picture>
 							<!---->
 							<!---->
@@ -46,7 +43,8 @@
 						<!---->
 						<ul data-v-28805923="" class="select_list">
 						   <c:forEach var="productSize" items="${productSizeList}">
-							<li data-v-28805923="" class="select_item"><button
+							<li data-v-28805923="" class="select_item">
+							<button
 									data-v-28805923="" role="button" aria-selected="false"
 									class="select_link sell">
 									<div data-v-28805923="" class="link_inner">
@@ -68,7 +66,7 @@
 						</ul>
 					</div>
 					<div data-v-744cecc2="" data-v-3f89f857="" class="order_btn_area">
-						<a data-v-c631041c="" data-v-744cecc2="" href="#"
+						<a data-v-c631041c="" data-v-744cecc2="" href="sell?pid=${productDetailDTO.pid}"
 							class="btn_order order_sell sell clickable"><div
 								data-v-c631041c="" class="box">
 								<!---->

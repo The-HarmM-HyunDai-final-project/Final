@@ -34,7 +34,7 @@ public class SellController {
 		 public String selectSellProductSize(@PathVariable int pid,@RequestParam(required = false) String size, Model model) {
 			log.info("selectSellProductSize 실행");
 			ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
-			List<ProductSizeDTO> productSizeList = productDetailService.selectProductSizeList(productDetailDTO);
+			List<ProductSizeDTO> productSizeList = productDetailService.selectSellProductSizeList(productDetailDTO);
 			log.info("productDetailDTO : "+productDetailDTO.toString());
 			log.info("productSizeList : "+ productSizeList.toString());
 			
@@ -47,9 +47,9 @@ public class SellController {
 		
 		//즉시판매, 판매입찰 선택 
 		@GetMapping("/{pid}")
-		 public String buyProduct(@PathVariable int pid,@RequestParam String size, Model model) {
+		 public String sellProduct(@PathVariable int pid,@RequestParam String size, Model model) {
 			log.info("buyProduct 실행");
-			ProductDetailDTO productDetailDTO = productDetailService.selectSellProductDetail(pid);
+			ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 			
 			Map<String,Object> productInfoMap = new HashMap<String,Object>();
 			productInfoMap.put("size", size);
@@ -66,6 +66,56 @@ public class SellController {
 		}
 		
 		
+		// 즉시판매 혹은 판매입찰 중 타입별로 구매하기로 넘어옴
+		@GetMapping("/order/{pid}")
+		 public String orderSellProduct(@PathVariable int pid,@RequestParam String size,@RequestParam String type,@RequestParam int price,
+				 Model model) {
+			log.info("orderProduct 실행");
+			int shippingFee = 3000;
+			int fee = 30000;
+		
+
+			
+			ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
+			
+			Map<String,Object> productInfoMap = new HashMap<String,Object>();
+			productInfoMap.put("size", size);
+			productInfoMap.put("pid", productDetailDTO.getPid());
+			ProductSizeDTO productSizeDTO = productDetailService.selectSellProductSize(productInfoMap);
+			
+			model.addAttribute("productDetailDTO",productDetailDTO);// 상품상세정보
+			model.addAttribute("productSizeDTO",productSizeDTO);//상품사이즈 
+			
+			model.addAttribute("type",type);// 타입 
+			model.addAttribute("shippingFee",shippingFee);
+			
+			
+			if(type.equals("즉시판매")) {
+				price = productSizeDTO.getPrice();
+				fee = (int)(productSizeDTO.getPrice()*0.015);
+			}
+			else if(type.equals("판매입찰")) {
+				fee =(int)(productSizeDTO.getPrice()*0.03);
+			}
+			
+			model.addAttribute("fee",fee);
+			model.addAttribute("price",price);
+			model.addAttribute("totalPrice",price+fee+shippingFee);
+			
+			if(type.equals("즉시판매")) {
+		
+				return "product/sell_order";
+			}
+			else if(type.equals("판매입찰")){
+				
+				return "product/sell_bid";
+			}
+			else {
+				//추후 에러페이지로 변경필요
+				return "product/sell_bid";
+			}
+
+		}
 		
 		
 		

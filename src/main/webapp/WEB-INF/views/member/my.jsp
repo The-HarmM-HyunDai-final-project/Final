@@ -133,7 +133,7 @@
 											<a data-v-575aff82="" data-v-5acef129="" href="/my/profile"
 												class="btn btn outlinegrey small" type="button"> 프로필 수정
 											</a><a data-v-575aff82="" data-v-5acef129=""
-												href="/social/users/@1o6t8l"
+												href="/social/user/"
 												class="btn btn btn_my_style outlinegrey small" type="button">
 												내 스타일 </a>
 										</div>

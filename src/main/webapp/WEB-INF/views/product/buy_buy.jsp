@@ -273,18 +273,7 @@
 		</div>
 	</div>
 	
-	<script src="/_nuxt/4fbacaa.js" defer=""></script>
-	<script src="/_nuxt/1c84866.js" defer=""></script>
-	<script src="/_nuxt/f33c07a.js" defer=""></script>
-	<script src="/_nuxt/1b4c860.js" defer=""></script>
-	<script src="/_nuxt/0baa4c5.js" defer=""></script>
-	<script src="/_nuxt/4296a15.js" defer=""></script>
-	<script src="/_nuxt/c533b24.js" defer=""></script>
-	<script src="/_nuxt/cb4569c.js" defer=""></script>
-	<script src="/_nuxt/054b336.js" defer=""></script>
-	<script src="/_nuxt/c348f6a.js" defer=""></script>
-	<script src="/_nuxt/e6f69f8.js" defer=""></script>
-	<script src="/_nuxt/b777585.js" defer=""></script>
+	
 
 
 	<link href="${pageContext.request.contextPath}/resources/css/325de86.css" rel="stylesheet" type="text/css">
@@ -301,4 +290,7 @@
 	<link href="${pageContext.request.contextPath}/resources/css/06e50c5.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/css/1942381.css" rel="stylesheet" type="text/css">
 </body>
+
+
+
 </html>
