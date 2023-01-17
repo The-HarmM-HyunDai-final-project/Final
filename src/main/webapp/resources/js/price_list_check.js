@@ -17,6 +17,9 @@ $(function(){
 				        console.log(list);
 				        $(this).addClass("active").attr("aria-selected", "true").siblings().removeClass("active").attr("aria-selected","false");
 						size = list.getElementsByClassName("size")[0].innerHTML;
+						size = size.trim();
+						selectSellSize.setAttribute("value",size);
+						
 						console.log(size);
 					});
 

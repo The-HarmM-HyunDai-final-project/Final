@@ -65,8 +65,18 @@
 										data-v-638c1354="" class="unit">원</span>
 										</c:if></li>
 					<li data-v-638c1354="" class="list_item"><p data-v-638c1354=""
-							class="title">즉시 판매가</p> <span data-v-638c1354="" class="price">188,000</span><span
-						data-v-638c1354="" class="unit">원</span></li>
+							class="title">즉시 판매가</p> 
+							<c:if test="${productSizeDTO.price eq 0}">
+										<span data-v-638c1354="" class="price"> 
+											-
+											</span>
+										</c:if>
+										<c:if test="${productSizeDTO.price ne 0}">
+								<span data-v-638c1354="" class="price"> 
+											<fmt:formatNumber type="number" maxFractionDigits="3" value="${productSizeDTO.price}" />
+	    												</span><span
+										data-v-638c1354="" class="unit">원</span>
+										</c:if></li>
 				</ul>
 				<div data-v-158ed304="" class="instant_group">
 					<div data-v-b6b2883e="" data-v-158ed304="" class="tab_area buy_tab">
@@ -163,10 +173,15 @@
 					<span data-v-679d7250="" class="price_warning"
 						style="display: none;"><em data-v-679d7250="">주의! </em></span>
 				</div>
-				<div data-v-14995178="" class="btn_confirm">
-					<a data-v-575aff82="" data-v-14995178="" href="#"
-						class="btn full solid false disabled" disabled="disabled"> 즉시 판매 계속 </a>
-				</div>
+				<form id="orderSellAction" method="get" action="/sell/order/${productDetailDTO.pid}">
+					<input type="hidden" name="size" value="${productSizeDTO.model_size}"/>
+					<input type="hidden" name="type" value="즉시판매"/>
+					<input type="hidden" name="price" value="${productSizeDTO.price}"/>
+					<div data-v-14995178="" class="btn_confirm">
+						<a data-v-575aff82="" data-v-14995178="" href="#" onclick="document.getElementById('orderSellAction').submit()"
+							class="btn full solid false disabled" disabled="disabled"> 즉시 판매 계속 </a>
+					</div>
+				</form>
 			</div>
 		</div>
 		<!---->
