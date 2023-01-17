@@ -415,8 +415,11 @@
 			if($(".imgDeleteBtn").length > 0){
 				deleteFile();
 			}
-			let formData = new FormData();
+			//let formData = new FormData();
 			let fileInput = $('input[name="uploadFile"]');
+			for (let i = 0; i < fileInput.length; i++){
+				
+			}
 			let fileList = fileInput[0].files;
 			let fileObj = fileList[0];
 			
@@ -426,24 +429,28 @@
 			if (!fileCheck(fileObj.name, fileObj.size)) {
 				return false;
 			}
-			formData.append("uploadFile", fileObj);	
-			$.ajax({
-				url : '/social/user/uploadAjaxAction',
-				processData : false,
-				contentType : false,
-				data : formData,
-				type : 'post',
-				dataType : 'json',
-				beforeSend: function(xhr) {
-	                 xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
-	            success : function(result){
-	      	   		console.log(result);
-	      	   		showUploadImage(result);
-	      	   	},
-	      	   	error : function(result){
-	      	   		alert("이미지 파일이 아닙니다.");
-	      	   	}
-	      	});
+			for (let i = 0; i < fileList.length; i++){
+				let fileObj = fileList[i];
+				let formData = new FormData();
+				formData.append("uploadFile", fileObj);	
+				$.ajax({
+					url : '/social/user/uploadAjaxAction',
+					processData : false,
+					contentType : false,
+					data : formData,
+					type : 'post',
+					dataType : 'json',
+					beforeSend: function(xhr) {
+		                 xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
+		            success : function(result){
+		      	   		console.log(result);
+		      	   		showUploadImage(result);
+		      	   	},
+		      	   	error : function(result){
+		      	   		alert("이미지 파일이 아닙니다.");
+		      	   	}
+		      	});
+			}
 		});
 
 		/* var, method related with attachFile */
