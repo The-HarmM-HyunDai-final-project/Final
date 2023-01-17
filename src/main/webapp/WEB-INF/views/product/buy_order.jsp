@@ -4,6 +4,8 @@
 <html lang="ko">
 <head>
 <title>KREAM | 한정판 거래의 FLEX</title>
+<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
+<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
 <meta data-n-head="ssr" charset="utf-8">
 <meta data-n-head="ssr" data-hid="viewport" name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
@@ -99,6 +101,63 @@
 <script charset="utf-8" src="/_nuxt/979fe8d.js"></script>
 <link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/1942381.css">
 <script charset="utf-8" src="/_nuxt/7202568.js"></script>
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<script>
+
+var IMP = window.IMP;   // 생략 가능
+IMP.init("imp30137302"); // 예: imp00000000 
+
+function requestPay() {
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
+	
+    IMP.request_pay({
+      pg: "kcp.T0000",
+      pay_method: "card",
+      merchant_uid: "ORD20180131-0000024",   // 주문번호
+      name: "${productDetailDTO.pname_k}",
+      amount: ${totalPrice},                         // 숫자 타입
+      buyer_email: "gildong@gmail.com",
+      buyer_name: "홍길동",
+      buyer_tel: "010-4242-4242",
+      buyer_addr: "서울특별시 강남구 신사동",
+      buyer_postcode: "01181"
+    }, function (rsp) { // callback
+      if (rsp.success) {
+    	  console.log(rsp);
+        // 결제 성공 시 로직
+        jQuery.ajax({
+        url: "/buy/order", 
+        method: "POST",
+        /* beforeSend : function(xhr){
+    		xhr.setRequestHeader(header, token);
+    	}, */
+        headers: { "Content-Type": "application/json" },
+        data: {
+          imp_uid: rsp.imp_uid,            // 결제 고유번호
+          merchant_uid: rsp.merchant_uid,   // 주문번호
+          buyer_email: rsp.buyer_email,
+          pid: ${productDetailDTO.pid},
+          totalPrice: ${totalPrice},
+          model_size: ${productSizeDTO.model_size},
+          saleid: ${productSizeDTO.saleid}
+        
+        }
+      }).done(function (data) {
+        // 가맹점 서버 결제 API 성공시 로직
+      })
+    	
+      } else {
+        // 결제 실패 시 로직
+    	  console.log(rsp);
+        alert("결제실패");
+      }
+    });
+  }
+</script>
 </head>
 <body>
 	<div id="__nuxt">
@@ -120,12 +179,8 @@
 										style="background-color: rgb(244, 244, 244);">
 										<picture data-v-878ec45c="" data-v-09fbcf09=""
 											class="picture product_img">
-										<source data-v-878ec45c="" type="image/webp"
-											srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjhfNTAg/MDAxNjcyMTkyNjE0NTQ5.QxO6lVphyqxuRIZnpbwqOV6ESMkV_AR4bhR4wSxhTzwg.Jjy2PoC7xiJD-VL41pl9foRfaTjvgOkGKpiT1tOkYrAg.JPEG/a_018da96e3e9447da930ab111f7605ab2.jpg?type=l_webp">
-										<source data-v-878ec45c=""
-											srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjhfNTAg/MDAxNjcyMTkyNjE0NTQ5.QxO6lVphyqxuRIZnpbwqOV6ESMkV_AR4bhR4wSxhTzwg.Jjy2PoC7xiJD-VL41pl9foRfaTjvgOkGKpiT1tOkYrAg.JPEG/a_018da96e3e9447da930ab111f7605ab2.jpg?type=l">
-										<img data-v-878ec45c="" alt="상품 이미지"
-											src="https://kream-phinf.pstatic.net/MjAyMjEyMjhfNTAg/MDAxNjcyMTkyNjE0NTQ5.QxO6lVphyqxuRIZnpbwqOV6ESMkV_AR4bhR4wSxhTzwg.Jjy2PoC7xiJD-VL41pl9foRfaTjvgOkGKpiT1tOkYrAg.JPEG/a_018da96e3e9447da930ab111f7605ab2.jpg?type=l"
+										<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="상품 이미지"
+											src="${productDetailDTO.img1}"
 											loading="lazy" class="image"></picture>
 										<!---->
 										<!---->
@@ -134,14 +189,12 @@
 									</div>
 									<div data-v-2b95d831="" class="product_detail">
 										<strong data-v-2b95d831="" class="model_number">
-											<!---->10025391-A01
+											<!---->${productDetailDTO.model_number}
 										</strong>
-										<p data-v-2b95d831="" class="model_title">Ader Error x
-											Converse Shapes Varsity Jacket Cobalt</p>
-										<p data-v-2b95d831="" class="model_ko">아더에러 x 컨버스 쉐입스 바시티
-											자켓 코발트</p>
+										<p data-v-2b95d831="" class="model_title"> ${productDetailDTO.pname_e}</p>
+										<p data-v-2b95d831="" class="model_ko"> ${productDetailDTO.pname_k}</p>
 										<div data-v-2b95d831="" class="model_desc">
-											<p data-v-2b95d831="" class="size_txt">M</p>
+											<p data-v-2b95d831="" class="size_txt">${productSizeDTO.model_size}</p>
 											<!---->
 										</div>
 									</div>
@@ -228,7 +281,7 @@
 											<dl data-v-679d7250="" class="price_box">
 												<dt data-v-679d7250="" class="price_title">총 결제금액</dt>
 												<dd data-v-679d7250="" class="price">
-													<span data-v-679d7250="" class="amount">661,700</span><span
+													<span data-v-679d7250="" class="amount"><fmt:formatNumber type="number" maxFractionDigits="3" value="${totalPrice}" /></span><span
 														data-v-679d7250="" class="unit">원</span>
 												</dd>
 											</dl>
@@ -243,7 +296,10 @@
 													<span data-v-3a2a7b6b="">즉시 구매가</span>
 													<!---->
 												</dt>
-												<dd data-v-3a2a7b6b="" class="price_text">649,000원</dd>
+												<dd data-v-3a2a7b6b="" class="price_text">
+												<c:if test="${price eq 0}">-</c:if>
+												<c:if test="${price ne 0}"><fmt:formatNumber type="number" maxFractionDigits="3" value="${price}" />원</c:if>
+												</dd>
 											</dl>
 											<dl data-v-3a2a7b6b="" data-v-887ad490=""
 												class="price_addition">
@@ -273,7 +329,7 @@
 																xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-info-circle-white"></use></svg>
 													</button>
 												</dt>
-												<dd data-v-3a2a7b6b="" class="price_text">9,700원</dd>
+												<dd data-v-3a2a7b6b="" class="price_text"><fmt:formatNumber type="number" maxFractionDigits="3" value="${fee}"/>원</dd>
 											</dl>
 											<dl data-v-3a2a7b6b="" data-v-887ad490=""
 												class="price_addition">
@@ -281,7 +337,7 @@
 													<span data-v-3a2a7b6b="">배송비</span>
 													<!---->
 												</dt>
-												<dd data-v-3a2a7b6b="" class="price_text">3,000원</dd>
+												<dd data-v-3a2a7b6b="" class="price_text"><fmt:formatNumber type="number" maxFractionDigits="3" value="${shippingFee}"/>원</dd>
 											</dl>
 										</div>
 										<!---->
@@ -455,7 +511,7 @@
 										<dl data-v-679d7250="" class="price_box">
 											<dt data-v-679d7250="" class="price_title">총 결제금액</dt>
 											<dd data-v-679d7250="" class="price">
-												<span data-v-679d7250="" class="amount">661,700</span><span
+												<span data-v-679d7250="" class="amount"><fmt:formatNumber type="number" maxFractionDigits="3" value="${totalPrice}" /></span><span
 													data-v-679d7250="" class="unit">원</span>
 											</dd>
 										</dl>
@@ -463,11 +519,11 @@
 											style="display: none;"><em data-v-679d7250="">주의!
 										</em></span>
 									</div>
-									<div data-v-14995178="" class="btn_confirm">
-										<a data-v-575aff82="" data-v-14995178="" disabled="disabled"
-											href="#" class="btn full solid false disabled"> 결제하기 </a>
-									</div>
+									 <button onclick="requestPay()">결제하기</button> 
+									 <input type="hidden" name="CSRFToken"
+										value="${_csrf.token}">
 								</div>
+								
 							</section>
 							<!---->
 							<div data-v-1a009402="" data-v-4ae17423="" data-v-b8efdcc8=""
@@ -537,18 +593,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="/_nuxt/4fbacaa.js" defer=""></script>
-	<script src="/_nuxt/1c84866.js" defer=""></script>
-	<script src="/_nuxt/f33c07a.js" defer=""></script>
-	<script src="/_nuxt/1b4c860.js" defer=""></script>
-	<script src="/_nuxt/0baa4c5.js" defer=""></script>
-	<script src="/_nuxt/4296a15.js" defer=""></script>
-	<script src="/_nuxt/c533b24.js" defer=""></script>
-	<script src="/_nuxt/cb4569c.js" defer=""></script>
-	<script src="/_nuxt/054b336.js" defer=""></script>
-	<script src="/_nuxt/c348f6a.js" defer=""></script>
-	<script src="/_nuxt/e6f69f8.js" defer=""></script>
-	<script src="/_nuxt/b777585.js" defer=""></script>
+	
 
 
 	<link href="${pageContext.request.contextPath}/resources/css/325de86.css" rel="stylesheet" type="text/css">
@@ -565,4 +610,6 @@
 	<link href="${pageContext.request.contextPath}/resources/css/06e50c5.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/css/1942381.css" rel="stylesheet" type="text/css">
 </body>
+
+
 </html>

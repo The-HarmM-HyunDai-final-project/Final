@@ -526,7 +526,7 @@
 															2 <!---->
 														</td>
 													</tr>
-													<tr data-v-50d58b3a="">
+												    	<tr data-v-50d58b3a="">
 														<td class="table_td" data-v-50d58b3a="">255 <!----></td>
 														<td class="table_td align_right" data-v-50d58b3a="">
 															410,000원 <!---->
@@ -1552,5 +1552,9 @@
 	<!---->
 	<!---->
 </div>
+
+
+<!-- </div> -->
+
 
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

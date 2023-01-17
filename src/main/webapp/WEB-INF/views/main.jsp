@@ -38,19 +38,19 @@
 
 				<div class="mySlides fade">
 					<div class="numbertext">1 / 3</div>
-					<img src="${pageContext.request.contextPath}/resources/images/test2.jpg" style="width: 100%">
+					<img src="${pageContext.request.contextPath}/resources/images/banner2.jpg" referrerpolicy="no-referrer" style="aspect-ratio: 10/3; width : 100%">
 					
 				</div>
 
 				<div class="mySlides fade">
 					<div class="numbertext">2 / 3</div>
-					<img src="${pageContext.request.contextPath}/resources/images/test2.jpg" style="width: 100%">
+					<img src="${pageContext.request.contextPath}/resources/images/banner3.jpg" referrerpolicy="no-referrer" style="aspect-ratio: 10/3; width : 100%">
 					
 				</div>
 
 				<div class="mySlides fade">
 					<div class="numbertext">3 / 3</div>
-					<img src="${pageContext.request.contextPath}/resources/images/test2.jpg" style="width: 100%">
+					<img src="${pageContext.request.contextPath}/resources/images/banner4.jpg" referrerpolicy="no-referrer" style="aspect-ratio: 10/3; width : 100%">
 					
 				</div>
 
@@ -69,27 +69,23 @@
 				<div class="shortcut_items_wrap" data-v-281f2319="">
 					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
 						<div class="shortcut_item_img_wrap" data-v-155cff51="">
-							<picture class="picture shortcut_item_img_bg"
-								style="background-color:#f4f4f4;" data-v-878ec45c=""
-								data-v-155cff51="">
+							
 							
 							<img
-								src="${pageContext.request.contextPath}/resources/images/live.jpg"
-								loading="lazy" class="image" data-v-878ec45c=""></picture>
+								src="${pageContext.request.contextPath}/resources/images/live2.png"
+								loading="lazy" style="width:400px; height:80px;" class="image"  data-v-878ec45c="">
 						</div>
-						<p class="shortcut_item_title" data-v-155cff51=""><strong>경매관</strong></p>
+						
 					</div>
 					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
 						<div class="shortcut_item_img_wrap" data-v-155cff51="">
-							<picture class="picture shortcut_item_img_bg"
-								style="background-color:#f1f1db;" data-v-878ec45c=""
-								data-v-155cff51="">
+							
 							
 							<img
-								src="${pageContext.request.contextPath}/resources/images/thehansome.jpg"
-								loading="lazy" class="image" data-v-878ec45c=""></picture>
+								src="${pageContext.request.contextPath}/resources/images/the_handsome.png"
+								loading="lazy" class="image" data-v-878ec45c="">
 						</div>
-						<p class="shortcut_item_title" data-v-155cff51=""><strong>현대관</strong></p>
+						
 					</div>
 				</div>
 			</div>
