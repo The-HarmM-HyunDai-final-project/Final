@@ -16,7 +16,9 @@
 			<label><b>채팅방</b></label>
 		</div>
 		<div>
-			<div id="msgArea" class="col"></div>
+			<div id="msgArea" class="col">
+			<!-- 채팅 내용이 여기 들어가욧 -->
+			</div>
 			<div class="col-6">
 				<div class="input-group mb-3">
 					<input type="text" id="msg" class="form-control"
@@ -38,7 +40,6 @@
 //전송 버튼 누르는 이벤트
 $("#button-send").on("click", function(e) {
 	sendMessage();
-	console.log($('#msg').val())
 	$('#msg').val('')
 });
 
@@ -50,61 +51,92 @@ sock.onopen = onOpen;
 function sendMessage() {
 	sock.send($("#msg").val());
 }
-//서버에서 메시지를 받았을 때
+//서버에서 메시지를 받았을 때 -> 입장, 퇴장, 채팅, 경매 모두 이곳으로!
 function onMessage(msg) {
 	
 	var data = msg.data;
 	var sessionId = null; //데이터를 보낸 사람
 	var message = null;
 	
-	var arr = data.split(":");
+	//console.log(msg);
 	
-	for(var i=0; i<arr.length; i++){
-		console.log('arr[' + i + ']: ' + arr[i]);
+	var messageData = JSON.parse(msg['data']);
+	var roomNo = messageData['roomNo'];
+	var message = messageData['message'];
+	var insertDate = messageData['insertDate'];
+	var type = messageData['type'];
+	var username = messageData['username'];
+	
+	var cur_session = '${userid}'; //현재 세션에 로그인 한 사람(controller model에서 가져온값)
+	//console.log("cur_session : " + cur_session);
+	
+	switch(type){
+		case 'TALK':
+			if(username == cur_session){
+				username = '나';
+			}
+			var str = 
+				`<div class='col-6'>
+				<div class='alert alert-secondary'>
+				<b>\${username} : \${message}</b>
+				</div></div>`
+
+			break
+		case 'AUCTION':
+			break
+		case 'ENTER':
+			var str = 
+				`<div class='col-6'>
+				<div class='alert alert-secondary'>
+				<b>\${message}</b>
+				</div></div>`
+
+			break
+		case 'LEAVE':
+			var str = 
+				`<div class='col-6'>
+				<div class='alert alert-secondary'>
+				<b>\${message}</b>
+				</div></div>`
+			break
 	}
 	
-	var cur_session = '${userid}'; //현재 세션에 로그인 한 사람
-	console.log("cur_session : " + cur_session);
+	$("#msgArea").append(str);
 	
-	sessionId = arr[0];
-	message = arr[1];
 	
     //로그인 한 클라이언트와 타 클라이언트를 분류하기 위함
-	if(sessionId == cur_session){
+	/* if(sessionId == cur_session){
 		
-		var str = "<div class='col-6'>";
-		str += "<div class='alert alert-secondary'>";
-		str += "<b>" + sessionId + " : " + message + "</b>";
-		str += "</div></div>";
+		var str = 
+		`<div class='col-6'>
+		<div class='alert alert-secondary'>
+		<b>\${sessionId} : \${message}</b>
+		</div></div>`
 		
 		$("#msgArea").append(str);
 	}
 	else{
-		
-		var str = "<div class='col-6'>";
+		var str = 
+			`<div class='col-6'>
+			<div class='alert alert-secondary'>
+			<b>\${sessionId} : \${message}</b>
+			</div></div>`
+			
+			$("#msgArea").append(str);
+	} */		
+		/* 	"<div class='col-6'>";
 		str += "<div class='alert alert-warning'>";
 		str += "<b>" + sessionId + " : " + message + "</b>";
-		str += "</div></div>";
+		str += "</div></div>"; */
 		
-		$("#msgArea").append(str);
-	}
-	
+		//$("#msgArea").append(str);
 }
 //채팅창에서 나갔을 때
 function onClose(evt) {
-	
-	var user = '${pr.username}';
-	var str = user + " 님이 퇴장하셨습니다.";
-	
-	$("#msgArea").append(str);
+
 }
 //채팅창에 들어왔을 때
 function onOpen(evt) {
 	
-	var user = '${pr.username}';
-	var str = user + "님이 입장하셨습니다.";
-	
-	$("#msgArea").append(str);
 }
-
 </script>
