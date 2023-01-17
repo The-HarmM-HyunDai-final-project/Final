@@ -18,23 +18,35 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/ae12c7f.css"
 	rel="stylesheet" type="text/css">
+	
+<link
+	href="${pageContext.request.contextPath}/resources/css/5a645b8.css"
+	rel="stylesheet" type="text/css">
+	
+<link
+	href="${pageContext.request.contextPath}/resources/css/2af9c94.css"
+	rel="stylesheet" type="text/css">
 
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <div data-v-692bb569="" data-v-3007c576="" class="container search lg">
 	<div data-v-692bb569="" class="search_top">
 		<div data-v-692bb569="" class="top_box">
 			<div data-v-692bb569="">
 				<div data-v-74a2564e="" data-v-692bb569="" class="search_title">
-					<h2 data-v-74a2564e="" class="title_txt">SHOP</h2>
-					<div data-v-63326639="" data-v-74a2564e="" class="search_area"
-						value="" style="display: none;">
-						<div data-v-63326639="" class="search">
+
+					<!--  -->
+					<h2 data-v-74a2564e="" class="title_txt" style="display: block">SHOP</h2>
+					<!--  -->
+					<div data-v-63326639="" data-v-74a2564e="" id="search_area"
+						class="search_area" style="display: none">
+						<div data-v-63326639="" id="search" class="search">
 							<input data-v-63326639="" type="text"
 								placeholder="브랜드명, 모델명, 모델번호 등" title="검색창"
-								class="input_search show_placeholder_on_focus">
-							<button data-v-63326639="" class="btn_search_delete"
-								style="display: none;">
+								class="input_search show_placeholder_on_focus" id="input_search">
+							<button data-v-63326639="" id="btn_search_delete"
+								class="btn_search_delete" style="display: none;">
 								<svg data-v-63326639="" xmlns="http://www.w3.org/2000/svg"
 									class="ico-delete-circle icon sprite-icons">
 									<use data-v-63326639=""
@@ -44,32 +56,12 @@
 						</div>
 					</div>
 					<!---->
-				</div>
-			</div>
-			<div data-v-1ba41785="" data-v-692bb569="" class="quick_filter">
-				<div data-v-1ba41785="" class="quick_filter_box">
-					<a data-v-1ba41785="" href="#" aria-label="필터 선택 여부"
-						class="btn_quick_filter"><svg data-v-1ba41785=""
-							xmlns="http://www.w3.org/2000/svg" referrerpolicy="no-referrer"
-							class="ico-filter icon sprite-icons">
-							<use data-v-1ba41785=""
-								href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-filter-off"
-								xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-filter-off"></use></svg></a>
-				</div>
-				<div data-v-1ba41785="" class="quick_filter_items">
-					<a data-v-91e87570="" data-v-1ba41785="" href="#"
-						aria-label="럭셔리 필터" class="btn_quick_filter"> 럭셔리 </a><span
-						data-v-91e87570="" data-v-1ba41785="" class="divider_quick_filter"></span><a
-						data-v-91e87570="" data-v-1ba41785="" href="#" aria-label="신발 필터"
-						class="btn_quick_filter"> 신발 </a><a data-v-91e87570=""
-						data-v-1ba41785="" href="#" aria-label="의류 필터"
-						class="btn_quick_filter"> 의류 </a><a data-v-91e87570=""
-						data-v-1ba41785="" href="#" aria-label="패션 잡화 필터"
-						class="btn_quick_filter"> 패션 잡화 </a><a data-v-91e87570=""
-						data-v-1ba41785="" href="#" aria-label="라이프 필터"
-						class="btn_quick_filter"> 라이프 </a><a data-v-91e87570=""
-						data-v-1ba41785="" href="#" aria-label="테크 필터"
-						class="btn_quick_filter"> 테크 </a>
+					<div data-v-5b7f94e6="" class="search_suggests" id = "search_suggests" style="display: none" >
+						<div data-v-6c61cf2d="" data-v-5b7f94e6="" class="suggest_list lg" id = "suggest_list">
+						<!-- 검색 제품  -->
+						</div>		
+					</div>
+					<!---->
 				</div>
 			</div>
 		</div>
@@ -196,14 +188,17 @@
 			<div data-v-1b7193ea="" data-v-75a99100="" class="filter_status"
 				count="0">
 				<div data-v-1b7193ea="" class="status_box">
-					<span data-v-1b7193ea="" class="status_txt">필터</span>
+					<span data-v-1b7193ea="" class="status_txt">필터</span> <span
+						data-v-1b7193ea="" class="status_num">0</span>
 					<!---->
 				</div>
 				<!---->
+				<a data-v-1b7193ea="" href="#" class="btn_delete">모두 삭제</a>
 			</div>
 			<div data-v-7227e9f0="" data-v-75a99100=""
 				class="filter_list filter_open">
-				<div data-v-7227e9f0="" class="filter_title" onclick="openMenu(this);">
+				<div data-v-7227e9f0="" class="filter_title"
+					onclick="openMenu(this);">
 					<div data-v-7227e9f0="" class="title_box">
 						<span data-v-7227e9f0="" class="main_title">카테고리</span>
 						<!---->
@@ -250,11 +245,12 @@
 				</div>
 			</div>
 			<div data-v-7227e9f0="" data-v-75a99100=""
-				class="filter_list filter_open" >
-				<div data-v-7227e9f0="" class="filter_title" onclick="openMenu(this);">
+				class="filter_list filter_open">
+				<div data-v-7227e9f0="" class="filter_title"
+					onclick="openMenu(this);">
 					<div data-v-7227e9f0="" class="title_box">
-						<span data-v-7227e9f0="" class="main_title">브랜드</span>
-						<span data-v-7227e9f0="" class="placeholder">모든 브랜드</span>
+						<span data-v-7227e9f0="" class="main_title">브랜드</span> <span
+							data-v-7227e9f0="" class="placeholder">모든 브랜드</span>
 						<!---->
 					</div>
 					<div data-v-7227e9f0="" class="ico_box">
@@ -2960,10 +2956,11 @@
 			<div data-v-7227e9f0="" data-v-75a99100="" class="filter_list">
 				<div data-v-7227e9f0="" data-v-75a99100=""
 					class="filter_list filter_open">
-					<div data-v-7227e9f0="" class="filter_title" onclick="openMenu(this);">
+					<div data-v-7227e9f0="" class="filter_title"
+						onclick="openMenu(this);">
 						<div data-v-7227e9f0="" class="title_box">
-							<span data-v-7227e9f0="" class="main_title">신발 사이즈</span>
-							<span data-v-7227e9f0="" class="placeholder">모든 사이즈</span>
+							<span data-v-7227e9f0="" class="main_title">신발 사이즈</span> <span
+								data-v-7227e9f0="" class="placeholder">모든 사이즈</span>
 							<!---->
 						</div>
 						<div data-v-7227e9f0="" class="ico_box">
@@ -3007,10 +3004,11 @@
 				</div>
 				<div data-v-7227e9f0="" data-v-75a99100=""
 					class="filter_list filter_open">
-					<div data-v-7227e9f0="" class="filter_title" onclick="openMenu(this);">
+					<div data-v-7227e9f0="" class="filter_title"
+						onclick="openMenu(this);">
 						<div data-v-7227e9f0="" class="title_box">
-							<span data-v-7227e9f0="" class="main_title" >의류 사이즈</span>
-							<span data-v-7227e9f0="" class="placeholder">모든 사이즈</span>
+							<span data-v-7227e9f0="" class="main_title">의류 사이즈</span> <span
+								data-v-7227e9f0="" class="placeholder">모든 사이즈</span>
 							<!---->
 						</div>
 						<div data-v-7227e9f0="" class="ico_box">
@@ -3024,25 +3022,25 @@
 					<div data-v-7227e9f0="" class="filter_menu" style="display: none">
 						<div data-v-1f270712="" data-v-7227e9f0="" class="menu_column">
 							<div data-v-1f270712="" class="column_list column_double">
-								<a data-v-1f270712="" href="#" class="column_menu"> XXS </a><a
-									data-v-1f270712="" href="#" class="column_menu"> XS </a><a
-									data-v-1f270712="" href="#" class="column_menu"> S </a><a
-									data-v-1f270712="" href="#" class="column_menu"> M </a><a
-									data-v-1f270712="" href="#" class="column_menu"> L </a><a
-									data-v-1f270712="" href="#" class="column_menu"> XL </a><a
-									data-v-1f270712="" href="#" class="column_menu"> XXL </a><a
-									data-v-1f270712="" href="#" class="column_menu"> XXXL </a>
+								<a data-v-1f270712="" href="#" class="column_menu">XXS</a><a
+									data-v-1f270712="" href="#" class="column_menu">XS</a><a
+									data-v-1f270712="" href="#" class="column_menu">S</a><a
+									data-v-1f270712="" href="#" class="column_menu">M</a><a
+									data-v-1f270712="" href="#" class="column_menu">L</a><a
+									data-v-1f270712="" href="#" class="column_menu">XL</a><a
+									data-v-1f270712="" href="#" class="column_menu">XXL</a><a
+									data-v-1f270712="" href="#" class="column_menu">XXXL</a>
 							</div>
 							<div data-v-1f270712="" class="column_list">
-								<a data-v-1f270712="" href="#" class="column_menu"> 28 </a><a
-									data-v-1f270712="" href="#" class="column_menu"> 29 </a><a
-									data-v-1f270712="" href="#" class="column_menu"> 30 </a><a
-									data-v-1f270712="" href="#" class="column_menu"> 31 </a><a
-									data-v-1f270712="" href="#" class="column_menu"> 32 </a><a
-									data-v-1f270712="" href="#" class="column_menu"> 33 </a><a
-									data-v-1f270712="" href="#" class="column_menu"> 34 </a><a
-									data-v-1f270712="" href="#" class="column_menu"> 35 </a><a
-									data-v-1f270712="" href="#" class="column_menu"> 36 </a>
+								<a data-v-1f270712="" href="#" class="column_menu">28</a><a
+									data-v-1f270712="" href="#" class="column_menu">29</a><a
+									data-v-1f270712="" href="#" class="column_menu">30</a><a
+									data-v-1f270712="" href="#" class="column_menu">31</a><a
+									data-v-1f270712="" href="#" class="column_menu">32</a><a
+									data-v-1f270712="" href="#" class="column_menu">33</a><a
+									data-v-1f270712="" href="#" class="column_menu">34</a><a
+									data-v-1f270712="" href="#" class="column_menu">35</a><a
+									data-v-1f270712="" href="#" class="column_menu">36</a>
 							</div>
 							<!---->
 						</div>
@@ -3050,10 +3048,12 @@
 				</div>
 				<div data-v-7227e9f0="" data-v-75a99100=""
 					class="filter_list filter_open">
-					<div data-v-7227e9f0="" class="filter_title"  onclick="openMenu(this);">
+					<div data-v-7227e9f0="" class="filter_title"
+						onclick="openMenu(this);">
 						<div data-v-7227e9f0="" class="title_box">
-							<span data-v-7227e9f0="" class="main_title" onclick="openMenu(this);">가격</span>
-							<span data-v-7227e9f0="" class="placeholder">모든 가격</span>
+							<span data-v-7227e9f0="" class="main_title"
+								onclick="openMenu(this);">가격</span> <span data-v-7227e9f0=""
+								class="placeholder">모든 가격</span>
 							<!---->
 						</div>
 						<div data-v-7227e9f0="" class="ico_box">
@@ -3114,28 +3114,13 @@
 		</div>
 		<div data-v-692bb569="" class="search_content">
 			<div data-v-692bb569="" class="search_option">
-				<div data-v-692bb569="" class="filter_btns">
-					<div data-v-5cab3ef1="" data-v-692bb569=""
-						class="filter_express filter_btn">
-						<a data-v-5cab3ef1="" href="/search" class="express_btn"><svg
-								data-v-5cab3ef1="" xmlns="http://www.w3.org/2000/svg"
-								class="ico-express icon sprite-icons">
-								<use data-v-5cab3ef1=""
-									href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-									xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"></use></svg><span
-							data-v-5cab3ef1="" class="text">빠른배송</span></a>
-					</div>
-					<div data-v-1db771cc="" data-v-692bb569=""
-						class="filter_brand filter_btn">
-						<a data-v-1db771cc="" href="/search" class="brand_btn"><span
-							data-v-1db771cc="" class="text">브랜드배송</span></a>
-					</div>
-				</div>
+				<div data-v-692bb569="" class="filter_btns"></div>
 				<div data-v-692bb569="">
 					<div data-v-235653ca="" data-v-692bb569="" class="filter_sorting">
 						<button data-v-235653ca="" type="button" class="sorting_title">
 							인기순</button>
-						<ul data-v-235653ca="" class="sorting_list" style="display: none;">
+						<ul data-v-235653ca="" class="sorting_list"
+							style="display: block;">
 							<li data-v-235653ca="" class="sorting_item item_on"><a
 								data-v-235653ca="" href="#" class="sorting_link"><div
 										data-v-235653ca="" class="sorting_desc">
@@ -3149,30 +3134,8 @@
 							<li data-v-235653ca="" class="sorting_item"><a
 								data-v-235653ca="" href="#" class="sorting_link"><div
 										data-v-235653ca="" class="sorting_desc">
-										<p data-v-235653ca="" class="main_desc">프리미엄순</p>
-										<p data-v-235653ca="" class="sub_desc">발매가 대비 가격이 높은 순서대로
-											정렬합니다.</p>
-									</div> <svg data-v-235653ca="" xmlns="http://www.w3.org/2000/svg"
-										class="ico-check-s icon sprite-icons">
-										<use data-v-235653ca=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-s"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-s"></use></svg></a></li>
-							<li data-v-235653ca="" class="sorting_item"><a
-								data-v-235653ca="" href="#" class="sorting_link"><div
-										data-v-235653ca="" class="sorting_desc">
-										<p data-v-235653ca="" class="main_desc">즉시 구매가순</p>
-										<p data-v-235653ca="" class="sub_desc">즉시 구매가가 낮은 순서대로
-											정렬합니다.</p>
-									</div> <svg data-v-235653ca="" xmlns="http://www.w3.org/2000/svg"
-										class="ico-check-s icon sprite-icons">
-										<use data-v-235653ca=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-s"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-s"></use></svg></a></li>
-							<li data-v-235653ca="" class="sorting_item"><a
-								data-v-235653ca="" href="#" class="sorting_link"><div
-										data-v-235653ca="" class="sorting_desc">
-										<p data-v-235653ca="" class="main_desc">즉시 판매가순</p>
-										<p data-v-235653ca="" class="sub_desc">즉시 판매가가 높은 순서대로
+										<p data-v-235653ca="" class="main_desc">발매가 순</p>
+										<p data-v-235653ca="" class="sub_desc">발매가 가격이 높은 순서대로
 											정렬합니다.</p>
 									</div> <svg data-v-235653ca="" xmlns="http://www.w3.org/2000/svg"
 										class="ico-check-s icon sprite-icons">
@@ -3196,15 +3159,15 @@
 			</div>
 			<div data-v-692bb569="">
 				<div data-v-9bcf6292="" data-v-692bb569="">
-					<div data-v-9bcf6292="" id = "filter_tag" class="filter_tag" style="">
-						<div data-v-9bcf6292="" class="tag_item">
+					<div data-v-9bcf6292="" id="filter_tag" class="filter_tag" style="">
+						<!-- 						<div data-v-9bcf6292="" class="tag_item">
 							<span data-v-9bcf6292="" class="tag">여기</span>
 							<svg data-v-9bcf6292="" xmlns="http://www.w3.org/2000/svg"
 								class="ico-delete-gray icon sprite-icons">
 								<use data-v-9bcf6292=""
 									href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-delete-gray"
 									xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-delete-gray"></use></svg>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
@@ -3266,7 +3229,7 @@
 <script type="text/javascript">
 	$(window)
 			.ready(
-					function() { 
+					function() {
 
 						console.log("제품 띄우기 실행1 ");
 
@@ -3282,13 +3245,15 @@
 						let lsize = "";
 
 						// 바로 상품 띄우기
-						showList(1,keyword, keyword, brand, category, startp,endp, ssize, lsize);
+						showList(1, keyword, keyword, brand, category, startp,
+								endp, ssize, lsize);
 
 						let CatTmp = "";
 						let arr = new Array();
 
 						// ajax로 제품 띄우기
-						function showList(page, type, keyword, brand, category, startp, endp, ssize, lsize) {
+						function showList(page, type, keyword, brand, category,
+								startp, endp, ssize, lsize) {
 
 							console.log("제품 띄우기 실행2 ");
 
@@ -3340,20 +3305,11 @@
 													tmp += "		<div data-v-09fbcf09='' class='product' style='background-color: rgb(244, 244, 244);'>"
 													tmp += "			<picture data-v-878ec45c='' data-v-09fbcf09='' class='picture product_img'>"
 													tmp += "				<source data-v-878ec45c='' type='image/webp'"
-													tmp += "					srcset='"
-															+ product_array
-																	.at(i).product.img1
-															+ "'>"
+													tmp += "					srcset='"+ product_array.at(i).product.img1+ "'>"
 													tmp += "				<source data-v-878ec45c=''";
-													tmp += "					srcset='"
-															+ product_array
-																	.at(i).product.img1
-															+ "'>"
+													tmp += "					srcset='"+ product_array.at(i).product.img1+ "'>"
 													tmp += "				<img data-v-878ec45c='' alt='#'"
-													tmp += "					referrerpolicy='no-referrer' loading='lazy' class='image' src='"
-															+ product_array
-																	.at(i).product.img1
-															+ "'>"
+													tmp += "					referrerpolicy='no-referrer' loading='lazy' class='image' src='"+ product_array.at(i).product.img1+ "'>"
 													tmp += "			</picture>"
 													tmp += "		</div>"
 													tmp += "		<div data-v-c90cb1da='' class='product_info_area'>"
@@ -3490,112 +3446,97 @@
 
 						//페이지 번호 클릭	
 						//반드시 on함수 사용해야 한다. - js에 의해 새로 생긴 태그에는 이벤트가 주어지지 않기 때문에 찾아서 이벤트를 넣어줘야 한다.
-						pageNation
-								.on(
-										"click",
-										"a",
-										function(e) {
-											// 링크 이동 행동 무시
-											e.preventDefault(); //<a> 동작 중지
-											console.log("page click");
-											var targetPageNum = $(this).attr(
-													"href"); //페이지넘버 가져오기	       
-											console.log("targetPageNum: "
-													+ targetPageNum);
-											if (targetPageNum <= 0) {
-												targetPageNum = 1;
-											}
-											console.log("targetPageNum: "
-													+ targetPageNum);
-											// 전역 변수에 값 전달
-											pageNum = targetPageNum; //값전달
+						pageNation.on("click", "a", function(e) {
+							// 링크 이동 행동 무시
+							e.preventDefault(); //<a> 동작 중지
+							console.log("page click");
+							var targetPageNum = $(this).attr("href"); //페이지넘버 가져오기	       
+							console.log("targetPageNum: " + targetPageNum);
+							if (targetPageNum <= 0) {
+								targetPageNum = 1;
+							}
+							console.log("targetPageNum: " + targetPageNum);
+							// 전역 변수에 값 전달
+							pageNum = targetPageNum; //값전달
 
-											const placeholder = document.getElementsByClassName('placeholder');
-											console.log(placeholder);
-											
- 											for (i = 0; i <placeholder.length; i++) {
- 												let tmp = placeholder[i].innerHTML;
- 												console.log("내부 내용" + placeholder[i].innerHTML);
- 												console.log(type);
-  												if (placeholder[i].innerHTML.includes("모든")) {
- 													console.log("=====================" + type);
- 													continue;
- 												}  else {
-   													 if(i == 0) {
-   														if (!type.includes("C")) {
-   															type = type + 'C';
-   														}
-   														if (placeholder[i].innerHTML == '신발') {
-   															category = 1;
-   														} else if (placeholder[i].innerHTML == '의류') {
-   															category = 2;
-   														} else {
-   															category = 3;
-   														}
- 														
- 														// category = tmp;
- 													} else if (i == 1) {
-   														if (!type.includes("B")) {
-   															type = type + 'B';
-   														}
- 														brand = placeholder[i].innerHTML;
- 													} else if (i == 2) {
-   														if (!type.includes("S")) {
-   															type = type + 'S';
-   														}
- 														ssize = placeholder[i].innerHTML;
- 													} else if (i == 3) {
-   														if (!type.includes("L")) {
-   															type = type + 'L';
-   														}
- 														lsize = placeholder[i].innerHTML;
- 													} else if (i == 4) {
-   														if (!type.includes("P")) {
-   															type = type + 'P';
-   														}
- 														if (placeholder[i].innerHTML == '10만원 이하') {
- 															startp = 0;
- 															endp = 100000;
- 														} else if (placeholder[i].innerHTML == '10만원 - 30만원 이하') {
- 															startp = 100000;
- 															endp = 300000;
- 														} else if (placeholder[i].innerHTML == '30만원 - 50만원 이하') {
- 															startp = 300000;
- 															endp = 500000;
- 														} else if (placeholder[i].innerHTML == '50만원 이상') {
- 															startp = 500000;
- 															endp = 100000000;
- 														} else {
- 															starp = 0;
- 															endp = 0;
- 														}
- 													}   
- 												}    
-											} 
- 											
- 											console.log(type);
- 											console.log(brand);
- 											console.log(category);
- 											console.log(startp);
- 											console.log(endp);
- 											console.log(ssize);
- 											console.log(lsize);
- 											
- 											// 바로 상품 띄우기
- 											
- 											showList(pageNum, type, keyword, brand, category, startp,endp, ssize, lsize);
-										});
+							/* 											const placeholder = document.getElementsByClassName('placeholder');
+							 console.log(placeholder);
+							
+							 for (i = 0; i <placeholder.length; i++) {
+							 let tmp = placeholder[i].innerHTML;
+							 console.log("내부 내용" + placeholder[i].innerHTML);
+							 console.log(type);
+							 if (placeholder[i].innerHTML.includes("모든")) {
+							 console.log("=====================" + type);
+							 continue;
+							 }  else {
+							 if(i == 0) {
+							 if (!type.includes("C")) {
+							 type = type + 'C';
+							 }
+							 if (placeholder[i].innerHTML == '신발') {
+							 category = 1;
+							 } else if (placeholder[i].innerHTML == '의류') {
+							 category = 2;
+							 } else {
+							 category = 3;
+							 }
+							
+							 // category = tmp;
+							 } else if (i == 1) {
+							 if (!type.includes("B")) {
+							 type = type + 'B';
+							 }
+							 brand = placeholder[i].innerHTML;
+							 } else if (i == 2) {
+							 if (!type.includes("S")) {
+							 type = type + 'S';
+							 }
+							 ssize = placeholder[i].innerHTML;
+							 } else if (i == 3) {
+							 if (!type.includes("L")) {
+							 type = type + 'L';
+							 }
+							 lsize = placeholder[i].innerHTML;
+							 } else if (i == 4) {
+							 if (!type.includes("P")) {
+							 type = type + 'P';
+							 }
+							 if (placeholder[i].innerHTML == '10만원 이하') {
+							 startp = 0;
+							 endp = 100000;
+							 } else if (placeholder[i].innerHTML == '10만원 - 30만원 이하') {
+							 startp = 100000;
+							 endp = 300000;
+							 } else if (placeholder[i].innerHTML == '30만원 - 50만원 이하') {
+							 startp = 300000;
+							 endp = 500000;
+							 } else if (placeholder[i].innerHTML == '50만원 이상') {
+							 startp = 500000;
+							 endp = 100000000;
+							 } else {
+							 starp = 0;
+							 endp = 0;
+							 }
+							 }   
+							 }    
+							 }  */
+
+							console.log(type);
+							console.log(brand);
+							console.log(category);
+							console.log(startp);
+							console.log(endp);
+							console.log(ssize);
+							console.log(lsize);
+
+							// 바로 상품 띄우기
+
+							showList(pageNum, type, keyword, brand, category,
+									startp, endp, ssize, lsize);
+						});
 
 						let filterBtn = $(".menu");
-/* 						
-						let type = "";
-						let keyword = ""; 
-						let brand = ""; 
-						let category = ""; 
-						let startp = "";
-						let endp = ""; 
-						let ssize = ""; 
-						let lsize = ""; */
 
 						filterBtn
 								.on(
@@ -3603,110 +3544,132 @@
 										function(e) {
 											console.log("필터링 클릭!!!!!");
 											//console.log(e.currentTarget);
-											
+
 											const list = e.currentTarget.parentNode.parentNode.parentNode;
-											const categorylist = list.getElementsByClassName("link_txt");
-											
+											const categorylist = list
+													.getElementsByClassName("link_txt");
+
 											//console.log(category);
-											const name = e.currentTarget.getElementsByClassName("link_txt")[0].innerHTML;
+											const name = e.currentTarget
+													.getElementsByClassName("link_txt")[0].innerHTML;
 											console.log(name);
-											
-											if (list.getElementsByClassName('main_title')[0].innerHTML !== "브랜드") {
-	 											for (i = 0; i <categorylist.length; i++) {
-	 												categorylist[i].style.color = 'black';
-												} 
-	 											list.getElementsByClassName('placeholder')[0].innerHTML = name;
+
+											if (list
+													.getElementsByClassName('main_title')[0].innerHTML !== "브랜드") {
+												for (i = 0; i < categorylist.length; i++) {
+													categorylist[i].style.color = 'black';
+												}
+												list
+														.getElementsByClassName('placeholder')[0].innerHTML = name;
 											} else {
-												const html = list.getElementsByClassName('placeholder')[0].innerHTML;
+												const html = list
+														.getElementsByClassName('placeholder')[0].innerHTML;
 												console.log(html);
 												if (html === '모든 브랜드') {
-													list.getElementsByClassName('placeholder')[0].innerHTML = name;
+													list
+															.getElementsByClassName('placeholder')[0].innerHTML = name;
 												} else {
-													list.getElementsByClassName('placeholder')[0].innerHTML =  list.getElementsByClassName('placeholder')[0].innerHTML+ "," + name;
+													list
+															.getElementsByClassName('placeholder')[0].innerHTML = list
+															.getElementsByClassName('placeholder')[0].innerHTML
+															+ "," + name;
 												}
 											}
 
-											console.log(list.getElementsByClassName('placeholder')[0].innerHTML);
-											
-											const now = e.currentTarget.getElementsByClassName("link_txt")[0].style.color = 'red'
-											
-											const placeholder = document.getElementsByClassName('placeholder');
+											console
+													.log(list
+															.getElementsByClassName('placeholder')[0].innerHTML);
+
+											const now = e.currentTarget
+													.getElementsByClassName("link_txt")[0].style.color = 'red'
+
+											const placeholder = document
+													.getElementsByClassName('placeholder');
 											console.log(placeholder);
-											
- 											for (i = 0; i <placeholder.length; i++) {
- 												let tmp = placeholder[i].innerHTML;
- 												console.log("내부 내용" + placeholder[i].innerHTML);
- 												console.log(type);
-  												if (placeholder[i].innerHTML.includes("모든")) {
- 													console.log("=====================" + type);
- 													continue;
- 												}  else {
-   													 if(i == 0) {
-   														if (!type.includes("C")) {
-   															type = type + 'C';
-   														}
-   														if (placeholder[i].innerHTML == '신발') {
-   															category = 1;
-   														} else if (placeholder[i].innerHTML == '의류') {
-   															category = 2;
-   														} else {
-   															category = 3;
-   														}
- 														
- 														// category = tmp;
- 													} else if (i == 1) {
-   														if (!type.includes("B")) {
-   															type = type + 'B';
-   														}
- 														brand = placeholder[i].innerHTML;
- 													} else if (i == 2) {
-   														if (!type.includes("S")) {
-   															type = type + 'S';
-   														}
- 														ssize = placeholder[i].innerHTML;
- 													} else if (i == 3) {
-   														if (!type.includes("L")) {
-   															type = type + 'L';
-   														}
- 														lsize = placeholder[i].innerHTML;
- 													} else if (i == 4) {
-   														if (!type.includes("P")) {
-   															type = type + 'P';
-   														}
- 														if (placeholder[i].innerHTML == '10만원 이하') {
- 															startp = 0;
- 															endp = 100000;
- 														} else if (placeholder[i].innerHTML == '10만원 - 30만원 이하') {
- 															startp = 100000;
- 															endp = 300000;
- 														} else if (placeholder[i].innerHTML == '30만원 - 50만원 이하') {
- 															startp = 300000;
- 															endp = 500000;
- 														} else if (placeholder[i].innerHTML == '50만원 이상') {
- 															startp = 500000;
- 															endp = 100000000;
- 														} else {
- 															starp = 0;
- 															endp = 0;
- 														}
- 													}   
- 												}    
-											} 
- 											
- 											console.log(type);
- 											console.log(brand);
- 											console.log(category);
- 											console.log(startp);
- 											console.log(endp);
- 											console.log(ssize);
- 											console.log(lsize);
- 											
- 											// 바로 상품 띄우기
- 											
- 											showList(1, type, keyword, brand, category, startp,endp, ssize, lsize);
-																																
+
+											for (i = 0; i < placeholder.length; i++) {
+												let tmp = placeholder[i].innerHTML;
+												console
+														.log("내부 내용"
+																+ placeholder[i].innerHTML);
+												console.log(type);
+												if (placeholder[i].innerHTML
+														.includes("모든")) {
+													console
+															.log("====================="
+																	+ type);
+													continue;
+												} else {
+													if (i == 0) {
+														if (!type.includes("C")) {
+															type = type + 'C';
+														}
+														if (placeholder[i].innerHTML == '신발') {
+															category = 1;
+														} else if (placeholder[i].innerHTML == '의류') {
+															category = 2;
+														} else {
+															category = 3;
+														}
+
+														// category = tmp;
+													} else if (i == 1) {
+														if (!type.includes("B")) {
+															type = type + 'B';
+
+														}
+														brand = placeholder[i].innerHTML;
+													} else if (i == 2) {
+														if (!type.includes("S")) {
+															type = type + 'S';
+														}
+														ssize = placeholder[i].innerHTML;
+													} else if (i == 3) {
+														if (!type.includes("L")) {
+															type = type + 'L';
+														}
+														lsize = placeholder[i].innerHTML;
+													} else if (i == 4) {
+														if (!type.includes("P")) {
+															type = type + 'P';
+														}
+														if (placeholder[i].innerHTML == '10만원 이하') {
+															startp = 0;
+															endp = 100000;
+														} else if (placeholder[i].innerHTML == '10만원 - 30만원 이하') {
+															startp = 100000;
+															endp = 300000;
+														} else if (placeholder[i].innerHTML == '30만원 - 50만원 이하') {
+															startp = 300000;
+															endp = 500000;
+														} else if (placeholder[i].innerHTML == '50만원 이상') {
+															startp = 500000;
+															endp = 100000000;
+														} else {
+															starp = 0;
+															endp = 0;
+														}
+													}
+												}
+											}
+
+											console.log(type);
+											console.log(brand);
+											console.log(category);
+											console.log(startp);
+											console.log(endp);
+											console.log(ssize);
+											console.log(lsize);
+
+											// 바로 상품 띄우기
+											document
+													.getElementsByClassName('status_num')[0].innerHTML = type.length;
+											showList(1, type, keyword, brand,
+													category, startp, endp,
+													ssize, lsize);
+
 										});
-						
+
 						let filterBtn2 = $(".column_menu");
 
 						filterBtn2
@@ -3715,122 +3678,282 @@
 										function(e) {
 											console.log("필터링 클릭!!!!!");
 											//console.log(e.currentTarget);
-											
+
 											const list = e.currentTarget.parentNode.parentNode.parentNode.parentNode;
 											//const category = list.getElementsByClassName("link_txt");
-											
+
 											//console.log(category);
 											const name = e.currentTarget.innerHTML;
 											console.log(name);
-											
-											const html = list.getElementsByClassName('placeholder')[0].innerHTML;
+
+											const html = list
+													.getElementsByClassName('placeholder')[0].innerHTML;
 											console.log(html);
 											if (html === '모든 사이즈') {
-												list.getElementsByClassName('placeholder')[0].innerHTML = name;
+												list
+														.getElementsByClassName('placeholder')[0].innerHTML = name;
 											} else {
-												list.getElementsByClassName('placeholder')[0].innerHTML =  list.getElementsByClassName('placeholder')[0].innerHTML+ "," + name;
+												list
+														.getElementsByClassName('placeholder')[0].innerHTML = list
+														.getElementsByClassName('placeholder')[0].innerHTML
+														+ "," + name;
 											}
 
 											//console.log(list.getElementsByClassName('placeholder')[0].innerHTML);
-											
+
 											const now = e.currentTarget.style.color = 'red'
-											
-											const placeholder = document.getElementsByClassName('placeholder');
+
+											const placeholder = document
+													.getElementsByClassName('placeholder');
 											console.log(placeholder);
-											
- 											for (i = 0; i <placeholder.length; i++) {
- 												let tmp = placeholder[i].innerHTML;
- 												console.log("내부 내용" + placeholder[i].innerHTML);
- 												console.log(type);
-  												if (placeholder[i].innerHTML.includes("모든")) {
- 													console.log("=====================" + type);
- 													continue;
- 												}  else {
-   													 if(i == 0) {
-   														if (!type.includes("C")) {
-   															type = type + 'C';
-   														}
-   														
-   														if (placeholder[i].innerHTML == '신발') {
-   															category = 1;
-   														} else if (placeholder[i].innerHTML == '의류') {
-   															category = 2;
-   														} else {
-   															category = 3;
-   														}
- 														
- 														//category = tmp;
- 													} else if (i == 1) {
-   														if (!type.includes("B")) {
-   															type = type + 'B';
-   														}
- 														brand = placeholder[i].innerHTML;
- 													} else if (i == 2) {
-   														if (!type.includes("S")) {
-   															type = type + 'S';
-   														}
- 														ssize = placeholder[i].innerHTML;
- 													} else if (i == 3) {
-   														if (!type.includes("L")) {
-   															type = type + 'L';
-   														}
- 														lsize = placeholder[i].innerHTML;
- 													} else if (i == 4) {
-   														if (!type.includes("P")) {
-   															type = type + 'P';
-   														}
- 														if (placeholder[i].innerHTML == '10만원 이하') {
- 															startp = 0;
- 															endp = 100000;
- 														} else if (placeholder[i].innerHTML == '10만원 - 30만원 이하') {
- 															startp = 100000;
- 															endp = 300000;
- 														} else if (placeholder[i].innerHTML == '30만원 - 50만원 이하') {
- 															startp = 300000;
- 															endp = 500000;
- 														} else if (placeholder[i].innerHTML == '50만원 이상') {
- 															startp = 500000;
- 															endp = 100000000;
- 														} else {
- 															starp = 0;
- 															endp = 0;
- 														}
- 													}   
- 												}    
-											} 
- 											console.log(type);
- 											console.log(brand);
- 											console.log(category);
- 											console.log(startp);
- 											console.log(endp);
- 											console.log(ssize);
- 											console.log(lsize);
- 											
- 											
- 											// 바로 상품 띄우기
- 											showList(1, type, keyword, brand, category, startp,endp, ssize, lsize);
-																					
+
+											for (i = 0; i < placeholder.length; i++) {
+												let tmp = placeholder[i].innerHTML;
+												console
+														.log("내부 내용"
+																+ placeholder[i].innerHTML);
+												console.log(type);
+												if (placeholder[i].innerHTML
+														.includes("모든")) {
+													console
+															.log("====================="
+																	+ type);
+													continue;
+												} else {
+													if (i == 0) {
+														if (!type.includes("C")) {
+															type = type + 'C';
+														}
+
+														if (placeholder[i].innerHTML == '신발') {
+															category = 1;
+														} else if (placeholder[i].innerHTML == '의류') {
+															category = 2;
+														} else {
+															category = 3;
+														}
+
+														//category = tmp;
+													} else if (i == 1) {
+														if (!type.includes("B")) {
+															type = type + 'B';
+															//document.getElementsByClassName('status_num')[0].innerHTML = ;
+														}
+														brand = placeholder[i].innerHTML;
+													} else if (i == 2) {
+														if (!type.includes("S")) {
+															type = type + 'S';
+														}
+														ssize = placeholder[i].innerHTML;
+													} else if (i == 3) {
+														if (!type.includes("L")) {
+															type = type + 'L';
+														}
+														lsize = placeholder[i].innerHTML;
+													} else if (i == 4) {
+														if (!type.includes("P")) {
+															type = type + 'P';
+														}
+														if (placeholder[i].innerHTML == '10만원 이하') {
+															startp = 0;
+															endp = 100000;
+														} else if (placeholder[i].innerHTML == '10만원 - 30만원 이하') {
+															startp = 100000;
+															endp = 300000;
+														} else if (placeholder[i].innerHTML == '30만원 - 50만원 이하') {
+															startp = 300000;
+															endp = 500000;
+														} else if (placeholder[i].innerHTML == '50만원 이상') {
+															startp = 500000;
+															endp = 100000000;
+														} else {
+															starp = 0;
+															endp = 0;
+														}
+													}
+												}
+											}
+											console.log(type);
+											console.log(brand);
+											console.log(category);
+											console.log(startp);
+											console.log(endp);
+											console.log(ssize);
+											console.log(lsize);
+
+											// 바로 상품 띄우기
+											document
+													.getElementsByClassName('status_num')[0].innerHTML = type.length;
+											showList(1, type, keyword, brand,
+													category, startp, endp,
+													ssize, lsize);
+
 										});
 
-						let resetBtn = $("#reset");
+						let resetBtn = $(".btn_delete");
 
-						resetBtn.on("click", function(e) {
-							let type = "";
-							let startp = 0;
-							let endp = 0;
+						resetBtn
+								.on(
+										"click",
+										function(e) {
 
-							$("#brandCurrent").html("");
-							$("#colorCurrent").html("");
-							$("#priceCurrent").html("");
-							$("#sortCurrent").html("저가순");
+											type = "";
+											keyword = "";
+											brand = "";
+											category = "";
+											startp = "";
+											endp = "";
+											ssize = "";
+											lsize = "";
 
-							console.log("r실행 : " + type);
-							console.log("r실행 : " + brand);
-							console.log("r실행 : " + color);
-							showList(1, type, brand, color, startp, endp);
+											const placeholder = document
+													.getElementsByClassName('placeholder');
+											console.log(placeholder);
+
+											for (i = 0; i < placeholder.length; i++) {
+												if (i == 0) {
+													placeholder[i].innerHTML = '모든 카테고리'
+												} else if (i == 1) {
+													placeholder[i].innerHTML = '모든 브랜드'
+												} else if (i == 1) {
+													placeholder[i].innerHTML = '모든 사이즈'
+												} else if (i == 1) {
+													placeholder[i].innerHTML = '모든 사이즈'
+												} else {
+													placeholder[i].innerHTML = '모든 모든 가격'
+												}
+
+											}
+
+											document
+													.getElementsByClassName('status_num')[0].innerHTML = 0;
+
+											let text = document
+													.getElementsByClassName('link_txt');
+											for (i = 0; i < text.length; i++) {
+												text[i].style.color = 'black';
+											}
+											let text2 = document
+													.getElementsByClassName('column_menu');
+											for (i = 0; i < text2.length; i++) {
+												text2[i].style.color = 'black';
+											}
+											//$("#sortCurrent").html("저가순");
+											// 바로 상품 띄우기
+
+											showList(1, type, keyword, brand,
+													category, startp, endp,
+													ssize, lsize);
+										});
+
+						let brandBtn = $(".brand_item");
+
+						brandBtn
+								.on(
+										"click",
+										function(e) {
+											document
+													.getElementsByClassName('title_txt')[0].style.display = 'none';
+											//console.log(document.getElementById('search_area'));
+											document
+													.getElementById('search_area').style.display = 'block';
+											//console.log(document.getElementById('search_area').style.display);
+											document
+													.getElementById('search_area').style.display = 'block';
+											document
+													.getElementById('input_search').value = e.currentTarget
+													.getElementsByClassName('brand_name')[0].innerHTML;
+											//input_search
+
+											if (!type.includes("K")) {
+												type = type + 'K';
+											}
+											keyword = e.currentTarget
+													.getElementsByClassName('brand_name')[0].innerHTML;
+											showList(1, type, keyword, brand,
+													category, startp, endp,
+													ssize, lsize);
+										});
+						
+						$('#input_search').keyup( function() {
+							// console.log("1212");
+							if (document.getElementById('input_search').value == "") {
+								document.getElementById('search_suggests').style.display = 'none';
+							} else {
+								document.getElementById('search_suggests').style.display = 'block';
+							}
+							searchList(1,"K",document.getElementById('input_search').value);
 						});
 						
+
+
+						// ajax로 검색 제품 띄우기
+						function searchList(page, type, keyword ) {
+
+							console.log("제품 띄우기 실행2 ");
+
+							let product_array;
+							let totalCnt;
+
+							$
+									.ajax(
+											{
+												url : "${pageContext.request.contextPath}/product/searchProductList?&page="
+														+ page,
+												data : {
+													"type" : type,
+													"keyword" : keyword
+												}
+											})
+									.done(
+											function(data) {
+												console.log("data :" + data);
+												product_array = data.products;
+												
+												if (product_array == null
+														|| product_array.length == 0) {
+													$("#listBody").html("");
+													return;
+												}
+												
+												let html_tmp = "";
+												
+												for (let i = 0; i < product_array.length; i++) {
+													let product = product_array.at(i);
+													
+													let tmp = "";
+													
+													tmp += "<div data-v-6c61cf2d='' class='suggest_item'><a data-v-6c61cf2d='' href='/products/43348' class='suggest_link'>"
+ 													tmp += "	<div data-v-6c61cf2d='' class='suggest_thumb' style='background-color: rgb(244, 244, 244);'>"
+													
+ 						
+													
+													tmp += "			<picture data-v-878ec45c='' data-v-09fbcf09='' class='picture thumb_img'>"
+													tmp += "				<source data-v-878ec45c='' type='image/webp'"
+													tmp += "					srcset='"+ product_array.at(i).product.img1+ "'>"
+													tmp += "				<source data-v-878ec45c=''";
+													tmp += "					srcset='"+ product_array.at(i).product.img1+ "'>"
+													tmp += "				<img data-v-878ec45c='' alt='#'"
+													tmp += "					referrerpolicy='no-referrer' loading='lazy' class='image' src='"+ product_array.at(i).product.img1+ "'>"
+													tmp += "			</picture>"													
+													
+													
+													tmp += "	</div>"
+													tmp += "	<div data-v-6c61cf2d='' class='suggest_info'>"
+													tmp += "		<p data-v-6c61cf2d='' class='model_title'>" + product_array.at(i).product.pname_e + "</p>"
+													tmp += "		<p data-v-6c61cf2d='' class='model_sub_info'>" + product_array.at(i).product.pname_k + "</p>"
+													tmp += "	</div></a>" 
+													tmp += "</div>"
+													
+													html_tmp += tmp;
+												}
+												$("#suggest_list").html(html_tmp);
+												
+											});
+						}
 						
+						
+
 					});
 </script>
 <style>
@@ -3893,39 +4016,39 @@
 		if (element.nextSibling.nextSibling.style.display == 'none') {
 			element.nextSibling.nextSibling.style.display = 'block';
 			all.style.display = 'none';
-		}  else {
+		} else {
 			element.nextSibling.nextSibling.style.display = 'none';
 			all.style.display = 'block';
-		} 
+		}
 	}
 
 	var newDiv;
+
+	/* 	function Ccheck(element) {
+	 console.log("카테고리 함수");
+	 const category = element.getElementsByClassName('link_txt')[0].innerHTML;
+	 console.log(category);
+	 console.log(element.parentNode.parentNode.parentNode);
+	 const tmp = element.parentNode.parentNode.parentNode;
+	 console.log(tmp.getElementsByClassName('placeholder')[0].innerHTML);
+	 tmp.getElementsByClassName('placeholder')[0].innerHTML = category;
+	 console.log("변경후"+ tmp.getElementsByClassName('placeholder')[0].innerHTML);
 	
-/* 	function Ccheck(element) {
-		console.log("카테고리 함수");
-		const category = element.getElementsByClassName('link_txt')[0].innerHTML;
-		console.log(category);
-		console.log(element.parentNode.parentNode.parentNode);
-		const tmp = element.parentNode.parentNode.parentNode;
-		console.log(tmp.getElementsByClassName('placeholder')[0].innerHTML);
-		tmp.getElementsByClassName('placeholder')[0].innerHTML = category;
-		console.log("변경후"+ tmp.getElementsByClassName('placeholder')[0].innerHTML);
-		
-		var newDiv = document.createElement("div");
-		let html_tmp = ""
-		html_tmp += "<div data-v-9bcf6292='' class='tag_item'>";
-		html_tmp += "	<span data-v-9bcf6292='' class='tag'>"+ category +"</span>";
-		html_tmp += "	<svg data-v-9bcf6292='' xmlns='http://www.w3.org/2000/svg' class='ico-delete-gray icon sprite-icons'>";
-		html_tmp += "		<use data-v-9bcf6292='' href='/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-delete-gray'";
+	 var newDiv = document.createElement("div");
+	 let html_tmp = ""
+	 html_tmp += "<div data-v-9bcf6292='' class='tag_item'>";
+	 html_tmp += "	<span data-v-9bcf6292='' class='tag'>"+ category +"</span>";
+	 html_tmp += "	<svg data-v-9bcf6292='' xmlns='http://www.w3.org/2000/svg' class='ico-delete-gray icon sprite-icons'>";
+	 html_tmp += "		<use data-v-9bcf6292='' href='/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-delete-gray'";
 		html_tmp += "			xlink:href='/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-delete-gray'>";
-		html_tmp += "		</use>";
-		html_tmp += "	</svg>";
-		html_tmp += "</div>";
-		newDiv.innerHTML = html_tmp;
-		
-		var p = document.getElementById("filter_tag"); // <p "id=p"> 태그의 DOM 객체 찾기
-		p.appendChild(newDiv);
-		
-	} */
+	 html_tmp += "		</use>";
+	 html_tmp += "	</svg>";
+	 html_tmp += "</div>";
+	 newDiv.innerHTML = html_tmp;
+	
+	 var p = document.getElementById("filter_tag"); // <p "id=p"> 태그의 DOM 객체 찾기
+	 p.appendChild(newDiv);
+	
+	 } */
 </script>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

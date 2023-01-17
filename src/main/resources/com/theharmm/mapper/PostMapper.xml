@@ -15,14 +15,14 @@
   	
 	  	<![CDATA[
 		select * from(
-		    select rownum as rn, post_id
-		    from post 
-		    where 
+		    select rownum as rn, p.post_id as post_id, p.member_email as member_email, s.file_name as file_name, s.upload_path as upload_path, s.uuid as uuid
+		    from post p, social s
+		    where p.post_id = s.post_id and
 		]]>         
 		<![CDATA[    
 		    rownum <= #{pageNum} * #{amount} 
 		    )
-		where rn > (#{pageNum} -1) * #{amount}		  	
+		where rn > (#{pageNum} -1) * #{amount}
   		]]>
   	
   	</select>
