@@ -101,18 +101,18 @@ function onMessage(msg) {
 }
 //채팅창에서 나갔을 때
 function onClose(evt) {
-	
-	var user = '${pr.username}';
+	/* var user = '${pr.username}';
 	var str = user + " 님이 퇴장하셨습니다.";
 	
-	$("#msgArea").append(str);
+	$("#msgArea").append(str); */
 }
 //채팅창에 들어왔을 때
-function onOpen(evt) {
-	
+function onOpen(msg) {
+	/* console.log(msg);
+	console.log('앙?');
 	var user = '${pr.username}';
 	var str = user + "님이 입장하셨습니다.";
 	
-	$("#msgArea").append(str);
+	$("#msgArea").append(str); */
 }
 </script>

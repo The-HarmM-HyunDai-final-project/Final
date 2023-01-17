@@ -51,7 +51,7 @@ public class ShowLiveChannel {
 		//해당 유저 id 가져오기
 		String userId = session.getPrincipal().getName();
 		
-		log.warn(sessionsRoomNo.keySet().toString());
+		//log.warn(sessionsRoomNo.keySet().toString());
 		
 		if(showliveMessage.getType() == MessageType.TALK) {				//채팅 들어왔을 때
 			showliveMessage.setMessage(showliveMessage.getMessage());
