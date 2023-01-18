@@ -1,4 +1,5 @@
 // Possible configurations
+//test
 const channelConfigs = [
   ["Basic: Landscape", window.IVSBroadcastClient.BASIC_LANDSCAPE],
   ["Basic: Portrait", window.IVSBroadcastClient.BASIC_PORTRAIT],
