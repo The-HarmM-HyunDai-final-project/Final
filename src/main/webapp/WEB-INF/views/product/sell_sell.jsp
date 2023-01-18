@@ -93,12 +93,16 @@
 					</div>
 					<!-- 판매입찰 누르면 나오는 관련내용들 -->
 					<div id = "testbid">
+					<form id="bidSaleAction" method="get" action="/sell/order/${productDetailDTO.pid}">
+						<input type="hidden" name="size" value="${productBuySizeDTO.model_size}"/>
+						<input type="hidden" name="type" value="판매입찰"/>
+						<input type="hidden" id="dDay" name="dDay" value = "1"/>
 						<div data-v-15aa5096="" data-v-158ed304=""
 							class="price_now active_input">
 							<dl data-v-15aa5096="" class="price_now_box">
 								<dt data-v-15aa5096="" class="price_now_title">판매 희망가</dt>
 								<dd data-v-15aa5096="" class="price">
-									<input data-v-15aa5096="" type="text"
+									<input data-v-15aa5096="" type="text" id="bidSalePrice" name="price"
 										pattern="([0-9]+.{0,1}[0-9]*,{0,1})*[0-9]" required="required"
 										placeholder="희망가 입력" autocomplete="off" class="input_amount"><span
 										data-v-15aa5096="" class="unit">원</span>
@@ -129,7 +133,7 @@
 												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-info-circle-white"></use></svg>
 									</button>
 								</dt>
-								<dd data-v-3a2a7b6b="" class="price_text">-</dd>
+								<dd data-v-3a2a7b6b="" class="price_text"><span id ="bidSaleFee">-</span>원</dd>
 							</dl>
 							<dl data-v-3a2a7b6b="" data-v-158ed304="" class="price_addition">
 								<dt data-v-3a2a7b6b="" class="price_title">
@@ -172,7 +176,7 @@
 								<dl data-v-679d7250="" class="price_box">
 									<dt data-v-679d7250="" class="price_title">정산금액</dt>
 									<dd data-v-679d7250="" class="price">
-										<span data-v-679d7250="" class="amount">292,500</span><span
+										<span data-v-679d7250="" class="amount"><span id="bidSaleTotalPrice">-</span></span><span
 											data-v-679d7250="" class="unit">원</span>
 									</dd>
 								</dl>
@@ -180,13 +184,13 @@
 									style="display: none;"><em data-v-679d7250="">주의! </em></span>
 							</div>
 							<div data-v-14995178="" class="btn_confirm">
-								<a data-v-575aff82="" data-v-14995178="" href="#"
+								<a data-v-575aff82="" data-v-14995178="" href="#" id="bidSaleActionClick"
 									class="btn full solid false"> 판매 입찰 계속 </a>
 							</div>
 						</div>
 
 
-
+					</form>
 					</div>
 					
 					
@@ -196,7 +200,7 @@
 						<dl data-v-15aa5096="" class="price_now_box">
 							<dt data-v-15aa5096="" class="price_now_title">즉시 판매가</dt>
 							<dd data-v-15aa5096="" class="price">
-								<span data-v-15aa5096="" class="amount"><fmt:formatNumber type="number" maxFractionDigits="3" value="${productBuySizeDTO.price}" /></span><span
+								<span data-v-15aa5096="" class="amount" id="nowSalePrice"><fmt:formatNumber type="number" maxFractionDigits="3" value="${productBuySizeDTO.price}" /></span><span
 									data-v-15aa5096="" class="unit">원</span>
 							</dd>
 						</dl>
@@ -224,7 +228,7 @@
 											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-info-circle-white"></use></svg>
 								</button>
 							</dt>
-							<dd data-v-3a2a7b6b="" class="price_text">-900원</dd>
+							<dd data-v-3a2a7b6b="" class="price_text">-<span id="nowSaleFee">900</span>원</dd>
 						</dl>
 						<dl data-v-3a2a7b6b="" data-v-158ed304="" class="price_addition">
 							<dt data-v-3a2a7b6b="" class="price_title">
@@ -241,7 +245,7 @@
 							<dl data-v-679d7250="" class="price_box">
 								<dt data-v-679d7250="" class="price_title">정산금액</dt>
 								<dd data-v-679d7250="" class="price">
-									<span data-v-679d7250="" class="amount">151,200</span><span
+									<span data-v-679d7250="" class="amount"><span id="nowSaleTotalPrice">151,200</span></span><span
 										data-v-679d7250="" class="unit">원</span>
 								</dd>
 							</dl>

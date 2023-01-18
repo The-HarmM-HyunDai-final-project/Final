@@ -362,12 +362,13 @@ function requestPay() {
 											style="display: none;"><em data-v-679d7250="">주의!
 										</em></span>
 									</div>
-									 <button onclick="requestPay()">결제하기</button> 
+									 
 									
 								</div>
 							
 								
 							</section>
+							<button onclick="requestPay()">결제하기</button> 
 							<!---->
 							<div data-v-1a009402="" data-v-4ae17423="" data-v-b8efdcc8=""
 								class="layer_order_price_confirm layer lg"
