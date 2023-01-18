@@ -9,44 +9,83 @@ public class ShowLiveMessage {
 	private String message;
 	private Date insertDate;
 	private MessageType mType;
-	
+	private int channelTotalUser;
+	private String channelMaxSuggestUser;
+	private int channelMaxSuggestPrice;
+
 	public ShowLiveMessage() {
 		insertDate = new java.util.Date();
 	}
-	
+
 	public String getRoomNo() {
 		return roomNo;
 	}
+
 	public void setStudyUrl(String roomNo) {
 		this.roomNo = roomNo;
 	}
+
 	public String getUsername() {
 		return userName;
 	}
+
 	public void setUsername(String userName) {
 		this.userName = userName;
 	}
+
 	public String getMessage() {
 		return message;
 	}
+
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
 	public Date getInsertDate() {
 		return insertDate;
 	}
+
 	public void setInsertDate(Date insertDate) {
 		this.insertDate = insertDate;
 	}
+
 	public MessageType getType() {
 		return mType;
 	}
+
 	public void setType(MessageType mType) {
 		this.mType = mType;
 	}
+
+	public int getChannelTotalUser() {
+		return channelTotalUser;
+	}
+
+	public void setChannelTotalUser(int channelTotalUser) {
+		this.channelTotalUser = channelTotalUser;
+	}
+
+	
+	public String getChannelMaxSuggestUser() {
+		return channelMaxSuggestUser;
+	}
+
+	public void setChannelMaxSuggestUser(String channelMaxSuggestUser) {
+		this.channelMaxSuggestUser = channelMaxSuggestUser;
+	}
+
+	public int getChannelMaxSuggestPrice() {
+		return channelMaxSuggestPrice;
+	}
+
+	public void setChannelMaxSuggestPrice(int channelMaxSuggestPrice) {
+		this.channelMaxSuggestPrice = channelMaxSuggestPrice;
+	}
+
 	@Override
 	public String toString() {
 		return "ChatMessage [roomNo=" + roomNo + ", userName=" + userName + ", message=" + message + ", insertDate="
-				+ insertDate + ", mType=" + mType + "]";
+				+ insertDate + ", mType=" + mType + ", channelTotalUser=" + channelTotalUser + ", channelMaxSuggestUser="
+				+ channelMaxSuggestUser + ", channelMaxSuggestPrice=" + channelMaxSuggestPrice + "]";
 	}
 }

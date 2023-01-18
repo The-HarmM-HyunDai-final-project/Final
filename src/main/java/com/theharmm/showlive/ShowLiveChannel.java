@@ -25,6 +25,10 @@ public class ShowLiveChannel {
 	private String roomNum;
 	//해당 채널에 접속한 사용자 수
 	private int connectedUsers;
+	//해당 채널에서 진행하는 최고 제시가격
+	private int maxSuggestionPrice;
+	//해당 채널에서 진행하는 최고 가격 제시한 유저
+	private String maxSuggestionUser;
 	//접속한 사용자들 담자는 배열 -> 아래 Map 객체떄문에 사용 안해도 될것 같음
 	//private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
 	// session, 유저id(email)가 들어간다.
@@ -34,7 +38,8 @@ public class ShowLiveChannel {
 		ShowLiveChannel showliveChannel = new ShowLiveChannel();
 		showliveChannel.roomNum = roomNo;
 		showliveChannel.connectedUsers = 0;
-		
+		showliveChannel.maxSuggestionPrice = 100000; //지금 임의로 한거고 관리자가 방 만들때는 직접 입력한 금액을 여기에 넣음
+		showliveChannel.maxSuggestionUser = "";
 		return showliveChannel;
 	}
 	
@@ -56,15 +61,29 @@ public class ShowLiveChannel {
 		if(showliveMessage.getType() == MessageType.TALK) {				//채팅 들어왔을 때
 			showliveMessage.setMessage(showliveMessage.getMessage());
 		}else if(showliveMessage.getType() == MessageType.AUCTION) {	//경매 용도
-			showliveMessage.setMessage(showliveMessage.getMessage());
+			//입력받은 입찰 제시금이 지금보다 크면 모두에게 새로운 제시금을 보냄
+			if(Integer.parseInt(showliveMessage.getMessage()) > maxSuggestionPrice) {
+				maxSuggestionPrice = Integer.parseInt(showliveMessage.getMessage());
+				maxSuggestionUser = showliveMessage.getUsername();
+				showliveMessage.setChannelMaxSuggestUser(maxSuggestionUser);
+				showliveMessage.setChannelMaxSuggestPrice(maxSuggestionPrice);
+//				showliveMessage.setMessage(maxSuggestionPrice+"/"+maxSuggestionUser);
+			}else {
+				//혹시 그게 아니면 함수 그냥 끝내버리기
+				return;
+			}
 		}else if(showliveMessage.getType() == MessageType.ENTER) {		//접속 했을시
 			connectedUsers++;
 			sessionsRoomNo.put(session, userId);
+			showliveMessage.setChannelTotalUser(connectedUsers);
 			showliveMessage.setMessage(userId + " 님이 입장하셨습니다");
+			showliveMessage.setChannelMaxSuggestUser(maxSuggestionUser);
+			showliveMessage.setChannelMaxSuggestPrice(maxSuggestionPrice);
 			log.warn(roomNum + "번방 접속자 수 :" + connectedUsers);
 		}else if(showliveMessage.getType() == MessageType.LEAVE) {		//방 나갔을 때
 			connectedUsers--;
 			sessionsRoomNo.remove(session);
+			showliveMessage.setChannelTotalUser(connectedUsers);
 			showliveMessage.setMessage(userId + " 님이 퇴장하셨습니다");
 			log.warn(roomNum + "번방 접속자 수 :" + connectedUsers);
 		}
