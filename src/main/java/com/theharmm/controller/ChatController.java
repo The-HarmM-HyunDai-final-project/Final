@@ -26,7 +26,6 @@ public class ChatController {
 		//세션에 들어온 방번호 지우기
 		session.setAttribute("roomNo", roomNo);
 		
-		
 		log.info("==================================");
 		log.info("@ChatController, GET Chat / Username : " + user.getUsername());
 		log.info(roomNo + " 방번호");

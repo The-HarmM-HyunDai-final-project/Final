@@ -3295,6 +3295,7 @@
 													let product = product_array
 															.at(i);
 
+													
 													let tmp = "";
 
 													tmp += "<div data-v-19fda891='' data-v-01f4e1bc='' class='product_card'>";
@@ -3925,9 +3926,6 @@
 													
 													tmp += "<div data-v-6c61cf2d='' class='suggest_item'><a data-v-6c61cf2d='' href='/products/43348' class='suggest_link'>"
  													tmp += "	<div data-v-6c61cf2d='' class='suggest_thumb' style='background-color: rgb(244, 244, 244);'>"
-													
- 						
-													
 													tmp += "			<picture data-v-878ec45c='' data-v-09fbcf09='' class='picture thumb_img'>"
 													tmp += "				<source data-v-878ec45c='' type='image/webp'"
 													tmp += "					srcset='"+ product_array.at(i).product.img1+ "'>"

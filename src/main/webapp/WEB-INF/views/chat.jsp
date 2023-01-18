@@ -1,142 +1,263 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-<!-- Á¦ÀÌÄõ¸® cdn -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
-<body>
-	<div class="container">
-		<div class="col-6">
-			<label><b>Ã¤ÆÃ¹æ</b></label>
-		</div>
-		<div>
-			<div id="msgArea" class="col">
-			<!-- Ã¤ÆÃ ³»¿ëÀÌ ¿©±â µé¾î°¡¿ê -->
-			</div>
-			<div class="col-6">
-				<div class="input-group mb-3">
-					<input type="text" id="msg" class="form-control"
-						aria-label="Recipient's username" aria-describedby="button-addon2">
-					<div class="input-group-append">
-						<button class="btn btn-outline-secondary" type="button"
-							id="button-send">Àü¼Û</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-6"></div>
-	</div>
-</body>
-</html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
+    <style>
+      .container {
+        height: 100vh;
+        background: #f00fff;
+      }
+      .showlive_container {
+        background: #226600;
+        height: 100vh;
+        max-width: 1800px;
+        margin: 0 auto;
+        display: flex;
+      }
+      .left_area {
+        padding: 5px;
+        background: red;
+        width: 75%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      .right_area {
+        padding: 5px;
+        background: rgb(255, 145, 0);
+        /* float: left; */
+        width: 25%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      .video_area {
+        position: relative;
+        background: green;
+        width: 100%;
+        height: 70%;
+      }
+      .user_count {
+        position: absolute;
 
+        right: 8px;
+      }
+      .info_area {
+        background: blue;
+        width: 100%;
+        height: 30%;
+      }
+      .auction_area {
+        background: rgb(255, 0, 255);
+        width: 100%;
+        height: 30%;
+      }
+      .chat_area {
+        background: rgb(0, 195, 255);
+        width: 100%;
+        height: 70%;
+        display: flex;
+        flex-direction: column;
+      }
+      .chat_view {
+        background: #ffffff;
+        width: 100%;
+        height: 80%;
+        padding: 10px;
+        overflow-y: scroll;
+      }
+      .chat_do {
+        width: 100%;
+        height: 20%;
+      }
+    </style>
+    <div class="container">
+      <div class="showlive_container">
+        <div class="left_area">
+          <div class="video_area">
+            <div class="user_count">
+              <p>ì‚¬ìš©ì : <b id="connected_user">0</b> ëª…</p>
+            </div>
+          </div>
+          <div class="info_area"></div>
+        </div>
+
+        <div class="right_area">
+          <div class="auction_area">
+            <p>ë‹‰ë„¤ì„ : <b id="max_price_user">userid</b></p>
+            <b> ìµœê³ ì œì‹œê°€ê²© : </b>
+            <b id="max_price"></b>
+            <b>ë§Œì› </b>
+            <br />
+            <input class="chat_input" type="text" id="auction_sugest" />
+            <button onclick="suggestion_aution()">ì…ì°°ì‹ ì²­</button>
+          </div>
+          <div class="chat_area">
+            <div class="chat_view" id="message_box">
+              <div>
+                <p>ì•„ë†”</p>
+              </div>
+            </div>
+            <div class="chat_do">
+              <input class="chat_input" type="text" id="msg" />
+              <button id="button-talk-send">ì „ì†¡</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script type="text/javascript">
 
-//Àü¼Û ¹öÆ° ´©¸£´Â ÀÌº¥Æ®
-$("#button-send").on("click", function(e) {
-	sendMessage();
-	$('#msg').val('')
-});
-
-var sock = new SockJS('http://localhost:8080/chatting');
-sock.onmessage = onMessage;
-sock.onclose = onClose;
-sock.onopen = onOpen;
-
-function sendMessage() {
-	sock.send($("#msg").val());
-}
-//¼­¹ö¿¡¼­ ¸Ş½ÃÁö¸¦ ¹Ş¾ÒÀ» ¶§ -> ÀÔÀå, ÅğÀå, Ã¤ÆÃ, °æ¸Å ¸ğµÎ ÀÌ°÷À¸·Î!
-function onMessage(msg) {
+	var auctionPrevPrice = 100000;
 	
-	var data = msg.data;
-	var sessionId = null; //µ¥ÀÌÅÍ¸¦ º¸³½ »ç¶÷
-	var message = null;
-	
-	//console.log(msg);
-	
-	var messageData = JSON.parse(msg['data']);
-	var roomNo = messageData['roomNo'];
-	var message = messageData['message'];
-	var insertDate = messageData['insertDate'];
-	var type = messageData['type'];
-	var username = messageData['username'];
-	
-	var cur_session = '${userid}'; //ÇöÀç ¼¼¼Ç¿¡ ·Î±×ÀÎ ÇÑ »ç¶÷(controller model¿¡¼­ °¡Á®¿Â°ª)
-	//console.log("cur_session : " + cur_session);
-	
-	switch(type){
-		case 'TALK':
-			if(username == cur_session){
-				username = '³ª';
-			}
-			var str = 
-				`<div class='col-6'>
-				<div class='alert alert-secondary'>
-				<b>\${username} : \${message}</b>
-				</div></div>`
-
-			break
-		case 'AUCTION':
-			break
-		case 'ENTER':
-			var str = 
-				`<div class='col-6'>
-				<div class='alert alert-secondary'>
-				<b>\${message}</b>
-				</div></div>`
-
-			break
-		case 'LEAVE':
-			var str = 
-				`<div class='col-6'>
-				<div class='alert alert-secondary'>
-				<b>\${message}</b>
-				</div></div>`
-			break
+	//ê°€ê²©ì— ì½¤ë§ˆ ì°ê¸°
+	function priceToString(price) {
+	  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 	
-	$("#msgArea").append(str);
-	
-	
-    //·Î±×ÀÎ ÇÑ Å¬¶óÀÌ¾ğÆ®¿Í Å¸ Å¬¶óÀÌ¾ğÆ®¸¦ ºĞ·ùÇÏ±â À§ÇÔ
-	/* if(sessionId == cur_session){
-		
-		var str = 
-		`<div class='col-6'>
-		<div class='alert alert-secondary'>
-		<b>\${sessionId} : \${message}</b>
-		</div></div>`
-		
-		$("#msgArea").append(str);
+	//ìµœê³  ê°€ê²© ì°ì
+	function writePrice() {
+	  $("#max_price").text(priceToString(auctionPrevPrice));
 	}
-	else{
-		var str = 
+	
+	writePrice();//ì‹œì‘í• ë•Œ ì²˜ìŒ ì œì‹œê°€ê²© ì°ê¸°
+	
+	//ë“¤ì–´ì˜¨ ê°€ê²© ì œì‹œê°€ í˜„ì œê°€ê²©ì´ìƒ ì´ê³  ì¼ì •ê°„ê²©ë³´ë‹¤ ë†’ê²Œí–ˆëŠ”ì§€
+	function suggestion_aution() {
+	  //ìƒˆë¡œìš´ ì œì‹œ ê°€ê²©
+	  var mySuggestion = Number($("#auction_sugest").val());
+	  //ì´ì „ ê°€ê²©ì˜ 1/10 ë³´ë‹¤ ë†’ì€ì§€ í™•ì¸ í•˜ê³  ì œì•ˆì„ ë°›ì•„ë“¤ì„
+	  if (
+	    //auctionPrevPrice - mySuggestion > 0 &&
+	    mySuggestion - auctionPrevPrice >=
+	    auctionPrevPrice / 10
+	  ) {
+		  //ê°€ê²© ì „ì†¡í•˜ê¸°
+		  sendMessage("AUCTION");
+	  } else {
+	    alert("ì´ì „ ì œì‹œê¸ˆì•¡ì˜ ìµœì†Œ 1/10ì´ìƒì„ ì œì‹œí•˜ì…”ì•¼ í•©ë‹ˆë‹¤.");
+	  }
+	  $("#auction_sugest").val("");
+	}
+	
+	//ì±„íŒ…ì „ì†¡ ë²„íŠ¼ ëˆ„ë¥´ëŠ” ì´ë²¤íŠ¸
+	$("#button-talk-send").on("click", function (e) {
+	  sendMessage("TALK");
+	  $("#msg").val("");
+	});
+	
+	var sock = new SockJS('http://localhost:8080/chatting');
+	sock.onmessage = onMessage;
+	sock.onclose = onClose;
+	sock.onopen = onOpen;
+
+	function sendMessage(type) {
+		if(type=="TALK"){
+			var message = "TALK:"+ $("#msg").val();
+			sock.send(message);
+		}else if(type == "AUCTION"){
+			var message = "AUCTION:"+ $("#auction_sugest").val();
+			sock.send(message);
+		}
+	}
+	//ì„œë²„ì—ì„œ ë©”ì‹œì§€ë¥¼ ë°›ì•˜ì„ ë•Œ -> ì…ì¥, í‡´ì¥, ì±„íŒ…, ê²½ë§¤ ëª¨ë‘ ì´ê³³ìœ¼ë¡œ!
+	function onMessage(msg) {
+		
+		var data = msg.data;
+		var sessionId = null; //ë°ì´í„°ë¥¼ ë³´ë‚¸ ì‚¬ëŒ
+		var message = null;
+		
+		console.log(msg);
+		
+		var messageData = JSON.parse(msg['data']);
+		var roomNo = messageData['roomNo'];
+		var message = messageData['message'];
+		var insertDate = messageData['insertDate'];
+		var type = messageData['type'];
+		var username = messageData['username'];
+		var totalUser = messageData['channelTotalUser'];
+		var maxSuggestUser = messageData['channelMaxSuggestUser'];
+		var maxSuggestPrice = messageData['channelMaxSuggestPrice'];
+		
+		var cur_session = '${userid}'; //í˜„ì¬ ì„¸ì…˜ì— ë¡œê·¸ì¸ í•œ ì‚¬ëŒ(controller modelì—ì„œ ê°€ì ¸ì˜¨ê°’)
+		//console.log("cur_session : " + cur_session);
+		var menent = "ìš¸ë¼ë„ë¼ë¼ë¼~~~~~~~~~~";
+		
+		switch(type){
+			case 'TALK':
+				if(username == cur_session){
+					username = 'ë‚˜';
+				}
+				var str = 
+					`<div>
+		              <p>\${username} : \${message}</p>
+		            </div>`
+					/* `<div class='col-6'>
+					<div class='alert alert-secondary'>
+					<b>\${username} : \${message}</b>
+					</div></div>` */
+					
+				break
+			case 'AUCTION':
+				$("#max_price").text(priceToString(maxSuggestPrice));
+				$("#max_price_user").text(maxSuggestUser);
+				break
+			case 'ENTER':
+				var str =  
+					`<div>
+		              <b>\${message}</b>
+		            </div>`
+				$("#max_price").text(priceToString(maxSuggestPrice));
+				$("#max_price_user").text(maxSuggestUser);
+		        $("#connected_user").text(totalUser)
+				break
+			case 'LEAVE':
+				var str = 
+					`<div class='col-6'>
+					<div class='alert alert-secondary'>
+					<b>\${message}</b>
+					</div></div>`
+				$("#connected_user").text(totalUser)
+				break
+		}
+		
+		$("#message_box").append(str);
+		
+		
+	    //ë¡œê·¸ì¸ í•œ í´ë¼ì´ì–¸íŠ¸ì™€ íƒ€ í´ë¼ì´ì–¸íŠ¸ë¥¼ ë¶„ë¥˜í•˜ê¸° ìœ„í•¨
+		/* if(sessionId == cur_session){
+			
+			var str = 
 			`<div class='col-6'>
 			<div class='alert alert-secondary'>
 			<b>\${sessionId} : \${message}</b>
 			</div></div>`
 			
 			$("#msgArea").append(str);
-	} */		
-		/* 	"<div class='col-6'>";
-		str += "<div class='alert alert-warning'>";
-		str += "<b>" + sessionId + " : " + message + "</b>";
-		str += "</div></div>"; */
-		
-		//$("#msgArea").append(str);
-}
-//Ã¤ÆÃÃ¢¿¡¼­ ³ª°¬À» ¶§
-function onClose(evt) {
-
-}
-//Ã¤ÆÃÃ¢¿¡ µé¾î¿ÔÀ» ¶§
-function onOpen(evt) {
+		}
+		else{
+			var str = 
+				`<div class='col-6'>
+				<div class='alert alert-secondary'>
+				<b>\${sessionId} : \${message}</b>
+				</div></div>`
+				
+				$("#msgArea").append(str);
+		} */		
+			/* 	"<div class='col-6'>";
+			str += "<div class='alert alert-warning'>";
+			str += "<b>" + sessionId + " : " + message + "</b>";
+			str += "</div></div>"; */
+			
+			//$("#msgArea").append(str);
+	}
+	//ì±„íŒ…ì°½ì—ì„œ ë‚˜ê°”ì„ ë•Œ
+	function onClose(evt) {
 	
-}
+	}
+	//ì±„íŒ…ì°½ì— ë“¤ì–´ì™”ì„ ë•Œ
+	function onOpen(evt) {
+		
+	}
 </script>
