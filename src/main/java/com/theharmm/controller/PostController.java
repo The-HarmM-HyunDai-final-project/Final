@@ -59,7 +59,7 @@ public class PostController {
 	@GetMapping("/social/user/display")
 	public ResponseEntity<byte[]> getImage(String fileName) {
 		logger.info("getImage()........" + fileName);
-		File file = new File("c:\\upload\\" + fileName);
+		File file = new File(fileName);
 		ResponseEntity<byte[]> result = null;
 		try {
 			HttpHeaders header = new HttpHeaders();

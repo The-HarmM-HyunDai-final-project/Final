@@ -28,13 +28,9 @@ public class CustomUserDetailsService implements UserDetailsService{
 		MemberVO vo = member.read(m);		
 //		log.warn("Query by memebr maper :" +vo);
 			
-		//»ïÇ×½Ä
+		//ï¿½ï¿½ï¿½×½ï¿½
 		return ( vo == null 
 				? null 
 				: new CustomUser(vo) );
-
 	}
-	
-	
-	
 }

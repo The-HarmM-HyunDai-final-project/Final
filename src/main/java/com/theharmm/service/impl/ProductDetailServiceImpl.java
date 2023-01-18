@@ -38,4 +38,25 @@ public class ProductDetailServiceImpl implements ProductDetailService{
 	public ProductSizeDTO selectProductSize(Map<String, Object> productInfoMap) {
 		return productDetailMapper.selectProductSize(productInfoMap);
 	}
+
+	//판매관련 
+
+	@Override
+	public ProductDetailDTO selectSellProductDetail(int pid) {
+	    return productDetailMapper.selectSellProductDetail(pid);
+	}
+
+
+	@Override
+	public List<ProductSizeDTO> selectSellProductSizeList(ProductDetailDTO productDetailDTO) {
+		
+		return productDetailMapper.selectSellProductSizeList(productDetailDTO);
+	}
+
+
+	@Override
+	public ProductSizeDTO selectSellProductSize(Map<String, Object> productInfoMap) {
+		
+		return productDetailMapper.selectSellProductSize(productInfoMap);
+	}
 }

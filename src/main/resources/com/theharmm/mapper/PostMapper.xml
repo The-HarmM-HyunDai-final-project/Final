@@ -13,17 +13,16 @@
 	<!-- 포스트 리스트 -->
   	<select id="postGetList" resultType="com.theharmm.domain.PostVO">
   	
-	  	<![CDATA[
-		select * from(
-		    select rownum as rn, p.post_id as post_id, p.member_email as member_email, s.file_name as file_name, s.upload_path as upload_path, s.uuid as uuid
-		    from post p, social s
-		    where p.post_id = s.post_id and
-		]]>         
-		<![CDATA[    
-		    rownum <= #{pageNum} * #{amount} 
-		    )
-		where rn > (#{pageNum} -1) * #{amount}
-  		]]>
+	  	
+		select * from
+			(select * from
+				(select 
+				p.post_id as post_id, p.member_email as member_email, s.file_name as file_name, replace(s.upload_path, '\','/') as upload_path, s.uuid as uuid,
+				 row_number() over(partition by p.post_id order by s.register_date) as rn
+				from post p, social s
+				where p.post_id = s.post_id)
+				where rn = 1)
+
   	
   	</select>
 	
