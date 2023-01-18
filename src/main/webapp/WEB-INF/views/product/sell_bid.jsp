@@ -98,7 +98,68 @@
 <meta data-n-head="ssr" data-hid="og:image" name="og:image"
 	property="og:image"
 	content="https://kream.co.kr/images/index_og_kream.png">
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<script>
+
+var IMP = window.IMP;   // 생략 가능
+IMP.init("imp30137302"); // 예: imp00000000 
+
+function requestPay() {
+	
+
+	let csrfHeaderName ="${_csrf.headerName}";
+    let csrfTokenValue="${_csrf.token}";
+	
+    IMP.request_pay({
+      pg: "kcp.T0000",
+      pay_method: "card",
+      merchant_uid: "ORD20180131-0000025",   // 주문번호
+      name: "${productDetailDTO.pname_k}",
+      amount: ${totalPrice},                         // 숫자 타입
+      buyer_email: "gildong@gmail.com",
+      buyer_name: "홍길동",
+      buyer_tel: "010-4242-4242",
+      buyer_addr: "서울특별시 강남구 신사동",
+      buyer_postcode: "01181"
+    }, function (rsp) { // callback
+      if (rsp.success) {
+    	  console.log(rsp);
+        // 결제 성공 시 로직
+        jQuery.ajax({
+        url: "/buy/order", 
+        method: 'post',
+        beforeSend : function(xhr){
+            xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+    	}, 
+      
+        data: {
+          imp_uid: rsp.imp_uid,            // 결제 고유번호
+          merchant_uid: rsp.merchant_uid,   // 주문번호
+          buyer_email: rsp.buyer_email,
+          pid: ${productDetailDTO.pid},
+          totalPrice: ${totalPrice},
+          model_size: ${productSizeDTO.model_size},
+          saleid: ${productSizeDTO.saleid}
+        
+        }
+      }).done(function (data) {
+        // 가맹점 서버 결제 API 성공시 로직
+      })
+    	
+      } else {
+        // 결제 실패 시 로직
+    	  console.log(rsp);
+        alert("결제실패");
+      }
+    });
+  }
+  
+</script>
 </head>
+
 <body style="">
 	<div id="__nuxt">
 		<!---->
@@ -108,6 +169,7 @@
 					<!---->
 					<%@ include file="/WEB-INF/views/common/header.jsp"%>
 				</div>
+			
 				<!---->
 				<div data-v-b36cb8c4="" data-v-0590ccc1=""
 					class="container sell lg step-2">
@@ -224,7 +286,7 @@
 											<dl data-v-679d7250="" class="price_box">
 												<dt data-v-679d7250="" class="price_title">정산금액</dt>
 												<dd data-v-679d7250="" class="price">
-													<span data-v-679d7250="" class="amount">195,000</span><span
+													<span data-v-679d7250="" class="amount"> ${totalPrice}</span><span
 														data-v-679d7250="" class="unit">원</span>
 												</dd>
 											</dl>
@@ -239,7 +301,7 @@
 													<span data-v-3a2a7b6b="">판매 희망가</span>
 													<!---->
 												</dt>
-												<dd data-v-3a2a7b6b="" class="price_text">200,000원</dd>
+												<dd data-v-3a2a7b6b="" class="price_text"> ${price }</dd>
 											</dl>
 											<dl data-v-3a2a7b6b="" data-v-887ad490=""
 												class="price_addition">
@@ -261,7 +323,7 @@
 																xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-info-circle-white"></use></svg>
 													</button>
 												</dt>
-												<dd data-v-3a2a7b6b="" class="price_text">-5,000원</dd>
+												<dd data-v-3a2a7b6b="" class="price_text">-${fee}원</dd>
 											</dl>
 											<dl data-v-3a2a7b6b="" data-v-887ad490=""
 												class="price_addition">
@@ -279,12 +341,22 @@
 													<span data-v-3a2a7b6b="">입찰 마감 기한</span>
 													<!---->
 												</dt>
-												<dd data-v-3a2a7b6b="" class="price_text">30일 -
-													2023/02/16까지</dd>
+												
+												<dd data-v-3a2a7b6b="" class="price_text">${dDay}일 -
+													<fmt:formatDate var="today" value="${ now }" pattern="yyyy-mm-dd"/>까지</dd>
 											</dl>
 										</div>
 									</div>
 								</div>
+								<div data-v-14995178="" data-v-4c67e088=""
+									class="buy_total_confirm">
+								
+									<div data-v-14995178="" class="btn_confirm">
+										<a data-v-575aff82="" data-v-14995178="" disabled="disabled" 
+											href="#" onclick="requestPay()" class="btn full solid false disabled"> 판매 입찰하기 </a>
+									</div>
+								</div>
+									 <button onclick="requestPay()">결제하기</button> 
 							</section>
 							
 							

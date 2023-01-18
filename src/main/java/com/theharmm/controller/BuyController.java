@@ -52,6 +52,9 @@ public class BuyController {
 	@GetMapping("/{pid}")
 	 public String buyProduct(@PathVariable int pid,@RequestParam String size, Model model) {
 		log.info("buyProduct 실행");
+		int shippingFee = 3000;
+		int fee = 30000;
+		
 		ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 		
 		Map<String,Object> productInfoMap = new HashMap<String,Object>();
@@ -62,7 +65,7 @@ public class BuyController {
 		log.info("productDetailDTO : "+productDetailDTO.toString());
 		log.info("productBuySizeDTO : "+ productBuySizeDTO.toString());//사이즈에 대한 판매정보
 		log.info("productSaleSizeDTO : "+productSaleSizeDTO.toString());//사이즈에 대한 구매정보
-		
+		model.addAttribute("shippingFee",shippingFee);
 		model.addAttribute("productDetailDTO",productDetailDTO);
 		model.addAttribute("productSaleSizeDTO",productSaleSizeDTO);
 		model.addAttribute("productBuySizeDTO",productBuySizeDTO);

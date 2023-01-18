@@ -48,7 +48,7 @@ public class SellController {
 		//즉시판매, 판매입찰 선택 
 		@GetMapping("/{pid}")
 		 public String sellProduct(@PathVariable int pid,@RequestParam String size, Model model) {
-			log.info("buyProduct 실행");
+			log.info("sellProduct 실행");
 			ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 			
 			Map<String,Object> productInfoMap = new HashMap<String,Object>();
@@ -70,10 +70,10 @@ public class SellController {
 		
 		// 즉시판매 혹은 판매입찰 중 타입별로 구매하기로 넘어옴
 		@GetMapping("/order/{pid}")
-		 public String orderSellProduct(@PathVariable int pid,@RequestParam String size,@RequestParam String type,@RequestParam int price,
+		 public String orderSellProduct(@PathVariable int pid,@RequestParam String size,@RequestParam String type,@RequestParam int price,@RequestParam(required=false,defaultValue = "0") int dDay,
 				 Model model) {
 			log.info("orderProduct 실행");
-			int shippingFee = 3000;
+			int shippingFee = 0;
 			int fee = 30000;
 		
 
@@ -92,17 +92,13 @@ public class SellController {
 			model.addAttribute("shippingFee",shippingFee);
 			
 			
-			if(type.equals("즉시판매")) {
-				price = productBuySizeDTO.getPrice();
-				fee = (int)(productBuySizeDTO.getPrice()*0.015);
-			}
-			else if(type.equals("판매입찰")) {
-				fee =(int)(productBuySizeDTO.getPrice()*0.03);
-			}
 			
+			fee = (int)(productBuySizeDTO.getPrice()*0.025);
+		
 			model.addAttribute("fee",fee);
 			model.addAttribute("price",price);
-			model.addAttribute("totalPrice",price+fee+shippingFee);
+			model.addAttribute("totalPrice",price-fee-shippingFee);
+			model.addAttribute("dDay",dDay);
 			
 			if(type.equals("즉시판매")) {
 		
