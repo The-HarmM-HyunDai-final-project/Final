@@ -138,7 +138,7 @@
 										<p data-v-2b95d831="" class="model_title">${productDetailDTO.pname_e}</p>
 										<p data-v-2b95d831="" class="model_ko">${productDetailDTO.pname_e}</p>
 										<div data-v-2b95d831="" class="model_desc">
-											<p data-v-2b95d831="" class="size_txt">${productSizeDTO.model_size}</p>
+											<p data-v-2b95d831="" class="size_txt">${productBuySizeDTO.model_size}</p>
 											<!---->
 										</div>
 									</div>

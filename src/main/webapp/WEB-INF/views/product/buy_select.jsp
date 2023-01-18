@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -40,25 +41,13 @@
    async=""></script>
 <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
 <script data-n-head="ssr" type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","name":"KREAM","url":"https://kream.co.kr/","logo":"https://kream.co.kr/images/logo.png","sameAs":["https://apps.apple.com/app/id1490580239","https://play.google.com/store/apps/details?id=com.fstudio.kream","https://www.instagram.com/kream.co.kr/","https://www.youtube.com/channel/UCHbInfTxnIbWlUFin7drigw"]}</script>
-<link rel="preload" href="/_nuxt/4fbacaa.js" as="script">
-<link rel="preload" href="/_nuxt/c348f6a.js" as="script">
-<link rel="preload" href="/_nuxt/e6f69f8.js" as="script">
 <link rel="preload" href="${pageContext.request.contextPath}/resources/css/4a42468.css" as="style">
-<link rel="preload" href="/_nuxt/b777585.js" as="script">
 <link rel="preload" href="${pageContext.request.contextPath}/resources/css/734fa9a.css" as="style">
-<link rel="preload" href="/_nuxt/1c84866.js" as="script">
-<link rel="preload" href="/_nuxt/f33c07a.js" as="script">
 <link rel="preload" href="${pageContext.request.contextPath}/resources/css/325de86.css" as="style">
-<link rel="preload" href="/_nuxt/1b4c860.js" as="script">
 <link rel="preload" href="${pageContext.request.contextPath}/resources/css/a52fa45.css" as="style">
-<link rel="preload" href="/_nuxt/0baa4c5.js" as="script">
 <link rel="preload" href="${pageContext.request.contextPath}/resources/css/acdef89.css" as="style">
-<link rel="preload" href="/_nuxt/4296a15.js" as="script">
 <link rel="preload" href="${pageContext.request.contextPath}/resources/css/48656c7.css" as="style">
-<link rel="preload" href="/_nuxt/b64a9b6.js" as="script">
-<link rel="preload" href="/_nuxt/ed97882.js" as="script">
 <link rel="preload" href="${pageContext.request.contextPath}/resources/css/ae12c7f.css" as="style">
-<link rel="preload" href="/_nuxt/b78c628.js" as="script">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/4a42468.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/734fa9a.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/325de86.css">
@@ -73,17 +62,41 @@
 <script
    src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-SRFKTMTR0R"
    async=""></script>
-<script charset="utf-8" src="/_nuxt/cb4569c.js"></script>
+ 
+
 <link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/24dfaf3.css">
-<script charset="utf-8" src="/_nuxt/054b336.js"></script>
+
 <link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/b69f662.css">
-<script charset="utf-8" src="/_nuxt/c533b24.js"></script>
+
 <link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/f0dbc2f.css">
 <link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/dd5752f.css">
 <link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/1f75df9.css">
-<script charset="utf-8" src="/_nuxt/99f6c46.js"></script>
+
 <link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/7b32aa1.css">
-<script charset="utf-8" src="/_nuxt/9439ca9.js"></script>
+<script>
+$(function(){
+	let selectBtn = $(".select_item");
+	let size 
+	
+	selectBtn
+			.on(
+					"click",
+					function(e) {
+						
+						console.log("사이즈 클릭!!!!!");
+						//console.log(e.currentTarget);	
+						const list = e.currentTarget;
+				        console.log(list);
+				        $(this).addClass("active").attr("aria-selected", "true").siblings().removeClass("active").attr("aria-selected","false");
+						size = list.getElementsByClassName("size")[0].innerHTML;
+						size = size.trim();
+						selectBuySize.setAttribute("value",size);
+						
+						console.log(size);
+					});
+
+})
+</script>
 <meta data-n-head="ssr" data-hid="description" name="description"
    content="한정판 거래의 FLEX, KICKS RULE EVERYTHING AROUND ME">
 <meta data-n-head="ssr" data-hid="og:title" name="og:title"
@@ -104,7 +117,7 @@
             
             </div>
             <!---->
-            <%@ include file="/WEB-INF/views/common/header.jsp"%>
+            
             <div data-v-b6b7a1e8="" data-v-34b11929="" class="container buy lg">
                <div data-v-b6b7a1e8="" class="content_area">
                   <div data-v-b6b7a1e8="" class="buy_before">
@@ -137,12 +150,12 @@
                               class="select_area lg">
                               <!---->
                               <ul data-v-28805923="" class="select_list">
-									<c:forEach var="productSize" items="${productSizeList}">
+									<c:forEach var="productSize" items="${productSaleSizeList}">
 										<li data-v-28805923="" class="select_item">
 											<button data-v-28805923="" role="button" aria-selected="false" class="select_link buy">
                                        		<div data-v-28805923="" class="link_inner">
                                           		<span data-v-28805923="" class="size">
-                                            	 <!----> ${productSize.model_size}
+                                            	   ${productSize.model_size}
                                           		</span>
                                           		<span data-v-28805923="" class="price">
 	                                          		<c:if test="${productSize.price eq 0}">
@@ -158,8 +171,20 @@
 									</c:forEach>
                               </ul>
                            </div>
-                           <!---->
-                        </div>
+                           <!--즉시구매, 구매입찰 버튼 -->
+                           <form id ="selectBuySizeAction" method ="get" action="/buy/${productDetailDTO.pid}">
+                             <input type="hidden" id="selectBuySize" name="size"/>
+						     <div data-v-28c27354="" data-v-b6b7a1e8="" class="order_btn_area">
+							  <a data-v-c631041c="" data-v-28c27354="" href="#" onclick ="document.getElementById('selectBuySizeAction').submit()"
+									class="btn_order order_buy buy clickable"><div data-v-c631041c="" class="box">
+												<!---->
+									<div data-v-c631041c="" class="order_case_info">
+										<span data-v-c631041c="" class="order_price"><strong>구매하기</strong></span>
+									</div>
+								</div></a>
+							</div>
+						   </form>
+						</div>
                      </div>
                   </div>
                </div>

@@ -134,7 +134,7 @@
 										<p data-v-2b95d831="" class="model_title">${productDetailDTO.pname_e}</p>
 										<p data-v-2b95d831="" class="model_ko">${productDetailDTO.pname_k}</p>
 										<div data-v-2b95d831="" class="model_desc">
-											<p data-v-2b95d831="" class="size_txt">${productSizeDTO.model_size}</p>
+											<p data-v-2b95d831="" class="size_txt">${productBuySizeDTO.model_size}</p>
 											<!---->
 										</div>
 									</div>
@@ -162,8 +162,7 @@
 								<div data-v-e7203b1c="" class="section_unit">
 									<div data-v-e7203b1c="" class="section_title">
 										<h3 data-v-e7203b1c="" class="title_txt">반송 주소</h3>
-										<a data-v-e7203b1c="" href="#" class="add_more_btn">+ 새 주소
-											추가</a>
+										
 									</div>
 									<div data-v-e7203b1c="" class="section_content">
 										<div data-v-e7203b1c="" class="delivery_info">
@@ -185,23 +184,9 @@
 													</div>
 												</dl>
 											</div>
-											<a data-v-575aff82="" data-v-e7203b1c="" href="#"
-												class="btn btn_edit outlinegrey small"> 변경 </a>
+											
 										</div>
-										<div data-v-6b0ea0a8="" data-v-e7203b1c="">
-											<div data-v-6b0ea0a8="" class="button_shipping_memo_wrap">
-												<button data-v-6b0ea0a8="" class="button_shipping_memo">
-													<span data-v-6b0ea0a8="" class="updated_memo">경비실에
-														맡겨 주세요</span>
-													<svg data-v-6b0ea0a8="" xmlns="http://www.w3.org/2000/svg"
-														class="ico-arr-right icon sprite-icons">
-														<use data-v-6b0ea0a8=""
-															href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-right"
-															xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-right"></use></svg>
-												</button>
-											</div>
-											<!---->
-										</div>
+										
 									</div>
 								</div>
 								
