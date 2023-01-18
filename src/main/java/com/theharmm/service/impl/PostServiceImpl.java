@@ -50,7 +50,7 @@ public class PostServiceImpl implements PostService {
 			for (int i = 0; i < upload.length; i++) {
 				SocialVO svo = new SocialVO();
 				svo.setPost_id(post.getPost_id());
-				svo.setUpload_path(upload[i]);
+				svo.setUpload_path("resources/images/postimages");
 				svo.setFile_name(file_name[i]);
 				svo.setUuid(uuid[i]);
 				socialMapper.socialEnroll(svo);
