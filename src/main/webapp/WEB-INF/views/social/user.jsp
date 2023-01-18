@@ -48,31 +48,23 @@
 	src="https://www.googletagmanager.com/gtag/js?id=UA-153398119-1&amp;l=dataLayer&amp;cx=c"></script>
 <script async="" src="https://websdk.appsflyer.com?st=pba&amp;"></script>
 <script
-	src="https://connect.facebook.net/signals/config/740347893514718?v=2.9.91&amp;r=stable"
-	async=""></script>
-<script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
+	src="https://connect.facebook.net/signals/config/740347893514718?v=2.9.91&amp;r=stable"></script>
+<script src="https://connect.facebook.net/en_US/fbevents.js"></script>
 <script data-n-head="ssr" type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","name":"KREAM","url":"https://kream.co.kr/","logo":"https://kream.co.kr/images/logo.png","sameAs":["https://apps.apple.com/app/id1490580239","https://play.google.com/store/apps/details?id=com.fstudio.kream","https://www.instagram.com/kream.co.kr/","https://www.youtube.com/channel/UCHbInfTxnIbWlUFin7drigw"]}</script>
 <link rel="preload"
-	href="${pageContext.request.contextPath}/resources/css/4a42468.css"
-	as="style">
+	href="${pageContext.request.contextPath}/resources/css/4a42468.css">
 <link rel="preload"
-	href="${pageContext.request.contextPath}/resources/css/240da25.css"
-	as="style">
+	href="${pageContext.request.contextPath}/resources/css/240da25.css">
 <link rel="preload"
-	href="${pageContext.request.contextPath}/resources/css/325de86.css"
-	as="style">
+	href="${pageContext.request.contextPath}/resources/css/325de86.css">
 <link rel="preload"
-	href="${pageContext.request.contextPath}/resources/css/24dfaf3.css"
-	as="style">
+	href="${pageContext.request.contextPath}/resources/css/24dfaf3.css">
 <link rel="preload"
-	href="${pageContext.request.contextPath}/resources/css/a52fa45.css"
-	as="style">
+	href="${pageContext.request.contextPath}/resources/css/a52fa45.css">
 <link rel="preload"
-	href="${pageContext.request.contextPath}/resources/css/0721927.css"
-	as="style">
+	href="${pageContext.request.contextPath}/resources/css/0721927.css">
 <link rel="preload"
-	href="${pageContext.request.contextPath}/resources/css/c163ebe.css"
-	as="style">
+	href="${pageContext.request.contextPath}/resources/css/c163ebe.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/4a42468.css">
 <link rel="stylesheet"
@@ -89,30 +81,29 @@
 	href="${pageContext.request.contextPath}/resources/css/c163ebe.css">
 <style type="text/css"> /*# sourceMappingURL=contenteditable.vue.map */
 </style>
-<script type="text/javascript" async=""
-	src="https://wcs.naver.net/wcslog.js" id="naver-ads" data-loaded="true"></script>
-<link rel="preload" as="style"
+<script type="text/javascript" src="https://wcs.naver.net/wcslog.js"
+	id="naver-ads" data-loaded="true"></script>
+<link rel="preload"
 	href="${pageContext.request.contextPath}/resources/css/f0dbc2f.css">
 <script
-	src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-SRFKTMTR0R"
-	async=""></script>
-<link rel="preload" as="style"
+	src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-SRFKTMTR0R"></script>
+<link rel="preload"
 	href="${pageContext.request.contextPath}/resources/css/1e20f03.css">
-<link rel="preload" as="style"
+<link rel="preload"
 	href="${pageContext.request.contextPath}/resources/css/aca0784.css">
-<link rel="preload" as="style"
+<link rel="preload"
 	href="${pageContext.request.contextPath}/resources/css/9218b3f.css">
-<link rel="preload" as="style"
+<link rel="preload"
 	href="${pageContext.request.contextPath}/resources/css/60ed898.css">
-<link rel="preload" as="style"
+<link rel="preload"
 	href="${pageContext.request.contextPath}/resources/css/7836ff9.css">
-<link rel="preload" as="style"
+<link rel="preload"
 	href="${pageContext.request.contextPath}/resources/css/3dd8bc4.css">
-<link rel="preload" as="style"
+<link rel="preload"
 	href="${pageContext.request.contextPath}/resources/css/3e742b2.css">
-<link rel="preload" as="style"
+<link rel="preload"
 	href="${pageContext.request.contextPath}/resources/css/97ccca4.css">
-<link rel="preload" as="style"
+<link rel="preload"
 	href="${pageContext.request.contextPath}/resources/css/2bffad8.css">
 
 <link rel="stylesheet"
@@ -207,12 +198,12 @@
 									data-v-392ec340="" class="tab_link" style="cursor: hand;"><span
 										data-v-392ec340="" class="tab_menu">게시물</span><span
 										data-v-392ec340="" class="menu_count"></span></a></li>
-								<li data-v-392ec340="" class="tab_item"><a
-									data-v-392ec340="" class="tab_link"><span
+								<li data-v-392ec340="" class="tab_item" id="follower"><a
+									data-v-392ec340="" class="tab_link" style="cursor: hand;"><span
 										data-v-392ec340="" class="tab_menu">팔로워</span><span
 										data-v-392ec340="" class="menu_count"></span></a></li>
-								<li data-v-392ec340="" class="tab_item"><a
-									data-v-392ec340="" class="tab_link"><span
+								<li data-v-392ec340="" class="tab_item" id="following"><a
+									data-v-392ec340="" class="tab_link" style="cursor: hand;"><span
 										data-v-392ec340="" class="tab_menu">팔로잉</span><span
 										data-v-392ec340="" class="menu_count"></span></a></li>
 							</ul>
@@ -254,16 +245,16 @@
 													class="card_box">
 													<div data-v-47728778="" class="social_img_box vertical">
 														<picture data-v-878ec45c="" data-v-47728778=""
-															class="picture social_img">
-														<img referrerpolicy="no-referrer"
+															class="picture social_img"> <img
+															referrerpolicy="no-referrer"
 															src="${pageContext.request.contextPath}/${item.upload_path}/${item.uuid}_${item.file_name}"
 															loading="auto" class="image"></picture>
 													</div>
 													<div data-v-47728778="" class="card_detail">
 														<div data-v-47728778="" class="user_box">
 															<picture data-v-878ec45c="" data-v-47728778=""
-																class="picture img_profile">
-															<img data-v-878ec45c="" alt="사용자 프로필 이미지"
+																class="picture img_profile"> <img
+																data-v-878ec45c="" alt="사용자 프로필 이미지"
 																referrerpolicy="no-referrer"
 																src="https://kream-phinf.pstatic.net/MjAyMjExMDlfMjU2/MDAxNjY3OTU3ODY0MzY4.t3fpARn1DEJYhj-d0iTQwdakC1caQ_JQ0UsTg-pFpe4g.2RbzvEDyow1eUoRDMgLPnVncL8HG069N_242c-aQuyMg.JPEG/p_174ceb2e78124c53ac64163decaad402.jpeg?type=s"
 																loading="auto" class="image"></picture>
@@ -299,13 +290,7 @@
 								<div data-v-1a009402="" class="layer_container">
 									<a data-v-71b8d4b9="" data-v-1a009402=""
 										class="btn_layer_close"><div data-v-71b8d4b9=""
-											data-v-1a009402="">
-											<svg data-v-71b8d4b9="" xmlns="http://www.w3.org/2000/svg"
-												class="ico-close icon sprite-icons">
-											<use data-v-71b8d4b9=""
-													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"
-													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"></use></svg>
-										</div> <!----></a>
+											data-v-1a009402=""></div> <!----></a>
 									<div data-v-1a009402="" class="layer_header">
 										<h2 data-v-71b8d4b9="" data-v-1a009402="" class="title">게시물
 											추가</h2>
@@ -334,13 +319,7 @@
 														상품태그 </a>
 												</div>
 											</div>
-											<div class="form_section">
-												<div class="form_section_title"></div>
-												<div class="form_section_content bct">
-													<textarea name="postContents" id="postContents_textarea"></textarea>
-													<span class="ck_warn postContents_warn">해시태그 작성</span>
-												</div>
-											</div>
+
 										</div>
 
 									</div>
@@ -355,6 +334,84 @@
 								</div>
 							</div>
 						</form>
+						<div data-v-1a009402="" data-v-71b8d4b9="" data-v-61d3533a=""
+							class="layer_delivery layer lg2" style="display: none;">
+							<div data-v-1a009402="" class="layer_container">
+								<a data-v-55a73341="" data-v-1a009402="" class="btn_layer_close"><svg
+										data-v-55a73341="" data-v-1a009402=""
+										xmlns="http://www.w3.org/2000/svg"
+										class="ico-close icon sprite-icons">
+										<use data-v-55a73341="" data-v-1a009402=""
+											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"
+											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"></use></svg></a>
+								<div data-v-1a009402="" class="layer_header">
+									<h2 data-v-55a73341="" data-v-1a009402="" class="title">
+										팔로워 <span data-v-55a73341="" data-v-1a009402="" class="count"></span>
+									</h2>
+								</div>
+								<div data-v-1a009402="" class="layer_content">
+									<!---->
+									<div data-v-6c53047a="" data-v-55a73341=""
+										class="social_feeds_empty" data-v-1a009402="">
+										<div data-v-6c53047a="" class="empty_box">
+											<svg data-v-6c53047a="" xmlns="http://www.w3.org/2000/svg"
+												class="empty_icon icon sprite-icons">
+												<use data-v-6c53047a=""
+													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-user-big"
+													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-user-big"></use></svg>
+											<strong data-v-6c53047a="" class="empty_title">팔로워</strong>
+											<p data-v-6c53047a="" class="empty_txt">tmdgk95님을 팔로우하는
+												사용자가 없습니다.</p>
+											
+										</div>
+									</div>
+									<div data-v-71b8d4b9="" data-v-1a009402="" class="layer_btn">
+										<a data-v-575aff82="" data-v-71b8d4b9=""
+											class="btn btn_delete2 outlinegrey medium" data-v-1a009402="">
+											취소 </a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div data-v-1a009402="" data-v-71b8d4b9="" data-v-61d3533a=""
+							class="layer_delivery layer lg3" style="display: none;">
+							<div data-v-1a009402="" class="layer_container">
+								<a data-v-55a73341="" data-v-1a009402="" class="btn_layer_close"><svg
+										data-v-55a73341="" data-v-1a009402=""
+										xmlns="http://www.w3.org/2000/svg"
+										class="ico-close icon sprite-icons">
+										<use data-v-55a73341="" data-v-1a009402=""
+											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"
+											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"></use></svg></a>
+								<div data-v-1a009402="" class="layer_header">
+									<h2 data-v-55a73341="" data-v-1a009402="" class="title">
+										팔로잉 <span data-v-55a73341="" data-v-1a009402="" class="count"></span>
+									</h2>
+								</div>
+								<div data-v-1a009402="" class="layer_content">
+									<!---->
+									<div data-v-6c53047a="" data-v-55a73341=""
+										class="social_feeds_empty" data-v-1a009402="">
+										<div data-v-6c53047a="" class="empty_box">
+											<svg data-v-6c53047a="" xmlns="http://www.w3.org/2000/svg"
+												class="empty_icon icon sprite-icons">
+												<use data-v-6c53047a=""
+													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-user-big"
+													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-user-big"></use></svg>
+											<strong data-v-6c53047a="" class="empty_title">팔로잉</strong>
+											<p data-v-6c53047a="" class="empty_txt">tmdgk95님이 팔로잉하는
+												사용자가 없습니다.</p>
+											
+										</div>
+									</div>
+									<div data-v-71b8d4b9="" data-v-1a009402="" class="layer_btn">
+										<a data-v-575aff82="" data-v-71b8d4b9=""
+											class="btn btn_delete3 outlinegrey medium" data-v-1a009402="">
+											취소 </a>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -377,21 +434,41 @@
 	</div>
 	<script>
 		document.getElementById('voc').addEventListener('click', function() {
-			document.querySelector('.layer_delivery').style.display = 'block';
+			document.querySelector('.layer_delivery.layer.lg').style.display = 'block';
+		});
+		document.getElementById('follower').addEventListener('click', function() {
+			document.querySelector('.layer_delivery.layer.lg2').style.display = 'block';
+		});
+		document.getElementById('following').addEventListener('click', function() {
+			document.querySelector('.layer_delivery.layer.lg3').style.display = 'block';
 		});
 		document
 				.querySelector('.btn_layer_close')
 				.addEventListener(
 						'click',
 						function() {
-							document.querySelector('.layer_delivery').style.display = 'none';
+							document.querySelector('.layer_delivery.layer.lg').style.display = 'none';
 						});
 		document
 				.querySelector('.btn_delete')
 				.addEventListener(
 						'click',
 						function() {
-							document.querySelector('.layer_delivery').style.display = 'none';
+							document.querySelector('.layer_delivery.layer.lg').style.display = 'none';
+						});
+		document
+		.querySelector('.btn_delete2')
+				.addEventListener(
+						'click',
+						function() {
+							document.querySelector('.layer_delivery.layer.lg2').style.display = 'none';
+						});
+		document
+		.querySelector('.btn_delete3')
+				.addEventListener(
+						'click',
+						function() {
+							document.querySelector('.layer_delivery.layer.lg3').style.display = 'none';
 						});
 		document
 		.querySelector('.btn_save')
