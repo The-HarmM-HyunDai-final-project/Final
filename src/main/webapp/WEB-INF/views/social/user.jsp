@@ -177,14 +177,14 @@
 								</div>
 								<div data-v-45542174="" class="profile_info_box">
 									<p data-v-45542174="" class="user_name">
-										1o6t8l
+										tmdgk95
 										<!---->
 									</p>
 									<!---->
 								</div>
 							</div>
 							<div data-v-45542174="" class="user_explain">
-								<p data-v-45542174="" class="main_txt">tmdgk95</p>
+								<p data-v-45542174="" class="main_txt"></p>
 								<!---->
 							</div>
 							<div data-v-cf374a10="" data-v-45542174="">
@@ -206,15 +206,15 @@
 								<li data-v-392ec340="" class="tab_item" id="voc"><a
 									data-v-392ec340="" class="tab_link" style="cursor: hand;"><span
 										data-v-392ec340="" class="tab_menu">게시물</span><span
-										data-v-392ec340="" class="menu_count">0</span></a></li>
+										data-v-392ec340="" class="menu_count"></span></a></li>
 								<li data-v-392ec340="" class="tab_item"><a
 									data-v-392ec340="" class="tab_link"><span
 										data-v-392ec340="" class="tab_menu">팔로워</span><span
-										data-v-392ec340="" class="menu_count">0</span></a></li>
+										data-v-392ec340="" class="menu_count"></span></a></li>
 								<li data-v-392ec340="" class="tab_item"><a
 									data-v-392ec340="" class="tab_link"><span
 										data-v-392ec340="" class="tab_menu">팔로잉</span><span
-										data-v-392ec340="" class="menu_count">0</span></a></li>
+										data-v-392ec340="" class="menu_count"></span></a></li>
 							</ul>
 						</div>
 						<c:if test="${listCheck == 'empty'}">
@@ -250,16 +250,12 @@
 										<div data-v-47728778="" data-v-013cc4d0=""
 											class="feed_card item vertical"
 											style="position: absolute; left: ${i}px; top: 0px;">
-											<a data-v-47728778=""><div data-v-47728778=""
+											<a data-v-47728778="" href="#"><div data-v-47728778=""
 													class="card_box">
 													<div data-v-47728778="" class="social_img_box vertical">
 														<picture data-v-878ec45c="" data-v-47728778=""
 															class="picture social_img">
-														<source data-v-878ec45c="" type="image/webp"
-															srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDlfMTM2/MDAxNjczMjUyOTU4NjYy.XZI5_sL9RiGTEhewHhiHpbvuiwZem2DNfFSIjbPXFaog.MNMS7qpnWQG-VHnBIi6_2A-BUa0AHktNyvNSB66oKyMg.JPEG/p_687b725862c549e2b1401032e209f15f.jpeg?type=m_webp">
-														<source data-v-878ec45c=""
-															srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDlfMTM2/MDAxNjczMjUyOTU4NjYy.XZI5_sL9RiGTEhewHhiHpbvuiwZem2DNfFSIjbPXFaog.MNMS7qpnWQG-VHnBIi6_2A-BUa0AHktNyvNSB66oKyMg.JPEG/p_687b725862c549e2b1401032e209f15f.jpeg?type=m">
-														<img
+														<img referrerpolicy="no-referrer"
 															src="${pageContext.request.contextPath}/${item.upload_path}/${item.uuid}_${item.file_name}"
 															loading="auto" class="image"></picture>
 													</div>
@@ -267,10 +263,6 @@
 														<div data-v-47728778="" class="user_box">
 															<picture data-v-878ec45c="" data-v-47728778=""
 																class="picture img_profile">
-															<source data-v-878ec45c="" type="image/webp"
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDlfMjU2/MDAxNjY3OTU3ODY0MzY4.t3fpARn1DEJYhj-d0iTQwdakC1caQ_JQ0UsTg-pFpe4g.2RbzvEDyow1eUoRDMgLPnVncL8HG069N_242c-aQuyMg.JPEG/p_174ceb2e78124c53ac64163decaad402.jpeg?type=s_webp">
-															<source data-v-878ec45c=""
-																srcset="https://kream-phinf.pstatic.net/MjAyMjExMDlfMjU2/MDAxNjY3OTU3ODY0MzY4.t3fpARn1DEJYhj-d0iTQwdakC1caQ_JQ0UsTg-pFpe4g.2RbzvEDyow1eUoRDMgLPnVncL8HG069N_242c-aQuyMg.JPEG/p_174ceb2e78124c53ac64163decaad402.jpeg?type=s">
 															<img data-v-878ec45c="" alt="사용자 프로필 이미지"
 																referrerpolicy="no-referrer"
 																src="https://kream-phinf.pstatic.net/MjAyMjExMDlfMjU2/MDAxNjY3OTU3ODY0MzY4.t3fpARn1DEJYhj-d0iTQwdakC1caQ_JQ0UsTg-pFpe4g.2RbzvEDyow1eUoRDMgLPnVncL8HG069N_242c-aQuyMg.JPEG/p_174ceb2e78124c53ac64163decaad402.jpeg?type=s"
@@ -292,7 +284,7 @@
 													</div>
 												</div>
 												<div data-v-47728778="" class="img_count">
-													<span data-v-47728778="" class="count">+5</span>
+													<span data-v-47728778="" class="count"></span>
 												</div></a>
 										</div>
 
@@ -468,7 +460,7 @@
 			}
 			return true;
 		}
-
+		
 		/* 이미지 출력 */
 		function showUploadImage(uploadResultArr) {
 			/* 전달받은 데이터 검증 */
@@ -478,14 +470,15 @@
 			let uploadResult = $("#uploadResult");
 			let obj = uploadResultArr[0];
 			let str = "";
-			let fileCallPath = encodeURIComponent(obj.upload_path.replace(/\\/g,'/') + "/s_" + obj.uuid + "_" + obj.file_name);
-			str += "<div id='result_card'>";
-			str += "<img src='/social/user/display?fileName=" + fileCallPath + "'>";
-			str += "<div class='imgDeleteBtn' data-file='" + fileCallPath + "'>x</div>";
+			let fileCallPath = obj.upload_path + "/s_" + obj.uuid + "_" + obj.file_name;
+			//str += "<div id='result_card'>";
+			//str += "<img src='/social/user/display?fileName=/" + fileCallPath + "' referrerpolicy='no-referrer'>";
+			console.log(fileCallPath);
+			//str += "<div class='imgDeleteBtn' data-file='" + fileCallPath + "'>x</div>";
 			str += "<input type='hidden' name='socialList[0].file_name' value='"+ obj.file_name +"'>";
 			str += "<input type='hidden' name='socialList[0].uuid' value='"+ obj.uuid +"'>";
 			str += "<input type='hidden' name='socialList[0].upload_path' value='"+ obj.upload_path +"'>";
-			str += "</div>";
+			//str += "</div>";
 			uploadResult.append(str);
 		}
 

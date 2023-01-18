@@ -42,7 +42,7 @@ import com.theharmm.service.MemberService;
 import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnails;
 
-//import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.Thumbnails;
 
 @Controller
 @RequestMapping("/social/*")
@@ -54,7 +54,7 @@ public class SocialController {
 	ServletContext servletContext;
 	
 	@GetMapping("temp")
-	public String sibal(HttpServletRequest request) {
+	public String bal(HttpServletRequest request) {
 		String webappRoot2 = request.getSession().getServletContext().getRealPath("");
 		String webappRoot = servletContext.getRealPath("/");
 		String relativeFolder = "resources" + File.separator + "temp.txt";
@@ -102,7 +102,7 @@ public class SocialController {
 		
 		String webappRoot = servletContext.getRealPath("/");
 		
-		String myRootPath = webappRoot.split(".metadata")[0] + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
+		String myRootPath = "C:" + File.separator + "Users" + File.separator + "user" + File.separator + "git" + File.separator + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
 		String relativePath = "resources" + File.separator + "images" + File.separator + "postimages" + File.separator;
 		 
 		String uploadFolder = "C:\\upload";
@@ -112,11 +112,6 @@ public class SocialController {
 		String str = sdf.format(date);
 		String datePath = str.replace("-", File.separator);
 
-		/* 폴더 생성 */
-//		File uploadPath = new File(uploadFolder, datePath);
-//		if (uploadPath.exists() == false) {
-//			uploadPath.mkdirs();
-//		}
 		File uploadPath = new File(myRootPath + relativePath);
 		
 		/* 이미저 정보 담는 객체 */
@@ -126,7 +121,7 @@ public class SocialController {
 			/* 파일 이름 */
 			String uploadFileName = multipartFile.getOriginalFilename();
 			vo.setFile_name(uploadFileName);
-			vo.setUpload_path(datePath);
+			vo.setUpload_path("resources/images/postimages");
 			/* uuid 적용 파일 이름 */
 			String uuid = UUID.randomUUID().toString();
 			vo.setUuid(uuid);
@@ -161,10 +156,14 @@ public class SocialController {
 	@PostMapping("/user/deleteFile")
 	public ResponseEntity<String> deleteFile(String fileName) {
 		logger.info("deleteFile........" + fileName);
+		String myRootPath = "C:" + File.separator + "Users" + File.separator + "user" + File.separator + "git" + File.separator + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
+		String relativePath = "resources" + File.separator + "images" + File.separator + "postimages" + File.separator;
+		 
 		File file = null;
 		try {
 			/* 썸네일 파일 삭제 */
-			file = new File("c:\\upload\\" + URLDecoder.decode(fileName, "UTF-8"));
+			File uploadPath = new File(myRootPath);
+			file = new File(uploadPath + File.separator + fileName);
 			file.delete();
 			/* 원본 파일 삭제 */
 			String originFileName = file.getAbsolutePath().replace("s_", "");
