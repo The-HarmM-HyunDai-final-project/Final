@@ -37,12 +37,12 @@ public class BuyController {
 	 public String selectBuyProductSize(@PathVariable int pid,@RequestParam(required = false) String size, Model model) {
 		log.info("selectBuyProductSize 실행");
 		ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
-		List<ProductSizeDTO> productSizeList = productDetailService.selectProductSizeList(productDetailDTO);
+		List<ProductSizeDTO> productSaleSizeList = productDetailService.selectSaleProductSizeList(productDetailDTO);
 		log.info("productDetailDTO : "+productDetailDTO.toString());
-		log.info("productSizeList : "+ productSizeList.toString());
+		log.info("productSaleSizeList : "+ productSaleSizeList.toString());
 		
 		model.addAttribute("productDetailDTO",productDetailDTO);
-		model.addAttribute("productSizeList",productSizeList);
+		model.addAttribute("productSaleSizeList",productSaleSizeList);
 		
 		
 		return "product/buy_select";
@@ -57,14 +57,15 @@ public class BuyController {
 		Map<String,Object> productInfoMap = new HashMap<String,Object>();
 		productInfoMap.put("size", size);
 		productInfoMap.put("pid", productDetailDTO.getPid());
-		ProductSizeDTO productSizeDTO = productDetailService.selectProductSize(productInfoMap);// pid, size에 해당하는 상품 정보 가져오기 
-		
+		ProductSizeDTO productBuySizeDTO = productDetailService.selectBuyProductSize(productInfoMap);// pid, size에 구매입찰에 해당하는 상품 정보 가져오기 
+		ProductSizeDTO productSaleSizeDTO = productDetailService.selectSaleProductSize(productInfoMap);//해당 사이즈 pid에 해당하는 판매입찰 상품 정보
 		log.info("productDetailDTO : "+productDetailDTO.toString());
-		log.info("productSizeDTO : "+ productSizeDTO.toString());
+		log.info("productBuySizeDTO : "+ productBuySizeDTO.toString());//사이즈에 대한 판매정보
+		log.info("productSaleSizeDTO : "+productSaleSizeDTO.toString());//사이즈에 대한 구매정보
 		
 		model.addAttribute("productDetailDTO",productDetailDTO);
-		model.addAttribute("productSizeDTO",productSizeDTO);
-		
+		model.addAttribute("productSaleSizeDTO",productSaleSizeDTO);
+		model.addAttribute("productBuySizeDTO",productBuySizeDTO);
 		return "product/buy_buy";
 	}
 	
@@ -83,21 +84,21 @@ public class BuyController {
 		Map<String,Object> productInfoMap = new HashMap<String,Object>();
 		productInfoMap.put("size", size);
 		productInfoMap.put("pid", productDetailDTO.getPid());
-		ProductSizeDTO productSizeDTO = productDetailService.selectProductSize(productInfoMap);
+		ProductSizeDTO productSaleSizeDTO = productDetailService.selectSaleProductSize(productInfoMap);
 		
 		model.addAttribute("productDetailDTO",productDetailDTO);// 상품상세정보
-		model.addAttribute("productSizeDTO",productSizeDTO);//상품사이즈 
+		model.addAttribute("productSaleSizeDTO",productSaleSizeDTO);//상품사이즈 
 		
 		model.addAttribute("type",type);// 타입 
 		model.addAttribute("shippingFee",shippingFee);
 		
 		
 		if(type.equals("즉시구매")) {
-			price = productSizeDTO.getPrice();
-			fee = (int)(productSizeDTO.getPrice()*0.015);
+			price = productSaleSizeDTO.getPrice();
+			fee = (int)(productSaleSizeDTO.getPrice()*0.015);
 		}
 		else if(type.equals("구매입찰")) {
-			fee =(int)(productSizeDTO.getPrice()*0.03);
+			fee =(int)(productSaleSizeDTO.getPrice()*0.03);
 		}
 		
 		model.addAttribute("fee",fee);
@@ -122,11 +123,19 @@ public class BuyController {
 	//결제 후 넘어가는 곳 
 	@PostMapping("/order")
 	@ResponseBody
-	 public String insertOrder(@RequestParam String imp_uid, @RequestParam String merchant_uid, @RequestParam String buyer_email,@RequestParam int pid,@RequestParam int totalPrice,@RequestParam String model_size,@RequestParam int saleid) {
+	 public String insertBuyOrder(@RequestParam String imp_uid, @RequestParam String type, @RequestParam String merchant_uid, @RequestParam String buyer_email,@RequestParam int pid,@RequestParam int totalPrice,@RequestParam String model_size,@RequestParam int saleid) {
 		log.info("insertOrder 실행");
 		log.info(imp_uid + merchant_uid + buyer_email + pid+totalPrice+model_size+saleid);
+		//여기서 구매입찰로 들어온 경우는 최종가격에 수수료 제거 해줘야함 !!!!!! 
 		
-		
+//		if(type.equals("즉시구매")) {
+//			price = productSizeDTO.getPrice();
+//			fee = (int)(productSizeDTO.getPrice()*0.015);
+//		}
+//		else if(type.equals("구매입찰")) {
+//			fee =(int)(productSizeDTO.getPrice()*0.03);
+//		}
+//		
 		return "success";
 	}
 

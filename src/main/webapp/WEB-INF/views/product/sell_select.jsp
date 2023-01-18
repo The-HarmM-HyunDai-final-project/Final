@@ -42,7 +42,7 @@
 					<div data-v-28805923="" data-v-3f89f857="" class="select_area lg">
 						<!---->
 						<ul data-v-28805923="" class="select_list">
-						   <c:forEach var="productSize" items="${productSizeList}">
+						   <c:forEach var="productSize" items="${productBuySizeList}">
 							<li data-v-28805923="" class="select_item">
 							<button
 									data-v-28805923="" role="button" aria-selected="false"
@@ -73,8 +73,7 @@
 									data-v-c631041c="" class="box">
 									<!---->
 									<div data-v-c631041c="" class="order_case_info">
-										<span data-v-c631041c="" class="order_price">상품 판매</span><span
-											data-v-c631041c="" class="order_desc">선불발송</span>
+										<span data-v-c631041c="" class="order_price">판매하기</span>
 									</div>
 								</div></a>
 						</div>

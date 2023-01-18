@@ -14,15 +14,14 @@ public interface ProductDetailMapper{
 	
 		public ProductDetailDTO selectProductDetail(int pid);
 
-		public List<ProductSizeDTO> selectProductSizeList(ProductDetailDTO productDetailDTO);
+		public List<ProductSizeDTO> selectSaleProductSizeList(ProductDetailDTO productDetailDTO);
 
-		public ProductSizeDTO selectProductSize(Map<String, Object> productInfoMap);
+		public ProductSizeDTO selectSaleProductSize(Map<String, Object> productInfoMap);
 		
 		
 		//판매관련
-		public ProductDetailDTO selectSellProductDetail(int pid);
 
-		public List<ProductSizeDTO> selectSellProductSizeList(ProductDetailDTO productDetailDTO);
+		public List<ProductSizeDTO> selectBuyProductSizeList(ProductDetailDTO productDetailDTO);
 
-		public ProductSizeDTO selectSellProductSize(Map<String, Object> productInfoMap);
+		public ProductSizeDTO selectBuyProductSize(Map<String, Object> productInfoMap);
 }

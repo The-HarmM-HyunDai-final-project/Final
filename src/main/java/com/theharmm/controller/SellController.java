@@ -34,12 +34,12 @@ public class SellController {
 		 public String selectSellProductSize(@PathVariable int pid,@RequestParam(required = false) String size, Model model) {
 			log.info("selectSellProductSize 실행");
 			ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
-			List<ProductSizeDTO> productSizeList = productDetailService.selectSellProductSizeList(productDetailDTO);
+			List<ProductSizeDTO> productBuySizeList = productDetailService.selectBuyProductSizeList(productDetailDTO);
 			log.info("productDetailDTO : "+productDetailDTO.toString());
-			log.info("productSizeList : "+ productSizeList.toString());
+			log.info("productBuySizeList : "+ productBuySizeList.toString());
 			
 			model.addAttribute("productDetailDTO",productDetailDTO);
-			model.addAttribute("productSizeList",productSizeList);
+			model.addAttribute("productBuySizeList",productBuySizeList);
 			
 			
 			return "product/sell_select";
@@ -54,13 +54,15 @@ public class SellController {
 			Map<String,Object> productInfoMap = new HashMap<String,Object>();
 			productInfoMap.put("size", size);
 			productInfoMap.put("pid", productDetailDTO.getPid());
-			ProductSizeDTO productSizeDTO = productDetailService.selectSellProductSize(productInfoMap);// pid, size에 해당하는 상품 정보 가져오기 
-			
+			ProductSizeDTO productBuySizeDTO = productDetailService.selectBuyProductSize(productInfoMap);// pid, size에 구매입찰에 해당하는 상품 정보 가져오기 
+			ProductSizeDTO productSaleSizeDTO = productDetailService.selectSaleProductSize(productInfoMap);//해당 사이즈 pid에 해당하는 판매입찰 상품 정보
 			log.info("productDetailDTO : "+productDetailDTO.toString());
-			log.info("productSizeDTO : "+ productSizeDTO.toString());
+			log.info("productBuySizeDTO : "+ productBuySizeDTO.toString());//사이즈에 대한 판매정보
+			log.info("productSaleSizeDTO : "+productSaleSizeDTO.toString());//사이즈에 대한 구매정보
 			
 			model.addAttribute("productDetailDTO",productDetailDTO);
-			model.addAttribute("productSizeDTO",productSizeDTO);
+			model.addAttribute("productSaleSizeDTO",productSaleSizeDTO);
+			model.addAttribute("productBuySizeDTO",productBuySizeDTO);
 			
 			return "product/sell_sell";
 		}
@@ -81,21 +83,21 @@ public class SellController {
 			Map<String,Object> productInfoMap = new HashMap<String,Object>();
 			productInfoMap.put("size", size);
 			productInfoMap.put("pid", productDetailDTO.getPid());
-			ProductSizeDTO productSizeDTO = productDetailService.selectSellProductSize(productInfoMap);
+			ProductSizeDTO productBuySizeDTO = productDetailService.selectBuyProductSize(productInfoMap);
 			
 			model.addAttribute("productDetailDTO",productDetailDTO);// 상품상세정보
-			model.addAttribute("productSizeDTO",productSizeDTO);//상품사이즈 
+			model.addAttribute("productBuySizeDTO",productBuySizeDTO);//상품사이즈 
 			
 			model.addAttribute("type",type);// 타입 
 			model.addAttribute("shippingFee",shippingFee);
 			
 			
 			if(type.equals("즉시판매")) {
-				price = productSizeDTO.getPrice();
-				fee = (int)(productSizeDTO.getPrice()*0.015);
+				price = productBuySizeDTO.getPrice();
+				fee = (int)(productBuySizeDTO.getPrice()*0.015);
 			}
 			else if(type.equals("판매입찰")) {
-				fee =(int)(productSizeDTO.getPrice()*0.03);
+				fee =(int)(productBuySizeDTO.getPrice()*0.03);
 			}
 			
 			model.addAttribute("fee",fee);
