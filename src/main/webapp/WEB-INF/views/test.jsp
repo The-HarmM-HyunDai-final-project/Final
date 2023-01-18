@@ -9,20 +9,31 @@
 </head>
 
 <body>
-	<div class="app">
-		<div class="video">
-			<video id="video-player" playsinline controls muted="true"></video>
-		</div>
-	</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="아크테릭스"
-		src="https://kream-phinf.pstatic.net/MjAyMzAxMDZfMTkw/MDAxNjcyOTc4NzI2MzMx.01ugFbCeq9G0WE7nPlAmagoLPcvukIx-3VZI5EGu2JIg.uDIOvb8J0VF4Q6hvzKQ_HtZF0YOQdTnCPuRqefquQh8g.PNG/a_3ae6a377bfab45e0a2045350f87704b7.png?type=s"
-		loading="lazy" class="image">
+ <div id="app">
+    <div class="inner">
 
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/resources/javascript/test.js"></script>
-	<div style="background-color: red">red</div>
-	<div style="background-color: #00ff00">green</div>
-	<div style="background-color: rgb(0, 0, 255)">blue</div>
-	<div style="background-color: hsl(240, 100%, 50%, 0.5)">purple</div>
+      <!-- Player wrapper, forcing 16:9 aspect ratio -->
+      <div class="player-wrapper">
+        <div class="aspect-spacer"></div>
+        <div class="pos-absolute full-width full-height top-0">
+          <video id="video-player" class="el-player" playsinline></video>
+        </div>
+      </div>
+
+      <!-- Quiz UI -->
+      <div class="quiz-wrap">
+        <div id="waiting"><span class="waiting-text float">Waiting for the next question</span></div>
+        <div id="quiz" class="card drop">
+          <div id="card-inner">
+            <h2 id="question"></h2>
+            <div id="answers"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="${pageContext.request.contextPath}/resources/js/test.js" defer=""></script>
 </body>
 </html>
