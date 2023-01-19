@@ -4,10 +4,10 @@
     <style>
       .container {
         height: 100vh;
-        background: #f00fff;
+        /* background: #f00fff; */
       }
       .showlive_container {
-        background: #226600;
+        /* background: #226600; */
         height: 100vh;
         max-width: 1800px;
         margin: 0 auto;
@@ -15,7 +15,7 @@
       }
       .left_area {
         padding: 5px;
-        background: red;
+        /* background: red; */
         width: 75%;
         height: 100%;
         display: flex;
@@ -23,7 +23,7 @@
       }
       .right_area {
         padding: 5px;
-        background: rgb(255, 145, 0);
+        /* background: rgb(224, 224, 224); */
         /* float: left; */
         width: 25%;
         height: 100%;
@@ -32,80 +32,138 @@
       }
       .video_area {
         position: relative;
-        background: green;
-        width: 100%;
-        height: 70%;
+        /* background: green; */
+        /* width: 100%; */
+        height: 60%;
       }
       .user_count {
-        position: absolute;
-
-        right: 8px;
+        /* position: absolute;
+        right: 8px; */
       }
       .info_area {
-        background: blue;
+        background: rgb(224, 224, 224);
         width: 100%;
-        height: 30%;
+        height: 20%;
+        border-radius: 15px;
       }
       .auction_area {
-        background: rgb(255, 0, 255);
+        background: rgb(224, 224, 224);
         width: 100%;
         height: 30%;
+        padding:15px;
+        /* display: flex;
+        flex-direction: column; */
+        position:relative;
+        border-radius: 15px;
       }
+      .price_area{
+      	position: absolute;
+      	top:30%;
+      	bottom:50%;
+      	font-size:30px;
+      }
+      .auction_area_suggestion{
+      	/* align-self: flex-end;*/
+	    position: absolute;
+	    display: flex; 
+	    bottom:0;
+	    width:100%;
+	    margin-bottom:15px;
+	    padding:10px;
+      }
+      .chat_input{
+      	width:60%;
+      }
+/*       .suggestion_btn{
+      	width:30%;
+      } */
       .chat_area {
-        background: rgb(0, 195, 255);
+        background: rgb(224, 224, 224);
         width: 100%;
-        height: 70%;
+        height: 60%;
+        margin-top:15px;
         display: flex;
         flex-direction: column;
+        border-radius: 15px;
+      }
+      .user_count{
+      	text-align:center;
       }
       .chat_view {
-        background: #ffffff;
+        /* background: #ffffff; */
         width: 100%;
         height: 80%;
         padding: 10px;
         overflow-y: scroll;
       }
       .chat_do {
+      	display:flex;
         width: 100%;
         height: 20%;
+        padding:20px;
       }
+      .my_btn{
+      border-radius: 15px;
+      	background:silver;
+      	width:30%;
+      	margin : 0 auto;
+      }
+
     </style>
+    <script	src="https://player.live-video.net/1.6.1/amazon-ivs-player.min.js"></script>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/test.css">
     <div class="container">
       <div class="showlive_container">
         <div class="left_area">
           <div class="video_area">
-            <div class="user_count">
+              <!-- Player wrapper, forcing 16:9 aspect ratio -->
+		      <div class="player-wrapper">
+		        <div class="aspect-spacer"></div>
+		        <div class="pos-absolute full-width full-height top-0">
+		          <video id="video-player" class="el-player" playsinline controls></video>
+		        </div>
+		      </div>
+<!--             <div class="user_count">
               <p>사용자 : <b id="connected_user">0</b> 명</p>
-            </div>
+            </div> -->
           </div>
           <div class="info_area"></div>
         </div>
 
         <div class="right_area">
           <div class="auction_area">
-            <p>닉네임 : <b id="max_price_user">userid</b></p>
-            <b> 최고제시가격 : </b>
-            <b id="max_price"></b>
-            <b>만원 </b>
+          	<div>
+          		<p>닉네임 : <b id="max_price_user">userid</b></p>
+          	</div>
+            <div class="price_area">
+	            <b> 최고제시가격 : </b></br>
+	            <b id="max_price"></b>
+	            <b>만원 </b>
+            </div>
+            
             <br />
-            <input class="chat_input" type="text" id="auction_sugest" />
-            <button onclick="suggestion_aution()">입찰신청</button>
+            <div class="auction_area_suggestion">
+	            <input type="number" max="2147483640"class="chat_input" type="text" id="auction_sugest" placeholder="입찰 가격을 제시해 주세요" />
+	            <button class="my_btn" onclick="suggestion_aution()">입찰신청</button>
+            </div>
           </div>
           <div class="chat_area">
+          	<div class="user_count" >
+              <p>   사용자 : <b id="connected_user">0</b> 명</p>
+            </div>
             <div class="chat_view" id="message_box">
-              <div>
-                <p>아놔</p>
-              </div>
+
+            	
             </div>
             <div class="chat_do">
-              <input class="chat_input" type="text" id="msg" />
-              <button id="button-talk-send">전송</button>
+              <input class="chat_input" type="text" id="msg" placeholder="메시지를 입력해 주세요"/>
+              <button class="my_btn" id="button-talk-send">전송</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-
+<script src="${pageContext.request.contextPath}/resources/js/test.js" defer=""></script>
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script type="text/javascript">
 
@@ -202,6 +260,7 @@
 			case 'AUCTION':
 				$("#max_price").text(priceToString(maxSuggestPrice));
 				$("#max_price_user").text(maxSuggestUser);
+				auctionPrevPrice=maxSuggestUser;
 				break
 			case 'ENTER':
 				var str =  
@@ -223,6 +282,8 @@
 		}
 		
 		$("#message_box").append(str);
+		//채팅창이 계속 올라갈떄  계속 아래로 보여지게 스크롤 조정 
+		$("#message_box").scrollTop($("#message_box")[0].scrollHeight);
 		
 		
 	    //로그인 한 클라이언트와 타 클라이언트를 분류하기 위함

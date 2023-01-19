@@ -16,7 +16,9 @@
       <div class="player-wrapper">
         <div class="aspect-spacer"></div>
         <div class="pos-absolute full-width full-height top-0">
-          <video id="video-player" class="el-player" playsinline></video>
+          <video controls id="video-player" class="el-player" controls>
+          	<!-- playsinline -->
+          </video>
         </div>
       </div>
 
