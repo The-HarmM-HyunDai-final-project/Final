@@ -24,4 +24,6 @@ public interface ProductDetailMapper{
 		public List<ProductSizeDTO> selectBuyProductSizeList(ProductDetailDTO productDetailDTO);
 
 		public ProductSizeDTO selectBuyProductSize(Map<String, Object> productInfoMap);
+
+		public Long updateBuyOrder(Map<String, Object> saleInfoMap);
 }
