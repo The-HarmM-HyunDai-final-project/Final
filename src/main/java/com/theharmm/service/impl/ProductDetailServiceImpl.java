@@ -56,4 +56,10 @@ public class ProductDetailServiceImpl implements ProductDetailService{
 		
 		return productDetailMapper.selectBuyProductSize(productInfoMap);
 	}
+
+
+	@Override
+	public Long updateBuyOrder(Map<String, Object> saleInfoMap) {
+		return productDetailMapper.updateBuyOrder(saleInfoMap);
+	}
 }

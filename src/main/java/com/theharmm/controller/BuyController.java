@@ -126,9 +126,18 @@ public class BuyController {
 	//결제 후 넘어가는 곳 
 	@PostMapping("/order")
 	@ResponseBody
-	 public String insertBuyOrder(@RequestParam String imp_uid, @RequestParam String type, @RequestParam String merchant_uid, @RequestParam String buyer_email,@RequestParam int pid,@RequestParam int totalPrice,@RequestParam String model_size,@RequestParam int saleid) {
-		log.info("insertOrder 실행");
+	 public String updateBuyOrder(@RequestParam String imp_uid, @RequestParam String type, @RequestParam String merchant_uid, @RequestParam String buyer_email,@RequestParam int pid,@RequestParam int totalPrice,@RequestParam String model_size,@RequestParam int saleid) {
+		log.info("updateBuyOrder 실행");
 		log.info(imp_uid + merchant_uid + buyer_email + pid+totalPrice+model_size+saleid);
+		
+		Map<String,Object> saleInfoMap = new HashMap<String,Object>();
+		saleInfoMap.put("type",type);
+		//saleInfoMap.put("buyid", buyer_email);
+		saleInfoMap.put("pid",pid);
+		saleInfoMap.put("saleid",saleid);
+		
+		productDetailService.updateBuyOrder(saleInfoMap);
+		
 		//여기서 구매입찰로 들어온 경우는 최종가격에 수수료 제거 해줘야함 !!!!!! 
 		
 //		if(type.equals("즉시구매")) {

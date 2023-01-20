@@ -42,4 +42,43 @@ $(function(){
   })
   
   
+	  $('#bidBuyActionClick').click(function(e){
+	 
+		 document.getElementById("bidBuyPrice").value = document.getElementById("bidBuyPrice").value.replaceAll(',','');
+		 document.getElementById("bidBuyAction").submit();
+	 })
+	 
+	 	  const input = document.querySelector('#bidBuyPrice');      //[1]
+	  input.addEventListener('change', function(e) { 
+		  let price = e.target.value;
+		  price = Number(price.replaceAll(',', ''));
+		  let nowBuyPrice = parseInt((document.getElementById('nowBuyPrice').innerText).replaceAll(',',''));
+		  
+		  if(price>=nowBuyPrice){
+			  document.getElementById("bidBuyPrice").value = null;
+			
+			  $("#buyNow").trigger("click");
+			  return;
+		  }
+		  
+		  
+		  
+		  if(isNaN(price)) {         //NaN인지 판별
+			    input.value = 0;   
+		
+			  }else {                   //NaN이 아닌 경우
+			    const formatPrice = price.toLocaleString('ko-KR');
+			    input.value = formatPrice;
+			    
+			   
+			  } 
+		
+
+	    
+		  
+	  })  //[2]
+	 
+	 
+  
+  
 })
