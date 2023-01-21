@@ -101,10 +101,10 @@ public class SocialController {
 		}
 		
 		String webappRoot = servletContext.getRealPath("/");
-		
-		String myRootPath = "C:" + File.separator + "Users" + File.separator + "user" + File.separator + "git" + File.separator + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
-		String relativePath = "resources" + File.separator + "images" + File.separator + "postimages" + File.separator;
-		 
+	      
+	    String myRootPath = webappRoot.split(".metadata")[0] + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
+        String relativePath = "resources" + File.separator + "images" + File.separator + "postimages" + File.separator;
+	    System.out.println(relativePath);
 		String uploadFolder = "C:\\upload";
 		/* 날짜 폴더 경로 */
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
