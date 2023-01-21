@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <html lang="ko">
 <head>
-<title>STYLE | KREAM</title>
+<title>STYLE | the harmm</title>
 <meta data-n-head="ssr" charset="utf-8">
 <meta data-n-head="ssr" data-hid="description" name="description"
 	content="한정판 거래의 FLEX, KICKS RULE EVERYTHING AROUND ME">
@@ -240,7 +240,7 @@
 										<c:set var="i" value="${i+300}" />
 										<div data-v-47728778="" data-v-013cc4d0=""
 											class="feed_card item vertical"
-											style="position: absolute; left: ${i}px; top: 0px;">
+											style="position: absolute; left: ${status.index*300}px; top: 0px;">
 											<a data-v-47728778="" href="#"><div data-v-47728778=""
 													class="card_box">
 													<div data-v-47728778="" class="social_img_box vertical">
@@ -496,9 +496,9 @@
 			let csrfHeaderName ="${_csrf.headerName}";
             let csrfTokenValue="${_csrf.token}";
             
-			if (!fileCheck(fileObj.name, fileObj.size)) {
-				return false;
-			}
+			//if (!fileCheck(fileObj.name, fileObj.size)) {
+				//return false;
+			//}
 			for (let i = 0; i < fileList.length; i++){
 				let fileObj = fileList[i];
 				let formData = new FormData();
