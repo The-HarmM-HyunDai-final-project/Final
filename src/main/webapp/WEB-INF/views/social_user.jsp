@@ -6,6 +6,8 @@
 <meta data-n-head="ssr" charset="utf-8">
 <meta data-n-head="ssr" data-hid="description" name="description"
 	content="한정판 거래의 FLEX, KICKS RULE EVERYTHING AROUND ME">
+	
+	
 <meta data-n-head="ssr" data-hid="viewport" name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <meta data-n-head="ssr" data-hid="google-site-verification"
@@ -203,7 +205,6 @@
 			</div>
 		</div>
 	</div>
-	
 	<script src="/_nuxt/4fbacaa.js" defer=""></script>
 	<script src="/_nuxt/bcab19f.js" defer=""></script>
 	<script src="/_nuxt/f33c07a.js" defer=""></script>

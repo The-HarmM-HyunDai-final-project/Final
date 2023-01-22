@@ -90,5 +90,32 @@ public class PostController {
 		return "redirect:/social/user";
 	}
 	
+	/* 포스트 상세 */
+	/*
+	 * @GetMapping("/social/user/details") public String getPostDetail(int post_id,
+	 * Model model){ logger.info("getPostDetail.........." + post_id); PostVO postvo
+	 * = postService.postGetOne(post_id); List<SocialVO> socials =
+	 * postService.socialByPostid(post_id);
+	 * 
+	 * for (int i = 0; i < socials.size(); i++) { if
+	 * (socials.get(i).getFile_name().contains("mp4")) {
+	 * model.addAttribute("video",socials.get(i).getUpload_path()+"/"+socials.get(i)
+	 * .getUuid()+"/"+ socials.get(i).getFile_name());
+	 * log.info(socials.get(i).getUpload_path()+"/"+socials.get(i).getUuid()+"/"+
+	 * socials.get(i).getFile_name()); } else {
+	 * model.addAttribute("poster",socials.get(i).getUpload_path()+"/"+socials.get(i
+	 * ).getUuid()+"/"+ socials.get(i).getFile_name());
+	 * log.info(socials.get(i).getUpload_path()+"/"+socials.get(i).getUuid()+"/"+
+	 * socials.get(i).getFile_name()); } } model.addAttribute("post_id",
+	 * postvo.getPost_id()); model.addAttribute("contents", postvo.getContents());
+	 * model.addAttribute("pid0", postvo.getPid0()); model.addAttribute("pid1",
+	 * postvo.getPid1()); model.addAttribute("pid2", postvo.getPid2());
+	 * 
+	 * //model.addAttribute("post_id", postvo.getPost_id());
+	 * 
+	 * return "social/userdetail"; }
+	 */
+
+
 
 }

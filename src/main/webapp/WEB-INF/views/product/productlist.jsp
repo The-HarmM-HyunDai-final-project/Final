@@ -3913,7 +3913,7 @@
 												
 												if (product_array == null
 														|| product_array.length == 0) {
-													$("#listBody").html("");
+													$("#suggest_list").html("");
 													return;
 												}
 												
