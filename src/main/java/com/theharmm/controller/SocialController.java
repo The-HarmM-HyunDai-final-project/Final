@@ -94,10 +94,10 @@ public class SocialController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			if (!type.startsWith("image")) {
-				List<SocialVO> list = null;
-				return new ResponseEntity<>(list, HttpStatus.BAD_REQUEST);
-			}
+			//if (!type.startsWith("image")) {
+			//	List<SocialVO> list = null;
+			//	return new ResponseEntity<>(list, HttpStatus.BAD_REQUEST);
+			//}
 		}
 		
 		String webappRoot = servletContext.getRealPath("/");

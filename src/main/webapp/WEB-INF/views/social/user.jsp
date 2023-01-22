@@ -79,6 +79,14 @@
 	href="${pageContext.request.contextPath}/resources/css/0721927.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/c163ebe.css">
+
+<link
+	href="${pageContext.request.contextPath}/resources/css/5a645b8.css"
+	rel="stylesheet" type="text/css">
+
+<link
+	href="${pageContext.request.contextPath}/resources/css/2af9c94.css"
+	rel="stylesheet" type="text/css">
 <style type="text/css"> /*# sourceMappingURL=contenteditable.vue.map */
 </style>
 <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"
@@ -105,6 +113,13 @@
 	href="${pageContext.request.contextPath}/resources/css/97ccca4.css">
 <link rel="preload"
 	href="${pageContext.request.contextPath}/resources/css/2bffad8.css">
+
+<!-- 서은 추가 -->
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/pop.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/upload.css">
+<!-- 서은 추가 -->
 
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -241,7 +256,7 @@
 										<div data-v-47728778="" data-v-013cc4d0=""
 											class="feed_card item vertical"
 											style="position: absolute; left: ${status.index*300}px; top: 0px;">
-											<a data-v-47728778="" href="#"><div data-v-47728778=""
+											<a data-v-47728778="" href="${pageContext.request.contextPath}/social/user/details?post_id=${item.post_id}"><div data-v-47728778=""
 													class="card_box">
 													<div data-v-47728778="" class="social_img_box vertical">
 														<picture data-v-878ec45c="" data-v-47728778=""
@@ -268,9 +283,7 @@
 																		xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"></use></svg><span
 																data-v-47728778="" class="like_count">${item.post_id}</span></span>
 														</div>
-														<p data-v-47728778="" class="text_box">재미있었던 스타일컬렉터 🔥
-															마무리는 꼼맥스로 @kream.challenge #KREAM스타일 #kream
-															#꼼데가르송옴므플러스에어맥스 #꼼데가르송옴므플러스 #꼼데가르송맥스 #에어팟맥스</p>
+														<p data-v-47728778="" class="text_box">${item.member_email}</p>
 														<!---->
 													</div>
 												</div>
@@ -283,22 +296,28 @@
 								</div>
 							</div>
 						</c:if>
-						<form action="/social/user/postEnroll" method="post"
-							id="enrollForm">
+						<form action="/social/user/postEnroll" method="post" id="enrollForm">
 							<div data-v-1a009402="" data-v-71b8d4b9="" data-v-61d3533a=""
 								class="layer_delivery layer lg" style="display: none;">
-								<div data-v-1a009402="" class="layer_container">
+								<div data-v-1a009402="" class="layer_container"
+									style="padding: 40px; width: auto">
 									<a data-v-71b8d4b9="" data-v-1a009402=""
-										class="btn_layer_close"><div data-v-71b8d4b9=""
-											data-v-1a009402=""></div> <!----></a>
-									<div data-v-1a009402="" class="layer_header">
+										class="btn_layer_close">
+										<div data-v-71b8d4b9="" data-v-1a009402=""></div> <!---->
+									</a>
+
+
+
+									<!-- -------------------------------- -->
+
+									<%-- 																		<div data-v-1a009402="" class="layer_header">
 										<h2 data-v-71b8d4b9="" data-v-1a009402="" class="title">게시물
 											추가</h2>
 									</div>
 									<div data-v-1a009402="" class="layer_content">
-										<div data-v-71b8d4b9="" data-v-1a009402=""
+ 										<div data-v-71b8d4b9="" data-v-1a009402=""
 											class="delivery_bind">
-											<!-- 파일 업로드 -->
+											파일 업로드
 											<div class="form_section">
 												<div class="form_section_content">
 													<input type="file" id="fileItem" name='uploadFile'
@@ -320,7 +339,7 @@
 												</div>
 											</div>
 
-										</div>
+										</div> 
 
 									</div>
 									<div data-v-71b8d4b9="" data-v-1a009402="" class="layer_btn">
@@ -331,6 +350,80 @@
 											data-v-1a009402=""> 확인<input type="hidden"
 											name="${_csrf.parameterName}" value="${_csrf.token}"}></a>
 									</div>
+ --%>
+
+									<!-- -------------------------------- -->
+									<div>
+										<div data-v-1a009402="" class="layer_header">
+											<h2 data-v-71b8d4b9="" data-v-1a009402=""
+												style="padding: 0; font-size: 24px" class="title">게시물
+												추가</h2>
+										</div>
+										<div id="upload_box">
+											<div>
+												<div id="upload_imgbox" style="margin-right: 30px">
+													<p class="board_text1">사진 추가하기</p>
+													<form class="container" onsubmit="return sendit()">
+														<div class="filebox">
+															<input class="upload-name" style="display: none;"
+																disabled="disabled" multiple>
+															<!-- <label class="board_text2" id="ww" for="fileItem">여기를 누르면 사진이 추가됩니다</label>  -->
+															<input style="margin: 10px" type="file" id="fileItem"
+																style="display: block" name="uploadFile"
+																class="upload-hidden" multiple>
+															<div id="uploadResult"></div>
+
+															<!-- <input type="file" id="fileItem" name="uploadFile" style="height: 30px;" multiple=""> -->
+
+														</div>
+														<input type="submit" id="formSub" style="display: none">
+														<div id="muti_list"
+															style="display: flex; flex-wrap: wrap;"></div>
+													</form>
+												</div>
+											</div>
+
+											<div style="width: 500px; padding-right: 30px">
+												<textarea type="text" placeholder="공유하고 싶은 글을 입력하세요."
+													id="upload_textbox" name="contents" maxlength="5000"
+													style="resize: none;"></textarea>
+												<div id="upload_product">
+													<div>
+														<p id="upload_product_tag">
+															상품태그 <span style="color: red; font-size: 1.1rem">*태그는
+																3개 까지만 가능합니다.</span>
+														</p>
+														<input type="hidden" name="pid0" value="0">
+														<input type="hidden" name="pid1" value="0">
+														<input type="hidden" name="pid2" value="0">
+													</div>
+													<div id="upload_img_box" style="margin-top: 15px">
+														<div class="upload_plus_box" id="search_product" data-pid = "no">
+															<img src="/lib/img/2561435_plus_file_icon.png" alt=""
+																class="upload_plus_img">
+															<p>상품 추가하기</p>
+														</div>
+													</div>
+
+												</div>
+											</div>
+
+										</div>
+										<div data-v-71b8d4b9="" data-v-1a009402="" class="layer_btn2"
+											style="display: flex; justify-content: center; padding-top: 30px">
+											<a data-v-575aff82="" data-v-71b8d4b9=""
+												class="btn btn_delete outlinegrey medium"
+												style="flex-grow: 1;" data-v-1a009402=""> 취소 </a><a
+												data-v-575aff82="" data-v-71b8d4b9="" id="btn_save"
+												disabled="disabled" class="btn btn_save solid medium"
+												style="flex-grow: 1;" data-v-1a009402=""> 확인<input
+												type="hidden" name="${_csrf.parameterName}"
+												value="${_csrf.token}">
+											</a>
+										</div>
+									</div>
+
+									<!-- 모달 -->
 								</div>
 							</div>
 						</form>
@@ -432,7 +525,49 @@
 		</div>
 	</div>
 	</div>
+	<!-- 팝업창 -->
+	<div id="popupDiv" style="display: none">
+		<div class="layer_container2">
+			<!-- 상품 추가하기 -->
+			<div class="layer_header">
+				<h2 class="title" id="add_title" style="padding: 16px">상품 추가하기</h2>
+				<img src="/lib/img/nav_close_icon.png" alt="닫기"
+					class="btn_layer_close" id="popCloseBtn">
+			</div>
+			<!-- 검색창 버튼  -->
+			<div class="popup_search">
+				<input type="text" placeholder="브랜드명,모델명, 모델번호 등" id="input_search"
+					class="in_search">
+				<div class="search_delet">삭제</div>
+			</div>
+
+
+			<div data-v-5b7f94e6="" class="search_suggests2" id="search_suggests"
+				style="display: block;">
+				<div data-v-6c61cf2d="" data-v-5b7f94e6="" class="suggest_list lg"
+					id="suggest_list"></div>
+			</div>
+			<!--  -->
+			<!-- 하단 취소하기 / 저장하기 버튼 -->
+			<div class="bottom_button" id="back">
+				<button class="btn solid outlinegrey btn_delete">취소</button>
+			</div>
+		</div>
+	</div>
 	<script>
+	/* 상품 검색 모달 창 */
+	     document.getElementById('upload_img_box').addEventListener('click', function() {
+
+	         document.querySelector('.layer_delivery.layer.lg').style.display = 'none';	         
+	         document.getElementById('popupDiv').style.display = 'block';
+      });
+	
+	     document.getElementById('back').addEventListener('click', function() {
+
+	         document.querySelector('.layer_delivery.layer.lg').style.display = 'block';	         
+	         document.getElementById('popupDiv').style.display = 'none';
+      });
+	/*  */
       document.getElementById('voc').addEventListener('click', function() {
          document.querySelector('.layer_delivery.layer.lg').style.display = 'block';
       });
@@ -497,6 +632,7 @@
             //return false;
          //}
          for (let i = 0; i < fileList.length; i++){
+        	console.log(fileList[i] + "여기2");
             let fileObj = fileList[i];
             let formData = new FormData();
             formData.append("uploadFile", fileObj);   
@@ -510,7 +646,7 @@
                beforeSend: function(xhr) {
                        xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
                   success : function(result){
-                        console.log(result);
+                        console.log(result + "여기!");
                         showUploadImage(result);
                      },
                      error : function(result){
@@ -589,7 +725,153 @@
             }
          });
       }
+      
+      // 검색목록 클릭시
+      $(".suggest_item").on("click", function (e) {
+      	console.log(e.currentTarget.dataset.pid);
+/* 			                let product_id = document.querySelectorAll(".product_id");
+          let index = $(".suggest_link2").index(this);
+          let id = $(this).attr('id');
+          for(let i=0; i<product_id.length; i++){
+              if(id == product_id.item(i).value){
+                  alert("같은 상품 태그가 존재합니다.");
+                  return false;
+              }
+          }
+          let origFileName = response.data.data[index].origFileName;
+          let name = response.data.data[index].name;
+          $('#search_product').before(
+              '<span class="product_box_span"><div class="upload_productbox"><input type="hidden" class="product_id" value="'+id+'">' +
+              '<img src="/lib/product/'+origFileName+'" alt="상품태그 이미지" class="upload_product_img">' +
+              '<p>'+name+'</p></div><br><button class="product_del">삭제</button></span>'
+          );
+          $("#popupDiv").css("display", "none"); //팝업창 display none
+          $("body").css("overflow", "auto");//body 스크롤바 생성
+          $(".in_search").val('');//태그상품 검색창 비우기
+          $(".product_plus").css('display', 'none');//태그상품 검색목록 감추기 */
+      });	
    </script>
+	<script type="text/javascript">
+	$(window)
+			.ready(
+					function() {
+						$('#input_search').keyup( function() {
+							// console.log("1212");
+							if (document.getElementById('input_search').value == "") {
+								document.getElementById('search_suggests').style.display = 'none';
+							} else {
+								document.getElementById('search_suggests').style.display = 'block';
+							}
+							searchList(1,"K",document.getElementById('input_search').value);
+						});
+						
+						// ajax로 검색 제품 띄우기
+						function searchList(page, type, keyword ) {
+
+							console.log("제품 띄우기 실행2 ");
+
+							let product_array;
+							let totalCnt;
+
+							$
+									.ajax(
+											{
+												url : "${pageContext.request.contextPath}/product/searchProductList?&page="
+														+ page,
+												data : {
+													"type" : type,
+													"keyword" : keyword
+												}
+											})
+									.done(
+											function(data) {
+												console.log("data :" + data);
+												product_array = data.products;
+												
+												if (product_array == null
+														|| product_array.length == 0) {
+													$("#suggest_list").html("");
+													return;
+												}
+												
+												let html_tmp = "";
+												
+												for (let i = 0; i < product_array.length; i++) {
+													let product = product_array.at(i);
+													
+													let tmp = "";
+													
+													
+													tmp += "<div data-v-6c61cf2d='' id = 'suggest_item' class='suggest_item' data-pid ='"+ product_array.at(i).product.pid +"' data-img ='"+product_array.at(i).product.img1+"' data-pname_k = '"+product_array.at(i).product.pname_k+"'><a data-v-6c61cf2d='' class='suggest_link'>"
+ 													tmp += "	<div data-v-6c61cf2d='' class='suggest_thumb' style='background-color: rgb(244, 244, 244);'>"
+													tmp += "			<picture data-v-878ec45c='' data-v-09fbcf09='' class='picture thumb_img'>"
+													tmp += "				<source data-v-878ec45c='' type='image/webp'"
+													tmp += "					srcset='"+ product_array.at(i).product.img1+ "'>"
+													tmp += "				<source data-v-878ec45c=''";
+													tmp += "					srcset='"+ product_array.at(i).product.img1+ "'>"
+													tmp += "				<img data-v-878ec45c='' alt='#'"
+													tmp += "					referrerpolicy='no-referrer' loading='lazy' class='image' src='"+ product_array.at(i).product.img1+ "'>"
+													tmp += "			</picture>"													
+													
+													
+													tmp += "	</div>"
+													tmp += "	<div data-v-6c61cf2d='' class='suggest_info'>"
+													tmp += "		<p data-v-6c61cf2d='' class='model_title'>" + product_array.at(i).product.pname_e + "</p>"
+													tmp += "		<p data-v-6c61cf2d='' class='model_sub_info'>" + product_array.at(i).product.pname_k + "</p>"
+													tmp += "	</div></a>" 
+													tmp += "</div>"
+													
+													html_tmp += tmp;
+												}
+												$("#suggest_list").html(html_tmp);
+												
+											});
+						}
+						
+			            // 검색목록 클릭시
+			            $(document).on("click", "#suggest_item", function (e) {
+			            	console.log(e.currentTarget.dataset.pid);
+			            	
+ 			                let product_id = document.querySelectorAll(".product_id");
+			                //let index = $(".suggest_link2").index(this);
+			                //let id = $(this).attr('id');
+			                for(let i=0; i<product_id.length; i++){
+			                    if(e.currentTarget.dataset.pid == product_id.item(i).value){
+			                        alert("같은 상품 태그가 존재합니다.");
+			                        return false;
+			                    }
+			                }
+			                
+			                //let origFileName = response.data.data[index].origFileName;
+			                //let name = response.data.data[index].name;
+			                $('#search_product').before(
+			                    '<span class="product_box_span"><div class="upload_productbox"><input type="hidden" class="product_id" value="'+e.currentTarget.dataset.pid+'">' +
+			                    '<img src="'+e.currentTarget.dataset.img+'" alt="상품태그 이미지" class="upload_product_img">' +
+			                    '<p style="font-size:12px">'+e.currentTarget.dataset.pname_k+'</p></div><br><button class="product_del">삭제</button></span>'
+			                );
+			                $("#popupDiv").css("display", "none"); //팝업창 display none
+			                document.querySelector('.layer_delivery.layer.lg').style.display = 'block';
+			                //$("body").css("overflow", "auto");//body 스크롤바 생성
+			                $("#input_search").val('');//태그상품 검색창 비우기
+			                //$(".product_plus").css('display', 'none');//태그상품 검색목록 감추기 
+			                //document.getElementsByName("pid" + product_id.length)[0]. value;
+			                console.log("pid" + product_id.length);
+			                console.log(document.getElementsByName("pid" + product_id.length)[0]. value);
+			                document.getElementsByName("pid" + product_id.length)[0]. value = e.currentTarget.dataset.pid;
+			                console.log(document.getElementsByName("pid" + product_id.length)[0]. value);
+			                
+			                let product_id2 = document.querySelectorAll(".product_id");
+ 							if (product_id2.length == 3) {
+			                	//$('#search_product').style.display = 'none';
+			                	//$("#search_product").css("display", "none"); //팝업창 display none
+			                	$("#search_product").css("display", "none"); //팝업창 display none
+			                	alert("상품 추가는 3개까지만 가능합니다.");
+			                	return false;			                	
+			                }
+			            });						
+						
+					});
+</script>
 	<link
 		href="${pageContext.request.contextPath}/resources/css/c163ebe.css"
 		rel="stylesheet" type="text/css">
