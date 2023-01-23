@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.theharmm.domain.AccountDTO;
+import com.theharmm.domain.MemberAddressDTO;
+import com.theharmm.domain.MemberVO;
 import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.ProductSizeDTO;
+import com.theharmm.service.MemberInfoService;
 import com.theharmm.service.ProductDetailService;
 
 import lombok.RequiredArgsConstructor;
@@ -28,11 +32,17 @@ public class SellController {
 	@Autowired
 	ProductDetailService productDetailService;
 	
+	@Autowired
+	MemberInfoService memberInfoService;
+	
+	
+	
     
 	//판매 - 상품사이즈 리스트 띄우기
 		@GetMapping("/select/{pid}")
 		 public String selectSellProductSize(@PathVariable int pid,@RequestParam(required = false) String size, Model model) {
 			log.info("selectSellProductSize 실행");
+			//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 			List<ProductSizeDTO> productBuySizeList = productDetailService.selectBuyProductSizeList(productDetailDTO);
 			log.info("productDetailDTO : "+productDetailDTO.toString());
@@ -49,6 +59,7 @@ public class SellController {
 		@GetMapping("/{pid}")
 		 public String sellProduct(@PathVariable int pid,@RequestParam String size, Model model) {
 			log.info("sellProduct 실행");
+			//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 			
 			Map<String,Object> productInfoMap = new HashMap<String,Object>();
@@ -73,11 +84,25 @@ public class SellController {
 		 public String orderSellProduct(@PathVariable int pid,@RequestParam String size,@RequestParam String type,@RequestParam int price,@RequestParam(required=false,defaultValue = "0") int dDay,
 				 Model model) {
 			log.info("orderProduct 실행");
+			//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			MemberVO user = new MemberVO();
+			user.setMember_email("tlsalfla96@naver.com");
+			user.setMember_name("신미림");
+			user.setMember_phone("01053030542");
+			Map<String,Object> memberInfoMap = new HashMap<String,Object>();
+			memberInfoMap.put("member_email",user.getMember_email());
+			MemberAddressDTO addressDTO = memberInfoService.selectMemberMainAddress(memberInfoMap);
+			AccountDTO accountDTO = memberInfoService.selectMemberMainAccount(memberInfoMap);
+			model.addAttribute("memberDTO", user);
+			model.addAttribute("addressDTO", addressDTO);
+			model.addAttribute("accountDTO", accountDTO);
+			log.info("MemberDTO : "+ user);
+			log.info("AddressDTO : "+ addressDTO);
+			log.info("AccountDTO : "+ accountDTO);
+			
 			int shippingFee = 0;
 			int fee = 30000;
-		
 
-			
 			ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 			
 			Map<String,Object> productInfoMap = new HashMap<String,Object>();
