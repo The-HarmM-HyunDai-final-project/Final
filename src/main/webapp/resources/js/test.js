@@ -16,7 +16,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const playbackUrl = "https://3931b8ddf025.ap-northeast-1.playback.live-video.net/api/video/v1/ap-northeast-1.762190264141.channel.ggjlpw0rIGty.m3u8";
+const playbackUrl = "https://5fe30a074ce5.us-east-1.playback.live-video.net/api/video/v1/us-east-1.677688003720.channel.odqnd2yBH4LN.m3u8";
 const videoPlayer = document.getElementById("video-player");
 const quizEl = document.getElementById("quiz");
 const waitMessage = document.getElementById("waiting");
