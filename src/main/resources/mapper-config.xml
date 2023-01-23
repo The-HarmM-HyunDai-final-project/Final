@@ -16,5 +16,9 @@
 			type="com.theharmm.domain.ProductDetailDTO" />
 		<typeAlias alias="ProductSizeDTO"
 			type="com.theharmm.domain.ProductSizeDTO" />
+		<typeAlias alias="MemberAddressDTO"
+			type="com.theharmm.domain.MemberAddressDTO" />
+		<typeAlias alias="AccountDTO"
+			type="com.theharmm.domain.AccountDTO" />
 	</typeAliases>
 </configuration>
