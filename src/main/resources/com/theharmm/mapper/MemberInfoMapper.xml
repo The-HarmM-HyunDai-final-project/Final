@@ -28,4 +28,34 @@
 		  ]]>
 	</select>
 	
+	
+	<update id="mergeAccount" parameterType="AccountDTO">
+
+        MERGE INTO ACCOUNT
+            USING DUAL ON
+            (
+                MEMBER_EMAIL = #{member_email}
+            )
+           WHEN MATCHED THEN 
+                UPDATE SET
+                        BANK = #{bank},
+                        BANK_NUMBER = #{bank_number},
+                        BANK_NAME =#{bank_name}
+            WHEN NOT MATCHED THEN
+                INSERT
+                (
+                   MEMBER_EMAIL,
+                   BANK,
+                   BANK_NUMBER,
+                   BANK_NAME
+                )
+                VALUES
+                (
+                    #{member_email},
+                    #{bank},
+                    #{bank_number},
+                    #{bank_name}
+                )
+	</update>
+	
 </mapper>
