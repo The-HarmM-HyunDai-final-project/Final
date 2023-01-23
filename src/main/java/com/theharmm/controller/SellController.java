@@ -9,9 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.theharmm.domain.AccountDTO;
 import com.theharmm.domain.MemberAddressDTO;
 import com.theharmm.domain.MemberVO;
@@ -83,7 +86,7 @@ public class SellController {
 		@GetMapping("/order/{pid}")
 		 public String orderSellProduct(@PathVariable int pid,@RequestParam String size,@RequestParam String type,@RequestParam int price,@RequestParam(required=false,defaultValue = "0") int dDay,
 				 Model model) {
-			log.info("orderProduct 실행");
+			log.info("orderSellProduct 실행");
 			//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			MemberVO user = new MemberVO();
 			user.setMember_email("tlsalfla96@naver.com");
@@ -140,6 +143,52 @@ public class SellController {
 
 		}
 		
+		//계좌등록
+		@PostMapping(value="/regAccount", produces = "application/json; charset=UTF-8")
+		@ResponseBody
+		 public String regAccount(@RequestParam String member_email, @RequestParam String bank_name, @RequestParam String account_number, @RequestParam String account_owner) {
+			log.info("regAccount 실행");
+			//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			Map<String,Object> memberInfoMap = new HashMap<>();
+			memberInfoMap.put("member_email",member_email);
+			log.info(member_email+bank_name+account_number+account_owner);
+			
+			
+			AccountDTO accountDTO = new AccountDTO();
+			accountDTO.setMember_email(member_email);
+			accountDTO.setBank_name(account_owner);
+			accountDTO.setBank_number(account_number);
+			accountDTO.setBank(bank_name);
+			
+			
+			memberInfoService.mergeAccount(accountDTO);
+			String jsonString = "";
+			try {
+			ObjectMapper mapper = new ObjectMapper(); 
+			jsonString = mapper.writeValueAsString(memberInfoService.selectMemberMainAccount(memberInfoMap));
+			}catch(Exception e) {
+				
+			}
+			
+
+			return jsonString;
+		}
+		
+		
+		//판매완료 
+		@GetMapping("/complete")
+		 public String sellProductComplete(Model model) {
+			log.info("sellProductComplete 실행");
+			//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			
+			
+			Map<String,Object> productInfoMap = new HashMap<String,Object>();
+			
+			
+			
+			return "product/sell_complete";
+		}
+
 		
 		
 }

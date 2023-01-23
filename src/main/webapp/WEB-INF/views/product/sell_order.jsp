@@ -95,6 +95,48 @@
 <script charset="utf-8" src="/_nuxt/b1c9fa9.js"></script>
 <link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/afedd5f.css">
 <script charset="utf-8" src="/_nuxt/f08eb05.js"></script>
+<script type="text/javascript">
+function regAccount() {
+	
+	
+	let csrfHeaderName ="${_csrf.headerName}";
+    let csrfTokenValue="${_csrf.token}";
+    
+
+       $.ajax({
+        url: "/sell/regAccount", 
+        method: 'post',
+        beforeSend : function(xhr){
+            xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+    	}, 
+        data: {
+          member_email: "${memberDTO.member_email}",
+          bank_name : $("#bank_name").val(),
+          account_number: $("#account_number").val(),
+          account_owner: $("#account_owner").val()
+        },
+        success : function(res){
+        	alert("계좌변경 완료");
+        	$("#account_info1").text(res.bank+" "+res.bank_number);
+        	$("#account_info2").text(res.bank+" "+res.bank_number);
+        	$("#account_owner1").text(res.bank_name);
+        	$("#account_owner2").text(res.bank_name);
+        	<c:if test="${empty accountDTO}">
+        		window.location.reload();
+        	</c:if>
+        	$("#btn_layer_close").trigger("click");
+        	
+        	
+        },
+        error : function(xhr){
+        	alert(xhr.status+" "+xhr.statusText);
+        }
+        
+      })
+    	
+      
+  }
+</script>
 </head>
 <body style="overflow: visible;">
 	<div id="__nuxt">
@@ -162,12 +204,12 @@
 											<dl data-v-218008a6="" class="info_list">
 												<div data-v-218008a6="" class="info_box">
 													<dt data-v-218008a6="" class="title">계좌</dt>
-													<dd data-v-218008a6="" class="desc">${accountDTO.bank}
+													<dd data-v-218008a6="" class="desc" id="account_info1">${accountDTO.bank}
 														${accountDTO.bank_number }</dd>
 												</div>
 												<div data-v-218008a6="" class="info_box">
 													<dt data-v-218008a6="" class="title">예금주</dt>
-													<dd data-v-218008a6="" class="desc"> ${accountDTO.bank_name}</dd>
+													<dd data-v-218008a6="" class="desc" id="account_owner1"> ${accountDTO.bank_name}</dd>
 												</div>
 												<!---->
 											</dl>
@@ -198,38 +240,31 @@
 												class="registered_account_box" data-v-1a009402="">
 												<h4 data-v-d00f8f86="" class="box_title">등록된 계좌 정보</h4>
 												<p data-v-d00f8f86="" class="box_account_info">
-													<span data-v-d00f8f86="" class="account">${accountDTO.bank}
+													<span data-v-d00f8f86="" class="account" id="account_info2">${accountDTO.bank}
 														${accountDTO.bank_number }</span><span data-v-d00f8f86=""
 														class="account_devider">/</span><span data-v-d00f8f86=""
-														class="name">${accountDTO.bank_name }</span>
+														class="name" id="account_owner2">${accountDTO.bank_name }</span>
 												</p>
 											</div>
 											</c:if>
 											<!---->
+											
 											<div data-v-028af65a="" data-v-6fc13fac=""
 												class="content_registration" data-v-1a009402="">
 												<div data-v-028af65a="" class="account_registration">
 													<div data-v-1c44afeb=""
-														class="input_logistics_companies input_box">
+														class="input_box">
 														<h4 data-v-1c44afeb="" class="input_title">은행명</h4>
 														<div data-v-1c44afeb="" class="input_item">
-															<input data-v-1c44afeb="" type="text" placeholder="선택하세요"
-																readonly="readonly" autocomplete="off"
-																inputmode="numeric" class="input_txt">
-															<button data-v-575aff82="" type="button"
-																class="btn btn_dropdown" data-v-1c44afeb="">
-																<svg xmlns="http://www.w3.org/2000/svg"
-																	class="ico-arr-dir-down-circle icon sprite-icons">
-																	<use
-																		href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-dir-down-circle"
-																		xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-dir-down-circle"></use></svg>
-															</button>
+															<input data-v-1c44afeb="" type="text" placeholder="은행명을 정확히 입력하세요." id="bank_name" name="bank_name"
+																autocomplete="off" class="input_txt">
+															
 														</div>
 													</div>
 													<div data-v-1c44afeb="" class="input_box">
 														<h4 data-v-1c44afeb="" class="input_title">계좌번호</h4>
 														<div data-v-1c44afeb="" class="input_item">
-															<input data-v-1c44afeb="" type="tel"
+															<input data-v-1c44afeb="" type="tel" id="account_number" name="account_number"
 																placeholder="- 없이 입력하세요" autocomplete="off"
 																class="input_txt">
 														</div>
@@ -239,7 +274,7 @@
 													<div data-v-1c44afeb="" class="input_box">
 														<h4 data-v-1c44afeb="" class="input_title">예금주</h4>
 														<div data-v-1c44afeb="" class="input_item">
-															<input data-v-1c44afeb="" type="text"
+															<input data-v-1c44afeb="" type="text" id="account_owner" name="account_owner"
 																placeholder="예금주명을 정확히 입력하세요." autocomplete="off"
 																class="input_txt">
 														</div>
@@ -248,9 +283,8 @@
 													</div>
 												</div>
 												<div data-v-028af65a="" class="registration_btn_box">
-													<a data-v-575aff82="" data-v-028af65a=""
-														disabled="disabled" href="#"
-														class="btn btn_save solid medium disabled"> 저장하기 </a>
+													<a data-v-575aff82="" data-v-028af65a="" disabled="disabled" id="saveBtn"  onclick="regAccount()"
+														href="#" class="btn btn_save solid medium disabled"> 저장하기 </a>
 												</div>
 												<!---->
 											</div>

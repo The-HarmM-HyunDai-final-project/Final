@@ -10,4 +10,6 @@ public interface MemberInfoMapper {
 	public MemberAddressDTO selectMemberMainAddress(Map<String, Object> memberInfoMap);
 	
 	public AccountDTO selectMemberMainAccount(Map<String, Object> memberInfoMap);
+
+	public int mergeAccount(AccountDTO accountDTO);
 }

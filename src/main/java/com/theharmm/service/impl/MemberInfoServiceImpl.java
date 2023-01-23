@@ -31,6 +31,11 @@ public class MemberInfoServiceImpl implements MemberInfoService{
 		return memberInfoMapper.selectMemberMainAccount(memberInfoMap);
 	}
 
+	@Override
+	public int mergeAccount(AccountDTO accountDTO) {
+		return memberInfoMapper.mergeAccount(accountDTO);
+	}
+
 
 	
 	
