@@ -9,6 +9,7 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.theharmm.domain.ShowLiveChannelDTO;
 
 import lombok.Data;
 import lombok.extern.java.Log;
@@ -34,6 +35,18 @@ public class ShowLiveChannel {
 	// session, 유저id(email)가 들어간다.
 	private Map<WebSocketSession, String> sessionsRoomNo = new ConcurrentHashMap<WebSocketSession, String>();
 	
+	//관리자가 방을 만들때 생성하는 메소드
+	public static ShowLiveChannel createForService(ShowLiveChannelDTO channelDTO) {
+		ShowLiveChannel showliveChannel = new ShowLiveChannel();
+		showliveChannel.roomNum = Integer.toString(channelDTO.getShowlive_no());
+		showliveChannel.connectedUsers = 0;
+		showliveChannel.maxSuggestionPrice = channelDTO.getShowlive_start_price(); //지금 임의로 한거고 관리자가 방 만들때는 직접 입력한 금액을 여기에 넣음
+		showliveChannel.maxSuggestionUser = "";
+		return showliveChannel;
+	}
+	
+	
+	//관리장가 방을만들때 ShowLiveChannelDTO로 Store에 만들꺼니까 아마 이거는 필요 없을듯
 	public static ShowLiveChannel create(String roomNo) {
 		ShowLiveChannel showliveChannel = new ShowLiveChannel();
 		showliveChannel.roomNum = roomNo;
