@@ -9,20 +9,23 @@ import com.theharmm.domain.ProductSizeDTO;
 
 public interface ProductDetailService {
 
-	//구매관련 
+	
 	ProductDetailDTO selectProductDetail(int pid);
+	
+	//상품에 대한 사이즈 및 사이즈별 판매입찰 최소금액 리스트 조회 
+	List<ProductSizeDTO> selectSaleProductSizeList(ProductDetailDTO productDetailDTO);
 
-	List<ProductSizeDTO> selectProductSizeList(ProductDetailDTO productDetailDTO);
-
-	ProductSizeDTO selectProductSize(Map<String, Object> productInfoMap);
+	//판매입찰에 등록된 데이터 조회
+	ProductSizeDTO selectSaleProductSize(Map<String, Object> productInfoMap);
 	
 	
-	//판매관련
-	ProductDetailDTO selectSellProductDetail(int pid);
+	//상품에 대한 사이즈 및 사이즈별 구매입찰 최대금액 리스트 조회
+	List<ProductSizeDTO> selectBuyProductSizeList(ProductDetailDTO productDetailDTO);
+	
+	//구매입찰에 등록된 데이터 조회
+	ProductSizeDTO selectBuyProductSize(Map<String, Object> productInfoMap);
 
-	List<ProductSizeDTO> selectSellProductSizeList(ProductDetailDTO productDetailDTO);
-
-	ProductSizeDTO selectSellProductSize(Map<String, Object> productInfoMap);
+	Long updateBuyOrder(Map<String, Object> saleInfoMap);
 
 }
 

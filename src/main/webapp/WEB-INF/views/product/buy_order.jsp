@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>KREAM | 한정판 거래의 FLEX</title>
+<title>theharmm | 한정판 거래의 FLEX</title>
 <meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
 <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
 <meta data-n-head="ssr" charset="utf-8">
@@ -120,9 +120,9 @@ function requestPay() {
     IMP.request_pay({
       pg: "kcp.T0000",
       pay_method: "card",
-      merchant_uid: "ORD20180131-0000024",   // 주문번호
+      merchant_uid: "ORD20180131-0000035",   // 주문번호
       name: "${productDetailDTO.pname_k}",
-      amount: ${totalPrice},                         // 숫자 타입
+      amount: "${totalPrice}",                         // 숫자 타입
       buyer_email: "gildong@gmail.com",
       buyer_name: "홍길동",
       buyer_tel: "010-4242-4242",
@@ -132,21 +132,21 @@ function requestPay() {
       if (rsp.success) {
     	  console.log(rsp);
         // 결제 성공 시 로직
-        jQuery.ajax({
+       jQuery.ajax({
         url: "/buy/order", 
         method: 'post',
         beforeSend : function(xhr){
             xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
     	}, 
-        /* headers: { "Content-Type": "application/json" }, */
         data: {
           imp_uid: rsp.imp_uid,            // 결제 고유번호
           merchant_uid: rsp.merchant_uid,   // 주문번호
           buyer_email: rsp.buyer_email,
-          pid: ${productDetailDTO.pid},
-          totalPrice: ${totalPrice},
-          model_size: ${productSizeDTO.model_size},
-          saleid: ${productSizeDTO.saleid}
+          pid: "${productDetailDTO.pid}",
+          totalPrice: "${totalPrice}",
+          model_size: "${productSaleSizeDTO.model_size}",
+          saleid: "${productSaleSizeDTO.saleid}",
+          type: "${type}"
         
         }
       }).done(function (data) {
@@ -197,7 +197,7 @@ function requestPay() {
 										<p data-v-2b95d831="" class="model_title"> ${productDetailDTO.pname_e}</p>
 										<p data-v-2b95d831="" class="model_ko"> ${productDetailDTO.pname_k}</p>
 										<div data-v-2b95d831="" class="model_desc">
-											<p data-v-2b95d831="" class="size_txt">${productSizeDTO.model_size}</p>
+											<p data-v-2b95d831="" class="size_txt">${productSaleSizeDTO.model_size}</p>
 											<!---->
 										</div>
 									</div>
@@ -207,8 +207,7 @@ function requestPay() {
 								<div data-v-e7203b1c="" class="section_unit">
 									<div data-v-e7203b1c="" class="section_title">
 										<h3 data-v-e7203b1c="" class="title_txt">배송 주소</h3>
-										<a data-v-e7203b1c="" href="#" class="add_more_btn">+ 새 주소
-											추가</a>
+										
 									</div>
 									<div data-v-e7203b1c="" class="section_content">
 										<div data-v-e7203b1c="" class="delivery_info">
@@ -230,8 +229,7 @@ function requestPay() {
 													</div>
 												</dl>
 											</div>
-											<a data-v-575aff82="" data-v-e7203b1c="" href="#"
-												class="btn btn_edit outlinegrey small"> 변경 </a>
+											
 										</div>
 										
 									</div>
@@ -347,165 +345,7 @@ function requestPay() {
 									</div>
 								</div>
 							</section>
-							<section data-v-7282eac8="" data-v-b8efdcc8="">
-								<div data-v-7282eac8="" class="section_title">
-									<h3 data-v-7282eac8="" class="title_txt">결제 방법</h3>
-								</div>
-								<div data-v-7282eac8="" class="section_content">
-									<div data-v-7282eac8="" class="simple_payment">
-										<h4 data-v-7282eac8="" class="method_title">
-											<div data-v-7282eac8="" class="main_title">
-												계좌 간편결제 <span data-v-7282eac8="" class="section_tag"
-													style="color: rgb(124, 114, 238); background: rgb(241, 240, 255);">
-													결제 시 포인트 적립 </span>
-											</div>
-											<!---->
-										</h4>
-										<div data-v-6767496a="" data-v-7282eac8=""
-											class="quick_pay_info">
-											<div data-v-6767496a="" class="payment_detail">
-												<div data-v-6767496a=""
-													class="payment_item request selected">
-													<div data-v-6767496a="" class="info_wrap">
-														<a data-v-6767496a="" href="#" class="regist_link">계좌를
-															등록해주세요.</a>
-													</div>
-													<div data-v-6767496a="" class="description">
-														<span data-v-6767496a="">첫 등록 시 <span
-															class="bold  " style="color: #7C72EE;">3,000P</span></span>
-														<svg data-v-6767496a="" xmlns="http://www.w3.org/2000/svg"
-															class="ico-arr-down icon sprite-icons">
-															<use data-v-6767496a=""
-																href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-down"
-																xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-down"></use></svg>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div data-v-7282eac8="" class="simple_payment">
-										<h4 data-v-7282eac8="" class="method_title">
-											<div data-v-7282eac8="" class="main_title">
-												카드 간편결제 <span data-v-7282eac8="" class="sub_title">일시불</span>
-											</div>
-											<!---->
-										</h4>
-										<div data-v-647680cc="" data-v-7282eac8="" class="card_list">
-											<div data-v-647680cc="" class="main_card">
-												<a data-v-647680cc="" href="#" class="regist_link"><span
-													data-v-647680cc="" class="regist_text">카드를 등록해주세요</span>
-												<svg data-v-647680cc="" xmlns="http://www.w3.org/2000/svg"
-														class="ico-arr-down icon sprite-icons">
-														<use data-v-647680cc=""
-															href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-down"
-															xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-down"></use></svg></a>
-											</div>
-											<div data-v-647680cc="" class="other_card"
-												style="display: none;">
-												<ul data-v-647680cc="" class="other_card_list"></ul>
-											</div>
-										</div>
-									</div>
-									<div data-v-7282eac8="" class="general_payment">
-										<h4 data-v-7282eac8="" class="method_title">
-											<div data-v-7282eac8="" class="main_title">
-												<strong data-v-7282eac8="">일반 결제</strong><span
-													data-v-7282eac8="" class="sub_title">일시불・할부</span>
-											</div>
-										</h4>
-										<div data-v-5645ee12="" data-v-7282eac8=""
-											class="pay_method lg">
-											<div data-v-5645ee12="" class="pay_item normal">
-												<div data-v-5645ee12="" class="pay_box">
-													<div data-v-5645ee12="" class="pay_title">
-														<p data-v-5645ee12="" class="main_title">신용카드</p>
-														<!---->
-													</div>
-													<!---->
-												</div>
-											</div>
-											<div data-v-5645ee12="" class="pay_item naverpay">
-												<div data-v-5645ee12="" class="pay_box">
-													<div data-v-5645ee12="" class="pay_title">
-														<p data-v-5645ee12="" class="main_title">네이버페이</p>
-														<!---->
-													</div>
-													<img data-v-5645ee12=""
-														src="/_nuxt/img/buy_pay_npay.fabd18a.png" alt="네이버페이"
-														class="pay_img">
-												</div>
-											</div>
-											<div data-v-5645ee12="" class="pay_item kakaopay">
-												<div data-v-5645ee12="" class="pay_box">
-													<div data-v-5645ee12="" class="pay_title">
-														<p data-v-5645ee12="" class="main_title">카카오페이</p>
-														<!---->
-													</div>
-													<img data-v-5645ee12=""
-														src="/_nuxt/img/buy_pay_kakaopay.7cd2486.png" alt="카카오페이"
-														class="pay_img">
-												</div>
-											</div>
-											<div data-v-5645ee12="" class="pay_item tosspay">
-												<div data-v-5645ee12="" class="pay_box">
-													<div data-v-5645ee12="" class="pay_title">
-														<p data-v-5645ee12="" class="main_title">토스페이</p>
-														<!---->
-													</div>
-													<img data-v-5645ee12=""
-														src="/_nuxt/img/buy_pay_tosspay.c48e1e2.png" alt="토스페이"
-														class="pay_img">
-												</div>
-											</div>
-											<div data-v-5645ee12="" class="pay_item payco">
-												<div data-v-5645ee12="" class="pay_box">
-													<div data-v-5645ee12="" class="pay_title">
-														<p data-v-5645ee12="" class="main_title">페이코</p>
-														<!---->
-													</div>
-													<img data-v-5645ee12=""
-														src="/_nuxt/img/buy_pay_payco.f9fb4de.png" alt="페이코"
-														class="pay_img">
-												</div>
-											</div>
-										</div>
-										<div data-v-0c1999de="" data-v-7282eac8="" class="pay_benefit">
-											<ul data-v-0c1999de="" class="benefit_list">
-												<li data-v-0c1999de="" class="benefit_item"><p
-														data-v-0c1999de="" class="benefit_title">계좌간편결제</p>
-													<p data-v-0c1999de="" class="benefit_desc">
-														<span data-v-0c1999de="" class="blind">계좌간편결제</span>무한 적립
-														&amp; 첫 계좌 등록 시 추가 포인트
-													</p>
-													<a data-v-0c1999de=""
-													href="https://kream.co.kr/promotions/648" target="_blank"
-													class="btn_more">더보기</a></li>
-												<li data-v-0c1999de="" class="benefit_item"><p
-														data-v-0c1999de="" class="benefit_title">페이코</p>
-													<p data-v-0c1999de="" class="benefit_desc">
-														<span data-v-0c1999de="" class="blind">페이코</span>포인트 5% 적립
-														&amp; 1천원 할인쿠폰
-													</p>
-													<a data-v-0c1999de=""
-													href="https://kream.co.kr/promotions/701" target="_blank"
-													class="btn_more">더보기</a></li>
-												<li data-v-0c1999de="" class="benefit_item"><p
-														data-v-0c1999de="" class="benefit_title">토스</p>
-													<p data-v-0c1999de="" class="benefit_desc">
-														<span data-v-0c1999de="" class="blind">토스</span>첫 결제 3천원
-														캐시백 &amp; 후불결제
-													</p>
-													<a data-v-0c1999de=""
-													href="https://kream.co.kr/promotions/700" target="_blank"
-													class="btn_more">더보기</a></li>
-											</ul>
-										</div>
-									</div>
-									<!---->
-								</div>
-								<!---->
-								<!---->
-							</section>
+							
 							<section data-v-b8efdcc8="" class="buy_check">
 								
 								<div data-v-14995178="" data-v-b8efdcc8=""
@@ -522,12 +362,13 @@ function requestPay() {
 											style="display: none;"><em data-v-679d7250="">주의!
 										</em></span>
 									</div>
-									 <button onclick="requestPay()">결제하기</button> 
+									 
 									
 								</div>
 							
 								
 							</section>
+							<button onclick="requestPay()">결제하기</button> 
 							<!---->
 							<div data-v-1a009402="" data-v-4ae17423="" data-v-b8efdcc8=""
 								class="layer_order_price_confirm layer lg"

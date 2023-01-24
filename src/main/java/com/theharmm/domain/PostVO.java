@@ -18,6 +18,73 @@ public class PostVO {
 	/* 파일 이름 */
 	private String file_name;
 	
+	/* 내용 */
+	private String contents;
+	
+	/* pid */
+	private int pid0;
+	
+	/* pid */
+	private int pid1;
+	
+	/* pid */
+	private int pid2;
+	
+	/* percent 긍부정 결과 퍼센트 */
+	private double percent;
+	
+	/* percent 긍부정 결과 po or ne */
+	private String result;
+	
+	public int getPid1() {
+		return pid1;
+	}
+
+	public void setPid1(int pid1) {
+		this.pid1 = pid1;
+	}
+
+	public int getPid2() {
+		return pid2;
+	}
+
+	public void setPid2(int pid2) {
+		this.pid2 = pid2;
+	}
+
+	public double getPercent() {
+		return percent;
+	}
+
+	public void setPercent(double percent) {
+		this.percent = percent;
+	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
+	public int getPid0() {
+		return pid0;
+	}
+
+	public void setPid0(int pid0) {
+		this.pid0 = pid0;
+	}
+	
+	
+	public String getContents() {
+		return contents;
+	}
+	
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+	
 	public String getMember_email() {
 		return member_email;
 	}

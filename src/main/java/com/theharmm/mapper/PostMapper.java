@@ -19,5 +19,8 @@ public interface PostMapper {
 	
 	/* 포스트 총 개수 */
 	public int postGetTotal(PostCriteria postcri);
+	
+	/* 사용자별 포스트 가져오기 */
+	public PostVO postGetOne(int post_id);
 
 }

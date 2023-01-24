@@ -98,7 +98,19 @@
 <meta data-n-head="ssr" data-hid="og:image" name="og:image"
 	property="og:image"
 	content="https://kream.co.kr/images/index_og_kream.png">
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
+<script>
+
+var IMP = window.IMP; 
+
+  
+</script>
 </head>
+
 <body style="">
 	<div id="__nuxt">
 		<!---->
@@ -108,6 +120,7 @@
 					<!---->
 					<%@ include file="/WEB-INF/views/common/header.jsp"%>
 				</div>
+			
 				<!---->
 				<div data-v-b36cb8c4="" data-v-0590ccc1=""
 					class="container sell lg step-2">
@@ -138,7 +151,7 @@
 										<p data-v-2b95d831="" class="model_title">${productDetailDTO.pname_e}</p>
 										<p data-v-2b95d831="" class="model_ko">${productDetailDTO.pname_e}</p>
 										<div data-v-2b95d831="" class="model_desc">
-											<p data-v-2b95d831="" class="size_txt">${productSizeDTO.model_size}</p>
+											<p data-v-2b95d831="" class="size_txt">${productBuySizeDTO.model_size}</p>
 											<!---->
 										</div>
 									</div>
@@ -224,7 +237,7 @@
 											<dl data-v-679d7250="" class="price_box">
 												<dt data-v-679d7250="" class="price_title">정산금액</dt>
 												<dd data-v-679d7250="" class="price">
-													<span data-v-679d7250="" class="amount">195,000</span><span
+													<span data-v-679d7250="" class="amount"> ${totalPrice}</span><span
 														data-v-679d7250="" class="unit">원</span>
 												</dd>
 											</dl>
@@ -239,7 +252,7 @@
 													<span data-v-3a2a7b6b="">판매 희망가</span>
 													<!---->
 												</dt>
-												<dd data-v-3a2a7b6b="" class="price_text">200,000원</dd>
+												<dd data-v-3a2a7b6b="" class="price_text"> ${price }</dd>
 											</dl>
 											<dl data-v-3a2a7b6b="" data-v-887ad490=""
 												class="price_addition">
@@ -261,7 +274,7 @@
 																xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-info-circle-white"></use></svg>
 													</button>
 												</dt>
-												<dd data-v-3a2a7b6b="" class="price_text">-5,000원</dd>
+												<dd data-v-3a2a7b6b="" class="price_text">-${fee}원</dd>
 											</dl>
 											<dl data-v-3a2a7b6b="" data-v-887ad490=""
 												class="price_addition">
@@ -279,12 +292,22 @@
 													<span data-v-3a2a7b6b="">입찰 마감 기한</span>
 													<!---->
 												</dt>
-												<dd data-v-3a2a7b6b="" class="price_text">30일 -
-													2023/02/16까지</dd>
+												
+												<dd data-v-3a2a7b6b="" class="price_text">${dDay}일 -
+													<fmt:formatDate var="today" value="${ now }" pattern="yyyy-mm-dd"/>까지</dd>
 											</dl>
 										</div>
 									</div>
 								</div>
+								<div data-v-14995178="" data-v-4c67e088=""
+									class="buy_total_confirm">
+								
+									<div data-v-14995178="" class="btn_confirm">
+										<a data-v-575aff82="" data-v-14995178="" disabled="disabled" 
+											href="#" onclick="requestPay()" class="btn full solid false disabled"> 판매 입찰하기 </a>
+									</div>
+								</div>
+									 <button onclick="requestPay()">결제하기</button> 
 							</section>
 							
 							
@@ -314,146 +337,7 @@
 					<!---->
 					<!---->
 				</div>
-				<div data-v-0590ccc1="">
-					<div data-v-a1b21a74="" data-v-0590ccc1="" class="footer lg">
-						<div data-v-a1b21a74="" class="inner">
-							<div data-v-a1b21a74="" class="service_area">
-								<div data-v-a1b21a74="" class="customer_service">
-									<strong data-v-a1b21a74="" class="service_title">고객센터<a
-										data-v-a1b21a74="" href="tel:1588-7813" class="sevice_tel">1588-7813</a></strong>
-									<div data-v-a1b21a74="" class="service_time">
-										<dl data-v-a1b21a74="" class="time_box">
-											<dt data-v-a1b21a74="" class="time_term">운영시간 평일 11:00 -
-												18:00 (토∙일, 공휴일 휴무) 점심시간 평일 13:00 - 14:00</dt>
-										</dl>
-									</div>
-									<p data-v-a1b21a74="" class="service_noti">1:1 문의하기는 앱에서만
-										가능합니다.</p>
-									<div data-v-a1b21a74="" class="service_btn_box">
-										<a data-v-575aff82="" data-v-a1b21a74="" href="#"
-											class="btn solid small"> 자주 묻는 질문 </a>
-									</div>
-								</div>
-								<div data-v-a1b21a74="" class="footer_menu">
-									<div data-v-a1b21a74="" class="menu_box">
-										<strong data-v-a1b21a74="" class="menu_title">이용안내</strong>
-										<ul data-v-a1b21a74="" class="menu_list">
-											<li data-v-a1b21a74="" class="menu_item"><a
-												data-v-a1b21a74="" href="#" class="menu_link"> 검수기준 </a></li>
-											<li data-v-a1b21a74="" class="menu_item"><a
-												data-v-a1b21a74="" href="#" class="menu_link"> 이용정책 </a></li>
-											<li data-v-a1b21a74="" class="menu_item"><a
-												data-v-a1b21a74="" href="#" class="menu_link"> 페널티 정책 </a></li>
-											<li data-v-a1b21a74="" class="menu_item"><a
-												data-v-a1b21a74="" href="#" class="menu_link"> 커뮤니티
-													가이드라인 </a></li>
-										</ul>
-									</div>
-									<div data-v-a1b21a74="" class="menu_box">
-										<strong data-v-a1b21a74="" class="menu_title">고객지원</strong>
-										<ul data-v-a1b21a74="" class="menu_list">
-											<li data-v-a1b21a74="" class="menu_item"><a
-												data-v-a1b21a74="" href="/notice" class="menu_link">공지사항</a></li>
-											<li data-v-a1b21a74="" class="menu_item"><a
-												data-v-a1b21a74="" href="/about" target="_blank"
-												class="menu_link">서비스 소개</a></li>
-											<li data-v-a1b21a74="" class="menu_item"><a
-												data-v-a1b21a74="" href="/showroom" class="menu_link"
-												target="_blank"> 쇼룸 안내 </a></li>
-											<li data-v-a1b21a74="" class="menu_item"><a
-												data-v-a1b21a74="" href="/about/seller_reception"
-												target="_blank" class="menu_link">판매자 방문접수</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div data-v-a1b21a74="" class="corporation_area">
-								<ul data-v-a1b21a74="" class="term_list">
-									<li data-v-a1b21a74="" class="term_item"><a
-										data-v-a1b21a74="" href="https://www.kreamcorp.com/"
-										target="_blank" rel="noopener noreferrer" class="term_link">
-											회사소개 </a></li>
-									<li data-v-a1b21a74="" class="term_item"><a
-										data-v-a1b21a74="" href="https://recruit.kreamcorp.com/"
-										target="_blank" rel="noopener noreferrer" class="term_link">
-											인재채용 </a></li>
-									<li data-v-a1b21a74="" class="term_item"><a
-										data-v-a1b21a74=""
-										href="https://www.kreamcorp.com/view/contact.html"
-										target="_blank" rel="noopener noreferrer" class="term_link">
-											제휴제안 </a></li>
-									<li data-v-a1b21a74="" class="term_item"><a
-										data-v-a1b21a74="" href="#" class="term_link"> 이용약관 </a></li>
-									<li data-v-a1b21a74="" class="term_item privacy"><a
-										data-v-a1b21a74="" href="#" class="term_link"> 개인정보처리방침 </a></li>
-								</ul>
-								<div data-v-a1b21a74="" class="footer_sns">
-									<div data-v-a1b21a74="" class="sns_box">
-										<a data-v-a1b21a74="" href="#" aria-label="인스타그램" class="sns"><svg
-												data-v-a1b21a74="" xmlns="http://www.w3.org/2000/svg"
-												class="ico-instagram icon sprite-icons">
-												<use data-v-a1b21a74=""
-													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-instagram"
-													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-instagram"></use></svg></a><a
-											data-v-a1b21a74="" href="#" aria-label="페이스북" class="sns"><svg
-												data-v-a1b21a74="" xmlns="http://www.w3.org/2000/svg"
-												class="ico-facebook icon sprite-icons">
-												<use data-v-a1b21a74=""
-													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-facebook"
-													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-facebook"></use></svg></a><a
-											data-v-a1b21a74="" href="#" aria-label="카카오톡" class="sns"><svg
-												data-v-a1b21a74="" xmlns="http://www.w3.org/2000/svg"
-												class="ico-talk icon sprite-icons">
-												<use data-v-a1b21a74=""
-													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-talk"
-													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-talk"></use></svg></a>
-									</div>
-									<button data-v-a1b21a74="" class="btn_business">
-										사업자정보
-										<svg data-v-a1b21a74="" xmlns="http://www.w3.org/2000/svg"
-											class="arr-down icon sprite-icons">
-											<use data-v-a1b21a74=""
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-arr-down"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-arr-down"></use></svg>
-									</button>
-								</div>
-								<div data-v-a1b21a74="" class="business_info">
-									<div data-v-a1b21a74="" class="info_list">
-										<dl data-v-a1b21a74="" class="info_item">
-											<dt data-v-a1b21a74="" class="business_title">
-												크림 주식회사 · 대표 김창욱<span class="blank"></span>사업자등록번호 :
-												570-88-01618 <a
-													href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=5708801618">사업자정보확인</a><span
-													class="blank"></span>통신판매업 : 제 2021-성남분당C-0093호<span
-													class="blank"></span>사업장소재지 : 경기도 성남시 분당구 분당내곡로 131 판교테크원
-												타워1, 8층<span class="blank"></span>호스팅 서비스 : 네이버 클라우드 ㈜
-											</dt>
-										</dl>
-									</div>
-								</div>
-							</div>
-							<div data-v-a1b21a74="" class="notice_guarantee">
-								<p data-v-a1b21a74="" class="title">신한은행 채무지급보증 안내</p>
-								<p data-v-a1b21a74="" class="description">
-									당사는 고객님의 현금 결제 금액에 대해 신한은행과 채무지급보증 계약을 체결하여 안전거래를 보장하고 있습니다.<a
-										data-v-a1b21a74="" href="#" class="link_guarantee">서비스가입
-										사실 확인</a>
-								</p>
-							</div>
-							<div data-v-a1b21a74="" class="notice_area">
-								<p data-v-a1b21a74="" class="notice">크림(주)는 통신판매 중개자로서 통신판매의
-									당사자가 아니므로 개별 판매자가 등록한 상품정보에 대해서 책임을 지지 않습니다. 단, 거래과정에서 검수하고
-									보증하는 내용에 대한 책임은 당사에 있습니다.</p>
-								<p data-v-a1b21a74="" class="copyright">© KREAM Corp.</p>
-							</div>
-						</div>
-						<!---->
-						<!---->
-						<!---->
-						<!---->
-						<!---->
-					</div>
-				</div>
+				<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 				<!---->
 				<div data-v-0590ccc1="">
 					<!---->

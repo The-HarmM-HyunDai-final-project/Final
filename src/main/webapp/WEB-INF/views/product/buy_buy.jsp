@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -98,15 +99,14 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/buytab.js" defer=""></script>
 <script src="${pageContext.request.contextPath}/resources/js/buy_btn_tab.js" defer=""></script>
-<script src="${pageContext.request.contextPath}/resources/js/price_check.js" defer=""></script>
+<!--  <script src="${pageContext.request.contextPath}/resources/js/price_check.js" defer=""></script>-->
 
 </head>
 <body>
 	<div id="__nuxt">
 		<!---->
 		<div id="__layout">
-			<div data-v-34b11929="" tabindex="0" class="wrap lg win_os">
-				<%@ include file="/WEB-INF/views/common/header.jsp"%>
+			
 				<!---->
 				<div data-v-63d14162="" data-v-34b11929=""
 					class="container buy lg step-1">
@@ -135,7 +135,7 @@
 										<p data-v-2b95d831="" class="model_title">${productDetailDTO.pname_e}</p>
 										<p data-v-2b95d831="" class="model_ko"> ${productDetailDTO.pname_k}</p>
 										<div data-v-2b95d831="" class="model_desc">
-											<p data-v-2b95d831="" class="size_txt">${productSizeDTO.model_size}</p>
+											<p data-v-2b95d831="" class="size_txt">${productSaleSizeDTO.model_size}</p>
 											<!---->
 										</div>
 									</div>
@@ -147,46 +147,62 @@
 									<li data-v-638c1354="" class="list_item"><p
 											data-v-638c1354="" class="title">즉시 구매가</p>
 										
-										<c:if test="${productSizeDTO.price eq 0}">
+										<c:if test="${productSaleSizeDTO.price eq 0}">
 										<span data-v-638c1354="" class="price"> 
 											-
 											</span>
 										</c:if>
-										<c:if test="${productSizeDTO.price ne 0}">
+										<c:if test="${productSaleSizeDTO.price ne 0}">
 										<span data-v-638c1354="" class="price"> 
-											<fmt:formatNumber type="number" maxFractionDigits="3" value="${productSizeDTO.price}" />
+											<fmt:formatNumber type="number" maxFractionDigits="3" value="${productSaleSizeDTO.price}" />
 	    												</span><span
 										data-v-638c1354="" class="unit">원</span>
 										</c:if></li>
 									<li data-v-638c1354="" class="list_item"><p
 											data-v-638c1354="" class="title">즉시 판매가</p>
-										<span data-v-638c1354="" class="price">520,000</span><span
-										data-v-638c1354="" class="unit">원</span></li>
+										<c:if test="${productBuySizeDTO.price eq 0}">
+										<span data-v-638c1354="" class="price"> 
+											-
+											</span>
+										</c:if>
+										<c:if test="${productBuySizeDTO.price ne 0}">
+										<span data-v-638c1354="" class="price"> 
+											<fmt:formatNumber type="number" maxFractionDigits="3" value="${productBuySizeDTO.price}" />
+	    												</span><span
+										data-v-638c1354="" class="unit">원</span>
+										</c:if></li>
 								</ul>
 								<div data-v-158ed304="" class="instant_group">
 									<div data-v-b6b2883e="" data-v-158ed304=""
 										class="tab_area buy_tab">
 										<ul data-v-b6b2883e="" role="tablist" class="tab_list">
-											<li data-v-b6b2883e="" role="tab" aria-selected="true"
+											<li id = "buyBid" data-v-b6b2883e="" role="tab" aria-selected="true"
 												aria-controls="panel1" class="item on"><a
 												data-v-b6b2883e="" href="#" class="item_link">구매 입찰</a></li>
-											<li data-v-b6b2883e="" role="tab" aria-selected="false"
-												aria-controls="panel2" class="item <c:if test='${productSizeDTO.price eq 0}'>disabled </c:if>"><a
+											<li id = "buyNow" data-v-b6b2883e="" role="tab" aria-selected="false"
+												aria-controls="panel2" class="item <c:if test='${productSaleSizeDTO.price eq 0}'>disabled </c:if>"><a
 												data-v-b6b2883e="" href="#" class="item_link">즉시 구매</a></li>
 										</ul>
 										<!---->
 										<!---->
 									</div>
+									
+								<!-- 구매입찰을 누르면 구매입찰에 관련 내용이 나옴  -->	
+								<div id = "test">
+								<form id="bidBuyAction" method="get" action="/buy/order/${productDetailDTO.pid}">	
+									<input type="hidden" name="size" value="${productBuySizeDTO.model_size}"/>
+									<input type="hidden" name="type" value="구매입찰"/>
+									<input type="hidden" id="dDay" name="dDay" value = "1"/>
 									<div data-v-15aa5096="" data-v-158ed304=""
 										class="price_now active_input">
 										<dl data-v-15aa5096="" class="price_now_box">
 											<dt data-v-15aa5096="" class="price_now_title">구매 희망가</dt>
 											<dd data-v-15aa5096="" class="price">
-												<input data-v-15aa5096="" type="text"
+												<input data-v-15aa5096="" type="text" id="bidBuyPrice" name="price"
 													pattern="([0-9]+.{0,1}[0-9]*,{0,1})*[0-9]"
 													required="required" placeholder="희망가 입력" autocomplete="off"
 													class="input_amount">
-												<span data-v-15aa5096="" class="amount"><fmt:formatNumber type="number" maxFractionDigits="3" value="${productSizeDTO.price}" /></span><span data-v-15aa5096=""
+												<span data-v-15aa5096="" class="amount"></span><span data-v-15aa5096=""
 													class="unit">원</span>
 											</dd>
 										</dl>
@@ -197,37 +213,82 @@
 									</div>
 									
 
-									<div data-v-158ed304="" class="price_bind">
+									<div data-v-158ed304="" class="price_bind" style="margin-bottom : 20px">
 										<p data-v-158ed304="" class="price_bind_empty">총 결제금액은 다음
 											화면에서 계산됩니다.</p>
 									</div>
-								</div>
-							</div>
-							<!-- 구매입찰을 누르면 생겨남 -->
-							<div data-v-6bc9d8c2="" data-v-e0394b7a=""
-								class="deadline_info_area">
-								<div data-v-6bc9d8c2="" class="section_title">
-									<h3 data-v-6bc9d8c2="" class="title_txt">입찰 마감기한</h3>
-								</div>
-								<div data-v-6bc9d8c2="" class="section_content">
-									<div data-v-6bc9d8c2="" class="bid_deadline">
-										
-										<div data-v-6bc9d8c2="" class="deadline_tab">
-											<a data-v-575aff82="" data-v-6bc9d8c2="" href="#"
-												class="btn outlinegrey medium"> 1일 </a><a data-v-575aff82=""
-												data-v-6bc9d8c2="" href="#" class="btn outlinegrey medium">
-												3일 </a><a data-v-575aff82="" data-v-6bc9d8c2="" href="#"
-												class="btn outlinegrey medium"> 7일 </a><a data-v-575aff82=""
-												data-v-6bc9d8c2="" href="#"
-												class="btn outlinegrey medium is_active"> 30일 </a><a
-												data-v-575aff82="" data-v-6bc9d8c2="" href="#"
-												class="btn outlinegrey medium"> 60일 </a>
+									
+								
+									  <div data-v-6bc9d8c2="" data-v-e0394b7a=""
+										class="deadline_info_area">
+										<div data-v-6bc9d8c2="" class="section_title">
+											<h3 data-v-6bc9d8c2="" class="title_txt">입찰 마감기한</h3>
+										</div>
+										<div data-v-6bc9d8c2="" class="section_content">
+											<div data-v-6bc9d8c2="" class="bid_deadline">
+												
+												<div data-v-6bc9d8c2="" class="deadline_tab">
+													<a data-v-575aff82="" data-v-6bc9d8c2="" href="#" onclick="agree_click(this);"
+														class="btn outlinegrey medium"> 1일 </a>
+													<a data-v-575aff82=""
+														data-v-6bc9d8c2="" href="#" onclick="agree_click(this);" 
+														class="btn outlinegrey medium"> 3일 </a>
+													<a data-v-575aff82="" data-v-6bc9d8c2="" href="#" onclick="agree_click(this);"
+														class="btn outlinegrey medium"> 7일 </a>
+													<a data-v-575aff82="" data-v-6bc9d8c2="" href="#" onclick="agree_click(this);"
+														class="btn outlinegrey medium is_active"> 30일 </a>
+													<a data-v-575aff82="" data-v-6bc9d8c2="" href="#" onclick="agree_click(this);"
+														class="btn outlinegrey medium"> 60일 </a>
+												</div>
+											</div>
 										</div>
 									</div>
-								</div>
+									<div data-v-14995178="" data-v-e0394b7a=""
+										class="buy_total_confirm">
+										<div data-v-679d7250="" data-v-14995178="" class="price_total">
+											<dl data-v-679d7250="" class="price_box price_empty">
+												<dt data-v-679d7250="" class="price_title">총 결제금액</dt>
+												<dd data-v-679d7250="" class="price_empty_desc">다음 화면에서
+													확인</dd>
+											</dl>
+											<span data-v-679d7250="" class="price_warning"
+												style="display: none;"><em data-v-679d7250="">주의!
+											</em></span>
+										</div>
+									
+										<div data-v-14995178="" class="btn_confirm">
+											<a data-v-575aff82="" data-v-14995178="" href="#" id="bidBuyActionClick"
+												class="btn full solid false">
+												구매 입찰 계속 </a> 
+											
+										</div>
+											
+									</div>
+									 </form>
 							</div>
-							<div data-v-14995178="" data-v-e0394b7a=""
-								class="buy_total_confirm">
+							
+							<!--즉시 구매 탭 누르면 관련 내용이 나옴  -->
+							 <div id = "buytest" style="display: none;">
+										<div data-v-15aa5096="" data-v-158ed304="" class="price_now">
+											<dl data-v-15aa5096="" class="price_now_box">
+												<dt data-v-15aa5096="" class="price_now_title">즉시 구매가</dt>
+												<dd data-v-15aa5096="" class="price">
+													<span data-v-15aa5096="" class="amount" id="nowBuyPrice"><fmt:formatNumber type="number" maxFractionDigits="3" value="${productSaleSizeDTO.price}" /></span><span
+														data-v-15aa5096="" class="unit">원</span>
+												</dd>
+											</dl>
+											<div data-v-15aa5096="" class="price_warning"
+												style="display: none;">
+												<!---->
+											</div>
+										</div>
+										<div data-v-158ed304="" class="price_bind" style="margin-bottom : 20px">
+											<p data-v-158ed304="" class="price_bind_empty">총 결제금액은 다음
+												화면에서 계산됩니다.</p>
+										</div>
+
+							  <div data-v-14995178="" data-v-e0394b7a=""
+								class="buy_total_confirm" is-instant="true">
 								<div data-v-679d7250="" data-v-14995178="" class="price_total">
 									<dl data-v-679d7250="" class="price_box price_empty">
 										<dt data-v-679d7250="" class="price_title">총 결제금액</dt>
@@ -238,13 +299,28 @@
 										style="display: none;"><em data-v-679d7250="">주의!
 									</em></span>
 								</div>
-								<div data-v-14995178="" class="btn_confirm">
-									<a data-v-575aff82="" data-v-14995178="" href="#"
-										class="btn full solid false disabled" disabled="disabled">
-										구매 입찰 계속 </a> 
-									
-								</div>
+								<form id ="orderBuyNowAction" method="get" action="/buy/order/${productDetailDTO.pid}">
+								        <input type="hidden" name="size" value="${productSaleSizeDTO.model_size}"/>
+									    <input type="hidden" name="type" value="즉시구매"/>
+							            <input type="hidden" name="price" value="${productSaleSizeDTO.price}"/>
+										<div data-v-14995178="" class="btn_confirm">
+											<a data-v-575aff82="" data-v-14995178="" href="#" onclick="document.getElementById('orderBuyNowAction').submit()"
+												class="btn full solid false"> 즉시 구매 계속 </a>
+										</div>
+								</form>
+								
+								
+								
 							</div>
+							</div>
+							
+							
+						</div>
+					   </div>
+                            
+                           
+							
+							
 						</div>
 						<!---->
 						<!---->
@@ -269,7 +345,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			
 		</div>
 	</div>
 	

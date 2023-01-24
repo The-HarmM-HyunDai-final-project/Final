@@ -29,34 +29,37 @@ public class ProductDetailServiceImpl implements ProductDetailService{
 
 
 	@Override
-	public List<ProductSizeDTO> selectProductSizeList(ProductDetailDTO productDetailDTO) {
-		return productDetailMapper.selectProductSizeList(productDetailDTO);
+	public List<ProductSizeDTO> selectSaleProductSizeList(ProductDetailDTO productDetailDTO) {
+		return productDetailMapper.selectSaleProductSizeList(productDetailDTO);
 	}
 
 
 	@Override
-	public ProductSizeDTO selectProductSize(Map<String, Object> productInfoMap) {
-		return productDetailMapper.selectProductSize(productInfoMap);
+	public ProductSizeDTO selectSaleProductSize(Map<String, Object> productInfoMap) {
+		return productDetailMapper.selectSaleProductSize(productInfoMap);
 	}
 
 	//판매관련 
 
+
+
+
 	@Override
-	public ProductDetailDTO selectSellProductDetail(int pid) {
-	    return productDetailMapper.selectSellProductDetail(pid);
+	public List<ProductSizeDTO> selectBuyProductSizeList(ProductDetailDTO productDetailDTO) {
+		
+		return productDetailMapper.selectBuyProductSizeList(productDetailDTO);
 	}
 
 
 	@Override
-	public List<ProductSizeDTO> selectSellProductSizeList(ProductDetailDTO productDetailDTO) {
+	public ProductSizeDTO selectBuyProductSize(Map<String, Object> productInfoMap) {
 		
-		return productDetailMapper.selectSellProductSizeList(productDetailDTO);
+		return productDetailMapper.selectBuyProductSize(productInfoMap);
 	}
 
 
 	@Override
-	public ProductSizeDTO selectSellProductSize(Map<String, Object> productInfoMap) {
-		
-		return productDetailMapper.selectSellProductSize(productInfoMap);
+	public Long updateBuyOrder(Map<String, Object> saleInfoMap) {
+		return productDetailMapper.updateBuyOrder(saleInfoMap);
 	}
 }

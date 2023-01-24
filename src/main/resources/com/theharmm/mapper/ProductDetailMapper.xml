@@ -16,8 +16,8 @@
 		  ]]>
 	</select>
 	
-	<!-- 구매 제품 사이즈 리스트 조회 -->
-	<select id="selectProductSizeList"
+	<!-- 구매를 위한 제품 사이즈별 최소 판매입찰 금액 리스트 조회 -->
+	<select id="selectSaleProductSizeList"
 		resultType="ProductSizeDTO"
 		parameterType="ProductDetailDTO">
 		 <![CDATA[
@@ -37,8 +37,8 @@
 		  ]]>
 	</select>
 	
-	<!-- 구매 하나의 제품 사이즈 조회 -->
-	<select id="selectProductSize"
+	<!-- 구매를 하기위한 하나의 제품 사이즈 판매입찰 데이터 조회 -->
+	<select id="selectSaleProductSize"
 		resultType="ProductSizeDTO"
 		parameterType="Map">
 		 <![CDATA[
@@ -59,8 +59,8 @@
 	</select>
 	
 	
-	<!-- 판매 제품 사이즈 리스트 조회 -->
-	<select id="selectSellProductSizeList"
+	<!-- 판매를 위한 제품 사이즈별 최대 구매입찰 금액 리스트 조회 -->
+	<select id="selectBuyProductSizeList"
 	    resultType="ProductSizeDTO"
 		parameterType="ProductDetailDTO">
 		<![CDATA[
@@ -81,8 +81,8 @@
 	</select>
 	
 	
-	<!-- 판매 하나의 제품 사이즈 조회 -->
-	<select id="selectSellProductSize"
+	<!-- 판매하기위한 하나의 제품 사이즈에 대한 구매입찰 조회 -->
+	<select id="selectBuyProductSize"
 		resultType="ProductSizeDTO"
 		parameterType="Map">
 		 <![CDATA[
@@ -102,8 +102,11 @@
 		  ]]>
 	</select>
 	
-	
-
-
+	<update id="updateBuyOrder"
+		parameterType="Map">
+	 <![CDATA[
+		UPDATE SALE SET STATUS1='진행완료', NOWDATE = SYSDATE WHERE SALEID = #{saleid}
+	 ]]>
+	</update>
 
 </mapper>
