@@ -36,9 +36,11 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
 		<security:intercept-url pattern="/member/my"
 			access="hasRole('ROLE_MEMBER')" />
-			
+
 		<security:intercept-url pattern="/chat/*"
 			access="hasRole('ROLE_MEMBER')" />
+
+		<security:intercept-url pattern="/admin/*" access="permitAll"/>
 
 		<!-- 로그인 할 일이 있다면 member/loginpage로 보내고 인증 확인을 customLoginSuccess 핸들러가 
 			받아서 처리 -->
@@ -46,13 +48,13 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 			login-page="/member/loginpage"
 			authentication-success-handler-ref="customLoginSuccess" />
 
-		<!-- 로그아웃하면 세션다 날리고 customLogoutSuccess로 처리해서 이전 uri로 돌아가게끔! -> 그냥 핸들러 안쓰고 홈uri로 변경 -->
+		<!-- 로그아웃하면 세션다 날리고 customLogoutSuccess로 처리해서 이전 uri로 돌아가게끔! -> 그냥 핸들러 
+			안쓰고 홈uri로 변경 -->
 		<security:logout logout-url="/member/myLogout"
-			invalidate-session="true"
-			delete-cookies="JSESSION_ID"
-			logout-success-url="/"
-			 />
-		<security:intercept-url pattern = "/social/user" access="permitAll"/>
+			invalidate-session="true" delete-cookies="JSESSION_ID"
+			logout-success-url="/" />
+		<security:intercept-url pattern="/social/user"
+			access="permitAll" />
 		<!-- 권한이 없다든가 하는 경우 에러페이지를 보내줘야할 때 아래로 내가만든 경로로 보낼 수 있음 -->
 		<!-- 일단은 따로 없으니 보류 -->
 		<security:access-denied-handler

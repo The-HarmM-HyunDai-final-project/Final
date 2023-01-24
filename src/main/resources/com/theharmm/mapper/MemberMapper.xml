@@ -63,4 +63,9 @@
 		on mem.member_email = auth.username
 		WHERE mem.member_email = #{member_email}
 	</select>
+	
+	<update id="updateLoign">
+		update member set member_login = sysdate where member_email=#{member_email}
+	
+	</update>
 </mapper>

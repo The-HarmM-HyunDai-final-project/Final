@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
@@ -18,11 +19,18 @@ import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 
+import com.theharmm.domain.MemberVO;
+import com.theharmm.mapper.AdminMapper;
+import com.theharmm.mapper.MemberMapper;
+
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
-
+	
+	@Autowired
+	private MemberMapper mapper;
+	
     private final RequestCache requestCache = new HttpSessionRequestCache();
     private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
     
@@ -31,7 +39,9 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 			throws IOException, ServletException {
 
 		log.warn("Login Success, Hello! "+ auth.getName());
-
+		MemberVO member = new MemberVO();
+		member.setMember_email(auth.getName());
+		mapper.updateLoign(member);
 		clearSession(request);
         SavedRequest savedRequest = requestCache.getRequest(request, response);
         

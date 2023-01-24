@@ -1,17 +1,11 @@
 package com.theharmm.controller;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.nio.file.Files;
 import java.util.List;
-import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,8 +23,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.theharmm.domain.MemberVO;
 import com.theharmm.domain.PostCriteria;
-import com.theharmm.domain.PostPageDTO;
 import com.theharmm.domain.PostVO;
 import com.theharmm.domain.SocialVO;
 import com.theharmm.service.AttachService;
@@ -46,9 +40,23 @@ public class PostController {
 	@Autowired
 	private AttachService attachService;
 	
+	/* 포스트 메인(포스트목록) 페이지 접속 */
+	@RequestMapping(value = "/social/trending", method = RequestMethod.GET)
+	public void postMainGET(PostCriteria postcri, Model model, HttpSession session) throws Exception{
+		
+		List list = postService.postGetList(postcri);
+		if(!list.isEmpty()) {
+			model.addAttribute("list", list);
+		} else {
+			model.addAttribute("listCheck", "empty");
+			return;
+		}
+	}
+	
 	/* 포스트 관리(포스트목록) 페이지 접속 */
 	@RequestMapping(value = "/social/user", method = RequestMethod.GET)
-	public void postManageGET(PostCriteria postcri, Model model) throws Exception{
+	public void postManageGET(PostCriteria postcri, Model model, HttpSession session) throws Exception{
+		MemberVO m = new MemberVO();
 		/* 포스트 리스트 데이터 */
 		List list = postService.postGetList(postcri);
 		if(!list.isEmpty()) {
@@ -58,8 +66,7 @@ public class PostController {
 			return;
 		}
 		/* 페이지 인터페이스 데이터 */
-		model.addAttribute("pageMaker", new PostPageDTO(postcri, postService.postGetTotal(postcri)));
-
+		//model.addAttribute("pageMaker", new PostPageDTO(postcri, postService.postGetTotal(postcri)));
 	}
 	
 	/* 이미지 출력 */
