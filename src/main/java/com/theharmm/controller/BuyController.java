@@ -225,7 +225,7 @@ public class BuyController {
 		return "product/buy_complete";
 	}
 	
-	//구매완료 
+	//구매입찰
 		@GetMapping("/bidComplete")
 		 public String buyBidProductComplete(@RequestParam int pid,
 				 @RequestParam int totalPrice, @RequestParam int price,
@@ -241,15 +241,7 @@ public class BuyController {
 			//상품정보 가져오기
 			ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 			
-			//판매입찰 데이터 등록(insert)
-			Map<String,Object> saleInfoMap = new HashMap<String,Object>();
-			saleInfoMap.put("pid",pid);
-			saleInfoMap.put("member_email",user.getMember_email());
-			saleInfoMap.put("price",price);
-			saleInfoMap.put("size_type",size);
-			saleInfoMap.put("dDay",dDay);
-			productDetailService.insertSaleOrder(saleInfoMap);
-			
+		
 			model.addAttribute("productDetailDTO", productDetailDTO);
 			model.addAttribute("price", price);
 			model.addAttribute("fee", fee);
