@@ -38,9 +38,6 @@ public class SellController {
 	@Autowired
 	MemberInfoService memberInfoService;
 	
-	
-	
-    
 	//판매 - 상품사이즈 리스트 띄우기
 		@GetMapping("/select/{pid}")
 		 public String selectSellProductSize(@PathVariable int pid,@RequestParam(required = false) String size, Model model) {
