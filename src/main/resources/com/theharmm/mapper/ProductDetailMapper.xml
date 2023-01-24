@@ -102,8 +102,11 @@
 		  ]]>
 	</select>
 	
-	
-
-
+	<update id="updateBuyOrder"
+		parameterType="Map">
+	 <![CDATA[
+		UPDATE SALE SET STATUS1='진행완료', NOWDATE = SYSDATE WHERE SALEID = #{saleid}
+	 ]]>
+	</update>
 
 </mapper>

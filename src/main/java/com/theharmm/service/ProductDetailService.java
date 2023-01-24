@@ -25,5 +25,7 @@ public interface ProductDetailService {
 	//구매입찰에 등록된 데이터 조회
 	ProductSizeDTO selectBuyProductSize(Map<String, Object> productInfoMap);
 
+	Long updateBuyOrder(Map<String, Object> saleInfoMap);
+
 }
 

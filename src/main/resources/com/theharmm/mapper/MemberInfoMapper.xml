@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.theharmm.mapper.MemberInfoMapper">
+	
+	<!-- 회원의 기본배송지 조회 -->
+	<select id="selectMemberMainAddress"
+		resultType="MemberAddressDTO"
+		parameterType="Map">
+		 <![CDATA[
+		 SELECT *
+		   FROM ADDRESS
+		  WHERE MEMBER_EMAIL = #{member_email}
+		    AND DEFAULT_ADDRESS = 'Y'
+		  ]]>
+	</select>
+	
+	<!-- 회원의 주거래계좌 조회 (임시)-->
+	<select id="selectMemberMainAccount"
+		resultType="AccountDTO"
+		parameterType="Map">
+		 <![CDATA[
+		 SELECT *
+		   FROM ACCOUNT
+		  WHERE MEMBER_EMAIL = #{member_email}
+		  ]]>
+	</select>
+	
+	
+	<update id="mergeAccount" parameterType="AccountDTO">
+
+        MERGE INTO ACCOUNT
+            USING DUAL ON
+            (
+                MEMBER_EMAIL = #{member_email}
+            )
+           WHEN MATCHED THEN 
+                UPDATE SET
+                        BANK = #{bank},
+                        BANK_NUMBER = #{bank_number},
+                        BANK_NAME =#{bank_name}
+            WHEN NOT MATCHED THEN
+                INSERT
+                (
+                   MEMBER_EMAIL,
+                   BANK,
+                   BANK_NUMBER,
+                   BANK_NAME
+                )
+                VALUES
+                (
+                    #{member_email},
+                    #{bank},
+                    #{bank_number},
+                    #{bank_name}
+                )
+	</update>
+	
+</mapper>

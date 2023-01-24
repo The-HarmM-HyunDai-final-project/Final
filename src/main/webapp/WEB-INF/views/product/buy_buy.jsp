@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -105,8 +106,7 @@
 	<div id="__nuxt">
 		<!---->
 		<div id="__layout">
-			<div data-v-34b11929="" tabindex="0" class="wrap lg win_os">
-				<%@ include file="/WEB-INF/views/common/header.jsp"%>
+			
 				<!---->
 				<div data-v-63d14162="" data-v-34b11929=""
 					class="container buy lg step-1">
@@ -188,14 +188,17 @@
 									</div>
 									
 								<!-- 구매입찰을 누르면 구매입찰에 관련 내용이 나옴  -->	
-								<div id = "test">	
+								<div id = "test">
+								<form id="bidBuyAction" method="get" action="/buy/order/${productDetailDTO.pid}">	
+									<input type="hidden" name="size" value="${productBuySizeDTO.model_size}"/>
+									<input type="hidden" name="type" value="구매입찰"/>
+									<input type="hidden" id="dDay" name="dDay" value = "1"/>
 									<div data-v-15aa5096="" data-v-158ed304=""
 										class="price_now active_input">
 										<dl data-v-15aa5096="" class="price_now_box">
 											<dt data-v-15aa5096="" class="price_now_title">구매 희망가</dt>
-											<form></form>
 											<dd data-v-15aa5096="" class="price">
-												<input data-v-15aa5096="" type="text"
+												<input data-v-15aa5096="" type="text" id="bidBuyPrice" name="price"
 													pattern="([0-9]+.{0,1}[0-9]*,{0,1})*[0-9]"
 													required="required" placeholder="희망가 입력" autocomplete="off"
 													class="input_amount">
@@ -252,18 +255,16 @@
 												style="display: none;"><em data-v-679d7250="">주의!
 											</em></span>
 										</div>
-									<form id ="orderBuyAction" method="get" action="buy/order/${productDetailDTO.pid}">
-									    <input type="hidden" name="size" value="${productSaleSizeDTO.model_size}"/>
-									    <input type="hidden" name="type" value="구매입찰"/>
-							            <input type="hidden" name="price" value="${productSaleSizeDTO.price}"/>
+									
 										<div data-v-14995178="" class="btn_confirm">
-											<a data-v-575aff82="" data-v-14995178="" href="document.getElementById('orderBuyAction').submit()"
+											<a data-v-575aff82="" data-v-14995178="" href="#" id="bidBuyActionClick"
 												class="btn full solid false">
 												구매 입찰 계속 </a> 
 											
 										</div>
-									 </form>		
+											
 									</div>
+									 </form>
 							</div>
 							
 							<!--즉시 구매 탭 누르면 관련 내용이 나옴  -->
@@ -272,7 +273,7 @@
 											<dl data-v-15aa5096="" class="price_now_box">
 												<dt data-v-15aa5096="" class="price_now_title">즉시 구매가</dt>
 												<dd data-v-15aa5096="" class="price">
-													<span data-v-15aa5096="" class="amount"><fmt:formatNumber type="number" maxFractionDigits="3" value="${productSizeDTO.price}" /></span><span
+													<span data-v-15aa5096="" class="amount" id="nowBuyPrice"><fmt:formatNumber type="number" maxFractionDigits="3" value="${productSaleSizeDTO.price}" /></span><span
 														data-v-15aa5096="" class="unit">원</span>
 												</dd>
 											</dl>
@@ -344,7 +345,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			
 		</div>
 	</div>
 	

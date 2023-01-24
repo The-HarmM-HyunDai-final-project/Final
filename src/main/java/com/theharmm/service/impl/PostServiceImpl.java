@@ -71,4 +71,14 @@ public class PostServiceImpl implements PostService {
 		logger.info("postGetTotal().........");
 		return postMapper.postGetTotal(postcri);
 	}
+
+	@Override
+	public PostVO postGetOne(int post_id) {
+		return postMapper.postGetOne(post_id);
+	}
+
+	@Override
+	public List<SocialVO> socialByPostid(int post_id) {
+		return socialMapper.socialByPostid(post_id);
+	}
 }

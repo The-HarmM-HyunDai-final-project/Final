@@ -1,9 +1,17 @@
 package com.theharmm.controller;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.file.Files;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +33,6 @@ import com.theharmm.domain.PostCriteria;
 import com.theharmm.domain.PostPageDTO;
 import com.theharmm.domain.PostVO;
 import com.theharmm.domain.SocialVO;
-import com.theharmm.mapper.AttachMapper;
 import com.theharmm.service.AttachService;
 import com.theharmm.service.PostService;
 
@@ -82,13 +89,84 @@ public class PostController {
 	
 	/* 포스트 등록 */
 	@PostMapping("/social/user/postEnroll")
-	public String postEnrollPOST(PostVO post, RedirectAttributes rttr) {
+	public String postEnrollPOST(PostVO post, RedirectAttributes rttr) throws Exception{
 		logger.info("postEnrollPOST......" + post);
+		
+		Map<String, Object> resMap = null;
+		
+		URL url = new URL("http://192.168.0.227:5000/positiveNegativeResult");
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		conn.setRequestMethod("POST");
+		conn.setDoOutput(true);
+		
+		//========= 전달할 param setting ============
+		String contents = post.getContents();
+		
+		StringBuilder builder = new StringBuilder();
+		builder.append("contents").append("=").append(contents);			
+		//================
+		//http 통신 요청 후 응답 받은 데이터를 담기 위한 변수
+		String responseData = "";	    	   
+		BufferedReader br = null;
+		StringBuffer sb = null;
+		try {
+
+			  OutputStreamWriter outputStreamWriter = new OutputStreamWriter(conn.getOutputStream(), "UTF-8");
+			  PrintWriter writer = new PrintWriter(outputStreamWriter);
+			  writer.write(builder.toString());
+			  writer.flush();
+
+			  InputStream inputStream = conn.getInputStream();
+			  
+			  //http 요청 후 응답 받은 데이터를 버퍼에 쌓는다
+			  br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));	
+			  sb = new StringBuffer();	       
+			  while ((responseData = br.readLine()) != null) {
+				  sb.append(responseData); //StringBuffer에 응답받은 데이터 순차적으로 저장 실시
+			  }
+
+			  inputStream.close();
+			  writer.close();
+			  conn.disconnect();
+
+		} catch (Exception e) {
+			  e.printStackTrace();
+		}
+		
+		logger.info("gg:"+sb.toString());
+		
 		postService.postEnroll(post);
 		rttr.addFlashAttribute("enroll_result", post.getPost_id());
 		//휘발성
 		return "redirect:/social/user";
 	}
 	
+	/* 포스트 상세 */
+	/*
+	 * @GetMapping("/social/user/details") public String getPostDetail(int post_id,
+	 * Model model){ logger.info("getPostDetail.........." + post_id); PostVO postvo
+	 * = postService.postGetOne(post_id); List<SocialVO> socials =
+	 * postService.socialByPostid(post_id);
+	 * 
+	 * for (int i = 0; i < socials.size(); i++) { if
+	 * (socials.get(i).getFile_name().contains("mp4")) {
+	 * model.addAttribute("video",socials.get(i).getUpload_path()+"/"+socials.get(i)
+	 * .getUuid()+"/"+ socials.get(i).getFile_name());
+	 * log.info(socials.get(i).getUpload_path()+"/"+socials.get(i).getUuid()+"/"+
+	 * socials.get(i).getFile_name()); } else {
+	 * model.addAttribute("poster",socials.get(i).getUpload_path()+"/"+socials.get(i
+	 * ).getUuid()+"/"+ socials.get(i).getFile_name());
+	 * log.info(socials.get(i).getUpload_path()+"/"+socials.get(i).getUuid()+"/"+
+	 * socials.get(i).getFile_name()); } } model.addAttribute("post_id",
+	 * postvo.getPost_id()); model.addAttribute("contents", postvo.getContents());
+	 * model.addAttribute("pid0", postvo.getPid0()); model.addAttribute("pid1",
+	 * postvo.getPid1()); model.addAttribute("pid2", postvo.getPid2());
+	 * 
+	 * //model.addAttribute("post_id", postvo.getPost_id());
+	 * 
+	 * return "social/userdetail"; }
+	 */
+
+
 
 }

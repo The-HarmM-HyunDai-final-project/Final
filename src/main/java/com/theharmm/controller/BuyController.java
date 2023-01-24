@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.ProductSizeDTO;
+import com.theharmm.security.domain.CustomUser;
 import com.theharmm.service.ProductDetailService;
 
 import lombok.RequiredArgsConstructor;
@@ -36,6 +38,7 @@ public class BuyController {
 	@GetMapping("/select/{pid}")
 	 public String selectBuyProductSize(@PathVariable int pid,@RequestParam(required = false) String size, Model model) {
 		log.info("selectBuyProductSize 실행");
+		//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 		List<ProductSizeDTO> productSaleSizeList = productDetailService.selectSaleProductSizeList(productDetailDTO);
 		log.info("productDetailDTO : "+productDetailDTO.toString());
@@ -54,6 +57,7 @@ public class BuyController {
 		log.info("buyProduct 실행");
 		int shippingFee = 3000;
 		int fee = 30000;
+		//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		
 		ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 		
@@ -79,6 +83,7 @@ public class BuyController {
 		log.info("orderProduct 실행");
 		int shippingFee = 3000;
 		int fee = 30000;
+		//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	
 
 		
@@ -126,9 +131,19 @@ public class BuyController {
 	//결제 후 넘어가는 곳 
 	@PostMapping("/order")
 	@ResponseBody
-	 public String insertBuyOrder(@RequestParam String imp_uid, @RequestParam String type, @RequestParam String merchant_uid, @RequestParam String buyer_email,@RequestParam int pid,@RequestParam int totalPrice,@RequestParam String model_size,@RequestParam int saleid) {
-		log.info("insertOrder 실행");
+	 public String updateBuyOrder(@RequestParam String imp_uid, @RequestParam String type, @RequestParam String merchant_uid, @RequestParam String buyer_email,@RequestParam int pid,@RequestParam int totalPrice,@RequestParam String model_size,@RequestParam int saleid) {
+		log.info("updateBuyOrder 실행");
 		log.info(imp_uid + merchant_uid + buyer_email + pid+totalPrice+model_size+saleid);
+		//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		Map<String,Object> saleInfoMap = new HashMap<String,Object>();
+		saleInfoMap.put("type",type);
+		//saleInfoMap.put("buyid", buyer_email);
+		saleInfoMap.put("pid",pid);
+		saleInfoMap.put("saleid",saleid);
+		
+		productDetailService.updateBuyOrder(saleInfoMap);
+		
 		//여기서 구매입찰로 들어온 경우는 최종가격에 수수료 제거 해줘야함 !!!!!! 
 		
 //		if(type.equals("즉시구매")) {

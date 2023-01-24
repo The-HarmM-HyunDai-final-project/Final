@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>KREAM | 한정판 거래의 FLEX</title>
+<title>theharmm | 한정판 거래의 FLEX</title>
 <meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
 <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
 <meta data-n-head="ssr" charset="utf-8">
@@ -120,9 +120,9 @@ function requestPay() {
     IMP.request_pay({
       pg: "kcp.T0000",
       pay_method: "card",
-      merchant_uid: "ORD20180131-0000024",   // 주문번호
+      merchant_uid: "ORD20180131-0000035",   // 주문번호
       name: "${productDetailDTO.pname_k}",
-      amount: ${totalPrice},                         // 숫자 타입
+      amount: "${totalPrice}",                         // 숫자 타입
       buyer_email: "gildong@gmail.com",
       buyer_name: "홍길동",
       buyer_tel: "010-4242-4242",
@@ -132,21 +132,21 @@ function requestPay() {
       if (rsp.success) {
     	  console.log(rsp);
         // 결제 성공 시 로직
-        jQuery.ajax({
+       jQuery.ajax({
         url: "/buy/order", 
         method: 'post',
         beforeSend : function(xhr){
             xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
     	}, 
-        /* headers: { "Content-Type": "application/json" }, */
         data: {
           imp_uid: rsp.imp_uid,            // 결제 고유번호
           merchant_uid: rsp.merchant_uid,   // 주문번호
           buyer_email: rsp.buyer_email,
-          pid: ${productDetailDTO.pid},
-          totalPrice: ${totalPrice},
-          model_size: ${productSizeDTO.model_size},
-          saleid: ${productSizeDTO.saleid}
+          pid: "${productDetailDTO.pid}",
+          totalPrice: "${totalPrice}",
+          model_size: "${productSaleSizeDTO.model_size}",
+          saleid: "${productSaleSizeDTO.saleid}",
+          type: "${type}"
         
         }
       }).done(function (data) {

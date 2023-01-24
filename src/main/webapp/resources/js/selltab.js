@@ -7,6 +7,11 @@ $(function(){
 	
 	
 	 $('#sellNow').click(function(e){
+		 let nowSalePrice = parseInt((document.getElementById('nowSalePrice').innerText).replaceAll(',',''));
+		 if(nowSalePrice <=0){
+	    		return;
+	    	}
+		 
 	    	$('#sellNow').addClass("on");
 	    	$('#sellBid').removeClass("on");
 	    	console.log(" 1111")
@@ -39,7 +44,10 @@ $(function(){
 	  
 	  
 	  $('#bidSaleActionClick').click(function(e){
-	 
+		  if(document.getElementById("bidSalePrice").value.replaceAll(',','')<=0){
+				alert("올바른 금액을 입력하세요");  
+				return;
+			}
 		 document.getElementById("bidSalePrice").value = document.getElementById("bidSalePrice").value.replaceAll(',','');
 		 document.getElementById("bidSaleAction").submit();
 	 })
@@ -54,7 +62,7 @@ $(function(){
 		  price = Number(price.replaceAll(',', ''));
 		  let nowSalePrice = parseInt((document.getElementById('nowSalePrice').innerText).replaceAll(',',''));
 		  
-		  if(price<=nowSalePrice){
+		  if(price<=nowSalePrice && nowSalePrice > 0){
 			  document.getElementById("bidSalePrice").value = null;
 			  document.getElementById('bidSaleFee').innerText = '-';
 			    document.getElementById('bidSaleTotalPrice').innerText = 0;
@@ -65,7 +73,7 @@ $(function(){
 		  var fee = -(price * 0.025);
 		  
 		  
-		  if(isNaN(price) || fee == 0) {         //NaN인지 판별
+		  if(isNaN(price) || fee == 0 || price <=0) {         //NaN인지 판별
 		    input.value = 0;   
 		    document.getElementById('bidSaleFee').innerText = '-';
 		    document.getElementById('bidSaleTotalPrice').innerText = 0;

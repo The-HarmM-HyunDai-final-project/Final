@@ -85,7 +85,7 @@
 								aria-controls="panel1" class="item on"><a data-v-b6b2883e=""
 								href="#" class="item_link">판매 입찰</a></li>
 							<li id = "sellNow" data-v-b6b2883e="" role="tab" aria-selected="false"
-								aria-controls="panel2" class="item" <c:if test='${productBuySizeDTO.price eq 0}'>disabled </c:if>><a
+								aria-controls="panel2" class="item <c:if test='${productBuySizeDTO.price eq 0}'>disabled </c:if>" ><a
 								data-v-b6b2883e="" href="#" class="item_link">즉시 판매</a></li>
 						</ul>
 						<!---->

@@ -1,5 +1,6 @@
 package com.theharmm.handler;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +46,7 @@ public class ChattingHandler  extends TextWebSocketHandler{
 		String userId = session.getPrincipal().getName();
 		String roomNo = (String)map.get("roomNo");
 		//메세지 생성
-		ShowLiveMessage showLiveMessage = createMessage(userId, roomNo, MessageType.ENTER);
+		ShowLiveMessage showLiveMessage = createMessage(userId, roomNo, "ENTER");
 		
 		ShowLiveChannel showliveChannel = showLiveChannelStore.getChannelAndAddUser(session, userId, roomNo);
 		showliveChannel.handleMessage(session, showLiveMessage);
@@ -64,28 +65,59 @@ public class ChattingHandler  extends TextWebSocketHandler{
 		String roomNo = (String)map.get("roomNo");
 		
 		//여기서 경매기능까지 들어올 경우 경매용인지 그냥 채팅용인지 구분하는 작업이 추후 필요
+		//테스트용
+		try {
+
+            // convert JSON string to Map
+            Map<String, String> dataFromJsp = objectMapper.readValue(message.getPayload(), Map.class);
+            //ShowLiveMessage showLiveMessageFromJsp = objectMapper.readValue(message.getPayload(), ShowLiveMessage.class);
+
+            log.warn("=============================");
+            log.warn(dataFromJsp.toString());
+            String contentMessage = dataFromJsp.get("message");
+            String type = dataFromJsp.get("mType");
+            
+            //메시지 생성
+    		ShowLiveMessage showLiveMessage = createMessage(userId, roomNo, type);
+    		
+    		showLiveMessage.setUsername(userId);
+    		showLiveMessage.setRoomNo(roomNo);
+    		showLiveMessage.setMessage(contentMessage);
+            
+			// it works
+            //Map<String, String> map = mapper.readValue(json, new TypeReference<Map<String, String>>() {});
+            
+    		ShowLiveChannel showliveChannel = showLiveChannelStore.getChannelByRoomNo(roomNo);
+    		showliveChannel.handleMessage(session, showLiveMessage);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		//-------------
 		
-		//메시지 타입이 경매, 채팅인지 구분
-		String messageType = message.getPayload().split(":")[0];
 		
 		
-		//초기 타입, 메시지(메시지는 "TALK:~~~~" or "AUCTION:~~~" 이런식으로 js에서 보내지는 String을 : 기준으로 앞에는 TYPE을 뒤에는 순수 메시지를 가져옴)
-		MessageType sendType = MessageType.TALK;
-		String sendMessage = getMessageFromPayLoad(message.getPayload());
-		
-		//TYPE: 메시지내용 으로 메시지가 오기때문에 처음 :(콜론)이 오는 위치 이후가 우리가 원하는 메시지 내용이므로 그렇게 날려버림 
-		if(messageType.equals("AUCTION")) {
-			log.warn("옥션이구만!");
-			sendType = MessageType.AUCTION;
-		}
-		
-		//메시지 생성
-		ShowLiveMessage showLiveMessage = createMessage(userId, roomNo, sendType);
-		showLiveMessage.setMessage(sendMessage);
-		
-		log.warn(showLiveMessage.toString());
-		ShowLiveChannel showliveChannel = showLiveChannelStore.getChannelByRoomNo(roomNo);
-		showliveChannel.handleMessage(session, showLiveMessage);
+//		//메시지 타입이 경매, 채팅인지 구분
+//		String messageType = message.getPayload().split(":")[0];
+//		
+//		
+//		//초기 타입, 메시지(메시지는 "TALK:~~~~" or "AUCTION:~~~" 이런식으로 js에서 보내지는 String을 : 기준으로 앞에는 TYPE을 뒤에는 순수 메시지를 가져옴)
+//		MessageType sendType = MessageType.TALK;
+//		String sendMessage = getMessageFromPayLoad(message.getPayload());
+//		
+//		//TYPE: 메시지내용 으로 메시지가 오기때문에 처음 :(콜론)이 오는 위치 이후가 우리가 원하는 메시지 내용이므로 그렇게 날려버림 
+//		if(messageType.equals("AUCTION")) {
+//			log.warn("옥션이구만!");
+//			sendType = MessageType.AUCTION;
+//		}
+//		
+//		//메시지 생성
+//		ShowLiveMessage showLiveMessage = createMessage(userId, roomNo, sendType);
+//		showLiveMessage.setMessage(sendMessage);
+//		
+//		log.warn(showLiveMessage.toString());
+//		ShowLiveChannel showliveChannel = showLiveChannelStore.getChannelByRoomNo(roomNo);
+//		showliveChannel.handleMessage(session, showLiveMessage);
 	}
 	//클라이언트와 연결이 끊어진 경우(채팅방을 나간 경우) remove로 해당 세션을 제거함
 	@Override
@@ -98,7 +130,7 @@ public class ChattingHandler  extends TextWebSocketHandler{
 		String roomNo = (String)map.get("roomNo");
 		
 		//메세지 생성
-		ShowLiveMessage showLiveMessage = createMessage(userId, roomNo, MessageType.LEAVE);
+		ShowLiveMessage showLiveMessage = createMessage(userId, roomNo, "LEAVE");
 		
 		ShowLiveChannel showliveChannel = showLiveChannelStore.getChannelByRoomNo(roomNo);
 		showliveChannel.handleMessage(session, showLiveMessage);
@@ -106,12 +138,31 @@ public class ChattingHandler  extends TextWebSocketHandler{
 		log.warn("쇼라이브 총 접속 인원 : " + totalConnectedPerson);
 	}
 	
-	//커스텀 메시지를 생성하고 각 메서드에서 타입에 맞게 객체 바꾸깅
-	public ShowLiveMessage createMessage(String userName, String roomNo, MessageType type) {
+	//커스텀 메시지를 생성하고 각 메서드에서 타입에 맞게 객체 바꾸깅 
+	public ShowLiveMessage createMessage(String userName, String roomNo, String type) {
 		ShowLiveMessage message = new ShowLiveMessage();
-		message.setStudyUrl(roomNo);
+		message.setRoomNo(roomNo);
 		message.setUsername(userName);
-		message.setType(type);
+		switch(type) {
+			case "ENTER":
+				message.setType(MessageType.ENTER);
+				break;
+			case "LEAVE":
+				message.setType(MessageType.LEAVE);
+				break;
+			case "TALK":
+				message.setType(MessageType.TALK);
+				break;
+			case "AUCTION":
+				message.setType(MessageType.AUCTION);
+				break;
+			case "AUCTION_END":
+				message.setType(MessageType.AUCTION_END);
+				break;
+			case "LIVE_END":
+				message.setType(MessageType.LIVE_END);
+				break;
+		}
 		
 		return message;
 	}

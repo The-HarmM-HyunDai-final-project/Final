@@ -163,7 +163,7 @@
         </div>
       </div>
     </div>
-<script src="${pageContext.request.contextPath}/resources/js/test.js" defer=""></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/test.js" defer=""></script> --%>
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script type="text/javascript">
 
@@ -210,15 +210,27 @@
 	sock.onmessage = onMessage;
 	sock.onclose = onClose;
 	sock.onopen = onOpen;
-
+	
 	function sendMessage(type) {
-		if(type=="TALK"){
+		/* if(type=="TALK"){
 			var message = "TALK:"+ $("#msg").val();
 			sock.send(message);
 		}else if(type == "AUCTION"){
 			var message = "AUCTION:"+ $("#auction_sugest").val();
 			sock.send(message);
-		}
+		} */
+		
+		//test 해보자~~~~
+		var cur_id = '${userid}'; 
+		
+		var showLiveMessage = JSON.stringify({//object-> string으로 
+				/* userName : cur_id, */
+				message : $("#msg").val(),
+				mType : type
+		})
+		
+		sock.send(showLiveMessage)
+		//----------------------
 	}
 	//서버에서 메시지를 받았을 때 -> 입장, 퇴장, 채팅, 경매 모두 이곳으로!
 	function onMessage(msg) {
