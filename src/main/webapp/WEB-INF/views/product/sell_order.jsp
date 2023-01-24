@@ -95,48 +95,7 @@
 <script charset="utf-8" src="/_nuxt/b1c9fa9.js"></script>
 <link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/afedd5f.css">
 <script charset="utf-8" src="/_nuxt/f08eb05.js"></script>
-<script type="text/javascript">
-function regAccount() {
-	
-	
-	let csrfHeaderName ="${_csrf.headerName}";
-    let csrfTokenValue="${_csrf.token}";
-    
 
-       $.ajax({
-        url: "/sell/regAccount", 
-        method: 'post',
-        beforeSend : function(xhr){
-            xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-    	}, 
-        data: {
-          member_email: "${memberDTO.member_email}",
-          bank_name : $("#bank_name").val(),
-          account_number: $("#account_number").val(),
-          account_owner: $("#account_owner").val()
-        },
-        success : function(res){
-        	alert("계좌변경 완료");
-        	$("#account_info1").text(res.bank+" "+res.bank_number);
-        	$("#account_info2").text(res.bank+" "+res.bank_number);
-        	$("#account_owner1").text(res.bank_name);
-        	$("#account_owner2").text(res.bank_name);
-        	<c:if test="${empty accountDTO}">
-        		window.location.reload();
-        	</c:if>
-        	$("#btn_layer_close").trigger("click");
-        	
-        	
-        },
-        error : function(xhr){
-        	alert(xhr.status+" "+xhr.statusText);
-        }
-        
-      })
-    	
-      
-  }
-</script>
 </head>
 <body style="overflow: visible;">
 	<div id="__nuxt">
@@ -3051,6 +3010,14 @@ function regAccount() {
 								</div>
 								<div data-v-14995178="" data-v-4c67e088=""
 									class="buy_total_confirm" is-instant="true">
+									<form id="sellCompleteAction" method="get" action="/sell/complete">
+									<input type="hidden" name="pid" value="${productDetailDTO.pid}"/> 
+									<input type="hidden" name="buyid" value="${productBuySizeDTO.buyid}"/>
+									<input type="hidden" name="price" value="${price}"/>
+									<input type="hidden" name="fee" value="${fee}"/> 
+									<input type="hidden" name="totalPrice" value="${totalPrice}"/>
+									<input type="hidden" name="accountNumber" value="${accountDTO.bank_number}"/>
+									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
 									<div data-v-679d7250="" data-v-14995178="" class="price_total">
 										<dl data-v-679d7250="" class="price_box">
 											<dt data-v-679d7250="" class="price_title">정산금액</dt>
@@ -3064,13 +3031,14 @@ function regAccount() {
 										</em></span>
 									</div>
 									<div data-v-14995178="" class="btn_confirm">
-										<a data-v-575aff82="" data-v-14995178="" 
+										<a data-v-575aff82="" data-v-14995178="" onclick="document.getElementById('sellCompleteAction').submit()"
 										<c:if test="${empty accountDTO or empty addressDTO}"> disabled="disabled"</c:if>
 											href="#" class="btn full solid 
 											 <c:if test="${not empty accountDTO and not empty addressDTO}"> sell</c:if> 
 											 <c:if test="${empty accountDTO or empty addressDTO}"> false disabled</c:if>
 											 "> 바로 판매하기 </a>
 									</div>
+									</form>
 								</div>
 							</section>
 							<!---->
@@ -3134,4 +3102,47 @@ function regAccount() {
 	<link href="${pageContext.request.contextPath}/resources/css/af35e0e.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/css/afedd5f.css" rel="stylesheet" type="text/css">
 </body>
+<script type="text/javascript">
+function regAccount() {
+	
+	
+	let csrfHeaderName ="${_csrf.headerName}";
+    let csrfTokenValue="${_csrf.token}";
+    
+
+       $.ajax({
+        url: "/sell/regAccount", 
+        method: 'post',
+        beforeSend : function(xhr){
+            xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+    	}, 
+        data: {
+          member_email: "${memberDTO.member_email}",
+          bank_name : $("#bank_name").val(),
+          account_number: $("#account_number").val(),
+          account_owner: $("#account_owner").val()
+        },
+        success : function(res){
+        	alert("계좌변경 완료");
+        	$("#account_info1").text(res.bank+" "+res.bank_number);
+        	$("#account_info2").text(res.bank+" "+res.bank_number);
+        	$("#account_owner1").text(res.bank_name);
+        	$("#account_owner2").text(res.bank_name);
+        	$("input[type=hidden][name=accountNumber]").val(res.bank_number);
+        	<c:if test="${empty accountDTO}">
+        		window.location.reload();
+        	</c:if>
+        	$("#btn_layer_close").trigger("click");
+        	
+        	
+        },
+        error : function(xhr){
+        	alert(xhr.status+" "+xhr.statusText);
+        }
+        
+      })
+    	
+      
+  }
+</script>
 </html>

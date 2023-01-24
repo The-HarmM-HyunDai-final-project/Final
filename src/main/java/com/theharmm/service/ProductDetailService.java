@@ -27,5 +27,11 @@ public interface ProductDetailService {
 
 	Long updateBuyOrder(Map<String, Object> saleInfoMap);
 
+	Long updateSaleOrder(Map<String, Object> buyInfoMap);
+
+	Long insertSaleOrder(Map<String, Object> saleInfoMap);
+
+	Long insertBuyOrder(Map<String, Object> buyInfoMap);
+
 }
 

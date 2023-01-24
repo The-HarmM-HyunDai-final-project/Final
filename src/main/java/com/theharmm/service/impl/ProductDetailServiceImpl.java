@@ -62,4 +62,22 @@ public class ProductDetailServiceImpl implements ProductDetailService{
 	public Long updateBuyOrder(Map<String, Object> saleInfoMap) {
 		return productDetailMapper.updateBuyOrder(saleInfoMap);
 	}
+
+
+	@Override
+	public Long updateSaleOrder(Map<String, Object> buyInfoMap) {
+		return productDetailMapper.updateSaleOrder(buyInfoMap);
+	}
+
+
+	@Override
+	public Long insertSaleOrder(Map<String, Object> saleInfoMap) {
+		return productDetailMapper.insertSaleOrder(saleInfoMap);
+	}
+
+
+	@Override
+	public Long insertBuyOrder(Map<String, Object> buyInfoMap) {
+		return productDetailMapper.insertBuyOrder(buyInfoMap);
+	}
 }

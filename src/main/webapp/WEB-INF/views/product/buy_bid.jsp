@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<script src="${pageContext.request.contextPath}/resources/js/buy_order_tab.js" defer=""></script>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -108,6 +109,77 @@
 <link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/305ca7a.css">
 <link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/21b64a8.css">
 <script charset="utf-8" src="/_nuxt/a0ee1f7.js"></script>
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<script>
+
+var IMP = window.IMP;   // 생략 가능
+IMP.init("imp30137302"); // 예: imp00000000 
+
+function checkPay(){
+	$("#layer_order_price_confirm").removeAttr("style");
+}
+
+ 
+
+
+function requestPay() {
+	
+
+	let csrfHeaderName ="${_csrf.headerName}";
+    let csrfTokenValue="${_csrf.token}";
+	
+    IMP.request_pay({
+      pg: "kcp.T0000",
+      pay_method: "card",
+      merchant_uid: "ORD20180131-0000044",   // 주문번호
+      name: "${productDetailDTO.pname_k}",
+      amount: "${totalPrice}",                         // 숫자 타입
+      buyer_email: "gildong@gmail.com",
+      buyer_name: "홍길동",
+      buyer_tel: "010-4242-4242",
+      buyer_addr: "서울특별시 강남구 신사동",
+      buyer_postcode: "01181"
+    }, function (rsp) { // callback
+      if (rsp.success) {
+    	  console.log(rsp);
+        // 결제 성공 시 로직
+       jQuery.ajax({
+        url: "/buy/bid", 
+        method: 'post',
+        beforeSend : function(xhr){
+            xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+    	}, 
+        data: {
+          imp_uid: rsp.imp_uid,            // 결제 고유번호
+          merchant_uid: rsp.merchant_uid,   // 주문번호
+          buyer_email: rsp.buyer_email,
+          pid: "${productDetailDTO.pid}",
+          totalPrice: "${totalPrice}",
+          price: "${price}",
+          dDay: "${dDay}",
+          model_size: "${productSaleSizeDTO.model_size}",
+          type: "${type}"
+        
+        }
+      }).done(function (data) {
+        // 가맹점 서버 결제 API 성공시 로직
+        $("#layer_order_price_confirm").css("display","none");
+    	document.getElementById('buyBidCompleteAction').submit();
+        
+      })
+    	
+      } else {
+        // 결제 실패 시 로직
+    	  console.log(rsp);
+        alert("결제실패");
+        $("#layer_order_price_confirm").css("display","none");
+      }
+    });
+  }
+</script>
 </head>
 <body>
 	<div id="__nuxt">
@@ -163,16 +235,15 @@
 												<dl data-v-05a4f438="" class="info_list">
 													<div data-v-05a4f438="" class="info_box">
 														<dt data-v-05a4f438="" class="title">받는 분</dt>
-														<dd data-v-05a4f438="" class="desc">집****</dd>
+														<dd data-v-05a4f438="" class="desc">${addressDTO.name}</dd>
 													</div>
 													<div data-v-05a4f438="" class="info_box">
 														<dt data-v-05a4f438="" class="title">연락처</dt>
-														<dd data-v-05a4f438="" class="desc">010-5***-*542</dd>
+														<dd data-v-05a4f438="" class="desc">${addressDTO.phone_number }</dd>
 													</div>
 													<div data-v-05a4f438="" class="info_box">
 														<dt data-v-05a4f438="" class="title">배송 주소</dt>
-														<dd data-v-05a4f438="" class="desc">서울 중구 필동로 35-13
-															(필동3가, WH) 204호</dd>
+														<dd data-v-05a4f438="" class="desc">${addressDTO.sub_address} ${ addressDTO.detail_address}</dd>
 													</div>
 												</dl>
 											</div>
@@ -205,9 +276,8 @@
 												class="delivery_way">
 												<div data-v-3584e297="" class="way_info">
 													<div data-v-3584e297="" class="way_status_thumb">
-														<img data-v-3584e297=""
-															src="https://kream-phinf.pstatic.net/MjAyMTExMjlfMTQ4/MDAxNjM4MTc4MjI5NTk3.2phJLPtRvFqViNfhZu06HzNRiUBlT4cmZR4_Ukqsyesg.ikrfWOrL7WXCVO0Rqy5kMvOn3B2YpjLUj6RuJqosPX0g.PNG/a_8b54cbca40e945f4abf1ee24bdd031f7.png"
-															alt="3,000원" class="way_img">
+														<img data-v-3584e297="" referrerpolicy="no-referrer"
+															src="${productDetailDTO.img2 }" class="way_img">
 													</div>
 													<div data-v-3584e297="" class="way_desc">
 														<p data-v-3584e297="" class="company">
@@ -217,33 +287,6 @@
 														</p>
 														<p data-v-3584e297="" class="sub_text">검수 후 배송 ・ 5-7일
 															내 도착 예정</p>
-													</div>
-												</div>
-												<!---->
-											</div>
-										</div>
-										<div data-v-e7203b1c="" class="delivery_service_option">
-											<div data-v-3584e297="" data-v-e7203b1c=""
-												class="delivery_way">
-												<div data-v-3584e297="" class="way_info">
-													<div data-v-3584e297="" class="way_status_thumb">
-														<img data-v-3584e297=""
-															src="https://kream-phinf.pstatic.net/MjAyMTExMjFfMjE5/MDAxNjM3NDczODM5MTg0.K9c0FOdeJAbdW_bXJhclA3yN45iwcP4kpqkaspFLEJAg.TeEwjmB0EDj7ll3uQVR4GRw5IRVCpQ8-iiibQEMf-KYg.PNG/a_f82951f1984b404db30b9c4fca4bd695.png"
-															alt="첫 30일 무료" class="way_img">
-													</div>
-													<div data-v-3584e297="" class="way_desc">
-														<p data-v-3584e297="" class="company">
-															<span data-v-3584e297="" class="badge_title">창고보관
-															</span><span data-v-3584e297="" class="title">첫 30일 무료</span><span
-																data-v-3584e297="" role="button" aria-label="배송안내"><svg
-																	data-v-3584e297="" xmlns="http://www.w3.org/2000/svg"
-																	class="ico-help icon sprite-icons">
-																	<use data-v-3584e297=""
-																		href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-help"
-																		xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-help"></use></svg></span>
-														</p>
-														<p data-v-3584e297="" class="sub_text">배송 없이 창고에 보관 ・
-															빠르게 판매 가능</p>
 													</div>
 												</div>
 												<!---->
@@ -299,7 +342,7 @@
 											<dl data-v-679d7250="" class="price_box">
 												<dt data-v-679d7250="" class="price_title">총 결제금액</dt>
 												<dd data-v-679d7250="" class="price">
-													<span data-v-679d7250="" class="amount">157,500</span><span
+													<span data-v-679d7250="" class="amount"><fmt:formatNumber type="number" maxFractionDigits="3" value="${totalPrice}" /></span><span
 														data-v-679d7250="" class="unit">원</span>
 												</dd>
 											</dl>
@@ -314,7 +357,7 @@
 													<span data-v-3a2a7b6b="">구매 희망가</span>
 													<!---->
 												</dt>
-												<dd data-v-3a2a7b6b="" class="price_text">150,000원</dd>
+												<dd data-v-3a2a7b6b="" class="price_text"><fmt:formatNumber type="number" maxFractionDigits="3" value="${price}" />원</dd>
 											</dl>
 											<dl data-v-3a2a7b6b="" data-v-887ad490=""
 												class="price_addition">
@@ -344,7 +387,7 @@
 																xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-info-circle-white"></use></svg>
 													</button>
 												</dt>
-												<dd data-v-3a2a7b6b="" class="price_text">4,500원</dd>
+												<dd data-v-3a2a7b6b="" class="price_text"><fmt:formatNumber type="number" maxFractionDigits="3" value="${fee}" />원</dd>
 											</dl>
 											<dl data-v-3a2a7b6b="" data-v-887ad490=""
 												class="price_addition">
@@ -352,7 +395,7 @@
 													<span data-v-3a2a7b6b="">배송비</span>
 													<!---->
 												</dt>
-												<dd data-v-3a2a7b6b="" class="price_text">3,000원</dd>
+												<dd data-v-3a2a7b6b="" class="price_text"><fmt:formatNumber type="number" maxFractionDigits="3" value="${shippingFee}" />원</dd>
 											</dl>
 										</div>
 										<div data-v-887ad490="" class="price_bind">
@@ -362,7 +405,7 @@
 													<span data-v-3a2a7b6b="">입찰 마감 기한</span>
 													<!---->
 												</dt>
-												<dd data-v-3a2a7b6b="" class="price_text">30일 -
+												<dd data-v-3a2a7b6b="" class="price_text">${dDay}일 -
 													2023/02/19까지</dd>
 											</dl>
 										</div>
@@ -416,7 +459,7 @@
 										<dl data-v-679d7250="" class="price_box">
 											<dt data-v-679d7250="" class="price_title">총 결제금액</dt>
 											<dd data-v-679d7250="" class="price">
-												<span data-v-679d7250="" class="amount">157,500</span><span
+												<span data-v-679d7250="" class="amount"><fmt:formatNumber type="number" maxFractionDigits="3" value="${totalPrice}" /></span><span
 													data-v-679d7250="" class="unit">원</span>
 											</dd>
 										</dl>
@@ -425,18 +468,32 @@
 										</em></span>
 									</div>
 									<div data-v-14995178="" class="btn_confirm">
-										<a data-v-575aff82="" data-v-14995178="" disabled="disabled"
-											href="#" class="btn full solid false disabled"> 구매 입찰하기 </a>
+									<a data-v-575aff82="" data-v-14995178="" onclick="checkPay()"
+										<c:if test="${ empty addressDTO}"> disabled="disabled"</c:if>
+											href="#" class="btn full solid 
+											 <c:if test="${ not empty addressDTO}"> buy</c:if> 
+											 <c:if test="${empty addressDTO}"> false disabled</c:if>
+											 "> 구매 입찰하기 </a>
 									</div>
 								</div>
 							</section>
+							<form id="buyBidCompleteAction" method="get" action="/buy/bidComplete">
+								<input type="hidden" name="pid" value="${productDetailDTO.pid}"/> 
+								<input type="hidden" name="price" value="${price}"/>
+								<input type="hidden" name="fee" value="${fee}"/> 
+								<input type="hidden" name="totalPrice" value="${totalPrice}"/>
+								<input type="hidden" name="shippingFee" value="${shippingFee}"/>
+								<input type="hidden" name="size" value="${productSaleSizeDTO.model_size}"/>
+								<input type="hidden" name="dDay" value="${dDay}"/>
+								<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
+							</form>
 							<!---->
 							<div data-v-1a009402="" data-v-4ae17423="" data-v-b8efdcc8=""
-								class="layer_order_price_confirm layer lg"
+								class="layer_order_price_confirm layer lg" id="layer_order_price_confirm"
 								style="display: none;">
 								<div data-v-1a009402="" class="layer_container">
 									<a data-v-4ae17423="" data-v-1a009402="" href="#"
-										class="btn_layer_close"><svg data-v-4ae17423=""
+										class="btn_layer_close" id="btn_layer_close"><svg data-v-4ae17423=""
 											data-v-1a009402="" xmlns="http://www.w3.org/2000/svg"
 											class="ico-close icon sprite-icons">
 											<use data-v-4ae17423="" data-v-1a009402=""
@@ -454,21 +511,22 @@
 											</div>
 											<p data-v-4ae17423="" data-v-1a009402="" class="title">총
 												결제금액</p>
-											<p data-v-4ae17423="" data-v-1a009402="" class="price">157,500원</p>
+											<p data-v-4ae17423="" data-v-1a009402="" class="price"><fmt:formatNumber type="number" maxFractionDigits="3" value="${totalPrice}" />원</p>
 										</div>
 										<div data-v-4ae17423="" data-v-1a009402="" class="alert_box">
 											<p data-v-4ae17423="" data-v-1a009402="" class="alert_desc">
-												해당 거래는 개인간 거래로 단순변심 또는 실수에 따른 <em>취소는 불가능합니다.</em>
+												해당 거래는 개인간 거래로 단순변심 또는 실수에 따른 <em>체결 후 취소는 불가능합니다.</em>
 											</p>
 										</div>
 										<div data-v-4ae17423="" data-v-1a009402="" class="layer_btn">
 											<button data-v-575aff82="" data-v-4ae17423="" type="button"
-												class="btn solid buy full large" data-v-1a009402="">
+												class="btn solid buy full large" data-v-1a009402="" onclick="requestPay()">
 												구매 입찰완료</button>
 										</div>
 									</div>
 								</div>
 							</div>
+							
 							<!---->
 							<!---->
 							<!---->
