@@ -21,7 +21,7 @@ public class ShowLiveMessage {
 		return roomNo;
 	}
 
-	public void setStudyUrl(String roomNo) {
+	public void setRoomNo(String roomNo) {
 		this.roomNo = roomNo;
 	}
 
