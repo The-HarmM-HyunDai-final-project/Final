@@ -119,9 +119,9 @@
 								<div data-v-ee9fa48c="" class="complete_detail">
 									<div data-v-ee9fa48c="" class="complete_info">
 										<div data-v-ee9fa48c="" class="complete_title">
-											<p data-v-ee9fa48c="" class="main_title">즉시 판매가 완료되었습니다.</p>
+											<p data-v-ee9fa48c="" class="main_title">판매 입찰이 완료되었습니다.</p>
 											<p data-v-ee9fa48c="" class="sub_title">
-												일요일, 공휴일 제외 48시간 이내에 아래 주소로 상품을 발송한 후,<br>'My>판매 내역>진행 중'에서 발송 정보를 입력하세요.
+												거래가 체결되고 상품이 검수에 합격한 후,<br>등록한 계좌로 정산이 진행됩니다.
 											</p>
 										</div>
 										<div data-v-09fbcf09="" data-v-ee9fa48c="" class="product"
@@ -142,7 +142,8 @@
 												data-v-575aff82="" data-v-ee9fa48c="" href="#"
 												class="btn outlinegrey medium"> SHOP 바로가기 </a>
 										</div>
-										
+										<p data-v-ee9fa48c="" class="complete_desc">'판매내역 &gt; 입찰
+											중' 상태일 때는 입찰 지우기가 가능합니다.</p>
 									</div>
 									<div data-v-ee9fa48c="" class="complete_price">
 										<div data-v-887ad490="" data-v-ee9fa48c="" class="">
@@ -163,7 +164,7 @@
 												<dl data-v-3a2a7b6b="" data-v-887ad490=""
 													class="price_addition is_dark">
 													<dt data-v-3a2a7b6b="" class="price_title">
-														<span data-v-3a2a7b6b="">즉시 판매가</span>
+														<span data-v-3a2a7b6b="">판매 희망가</span>
 														<!---->
 													</dt>
 													<dd data-v-3a2a7b6b="" class="price_text"><fmt:formatNumber type="number" maxFractionDigits="3" value="${price}" />원</dd>
@@ -204,11 +205,11 @@
 												<dl data-v-3a2a7b6b="" data-v-887ad490=""
 													class="price_addition">
 													<dt data-v-3a2a7b6b="" class="price_title dark">
-														<span data-v-3a2a7b6b="">보내실 곳</span>
+														<span data-v-3a2a7b6b="">입찰 마감 기한</span>
 														<!---->
 													</dt>
-													<dd data-v-3a2a7b6b="" class="price_text">theHarmm(더함) /</dd>
-													<dd data-v-3a2a7b6b="" class="price_text">서울 종로구 00로 201호 </dd>
+													<dd data-v-3a2a7b6b="" class="price_text">${dDay}일 -
+														2023/01/24까지</dd>
 												</dl>
 											</div>
 										</div>

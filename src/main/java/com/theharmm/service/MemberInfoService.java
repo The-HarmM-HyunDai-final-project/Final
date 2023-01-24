@@ -12,4 +12,6 @@ public interface MemberInfoService {
 	public AccountDTO selectMemberMainAccount(Map<String, Object> memberInfoMap);
 
 	public int mergeAccount(AccountDTO accountDTO);
+
+	public AccountDTO selectMemberAccount(Map<String, Object> accountInfoMap);
 }

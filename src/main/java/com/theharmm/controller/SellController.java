@@ -117,8 +117,14 @@ public class SellController {
 			model.addAttribute("shippingFee",shippingFee);
 			
 			
+			if(type.equals("즉시판매")) {
+				fee = (int)(productBuySizeDTO.getPrice()*0.025);
+			}
+			else {
+				fee = (int)(price*0.025);
+			}
 			
-			fee = (int)(productBuySizeDTO.getPrice()*0.025);
+			
 		
 			model.addAttribute("fee",fee);
 			model.addAttribute("price",price);
@@ -174,16 +180,77 @@ public class SellController {
 		
 		//판매완료 
 		@GetMapping("/complete")
-		 public String sellProductComplete(Model model) {
+		 public String sellProductComplete(@RequestParam int pid,@RequestParam int buyid,
+				 @RequestParam int totalPrice,@RequestParam String accountNumber, @RequestParam int price,
+				 @RequestParam int fee,Model model) {
 			log.info("sellProductComplete 실행");
 			//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			MemberVO user = new MemberVO();
+			user.setMember_email("tlsalfla96@naver.com");
+			user.setMember_name("신미림");
+			user.setMember_phone("01053030542");
 			
+			//상품정보 가져오기
+			ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 			
-			Map<String,Object> productInfoMap = new HashMap<String,Object>();
+			//계좌정보 가져오기
+			Map<String,Object> accountInfoMap = new HashMap<String,Object>();
+			accountInfoMap.put("member_email",user.getMember_email());
+			accountInfoMap.put("bank_number",accountNumber);
+			AccountDTO accountDTO = memberInfoService.selectMemberAccount(accountInfoMap);
 			
+			//구매입찰 데이터 업데이트 - 판매완료 처리
+			Map<String,Object> buyInfoMap = new HashMap<String,Object>();
+			//saleInfoMap.put("saleid", user.getMember_email());
+			buyInfoMap.put("pid",pid);
+			buyInfoMap.put("buyid",buyid);
+			productDetailService.updateSaleOrder(buyInfoMap);
+			
+			model.addAttribute("productDetailDTO", productDetailDTO);
+			model.addAttribute("price", price);
+			model.addAttribute("fee", fee);
+			model.addAttribute("totalPrice", totalPrice);
 			
 			
 			return "product/sell_complete";
+		}
+		
+		//판매입찰
+		@GetMapping("/bidComplete")
+		 public String sellBidProductComplete(@RequestParam int pid,@RequestParam int totalPrice,@RequestParam String accountNumber,
+				 @RequestParam int price,@RequestParam int fee,@RequestParam String size,@RequestParam int dDay,Model model) {
+			log.info("sellBidProductComplete 실행");
+			//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			MemberVO user = new MemberVO();
+			user.setMember_email("tlsalfla96@naver.com");
+			user.setMember_name("신미림");
+			user.setMember_phone("01053030542");
+			
+			//상품정보 가져오기
+			ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
+			
+			//계좌정보 가져오기
+			Map<String,Object> accountInfoMap = new HashMap<String,Object>();
+			accountInfoMap.put("member_email",user.getMember_email());
+			accountInfoMap.put("bank_number",accountNumber);
+			AccountDTO accountDTO = memberInfoService.selectMemberAccount(accountInfoMap);
+			
+			//판매입찰 데이터 등록(insert)
+			Map<String,Object> saleInfoMap = new HashMap<String,Object>();
+			saleInfoMap.put("pid",pid);
+			saleInfoMap.put("member_email",user.getMember_email());
+			saleInfoMap.put("price",price);
+			saleInfoMap.put("size_type",size);
+			saleInfoMap.put("dDay",dDay);
+			productDetailService.insertSaleOrder(saleInfoMap);
+			
+			model.addAttribute("productDetailDTO", productDetailDTO);
+			model.addAttribute("price", price);
+			model.addAttribute("fee", fee);
+			model.addAttribute("totalPrice", totalPrice);
+			model.addAttribute("dDay", dDay);
+			
+			return "product/sell_bid_complete";
 		}
 
 		

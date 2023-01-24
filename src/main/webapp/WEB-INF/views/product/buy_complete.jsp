@@ -52,16 +52,18 @@
 <link rel="preload" href="/_nuxt/2b8ef23.js" as="script">
 <link rel="preload" href="${pageContext.request.contextPath}/resources/css/49b89ca.css" as="style">
 <link rel="preload" href="/_nuxt/8cebb16.js" as="script">
-<link rel="preload" href="${pageContext.request.contextPath}/resources/css/42380fd.css" as="style">
-<link rel="preload" href="/_nuxt/e656d78.js" as="script">
-<link rel="preload" href="/_nuxt/8e8c734.js" as="script">
+<link rel="preload" href="${pageContext.request.contextPath}/resources/css/2e87f62.css" as="style">
+<link rel="preload" href="/_nuxt/98e6ac8.js" as="script">
 <link rel="preload" href="${pageContext.request.contextPath}/resources/css/4de604f.css" as="style">
 <link rel="preload" href="/_nuxt/dcab2ce.js" as="script">
+<link rel="preload" href="${pageContext.request.contextPath}/resources/css/e16bd51.css" as="style">
+<link rel="preload" href="/_nuxt/971fbc8.js" as="script">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/f9e0638.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/49367b6.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/49b89ca.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/42380fd.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/2e87f62.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/4de604f.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/e16bd51.css">
 <style type="text/css"> /*# sourceMappingURL=contenteditable.vue.map */
 </style>
 <script type="text/javascript" async=""
@@ -75,8 +77,8 @@
 <link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/7a761b7.css">
 <script charset="utf-8" src="/_nuxt/85cf23e.js"></script>
 <link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/cfe0307.css">
-<link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/b0ea7d0.css">
-<script charset="utf-8" src="/_nuxt/b586c49.js"></script>
+<link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/2c09fe5.css">
+<script charset="utf-8" src="/_nuxt/a8d397c.js"></script>
 <link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/765b149.css">
 <script charset="utf-8" src="/_nuxt/63f6f6c.js"></script>
 <meta data-n-head="ssr" data-hid="description" name="description"
@@ -90,42 +92,43 @@
 	content="https://kream.co.kr/images/index_og_kream.png">
 <link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/1fba0d9.css">
 <script charset="utf-8" src="/_nuxt/9b3b1db.js"></script>
-<link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/2e91015.css">
-<script charset="utf-8" src="/_nuxt/a1df59a.js"></script>
-<script charset="utf-8" src="/_nuxt/16f7156.js"></script>
+<link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/fde4f4d.css">
+<script charset="utf-8" src="/_nuxt/3683695.js"></script>
 <link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/af35e0e.css">
 <script charset="utf-8" src="/_nuxt/b1c9fa9.js"></script>
-<link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/afedd5f.css">
-<script charset="utf-8" src="/_nuxt/4e177f2.js"></script>
+<link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/305ca7a.css">
+<script charset="utf-8" src="/_nuxt/085a45d.js"></script>
+<link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/21b64a8.css">
+<script charset="utf-8" src="/_nuxt/a0ee1f7.js"></script>
 </head>
 <body style="">
 	<div id="__nuxt">
 		<!---->
 		<div id="__layout">
-			<div data-v-0590ccc1="" tabindex="0" class="wrap lg win_os">
+			<div data-v-0590ccc1="" tabindex="0" class="wrap lg win_os is_scroll">
 				<div data-v-0590ccc1="">
 					<!---->
 					<%@ include file="/WEB-INF/views/common/header.jsp"%>
 				</div>
 				<!---->
-				<div data-v-b36cb8c4="" data-v-0590ccc1=""
-					class="container sell lg step-3">
+				<div data-v-63d14162="" data-v-0590ccc1=""
+					class="container buy lg step-3">
 					<!---->
-					<div data-v-b36cb8c4="" class="content">
+					<div data-v-63d14162="" class="content">
 						<!---->
 						<!---->
-						<div data-v-ee9fa48c="" data-v-b36cb8c4="" class="buy_complete lg">
-							<div data-v-ee9fa48c="" class="complete_box">
-								<div data-v-ee9fa48c="" class="complete_detail">
-									<div data-v-ee9fa48c="" class="complete_info">
-										<div data-v-ee9fa48c="" class="complete_title">
-											<p data-v-ee9fa48c="" class="main_title">즉시 판매가 완료되었습니다.</p>
-											<p data-v-ee9fa48c="" class="sub_title">
-												일요일, 공휴일 제외 48시간 이내에 아래 주소로 상품을 발송한 후,<br>'My>판매 내역>진행 중'에서 발송 정보를 입력하세요.
+						<div data-v-ead20452="" data-v-63d14162="" class="buy_complete lg">
+							<div data-v-ead20452="" class="complete_box">
+								<div data-v-ead20452="" class="complete_detail">
+									<div data-v-ead20452="" class="complete_info">
+										<div data-v-ead20452="" class="complete_title">
+											<p data-v-ead20452="" class="main_title">즉시 구매가 완료되었습니다.</p>
+											<p data-v-ead20452="" class="sub_title">
+												구매한 상품은 전문가의 검수 완료 후<br>안전하게 배송될 예정입니다.
 											</p>
 										</div>
-										<div data-v-09fbcf09="" data-v-ee9fa48c="" class="product"
-											style="background-color: rgb(235, 240, 245);">
+										<div data-v-09fbcf09="" data-v-ead20452="" class="product"
+											style="background-color: rgb(246, 238, 237);">
 											<picture data-v-878ec45c="" data-v-09fbcf09=""
 												class="picture product_img">
 											<img data-v-878ec45c="" alt="상품 이미지" referrerpolicy="no-referrer"
@@ -136,87 +139,80 @@
 											<!---->
 											<!---->
 										</div>
-										<div data-v-ee9fa48c="" class="complete_btn_box">
-											<a data-v-575aff82="" data-v-ee9fa48c="" href="#"
+										<div data-v-ead20452="" class="complete_btn_box">
+											<a data-v-575aff82="" data-v-ead20452="" href="#"
 												class="btn outlinegrey medium"> 내역 상세보기 </a><a
-												data-v-575aff82="" data-v-ee9fa48c="" href="#"
+												data-v-575aff82="" data-v-ead20452="" href="#"
 												class="btn outlinegrey medium"> SHOP 바로가기 </a>
+											<!---->
 										</div>
-										
+										<p data-v-ead20452="" class="complete_desc">즉시 구매는 취소가 불가능합니다.</p>
 									</div>
-									<div data-v-ee9fa48c="" class="complete_price">
-										<div data-v-887ad490="" data-v-ee9fa48c="" class="">
-											<div data-v-679d7250="" data-v-887ad490=""
-												class="price_total order_info">
-												<dl data-v-679d7250="" class="price_box">
-													<dt data-v-679d7250="" class="price_title">정산금액</dt>
-													<dd data-v-679d7250="" class="price">
-														<span data-v-679d7250="" class="amount"><fmt:formatNumber type="number" maxFractionDigits="3" value="${totalPrice}" /></span><span
-															data-v-679d7250="" class="unit">원</span>
-													</dd>
-												</dl>
-												<span data-v-679d7250="" class="price_warning"
-													style="display: none;"><em data-v-679d7250="">주의!
-												</em></span>
-											</div>
-											<div data-v-887ad490="" class="price_bind">
-												<dl data-v-3a2a7b6b="" data-v-887ad490=""
-													class="price_addition is_dark">
-													<dt data-v-3a2a7b6b="" class="price_title">
-														<span data-v-3a2a7b6b="">즉시 판매가</span>
-														<!---->
-													</dt>
-													<dd data-v-3a2a7b6b="" class="price_text"><fmt:formatNumber type="number" maxFractionDigits="3" value="${price}" />원</dd>
-												</dl>
-												<dl data-v-3a2a7b6b="" data-v-887ad490=""
-													class="price_addition">
-													<dt data-v-3a2a7b6b="" class="price_title">
-														<span data-v-3a2a7b6b="">검수비</span>
-														<!---->
-													</dt>
-													<dd data-v-3a2a7b6b="" class="price_text">무료</dd>
-												</dl>
-												<dl data-v-3a2a7b6b="" data-v-887ad490=""
-													class="price_addition">
-													<dt data-v-3a2a7b6b="" class="price_title">
-														<span data-v-3a2a7b6b="">수수료</span>
-														<button data-v-3a2a7b6b="" class="btn_title">
-															<svg data-v-3a2a7b6b=""
-																xmlns="http://www.w3.org/2000/svg"
-																class="icon sprite-icons info-circle-white">
-																<use data-v-3a2a7b6b=""
-																	href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-info-circle-white"
-																	xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-info-circle-white"></use></svg>
-														</button>
-													</dt>
-													<dd data-v-3a2a7b6b="" class="price_text">-<fmt:formatNumber type="number" maxFractionDigits="3" value="${fee}" />원</dd>
-												</dl>
-												<dl data-v-3a2a7b6b="" data-v-887ad490=""
-													class="price_addition">
-													<dt data-v-3a2a7b6b="" class="price_title">
-														<span data-v-3a2a7b6b="">배송비</span>
-														<!---->
-													</dt>
-													<dd data-v-3a2a7b6b="" class="price_text">선불 ・ 판매자 부담</dd>
-												</dl>
-											</div>
-											<div data-v-887ad490="" class="price_bind">
-												<dl data-v-3a2a7b6b="" data-v-887ad490=""
-													class="price_addition">
-													<dt data-v-3a2a7b6b="" class="price_title dark">
-														<span data-v-3a2a7b6b="">보내실 곳</span>
-														<!---->
-													</dt>
-													<dd data-v-3a2a7b6b="" class="price_text">theHarmm(더함) /</dd>
-													<dd data-v-3a2a7b6b="" class="price_text">서울 종로구 00로 201호 </dd>
-												</dl>
-											</div>
+									<div data-v-887ad490="" data-v-ead20452=""
+										class="complete_price">
+										<div data-v-679d7250="" data-v-887ad490=""
+											class="price_total order_info">
+											<dl data-v-679d7250="" class="price_box">
+												<dt data-v-679d7250="" class="price_title">총 결제금액</dt>
+												<dd data-v-679d7250="" class="price">
+													<span data-v-679d7250="" class="amount"><fmt:formatNumber type="number" maxFractionDigits="3" value="${totalPrice}" /></span><span
+														data-v-679d7250="" class="unit">원</span>
+												</dd>
+											</dl>
+											<span data-v-679d7250="" class="price_warning"
+												style="display: none;"><em data-v-679d7250="">주의!
+											</em></span>
+										</div>
+										<div data-v-887ad490="" class="price_bind">
+											<dl data-v-3a2a7b6b="" data-v-887ad490=""
+												class="price_addition is_dark">
+												<dt data-v-3a2a7b6b="" class="price_title">
+													<span data-v-3a2a7b6b="">즉시 구매가</span>
+													<!---->
+												</dt>
+												<dd data-v-3a2a7b6b="" class="price_text"><fmt:formatNumber type="number" maxFractionDigits="3" value="${price}" />원</dd>
+											</dl>
+											<dl data-v-3a2a7b6b="" data-v-887ad490=""
+												class="price_addition">
+												<dt data-v-3a2a7b6b="" class="price_title">
+													<span data-v-3a2a7b6b="">검수비</span>
+													<!---->
+												</dt>
+												<dd data-v-3a2a7b6b="" class="price_text">무료</dd>
+											</dl>
+											<dl data-v-3a2a7b6b="" data-v-887ad490=""
+												class="price_addition">
+												<dt data-v-3a2a7b6b="" class="price_title">
+													<span data-v-3a2a7b6b="">수수료</span>
+													<button data-v-3a2a7b6b="" class="btn_title">
+														<svg data-v-3a2a7b6b="" xmlns="http://www.w3.org/2000/svg"
+															class="icon sprite-icons info-circle-white">
+															<use data-v-3a2a7b6b=""
+																href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-info-circle-white"
+																xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-info-circle-white"></use></svg>
+													</button>
+												</dt>
+												<dd data-v-3a2a7b6b="" class="price_text"> ${fee}원</dd>
+											</dl>
+											<dl data-v-3a2a7b6b="" data-v-887ad490=""
+												class="price_addition">
+												<dt data-v-3a2a7b6b="" class="price_title">
+													<span data-v-3a2a7b6b="">배송비</span>
+													<!---->
+												</dt>
+												<dd data-v-3a2a7b6b="" class="price_text"><fmt:formatNumber type="number" maxFractionDigits="3" value="${shippingFee}"/>원</dd>
+											</dl>
+										</div>
+										<div data-v-887ad490="" class="price_bind">
+											<dl data-v-3a2a7b6b="" data-v-887ad490=""
+												class="price_addition">
+												
+											</dl>
 										</div>
 									</div>
-									<!---->
 								</div>
 							</div>
-							<div data-v-1a009402="" data-v-6bb7f3cd="" data-v-ee9fa48c=""
+							<div data-v-1a009402="" data-v-6bb7f3cd="" data-v-ead20452=""
 								class="layer_point layer lg" style="display: none;">
 								<div data-v-1a009402="" class="layer_container">
 									<a data-v-6bb7f3cd="" data-v-1a009402="" href="#"
@@ -295,31 +291,32 @@
 			</div>
 		</div>
 	</div>
-	
 	<script src="/_nuxt/9ab25be.js" defer=""></script>
 	<script src="/_nuxt/d3c7533.js" defer=""></script>
 	<script src="/_nuxt/2b8ef23.js" defer=""></script>
 	<script src="/_nuxt/8cebb16.js" defer=""></script>
-	<script src="/_nuxt/e656d78.js" defer=""></script>
-	<script src="/_nuxt/8e8c734.js" defer=""></script>
+	<script src="/_nuxt/98e6ac8.js" defer=""></script>
 	<script src="/_nuxt/dcab2ce.js" defer=""></script>
+	<script src="/_nuxt/971fbc8.js" defer=""></script>
 	<script src="/_nuxt/9c0da52.js" defer=""></script>
 	<script src="/_nuxt/6653005.js" defer=""></script>
 	<script src="/_nuxt/7373ab0.js" defer=""></script>
 
 
 	<link href="${pageContext.request.contextPath}/resources/css/4de604f.css" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath}/resources/css/42380fd.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/e16bd51.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/2e87f62.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/css/49b89ca.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/css/49367b6.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/css/24dfaf3.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/css/7a761b7.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/2c09fe5.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/css/cfe0307.css" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath}/resources/css/b0ea7d0.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/css/765b149.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/css/1fba0d9.css" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath}/resources/css/2e91015.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/fde4f4d.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/305ca7a.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/css/af35e0e.css" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath}/resources/css/afedd5f.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/21b64a8.css" rel="stylesheet" type="text/css">
 </body>
 </html>
