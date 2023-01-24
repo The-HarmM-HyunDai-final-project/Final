@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.theharmm.mapper.ShowLiveMapper">
+
+	<!-- 쇼라이브(경매)채널생성 -->
+	<!-- useGeneratedKeys="true" keyColumn="SHOWLIVE_NO" keyProperty="showlive_no" parameterType="ShowLiveChannelDTO" 여기는 SHOWLIVE_NO를 Auto Increasment해서 값을 넣을때 증가되는걸 넣자마자 그걸 가져오기 위한 부분! -->
+	<insert id="createChannel" useGeneratedKeys="true" keyColumn="SHOWLIVE_NO" keyProperty="showlive_no" parameterType="ShowLiveChannelDTO">
+		insert into SHOW_LIVE (SHOWLIVE_NAME, SHOW_HOST, PRODUCT_NAME, LIVE_STATUS, SHOWLIVE_START_DATE, SHOWLIVE_START_PRICE, RESTRICTED_GRADE, AWS_STREAM_KEY, AWS_ENDPOINT, AWS_CHANNEL_URL) 
+		values(#{showlive_name}, #{show_host}, #{product_name}, #{live_status}, #{showlive_start_date}, #{showlive_start_price}, #{restricted_grade}, #{aws_stream_key}, #{aws_endpoint}, #{aws_channel_url})
+	</insert>
+	<!-- 쇼라이브 채팅 넣기  -->
+	<insert id="insertChat">
+		insert into SHOW_LIVE_CHAT (SHOWLIVE_NO, CHAT_USER_ID, CHAT_CONTENT, CHAT_DATE) values(#{showlive_no}, #{chat_user_id}, #{chat_content}, #{chat_date})
+	</insert>
+	<!-- 쇼라이브 경매내역 넣기 -->
+	<insert id="insertAuction">
+		insert into SHOW_LIVE_BIDDING (SHOWLIVE_NO, USER_NAME, SUGGEST_PRICE, SUGGEST_DATE) values(#{showlive_no}, #{user_name}, #{suggest_price}, #{suggest_date})
+	</insert>
+	<!-- 라이브중인 방 목록 가져오기 -->
+	<select id="getLiveChannels" resultType="ShowLiveChannelDTO">
+		select * from SHOW_LIVE where LIVE_STATUS = 1
+	</select>
+</mapper>
