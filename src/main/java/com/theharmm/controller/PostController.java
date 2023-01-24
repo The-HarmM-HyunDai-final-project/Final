@@ -91,49 +91,9 @@ public class PostController {
 	@PostMapping("/social/user/postEnroll")
 	public String postEnrollPOST(PostVO post, RedirectAttributes rttr) throws Exception{
 		logger.info("postEnrollPOST......" + post);
+		logger.info("퍼센트: "+post.getPercent());
+		logger.info("결과: "+post.getResult());
 		
-		Map<String, Object> resMap = null;
-		
-		URL url = new URL("http://192.168.0.227:5000/positiveNegativeResult");
-		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		conn.setRequestMethod("POST");
-		conn.setDoOutput(true);
-		
-		//========= 전달할 param setting ============
-		String contents = post.getContents();
-		
-		StringBuilder builder = new StringBuilder();
-		builder.append("contents").append("=").append(contents);			
-		//================
-		//http 통신 요청 후 응답 받은 데이터를 담기 위한 변수
-		String responseData = "";	    	   
-		BufferedReader br = null;
-		StringBuffer sb = null;
-		try {
-
-			  OutputStreamWriter outputStreamWriter = new OutputStreamWriter(conn.getOutputStream(), "UTF-8");
-			  PrintWriter writer = new PrintWriter(outputStreamWriter);
-			  writer.write(builder.toString());
-			  writer.flush();
-
-			  InputStream inputStream = conn.getInputStream();
-			  
-			  //http 요청 후 응답 받은 데이터를 버퍼에 쌓는다
-			  br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));	
-			  sb = new StringBuffer();	       
-			  while ((responseData = br.readLine()) != null) {
-				  sb.append(responseData); //StringBuffer에 응답받은 데이터 순차적으로 저장 실시
-			  }
-
-			  inputStream.close();
-			  writer.close();
-			  conn.disconnect();
-
-		} catch (Exception e) {
-			  e.printStackTrace();
-		}
-		
-		logger.info("gg:"+sb.toString());
 		
 		postService.postEnroll(post);
 		rttr.addFlashAttribute("enroll_result", post.getPost_id());
