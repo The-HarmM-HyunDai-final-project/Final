@@ -13,7 +13,7 @@ public class ShowLiveChannelDTO {
 	private int live_status;
 	private Date showlive_start_date;
 	private Date showlive_end_date;
-	private int showlive_final_price;
+	private int showlive_start_price;
 	private String restricted_grade;
 	private String aws_stream_key;
 	private String aws_endpoint;
