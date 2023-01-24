@@ -185,6 +185,7 @@
 	function suggestion_aution() {
 	  //새로운 제시 가격
 	  var mySuggestion = Number($("#auction_sugest").val());
+	  console.log(auctionPrevPrice);
 	  //이전 가격의 1/10 보다 높은지 확인 하고 제안을 받아들임
 	  if (
 	    //auctionPrevPrice - mySuggestion > 0 &&
