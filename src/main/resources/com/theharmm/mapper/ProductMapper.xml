@@ -98,5 +98,11 @@
 		            <include refid="criteria"> </include>
 		        )
 	</select>
+	
+	<!--  pid로 제품 하나 가져오기 -->
+	<select id="selectOneProduct" resultType="com.theharmm.domain.ProductDTO"
+		parameterType="int">
+		select * from resell_product where pid = #{pid}
+	</select>
 
 </mapper>
