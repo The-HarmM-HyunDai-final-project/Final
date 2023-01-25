@@ -8,18 +8,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.theharmm.domain.BuySaleToday;
 import com.theharmm.domain.CountToday;
 import com.theharmm.domain.ProductDTO;
 import com.theharmm.domain.RegisterToday;
+import com.theharmm.domain.ShowLiveChannelDTO;
 import com.theharmm.service.AdminService;
+
+import lombok.extern.log4j.Log4j;
 
 @Controller
 @RequestMapping("/admin/*")
+@Log4j
 public class AdminController {
 	
 	@Autowired
@@ -88,7 +94,7 @@ public class AdminController {
     }
     
     /* 관리자  라이브쇼 페이지 이동 */
-    @RequestMapping(value="liveshow", method = RequestMethod.GET)
+    @RequestMapping(value="showlive", method = RequestMethod.GET)
     public void adminLiveshowGET() throws Exception{
         
         logger.info("관리자 라이브쇼 이동");
@@ -99,7 +105,16 @@ public class AdminController {
     @RequestMapping(value="buyAndSell", method = RequestMethod.GET)
     public void adminBuyAndSellGET() throws Exception{
         
-        logger.info("관리자 라이브쇼 이동");
+        logger.info("관리자 구매판매 이동");
         
     }
+    
+    /* 쇼라이브 등록 */
+	@PostMapping("/showliveEnroll")
+	public String showliveEnrollPOST(ShowLiveChannelDTO slcd, RedirectAttributes rttr) throws Exception{
+		log.warn("showliveEnroll......");
+		log.warn(slcd.toString());
+		
+		return "redirect:/admin/main";
+	}
 }

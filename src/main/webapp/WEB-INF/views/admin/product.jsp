@@ -55,7 +55,7 @@
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-book-open"></i>
 							</div> 구매 및 판매 관리
-						</a> <a class="nav-link" href="/admin/liveshow">
+						</a> <a class="nav-link" href="/admin/showlive">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-book-open"></i>
 							</div> 경매 및 채팅 관리

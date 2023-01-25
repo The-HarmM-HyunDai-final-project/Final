@@ -243,7 +243,7 @@
 						</c:if>
 						<c:if test="${listcheck != 'empty'}">
 							<div data-v-013cc4d0="" data-v-47cbe816="" class="social_feeds"
-								style="height: 550px;">
+								style="height: 1000px;">
 								<div data-v-013cc4d0="" transition-duration="0"
 									item-selector=".item" gutter=".gutter_item"
 									horizontal-order="true" class="masonry_posts"
@@ -252,11 +252,9 @@
 									<!-- <div>${list}</div>
                            <div>${pageMaker }</div>-->
 									<c:forEach items="${list}" var="item" varStatus="status">
-										<c:set var="i" value="${i+300}" />
 										<div data-v-47728778="" data-v-013cc4d0=""
 											class="feed_card item vertical"
-											style="position: absolute; left: ${status.index*300}px; top: 0px;">
-
+											style="position: absolute; left: ${status.index*300%1200}px; top: ${(status.index/4-status.index%4/4) * 500 }px;">
 											<a data-v-47728778="" href="${pageContext.request.contextPath}/social/user/details?post_id=${item.post_id}"><div data-v-47728778=""
 													class="card_box">
 													<div data-v-47728778="" class="social_img_box vertical">
@@ -554,145 +552,6 @@
 		</div>
 	</div>
 	<script>
-<<<<<<< HEAD
-		document.getElementById('voc').addEventListener('click', function() {
-			document.querySelector('.layer_delivery.layer.lg').style.display = 'block';
-		});
-		document.getElementById('follower').addEventListener('click', function() {
-			document.querySelector('.layer_delivery.layer.lg2').style.display = 'block';
-		});
-		document.getElementById('following').addEventListener('click', function() {
-			document.querySelector('.layer_delivery.layer.lg3').style.display = 'block';
-		});
-		document
-				.querySelector('.btn_layer_close')
-				.addEventListener(
-						'click',
-						function() {
-							document.querySelector('.layer_delivery.layer.lg').style.display = 'none';
-						});
-		document
-				.querySelector('.btn_delete')
-				.addEventListener(
-						'click',
-						function() {
-							document.querySelector('.layer_delivery.layer.lg').style.display = 'none';
-						});
-		document
-		.querySelector('.btn_delete2')
-				.addEventListener(
-						'click',
-						function() {
-							document.querySelector('.layer_delivery.layer.lg2').style.display = 'none';
-						});
-		document
-		.querySelector('.btn_delete3')
-				.addEventListener(
-						'click',
-						function() {
-							document.querySelector('.layer_delivery.layer.lg3').style.display = 'none';
-						});
-		document
-		.querySelector('.btn_save')
-		.addEventListener(
-				'click',
-				function() {
-					enrollForm.submit();
-					alert("등록이 완료되었습니다.");
-				});
-
-		/* 이미지 업로드 */
-		$("input[type='file']").on("change", function(e) {
-			/* 이미지 존재시 삭제 */
-			if($(".imgDeleteBtn").length > 0){
-				deleteFile();
-			}
-			//let formData = new FormData();
-			let fileInput = $('input[name="uploadFile"]');
-			for (let i = 0; i < fileInput.length; i++){
-				
-			}
-			let fileList = fileInput[0].files;
-			let fileObj = fileList[0];
-			
-			let csrfHeaderName ="${_csrf.headerName}";
-            let csrfTokenValue="${_csrf.token}";
-            
-			//if (!fileCheck(fileObj.name, fileObj.size)) {
-				//return false;
-			//}
-			for (let i = 0; i < fileList.length; i++){
-				let fileObj = fileList[i];
-				let formData = new FormData();
-				formData.append("uploadFile", fileObj);	
-				$.ajax({
-					url : '/social/user/uploadAjaxAction',
-					processData : false,
-					contentType : false,
-					data : formData,
-					type : 'post',
-					dataType : 'json',
-					beforeSend: function(xhr) {
-		                 xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
-		            success : function(result){
-		      	   		console.log(result);
-		      	   		showUploadImage(result);
-		      	   	},
-		      	   	error : function(result){
-		      	   		alert("이미지 파일이 아닙니다.");
-		      	   	}
-		      	});
-			}
-		});
-
-		/* var, method related with attachFile */
-		let regex = new RegExp("(.*?)\.(jpg|png)$");
-		let maxSize = 1048576; //1MB	
-		function fileCheck(fileName, fileSize) {
-			if (fileSize >= maxSize) {
-				alert("파일 사이즈 초과");
-				return false;
-			}
-			if (!regex.test(fileName)) {
-				alert("해당 종류의 파일은 업로드할 수 없습니다.");
-				return false;
-			}
-			return true;
-		}
-		
-		/* 이미지 출력 */
-		function showUploadImage(uploadResultArr) {
-			/* 전달받은 데이터 검증 */
-			if (!uploadResultArr || uploadResultArr.length == 0) {
-				return
-			}
-			let uploadResult = $("#uploadResult");
-			let obj = uploadResultArr[0];
-			let str = "";
-			let fileCallPath = obj.upload_path + "/s_" + obj.uuid + "_" + obj.file_name;
-			//str += "<div id='result_card'>";
-			//str += "<img src='/social/user/display?fileName=/" + fileCallPath + "' referrerpolicy='no-referrer'>";
-			console.log(fileCallPath);
-			//str += "<div class='imgDeleteBtn' data-file='" + fileCallPath + "'>x</div>";
-			str += "<input type='hidden' name='socialList[0].file_name' value='"+ obj.file_name +"'>";
-			str += "<input type='hidden' name='socialList[0].uuid' value='"+ obj.uuid +"'>";
-			str += "<input type='hidden' name='socialList[0].upload_path' value='"+ obj.upload_path +"'>";
-			//str += "</div>";
-			uploadResult.append(str);
-		}
-
-		/* 이미지 삭제 버튼 동작 */
-		$("#uploadResult").on("click", ".imgDeleteBtn", function(e) {
-			deleteFile();
-		});
-		
-		/* 파일 삭제 메서드 */
-		function deleteFile(){
-			let targetFile = $(".imgDeleteBtn").data("file");
-			let targetDiv = $("#result_card");
-			
-			let csrfHeaderName ="${_csrf.headerName}";
-=======
 	/* 상품 검색 모달 창 */
 	     document.getElementById('upload_img_box').addEventListener('click', function() {
 
@@ -872,7 +731,6 @@
          let targetDiv = $("#result_card");
          
          let csrfHeaderName ="${_csrf.headerName}";
->>>>>>> 7c1129ff835f28744bb5ac29534008dc29d167f5
             let csrfTokenValue="${_csrf.token}";
             
          $.ajax({
