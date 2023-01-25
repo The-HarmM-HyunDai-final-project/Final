@@ -283,7 +283,7 @@
 																		xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"></use></svg><span
 																data-v-47728778="" class="like_count">${item.post_id}</span></span>
 														</div>
-														<p data-v-47728778="" class="text_box">${item.member_email}</p>
+														<p data-v-47728778="" class="text_box">${item.contents}</p>
 														<!---->
 													</div>
 												</div>
