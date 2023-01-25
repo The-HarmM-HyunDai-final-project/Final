@@ -12,14 +12,11 @@
 	
 	<!-- 포스트 리스트 -->
   	<select id="postGetList" resultType="com.theharmm.domain.PostVO">
-		select * from
-			(select * from
-				(select 
-				p.post_id as post_id, p.member_email as member_email, s.file_name as file_name, replace(s.upload_path, '\','/') as upload_path, s.uuid as uuid,
-				 row_number() over(partition by p.post_id order by s.register_date) as rn, contents, pid0, pid1, pid2
-				from post p, social s
-				where p.post_id = s.post_id and (instr(file_name, 'jpg') > 0 or instr(file_name, 'png') > 0) )
-				where rn = 1)
+		select p.post_id as post_id, p.member_email as member_email, 
+		s.file_name as file_name, s.upload_path as upload_path, s.uuid as uuid,
+		contents, pid0, pid1, pid2
+		from post p, social s where p.post_id = s.post_id
+		and (s.file_name like '%.jpg' or s.file_name like '%.png')
   	</select>
 	
 	<!-- 포스트 총 개수 -->

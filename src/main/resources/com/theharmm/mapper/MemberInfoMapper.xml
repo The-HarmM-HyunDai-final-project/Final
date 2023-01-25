@@ -17,7 +17,7 @@
 		  ]]>
 	</select>
 	
-	<!-- 회원의 주거래계좌 조회 (임시)-->
+	<!-- 회원의 주거래계좌 조회 (임시: defaultyn 필요)-->
 	<select id="selectMemberMainAccount"
 		resultType="AccountDTO"
 		parameterType="Map">
@@ -27,6 +27,20 @@
 		  WHERE MEMBER_EMAIL = #{member_email}
 		  ]]>
 	</select>
+	
+	<!-- 회원, 계좌번호로 계좌정보 조회-->
+	<select id="selectMemberAccount"
+		resultType="AccountDTO"
+		parameterType="Map">
+		 <![CDATA[
+		 SELECT *
+		   FROM ACCOUNT
+		  WHERE MEMBER_EMAIL = #{member_email}
+		    AND BANK_NUMBER = #{bank_number}
+		  ]]>
+	</select>
+	
+	
 	
 	
 	<update id="mergeAccount" parameterType="AccountDTO">

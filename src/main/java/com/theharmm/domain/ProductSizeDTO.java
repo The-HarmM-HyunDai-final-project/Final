@@ -18,5 +18,9 @@ public class ProductSizeDTO {
 	//sale
 	private int saleid;
 	private int price;
+	
+	//buy
+	private int buyid;
+	
 
 }
