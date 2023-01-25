@@ -109,6 +109,84 @@
       	margin : 0 auto;
       }
 
+	/* 모달창 부분 이무니다 */
+	  .modal {
+        position: absolute;
+        z-index:100;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        display: none;
+
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      .modal.show {
+        display: block;
+      }
+
+      .modal_body {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        width: 400px;
+        height: 200px;
+
+        padding: 40px;
+
+        text-align: center;
+
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px;
+        box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+        transform: translateX(-50%) translateY(-50%);
+      }
+      .modal_body .modal_content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      .modal_body .confirm_price_area {
+        position: absolute;
+        left: 0;
+        right: 0;
+        font-size: 40px;
+      }
+      .modal_body .modal_btns {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+      .modal_body .modal_btns button {
+        background: none;
+        /* box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5); */
+        width: 120px;
+        height: 50px;
+        border: 0;
+        border-radius: 5px;
+        transition: all 0.2s;
+      }
+      .modal_body .modal_btns button.yes_btn {
+        background: #00ae68;
+      }
+      .modal_body .modal_btns button.close_btn {
+        background: #ffaa40;
+      }
+      .modal_body .modal_btns button:hover {
+        margin-top: -2px;
+        margin-left: 0px;
+        transform: scale(1.1, 1.1);
+        -ms-transform: scale(1.1, 1.1);
+        -webkit-transform: scale(1.1, 1.1);
+        /* box-shadow: 0px 5px 5px -2px rgba(85, 197, 150, 0.25); */
+      }
+      
     </style>
     <script	src="https://player.live-video.net/1.6.1/amazon-ivs-player.min.js"></script>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/test.css">
@@ -143,8 +221,8 @@
             
             <br />
             <div class="auction_area_suggestion">
-	            <input type="number" max="2147483640"class="chat_input" type="text" id="auction_sugest" placeholder="입찰 가격을 제시해 주세요" />
-	            <button class="my_btn" onclick="suggestion_aution()">입찰신청</button>
+	            <input type="number" max="2147483640"class="chat_input" id="auction_sugest" placeholder="입찰 가격을 제시해 주세요" />
+	            <button class="my_btn" id="auction_btn">입찰신청</button>
             </div>
           </div>
           <div class="chat_area">
@@ -163,11 +241,30 @@
         </div>
       </div>
     </div>
-<script src="${pageContext.request.contextPath}/resources/js/test.js" defer=""></script>
+    
+    <!-- 모달창 이무니다  -->
+     <div class="modal">
+      <div class="modal_body">
+        <b>정말 입찰 하시겠습니까?</b>
+        <div class="modal_content">
+          <div class="confirm_price_area">
+            <b>1000000</b>
+          </div>
+          <div class="modal_btns">
+            <button class="yes_btn">확인</button>
+            <button class="close_btn">취소</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+<%-- <script src="${pageContext.request.contextPath}/resources/js/test.js" defer=""></script> --%>
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script type="text/javascript">
-
 	var auctionPrevPrice = 100000;
+	
+	//writePrice();//시작할때 처음 제시가격 찍기
 	
 	//가격에 콤마 찍기
 	function priceToString(price) {
@@ -179,29 +276,9 @@
 	  $("#max_price").text(priceToString(auctionPrevPrice));
 	}
 	
-	writePrice();//시작할때 처음 제시가격 찍기
-	
-	//들어온 가격 제시가 현제가격이상 이고 일정간격보다 높게했는지
-	function suggestion_aution() {
-	  //새로운 제시 가격
-	  var mySuggestion = Number($("#auction_sugest").val());
-	  //이전 가격의 1/10 보다 높은지 확인 하고 제안을 받아들임
-	  if (
-	    //auctionPrevPrice - mySuggestion > 0 &&
-	    mySuggestion - auctionPrevPrice >=
-	    auctionPrevPrice / 10
-	  ) {
-		  //가격 전송하기
-		  sendMessage("AUCTION");
-	  } else {
-	    alert("이전 제시금액의 최소 1/10이상을 제시하셔야 합니다.");
-	  }
-	  $("#auction_sugest").val("");
-	}
-	
 	//채팅전송 버튼 누르는 이벤트
 	$("#button-talk-send").on("click", function (e) {
-	  sendMessage("TALK");
+	  sendMessage("TALK", $("#msg").val());
 	  $("#msg").val("");
 	});
 	
@@ -209,15 +286,24 @@
 	sock.onmessage = onMessage;
 	sock.onclose = onClose;
 	sock.onopen = onOpen;
-
-	function sendMessage(type) {
-		if(type=="TALK"){
+	
+	function sendMessage(type, msg) {		
+		var cur_id = '${userid}'; 
+		
+		var showLiveMessage = JSON.stringify({//object-> string으로 
+				/* userName : cur_id, */
+				message : msg,
+				mType : type
+		})
+		sock.send(showLiveMessage)
+		/* if(type=="TALK"){
 			var message = "TALK:"+ $("#msg").val();
 			sock.send(message);
 		}else if(type == "AUCTION"){
 			var message = "AUCTION:"+ $("#auction_sugest").val();
 			sock.send(message);
-		}
+		} */
+		
 	}
 	//서버에서 메시지를 받았을 때 -> 입장, 퇴장, 채팅, 경매 모두 이곳으로!
 	function onMessage(msg) {
@@ -255,12 +341,11 @@
 					<div class='alert alert-secondary'>
 					<b>\${username} : \${message}</b>
 					</div></div>` */
-					
 				break
 			case 'AUCTION':
 				$("#max_price").text(priceToString(maxSuggestPrice));
 				$("#max_price_user").text(maxSuggestUser);
-				auctionPrevPrice=maxSuggestUser;
+				auctionPrevPrice = maxSuggestPrice;
 				break
 			case 'ENTER':
 				var str =  
@@ -270,6 +355,8 @@
 				$("#max_price").text(priceToString(maxSuggestPrice));
 				$("#max_price_user").text(maxSuggestUser);
 		        $("#connected_user").text(totalUser)
+		        auctionPrevPrice = maxSuggestPrice;
+		        console.log(auctionPrevPrice);
 				break
 			case 'LEAVE':
 				var str = 
@@ -284,34 +371,6 @@
 		$("#message_box").append(str);
 		//채팅창이 계속 올라갈떄  계속 아래로 보여지게 스크롤 조정 
 		$("#message_box").scrollTop($("#message_box")[0].scrollHeight);
-		
-		
-	    //로그인 한 클라이언트와 타 클라이언트를 분류하기 위함
-		/* if(sessionId == cur_session){
-			
-			var str = 
-			`<div class='col-6'>
-			<div class='alert alert-secondary'>
-			<b>\${sessionId} : \${message}</b>
-			</div></div>`
-			
-			$("#msgArea").append(str);
-		}
-		else{
-			var str = 
-				`<div class='col-6'>
-				<div class='alert alert-secondary'>
-				<b>\${sessionId} : \${message}</b>
-				</div></div>`
-				
-				$("#msgArea").append(str);
-		} */		
-			/* 	"<div class='col-6'>";
-			str += "<div class='alert alert-warning'>";
-			str += "<b>" + sessionId + " : " + message + "</b>";
-			str += "</div></div>"; */
-			
-			//$("#msgArea").append(str);
 	}
 	//채팅창에서 나갔을 때
 	function onClose(evt) {
@@ -321,4 +380,79 @@
 	function onOpen(evt) {
 		
 	}
+	
+	//모달창 부분 이무니다====================
+ 	const body = document.querySelector("body");
+    const modal = document.querySelector(".modal");
+    const priceModalOpen = document.querySelector("#auction_btn");
+    var modal_price = document.querySelector(".confirm_price_area b");
+	const yes_btn_suggest = document.querySelector(".modal_btns .yes_btn");
+	const close_btn_suggest = document.querySelector(".modal_btns .close_btn");
+	
+	//들어온 가격 제시가 현제가격이상 이고 일정간격보다 높게했는지
+	/* function suggestion_aution() {
+	  //새로운 제시 가격
+	  var mySuggestion = Number($("#auction_sugest").val());
+	  console.log(auctionPrevPrice);
+	  //이전 가격의 1/10 보다 높은지 확인 하고 제안을 받아들임
+	  if (
+	    //auctionPrevPrice - mySuggestion > 0 &&
+	    mySuggestion - auctionPrevPrice >=
+	    auctionPrevPrice / 10
+	  ) {
+		  //가격 전송하기
+		  sendMessage("AUCTION");
+	  } else {
+	    alert("이전 제시금액의 최소 1/10이상을 제시하셔야 합니다.");
+	  }
+	  $("#auction_sugest").val("");
+	} */
+	
+	//입찰 신청 버튼 눌렀을때 실행
+    priceModalOpen.addEventListener("click", () => {
+    	//새로운 제시 가격
+	  	var mySuggestion = Number($("#auction_sugest").val());
+	  	//이전 가격의 1/10 보다 높은지 확인 하고 제안을 받아들임
+	  	if ( mySuggestion - auctionPrevPrice >= auctionPrevPrice / 10) {
+	    	modal.classList.toggle("show");
+	      	const my_suggest_price = priceToString(document.querySelector("#auction_sugest").value);
+	      	modal_price.innerText = my_suggest_price;
+	      	if (modal.classList.contains("show")) {
+		        body.style.overflow = "hidden";
+	      	}
+		} else {
+		  alert("이전 제시금액의 최소 1/10이상을 제시하셔야 합니다.");
+		}
+    	
+
+    });
+	//입찰신청 모달의 확인버튼 눌렸을떄
+    yes_btn_suggest.addEventListener("click", () => {
+    	var mySuggestion = $("#auction_sugest").val();
+    	sendMessage("AUCTION", mySuggestion);
+    	
+    	modal.classList.toggle("show");
+        if (modal.classList.contains("show")) {
+          body.style.overflow = "hidden";
+        }
+        $("#auction_sugest").val("");
+    });
+  	//입찰신청 모달의 취소버튼 눌렸을떄
+    close_btn_suggest.addEventListener("click", () => {
+        modal.classList.toggle("show");
+        if (modal.classList.contains("show")) {
+          body.style.overflow = "hidden";
+        }
+    });
+
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        modal.classList.toggle("show");
+
+        if (!modal.classList.contains("show")) {
+          body.style.overflow = "auto";
+        }
+      }
+    });
+    //모달모달=====================
 </script>

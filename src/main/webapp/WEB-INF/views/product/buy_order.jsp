@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<script src="${pageContext.request.contextPath}/resources/js/buy_order_tab.js" defer=""></script>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>KREAM | 한정판 거래의 FLEX</title>
+<title>theharmm | 한정판 거래의 FLEX</title>
 <meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
 <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
 <meta data-n-head="ssr" charset="utf-8">
@@ -110,9 +111,15 @@
 var IMP = window.IMP;   // 생략 가능
 IMP.init("imp30137302"); // 예: imp00000000 
 
+function checkPay(){
+	$("#layer_order_price_confirm").removeAttr("style");
+}
+
+ 
+
+
 function requestPay() {
-	/* var token = $("meta[name='_csrf']").attr("content");
-	var header = $("meta[name='_csrf_header']").attr("content"); */
+	
 
 	let csrfHeaderName ="${_csrf.headerName}";
     let csrfTokenValue="${_csrf.token}";
@@ -120,7 +127,7 @@ function requestPay() {
     IMP.request_pay({
       pg: "kcp.T0000",
       pay_method: "card",
-      merchant_uid: "ORD20180131-0000035",   // 주문번호
+      merchant_uid: "ORD20180131-0000047",   // 주문번호
       name: "${productDetailDTO.pname_k}",
       amount: "${totalPrice}",                         // 숫자 타입
       buyer_email: "gildong@gmail.com",
@@ -151,12 +158,16 @@ function requestPay() {
         }
       }).done(function (data) {
         // 가맹점 서버 결제 API 성공시 로직
+        $("#layer_order_price_confirm").css("display","none");
+    	document.getElementById('buyCompleteAction').submit();
+        
       })
     	
       } else {
         // 결제 실패 시 로직
     	  console.log(rsp);
         alert("결제실패");
+        $("#layer_order_price_confirm").css("display","none");
       }
     });
   }
@@ -216,16 +227,15 @@ function requestPay() {
 												<dl data-v-05a4f438="" class="info_list">
 													<div data-v-05a4f438="" class="info_box">
 														<dt data-v-05a4f438="" class="title">받는 분</dt>
-														<dd data-v-05a4f438="" class="desc">집****</dd>
+														<dd data-v-05a4f438="" class="desc">${addressDTO.name}</dd>
 													</div>
 													<div data-v-05a4f438="" class="info_box">
 														<dt data-v-05a4f438="" class="title">연락처</dt>
-														<dd data-v-05a4f438="" class="desc">010-5***-*542</dd>
+														<dd data-v-05a4f438="" class="desc">${addressDTO.phone_number }</dd>
 													</div>
 													<div data-v-05a4f438="" class="info_box">
 														<dt data-v-05a4f438="" class="title">배송 주소</dt>
-														<dd data-v-05a4f438="" class="desc">서울 중구 필동로 35-13
-															(필동3가, WH) 204호</dd>
+														<dd data-v-05a4f438="" class="desc">${addressDTO.sub_address} ${ addressDTO.detail_address}</dd>
 													</div>
 												</dl>
 											</div>
@@ -368,14 +378,23 @@ function requestPay() {
 							
 								
 							</section>
-							<button onclick="requestPay()">결제하기</button> 
+							<form id="buyCompleteAction" method="get" action="/buy/complete">
+								<input type="hidden" name="pid" value="${productDetailDTO.pid}"/> 
+								<input type="hidden" name="saleid" value="${productSaleSizeDTO.saleid}"/>
+								<input type="hidden" name="price" value="${price}"/>
+								<input type="hidden" name="fee" value="${fee}"/> 
+								<input type="hidden" name="totalPrice" value="${totalPrice}"/>
+								<input type="hidden" name="shippingFee" value="${shippingFee}"/>
+								<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
+							</form>
+							<button onclick="checkPay()">결제하기</button> 
 							<!---->
 							<div data-v-1a009402="" data-v-4ae17423="" data-v-b8efdcc8=""
-								class="layer_order_price_confirm layer lg"
+								class="layer_order_price_confirm layer lg" id="layer_order_price_confirm"
 								style="display: none;">
 								<div data-v-1a009402="" class="layer_container">
 									<a data-v-4ae17423="" data-v-1a009402="" href="#"
-										class="btn_layer_close"><svg data-v-4ae17423=""
+										class="btn_layer_close" id="btn_layer_close"><svg data-v-4ae17423=""
 											data-v-1a009402="" xmlns="http://www.w3.org/2000/svg"
 											class="ico-close icon sprite-icons">
 											<use data-v-4ae17423="" data-v-1a009402=""
@@ -393,7 +412,7 @@ function requestPay() {
 											</div>
 											<p data-v-4ae17423="" data-v-1a009402="" class="title">총
 												결제금액</p>
-											<p data-v-4ae17423="" data-v-1a009402="" class="price">661,700원</p>
+											<p data-v-4ae17423="" data-v-1a009402="" class="price"><fmt:formatNumber type="number" maxFractionDigits="3" value="${totalPrice}" />원</p>
 										</div>
 										<div data-v-4ae17423="" data-v-1a009402="" class="alert_box">
 											<p data-v-4ae17423="" data-v-1a009402="" class="alert_desc">
@@ -402,7 +421,7 @@ function requestPay() {
 										</div>
 										<div data-v-4ae17423="" data-v-1a009402="" class="layer_btn">
 											<button data-v-575aff82="" data-v-4ae17423="" type="button"
-												class="btn solid buy full large" data-v-1a009402="">
+												class="btn solid buy full large" data-v-1a009402="" onclick="requestPay()">
 												바로 결제하기</button>
 										</div>
 									</div>

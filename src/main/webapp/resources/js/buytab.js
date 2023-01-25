@@ -17,6 +17,11 @@ $(function(){
    
   })*/
     $('#buyNow').click(function(e){
+    	let nowBuyPrice = parseInt((document.getElementById('nowBuyPrice').innerText).replaceAll(',',''));
+    	if(nowBuyPrice <= 0){
+    		return;
+    	}
+    	
     	$('#buyNow').addClass("on");
     	$('#buyBid').removeClass("on");
     	console.log(" 1111")
@@ -43,7 +48,10 @@ $(function(){
   
   
 	  $('#bidBuyActionClick').click(function(e){
-	 
+		  if(document.getElementById("bidBuyPrice").value.replaceAll(',','')<=0){
+			alert("올바른 금액을 입력하세요");  
+			return;
+		  }
 		 document.getElementById("bidBuyPrice").value = document.getElementById("bidBuyPrice").value.replaceAll(',','');
 		 document.getElementById("bidBuyAction").submit();
 	 })
@@ -54,7 +62,9 @@ $(function(){
 		  price = Number(price.replaceAll(',', ''));
 		  let nowBuyPrice = parseInt((document.getElementById('nowBuyPrice').innerText).replaceAll(',',''));
 		  
-		  if(price>=nowBuyPrice){
+		  if(price>=nowBuyPrice && nowBuyPrice > 0 ){
+			  
+			  
 			  document.getElementById("bidBuyPrice").value = null;
 			
 			  $("#buyNow").trigger("click");
@@ -63,7 +73,7 @@ $(function(){
 		  
 		  
 		  
-		  if(isNaN(price)) {         //NaN인지 판별
+		  if(isNaN(price) || price <= 0) {         //NaN인지 판별
 			    input.value = 0;   
 		
 			  }else {                   //NaN이 아닌 경우

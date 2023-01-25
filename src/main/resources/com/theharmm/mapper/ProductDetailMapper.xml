@@ -108,5 +108,29 @@
 		UPDATE SALE SET STATUS1='진행완료', NOWDATE = SYSDATE WHERE SALEID = #{saleid}
 	 ]]>
 	</update>
+	
+	<update id="updateSaleOrder"
+		parameterType="Map">
+	 <![CDATA[
+		UPDATE BUY SET STATUS1='진행완료', NOWDATE = SYSDATE WHERE BUYID = #{buyid}
+	 ]]>
+	</update>
+	
+	<insert id="insertSaleOrder"
+		parameterType="Map">
+	 <![CDATA[
+		INSERT INTO SALE (SALEID,MEMBER_EMAIL,PID,PRICE,SIZE_TYPE,STATUS1,REGDATE,BIDDATE) 
+		VALUES (SALE_SEQ.NEXTVAL,#{member_email},#{pid},#{price},#{size_type},'판매입찰',SYSDATE,SYSDATE+#{dDay})
+	 ]]>
+	</insert>
+	
+	<insert id="insertBuyOrder"
+		parameterType="Map">
+	 <![CDATA[
+		INSERT INTO BUY (BUYID,MEMBER_EMAIL,PID,PRICE,SIZE_TYPE,STATUS1,REGDATE,BIDDATE) 
+		VALUES (BUY_SEQ.NEXTVAL,#{member_email},#{pid},#{price},#{size_type},'구매입찰',SYSDATE,SYSDATE+#{dDay})
+	 ]]>
+	</insert>
+	
 
 </mapper>

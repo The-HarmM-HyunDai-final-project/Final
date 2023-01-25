@@ -16,5 +16,18 @@
 			type="com.theharmm.domain.ProductDetailDTO" />
 		<typeAlias alias="ProductSizeDTO"
 			type="com.theharmm.domain.ProductSizeDTO" />
+		<typeAlias alias="MemberAddressDTO"
+			type="com.theharmm.domain.MemberAddressDTO" />
+		<typeAlias alias="AccountDTO"
+			type="com.theharmm.domain.AccountDTO" />
+		<!-- ShowLive -->
+		<typeAlias alias="ShowLiveChatDTO"
+			type="com.theharmm.domain.ShowLiveChatDTO" />
+		<typeAlias alias="ShowLiveChannelDTO"
+			type="com.theharmm.domain.ShowLiveChannelDTO" />
+		<typeAlias alias="ShowLiveBiddingDTO"
+			type="com.theharmm.domain.ShowLiveBiddingDTO" />
+		<typeAlias alias="ShowLiveAuctionFinalPersonDTO"
+			type="com.theharmm.domain.ShowLiveAuctionFinalPersonDTO" />
 	</typeAliases>
 </configuration>

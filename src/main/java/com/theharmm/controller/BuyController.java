@@ -15,8 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.theharmm.domain.AccountDTO;
+import com.theharmm.domain.MemberAddressDTO;
+import com.theharmm.domain.MemberVO;
 import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.ProductSizeDTO;
+import com.theharmm.service.MemberInfoService;
 import com.theharmm.service.ProductDetailService;
 
 import lombok.RequiredArgsConstructor;
@@ -31,11 +35,15 @@ public class BuyController {
 	//상품정보를 가져오기 때문에 buyservice가 아닌 productDetailService의 메서드를 함께 사용
 	@Autowired
 	ProductDetailService productDetailService;
+	
+	@Autowired
+	MemberInfoService memberInfoService;
 
 	//구매 - 상품사이즈 리스트 띄우기
 	@GetMapping("/select/{pid}")
 	 public String selectBuyProductSize(@PathVariable int pid,@RequestParam(required = false) String size, Model model) {
 		log.info("selectBuyProductSize 실행");
+		//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 		List<ProductSizeDTO> productSaleSizeList = productDetailService.selectSaleProductSizeList(productDetailDTO);
 		log.info("productDetailDTO : "+productDetailDTO.toString());
@@ -54,6 +62,7 @@ public class BuyController {
 		log.info("buyProduct 실행");
 		int shippingFee = 3000;
 		int fee = 30000;
+		//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		
 		ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 		
@@ -75,12 +84,20 @@ public class BuyController {
 	// 즉시구매 혹은 구매입찰 중 타입별로 구매하기로 넘어옴
 	@GetMapping("/order/{pid}")
 	 public String orderProduct(@PathVariable int pid,@RequestParam String size,@RequestParam String type,@RequestParam int price,
-			 Model model) {
+			 @RequestParam(required=false,defaultValue = "0") int dDay,Model model) {
 		log.info("orderProduct 실행");
 		int shippingFee = 3000;
 		int fee = 30000;
-	
-
+		//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		MemberVO user = new MemberVO();
+		user.setMember_email("tlsalfla96@naver.com");
+		user.setMember_name("신미림");
+		user.setMember_phone("01053030542");
+		Map<String,Object> memberInfoMap = new HashMap<String,Object>();
+		memberInfoMap.put("member_email",user.getMember_email());
+		MemberAddressDTO addressDTO = memberInfoService.selectMemberMainAddress(memberInfoMap);
+		model.addAttribute("addressDTO", addressDTO);
+		log.info("AddressDTO : "+ addressDTO);
 		
 		ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 		
@@ -101,12 +118,13 @@ public class BuyController {
 			fee = (int)(productSaleSizeDTO.getPrice()*0.015);
 		}
 		else if(type.equals("구매입찰")) {
-			fee =(int)(productSaleSizeDTO.getPrice()*0.03);
+			fee =(int)(price*0.03);
 		}
 		
 		model.addAttribute("fee",fee);
 		model.addAttribute("price",price);
 		model.addAttribute("totalPrice",price+fee+shippingFee);
+		model.addAttribute("dDay",dDay);
 		
 		if(type.equals("즉시구매")) {
 	
@@ -129,6 +147,7 @@ public class BuyController {
 	 public String updateBuyOrder(@RequestParam String imp_uid, @RequestParam String type, @RequestParam String merchant_uid, @RequestParam String buyer_email,@RequestParam int pid,@RequestParam int totalPrice,@RequestParam String model_size,@RequestParam int saleid) {
 		log.info("updateBuyOrder 실행");
 		log.info(imp_uid + merchant_uid + buyer_email + pid+totalPrice+model_size+saleid);
+		//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		
 		Map<String,Object> saleInfoMap = new HashMap<String,Object>();
 		saleInfoMap.put("type",type);
@@ -136,6 +155,7 @@ public class BuyController {
 		saleInfoMap.put("pid",pid);
 		saleInfoMap.put("saleid",saleid);
 		
+		//판매입찰 데이터 업데이트 - 구매완료 처리
 		productDetailService.updateBuyOrder(saleInfoMap);
 		
 		//여기서 구매입찰로 들어온 경우는 최종가격에 수수료 제거 해줘야함 !!!!!! 
@@ -150,6 +170,89 @@ public class BuyController {
 //		
 		return "success";
 	}
+	
+	//결제 후 입찰 넘어가는 곳 
+	@PostMapping("/bid")
+	@ResponseBody
+	 public String insertBidBuyOrder(@RequestParam String imp_uid, @RequestParam String type, @RequestParam String merchant_uid, @RequestParam String buyer_email,@RequestParam int pid,
+			 @RequestParam int price,@RequestParam int totalPrice,@RequestParam String model_size,@RequestParam int dDay) {
+		log.info("insertBidBuyOrder 실행");
+		log.info(imp_uid + merchant_uid + buyer_email + pid+totalPrice+model_size);
+		//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		MemberVO user = new MemberVO();
+		user.setMember_email("tlsalfla96@naver.com");
+		user.setMember_name("신미림");
+		user.setMember_phone("01053030542");
+		
+		//구매입찰 데이터 등록(insert)
+		Map<String,Object> buyInfoMap = new HashMap<String,Object>();
+		buyInfoMap.put("type",type);
+		buyInfoMap.put("member_email",user.getMember_email());
+		buyInfoMap.put("pid",pid);
+		buyInfoMap.put("price",price);
+		buyInfoMap.put("dDay",dDay);
+		buyInfoMap.put("size_type",model_size);
+		productDetailService.insertBuyOrder(buyInfoMap);		
+		
+	
+		return "success";
+	}
+	
+	//구매완료 
+	@GetMapping("/complete")
+	 public String buyProductComplete(@RequestParam int pid,@RequestParam int saleid,
+			 @RequestParam int totalPrice, @RequestParam int price,
+			 @RequestParam int fee,@RequestParam int shippingFee, Model model) {
+		log.info("buyProductComplete 실행");
+		//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		MemberVO user = new MemberVO();
+		user.setMember_email("tlsalfla96@naver.com");
+		user.setMember_name("신미림");
+		user.setMember_phone("01053030542");
+		
+		//상품정보 가져오기
+		ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
+		
+		
+		
+		model.addAttribute("productDetailDTO", productDetailDTO);
+		model.addAttribute("price", price);
+		model.addAttribute("fee", fee);
+		model.addAttribute("totalPrice", totalPrice);
+		model.addAttribute("shippingFee", shippingFee);
+		
+		
+		return "product/buy_complete";
+	}
+	
+	//구매입찰
+		@GetMapping("/bidComplete")
+		 public String buyBidProductComplete(@RequestParam int pid,
+				 @RequestParam int totalPrice, @RequestParam int price,
+				 @RequestParam int fee,@RequestParam int shippingFee,@RequestParam String size,
+				 @RequestParam int dDay, Model model) {
+			log.info("buyBidProductComplete 실행");
+			//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			MemberVO user = new MemberVO();
+			user.setMember_email("tlsalfla96@naver.com");
+			user.setMember_name("신미림");
+			user.setMember_phone("01053030542");
+			
+			//상품정보 가져오기
+			ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
+			
+		
+			model.addAttribute("productDetailDTO", productDetailDTO);
+			model.addAttribute("price", price);
+			model.addAttribute("fee", fee);
+			model.addAttribute("totalPrice", totalPrice);
+			model.addAttribute("dDay", dDay);
+			model.addAttribute("shippingFee", shippingFee);
+			
+			
+			return "product/buy_bid_complete";
+		}
+
 
 }
 

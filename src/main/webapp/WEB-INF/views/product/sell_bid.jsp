@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<script src="${pageContext.request.contextPath}/resources/js/sell_order_tab.js" defer=""></script>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -163,17 +164,108 @@ var IMP = window.IMP;
 										<h3 data-v-218008a6="" class="title_txt">판매 정산 계좌</h3>
 									</div>
 									<div data-v-218008a6="" class="section_content">
+										<c:if test="${empty accountDTO}">
 										<div data-v-218008a6="">
 											<p data-v-218008a6="" class="account_text">
 												등록된 판매 정산 계좌가 없습니다.<br data-v-218008a6="">새 계좌번호를
 												추가해주세요!
 											</p>
 										</div>
-										<a data-v-575aff82="" data-v-218008a6="" href="#"
+										<a data-v-575aff82="" data-v-218008a6="" href="#" id = "addAcount"
 											class="btn btn_edit solid small"> 계좌 추가 </a>
+										</c:if>
+										<c:if test="${not empty accountDTO }">
+										<div data-v-218008a6="" class="account_info">
+											<dl data-v-218008a6="" class="info_list">
+												<div data-v-218008a6="" class="info_box">
+													<dt data-v-218008a6="" class="title">계좌</dt>
+													<dd data-v-218008a6="" class="desc" id="account_info1">${accountDTO.bank}
+														${accountDTO.bank_number }</dd>
+												</div>
+												<div data-v-218008a6="" class="info_box">
+													<dt data-v-218008a6="" class="title">예금주</dt>
+													<dd data-v-218008a6="" class="desc" id="account_owner1"> ${accountDTO.bank_name}</dd>
+												</div>
+												<!---->
+											</dl>
+										</div>
+										<a data-v-575aff82="" data-v-218008a6="" href="#" id = "changeAcount"
+											class="btn btn_edit outlinegrey small"> 변경 </a>
+										</c:if>
 									</div>
 								</div>
 								<!---->
+								<div data-v-1a009402="" data-v-6fc13fac="" data-v-218008a6="" id = "layer_payout_account"
+									class="layer_payout_account layer lg" style="display:none;">
+									<div data-v-1a009402="" class="layer_container">
+										<a data-v-6fc13fac="" data-v-1a009402="" href="#" id="btn_layer_close"
+											class="btn_layer_close"><svg data-v-6fc13fac=""
+												data-v-1a009402="" xmlns="http://www.w3.org/2000/svg"
+												class="ico-close icon sprite-icons">
+												<use data-v-6fc13fac="" data-v-1a009402=""
+													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"
+													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"></use></svg></a>
+										<div data-v-1a009402="" class="layer_header">
+											<h2 data-v-6fc13fac="" data-v-1a009402="" class="title">판매
+												정산 계좌</h2>
+										</div>
+										<div data-v-1a009402="" class="layer_content">
+											<c:if test="${not empty accountDTO}">
+											<div data-v-d00f8f86="" data-v-6fc13fac=""
+												class="registered_account_box" data-v-1a009402="">
+												<h4 data-v-d00f8f86="" class="box_title">등록된 계좌 정보</h4>
+												<p data-v-d00f8f86="" class="box_account_info">
+													<span data-v-d00f8f86="" class="account" id="account_info2">${accountDTO.bank}
+														${accountDTO.bank_number }</span><span data-v-d00f8f86=""
+														class="account_devider">/</span><span data-v-d00f8f86=""
+														class="name" id="account_owner2">${accountDTO.bank_name }</span>
+												</p>
+											</div>
+											</c:if>
+											<!---->
+											
+											<div data-v-028af65a="" data-v-6fc13fac=""
+												class="content_registration" data-v-1a009402="">
+												<div data-v-028af65a="" class="account_registration">
+													<div data-v-1c44afeb=""
+														class="input_box">
+														<h4 data-v-1c44afeb="" class="input_title">은행명</h4>
+														<div data-v-1c44afeb="" class="input_item">
+															<input data-v-1c44afeb="" type="text" placeholder="은행명을 정확히 입력하세요." id="bank_name" name="bank_name"
+																autocomplete="off" class="input_txt">
+															
+														</div>
+													</div>
+													<div data-v-1c44afeb="" class="input_box">
+														<h4 data-v-1c44afeb="" class="input_title">계좌번호</h4>
+														<div data-v-1c44afeb="" class="input_item">
+															<input data-v-1c44afeb="" type="tel" id="account_number" name="account_number"
+																placeholder="- 없이 입력하세요" autocomplete="off"
+																class="input_txt">
+														</div>
+														<p data-v-1c44afeb="" class="input_error">올바른 계좌번호를
+															입력해주세요.</p>
+													</div>
+													<div data-v-1c44afeb="" class="input_box">
+														<h4 data-v-1c44afeb="" class="input_title">예금주</h4>
+														<div data-v-1c44afeb="" class="input_item">
+															<input data-v-1c44afeb="" type="text" id="account_owner" name="account_owner"
+																placeholder="예금주명을 정확히 입력하세요." autocomplete="off"
+																class="input_txt">
+														</div>
+														<p data-v-1c44afeb="" class="input_error">올바른 이름을
+															입력해주세요. (2-50자)</p>
+													</div>
+												</div>
+												<div data-v-028af65a="" class="registration_btn_box">
+													<a data-v-575aff82="" data-v-028af65a="" disabled="disabled" id="saveBtn"  onclick="regAccount()"
+														href="#" class="btn btn_save solid medium disabled"> 저장하기 </a>
+												</div>
+												<!---->
+											</div>
+										</div>
+									</div>
+								</div>
 							</section>
 							<section data-v-e7203b1c="" data-v-4c67e088="">
 								<div data-v-e7203b1c="" class="section_unit">
@@ -189,16 +281,15 @@ var IMP = window.IMP;
 												<dl data-v-05a4f438="" class="info_list">
 													<div data-v-05a4f438="" class="info_box">
 														<dt data-v-05a4f438="" class="title">받는 분</dt>
-														<dd data-v-05a4f438="" class="desc">집****</dd>
+														<dd data-v-05a4f438="" class="desc">${addressDTO.name}</dd>
 													</div>
 													<div data-v-05a4f438="" class="info_box">
 														<dt data-v-05a4f438="" class="title">연락처</dt>
-														<dd data-v-05a4f438="" class="desc">010-5***-*542</dd>
+														<dd data-v-05a4f438="" class="desc">${addressDTO.phone_number }</dd>
 													</div>
 													<div data-v-05a4f438="" class="info_box">
 														<dt data-v-05a4f438="" class="title">반송 주소</dt>
-														<dd data-v-05a4f438="" class="desc">서울 중구 필동로 35-13
-															(필동3가, WH) 204호</dd>
+														<dd data-v-05a4f438="" class="desc"> ${addressDTO.sub_address} ${ addressDTO.detail_address} </dd>
 													</div>
 												</dl>
 											</div>
@@ -237,7 +328,7 @@ var IMP = window.IMP;
 											<dl data-v-679d7250="" class="price_box">
 												<dt data-v-679d7250="" class="price_title">정산금액</dt>
 												<dd data-v-679d7250="" class="price">
-													<span data-v-679d7250="" class="amount"> ${totalPrice}</span><span
+													<span data-v-679d7250="" class="amount"> <fmt:formatNumber type="number" maxFractionDigits="3" value="${totalPrice}" /></span><span
 														data-v-679d7250="" class="unit">원</span>
 												</dd>
 											</dl>
@@ -252,7 +343,7 @@ var IMP = window.IMP;
 													<span data-v-3a2a7b6b="">판매 희망가</span>
 													<!---->
 												</dt>
-												<dd data-v-3a2a7b6b="" class="price_text"> ${price }</dd>
+												<dd data-v-3a2a7b6b="" class="price_text"> <fmt:formatNumber type="number" maxFractionDigits="3" value="${price}" /></dd>
 											</dl>
 											<dl data-v-3a2a7b6b="" data-v-887ad490=""
 												class="price_addition">
@@ -274,7 +365,7 @@ var IMP = window.IMP;
 																xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-info-circle-white"></use></svg>
 													</button>
 												</dt>
-												<dd data-v-3a2a7b6b="" class="price_text">-${fee}원</dd>
+												<dd data-v-3a2a7b6b="" class="price_text">-<fmt:formatNumber type="number" maxFractionDigits="3" value="${fee}" />원</dd>
 											</dl>
 											<dl data-v-3a2a7b6b="" data-v-887ad490=""
 												class="price_addition">
@@ -301,13 +392,26 @@ var IMP = window.IMP;
 								</div>
 								<div data-v-14995178="" data-v-4c67e088=""
 									class="buy_total_confirm">
-								
+									<form id="sellBidCompleteAction" method="get" action="/sell/bidComplete">
+									<input type="hidden" name="pid" value="${productDetailDTO.pid}"/> 
+									<input type="hidden" name="price" value="${price}"/>
+									<input type="hidden" name="fee" value="${fee}"/> 
+									<input type="hidden" name="totalPrice" value="${totalPrice}"/>
+									<input type="hidden" name="accountNumber" value="${accountDTO.bank_number}"/>
+									<input type="hidden" name="size" value="${productBuySizeDTO.model_size}"/>
+									<input type="hidden" name="dDay" value="${dDay}"/>
+									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 									<div data-v-14995178="" class="btn_confirm">
-										<a data-v-575aff82="" data-v-14995178="" disabled="disabled" 
-											href="#" onclick="requestPay()" class="btn full solid false disabled"> 판매 입찰하기 </a>
+									<a data-v-575aff82="" data-v-14995178="" onclick="document.getElementById('sellBidCompleteAction').submit()"
+										<c:if test="${empty accountDTO or empty addressDTO}"> disabled="disabled"</c:if>
+											href="#" class="btn full solid 
+											 <c:if test="${not empty accountDTO and not empty addressDTO}"> sell</c:if> 
+											 <c:if test="${empty accountDTO or empty addressDTO}"> false disabled</c:if>
+											 "> 판매 입찰하기 </a>
 									</div>
+									</form>
 								</div>
-									 <button onclick="requestPay()">결제하기</button> 
+								
 							</section>
 							
 							
@@ -374,4 +478,47 @@ var IMP = window.IMP;
 	<link href="${pageContext.request.contextPath}/resources/css/afedd5f.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/css/d8a4145.css" rel="stylesheet" type="text/css">
 </body>
+<script type="text/javascript">
+function regAccount() {
+	
+	
+	let csrfHeaderName ="${_csrf.headerName}";
+    let csrfTokenValue="${_csrf.token}";
+    
+
+       $.ajax({
+        url: "/sell/regAccount", 
+        method: 'post',
+        beforeSend : function(xhr){
+            xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+    	}, 
+        data: {
+          member_email: "${memberDTO.member_email}",
+          bank_name : $("#bank_name").val(),
+          account_number: $("#account_number").val(),
+          account_owner: $("#account_owner").val()
+        },
+        success : function(res){
+        	alert("계좌변경 완료");
+        	$("#account_info1").text(res.bank+" "+res.bank_number);
+        	$("#account_info2").text(res.bank+" "+res.bank_number);
+        	$("#account_owner1").text(res.bank_name);
+        	$("#account_owner2").text(res.bank_name);
+        	$("input[type=hidden][name=accountNumber]").val(res.bank_number);
+        	<c:if test="${empty accountDTO}">
+        		window.location.reload();
+        	</c:if>
+        	$("#btn_layer_close").trigger("click");
+        	
+        	
+        },
+        error : function(xhr){
+        	alert(xhr.status+" "+xhr.statusText);
+        }
+        
+      })
+    	
+      
+  }
+</script>
 </html>

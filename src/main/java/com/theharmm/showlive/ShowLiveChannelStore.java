@@ -7,6 +7,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.WebSocketSession;
 
+import com.theharmm.domain.ShowLiveChannelDTO;
+
 import lombok.extern.log4j.Log4j;
 
 @Component
@@ -38,6 +40,15 @@ public class ShowLiveChannelStore {
 		}
 		
 		return showliveChannel;
+	}
+	
+	public void createNewChannel(ShowLiveChannelDTO channel) {
+		//채널 생성후 RoomList에 넣기로직
+		RoomList.put(Integer.toString(channel.getShowlive_no()), ShowLiveChannel.createForService(channel));
+	}
+	
+	public Map<String, ShowLiveChannel> getChannelList(){
+		return RoomList;
 	}
 	
 }

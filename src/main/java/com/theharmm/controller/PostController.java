@@ -96,11 +96,15 @@ public class PostController {
 
 	/* 포스트 등록 */
 	@PostMapping("/social/user/postEnroll")
-	public String postEnrollPOST(PostVO post, RedirectAttributes rttr) {
+	public String postEnrollPOST(PostVO post, RedirectAttributes rttr) throws Exception{
 		logger.info("postEnrollPOST......" + post);
+		logger.info("퍼센트: "+post.getPercent());
+		logger.info("결과: "+post.getResult());
+		
+		
 		postService.postEnroll(post);
 		rttr.addFlashAttribute("enroll_result", post.getPost_id());
-		// 휘발성
+		//휘발성
 		return "redirect:/social/user";
 	}
 
