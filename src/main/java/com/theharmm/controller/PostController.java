@@ -156,5 +156,12 @@ public class PostController {
 
 		return "social/userdetail";
 	}
+	
+	@RequestMapping(value="/social/trending", method = RequestMethod.GET)
+    public void socialMainGET() throws Exception{
+        
+        logger.info("스타일 페이지 이동");
+        
+    }
 
 }
