@@ -13,7 +13,7 @@
 	</insert>
 	<!-- 쇼라이브 채팅 넣기  -->
 	<insert id="insertChat">
-		insert into SHOW_LIVE_CHAT (SHOWLIVE_NO, CHAT_USER_ID, CHAT_CONTENT, CHAT_DATE) values(#{showlive_no}, #{chat_user_id}, #{chat_content}, #{chat_date})
+		insert into SHOW_LIVE_CHAT (SHOWLIVE_NO, CHAT_USER_ID, CHAT_CONTENT, CHAT_DATE, QUESTION_YN) values(#{showlive_no}, #{chat_user_id}, #{chat_content}, #{chat_date}, #{question_yn})
 	</insert>
 	<!-- 쇼라이브 경매내역 넣기 -->
 	<insert id="insertAuction">

@@ -32,6 +32,7 @@ public class ShowLiveChannel {
 	private String maxSuggestionUser;
 	//접속한 사용자들 담자는 배열 -> 아래 Map 객체떄문에 사용 안해도 될것 같음
 	//private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
+	private Map<WebSocketSession, String> bjList = new ConcurrentHashMap<WebSocketSession, String>();
 	// session, 유저id(email)가 들어간다.
 	private Map<WebSocketSession, String> sessionsRoomNo = new ConcurrentHashMap<WebSocketSession, String>();
 	
@@ -72,6 +73,10 @@ public class ShowLiveChannel {
 		//log.warn(sessionsRoomNo.keySet().toString());
 		
 		if(showliveMessage.getType() == MessageType.TALK) {				//채팅 들어왔을 때
+			if(showliveMessage.getQuestionYn().equals("1")) {			//채팅이 질문일 때
+				//관리자에게만 따로 소켓 통신으로 메시지 보내기
+				log.warn("이거 질문이니까 따로보여주기");
+			}
 			showliveMessage.setMessage(showliveMessage.getMessage());
 		}else if(showliveMessage.getType() == MessageType.AUCTION) {	//경매 용도
 			//입력받은 입찰 제시금이 지금보다 크면 모두에게 새로운 제시금을 보냄

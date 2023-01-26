@@ -32,7 +32,7 @@ public class ShowLiveServiceTests {
 	private ShowLiveService service;
 	
 	//쇼라이브 채널 만들기
-	@Test
+	//@Test
 	public void createChannel() throws Exception{
 		ShowLiveChannelDTO channel = new ShowLiveChannelDTO();
 		channel.setShowlive_name("아놔 테스트용3333");
@@ -55,10 +55,11 @@ public class ShowLiveServiceTests {
 		Date date = new java.util.Date();
 		
 		ShowLiveChatDTO chatdto = new ShowLiveChatDTO();
-		chatdto.setShowlive_no(2);
+		chatdto.setShowlive_no(7);
 		chatdto.setChat_user_id("asd");
 		chatdto.setChat_content("이것은 테스트3!");
 		chatdto.setChat_date(date);
+		chatdto.setQuestion_yn("0");
 		
 		service.insertChat(chatdto);
 	

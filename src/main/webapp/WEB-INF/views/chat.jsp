@@ -8,7 +8,8 @@
       }
       .showlive_container {
         /* background: #226600; */
-        height: 100vh;
+        /* height: 100vh; */
+        height : 100%;
         max-width: 1800px;
         margin: 0 auto;
         display: flex;
@@ -26,7 +27,7 @@
         /* background: rgb(224, 224, 224); */
         /* float: left; */
         width: 25%;
-        height: 100%;
+        height: 95%;
         display: flex;
         flex-direction: column;
       }
@@ -34,7 +35,7 @@
         position: relative;
         /* background: green; */
         /* width: 100%; */
-        height: 60%;
+        height: 65%;
       }
       .user_count {
         /* position: absolute;
@@ -44,7 +45,22 @@
         background: rgb(224, 224, 224);
         width: 100%;
         height: 20%;
+        margin-top:15px;
         border-radius: 15px;
+        padding : 15px;
+      }
+      .info_area .room_title{
+      	font-size:15px;
+      }
+      .info_area .room_product_name{
+      	font-size:40px;
+      
+      }
+      .info_area .room_bj{
+      
+      }
+      .info_area .room_start_time{
+      
       }
       .auction_area {
         background: rgb(224, 224, 224);
@@ -195,7 +211,7 @@
         <div class="left_area">
           <div class="video_area">
               <!-- Player wrapper, forcing 16:9 aspect ratio -->
-		      <div class="player-wrapper">
+		      <div class="player-wrapper" style="width:100%; height:100%;">
 		        <div class="aspect-spacer"></div>
 		        <div class="pos-absolute full-width full-height top-0">
 		          <video id="video-player" class="el-player" playsinline controls></video>
@@ -205,7 +221,12 @@
               <p>사용자 : <b id="connected_user">0</b> 명</p>
             </div> -->
           </div>
-          <div class="info_area"></div>
+          <div class="info_area">
+          	<div class="room_title">지금 아니면 구할 기회가 없다! 된장포오스</div>
+          	<div class="room_product_name">나이키 에어포스 GTA-808</div>
+          	<div class="room_bj">Bj : <b>MC민지</b></div>
+          	<div class="room_start_time">시작 시간</div>
+          </div>
         </div>
 
         <div class="right_area">
@@ -234,7 +255,7 @@
             	
             </div>
             <div class="chat_do">
-              <input class="chat_input" type="text" id="msg" placeholder="메시지를 입력해 주세요"/>
+              <input class="chat_input" type="text" id="msg" placeholder="메시지를 입력해 주세요" onkeyup="chatEnterkey()"/>
               <button class="my_btn" id="button-talk-send">전송</button>
             </div>
           </div>
@@ -275,11 +296,42 @@
 	function writePrice() {
 	  $("#max_price").text(priceToString(auctionPrevPrice));
 	}
-	
+	//채팅치고있을때 엔터 누르면 알아서 전송버튼 눌리게
+	function chatEnterkey(){
+		if (window.event.keyCode == 13) {
+	    	// 엔터키가 눌렸을 때
+	    	$("#button-talk-send").trigger("click");
+	    }
+	}
 	//채팅전송 버튼 누르는 이벤트
 	$("#button-talk-send").on("click", function (e) {
-	  sendMessage("TALK", $("#msg").val());
-	  $("#msg").val("");
+		const chat_content = $("#msg").val();
+		$.ajax({
+          type: "POST", //다른 서버로 보낼 때도 Post를 써야하나
+          url: "http://127.0.0.1:5000/question",
+          // data: GET은 전송할 http의 body가 없음. 그래서 data 필드가 필요없음
+          // contentType: 전송할 data가 없으니까 그 data를 설명할 필드가 필요없음
+          dataType: "text", // 목적: 파싱해줌. json데이터를 응답받으면 바이트스트링으로 들어옴. 응답받은 데이터는 json이 아니라 string이다. 그래서 json이 들어오면 자바스크립트 오브젝트로 파싱해줘야 함
+          // dataType: 응답되는 데이터를 자바스크립트 오브젝트로 파싱하는 용도 text면 생략가능
+          data: {
+            content : chat_content, 
+          },
+          success: function (response) {
+        	if(response == '1'){
+        		console.log("질문입니다");	
+        		sendMessage("TALK", chat_content, response);
+        	}else{
+        		console.log("질문이 아닙니다");
+        		sendMessage("TALK", chat_content, response);
+        	}
+          },
+          error: function(){
+        	  alert("지금은 채팅 할 수 없어요");
+          }
+        });
+		//잠시 꺼놓을께요
+		//sendMessage("TALK", $("#msg").val());
+ 		$("#msg").val("");
 	});
 	
 	var sock = new SockJS('http://localhost:8080/chatting');
@@ -287,13 +339,14 @@
 	sock.onclose = onClose;
 	sock.onopen = onOpen;
 	
-	function sendMessage(type, msg) {		
+	function sendMessage(type, msg, qyn) {		
 		var cur_id = '${userid}'; 
 		
 		var showLiveMessage = JSON.stringify({//object-> string으로 
 				/* userName : cur_id, */
 				message : msg,
-				mType : type
+				mType : type,
+				question_yn : qyn
 		})
 		sock.send(showLiveMessage)
 		/* if(type=="TALK"){
@@ -389,25 +442,6 @@
 	const yes_btn_suggest = document.querySelector(".modal_btns .yes_btn");
 	const close_btn_suggest = document.querySelector(".modal_btns .close_btn");
 	
-	//들어온 가격 제시가 현제가격이상 이고 일정간격보다 높게했는지
-	/* function suggestion_aution() {
-	  //새로운 제시 가격
-	  var mySuggestion = Number($("#auction_sugest").val());
-	  console.log(auctionPrevPrice);
-	  //이전 가격의 1/10 보다 높은지 확인 하고 제안을 받아들임
-	  if (
-	    //auctionPrevPrice - mySuggestion > 0 &&
-	    mySuggestion - auctionPrevPrice >=
-	    auctionPrevPrice / 10
-	  ) {
-		  //가격 전송하기
-		  sendMessage("AUCTION");
-	  } else {
-	    alert("이전 제시금액의 최소 1/10이상을 제시하셔야 합니다.");
-	  }
-	  $("#auction_sugest").val("");
-	} */
-	
 	//입찰 신청 버튼 눌렀을때 실행
     priceModalOpen.addEventListener("click", () => {
     	//새로운 제시 가격
@@ -429,7 +463,7 @@
 	//입찰신청 모달의 확인버튼 눌렸을떄
     yes_btn_suggest.addEventListener("click", () => {
     	var mySuggestion = $("#auction_sugest").val();
-    	sendMessage("AUCTION", mySuggestion);
+    	sendMessage("AUCTION", mySuggestion, "0");
     	
     	modal.classList.toggle("show");
         if (modal.classList.contains("show")) {
