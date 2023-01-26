@@ -9,8 +9,11 @@ import com.theharmm.domain.BuySaleToday;
 import com.theharmm.domain.CountToday;
 import com.theharmm.domain.ProductDTO;
 import com.theharmm.domain.RegisterToday;
+import com.theharmm.domain.ShowLiveChannelDTO;
 import com.theharmm.mapper.AdminMapper;
+import com.theharmm.mapper.ShowLiveMapper;
 import com.theharmm.service.AdminService;
+import com.theharmm.showlive.ShowLiveChannelStore;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -18,10 +21,16 @@ import lombok.extern.log4j.Log4j;
 
 @Service
 @AllArgsConstructor
+@Log4j
 public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private AdminMapper mapper;
 	
+	@Autowired
+	private ShowLiveMapper showLivemapper;
+	
+	@Autowired
+	private ShowLiveChannelStore showliveChannelStore;
 	
 	@Override
 	public List<CountToday> countToday() {
@@ -46,6 +55,17 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<ProductDTO> getProductList() {
 		return mapper.getProductList();
+	}
+
+	@Override
+	public void createChannel(ShowLiveChannelDTO channel) {
+		//DB에 방을 저장하면 AI된 방 번호가 생성이 반환됨
+		int roomNo = showLivemapper.createChannel(channel);
+		channel.setShowlive_no(roomNo);
+		log.warn(channel.toString());
+		//그 방번호로 ShowLiveChannelStore에도 방을 만들어주기
+		showliveChannelStore.createNewChannel(channel);
+
 	}
 
 

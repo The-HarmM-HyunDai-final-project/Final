@@ -22,6 +22,8 @@ public class ShowLiveChannel {
 	// "Java Object" =Serialize=> "JSON" or "JSON" =Deserialize=> "Java Object" 역할을 맡음
 	private final ObjectMapper objectMapper = new ObjectMapper();
 	
+	//채널의 BJ id
+	private String BjID;
 	//해당 채널의 방번호
 	private String roomNum;
 	//해당 채널에 접속한 사용자 수
@@ -39,6 +41,7 @@ public class ShowLiveChannel {
 	//관리자가 방을 만들때 생성하는 메소드
 	public static ShowLiveChannel createForService(ShowLiveChannelDTO channelDTO) {
 		ShowLiveChannel showliveChannel = new ShowLiveChannel();
+		showliveChannel.BjID = channelDTO.getShow_host();
 		showliveChannel.roomNum = Integer.toString(channelDTO.getShowlive_no());
 		showliveChannel.connectedUsers = 0;
 		showliveChannel.maxSuggestionPrice = channelDTO.getShowlive_start_price(); //지금 임의로 한거고 관리자가 방 만들때는 직접 입력한 금액을 여기에 넣음
@@ -117,12 +120,21 @@ public class ShowLiveChannel {
 			}
 		}
 	}
-	
-	
+	//BJ들어오면 BJList에 추가
+	public void addBJSession(WebSocketSession session, String BJId) {
+		bjList.put(session, BJId);			//bj목록에도 넣어주고
+		sessionsRoomNo.put(session, BJId);	//일반 사용자 목록에도 넣어줘야 일반 채팅들도 볼 수 있겠지
+	}
+	//BJ나가면 BJList, 유저list에서 모두 제거
+	public void removeBJSession (WebSocketSession session) {
+		bjList.remove(session);
+		sessionsRoomNo.remove(session);
+	}
+	//일반 사용자 List에 추가
 	public void addSession (WebSocketSession session, String nickname) {
 		sessionsRoomNo.put(session, nickname);
 	}
-	
+	//사용자 나가면 List에 제거
 	public void removeSession (WebSocketSession session) {
 		sessionsRoomNo.remove(session);
 	}

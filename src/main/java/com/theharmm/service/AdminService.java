@@ -6,6 +6,7 @@ import com.theharmm.domain.BuySaleToday;
 import com.theharmm.domain.CountToday;
 import com.theharmm.domain.ProductDTO;
 import com.theharmm.domain.RegisterToday;
+import com.theharmm.domain.ShowLiveChannelDTO;
 
 public interface AdminService {
 	public List<CountToday> countToday();
@@ -17,4 +18,6 @@ public interface AdminService {
 	public List<BuySaleToday> saleToday();
 	
 	public List<ProductDTO> getProductList();
+	
+	public void createChannel(ShowLiveChannelDTO channel);
 }
