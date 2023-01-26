@@ -25,6 +25,20 @@ public class BJChattingHandler extends TextWebSocketHandler{
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		log.warn("비제이 들어왔으요 ");
+		//BJ id를 가지고옴
+		String BJId = session.getPrincipal().getName();
+		String roomNoOfBj = showLiveChannelStore.getRoomNoById(BJId);
+		ShowLiveChannel showLiveChannel = showLiveChannelStore.getChannelByRoomNo(roomNoOfBj);
+		
+		//channel을 가져왔으니 이제 BJ의 session을 Channel에 넣어주기!
+		if(showLiveChannel != null) {
+			showLiveChannel.addBJSession(session, BJId);
+		}
+		//null이면 방을 만들어서 db에 저장도 안하고 ShowLiveStore에 저장도 안한거겠지!
+		
+		
+		//일단 Store에 Channel이 잘 있는지 확인~
+		log.warn(showLiveChannelStore.getChannelList().toString());
 	}
 	
 	//웹 소켓 서버로 메세지를 전송했을 때 이 메서드가 호출된다. 현재 웹 소켓 서버에 접속한 Session모두에게 메세지를 전달해야 하므로 loop를 돌며 메세지를 전송함
@@ -35,6 +49,15 @@ public class BJChattingHandler extends TextWebSocketHandler{
 	//BJ와 연결이 끊어진 경우(채팅방을 나간 경우)Channle을 삭제 해버리자
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-
+		String BJId = session.getPrincipal().getName();
+		String roomNoOfBj = showLiveChannelStore.getRoomNoById(BJId);
+		ShowLiveChannel showLiveChannel = showLiveChannelStore.getChannelByRoomNo(roomNoOfBj);
+		
+		//사용자들에게 방송이 끝났다는걸 알리고 view에서는 아무 조작이 안되고 홈버튼 혹은 뒤로가기만 가능하게끔!
+		
+		//db에도 라이브 상태를 바꿔주고
+		
+		//store에서 channel을 완전 지워버리자!
+		
 	}
 }

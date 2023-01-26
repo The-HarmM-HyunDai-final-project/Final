@@ -16,7 +16,7 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-public class ChatController {
+public class ShowLiveController {
 
 	@RequestMapping(value = "/chat/{roomNo}", method = RequestMethod.GET)
 	public String Chat(Model model, @PathVariable("roomNo") String roomNo , HttpSession session) {

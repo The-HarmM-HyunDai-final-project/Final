@@ -262,9 +262,6 @@
 													src="/images/account_img_default.png?type=sl"
 													alt="KREAM 프로필 이미지" class="profile_img"></a>
 												<div id="p_comment_user_textbox">
-
-
-
 													<input type="text" id="reply" name="reply"
 														placeholder="댓글을 남기세요" id="p_comment_user_text"> <input
 														type="hidden" id="post_id" name="post_id"

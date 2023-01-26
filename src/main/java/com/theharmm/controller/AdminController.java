@@ -1,10 +1,12 @@
 package com.theharmm.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,7 @@ import com.theharmm.domain.CountToday;
 import com.theharmm.domain.ProductDTO;
 import com.theharmm.domain.RegisterToday;
 import com.theharmm.domain.ShowLiveChannelDTO;
+import com.theharmm.security.domain.CustomUser;
 import com.theharmm.service.AdminService;
 
 import lombok.extern.log4j.Log4j;
@@ -94,10 +97,9 @@ public class AdminController {
     }
     
     /* 관리자  라이브쇼 페이지 이동 */
-    @RequestMapping(value="showlive", method = RequestMethod.GET)
+    @RequestMapping(value="showliveCreate", method = RequestMethod.GET)
     public void adminLiveshowGET() throws Exception{
-        
-        logger.info("관리자 라이브쇼 이동");
+        logger.info("관리자 라이브쇼 생성창 이동");
         
     }
     
@@ -111,11 +113,27 @@ public class AdminController {
     
     /* 쇼라이브 등록 */
 	@PostMapping("/showliveEnroll")
-	public String showliveEnrollPOST(ShowLiveChannelDTO slcd, RedirectAttributes rttr) throws Exception{
+	public String showliveEnrollPOST(ShowLiveChannelDTO createdChannel, RedirectAttributes rttr) throws Exception{
 		log.warn("showliveEnroll......");
-		log.warn(slcd.toString());
 		
-		return "redirect:/admin/main";
+		//방을 만든 BJ 아이디 가져오기
+		CustomUser bjUser = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String bjUsername = bjUser.getUsername();
+		//방을 생성하는 날짜
+		Date curDate = new java.util.Date();
+		
+		//생성할 채널인 ShowLiveChannelDTO에 값을 넣어주기
+		createdChannel.setShow_host(bjUsername);
+		createdChannel.setLive_status(1);
+		createdChannel.setShowlive_start_date(curDate);
+		
+		//log.warn(createdChannel.toString());
+		
+		//db에 채널 넣고
+		
+		//ShowLiveChannelStore에도 방을 만들어주기
+		
+		return "admin/showliveonair";
 	}
 	
 	//쇼라이브 생방송 페이지

@@ -1,6 +1,7 @@
 package com.theharmm.showlive;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -19,10 +20,17 @@ public class ShowLiveChannelStore {
 	//ConcurrentHashMap은 Map이지만 간단하게 설명하면 Multi-Thread환경에서 사용할수 있으며 검색,업데이트시 동시성 성능 높이기위한 클래스 자세한 설명은 각자 검색
 	private Map<String, ShowLiveChannel> RoomList = new ConcurrentHashMap<String, ShowLiveChannel>();
 	
+	private Map<String, String> roomNoOfBJ = new HashMap<String, String>();
+	
 	public ShowLiveChannel getChannelByRoomNo(String roomNo) {
 		ShowLiveChannel showLiveChannel = RoomList.get(roomNo);
 		return showLiveChannel;
 	}
+	
+	public String getRoomNoById(String BJId) {
+		return roomNoOfBJ.get(BJId);
+	}
+	
 	
 	//채널 저장소니까 채널번호로 채널을 가지고오도록
 	public ShowLiveChannel getChannelAndAddUser(WebSocketSession session, String userId, String roomNo) {
@@ -43,6 +51,9 @@ public class ShowLiveChannelStore {
 	}
 	
 	public void createNewChannel(ShowLiveChannelDTO channel) {
+		//방 생성 로직에서는 방장의 session을 가져올 수 없으므로 우선 id, roomNo로 매핑 시켜 놓기
+		roomNoOfBJ.put(channel.getShow_host(), Integer.toString(channel.getShowlive_no()));
+
 		//채널 생성후 RoomList에 넣기로직
 		RoomList.put(Integer.toString(channel.getShowlive_no()), ShowLiveChannel.createForService(channel));
 	}

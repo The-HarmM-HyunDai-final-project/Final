@@ -32,7 +32,7 @@
 									<div class="row mb-3">
 										<div class="col-md-6">
 											<div class="form-floating mb-3 mb-md-0">
-												<input class="form-control" id="inputOne" type="text" name="inputOne"
+												<input class="form-control" id="inputOne" type="text" name="showlive_name"
 													placeholder="" /> <label for="inputOne">쇼라이브 제목</label>
 											</div>
 										</div>
@@ -43,12 +43,13 @@
 												    제한 등급
 												  </button>
 												  <div class="dropdown-menu">
-												    <a class="dropdown-item" href="#">Bronze</a>
-												    <a class="dropdown-item" href="#">Silver</a>
-												    <a class="dropdown-item" href="#">Gold</a>
-												    <a class="dropdown-item" href="#">Platinum</a>
-												    <a class="dropdown-item" href="#">Diamond</a>
+												    <a class="dropdown-item" href="javascript:void(0);">Bronze</a>
+												    <a class="dropdown-item" href="javascript:void(0);">Silver</a>
+												    <a class="dropdown-item" href="javascript:void(0);">Gold</a>
+												    <a class="dropdown-item" href="javascript:void(0);">Platinum</a>
+												    <a class="dropdown-item" href="javascript:void(0);">Diamond</a>
 												  </div>
+												  <input class="form-control" type="hidden" id="restrict_grade" type="text" name="restricted_grade" />
 												</div>
 											</div>
 										</div>
@@ -62,7 +63,7 @@
 										</div>
 										<div class="col-md-6">
 											<div class="form-floating">
-												<input class="form-control" id="inputFour" type="text" name="showlive_start_price"
+												<input class="form-control" id="inputFour" type="number" name="showlive_start_price"
 													placeholder="" /> <label for="inputFour">상품 시작 가격</label>
 											</div>
 										</div>
@@ -105,6 +106,10 @@
 			  $(".btn-lg:first-child").html($(this).text()+' <span class="caret"></span>');
 			});
 
+		$(".dropdown-item").on("click", function(){
+			$("#restrict_grade").val($(this).text());
+			//console.log($("#restrict_grade").val());
+		});
 		
 		/* 개설하기 버튼 */
 		$("#enrollBtn").on("click",function(e){
