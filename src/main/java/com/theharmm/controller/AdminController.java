@@ -117,4 +117,10 @@ public class AdminController {
 		
 		return "redirect:/admin/main";
 	}
+	
+	//쇼라이브 생방송 페이지
+	@RequestMapping(value = "onAir", method= RequestMethod.GET)
+	public String onAir() {
+		return "admin/showliveonair";
+	}
 }
