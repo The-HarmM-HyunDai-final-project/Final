@@ -70,13 +70,13 @@ public class MemberServiceTests {
 	@Test
 	public void JoinAdmin() throws Exception{
 		BCryptPasswordEncoder scpwd = new BCryptPasswordEncoder();
-		String password = scpwd.encode("admin");
+		String password = scpwd.encode("admin2");
 		
 		MemberVO member = new MemberVO();
-		member.setMember_email("admin");
+		member.setMember_email("admin2");
 		member.setMember_password(password);
-		member.setMember_name("관리자");
-		member.setMember_nickname("관리자");
+		member.setMember_name("관리자2");
+		member.setMember_nickname("관리자2");
 		member.setMember_phone("01040818409");
 		member.setMember_shoes_size(275);
 		member.setMember_register("2023/01/01");
