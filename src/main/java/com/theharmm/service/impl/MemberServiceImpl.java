@@ -1,5 +1,6 @@
 package com.theharmm.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,31 @@ public class MemberServiceImpl implements MemberService{
 		int result1 = mapper.joinMember(member);
 		int result2 = mapper.joinMemberAuthority(auth);
 		if( result1 == 1 && result2 == 1) {
+			log.info("회원가입이 잘 되었습니당");
+		}
+		
+		return result1 + result2;
+	}
+	//회원가입 시 member, authorities 테이블에 값을 넣기 때문에 하나의 작업단위로 묶어야 하기 때문에 Transaction 묶음!
+	@Transactional
+	@Override
+	public int joinAdminMember(MemberVO admin) {
+		MemberAuthVO auth1 = new MemberAuthVO();
+		auth1.setUsername(admin.getMember_email());
+		auth1.setAuthority("ROLE_MEMBER");
+		
+		MemberAuthVO auth2 = new MemberAuthVO();
+		auth2.setUsername(admin.getMember_email());
+		auth2.setAuthority("ROLE_ADMIN");
+		
+		List<MemberAuthVO> authList = new ArrayList<MemberAuthVO>();
+		authList.add(auth1);
+		authList.add(auth2);
+		
+		int result1 = mapper.joinMember(admin);
+		int result2 = mapper.joinAdminMemberAuthority(authList);
+		
+		if( result1 == 1 && result2 > 1) {
 			log.info("회원가입이 잘 되었습니당");
 		}
 		
