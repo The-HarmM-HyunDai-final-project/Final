@@ -19,7 +19,7 @@ public class ShowLiveChannelStore {
 	// 채팅방 목록 <방 번호, ArrayList<session> >
 	//ConcurrentHashMap은 Map이지만 간단하게 설명하면 Multi-Thread환경에서 사용할수 있으며 검색,업데이트시 동시성 성능 높이기위한 클래스 자세한 설명은 각자 검색
 	private Map<String, ShowLiveChannel> RoomList = new ConcurrentHashMap<String, ShowLiveChannel>();
-	
+	//BJ아이디, BJ가 만든 방번호
 	private Map<String, String> roomNoOfBJ = new HashMap<String, String>();
 	
 	public ShowLiveChannel getChannelByRoomNo(String roomNo) {
@@ -29,6 +29,11 @@ public class ShowLiveChannelStore {
 	
 	public String getRoomNoById(String BJId) {
 		return roomNoOfBJ.get(BJId);
+	}
+	//BJ가 방을 나가거나 방송 종료를 하면 방송 채털을 지우고 방번호를 저장한 roomNoOfBJ의 값도 지워주자!
+	public void removeBJandRoomNoandChannel(String BJId, String roomNo) {
+		RoomList.remove(roomNo);
+		roomNoOfBJ.remove(BJId);
 	}
 	
 	

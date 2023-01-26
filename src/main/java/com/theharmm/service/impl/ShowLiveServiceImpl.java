@@ -37,7 +37,6 @@ public class ShowLiveServiceImpl implements ShowLiveService{
 	@Override
 	public Integer createChannel(ShowLiveChannelDTO channel) {
 		showLivemapper.createChannel(channel);
-		
 		showLiveChannelStore.createNewChannel(channel);
 		log.warn("지금까지 채널은 다음과 같습니다" + showLiveChannelStore.getChannelList().toString());
 		
@@ -60,6 +59,12 @@ public class ShowLiveServiceImpl implements ShowLiveService{
 		List<ShowLiveChannelDTO> channelList = showLivemapper.getLiveChannels();
 		log.warn("채널목록들 !!! : " + channelList.toString());
 		return channelList;
+	}
+
+	//쇼라이브 라이브 상태 변경
+	@Override
+	public int changeLiveStatus(ShowLiveChannelDTO channel) {
+		return showLivemapper.changeLiveStatus(channel);
 	}
 
 }

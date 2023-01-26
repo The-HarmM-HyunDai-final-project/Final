@@ -83,4 +83,11 @@ public class ShowLiveServiceTests {
 		
 		log.warn("================ 생방중인 채널 목록들" + channels.toString());
 	}
+	//라이브 상태 변경하기!
+	@Test
+	public void changeLiveStatus() throws Exception{
+		ShowLiveChannelDTO channel = new ShowLiveChannelDTO();
+		channel.setShowlive_no(8);
+		log.warn("update문은 뭐를 반환할까요~ : " + service.changeLiveStatus(channel));
+	}
 }
