@@ -38,6 +38,7 @@ public class BJChattingHandler extends TextWebSocketHandler{
 		
 		
 		//일단 Store에 Channel이 잘 있는지 확인~
+		log.warn("채널 개수 : " + showLiveChannelStore.getChannelList().keySet().size());
 		log.warn(showLiveChannelStore.getChannelList().toString());
 	}
 	
@@ -58,6 +59,10 @@ public class BJChattingHandler extends TextWebSocketHandler{
 		//db에도 라이브 상태를 바꿔주고
 		
 		//store에서 channel을 완전 지워버리자!
+		showLiveChannelStore.removeBJandRoomNoandChannel(BJId,roomNoOfBj);
 		
+		//지웠으면 Store에 잘 지워졌는지 확인!
+		log.warn("채널 개수 : " + showLiveChannelStore.getChannelList().keySet().size());
+		log.warn(showLiveChannelStore.getChannelList().toString());
 	}
 }

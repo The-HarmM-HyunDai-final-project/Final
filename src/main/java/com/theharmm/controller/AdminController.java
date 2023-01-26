@@ -23,6 +23,7 @@ import com.theharmm.domain.RegisterToday;
 import com.theharmm.domain.ShowLiveChannelDTO;
 import com.theharmm.security.domain.CustomUser;
 import com.theharmm.service.AdminService;
+import com.theharmm.service.ShowLiveService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -33,6 +34,9 @@ public class AdminController {
 	
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private ShowLiveService showLiveService;
  
     private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
     
@@ -130,8 +134,8 @@ public class AdminController {
 		//log.warn(createdChannel.toString());
 		
 		//db에 채널 넣고
-		
 		//ShowLiveChannelStore에도 방을 만들어주기
+		showLiveService.createChannel(createdChannel);
 		
 		return "admin/showliveonair";
 	}

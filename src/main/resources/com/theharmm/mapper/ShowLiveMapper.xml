@@ -23,4 +23,8 @@
 	<select id="getLiveChannels" resultType="ShowLiveChannelDTO">
 		select * from SHOW_LIVE where LIVE_STATUS = 1
 	</select>
+	<!-- 쇼라이브 라이브 상태 변경 -->
+	<update id="changeLiveStatus">
+		update show_live set LIVE_STATUS=0 where SHOWLIVE_NO = #{showlive_no}
+	</update>
 </mapper>
