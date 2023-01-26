@@ -81,4 +81,9 @@ public class PostServiceImpl implements PostService {
 	public List<SocialVO> socialByPostid(int post_id) {
 		return socialMapper.socialByPostid(post_id);
 	}
+
+	@Override
+	public List<PostVO> postGetByMailList(PostCriteria postcri, String member_email) {
+		return postMapper.postGetByMailList(postcri,member_email);
+	}
 }

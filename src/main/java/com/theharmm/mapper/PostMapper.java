@@ -22,5 +22,8 @@ public interface PostMapper {
 	
 	/* 사용자별 포스트 가져오기 */
 	public PostVO postGetOne(int post_id);
+	
+	/* 포스 리스트 */
+	public List<PostVO> postGetByMailList(PostCriteria postcri, String member_email);
 
 }
