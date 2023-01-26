@@ -52,13 +52,6 @@
 	<context:component-scan
 		base-package="com.theharmm.showlive"></context:component-scan>
 
-	<!-- 이눔의 정확한 위치를 모르겠다.. -->
-	<bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource"></property>
-	</bean>
-
-	<tx:annotation-driven />
 
 	<task:annotation-driven />
 
