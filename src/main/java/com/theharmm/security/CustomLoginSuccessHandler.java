@@ -72,8 +72,6 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
             }
         }
 
-        redirectStrategy.sendRedirect(request, response, uri);
-        
 		List<String> roleNames = new ArrayList<>();
 		auth.getAuthorities().forEach(authority -> {
 
@@ -85,10 +83,12 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
 //		response.sendRedirect("/");
 		
-//		if (roleNames.contains("ROLE_ADMIN")) {
-//			response.sendRedirect("/sample/admin");
-//			return;
-//		}//end if
+		if (roleNames.contains("ROLE_ADMIN")) {
+			response.sendRedirect("/admin/main");
+			return;
+		}//end if
+		
+		redirectStrategy.sendRedirect(request, response, uri);
 //
 //		if (roleNames.contains("ROLE_MEMBER")) {
 //			response.sendRedirect("/sample/member");
