@@ -414,6 +414,8 @@
 																	document
 																			.getElementById('reply').value = "";
 																	showReplyList(post_id);
+																	parent_id = 0;
+																	depth = 0;
 
 																} else {
 																	alert("댓글을 작성해 주세요");

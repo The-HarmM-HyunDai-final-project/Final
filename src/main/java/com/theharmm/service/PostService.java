@@ -21,5 +21,8 @@ public interface PostService {
 	public PostVO postGetOne(int post_id);
 	
 	public List<SocialVO> socialByPostid(int post_id);
+	
+	/* 포스트 리스트 */
+	public List<PostVO> postGetByMailList(PostCriteria postcri , String member_email);
 
 }

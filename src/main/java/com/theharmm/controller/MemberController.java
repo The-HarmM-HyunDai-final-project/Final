@@ -104,8 +104,8 @@ public class MemberController {
 
 	@RequestMapping(value = "/my", method = RequestMethod.GET)
 	public String MyPage(Model model) {
-		//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		//model.addAttribute("member_email", user.getUsername());
+		CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		model.addAttribute("member_email", user.getUsername());
 		return "member/my";
 	}
 }

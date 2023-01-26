@@ -243,7 +243,7 @@
 						</c:if>
 						<c:if test="${listcheck != 'empty'}">
 							<div data-v-013cc4d0="" data-v-47cbe816="" class="social_feeds"
-								style="height: 550px;">
+								style="height: 1000px;">
 								<div data-v-013cc4d0="" transition-duration="0"
 									item-selector=".item" gutter=".gutter_item"
 									horizontal-order="true" class="masonry_posts"
@@ -255,7 +255,7 @@
 										<c:set var="i" value="${i+300}" />
 										<div data-v-47728778="" data-v-013cc4d0=""
 											class="feed_card item vertical"
-											style="position: absolute; left: ${status.index*300}px; top: 0px;">
+											style="position: absolute; left: ${status.index*300%1200}px; top: ${(status.index/4-status.index%4/4) * 500 }px;">
 											<a data-v-47728778="" href="${pageContext.request.contextPath}/social/user/details?post_id=${item.post_id}"><div data-v-47728778=""
 													class="card_box">
 													<div data-v-47728778="" class="social_img_box vertical">
