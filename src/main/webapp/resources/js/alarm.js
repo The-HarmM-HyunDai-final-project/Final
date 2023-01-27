@@ -6,7 +6,7 @@
    });
 
    function connectWs(){
-   	//sock = new SockJS( "<c:url value="/echo"/>" );
+   	
    	//sock = new SockJS('/replyEcho');
    	sock = new SockJS('http://localhost:8082/echo');
    	socket = sock;
