@@ -61,6 +61,12 @@
 <!-- 제이쿼리 cdn -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- sockJS -->
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>	
+<!-- 알림 -->	
+ <script src="${pageContext.request.contextPath}/resources/js/alarm.js"></script>
+	
 <script data-n-head="ssr" type="application/ld+json">
         {
             "@context": "http://schema.org",

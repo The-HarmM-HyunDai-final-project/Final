@@ -119,6 +119,10 @@
 	href="${pageContext.request.contextPath}/resources/css/pop.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/upload.css">
+<!-- sockJS -->
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>	
+<!-- 알림 -->	
+ <script src="${pageContext.request.contextPath}/resources/js/alarm.js" ></script>
 <!-- 서은 추가 -->
 
 <link rel="stylesheet"
@@ -900,12 +904,20 @@
 			      				}).done(function (data) {
 			      					console.log("insert" + data.result);
 			      					if (data.result === 1) {
+			      						
 			      						alert("팔로우 합니다");
 			      						$("#followBtn").removeClass('solid');
 			      						$("#followBtn").addClass('outlinegrey');
 			      						//('solid','outlinegrey');
 			      						document.getElementById("followBtn").innerText = "팔로잉";
 			      						document.getElementById("followerCnt").innerText = data.followerCnt;
+			      						
+			      						if (socket) {
+			      							let socketMsg = "follow," + follower +","+ following +","+ following +","+ " ";
+			      							console.log("msgmsg : " + socketMsg);
+			      							socket.send(socketMsg);
+			      						}
+			      						
 			      						
 			      					} else {
 			      						alert("팔로우 에러");
