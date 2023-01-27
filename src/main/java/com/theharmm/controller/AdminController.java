@@ -139,6 +139,7 @@ public class AdminController {
 		
 		ShowLiveChannelDTO recent = showLiveService.getShowLiveChannelInfo();
 		model.addAttribute("recent", recent);
+
 		return "admin/showliveonair";
 	}
 	

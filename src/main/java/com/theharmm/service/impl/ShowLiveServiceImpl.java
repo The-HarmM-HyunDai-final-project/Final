@@ -56,9 +56,16 @@ public class ShowLiveServiceImpl implements ShowLiveService{
 	//라이브중인 쇼라이브 목록 가져오기
 	@Override
 	public List<ShowLiveChannelDTO> getLiveChannels() {
+		//DB에서 생방 상태인 채널들을 가져오는게 아니라 ShowLiveChannelStore에 등록되있는 채널 즉 생방중인 목록을 가져오게 하자
 		List<ShowLiveChannelDTO> channelList = showLivemapper.getLiveChannels();
 		log.warn("채널목록들 !!! : " + channelList.toString());
 		return channelList;
+	}
+	//방 번호로 쇼라이브 목록 가져오기
+	@Override
+	public ShowLiveChannelDTO getChannelDTOByRoomNo(String roomNo) {
+		ShowLiveChannelDTO channel = showLiveChannelStore.getChannelDTOByRoomNo(roomNo);
+		return channel;
 	}
 
 	//쇼라이브 라이브 상태 변경
@@ -66,10 +73,12 @@ public class ShowLiveServiceImpl implements ShowLiveService{
 	public int changeLiveStatus(ShowLiveChannelDTO channel) {
 		return showLivemapper.changeLiveStatus(channel);
 	}
-
+	
 	@Override
 	public ShowLiveChannelDTO getShowLiveChannelInfo() {
 		return showLivemapper.getShowLiveChannelInfo();
 	}
 
+
 }
+

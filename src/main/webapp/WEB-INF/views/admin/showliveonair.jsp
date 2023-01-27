@@ -54,11 +54,11 @@
   
  <!-- 
   <section class="container">
- <h1>엔드포인트 = ${recent.aws_endpoint}</h1>
+ <h1>�����ъ�명�� = ${recent.aws_endpoint}</h1>
  <input type="hidden" id="stream-key" value="${recent.aws_endpoint}"/>
  </section>
   <section class="container">
- <h1>스트림키 = ${recent.aws_stream_key }</h1>
+ <h1>�ㅽ�몃┝�� = ${recent.aws_stream_key }</h1>
  <input type="hidden" id="ingest-endpoint" value="${recent.aws_stream_key}"/>
   </section>-->
   
@@ -101,7 +101,7 @@ sock.onopen = onOpen;
 function sendMessage(type, msg, qyn) {		
 	var cur_id = '${userid}'; 
 	
-	var showLiveMessage = JSON.stringify({//object-> string으로 
+	var showLiveMessage = JSON.stringify({//object-> string�쇰� 
 			/* userName : cur_id, */
 			message : msg,
 			mType : type,
@@ -117,14 +117,14 @@ function sendMessage(type, msg, qyn) {
 	} */
 	
 }
-//서버에서 메시지를 받았을 때 -> 입장, 퇴장, 채팅, 경매 모두 이곳으로!
+//��踰����� 硫���吏�瑜� 諛����� �� -> ����, �댁��, 梨���, 寃쎈ℓ 紐⑤�� �닿납�쇰�!
 function onMessage(msg) {
 	
 }
-//채팅창에서 나갔을 때
+//梨���李쎌���� ��媛��� ��
 function onClose(evt) {
 }
-//채팅창에 들어왔을 때
+//梨���李쎌�� �ㅼ�댁���� ��
 function onOpen(evt) {
 	
 }
