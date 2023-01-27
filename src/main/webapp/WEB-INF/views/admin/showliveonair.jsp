@@ -37,6 +37,7 @@ function sendMessage(type, msg, qyn) {
 }
 //서버에서 메시지를 받았을 때 -> 입장, 퇴장, 채팅, 경매 모두 이곳으로!
 function onMessage(msg) {
+	console.log(msg);
 	
 }
 //채팅창에서 나갔을 때

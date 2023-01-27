@@ -43,6 +43,7 @@ public class ShowLiveController {
 		}
 		
 		model.addAttribute("userid", user.getUsername());
+		model.addAttribute("channelDTO", channel);
 		
 		return "showlive/showliveroom";
 	}
