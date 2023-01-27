@@ -134,7 +134,11 @@ public class ChattingHandler extends TextWebSocketHandler{
 		ShowLiveMessage showLiveMessage = createMessage(userId, roomNo, "LEAVE");
 		
 		ShowLiveChannel showliveChannel = showLiveChannelStore.getChannelByRoomNo(roomNo);
-		showliveChannel.handleMessage(session, showLiveMessage);
+		
+		//이부분 방이 사라지고 나서 방에다가 메시지를 보내니까 null exception이 나서 예외 처리를 해줌
+		if(showliveChannel != null) {
+			showliveChannel.handleMessage(session, showLiveMessage);
+		}
 		
 		log.warn("쇼라이브 총 접속 인원 : " + totalConnectedPerson);
 	}

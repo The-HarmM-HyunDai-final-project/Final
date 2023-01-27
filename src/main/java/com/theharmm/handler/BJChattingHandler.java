@@ -5,11 +5,14 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import com.theharmm.service.ShowLiveService;
+import com.theharmm.showlive.MessageType;
 import com.theharmm.showlive.ShowLiveChannel;
 import com.theharmm.showlive.ShowLiveChannelStore;
 import com.theharmm.showlive.ShowLiveMessage;
@@ -18,6 +21,10 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 public class BJChattingHandler extends TextWebSocketHandler{
+	
+	@Autowired
+	ShowLiveService showliveService;
+	
 	@Inject
 	ShowLiveChannelStore showLiveChannelStore;
 	
@@ -54,10 +61,13 @@ public class BJChattingHandler extends TextWebSocketHandler{
 		String roomNoOfBj = showLiveChannelStore.getRoomNoById(BJId);
 		ShowLiveChannel showLiveChannel = showLiveChannelStore.getChannelByRoomNo(roomNoOfBj);
 		
+		ShowLiveMessage msg = new ShowLiveMessage();
+		msg.setType(MessageType.LIVE_END);
+		
 		//사용자들에게 방송이 끝났다는걸 알리고 view에서는 아무 조작이 안되고 홈버튼 혹은 뒤로가기만 가능하게끔!
-		
+		showLiveChannel.handleMessage(session, msg);
 		//db에도 라이브 상태를 바꿔주고
-		
+		showliveService.changeLiveStatus(showLiveChannelStore.getChannelDTOByRoomNo(roomNoOfBj));
 		//store에서 channel을 완전 지워버리자!
 		showLiveChannelStore.removeBJandRoomNoandChannel(BJId,roomNoOfBj);
 		

@@ -126,9 +126,22 @@
       }
 
 	/* 모달창 부분 이무니다 */
-	  .modal {
+		.commonmodal {
         position: absolute;
         z-index:100;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        display: none;
+
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+	  .modal {
+        position: absolute;
+        z-index:99;
         top: 0;
         left: 0;
 
@@ -194,6 +207,9 @@
       .modal_body .modal_btns button.close_btn {
         background: #ffaa40;
       }
+      .modal_body .modal_btns button.leave_btn {
+        background: red;
+      }
       .modal_body .modal_btns button:hover {
         margin-top: -2px;
         margin-left: 0px;
@@ -222,10 +238,10 @@
             </div> -->
           </div>
           <div class="info_area">
-          	<div class="room_title">지금 아니면 구할 기회가 없다! 된장포오스</div>
-          	<div class="room_product_name">나이키 에어포스 GTA-808</div>
-          	<div class="room_bj">Bj : <b>MC민지</b></div>
-          	<div class="room_start_time">시작 시간</div>
+          	<div class="room_title">${channelDTO.showlive_name}</div>
+          	<div class="room_product_name">${channelDTO.product_name}</div>
+          	<div class="room_bj">Bj : <b>${channelDTO.show_host}</b></div>
+          	<div class="room_start_time">${channelDTO.showlive_start_date}</div>
           </div>
         </div>
 
@@ -263,17 +279,31 @@
       </div>
     </div>
     
-    <!-- 모달창 이무니다  -->
+    <!-- 입찰 신청 모달창 이무니다  -->
      <div class="modal">
       <div class="modal_body">
         <b>정말 입찰 하시겠습니까?</b>
         <div class="modal_content">
           <div class="confirm_price_area">
-            <b>1000000</b>
+            <b></b>
           </div>
           <div class="modal_btns">
             <button class="yes_btn">확인</button>
             <button class="close_btn">취소</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 입찰 신청 모달창 이무니다  -->
+     <div class="commonmodal" id="leave_modal">
+      <div class="modal_body">
+        <div class="modal_content">
+          <div class="confirm_price_area" style="font-size:30px;">
+            <b>방송이 종료되었습니다</b>
+          </div>
+          <div class="modal_btns">
+            <button class="leave_btn">나가기</button>
           </div>
         </div>
       </div>
@@ -418,6 +448,9 @@
 					</div></div>`
 				$("#connected_user").text(totalUser)
 				break
+			case 'LIVE_END':
+				$("#leave_modal").toggle("show");
+				break
 		}
 		
 		$("#message_box").append(str);
@@ -433,7 +466,7 @@
 		
 	}
 	
-	//모달창 부분 이무니다====================
+	//입찰 신청모달창 부분 이무니다====================
  	const body = document.querySelector("body");
     const modal = document.querySelector(".modal");
     const priceModalOpen = document.querySelector("#auction_btn");
@@ -488,4 +521,11 @@
       }
     });
     //모달모달=====================
+   	//입찰 신청모달창 부분 이무니다====================
+	const leave_btn = document.querySelector(".leave_btn");
+	leave_btn.addEventListener("click", () => {
+    	console.log("신난당");
+    	location.href="/";
+    });
+	//모달모달=====================
 </script>

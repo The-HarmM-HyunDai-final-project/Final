@@ -113,6 +113,11 @@ public class ShowLiveChannel {
 			showliveMessage.setChannelTotalUser(connectedUsers);
 			showliveMessage.setMessage(userId + " 님이 퇴장하셨습니다");
 			log.warn(roomNum + "번방 접속자 수 :" + connectedUsers);
+		}else if(showliveMessage.getType() == MessageType.LIVE_END) {	//라이브가 종료 되었을 때
+			connectedUsers--;
+			sessionsRoomNo.remove(session);
+
+			log.warn(roomNum + "번방 이 종료 되었습니다");
 		}
 		
 		sendMessage(showliveMessage);
