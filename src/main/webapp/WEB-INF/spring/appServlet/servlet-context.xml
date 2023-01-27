@@ -5,11 +5,13 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:websocket="http://www.springframework.org/schema/websocket"
 	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.0.xsd
 		http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
 		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -26,10 +28,15 @@
 	</beans:bean>
 	
 	<beans:bean id="chattingHandler" class="com.theharmm.handler.ChattingHandler"/>
+	<beans:bean id="BJchattingHandler" class="com.theharmm.handler.BJChattingHandler"/>
+	<beans:bean id="echoHandler" class="com.theharmm.handler.EchoHandler" />
 	
 	<!-- 웹소켓 활성화~! -->
  	<websocket:handlers>
 		<websocket:mapping handler="chattingHandler" path="/chatting"/>
+		<websocket:mapping handler="BJchattingHandler" path="/BJchatting"/>
+		<websocket:mapping handler="echoHandler" path="/echo" />
+		
 	    <websocket:handshake-interceptors>
 	   		<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
 	    </websocket:handshake-interceptors>
@@ -40,5 +47,14 @@
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></beans:bean>
 	
-	<context:component-scan base-package="com.theharmm.controller" />	
+	<!-- 이눔의 정확한 위치를 모르겠다.. -->
+	<!-- 컨트롤러에서 쓰면 그놈 위에 놔야한다는 말씀이 있었음! -->
+	<beans:bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<beans:property name="dataSource" ref="dataSource"></beans:property>
+	</beans:bean>
+
+	<tx:annotation-driven />
+	
+	<context:component-scan base-package="com.theharmm.controller" />
 </beans:beans>

@@ -24,4 +24,6 @@ public interface ShowLiveService {
 	public void insertAuction(ShowLiveBiddingDTO bid);
 	//라이브중인 쇼라이브 목록 가져오기
 	public List<ShowLiveChannelDTO> getLiveChannels();
+	//쇼라이브 라이브 상태 변경
+	public int changeLiveStatus(ShowLiveChannelDTO channel);
 }

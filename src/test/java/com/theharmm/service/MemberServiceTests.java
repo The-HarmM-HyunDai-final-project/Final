@@ -30,22 +30,22 @@ public class MemberServiceTests {
 	@Autowired
 	private MemberService service;
 	
-	//ÀÌ¸ŞÀÏ Áßº¹È®ÀÎ
+	//ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ßºï¿½È®ï¿½ï¿½
 	//@Test
 	public void checkEmail() throws Exception{
 		MemberVO member = new MemberVO();
 		member.setMember_email("asd");
 		
-		log.info(" ÀÌ¸ŞÀÏÀº Áßº¹? :" + service.checkEmail(member));
+		log.info(" ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ßºï¿½? :" + service.checkEmail(member));
 	}
 	
-	//´Ğ³×ÀÓ Áßº¹È®ÀÎ
-	@Test
+	//ï¿½Ğ³ï¿½ï¿½ï¿½ ï¿½ßºï¿½È®ï¿½ï¿½
+	//@Test
 	public void checkNickName() throws Exception{
 		MemberVO member = new MemberVO();
-		member.setMember_nickname("¿©¶ò");
+		member.setMember_nickname("ï¿½ï¿½ï¿½ï¿½");
 		
-		log.info(" ´Ğ³×ÀÓ Áßº¹? :" + service.checkNickName(member));
+		log.info(" ï¿½Ğ³ï¿½ï¿½ï¿½ ï¿½ßºï¿½? :" + service.checkNickName(member));
 	}
 	
 	//@Test
@@ -56,16 +56,35 @@ public class MemberServiceTests {
 		MemberVO member = new MemberVO();
 		member.setMember_email("asd");
 		member.setMember_password(password);
-		member.setMember_name("¹Ú¿©¸í");
-		member.setMember_nickname("¿©¶ò");
+		member.setMember_name("ï¿½Ú¿ï¿½ï¿½ï¿½");
+		member.setMember_nickname("ï¿½ï¿½ï¿½ï¿½");
 		member.setMember_phone("01040818409");
 		member.setMember_shoes_size(275);
 		member.setMember_register("2020/01/01");
 		member.setMember_login("2020/01/01");
-		member.setMember_messege_info("ÀÌ°Ç ¹¹ÇÏ´Â ÄÃ·³ÀÌ¾ß");
-		member.setMember_email_info("ÀÌ°Ç ¹¹ÇÏ´Â ÄÃ·³ÀÌ¾ß");
+		member.setMember_messege_info("ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½");
+		member.setMember_email_info("ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½");
 		
 		service.joinMember(member);
+	}
+	@Test
+	public void JoinAdmin() throws Exception{
+		BCryptPasswordEncoder scpwd = new BCryptPasswordEncoder();
+		String password = scpwd.encode("admin2");
+		
+		MemberVO member = new MemberVO();
+		member.setMember_email("admin2");
+		member.setMember_password(password);
+		member.setMember_name("ê´€ë¦¬ì2");
+		member.setMember_nickname("ê´€ë¦¬ì2");
+		member.setMember_phone("01040818409");
+		member.setMember_shoes_size(275);
+		member.setMember_register("2023/01/01");
+		member.setMember_login("2023/01/01");
+		member.setMember_messege_info("true");
+		member.setMember_email_info("true");
+		
+		service.joinAdminMember(member);
 	}
 	
 }
