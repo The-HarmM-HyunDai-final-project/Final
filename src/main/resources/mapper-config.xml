@@ -20,6 +20,10 @@
 			type="com.theharmm.domain.MemberAddressDTO" />
 		<typeAlias alias="AccountDTO"
 			type="com.theharmm.domain.AccountDTO" />
+		<typeAlias alias="SellDTO"
+			type="com.theharmm.domain.SellDTO" />
+		<typeAlias alias="BuyDTO"
+			type="com.theharmm.domain.BuyDTO" />	
 		<!-- ShowLive -->
 		<typeAlias alias="ShowLiveChatDTO"
 			type="com.theharmm.domain.ShowLiveChatDTO" />

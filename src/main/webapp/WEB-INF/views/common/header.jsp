@@ -39,6 +39,7 @@
    content="sk2tlhnlubmwgd31gjkbrmvh1q3dms">
 <meta data-n-head="ssr" data-hid="description" name="description"
    content="한정판을 거래하는 가장 확실한 방법. 럭키드로우, 발매정보, 패션트렌드도 이제 KREAM(크림)!">
+<meta name ="viewport" content="width=device-width, initial-scale=1, minimum-scale=1,maximum-scale=1">
 <link data-n-head="ssr" rel="icon" type="image/x-icon"
    href="/favicon.ico">
 <link data-n-head="ssr" rel="search"
