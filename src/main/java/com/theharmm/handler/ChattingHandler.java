@@ -75,7 +75,7 @@ public class ChattingHandler extends TextWebSocketHandler{
             log.warn(dataFromJsp.toString());
             String contentMessage = dataFromJsp.get("message");
             String type = dataFromJsp.get("mType");
-            String question_yn = dataFromJsp.get("question_yn");
+            //String question_yn = dataFromJsp.get("question_yn");
             
             //메시지 생성
     		ShowLiveMessage showLiveMessage = createMessage(userId, roomNo, type);
@@ -83,7 +83,7 @@ public class ChattingHandler extends TextWebSocketHandler{
     		showLiveMessage.setUsername(userId);
     		showLiveMessage.setRoomNo(roomNo);
     		showLiveMessage.setMessage(contentMessage);
-    		showLiveMessage.setQuestionYn(question_yn);//여기로 들어노는 massage는 경매, 채팅(추후 방닫기 등등이 있음)인데 채팅이 질문인지 아닌지 값을 넣어줌 -> ShowLiveChannel의 handleMessage에서 처리할꺼임
+    		//showLiveMessage.setQuestionYn(question_yn);//여기로 들어노는 massage는 경매, 채팅(추후 방닫기 등등이 있음)인데 채팅이 질문인지 아닌지 값을 넣어줌 -> ShowLiveChannel의 handleMessage에서 처리할꺼임
             
 			// it works
             //Map<String, String> map = mapper.readValue(json, new TypeReference<Map<String, String>>() {});
@@ -153,6 +153,9 @@ public class ChattingHandler extends TextWebSocketHandler{
 				break;
 			case "TALK":
 				message.setType(MessageType.TALK);
+				break;
+			case "QUESTION":
+				message.setType(MessageType.QUESTION);
 				break;
 			case "AUCTION":
 				message.setType(MessageType.AUCTION);

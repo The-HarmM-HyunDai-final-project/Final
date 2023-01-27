@@ -319,10 +319,10 @@
           success: function (response) {
         	if(response == '1'){
         		console.log("질문입니다");	
-        		sendMessage("TALK", chat_content, response);
+        		sendMessage("QUESTION", chat_content);
         	}else{
         		console.log("질문이 아닙니다");
-        		sendMessage("TALK", chat_content, response);
+        		sendMessage("TALK", chat_content);
         	}
           },
           error: function(){
@@ -339,14 +339,13 @@
 	sock.onclose = onClose;
 	sock.onopen = onOpen;
 	
-	function sendMessage(type, msg, qyn) {		
+	function sendMessage(type, msg) {		
 		var cur_id = '${userid}'; 
 		
 		var showLiveMessage = JSON.stringify({//object-> string으로 
 				/* userName : cur_id, */
 				message : msg,
-				mType : type,
-				question_yn : qyn
+				mType : type
 		})
 		sock.send(showLiveMessage)
 		/* if(type=="TALK"){
@@ -382,7 +381,7 @@
 		var menent = "울라랄라라라~~~~~~~~~~";
 		
 		switch(type){
-			case 'TALK':
+			case 'QUESTION': case 'TALK':
 				if(username == cur_session){
 					username = '나';
 				}
@@ -463,7 +462,7 @@
 	//입찰신청 모달의 확인버튼 눌렸을떄
     yes_btn_suggest.addEventListener("click", () => {
     	var mySuggestion = $("#auction_sugest").val();
-    	sendMessage("AUCTION", mySuggestion, "0");
+    	sendMessage("AUCTION", mySuggestion);
     	
     	modal.classList.toggle("show");
         if (modal.classList.contains("show")) {

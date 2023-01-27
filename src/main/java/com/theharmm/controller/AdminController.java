@@ -137,6 +137,7 @@ public class AdminController {
 		//ShowLiveChannelStore에도 방을 만들어주기
 		showLiveService.createChannel(createdChannel);
 		
+		
 		return "admin/showliveonair";
 	}
 	
