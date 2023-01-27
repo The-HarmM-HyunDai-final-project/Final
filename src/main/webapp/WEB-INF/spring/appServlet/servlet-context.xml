@@ -29,11 +29,14 @@
 	
 	<beans:bean id="chattingHandler" class="com.theharmm.handler.ChattingHandler"/>
 	<beans:bean id="BJchattingHandler" class="com.theharmm.handler.BJChattingHandler"/>
+	<beans:bean id="echoHandler" class="com.theharmm.handler.EchoHandler" />
 	
 	<!-- 웹소켓 활성화~! -->
  	<websocket:handlers>
 		<websocket:mapping handler="chattingHandler" path="/chatting"/>
 		<websocket:mapping handler="BJchattingHandler" path="/BJchatting"/>
+		<websocket:mapping handler="echoHandler" path="/echo" />
+		
 	    <websocket:handshake-interceptors>
 	   		<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
 	    </websocket:handshake-interceptors>

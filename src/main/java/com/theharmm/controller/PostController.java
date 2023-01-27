@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.theharmm.domain.PostCriteria;
@@ -55,18 +58,43 @@ public class PostController {
 
 	/* 포스트 관리(포스트목록) 페이지 접속 */
 	@RequestMapping(value = "/social/user", method = RequestMethod.GET)
-	public void postManageGET(PostCriteria postcri, Model model) throws Exception {
+	public void postManageGET(PostCriteria postcri, Model model, @RequestParam("email") String email) throws Exception {
+		
+		log.info("postManageGET postcontroller" + email);
 		/* 포스트 리스트 데이터 */
-		List list = postService.postGetList(postcri);
+		List<PostVO> list = postService.postGetByMailList(postcri,email);
 		if (!list.isEmpty()) {
 			model.addAttribute("list", list);
 		} else {
 			model.addAttribute("listCheck", "empty");
-			return;
+			
 		}
+		
+		int listTotal = postService.postGetByMailTotal(email);
 		/* 페이지 인터페이스 데이터 */
 		model.addAttribute("pageMaker", new PostPageDTO(postcri, postService.postGetTotal(postcri)));
-
+		CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String loginedMember_email = user.getUsername();
+		int followerCnt = postService.countFollower(email);
+		int followingCnt = postService.countFollowing(email);
+		//List<String> followerList = postService.getFollowerList(email);
+		//List<String> followingList = postService.getFollowingList(email);
+		
+		// 여기서 팔로잉, 팔로우 처리 필요
+		if (loginedMember_email.equals(email)) {
+			model.addAttribute("user", "true");
+		} else {
+			if (postService.checkFollow(loginedMember_email,email)) {
+				model.addAttribute("user", "팔로잉");
+			} else {
+				model.addAttribute("user", "팔로우");				
+			}
+		}
+		log.info("email" + email);
+		model.addAttribute("member_email", email);
+		model.addAttribute("listTotal", listTotal);
+		model.addAttribute("followerCnt", followerCnt);
+		model.addAttribute("followingCnt", followingCnt);
 	}
 
 	/* 이미지 출력 */
@@ -157,11 +185,59 @@ public class PostController {
 		return "social/userdetail";
 	}
 	
-	@RequestMapping(value="/social/trending", method = RequestMethod.GET)
-    public void socialMainGET() throws Exception{
-        
-        logger.info("스타일 페이지 이동");
-        
-    }
+	@RequestMapping(value = "/social/insertFollow", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public String insertFollow(@RequestParam("follower") String follower, @RequestParam("following") String following) {
+		log.info("insertFollow 실행");
+		log.info(follower);
+		log.info(following);
+		JSONObject jsonObject = new JSONObject();
+		String json;
+		
+		try {
+			int result = postService.insertFollow(follower, following);
+			int followerCnt = postService.countFollower(following);
+			List<String> followerList = postService.getFollowerList(following);
+			log.info(followerCnt);
+			jsonObject.put("result", result);
+			jsonObject.put("followerCnt", followerCnt);
+			jsonObject.put("followerList", followerList);
+			log.info("성공");
+		} catch (Exception e) {
+			jsonObject.put("result", -1);
+			jsonObject.put("followerCnt", -1);
+			jsonObject.put("followerList", -1);
+			log.info("실패");
+		} finally {
+			json = jsonObject.toString();
+		}		
+		return json;
+	}
+	
+	@RequestMapping(value = "/social/deleteFollow", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public String deleteLike(@RequestParam("follower") String follower, @RequestParam("following") String following) {
+		log.info("delete 실행");
+		JSONObject jsonObject = new JSONObject();
+		String json;
+		
+		try {
+			int result = postService.deleteFollow(follower, following);
+			int followerCnt = postService.countFollower(following);
+			List<String> followerList = postService.getFollowerList(following);
+			log.info(followerCnt);
+			jsonObject.put("result", result);
+			jsonObject.put("followerCnt", followerCnt);
+			jsonObject.put("followerList", followerList);
+			log.info("성공");
+		} catch (Exception e) {
+			jsonObject.put("result", -1);
+			jsonObject.put("followerCnt", -1);
+			jsonObject.put("followerList", -1);
+			log.info("실패");
+		} finally {
+			json = jsonObject.toString();
+		}		
+		return json;	}
 
 }
