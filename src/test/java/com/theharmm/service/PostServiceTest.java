@@ -1,27 +1,25 @@
 package com.theharmm.service;
 
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.theharmm.domain.ReplyDTO;
-
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
-public class ReplyServiceTest {
+public class PostServiceTest {
 	
-	@Autowired
-	public ReplyService service;
-	// 제품 가져오기 test
+	@Autowired 
+	public PostService postservice;
+	
 	@Test
 	public void testSelects() {
-		
+		int result = postservice.deleteFollow("asd", "asd@naver.com");
+		log.info(result);
 	}
+
 }

@@ -170,6 +170,12 @@
 
 				<%@ include file="/WEB-INF/views/common/header.jsp"%>
 				<!---->
+				<sec:authorize access="hasRole('ROLE_MEMBER')">
+					<sec:authentication property="principal.username" var="MID" />
+				</sec:authorize>
+
+				<input type="hidden" name="mid" id="mid" value="${MID}">
+				
 				<div data-v-47cbe816="" data-v-34025556="" social=""
 					class="container social lg">
 					<div data-v-47cbe816="" class="content">
@@ -182,8 +188,8 @@
 										alt="KREAM 프로필 이미지" class="profile_img">
 								</div>
 								<div data-v-45542174="" class="profile_info_box">
-									<p data-v-45542174="" class="user_name">
-										tmdgk95
+									<p data-v-45542174="" id = "member_email" class="user_name">
+										${member_email}
 										<!---->
 									</p>
 									<!---->
@@ -193,34 +199,39 @@
 								<p data-v-45542174="" class="main_txt"></p>
 								<!---->
 							</div>
-							<div data-v-cf374a10="" data-v-45542174="">
-								<p data-v-cf374a10="" class="noti_edit">
-									<svg data-v-cf374a10="" xmlns="http://www.w3.org/2000/svg"
-										class="alert-circle-gray icon sprite-icons">
-                              <use data-v-cf374a10=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-alert-circle-gray"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-alert-circle-gray"></use></svg>
-									<span data-v-cf374a10="" class="noti_txt">프로필 정보는 앱에서
-										수정해주세요.</span>
-								</p>
-								<!---->
-								<!---->
-							</div>
+
+							<c:if test="${user eq '팔로우'}">
+								<div data-v-cf374a10="" data-v-45542174="">
+									<!---->
+									<button data-v-575aff82="" data-v-625671d1=""
+										data-v-cf374a10="" type="button" id = "followBtn"
+										class="btn solid medium btn_follow medium">${user}</button>
+								</div>
+							</c:if>
+							<c:if test="${user eq '팔로잉'}">
+								<div data-v-cf374a10="" data-v-45542174="">
+									<!---->
+									<button data-v-575aff82="" data-v-625671d1=""
+										data-v-cf374a10="" type="button" id = "followBtn"
+										class="btn outlinegrey medium btn_follow medium">${user}</button>
+								</div>
+							</c:if>
+
 						</div>
 						<div data-v-392ec340="" data-v-47cbe816="" class="social_tab">
 							<ul data-v-392ec340="" class="tab_list">
 								<li data-v-392ec340="" class="tab_item" id="voc"><a
 									data-v-392ec340="" class="tab_link" style="cursor: hand;"><span
 										data-v-392ec340="" class="tab_menu">게시물</span><span
-										data-v-392ec340="" class="menu_count"></span></a></li>
+										data-v-392ec340="" class="menu_count">${listTotal}</span></a></li>
 								<li data-v-392ec340="" class="tab_item" id="follower"><a
 									data-v-392ec340="" class="tab_link" style="cursor: hand;"><span
-										data-v-392ec340="" class="tab_menu">팔로워</span><span
-										data-v-392ec340="" class="menu_count"></span></a></li>
+										data-v-392ec340="" class="tab_menu">팔로워</span><span id = "followerCnt"
+										data-v-392ec340="" class="menu_count">${followerCnt}</span></a></li>
 								<li data-v-392ec340="" class="tab_item" id="following"><a
-									data-v-392ec340="" class="tab_link" style="cursor: hand;"><span
+									data-v-392ec340="" class="tab_link" style="cursor: hand;"><span id = "followingCnt"
 										data-v-392ec340="" class="tab_menu">팔로잉</span><span
-										data-v-392ec340="" class="menu_count"></span></a></li>
+										data-v-392ec340="" class="menu_count">${followingCnt}</span></a></li>
 							</ul>
 						</div>
 						<c:if test="${listCheck == 'empty'}">
@@ -271,7 +282,7 @@
 																class="picture img_profile"> <img
 																data-v-878ec45c="" alt="사용자 프로필 이미지"
 																referrerpolicy="no-referrer"
-																src="https://kream-phinf.pstatic.net/MjAyMjExMDlfMjU2/MDAxNjY3OTU3ODY0MzY4.t3fpARn1DEJYhj-d0iTQwdakC1caQ_JQ0UsTg-pFpe4g.2RbzvEDyow1eUoRDMgLPnVncL8HG069N_242c-aQuyMg.JPEG/p_174ceb2e78124c53ac64163decaad402.jpeg?type=s"
+																src="${pageContext.request.contextPath}/resources/images/test2.jpg"
 																loading="auto" class="image"></picture>
 															<p data-v-47728778="" class="user_name">${item.member_email}</p>
 															<span data-v-47728778="" aria-label="좋아요" role="button"
@@ -309,53 +320,6 @@
 										<div data-v-71b8d4b9="" data-v-1a009402=""></div> <!---->
 									</a>
 
-
-
-									<!-- -------------------------------- -->
-
-									<%-- 																		<div data-v-1a009402="" class="layer_header">
-										<h2 data-v-71b8d4b9="" data-v-1a009402="" class="title">게시물
-											추가</h2>
-									</div>
-									<div data-v-1a009402="" class="layer_content">
- 										<div data-v-71b8d4b9="" data-v-1a009402=""
-											class="delivery_bind">
-											파일 업로드
-											<div class="form_section">
-												<div class="form_section_content">
-													<input type="file" id="fileItem" name='uploadFile'
-														style="height: 30px;" multiple>
-													<div id="uploadResult"></div>
-												</div>
-											</div>
-											<div class="form_section">
-												<div class="form_section_title"></div>
-												<div class="form_section_content"></div>
-											</div>
-											<br> <br>
-											<div data-v-1c44afeb="" data-v-71b8d4b9="" class="input_box"
-												data-v-1a009402="">
-												<div data-v-1c44afeb="" class="input_item">
-													<a data-v-575aff82="" data-v-71b8d4b9=""
-														class="btn btn_zipcode outline small" data-v-1c44afeb="">
-														상품태그 </a>
-												</div>
-											</div>
-
-										</div> 
-
-									</div>
-									<div data-v-71b8d4b9="" data-v-1a009402="" class="layer_btn">
-										<a data-v-575aff82="" data-v-71b8d4b9=""
-											class="btn btn_delete outlinegrey medium" data-v-1a009402="">
-											취소 </a><a data-v-575aff82="" data-v-71b8d4b9="" id="btn_save"
-											disabled="disabled" class="btn btn_save solid medium"
-											data-v-1a009402=""> 확인<input type="hidden"
-											name="${_csrf.parameterName}" value="${_csrf.token}"}></a>
-									</div>
- --%>
-
-									<!-- -------------------------------- -->
 									<div>
 										<div data-v-1a009402="" class="layer_header">
 											<h2 data-v-71b8d4b9="" data-v-1a009402=""
@@ -446,7 +410,8 @@
 									</h2>
 								</div>
 								<div data-v-1a009402="" class="layer_content">
-									<!---->
+								
+									<!-- 팔로우가 없는 경우 -->
 									<div data-v-6c53047a="" data-v-55a73341=""
 										class="social_feeds_empty" data-v-1a009402="">
 										<div data-v-6c53047a="" class="empty_box">
@@ -461,6 +426,41 @@
 
 										</div>
 									</div>
+									<!-- 팔로우가 없는 경우 -->
+									
+									<!-- 팔로우 있는 경우 -->
+									<div data-v-754300ce="" data-v-55a73341=""
+										class="user_list_content" style = "display = none" data-v-1a009402="">
+										<ul data-v-754300ce="" class="user_list">
+											<li data-v-754300ce="" class="user_item"><div
+													data-v-754300ce="" class="user_box">
+													<a data-v-754300ce="" href="#" class="user_link"><div
+															data-v-754300ce="" class="img_box">
+															<img data-v-754300ce=""
+																src="https://kream-phinf.pstatic.net/MjAyMDExMDZfMjAz/MDAxNjA0NjQ5OTM1NDk5.edZ7v2ODWVS7_M8PXg8B0PNU5UlsTWup2XHwuKkEEXsg.lNHXDE66TKM0yl1nIOO70PWNUtK4TcdgD1lImetPB48g.JPEG/p_8d36c20aaeb94c6681619dcd775f5286.jpeg?type=sl"
+																alt="KREAM 프로필 이미지" class="profile_img">
+														</div>
+														<div data-v-754300ce="" class="info_box">
+															<span data-v-754300ce="" class="user_name is_official"><span
+																data-v-754300ce="" class="user_name_text">kream.challenge</span></span><span
+																data-v-754300ce="" class="user_subname">KREAM 챌린지</span>
+														</div></a>
+													<div data-v-754300ce="" class="user_box_follow">
+														<button data-v-575aff82="" data-v-625671d1=""
+															data-v-754300ce="" type="button"
+															class="btn solid small btn_follow small">팔로우</button>
+													</div>
+												</div></li>
+											<div data-v-5f3540d5="" data-v-754300ce=""
+												class="list_loading" style="display: none;">
+												<img data-v-5f3540d5="" src="/_nuxt/img/loading.410eb77.gif"
+													loading="lazy" alt="리스트 로딩중입니다." class="loading_img">
+											</div>
+										</ul>
+										<!---->
+									</div>
+									<!-- 팔로우가 있는 경우 -->
+									
 									<div data-v-71b8d4b9="" data-v-1a009402="" class="layer_btn">
 										<a data-v-575aff82="" data-v-71b8d4b9=""
 											class="btn btn_delete2 outlinegrey medium" data-v-1a009402="">
@@ -760,30 +760,6 @@
          });
       }
       
-      // 검색목록 클릭시
-      $(".suggest_item").on("click", function (e) {
-      	console.log(e.currentTarget.dataset.pid);
-/* 			                let product_id = document.querySelectorAll(".product_id");
-          let index = $(".suggest_link2").index(this);
-          let id = $(this).attr('id');
-          for(let i=0; i<product_id.length; i++){
-              if(id == product_id.item(i).value){
-                  alert("같은 상품 태그가 존재합니다.");
-                  return false;
-              }
-          }
-          let origFileName = response.data.data[index].origFileName;
-          let name = response.data.data[index].name;
-          $('#search_product').before(
-              '<span class="product_box_span"><div class="upload_productbox"><input type="hidden" class="product_id" value="'+id+'">' +
-              '<img src="/lib/product/'+origFileName+'" alt="상품태그 이미지" class="upload_product_img">' +
-              '<p>'+name+'</p></div><br><button class="product_del">삭제</button></span>'
-          );
-          $("#popupDiv").css("display", "none"); //팝업창 display none
-          $("body").css("overflow", "auto");//body 스크롤바 생성
-          $(".in_search").val('');//태그상품 검색창 비우기
-          $(".product_plus").css('display', 'none');//태그상품 검색목록 감추기 */
-      });	
    </script>
 	<script type="text/javascript">
 	$(window)
@@ -902,7 +878,65 @@
 			                	alert("상품 추가는 3개까지만 가능합니다.");
 			                	return false;			                	
 			                }
-			            });						
+			            });		
+			            
+			            
+			            
+			            // 검색목록 클릭시
+			            $("#followBtn").on("click", function (e) {
+			            	console.log(e.currentTarget.innerHTML);
+			      		 var follower = $("#mid").val();
+			      		 var following = document.getElementById("member_email").innerText;
+			      			 console.log(following);
+			      			 console.log(follower);
+			      		if (e.currentTarget.innerHTML == '팔로우') {			 
+			      			 
+			      				$.ajax({		
+			      					url: "/social/insertFollow",
+			      					data: {
+			      						"follower" : follower,
+			      						"following" : following
+			      					}
+			      				}).done(function (data) {
+			      					console.log("insert" + data.result);
+			      					if (data.result === 1) {
+			      						alert("팔로우 합니다");
+			      						$("#followBtn").removeClass('solid');
+			      						$("#followBtn").addClass('outlinegrey');
+			      						//('solid','outlinegrey');
+			      						document.getElementById("followBtn").innerText = "팔로잉";
+			      						document.getElementById("followerCnt").innerText = data.followerCnt;
+			      						
+			      					} else {
+			      						alert("팔로우 에러");
+			      					}
+			      				});	 	
+			      			} else {	
+			      				 console.log(following);
+			      				 console.log(follower);
+			      				 
+			      					$.ajax({
+			      						url: "/social/deleteFollow",
+			      						data: {
+			      							"follower" : follower,
+			      							"following" : following
+			      						}
+			      					}).done(function (data) {
+			      						console.log("delete" + data.result);
+			      						if (data.result === 1) {
+			      							alert("팔로우를 취소 합니다");
+			      							$("#followBtn").removeClass('outlinegrey');
+			      							$("#followBtn").addClass('solid');
+			      							document.getElementById("followBtn").innerText = "팔로우"
+			      							document.getElementById("followerCnt").innerText = data.followerCnt;
+			      						} else {
+			      							alert("팔로우 취소 에러");
+			      						}
+			      					});	 
+			      			}
+			            });	
+			            
+			            
 						
 					});
 </script>
