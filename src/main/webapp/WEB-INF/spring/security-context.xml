@@ -37,7 +37,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<security:intercept-url pattern="/member/my"
 			access="hasRole('ROLE_MEMBER')" />
 
-		<security:intercept-url pattern="/chat/*"
+		<security:intercept-url pattern="/showlive/*"
 			access="hasRole('ROLE_MEMBER')" />
 
 		<security:intercept-url pattern="/social/user"

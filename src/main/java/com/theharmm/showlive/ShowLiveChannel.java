@@ -8,6 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.theharmm.domain.ShowLiveChannelDTO;
 
@@ -76,12 +77,17 @@ public class ShowLiveChannel {
 		//log.warn(sessionsRoomNo.keySet().toString());
 		
 		if(showliveMessage.getType() == MessageType.TALK) {				//채팅 들어왔을 때
-			if(showliveMessage.getQuestionYn().equals("1")) {			//채팅이 질문일 때
-				//관리자에게만 따로 소켓 통신으로 메시지 보내기
-				log.warn("이거 질문이니까 따로보여주기");
-			}
+//			if(showliveMessage.getQuestionYn().equals("1")) {			//채팅이 질문일 때
+//				//관리자에게만 따로 소켓 통신으로 메시지 보내기
+//				log.warn("이거 질문이니까 따로보여주기");
+//			}
 			showliveMessage.setMessage(showliveMessage.getMessage());
-		}else if(showliveMessage.getType() == MessageType.AUCTION) {	//경매 용도
+		}else if (showliveMessage.getType() == MessageType.QUESTION){
+			showliveMessage.setMessage(showliveMessage.getMessage());
+			//BJ한테 우선적으로 보내주기!
+			sendMessageToBJ(showliveMessage);
+		}
+			if(showliveMessage.getType() == MessageType.AUCTION) {	//경매 용도
 			//입력받은 입찰 제시금이 지금보다 크면 모두에게 새로운 제시금을 보냄
 			if(Integer.parseInt(showliveMessage.getMessage()) > maxSuggestionPrice) {
 				maxSuggestionPrice = Integer.parseInt(showliveMessage.getMessage());
@@ -107,6 +113,11 @@ public class ShowLiveChannel {
 			showliveMessage.setChannelTotalUser(connectedUsers);
 			showliveMessage.setMessage(userId + " 님이 퇴장하셨습니다");
 			log.warn(roomNum + "번방 접속자 수 :" + connectedUsers);
+		}else if(showliveMessage.getType() == MessageType.LIVE_END) {	//라이브가 종료 되었을 때
+			connectedUsers--;
+			sessionsRoomNo.remove(session);
+
+			log.warn(roomNum + "번방 이 종료 되었습니다");
 		}
 		
 		sendMessage(showliveMessage);
@@ -115,6 +126,15 @@ public class ShowLiveChannel {
 	public void sendMessage(ShowLiveMessage showLiveMessage) throws Exception {
 		TextMessage textMessage = new TextMessage(objectMapper.writeValueAsString(showLiveMessage));
 		for(WebSocketSession s : sessionsRoomNo.keySet()) {
+			if(s.isOpen()) {//접속 되어있는지 확인 후  메세지 보냄
+				s.sendMessage(textMessage); 
+			}
+		}
+	}
+	//질문이면 BJ에게만 따로 보여지게 해야함
+	public void sendMessageToBJ(ShowLiveMessage showLiveMessage) throws Exception {
+		TextMessage textMessage = new TextMessage(objectMapper.writeValueAsString(showLiveMessage));
+		for(WebSocketSession s : bjList.keySet()) {
 			if(s.isOpen()) {//접속 되어있는지 확인 후  메세지 보냄
 				s.sendMessage(textMessage); 
 			}
