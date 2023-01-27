@@ -133,12 +133,18 @@ public class AdminController {
 		
 		//log.warn(createdChannel.toString());
 		
-		//db에 채널 넣고
-		//ShowLiveChannelStore에도 방을 만들어주기
-		showLiveService.createChannel(createdChannel);
+		//db에 채널  DTO를 넣고
+		//ShowLiveChannelStore에도 방을 만들듬과 동시에 방 번호를 return 받음
+		int roomNo = showLiveService.createChannel(createdChannel);
 		
-		ShowLiveChannelDTO recent = showLiveService.getShowLiveChannelInfo();
-		model.addAttribute("recent", recent);
+		//ShowLiveChannelDTO recent = showLiveService.getShowLiveChannelInfo();
+		createdChannel.setShowlive_no(roomNo);
+		if(roomNo != 0) {
+			log.warn(roomNo + " : 방번호 ");
+			log.warn("방이 잘 만들어졌습니다.");
+		}
+		
+		model.addAttribute("channelDTO", createdChannel);
 
 		return "admin/showliveonair";
 	}

@@ -1,5 +1,117 @@
-// Possible configurations
-//test
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Broadcast To IVS</title>
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" />
+  <!-- CSS Reset -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" />
+  <!-- Milligram CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css" />
+  <script src="https://web-broadcast.live-video.net/1.2.0/amazon-ivs-web-broadcast.js"></script>
+
+  <style>
+    html,
+    body {
+      width: 100%;
+    }
+
+    #error {
+      color: red;
+    }
+
+    table {
+      display: table;
+    }
+
+    #preview {
+      margin-bottom: 1.5rem;
+      background: green;
+      width: 100%;
+      height: 300;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Introduction -->
+  <header class="container">
+    <h1>Broadcast To IVS</h1>
+
+    <p>
+      This sample extends the `Capture Webcam Video`. A user should have the ability to capture their device
+      camera and broadcast it to IVS.
+    </p>
+  </header>
+
+  <hr />
+
+  <!-- Error alert -->
+  <section class="container">
+    <h3 id="error"></h3>
+  </section>
+
+  <!-- Compositor preview -->
+  <section class="container">
+    <canvas id="preview"></canvas>
+  </section>
+
+  <!--  Select -->
+  <section class="container">
+    <label for="video-devices">Select Webcam</label>
+    <select disabled id="video-devices">
+      <option selected disabled>Choose Option</option>
+    </select>
+
+    <label for="audio-devices">Select Microphone</label>
+    <select disabled id="audio-devices">
+      <option selected disabled>Choose Option</option>
+    </select>
+
+    <label for="stream-config">Select Channel Config</label>
+    <select disabled id="stream-config">
+      <option selected disabled>Choose Option</option>
+    </select>
+  </section>
+
+  <!-- Ingest Endpoint input -->
+  <section class="container">
+    <label for="ingest-endpoint">Ingest Endpoint</label>
+    <input type="text" id="ingest-endpoint" value="" />
+  </section>
+
+  <!-- Stream Key input -->
+  <section class="container">
+    <label for="stream-key">Stream Key</label>
+    <input type="text" id="stream-key" value="" />
+  </section>
+
+  <!-- Broadcast buttons -->
+  <section class="container">
+    <button class="button" id="start" disabled onclick="startBroadcast()">Start Broadcast</button>
+    <button class="button" id="stop" disabled onclick="stopBroadcast()">Stop Broadcast</button>
+  </section>
+
+  <hr />
+
+  <!-- Data table -->
+  <section class="container">
+    <table id="data">
+      <tbody></tbody>
+    </table>
+  </section>
+</body>
+
+</html>
+
+<script>
+//Possible configurations
 const channelConfigs = [
   ["Basic: Landscape", window.IVSBroadcastClient.BASIC_LANDSCAPE],
   ["Basic: Portrait", window.IVSBroadcastClient.BASIC_PORTRAIT],
@@ -167,8 +279,8 @@ async function handleStreamConfigSelect() {
 }
 
 /**
- * Validates the form's input elements. Returns empty array if valid else the
- * list of errors.
+ * Validates the form's input elements. Returns empty array if
+ * valid else the list of errors.
  */
 function validate() {
   const streamKey = document.getElementById("stream-key").value;
@@ -201,7 +313,7 @@ function handleStreamKeyChange(e) {
 }
 
 function handleValidationErrors(errors, doNotDisplay) {
-  const start = document.getElementById("liveshow_start_modal_start_btn");
+  const start = document.getElementById("start");
   const stop = document.getElementById("stop");
 
   clearError();
@@ -223,18 +335,16 @@ function handleValidationErrors(errors, doNotDisplay) {
 // Start the broadcast
 async function startBroadcast() {
   const streamKeyEl = document.getElementById("stream-key");
-  console.log(streamKeyEl.value);
   const endpointEl = document.getElementById("ingest-endpoint");
-  console.log(endpointEl.value);
   const start = document.getElementById("start");
 
-  //try {
-  //  start.disabled = true;
-    await window.client.startBroadcast("sk_us-east-1_FAn9dMuE8GCD_bAOiV4sBNsCku1w9AcBcUEJtcSEXse", "5fe30a074ce5.global-contribute.live-video.net");
-  //} catch (err) {
-  //  start.disabled = false;
-  //  setError(err.toString());
-  //}
+  try {
+    start.disabled = true;
+    await window.client.startBroadcast(streamKeyEl.value, endpointEl.value);
+  } catch (err) {
+    start.disabled = false;
+    setError(err.toString());
+  }
 }
 
 // Stop the broadcast
@@ -248,8 +358,8 @@ async function stopBroadcast() {
 
 // Handle the enabling/disabling of buttons
 function onActiveStateChange(active) {
-  const start = document.getElementById("liveshow_start_modal_start_btn");
-  const stop = document.getElementById("liveshow_end_modal_yes_btn");
+  const start = document.getElementById("start");
+  const stop = document.getElementById("stop");
   const streamConfigSelectEl = document.getElementById("stream-config");
   const inputEl = document.getElementById("stream-key");
   inputEl.disabled = active;
@@ -305,8 +415,7 @@ async function init() {
     );
     streamKeyInputEl.addEventListener("input", handleStreamKeyChange, true);
 
-    // Get initial values from the text fields. Changes to these will re-create
-	// the client.
+    // Get initial values from the text fields.  Changes to these will re-create the client.
     const selectedConfig = streamConfigSelectEl.value;
     config.streamConfig = channelConfigs[selectedConfig][1];
     config.ingestEndpoint = ingestEndpointInputEl.value;
@@ -314,7 +423,7 @@ async function init() {
     await createClient();
 
     await initializeDeviceSelect();
-    
+
     handleValidationErrors(validate(), true);
   } catch (err) {
     setError(err.message);
@@ -322,3 +431,5 @@ async function init() {
 }
 
 init();
+
+</script>
