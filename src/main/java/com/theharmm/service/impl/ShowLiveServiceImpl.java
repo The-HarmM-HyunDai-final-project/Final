@@ -51,7 +51,6 @@ public class ShowLiveServiceImpl implements ShowLiveService{
 	@Override
 	public void insertAuction(ShowLiveBiddingDTO bid) {
 		showLivemapper.insertAuction(bid);
-		
 	}
 	//라이브중인 쇼라이브 목록 가져오기
 	@Override

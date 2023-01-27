@@ -294,7 +294,6 @@
         </div>
       </div>
     </div>
-    
     <!-- 입찰 신청 모달창 이무니다  -->
      <div class="commonmodal" id="leave_modal">
       <div class="modal_body">
@@ -308,7 +307,20 @@
         </div>
       </div>
     </div>
-    
+    <!-- 낙찰 모달창 이무니다  -->
+     <div class="commonmodal" id="bidding_modal">
+      <div class="modal_body">
+      	<b>축하합니다</b>
+        <div class="modal_content">
+          <div class="confirm_price_area" style="font-size:30px;">
+            <p><b></b>님이 낙찰 되었습니다</p>
+          </div>
+          <div class="modal_btns">
+            <button class="leave_btn">나가기</button>
+          </div>
+        </div>
+      </div>
+    </div>
     
 <%-- <script src="${pageContext.request.contextPath}/resources/js/test.js" defer=""></script> --%>
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
