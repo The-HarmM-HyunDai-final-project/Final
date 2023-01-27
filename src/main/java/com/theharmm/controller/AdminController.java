@@ -117,7 +117,7 @@ public class AdminController {
     
     /* 쇼라이브 등록 */
 	@PostMapping("/showliveEnroll")
-	public String showliveEnrollPOST(ShowLiveChannelDTO createdChannel, RedirectAttributes rttr) throws Exception{
+	public String showliveEnrollPOST(ShowLiveChannelDTO createdChannel, RedirectAttributes rttr, Model model) throws Exception{
 		log.warn("showliveEnroll......");
 		
 		//방을 만든 BJ 아이디 가져오기
@@ -137,6 +137,8 @@ public class AdminController {
 		//ShowLiveChannelStore에도 방을 만들어주기
 		showLiveService.createChannel(createdChannel);
 		
+		ShowLiveChannelDTO recent = showLiveService.getShowLiveChannelInfo();
+		model.addAttribute("recent", recent);
 		return "admin/showliveonair";
 	}
 	

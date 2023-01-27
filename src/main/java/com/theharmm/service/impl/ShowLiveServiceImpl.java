@@ -67,4 +67,9 @@ public class ShowLiveServiceImpl implements ShowLiveService{
 		return showLivemapper.changeLiveStatus(channel);
 	}
 
+	@Override
+	public ShowLiveChannelDTO getShowLiveChannelInfo() {
+		return showLivemapper.getShowLiveChannelInfo();
+	}
+
 }
