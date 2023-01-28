@@ -4,8 +4,10 @@ package com.theharmm.service;
 import java.util.List;
 import java.util.Map;
 
+import com.theharmm.domain.BuyDTO;
 import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.ProductSizeDTO;
+import com.theharmm.domain.SellDTO;
 
 public interface ProductDetailService {
 
