@@ -1361,57 +1361,45 @@
 								type="hidden" id="godEvlTurn" value="">
 
 							<ul class="list-content">
-								<c:forEach var="negativePost" items="${negativePostList}">
+								<c:forEach var="positivePost" items="${positivePostList}">
 									<li>
 										<div class="list-row fold-header">
 											<div class="cell-title">
-												<ul class="etc-info">
-													<li><span class="point size-m"><span class="ico"
-															style="width: 100%">별점 5점</span></span></li>
+												<div class="review-group">
+												<ul class="review-prd-info">
 													<li>
-														<button type="button" class="btn-like2"
-															onclick="addGodEvlLikeCount(this,addLikeList);"
-															godevlturn="10" reviewgodno="GM0121122308150">
-															<span class="like-count" likecnt="0"> - </span>
-														</button>
+														<div class="prd-name">${positivePost.member_email }&nbsp;</div>
 													</li>
-													<li><span class="date">2022.12.02</span></li>
+													<!-- <li>
+														<div class="prd-option">
+															구매옵션 : S
+														</div>
+													</li> -->
+													<li><span class="date">${positivePost.register_date }</span></li>
 												</ul>
-												<p class="title-review">기본니트</p>
+	
+												<div class="txt-box"> ${positivePost.contents }</div>
+												
+												
+											</div>
 												<button type="button" class="btn-fold">열기</button>
 											</div>
 										</div>
 	
 										<div class="fold-cont">
 											<div class="review-group">
-												<ul class="review-prd-info">
-													<li>
-														<div class="prd-name">lam****&nbsp;</div>
-													</li>
-													<li>
-														<div class="prd-option">
-	
-															&nbsp;160cm ,보통체형 &nbsp;/ &nbsp; 구매옵션 : S<em
-																class="prd-option-color"> <span
-																class="pdColor-/colorchips/GM0121122308150_COLORCHIP.jpg">BLUE</span>
-															</em>
-														</div>
-													</li>
-												</ul>
-	
-												<div class="txt-box">브이넥이 조금 깊은감은 있지만 니트재질이 너무 부드럽고
-													좋더라구요 사이즈는 정사이즈로 주문하시면 될듯합니다 크게 나온옷은 아닙니다.</div>
-												<p class="wear-feeling">
-													<span> 핏감 : 슬림 </span> <span> 두께감 : 얇음 </span> <span>
-														신축성 : 좋음 </span> <span> 비침 : 있음 </span>
-												</p>
-												<div class="review-report">
-													<button type="button" class="btn-report"
-														onclick="alert('로그인 후 참여 가능합니다.');location.href='/public/member/login'">
-														<span>신고하기</span>
-													</button>
+													<ul class="files">
+														<li class="img-file">
+															<button type="button" onclick="layerViewImg();"
+																style="background-image: url(${pageContext.request.contextPath}/${positivePost.upload_path}/${positivePost.uuid}_${positivePost.file_name}); transform: rotate(0deg);">
+																<img
+																	src="${pageContext.request.contextPath}/${positivePost.upload_path}/${positivePost.uuid}_${positivePost.file_name}"
+																	alt="2023-01-18-16-29-33-366"
+																	style="transform: rotate(0deg);">
+															</button>
+														</li>
+													</ul>
 												</div>
-											</div>
 										</div>
 									</li>
 								</c:forEach>
@@ -1731,53 +1719,41 @@
 									<li>
 										<div class="list-row fold-header">
 											<div class="cell-title">
-												<ul class="etc-info">
-													<li><span class="point size-m"><span class="ico"
-															style="width: 100%">별점 5점</span></span></li>
+												<div class="review-group">
+												<ul class="review-prd-info">
 													<li>
-														<button type="button" class="btn-like2"
-															onclick="addGodEvlLikeCount(this,addLikeList);"
-															godevlturn="10" reviewgodno="GM0121122308150">
-															<span class="like-count" likecnt="0"> - </span>
-														</button>
+														<div class="prd-name">${negativePost.member_email }&nbsp;</div>
 													</li>
-													<li><span class="date">2022.12.02</span></li>
+													<!-- <li>
+														<div class="prd-option">
+															구매옵션 : S
+														</div>
+													</li> -->
+													<li><span class="date">${negativePost.register_date }</span></li>
 												</ul>
-												<p class="title-review">기본니트</p>
+	
+												<div class="txt-box"> ${negativePost.contents }</div>
+												
+												
+											</div>
 												<button type="button" class="btn-fold">열기</button>
 											</div>
 										</div>
 	
 										<div class="fold-cont">
 											<div class="review-group">
-												<ul class="review-prd-info">
-													<li>
-														<div class="prd-name">lam****&nbsp;</div>
-													</li>
-													<li>
-														<div class="prd-option">
-	
-															&nbsp;160cm ,보통체형 &nbsp;/ &nbsp; 구매옵션 : S<em
-																class="prd-option-color"> <span
-																class="pdColor-/colorchips/GM0121122308150_COLORCHIP.jpg">BLUE</span>
-															</em>
-														</div>
-													</li>
-												</ul>
-	
-												<div class="txt-box">브이넥이 조금 깊은감은 있지만 니트재질이 너무 부드럽고
-													좋더라구요 사이즈는 정사이즈로 주문하시면 될듯합니다 크게 나온옷은 아닙니다.</div>
-												<p class="wear-feeling">
-													<span> 핏감 : 슬림 </span> <span> 두께감 : 얇음 </span> <span>
-														신축성 : 좋음 </span> <span> 비침 : 있음 </span>
-												</p>
-												<div class="review-report">
-													<button type="button" class="btn-report"
-														onclick="alert('로그인 후 참여 가능합니다.');location.href='/public/member/login'">
-														<span>신고하기</span>
-													</button>
+													<ul class="files">
+														<li class="img-file">
+															<button type="button" onclick="layerViewImg();"
+																style="background-image: url(${pageContext.request.contextPath}/${negativePost.upload_path}/${negativePost.uuid}_${negativePost.file_name}); transform: rotate(0deg);">
+																<img
+																	src="${pageContext.request.contextPath}/${negativePost.upload_path}/${negativePost.uuid}_${negativePost.file_name}"
+																	alt="2023-01-18-16-29-33-366"
+																	style="transform: rotate(0deg);">
+															</button>
+														</li>
+													</ul>
 												</div>
-											</div>
 										</div>
 									</li>
 								</c:forEach>
