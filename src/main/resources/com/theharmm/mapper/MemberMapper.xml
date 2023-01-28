@@ -30,14 +30,20 @@
 		VALUES (#{member_email}, #{member_password}, #{member_name}, #{member_nickname}, #{member_phone}, #{member_shoes_size}, #{member_register}, 
 		#{member_login}, #{member_messege_info}, #{member_email_info}, 'BRONZE')
 	</insert>
-
+	
 	<!-- 권한 정보도 넣기 -->
 	<insert id="joinMemberAuthority">
 		INSERT INTO authorities
 		(username, authority)
 		VALUES (#{username}, #{authority})
 	</insert>
-	
+	<!-- 관리자 회원가입시 권한 여러개 넣어야하기위해 만듬  -->
+	<insert id="joinAdminMemberAuthority" parameterType="java.util.List">
+		<foreach collection="authVOList" item="vo" open="INSERT ALL " close="SELECT * FROM DUAL" separator=" " >
+		INTO authorities(username, authority) 
+		VALUES(#{vo.username},#{vo.authority})
+		</foreach>
+	</insert>
 	<!-- 이메일 중복 여부 -->
 	<select id="checkEmail" resultType="int">
 		select count(*) from member where member_email = #{member_email}
@@ -63,4 +69,9 @@
 		on mem.member_email = auth.username
 		WHERE mem.member_email = #{member_email}
 	</select>
+	
+	<update id="updateLoign">
+		update member set member_login = sysdate where member_email=#{member_email}
+	
+	</update>
 </mapper>

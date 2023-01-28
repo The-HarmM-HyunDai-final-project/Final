@@ -46,6 +46,9 @@ const cardInnerEl = document.getElementById("card-inner");
   });
   player.addEventListener(PlayerEventType.ERROR, function (err) {
     console.warn("Player Event - ERROR:", err);
+    setTimeout(function(){
+    	location.reload();
+    	},3000);
   });
 
   player.addEventListener(PlayerEventType.TEXT_METADATA_CUE, function (cue) {
@@ -64,51 +67,4 @@ const cardInnerEl = document.getElementById("card-inner");
   // Setvolume
   player.setVolume(0.1);
 
-  // Remove card
-  function removeCard() {
-    quizEl.classList.toggle("drop");
-  }
-
-  // Trigger quiz
-  function triggerQuiz(metadataText) {
-    let obj = JSON.parse(metadataText);
-
-    quizEl.style.display = "";
-    quizEl.classList.remove("drop");
-    waitMessage.style.display = "none";
-    cardInnerEl.style.display = "none";
-    cardInnerEl.style.pointerEvents = "auto";
-
-    while (answersEl.firstChild) answersEl.removeChild(answersEl.firstChild);
-    questionEl.textContent = obj.question;
-
-    let createAnswers = function (obj, i) {
-      let q = document.createElement("a");
-      let qText = document.createTextNode(obj.answers[i]);
-      answersEl.appendChild(q);
-      q.classList.add("answer");
-      q.appendChild(qText);
-
-      q.addEventListener("click", (event) => {
-        cardInnerEl.style.pointerEvents = "none";
-        if (q.textContent === obj.answers[obj.correctIndex]) {
-          q.classList.toggle("correct");
-        } else {
-          q.classList.toggle("wrong");
-        }
-        setTimeout(function () {
-          removeCard();
-          waitMessage.style.display = "";
-        }, 1050);
-        return false;
-      });
-    };
-
-    for (var i = 0; i < obj.answers.length; i++) {
-      createAnswers(obj, i);
-    }
-    cardInnerEl.style.display = "";
-  }
-
-  waitMessage.style.display = "";
 })(window.IVSPlayer);
