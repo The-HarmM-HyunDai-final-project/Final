@@ -40,6 +40,11 @@ public interface ProductDetailService {
 	
 	SellDTO selectMinSellProductPrice(int pid); 
 	
+	//체결거래, 판매입찰, 구매입찰 
+	List<BuyDTO> selectAllSignContract(int pid); 
+	
+	List<SellDTO> selectAllSellBid(int pid);
 
+	List<BuyDTO> selectAllBuyBid(int pid);
 }
 

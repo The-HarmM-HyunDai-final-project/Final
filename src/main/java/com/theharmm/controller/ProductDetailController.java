@@ -41,12 +41,21 @@ public class ProductDetailController {
 		BuyDTO buyDTO = productDetailService.selectMinBuyProductPrice(pid);
 		//구매버튼 
 		SellDTO sellDTO = productDetailService.selectMinSellProductPrice(pid);
+
 		
 		//긍정리뷰
 		List<PostVO> positivePostList = postService.selectPositivePostList(pid);
 		
 		//부정리뷰
 		List<PostVO> negativePostList = postService.selectNegativePostList(pid);
+
+	
+		//체결거래 
+		List<BuyDTO> allSignContractList = productDetailService.selectAllSignContract(pid);
+		//판매입찰 
+		List<SellDTO> allSellBidList = productDetailService.selectAllSellBid(pid);
+		//구매입찰 
+		List<BuyDTO> allBuyBidList = productDetailService.selectAllBuyBid(pid);
 		
 		log.info("상품정보 : "+productDetailDTO.toString());
 		log.info("긍정리뷰 : "+positivePostList.toString());
@@ -57,10 +66,9 @@ public class ProductDetailController {
 		model.addAttribute("sellDTO", sellDTO);
 		model.addAttribute("positivePostList", positivePostList);
 		model.addAttribute("negativePostList", negativePostList);
-	
-	
-
-		
+		model.addAttribute("allSignContractList", allSignContractList);
+		model.addAttribute("allSellBidList", allSellBidList);
+		model.addAttribute("allBuyBidList", allBuyBidList);
 		return "product/productdetail";
 	}
 	

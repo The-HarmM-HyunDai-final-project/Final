@@ -18,5 +18,8 @@ public class BuyDTO {
 	private String status2;
 	private String status3;
 	private Date regdate;
-	private int member_sale_no;  
+	private Date biddate; 
+	private Date nowdate; 
+	//상세페이지에 체결거래, 판매입찰, 구매입찰 탭에서 사용
+	private int amount;
 }
