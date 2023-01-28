@@ -37,7 +37,7 @@
 					<h3 class="input_title" data-v-1c44afeb="" data-v-464f7370="">비밀번호</h3>
 					<div class="input_item" data-v-1c44afeb="">
 						<input type="password" name="password"placeholder="" autocomplete="off"
-							class="input_txt" data-v-1c44afeb="">
+							class="input_txt" data-v-1c44afeb=""  onkeypress="if( event.keyCode == 13 ){btn_click();}">
 					</div>
 					<p class="input_error" data-v-1c44afeb="" data-v-464f7370="">
 						영문, 숫자, 특수문자를 조합해서 입력해주세요. (8-16자)</p>
@@ -101,5 +101,7 @@
 		$("#loginForm").submit();
 
 	};
+	
+
 </script>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!--
-/*! Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved. SPDX-License-Identifier: Apache-2.0 */
--->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -93,6 +89,12 @@
   <section class="container">
     <label for="stream-key">Stream Key</label>
     <input type="text" id="stream-key" value="" />
+  </section>
+  
+  <!-- test input -->
+  <section class="container">
+    <label for="stream-key">test</label>
+    <input type="hidden" id="test" value="" />
   </section>
 
   <!-- Broadcast buttons -->

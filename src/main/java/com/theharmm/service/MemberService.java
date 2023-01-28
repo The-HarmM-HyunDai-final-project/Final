@@ -4,14 +4,19 @@ import com.theharmm.domain.MemberVO;
 
 public interface MemberService {
 	
-	//È¸¿ø°¡ÀÔ
+	//íšŒì›ê°€ì„
 	public int joinMember(MemberVO member);
-	//ÀÌ¸ŞÀÏÃ¼Å©
+	//ê´€ë¦¬ì íšŒì›ê°€ì…
+	public int joinAdminMember(MemberVO admin);
+	//ì´ë©”ì¼ ì¤‘ë³µì—¬ë¶€ í™•ì¸
 	public int checkEmail(MemberVO member);
-	//´Ğ³×ÀÓ Áßº¹ ¿©ºÎ
+	//ë‹‰ë„¤ì„ ì¤‘ë³µì—¬ë¶€ í™•ì¸
 	public int checkNickName(MemberVO member);
-	//·Î±×ÀÎ
+	//ë¡œê·¸ì¸
 	public MemberVO login(MemberVO member);
-	//È¸¿øÁ¤º¸, ÀÎÁõ °¡Á®¿À±â
+	//ìœ ì € ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 	public MemberVO read(MemberVO member);
+	
+	public void updateLogin(MemberVO member);
+	
 }
