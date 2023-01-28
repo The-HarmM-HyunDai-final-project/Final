@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+	<script src="${pageContext.request.contextPath}/resources/js/confetti_v2.js"></script>
     <style>
       .container {
         height: 100vh;
@@ -36,6 +37,12 @@
         /* background: green; */
         /* width: 100%; */
         height: 65%;
+      }
+      .video_area .user_count{
+      	position: absolute;
+      	top:10px;
+      	right:10px;
+      	z-index:10;
       }
       .user_count {
         /* position: absolute;
@@ -101,16 +108,46 @@
         display: flex;
         flex-direction: column;
         border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
-      .user_count{
+      /* .user_count{
       	text-align:center;
+      } */
+      .tabs{
+      	width: 100%;
+        height: 80%;
+      }
+      .tabs .tabs_view{
+      	height:15%;
+      	width:100%;
+      	display: flex;
+      }
+      .tabs .tabs_view .tab_item{
+      	background : rgb(224, 224, 224);
+      	border-bottom:1px solid black;
+      	text-align:center;
+      	flex:1;
+      	display : flex;
+		justify-content : center;
+		align-items : center;
+		border-radius: 15px 15px 0 0;
+      }
+      .tabs .tabs_view .tab_item.selected{
+      	background : silver;
       }
       .chat_view {
         /* background: #ffffff; */
+        display:none;
         width: 100%;
         height: 80%;
         padding: 10px;
         overflow-y: scroll;
+      }
+      .chat_view::-webkit-scrollbar {
+		display: none; /* Chrome, Safari, Opera*/
+	  }
+	  .chat_view.show{
+      	display:block;
       }
       .chat_do {
       	display:flex;
@@ -139,6 +176,7 @@
 
         background-color: rgba(0, 0, 0, 0.4);
       }
+      
 	  .modal {
         position: absolute;
         z-index:99;
@@ -219,6 +257,14 @@
         /* box-shadow: 0px 5px 5px -2px rgba(85, 197, 150, 0.25); */
       }
       
+      /* 경매 낙찰 후 폭죽효과 */
+      canvas {
+            z-index: 10;
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            transform: scale(1.1);
+        }
     </style>
     <script	src="https://player.live-video.net/1.6.1/amazon-ivs-player.min.js"></script>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/test.css">
@@ -236,6 +282,9 @@
 <!--             <div class="user_count">
               <p>사용자 : <b id="connected_user">0</b> 명</p>
             </div> -->
+            <div class="user_count" >
+              <p>   사용자 : <b id="connected_user">0</b> 명</p>
+            </div>
           </div>
           <div class="info_area">
           	<div class="room_title">${channelDTO.showlive_name}</div>
@@ -263,12 +312,17 @@
             </div>
           </div>
           <div class="chat_area">
-          	<div class="user_count" >
-              <p>   사용자 : <b id="connected_user">0</b> 명</p>
-            </div>
-            <div class="chat_view" id="message_box">
-
-            	
+            <div class="tabs">
+          		<div class="tabs_view">
+	          		<!-- <input id="chat" type="radio" name="tab_item" checked> -->
+				    <label class="tab_item selected" for="chat" id="message_tab">채팅</label>
+				    <!-- <input id="programming" type="radio" name="tab_item"> -->
+				    <label class="tab_item" for="question" id="question_tab">질문 모아보기</label>
+			    </div>
+	            <div class="chat_view show" id="message_box">
+	            </div>
+	            <div class="chat_view" id="question_box">
+	            </div>
             </div>
             <div class="chat_do">
               <input class="chat_input" type="text" id="msg" placeholder="메시지를 입력해 주세요" onkeyup="chatEnterkey()"/>
@@ -313,15 +367,20 @@
       	<b>축하합니다</b>
         <div class="modal_content">
           <div class="confirm_price_area" style="font-size:30px;">
-            <p><b></b>님이 낙찰 되었습니다</p>
+            <p><b id="final_bider"></b> 님이 낙찰 되었습니다</p>
           </div>
-          <div class="modal_btns">
+          <!-- <div class="modal_btns">
             <button class="leave_btn">나가기</button>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
-    
+    <!-- 낙찰 후 폭죽 터지는 효과를 위한 친구들 -->
+	<div class="buttonContainer" style="display: none;">
+        <button class="canvasBtn" id="stopButton">Stop Confetti</button>
+        <button class="canvasBtn" id="startButton">Drop Confetti</button>
+    </div>
+    <canvas id="canvas"></canvas>
 <%-- <script src="${pageContext.request.contextPath}/resources/js/test.js" defer=""></script> --%>
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script type="text/javascript">
@@ -375,11 +434,21 @@
 		//sendMessage("TALK", $("#msg").val());
  		$("#msg").val("");
 	});
-	
+	//폭죽 날리기~
+	/* const sbmodal = document.querySelector("#bidding_modal"); */
+	function reAction() {
+        $("#startButton").trigger("click");
+        $("#bidding_modal").toggle("show");
+        setTimeout(function () {
+            $("#stopButton").trigger("click");
+            $("#bidding_modal").toggle("show");
+        }, 6000);
+    }
 	var sock = new SockJS('http://localhost:8080/chatting');
 	sock.onmessage = onMessage;
 	sock.onclose = onClose;
 	sock.onopen = onOpen;
+	
 	
 	function sendMessage(type, msg) {		
 		var cur_id = '${userid}'; 
@@ -401,7 +470,6 @@
 	}
 	//서버에서 메시지를 받았을 때 -> 입장, 퇴장, 채팅, 경매 모두 이곳으로!
 	function onMessage(msg) {
-		
 		var data = msg.data;
 		var sessionId = null; //데이터를 보낸 사람
 		var message = null;
@@ -439,6 +507,7 @@
 			case 'AUCTION':
 				$("#max_price").text(priceToString(maxSuggestPrice));
 				$("#max_price_user").text(maxSuggestUser);
+				$("#final_bider").text(maxSuggestUser);
 				auctionPrevPrice = maxSuggestPrice;
 				break
 			case 'ENTER':
@@ -460,6 +529,9 @@
 					</div></div>`
 				$("#connected_user").text(totalUser)
 				break
+			case 'AUCTION_END':
+				reAction();
+				break
 			case 'LIVE_END':
 				$("#leave_modal").toggle("show");
 				break
@@ -477,6 +549,34 @@
 	function onOpen(evt) {
 		
 	}
+	
+	//메시지, 질문탭
+	const messageTab = document.querySelector("#message_tab");
+	const questionTab = document.querySelector("#question_tab");
+	messageTab.addEventListener("click", () => {
+		console.log("탭누리1");
+		messageTab.classList.add("selected");
+		questionTab.classList.remove("selected");
+		
+		$("#message_box").addClass("show");
+		$("#question_box").removeClass("show");
+		
+		if($("#question_box").hasClass("show")){
+			$("#question_box").toggleClass("show");
+		}
+	});
+	questionTab.addEventListener("click", () => {
+		console.log("탭누리2");
+		questionTab.classList.add("selected");
+		messageTab.classList.remove("selected");
+		
+		$("#question_box").addClass("show");
+		$("#message_box").removeClass("show");
+		
+		if($("#message_box").hasClass("show")){
+			$("#message_box").toggleClass("show");
+		}
+	});
 	
 	//입찰 신청모달창 부분 이무니다====================
  	const body = document.querySelector("body");
@@ -540,4 +640,5 @@
     	location.href="/";
     });
 	//모달모달=====================
+
 </script>
