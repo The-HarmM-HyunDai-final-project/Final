@@ -29,7 +29,7 @@ public class PostMapperTest2 {
 		postcri.setKeyword("테스트");
 		
 		/* 검색 리스트 */
-		List list = postmapper.postGetByMailList(postcri,"asd");
+		List list = postmapper.postGetList(postcri);
 		for(int i = 0; i < list.size(); i++) {
 			System.out.println("result......." + i + " : " + list.get(i));
 		}

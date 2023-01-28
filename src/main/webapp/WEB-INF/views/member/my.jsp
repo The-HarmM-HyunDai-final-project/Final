@@ -49,50 +49,29 @@
 <link rel="preload" href="/_nuxt/4fbacaa.js" as="script">
 <link rel="preload" href="/_nuxt/c348f6a.js" as="script">
 <link rel="preload" href="/_nuxt/e6f69f8.js" as="script">
-<link rel="preload"
-	href="${pageContext.request.contextPath}/resources/css/4a42468.css"
-	as="style">
+<link rel="preload" href="${pageContext.request.contextPath}/resources/css/4a42468.css" as="style">
 <link rel="preload" href="/_nuxt/b777585.js" as="script">
-<link rel="preload"
-	href="${pageContext.request.contextPath}/resources/css/734fa9a.css"
-	as="style">
+<link rel="preload" href="${pageContext.request.contextPath}/resources/css/734fa9a.css" as="style">
 <link rel="preload" href="/_nuxt/1c84866.js" as="script">
 <link rel="preload" href="/_nuxt/f33c07a.js" as="script">
-<link rel="preload"
-	href="${pageContext.request.contextPath}/resources/css/325de86.css"
-	as="style">
+<link rel="preload" href="${pageContext.request.contextPath}/resources/css/325de86.css" as="style">
 <link rel="preload" href="/_nuxt/1b4c860.js" as="script">
-<link rel="preload"
-	href="${pageContext.request.contextPath}/resources/css/a52fa45.css"
-	as="style">
+<link rel="preload" href="${pageContext.request.contextPath}/resources/css/a52fa45.css" as="style">
 <link rel="preload" href="/_nuxt/0baa4c5.js" as="script">
-<link rel="preload"
-	href="${pageContext.request.contextPath}/resources/css/acdef89.css"
-	as="style">
+<link rel="preload" href="${pageContext.request.contextPath}/resources/css/acdef89.css" as="style">
 <link rel="preload" href="/_nuxt/4296a15.js" as="script">
-<link rel="preload"
-	href="${pageContext.request.contextPath}/resources/css/48656c7.css"
-	as="style">
+<link rel="preload" href="${pageContext.request.contextPath}/resources/css/48656c7.css" as="style">
 <link rel="preload" href="/_nuxt/b64a9b6.js" as="script">
 <link rel="preload" href="/_nuxt/ed97882.js" as="script">
-<link rel="preload"
-	href="${pageContext.request.contextPath}/resources/css/ae12c7f.css"
-	as="style">
+<link rel="preload" href="${pageContext.request.contextPath}/resources/css/ae12c7f.css" as="style">
 <link rel="preload" href="/_nuxt/b78c628.js" as="script">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/4a42468.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/734fa9a.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/325de86.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/a52fa45.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/acdef89.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/48656c7.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/ae12c7f.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/4a42468.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/734fa9a.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/325de86.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/a52fa45.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/acdef89.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/48656c7.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ae12c7f.css">
 <style type="text/css"> /*# sourceMappingURL=contenteditable.vue.map */
 </style>
 <script type="text/javascript" async=""
@@ -101,57 +80,41 @@
 	src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-SRFKTMTR0R"
 	async=""></script>
 <script charset="utf-8" src="/_nuxt/ab8ae02.js"></script>
-<link rel="preload" as="style"
-	href="${pageContext.request.contextPath}/resources/css/c163ebe.css">
+<link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/c163ebe.css">
 <script charset="utf-8" src="/_nuxt/7d411a5.js"></script>
-<link rel="preload" as="style"
-	href="${pageContext.request.contextPath}/resources/css/0721927.css">
+<link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/0721927.css">
 <script charset="utf-8" src="/_nuxt/45f548b.js"></script>
-<link rel="preload" as="style"
-	href="${pageContext.request.contextPath}/resources/css/24dfaf3.css">
+<link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/24dfaf3.css">
 <script charset="utf-8" src="/_nuxt/054b336.js"></script>
-<link rel="preload" as="style"
-	href="${pageContext.request.contextPath}/resources/css/240da25.css">
+<link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/240da25.css">
 <script charset="utf-8" src="/_nuxt/bcab19f.js"></script>
-<link rel="preload" as="style"
-	href="${pageContext.request.contextPath}/resources/css/f0dbc2f.css">
+<link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/f0dbc2f.css">
 <meta data-n-head="ssr" data-hid="description" name="description"
 	content="한정판 거래의 FLEX, KICKS RULE EVERYTHING AROUND ME">
-<link rel="preload" as="style"
-	href="${pageContext.request.contextPath}/resources/css/1e20f03.css">
+<link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/1e20f03.css">
 <script charset="utf-8" src="/_nuxt/edd17d9.js"></script>
-<link rel="preload" as="style"
-	href="${pageContext.request.contextPath}/resources/css/aca0784.css">
+<link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/aca0784.css">
 <script charset="utf-8" src="/_nuxt/5f6d540.js"></script>
-<link rel="preload" as="style"
-	href="${pageContext.request.contextPath}/resources/css/9218b3f.css">
+<link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/9218b3f.css">
 <script charset="utf-8" src="/_nuxt/919ff36.js"></script>
-<link rel="preload" as="style"
-	href="${pageContext.request.contextPath}/resources/css/60ed898.css">
+<link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/60ed898.css">
 <script charset="utf-8" src="/_nuxt/79e69ad.js"></script>
-<link rel="preload" as="style"
-	href="${pageContext.request.contextPath}/resources/css/7836ff9.css">
+<link rel="preload" as="style" href="${pageContext.request.contextPath}/resources/css/7836ff9.css">
 <script charset="utf-8" src="/_nuxt/a33db70.js"></script>
 </head>
 <body>
-
 	<div id="__nuxt">
 		<!---->
 		<div id="__layout">
 			<div data-v-39b2348a="" tabindex="0" class="wrap win_os">
 				<!---->
 				<div data-v-39b2348a="" class="wrap_inner">
-					<%@ include file="/WEB-INF/views/common/header.jsp"%>
+				<%@ include file="/WEB-INF/views/common/header.jsp"%>
 				</div>
 				<!---->
 				<div data-v-39b2348a="" class="container my lg">
-					<sec:authorize access="hasRole('ROLE_MEMBER')">
-						<sec:authentication property="principal.username" var="MID" />
-					</sec:authorize>
-
-					<input type="hidden" name="mid" id="mid" value="${MID}">
 					<div data-v-39b2348a="">
-						<%@ include file="/WEB-INF/views/common/nav.jsp"%>
+					<%@ include file="/WEB-INF/views/common/nav.jsp"%>
 					</div>
 					<div data-v-5419f155="" data-v-39b2348a="" class="content_area">
 						<div data-v-5419f155="" class="my_home">
@@ -160,16 +123,17 @@
 								<div data-v-5acef129="" class="user_detail">
 									<div data-v-5acef129="" class="user_thumb">
 										<img data-v-5acef129=""
-											src="${pageContext.request.contextPath}/resources/images/test2.jpg"
-											alt="사용자 이미지" class="thumb_img">
+											src="${pageContext.request.contextPath}/resources/images/test2.jpg" alt="사용자 이미지"
+											class="thumb_img">
 									</div>
 									<div data-v-5acef129="" class="user_info">
 										<div data-v-5acef129="" class="info_box">
-											<strong data-v-5acef129="" class="name">${member_email}</strong>
-											<p data-v-5acef129="" class="email">${member_email}</p>
+											<strong data-v-5acef129="" class="name">tlsalfla96</strong>
+											<p data-v-5acef129="" class="email">t********6@naver.com</p>
 											<a data-v-575aff82="" data-v-5acef129="" href="/my/profile"
 												class="btn btn outlinegrey small" type="button"> 프로필 수정
-											</a><a data-v-575aff82="" data-v-5acef129="" href="/social/user?email=${member_email}"
+											</a><a data-v-575aff82="" data-v-5acef129=""
+												href="/social/user/"
 												class="btn btn btn_my_style outlinegrey small" type="button">
 												내 스타일 </a>
 										</div>
@@ -178,18 +142,18 @@
 								<div data-v-5acef129="" class="membership_detail">
 									<a data-v-5acef129="" href="#" class="membership_item disabled"><strong
 										data-v-5acef129="" class="info"> 일반 회원 </strong>
-										<p data-v-5acef129="" class="title">회원 등급</p></a><a
+									<p data-v-5acef129="" class="title">회원 등급</p></a><a
 										data-v-5acef129="" href="#" class="membership_item"><strong
 										data-v-5acef129="" class="info"> 0P </strong>
-										<p data-v-5acef129="" class="title">포인트</p></a>
+									<p data-v-5acef129="" class="title">포인트</p></a>
 								</div>
 							</div>
-
+							
 							<div data-v-6752ceb2="" data-v-5419f155="" class="my_home_title">
 								<h3 data-v-6752ceb2="" class="title">구매 내역</h3>
 								<a data-v-6752ceb2="" href="/my/buying" class="btn_more"><span
-									data-v-6752ceb2="" class="btn_txt">더보기</span> <svg
-										data-v-6752ceb2="" xmlns="http://www.w3.org/2000/svg"
+									data-v-6752ceb2="" class="btn_txt">더보기</span>
+								<svg data-v-6752ceb2="" xmlns="http://www.w3.org/2000/svg"
 										class="icon sprite-icons arr-right-gray">
 										<use data-v-6752ceb2=""
 											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-arr-right-gray"
@@ -247,8 +211,8 @@
 							<div data-v-6752ceb2="" data-v-5419f155="" class="my_home_title">
 								<h3 data-v-6752ceb2="" class="title">판매 내역</h3>
 								<a data-v-6752ceb2="" href="/my/selling" class="btn_more"><span
-									data-v-6752ceb2="" class="btn_txt">더보기</span> <svg
-										data-v-6752ceb2="" xmlns="http://www.w3.org/2000/svg"
+									data-v-6752ceb2="" class="btn_txt">더보기</span>
+								<svg data-v-6752ceb2="" xmlns="http://www.w3.org/2000/svg"
 										class="icon sprite-icons arr-right-gray">
 										<use data-v-6752ceb2=""
 											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-arr-right-gray"
@@ -316,8 +280,8 @@
 												<div data-v-09fbcf09="" data-v-a6a1a7c0="" class="product"
 													style="background-color: rgb(246, 238, 237);">
 													<picture data-v-878ec45c="" data-v-09fbcf09=""
-														class="picture product_img"> <img
-														data-v-878ec45c="" alt="조던 1 레트로 하이 OG 시카고 2022"
+														class="picture product_img">
+													<img data-v-878ec45c="" alt="조던 1 레트로 하이 OG 시카고 2022"
 														src="${pageContext.request.contextPath}/resources/images/test3.jpg"
 														loading="lazy" class="image"></picture>
 													<!---->
@@ -377,7 +341,7 @@
 			</div>
 		</div>
 	</div>
-
+	
 	<script src="/_nuxt/4fbacaa.js" defer=""></script>
 	<script src="/_nuxt/1c84866.js" defer=""></script>
 	<script src="/_nuxt/f33c07a.js" defer=""></script>
@@ -392,53 +356,21 @@
 	<script src="/_nuxt/b777585.js" defer=""></script>
 
 
-	<link
-		href="${pageContext.request.contextPath}/resources/css/325de86.css"
-		rel="stylesheet" type="text/css">
-	<link
-		href="${pageContext.request.contextPath}/resources/css/ae12c7f.css"
-		rel="stylesheet" type="text/css">
-	<link
-		href="${pageContext.request.contextPath}/resources/css/48656c7.css"
-		rel="stylesheet" type="text/css">
-	<link
-		href="${pageContext.request.contextPath}/resources/css/a52fa45.css"
-		rel="stylesheet" type="text/css">
-	<link
-		href="${pageContext.request.contextPath}/resources/css/acdef89.css"
-		rel="stylesheet" type="text/css">
-	<link
-		href="${pageContext.request.contextPath}/resources/css/734fa9a.css"
-		rel="stylesheet" type="text/css">
-	<link
-		href="${pageContext.request.contextPath}/resources/css/0721927.css"
-		rel="stylesheet" type="text/css">
-	<link
-		href="${pageContext.request.contextPath}/resources/css/c163ebe.css"
-		rel="stylesheet" type="text/css">
-	<link
-		href="${pageContext.request.contextPath}/resources/css/24dfaf3.css"
-		rel="stylesheet" type="text/css">
-	<link
-		href="${pageContext.request.contextPath}/resources/css/240da25.css"
-		rel="stylesheet" type="text/css">
-	<link
-		href="${pageContext.request.contextPath}/resources/css/f0dbc2f.css"
-		rel="stylesheet" type="text/css">
-	<link
-		href="${pageContext.request.contextPath}/resources/css/1e20f03.css"
-		rel="stylesheet" type="text/css">
-	<link
-		href="${pageContext.request.contextPath}/resources/css/aca0784.css"
-		rel="stylesheet" type="text/css">
-	<link
-		href="${pageContext.request.contextPath}/resources/css/9218b3f.css"
-		rel="stylesheet" type="text/css">
-	<link
-		href="${pageContext.request.contextPath}/resources/css/60ed898.css"
-		rel="stylesheet" type="text/css">
-	<link
-		href="${pageContext.request.contextPath}/resources/css/7836ff9.css"
-		rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/325de86.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/ae12c7f.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/48656c7.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/a52fa45.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/acdef89.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/734fa9a.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/0721927.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/c163ebe.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/24dfaf3.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/240da25.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/f0dbc2f.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/1e20f03.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/aca0784.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/9218b3f.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/60ed898.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/7836ff9.css" rel="stylesheet" type="text/css">
 </body>
 </html>

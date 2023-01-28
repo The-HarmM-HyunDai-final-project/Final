@@ -11,13 +11,19 @@
 	
 	
 	<!-- 포스트 리스트 -->
-  	<select id="postGetList" resultType="com.theharmm.domain.PostVO" >
-		select p.post_id as post_id, p.member_email as member_email, 
-		s.file_name as file_name, s.upload_path as upload_path, s.uuid as uuid,
-		contents, pid0, pid1, pid2
-		from post p, social s where p.post_id = s.post_id
-		and (s.file_name like '%.jpg' or s.file_name like '%.png')
-		order by p.register_date desc
+  	<select id="postGetList" resultType="com.theharmm.domain.PostVO">
+  	
+	  	
+		select * from
+			(select * from
+				(select 
+				p.post_id as post_id, p.member_email as member_email, s.file_name as file_name, replace(s.upload_path, '\','/') as upload_path, s.uuid as uuid,
+				 row_number() over(partition by p.post_id order by s.register_date) as rn, contents, pid0, pid1, pid2
+				from post p, social s
+				where p.post_id = s.post_id)
+				where rn = 1)
+
+  	
   	</select>
 	
 	<!-- 포스트 총 개수 -->
@@ -30,72 +36,4 @@
   		select * from post where post_id = #{post_id}
   	</select> 
   	
-  	<!-- 사용자별 포스트 리스트 -->
-  	<select id="postGetByMailList" resultType="com.theharmm.domain.PostVO" parameterType="String">
-		select p.post_id as post_id, p.member_email as member_email, 
-		s.file_name as file_name, s.upload_path as upload_path, s.uuid as uuid,
-		contents, pid0, pid1, pid2
-		from post p, social s where p.post_id = s.post_id
-		and (s.file_name like '%.jpg' or s.file_name like '%.png')
-		and p.member_email = #{member_email}
-		order by p.register_date desc
-  	</select>
-  	
-  	<!-- member_id 별로 포스트 총 개수 -->
-	<select id="postGetByMailTotal" resultType="int" parameterType="String">
-		select count(*) from post where member_email = #{member_email}
-	</select>
-  	
-  	<!-- 팔로우 삽입 -->
-	<insert id="insertFollow" parameterType="String">
-		INSERT INTO
-		follow
-		VALUES(#{follower_id},#{following_id})
-	</insert>
-	
-	<!-- memberemail로 follower가져오기 -->
-	<select id="followerList"
-		resultType="String" parameterType="String">
-		select follower_id from follow 
-			where following_id = #{member_email}
-	</select>
-	
-	<!-- memberemail로 following가져오기 -->
-	<select id="followingList"
-		resultType="String" parameterType="String">
-		select following_id from follow 
-			where follower_id = #{member_email}
-	</select>
-	
-	<!-- 팔로워 갯수 세기 -->
-	<select id="followerTotal" resultType="int" parameterType="String">
-		SELECT
-		COUNT(follower_id)
-		FROM follow
-		WHERE following_id = #{member_email}
-	</select>
-	
-	<!-- 팔로잉 갯수 세기 -->
-	<select id="followingTotal" resultType="int" parameterType="String">
-		SELECT
-		COUNT(following_id)
-		FROM follow
-		WHERE follower_id = #{member_email}
-	</select>
-	
-	<!-- 삭제된 수량 반환 -->
-	<delete id="deleteFollow" parameterType="String">
-		DELETE FROM follow
-		WHERE
-		follower_id = #{follower_id} and following_id = #{following_id}
-	</delete>
-	
-	<!-- 팔로잉 중인지 체크-->
-	<select id="countFollow" resultType="int" parameterType="String">
-		SELECT
-		COUNT(*)
-		FROM follow
-		where follower_id = #{following_id} and following_id = #{following_id}
-	</select>
-	
 </mapper>

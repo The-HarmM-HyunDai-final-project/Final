@@ -86,6 +86,7 @@ public class ChattingHandler3  extends TextWebSocketHandler{
 			s.sendMessage(new TextMessage(session.getPrincipal().getName() + ": " + message.getPayload()));
 		}
 		
+		
 	}
 	//클라이언트와 연결이 끊어진 경우(채팅방을 나간 경우) remove로 해당 세션을 제거함
 	@Override
