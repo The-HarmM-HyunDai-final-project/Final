@@ -16,20 +16,9 @@
       <div class="player-wrapper">
         <div class="aspect-spacer"></div>
         <div class="pos-absolute full-width full-height top-0">
-          <video controls id="video-player" class="el-player" controls>
+          <video controls id="video-player" class="el-player" controls autoplay  preload="auto">
           	<!-- playsinline -->
           </video>
-        </div>
-      </div>
-
-      <!-- Quiz UI -->
-      <div class="quiz-wrap">
-        <div id="waiting"><span class="waiting-text float">Waiting for the next question</span></div>
-        <div id="quiz" class="card drop">
-          <div id="card-inner">
-            <h2 id="question"></h2>
-            <div id="answers"></div>
-          </div>
         </div>
       </div>
 

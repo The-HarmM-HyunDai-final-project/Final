@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import lombok.extern.log4j.Log4j;
+
 @Controller
+@Log4j
 public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -40,5 +43,15 @@ public class HomeController {
 	@GetMapping("/test2")
 	public String test2() {
 		return "test2";
+	}
+	
+	@GetMapping("/test3")
+	public String test3() {
+		return "test3";
+	}
+	
+	@GetMapping("/temp")
+	public void temp() {
+		log.warn("임시요");
 	}
 }

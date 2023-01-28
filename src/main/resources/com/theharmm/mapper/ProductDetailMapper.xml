@@ -132,26 +132,5 @@
 	 ]]>
 	</insert>
 	
-	<!-- 상품상세페이지에서 가격, 판매버튼에 가격 보이도록 하는 mapper -->
-	
-	<select id="selectMinBuyProductPrice"
-		resultType="BuyDTO"
-		parameterType="Integer">
-		 <![CDATA[
-		   SELECT MIN(PRICE) AS PRICE
-           FROM SALE 
-           WHERE PID= #{pid}
-		  ]]>
-	</select>
-	
-	<select id="selectMinSellProductPrice"
-		resultType="SellDTO"
-		parameterType="Integer">
-		 <![CDATA[
-		   SELECT MIN(PRICE) AS PRICE 
-           FROM BUY 
-           WHERE PID= #{pid}
-		  ]]>
-	</select>
 
 </mapper>

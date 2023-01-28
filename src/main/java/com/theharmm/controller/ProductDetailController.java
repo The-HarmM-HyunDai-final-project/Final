@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.theharmm.domain.BuyDTO;
 import com.theharmm.domain.ProductDetailDTO;
-import com.theharmm.domain.SellDTO;
 import com.theharmm.service.ProductDetailService;
 
 import lombok.RequiredArgsConstructor;
@@ -30,20 +28,11 @@ public class ProductDetailController {
 		log.info("selectProductDetail 실행");
 		
 		ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
-		//판매버튼
-		BuyDTO buyDTO = productDetailService.selectMinBuyProductPrice(pid);
-		//구매버튼 
-		SellDTO sellDTO = productDetailService.selectMinSellProductPrice(pid);
-	
 		
 		log.info("상품정보 : "+productDetailDTO.toString());
 		//session.setAttribute("totalRows", totalRows);
 		model.addAttribute("productDetailDTO", productDetailDTO);
-		model.addAttribute("buyDTO", buyDTO);
-		model.addAttribute("sellDTO", sellDTO);
-	
 
-		
 		return "product/productdetail";
 	}
 	

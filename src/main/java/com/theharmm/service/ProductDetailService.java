@@ -4,10 +4,8 @@ package com.theharmm.service;
 import java.util.List;
 import java.util.Map;
 
-import com.theharmm.domain.BuyDTO;
 import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.ProductSizeDTO;
-import com.theharmm.domain.SellDTO;
 
 public interface ProductDetailService {
 
@@ -34,12 +32,6 @@ public interface ProductDetailService {
 	Long insertSaleOrder(Map<String, Object> saleInfoMap);
 
 	Long insertBuyOrder(Map<String, Object> buyInfoMap);
-	
-	//상품상세페이지 구매, 판매 가장 작은 값 가져오기 
-	BuyDTO selectMinBuyProductPrice(int pid); 
-	
-	SellDTO selectMinSellProductPrice(int pid); 
-	
 
 }
 
