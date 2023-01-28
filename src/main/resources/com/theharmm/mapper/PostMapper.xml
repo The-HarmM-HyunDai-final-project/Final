@@ -36,4 +36,20 @@
   		select * from post where post_id = #{post_id}
   	</select> 
   	
+  	<!-- 긍정리뷰 리스트 조회 -->
+  	<select id="selectPositivePostList" resultType="com.theharmm.domain.PostVO">
+  		SELECT *
+  		  FROM POST
+  		 WHERE ( PID0 = #{pid} OR PID1 = #{pid} OR PID2 = #{pid} )
+  		   AND SENTIMENT_RESULT = 'P'
+  	</select>
+  	
+  	<!-- 부정리뷰 리스트 조회 -->
+  	<select id="selectNegativePostList" resultType="com.theharmm.domain.PostVO">
+  		SELECT *
+  		  FROM POST
+  		 WHERE ( PID0 = #{pid} OR PID1 = #{pid} OR PID2 = #{pid} )
+  		   AND SENTIMENT_RESULT = 'N'
+  	</select>
+  	
 </mapper>

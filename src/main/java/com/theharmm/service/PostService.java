@@ -22,4 +22,10 @@ public interface PostService {
 	
 	public List<SocialVO> socialByPostid(int post_id);
 
+	//긍정 리뷰 리스트 조회
+	public List<PostVO> selectPositivePostList(int pid);
+
+	//부정 리뷰 리스트 조회
+	public List<PostVO> selectNegativePostList(int pid);
+
 }

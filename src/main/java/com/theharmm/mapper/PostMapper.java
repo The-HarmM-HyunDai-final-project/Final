@@ -23,4 +23,8 @@ public interface PostMapper {
 	/* 사용자별 포스트 가져오기 */
 	public PostVO postGetOne(int post_id);
 
+	public List<PostVO> selectPositivePostList(int pid);
+
+	public List<PostVO> selectNegativePostList(int pid);
+
 }

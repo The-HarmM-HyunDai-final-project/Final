@@ -1,5 +1,7 @@
 package com.theharmm.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,8 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.theharmm.domain.BuyDTO;
+import com.theharmm.domain.PostVO;
 import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.SellDTO;
+import com.theharmm.service.PostService;
 import com.theharmm.service.ProductDetailService;
 
 import lombok.RequiredArgsConstructor;
@@ -24,6 +28,9 @@ public class ProductDetailController {
 	@Autowired
 	ProductDetailService productDetailService;
 	
+	@Autowired
+	PostService postService;
+	
 	
 	@GetMapping("/{pid}")
 	public String selectProductDetail(@PathVariable int pid,Model model) {
@@ -34,13 +41,23 @@ public class ProductDetailController {
 		BuyDTO buyDTO = productDetailService.selectMinBuyProductPrice(pid);
 		//구매버튼 
 		SellDTO sellDTO = productDetailService.selectMinSellProductPrice(pid);
-	
+		
+		//긍정리뷰
+		List<PostVO> positivePostList = postService.selectPositivePostList(pid);
+		
+		//부정리뷰
+		List<PostVO> negativePostList = postService.selectNegativePostList(pid);
 		
 		log.info("상품정보 : "+productDetailDTO.toString());
+		log.info("긍정리뷰 : "+positivePostList.toString());
+		log.info("부정리뷰 : "+negativePostList.toString());
 		//session.setAttribute("totalRows", totalRows);
 		model.addAttribute("productDetailDTO", productDetailDTO);
 		model.addAttribute("buyDTO", buyDTO);
 		model.addAttribute("sellDTO", sellDTO);
+		model.addAttribute("positivePostList", positivePostList);
+		model.addAttribute("negativePostList", negativePostList);
+	
 	
 
 		

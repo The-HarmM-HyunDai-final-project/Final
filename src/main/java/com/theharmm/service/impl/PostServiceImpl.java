@@ -81,4 +81,14 @@ public class PostServiceImpl implements PostService {
 	public List<SocialVO> socialByPostid(int post_id) {
 		return socialMapper.socialByPostid(post_id);
 	}
+
+	@Override
+	public List<PostVO> selectPositivePostList(int pid) {
+		return postMapper.selectPositivePostList(pid);
+	}
+
+	@Override
+	public List<PostVO> selectNegativePostList(int pid) {
+		return postMapper.selectNegativePostList(pid);
+	}
 }
