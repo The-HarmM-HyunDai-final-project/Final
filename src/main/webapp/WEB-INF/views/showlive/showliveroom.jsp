@@ -459,13 +459,6 @@
 				mType : type
 		})
 		sock.send(showLiveMessage)
-		/* if(type=="TALK"){
-			var message = "TALK:"+ $("#msg").val();
-			sock.send(message);
-		}else if(type == "AUCTION"){
-			var message = "AUCTION:"+ $("#auction_sugest").val();
-			sock.send(message);
-		} */
 		
 	}
 	//서버에서 메시지를 받았을 때 -> 입장, 퇴장, 채팅, 경매 모두 이곳으로!

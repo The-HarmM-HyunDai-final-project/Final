@@ -7,6 +7,7 @@ public class ShowLiveMessage {
 	private String roomNo;
 	private String userName;
 	private String message;
+//	private String questionYn;
 	private Date insertDate;
 	private MessageType mType;
 	private int channelTotalUser;
@@ -40,7 +41,14 @@ public class ShowLiveMessage {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-
+	
+//	public String getQuestionYn() {
+//		return questionYn;
+//	}
+//	
+//	public void setQuestionYn(String questionYn) {
+//		this.questionYn = questionYn;
+//	}
 	public Date getInsertDate() {
 		return insertDate;
 	}
