@@ -1041,10 +1041,7 @@
 			<!---->
 		</div>
 		<div class="feed_area" data-v-02e77beb="" data-v-01e212dd="">
-			<h2 class="feed_title" data-v-02e77beb="">
-				<span class="title" data-v-02e77beb="">스타일</span> <span class="num"
-					data-v-02e77beb="">2535</span>
-			</h2>
+			
 			<!-- 긍부정에 대한 리뷰 -->
 			<div class="product-detail-tab tab-wrap2 anchor-wrap">
 				<ul class="tabs">
@@ -1243,142 +1240,99 @@
 											<li>오버사이즈</li>
 										</ul>
 									</div>
-									<p data-v-47728778="" class="text_box">질러버림 #조던1하이 #시카고2022</p>
-									<!---->
-								</div>
-							</div> <!----></a>
-					</div>
-					<div data-v-47728778="" data-v-013cc4d0=""
-						class="feed_card item square"
-						style="position: absolute; left: 306.996px; top: 0px;">
-						<a data-v-47728778="" href="#"><div data-v-47728778=""
-								class="card_box">
-								<div data-v-47728778="" class="social_img_box square">
-									<picture data-v-878ec45c="" data-v-47728778=""
-										class="picture social_img">
-									<source data-v-878ec45c="" type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTBfMTE4/MDAxNjczMzYwMzg4NTQ3.ho_YoSRzmQ_jiavgm1P7DrNJZo-ZZepgeU1Mquxqbs0g.i8hfBVMFVbxvegMF4i3tpZhw6xMOFXwesd6UXBwPuR4g.JPEG/p_f7583959f663499e8d8200f91bf8573d.jpeg?type=m_webp">
-									<source data-v-878ec45c=""
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTBfMTE4/MDAxNjczMzYwMzg4NTQ3.ho_YoSRzmQ_jiavgm1P7DrNJZo-ZZepgeU1Mquxqbs0g.i8hfBVMFVbxvegMF4i3tpZhw6xMOFXwesd6UXBwPuR4g.JPEG/p_f7583959f663499e8d8200f91bf8573d.jpeg?type=m">
-									<img data-v-878ec45c="" alt="소셜이미지"
-										src="https://kream-phinf.pstatic.net/MjAyMzAxMTBfMTE4/MDAxNjczMzYwMzg4NTQ3.ho_YoSRzmQ_jiavgm1P7DrNJZo-ZZepgeU1Mquxqbs0g.i8hfBVMFVbxvegMF4i3tpZhw6xMOFXwesd6UXBwPuR4g.JPEG/p_f7583959f663499e8d8200f91bf8573d.jpeg?type=m"
-										loading="lazy" class="image"></picture>
-								</div>
-								<div data-v-47728778="" class="card_detail">
-									<div data-v-47728778="" class="user_box">
-										<picture data-v-878ec45c="" data-v-47728778=""
-											class="picture img_profile">
-										<source data-v-878ec45c="" type="image/webp"
-											srcset="/images/account_img_default.png?type=s_webp">
-										<source data-v-878ec45c=""
-											srcset="/images/account_img_default.png?type=s">
-										<img data-v-878ec45c="" alt="사용자 프로필 이미지"
-											src="/images/account_img_default.png?type=s" loading="lazy"
-											class="image"></picture>
-										<p data-v-47728778="" class="user_name">ohsehyeon98</p>
-										<span data-v-47728778="" aria-label="좋아요" role="button"
-											class="btn like"><svg data-v-47728778=""
-												xmlns="http://www.w3.org/2000/svg"
-												class="icon sprite-icons social-like-gray-sm">
-												<use data-v-47728778=""
-													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"
-													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"></use></svg><span
-											data-v-47728778="" class="like_count">19</span></span>
+									<div
+										class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next"
+										data-swiper-slide-index="1" style="width: 296px;">
+										<div class="chart">
+											<p class="tit">두께감</p>
+											<div class="piechart-wrap">
+												<span class="piechart over" style="transform: rotate(0deg);">
+													<span class="rotate" style="transform: rotate(216deg);"><span>얇음</span></span>
+													<span class="percent"><strong class="num">60</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(216deg);">
+													<span class="rotate" style="transform: rotate(144deg);"><span>보통</span></span>
+													<span class="percent"><strong class="num">40</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(360deg);">
+													<span class="rotate" style="transform: rotate(0deg);"><span>도톰함</span></span>
+													<span class="percent"><strong class="num">0</strong>%</span>
+												</span>
+											</div>
+										</div>
+										<ul class="sub">
+											<li>얇음</li>
+											<li>보통</li>
+											<li>도톰함</li>
+										</ul>
 									</div>
-									<p data-v-47728778="" class="text_box">#jordan1
-										#chicago2022 #lostandfound</p>
-									<!---->
 								</div>
-							</div> <!----></a>
-					</div>
-					<div data-v-47728778="" data-v-013cc4d0=""
-						class="feed_card item vertical"
-						style="position: absolute; left: 613.992px; top: 0px;">
-						<a data-v-47728778="" href="#"><div data-v-47728778=""
-								class="card_box">
-								<div data-v-47728778="" class="social_img_box vertical">
-									<picture data-v-878ec45c="" data-v-47728778=""
-										class="picture social_img">
-									<source data-v-878ec45c="" type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTBfMTUx/MDAxNjczMzU3NzAxMzk0.kAYnWjaa6c1EJ5vnBdIk0Va8C132UVaDpmIa1evXlDsg.6F8GAF1vdmp4hl2HQN5-9B4s_vTZQ2jGS88zN5IpWQMg.JPEG/p_26a533fec94a4d98921f00335d6aadd3.jpg?type=m_webp">
-									<source data-v-878ec45c=""
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTBfMTUx/MDAxNjczMzU3NzAxMzk0.kAYnWjaa6c1EJ5vnBdIk0Va8C132UVaDpmIa1evXlDsg.6F8GAF1vdmp4hl2HQN5-9B4s_vTZQ2jGS88zN5IpWQMg.JPEG/p_26a533fec94a4d98921f00335d6aadd3.jpg?type=m">
-									<img data-v-878ec45c="" alt="소셜이미지"
-										src="https://kream-phinf.pstatic.net/MjAyMzAxMTBfMTUx/MDAxNjczMzU3NzAxMzk0.kAYnWjaa6c1EJ5vnBdIk0Va8C132UVaDpmIa1evXlDsg.6F8GAF1vdmp4hl2HQN5-9B4s_vTZQ2jGS88zN5IpWQMg.JPEG/p_26a533fec94a4d98921f00335d6aadd3.jpg?type=m"
-										loading="lazy" class="image"></picture>
+								<div
+									class="slide-pagination swiper-pagination-clickable swiper-pagination-bullets">
+									<button type="button"
+										class="swiper-pagination-bullet swiper-pagination-bullet-active"
+										tabindex="0" role="button" aria-label="Go to slide 1">1</button>
+									<button type="button" class="swiper-pagination-bullet"
+										tabindex="0" role="button" aria-label="Go to slide 2">2</button>
+									<button type="button" class="swiper-pagination-bullet"
+										tabindex="0" role="button" aria-label="Go to slide 3">3</button>
+									<button type="button" class="swiper-pagination-bullet"
+										tabindex="0" role="button" aria-label="Go to slide 4">4</button>
 								</div>
-								<div data-v-47728778="" class="card_detail">
-									<div data-v-47728778="" class="user_box">
-										<picture data-v-878ec45c="" data-v-47728778=""
-											class="picture img_profile">
-										<source data-v-878ec45c="" type="image/webp"
-											srcset="/images/account_img_default.png?type=s_webp">
-										<source data-v-878ec45c=""
-											srcset="/images/account_img_default.png?type=s">
-										<img data-v-878ec45c="" alt="사용자 프로필 이미지"
-											src="/images/account_img_default.png?type=s" loading="lazy"
-											class="image"></picture>
-										<p data-v-47728778="" class="user_name">6qupg1</p>
-										<span data-v-47728778="" aria-label="좋아요" role="button"
-											class="btn like"><svg data-v-47728778=""
-												xmlns="http://www.w3.org/2000/svg"
-												class="icon sprite-icons social-like-gray-sm">
-												<use data-v-47728778=""
-													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"
-													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"></use></svg><span
-											data-v-47728778="" class="like_count">18</span></span>
-									</div>
-									<p data-v-47728778="" class="text_box">2015 to 2022
-										#시카고2015 #시카고2022로스트앤파운드</p>
-									<!---->
+								<div class="slide-nav type3">
+									<button type="button" class="slide-nav-prev" tabindex="0"
+										role="button" aria-label="Previous slide">이전</button>
+									<button type="button" class="slide-nav-next" tabindex="0"
+										role="button" aria-label="Next slide">다음</button>
 								</div>
+								<span class="swiper-notification" aria-live="assertive"
+									aria-atomic="true"></span>
 							</div>
-							<div data-v-47728778="" class="img_count">
-								<span data-v-47728778="" class="count">+3</span>
-							</div></a>
+						</div>
 					</div>
-					<div data-v-47728778="" data-v-013cc4d0=""
-						class="feed_card item vertical"
-						style="position: absolute; left: 920.988px; top: 0px;">
-						<a data-v-47728778="" href="#"><div data-v-47728778=""
-								class="card_box">
-								<div data-v-47728778="" class="social_img_box vertical">
-									<picture data-v-878ec45c="" data-v-47728778=""
-										class="picture social_img">
-									<source data-v-878ec45c="" type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTBfMTgg/MDAxNjczMzU3Mjg5MTAw.mhU_5Wq6C868lRf-_wkHaPclZ6mmuL-cHc8dG-SbpEQg.HrH6n0fsPDoJL8ZoXkNBE9yXtO2DR7uJyJlvdThMdawg.JPEG/p_13e737de5e8e43d692fed42daed92c61.jpg?type=m_webp">
-									<source data-v-878ec45c=""
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTBfMTgg/MDAxNjczMzU3Mjg5MTAw.mhU_5Wq6C868lRf-_wkHaPclZ6mmuL-cHc8dG-SbpEQg.HrH6n0fsPDoJL8ZoXkNBE9yXtO2DR7uJyJlvdThMdawg.JPEG/p_13e737de5e8e43d692fed42daed92c61.jpg?type=m">
-									<img data-v-878ec45c="" alt="소셜이미지"
-										src="https://kream-phinf.pstatic.net/MjAyMzAxMTBfMTgg/MDAxNjczMzU3Mjg5MTAw.mhU_5Wq6C868lRf-_wkHaPclZ6mmuL-cHc8dG-SbpEQg.HrH6n0fsPDoJL8ZoXkNBE9yXtO2DR7uJyJlvdThMdawg.JPEG/p_13e737de5e8e43d692fed42daed92c61.jpg?type=m"
-										loading="lazy" class="image"></picture>
-								</div>
-								<div data-v-47728778="" class="card_detail">
-									<div data-v-47728778="" class="user_box">
-										<picture data-v-878ec45c="" data-v-47728778=""
-											class="picture img_profile">
-										<source data-v-878ec45c="" type="image/webp"
-											srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDFfMjY3/MDAxNjcyNTQxNTQ1NTI0.GcJseGLjHDmO4jok_Fh2_ezi2mxhk1sQB3IBt14b9MQg.LFubWf8ZfJ1UU54fTFaFBs3k9AcXKFKuuZBX5fiLbK0g.JPEG/p_4be390bce79b472aaa96611495b95cb5.jpg?type=s_webp">
-										<source data-v-878ec45c=""
-											srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDFfMjY3/MDAxNjcyNTQxNTQ1NTI0.GcJseGLjHDmO4jok_Fh2_ezi2mxhk1sQB3IBt14b9MQg.LFubWf8ZfJ1UU54fTFaFBs3k9AcXKFKuuZBX5fiLbK0g.JPEG/p_4be390bce79b472aaa96611495b95cb5.jpg?type=s">
-										<img data-v-878ec45c="" alt="사용자 프로필 이미지"
-											src="https://kream-phinf.pstatic.net/MjAyMzAxMDFfMjY3/MDAxNjcyNTQxNTQ1NTI0.GcJseGLjHDmO4jok_Fh2_ezi2mxhk1sQB3IBt14b9MQg.LFubWf8ZfJ1UU54fTFaFBs3k9AcXKFKuuZBX5fiLbK0g.JPEG/p_4be390bce79b472aaa96611495b95cb5.jpg?type=s"
-											loading="lazy" class="image"></picture>
-										<p data-v-47728778="" class="user_name">ssssom</p>
-										<span data-v-47728778="" aria-label="좋아요" role="button"
-											class="btn like"><svg data-v-47728778=""
-												xmlns="http://www.w3.org/2000/svg"
-												class="icon sprite-icons social-like-gray-sm">
-												<use data-v-47728778=""
-													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"
-													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"></use></svg><span
-											data-v-47728778="" class="like_count">56</span></span>
+
+
+
+					<div class="product-detail-review-list">
+						<div class="head">
+							<p class="txt">상품 구매 후 리뷰 작성시 H.Plus를 드립니다. (포토리뷰 1,000포인트,
+								텍스트리뷰 300포인트 증정)</p>
+							<div id="prdReviewFilter" class="opt">
+								<div class="select">
+									<button type="button" class="sel-btn"
+										onclick="select.trigger();">최신순</button>
+									<div id="reviewSortFilter" class="sel-list">
+										<ul>
+											<li><label><input type="radio" name="rvList"
+													value="new"> <span>최신순</span></label></li>
+											<li><label><input type="radio" name="rvList"
+													value="like"> <span>공감순</span></label></li>
+										</ul>
 									</div>
-									<p data-v-47728778="" class="text_box">벌써 봄코디,,🐰 . . .
-										#데일리룩 #dailylook #오오티디 #봄코디 #조던1 #조던1하이 #시카고 #아더에러 #자라 #자더에러
-										#스타일챌린지 #KREAM스타일 #KREAM챌린지 #크림챌린지 #크림스타일 #코디추천 #빈티지</p>
-									<!---->
 								</div>
+
+								<div class="select">
+									<button type="button" class="sel-btn"
+										onclick="select.trigger();">사이즈</button>
+									<div class="sel-list">
+										<ul>
+											<li><label> <input type="radio" name="optValCd1"
+													value="XS"> <span>XS</span>
+											</label></li>
+											<li><label> <input type="radio" name="optValCd1"
+													value="S"> <span>S</span>
+											</label></li>
+											<li><label> <input type="radio" name="optValCd1"
+													value="M"> <span>M</span>
+											</label></li>
+											<li><label> <input type="radio" name="optValCd1"
+													value="L"> <span>L</span>
+											</label></li>
+										</ul>
+									</div>
+								</div>
+								<button type="button" class="btn-type1-sm"
+									onclick="getReviewList('1','F','F',null);">
+									<span>필터적용</span>
+								</button>
 							</div>
 
 							<div class="opt">
@@ -1407,7 +1361,7 @@
 								type="hidden" id="godEvlTurn" value="">
 
 							<ul class="list-content">
-								<c:forEach var="positivePost" items="${positivePostList}">
+								<c:forEach var="negativePost" items="${negativePostList}">
 									<li>
 										<div class="list-row fold-header">
 											<div class="cell-title">
@@ -1461,7 +1415,6 @@
 										</div>
 									</li>
 								</c:forEach>
-								
 							</ul>
 
 						</div>

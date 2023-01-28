@@ -1,13 +1,12 @@
 package com.theharmm.mapper;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Mapper;
-
+import com.theharmm.domain.BuyDTO;
 import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.ProductSizeDTO;
+import com.theharmm.domain.SellDTO;
 
 
 public interface ProductDetailMapper{
