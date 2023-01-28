@@ -39,6 +39,9 @@ public class PostVO {
 	/* percent 긍부정 결과 p or n */
 	private String sentiment_result;
 	
+	/* 등록일자 */
+	private String register_date;
+	
 	public int getPid1() {
 		return pid1;
 	}
