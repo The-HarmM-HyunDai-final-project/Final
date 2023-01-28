@@ -39,6 +39,8 @@ public class ProductDetailController {
 		log.info("상품정보 : "+productDetailDTO.toString());
 		//session.setAttribute("totalRows", totalRows);
 		model.addAttribute("productDetailDTO", productDetailDTO);
+		model.addAttribute("buyDTO", buyDTO);
+		model.addAttribute("sellDTO", sellDTO);
 	
 
 		
