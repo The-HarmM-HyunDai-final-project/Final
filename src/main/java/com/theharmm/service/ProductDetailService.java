@@ -32,6 +32,17 @@ public interface ProductDetailService {
 	Long insertSaleOrder(Map<String, Object> saleInfoMap);
 
 	Long insertBuyOrder(Map<String, Object> buyInfoMap);
+	
+	//상품상세페이지 구매, 판매 가장 작은 값 가져오기 
+	BuyDTO selectMinBuyProductPrice(int pid); 
+	
+	SellDTO selectMinSellProductPrice(int pid); 
+	
+	//체결거래, 판매입찰, 구매입찰 
+	List<BuyDTO> selectAllSignContract(int pid); 
+	
+	List<SellDTO> selectAllSellBid(int pid);
 
+	List<BuyDTO> selectAllBuyBid(int pid);
 }
 

@@ -83,52 +83,12 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<PostVO> postGetByMailList(PostCriteria postcri, String member_email) {
-		return postMapper.postGetByMailList(postcri,member_email);
+	public List<PostVO> selectPositivePostList(int pid) {
+		return postMapper.selectPositivePostList(pid);
 	}
 
 	@Override
-	public int postGetByMailTotal(String member_email) {
-		return postMapper.postGetByMailTotal(member_email);
+	public List<PostVO> selectNegativePostList(int pid) {
+		return postMapper.selectNegativePostList(pid);
 	}
-
-	@Override
-	public int insertFollow(String follower, String following) {
-		return postMapper.insertFollow(follower, following);
-	}
-
-	@Override
-	public List<String> getFollowerList(String member_email) {
-		return postMapper.followerList(member_email);
-	}
-
-	@Override
-	public List<String> getFollowingList(String member_email) {
-		return postMapper.followingList(member_email);
-	}
-
-	@Override
-	public int countFollower(String member_email) {
-		return postMapper.followerTotal(member_email);
-	}
-
-	@Override
-	public int countFollowing(String member_email) {
-		return postMapper.followingTotal(member_email);
-	}
-
-	@Override
-	public int deleteFollow(String follower, String following) {
-		return postMapper.deleteFollow(follower, following);
-	}
-
-	@Override
-	public boolean checkFollow(String follower, String following) {
-		int cnt = postMapper.countFollow(follower, following);
-		if (cnt == 0) {
-			return false;
-		} else {
-			return true;
-		}
-	}	
 }

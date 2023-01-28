@@ -80,4 +80,37 @@ public class ProductDetailServiceImpl implements ProductDetailService{
 	public Long insertBuyOrder(Map<String, Object> buyInfoMap) {
 		return productDetailMapper.insertBuyOrder(buyInfoMap);
 	}
+
+	@Override
+	public BuyDTO selectMinBuyProductPrice(int pid) {
+		return productDetailMapper.selectMinBuyProductPrice(pid);
+	}
+
+
+	@Override
+	public SellDTO selectMinSellProductPrice(int pid) {
+		return productDetailMapper.selectMinSellProductPrice(pid);
+	}
+
+
+	@Override
+	public List<BuyDTO> selectAllSignContract(int pid) {
+		
+		return productDetailMapper.selectAllSignContract(pid);
+	}
+
+
+	@Override
+	public List<SellDTO> selectAllSellBid(int pid) {
+		
+		return productDetailMapper.selectAllSellBid(pid);
+	}
+
+
+	@Override
+	public List<BuyDTO> selectAllBuyBid(int pid) {
+		
+		return productDetailMapper.selectAllBuyBid(pid);
+	}
+
 }

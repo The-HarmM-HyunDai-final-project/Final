@@ -5,7 +5,37 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/b69f662.css"
 	rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/reviews_ui.css"
+	rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"> <!-- 배너추가 --> 
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/product_detail_tab.js" defer=""></script>
+<script src="${pageContext.request.contextPath}/resources/js/reviewstab.js" defer=""></script>
+ <script>
+        let imgSlide = document.querySelector("#imgSlide");
+        let imgList = ["${productDetailDTO.img1}","${productDetailDTO.img2}","${productDetailDTO.img3}","${productDetailDTO.img4}","${productDetailDTO.img5}"];
+        let i = 0;
 
+        function prev(){ // 이전
+            i--;
+            imgSlide.src = imgList[i];
+            if(i<0){
+                i = imgList.length-1;
+                imgSlide.src = imgList[i];
+            }
+        }
+
+        function next(){ // 다음
+            i++;
+            imgSlide.src = imgList[i];
+            if(i >= imgList.length){
+                i = 0;
+                imgSlide.src = imgList[i];
+            }
+        }
+ </script>
+ 
 <div class="container detail lg" data-v-01e212dd="" data-v-3007c576="">
 	<div class="content" data-v-01e212dd="">
 		<h2 class="blind" data-v-01e212dd="">상품 상세</h2>
@@ -268,14 +298,15 @@
 									data-v-23bbaa82="" class="title">구매</strong>
 									<div data-v-23bbaa82="" class="price">
 										<span data-v-23bbaa82="" class="amount"><em
-											data-v-23bbaa82="" class="num">405,000</em><span
+
+											data-v-23bbaa82="" class="num">${sellDTO.price}</em><span
 											data-v-23bbaa82="" class="won">원</span></span><span
 											data-v-23bbaa82="" class="desc">즉시 구매가</span>
 									</div></a><a data-v-23bbaa82="" href="/sell/select/${productDetailDTO.pid}?size=${size}" class="btn_division sell"><strong
 									data-v-23bbaa82="" class="title">판매</strong>
 									<div data-v-23bbaa82="" class="price">
 										<span data-v-23bbaa82="" class="amount"><em
-											data-v-23bbaa82="" class="num">554,000</em><span
+											data-v-23bbaa82="" class="num">${buyDTO.price}</em><span
 											data-v-23bbaa82="" class="won">원</span></span><span
 											data-v-23bbaa82="" class="desc">즉시 판매가</span>
 									</div></a>
@@ -383,83 +414,26 @@
 													</tr>
 												</thead>
 												<tbody data-v-50d58b3a="">
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">260 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															419,000원 <i class="express_icon" data-v-50d58b3a=""><svg
-																	xmlns="http://www.w3.org/2000/svg"
-																	class="ico-express icon sprite-icons"
-																	data-v-50d58b3a="">
-																	<use
-																		href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		data-v-50d58b3a=""></use></svg><span class="blind"
-																data-v-50d58b3a="">빠른배송</span></i>
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															23/01/11 <!---->
-														</td>
-													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">250 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															398,000원 <!---->
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															23/01/11 <!---->
-														</td>
-													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">260 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															435,000원 <i class="express_icon" data-v-50d58b3a=""><svg
-																	xmlns="http://www.w3.org/2000/svg"
-																	class="ico-express icon sprite-icons"
-																	data-v-50d58b3a="">
-																	<use
-																		href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		data-v-50d58b3a=""></use></svg><span class="blind"
-																data-v-50d58b3a="">빠른배송</span></i>
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															23/01/11 <!---->
-														</td>
-													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">285 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															509,000원 <i class="express_icon" data-v-50d58b3a=""><svg
-																	xmlns="http://www.w3.org/2000/svg"
-																	class="ico-express icon sprite-icons"
-																	data-v-50d58b3a="">
-																	<use
-																		href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		data-v-50d58b3a=""></use></svg><span class="blind"
-																data-v-50d58b3a="">빠른배송</span></i>
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															23/01/11 <!---->
-														</td>
-													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">285 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															508,000원 <i class="express_icon" data-v-50d58b3a=""><svg
-																	xmlns="http://www.w3.org/2000/svg"
-																	class="ico-express icon sprite-icons"
-																	data-v-50d58b3a="">
-																	<use
-																		href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		data-v-50d58b3a=""></use></svg><span class="blind"
-																data-v-50d58b3a="">빠른배송</span></i>
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															23/01/11 <!---->
-														</td>
-													</tr>
+													<c:forEach var="allSignContract" items="${allSignContractList}">
+														<tr data-v-50d58b3a="">
+															<td class="table_td" data-v-50d58b3a="">${allSignContract.size_type } <!----></td>
+															<td class="table_td align_right" data-v-50d58b3a="">
+																${allSignContract.price }원 <i class="express_icon" data-v-50d58b3a=""><svg
+																		xmlns="http://www.w3.org/2000/svg"
+																		class="ico-express icon sprite-icons"
+																		data-v-50d58b3a="">
+																		<use
+																			href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
+																			xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
+																			data-v-50d58b3a=""></use></svg><span class="blind"
+																	data-v-50d58b3a="">빠른배송</span></i>
+															</td>
+															<td class="table_td align_right" data-v-50d58b3a="">
+																${allSignContract.nowdate } <!---->
+															</td>
+														</tr>
+													</c:forEach>
+													
 												</tbody>
 											</table>
 										</div>
@@ -491,59 +465,17 @@
 													</tr>
 												</thead>
 												<tbody data-v-50d58b3a="">
+												  <c:forEach var="allSellBid" items="${allSellBidList}">
 													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">250 <!----></td>
+														<td class="table_td" data-v-50d58b3a="">${allSellBid.size_type}<!----></td>
 														<td class="table_td align_right" data-v-50d58b3a="">
-															405,000원 <!---->
+															${allSellBid.price}원 <!---->
 														</td>
 														<td class="table_td align_right" data-v-50d58b3a="">
-															1 <!---->
-														</td>
-													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">255 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															408,000원 <!---->
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															1 <!---->
+															${allSellBid.amount}<!---->
 														</td>
 													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">255 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															409,000원 <i class="express_icon" data-v-50d58b3a=""><svg
-																	xmlns="http://www.w3.org/2000/svg"
-																	class="ico-express icon sprite-icons"
-																	data-v-50d58b3a="">
-																	<use
-																		href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		data-v-50d58b3a=""></use></svg><span class="blind"
-																data-v-50d58b3a="">빠른배송</span></i>
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															2 <!---->
-														</td>
-													</tr>
-												    	<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">255 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															410,000원 <!---->
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															2 <!---->
-														</td>
-													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">250 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															410,000원 <!---->
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															1 <!---->
-														</td>
-													</tr>
+												</c:forEach>
 												</tbody>
 											</table>
 										</div>
@@ -575,51 +507,17 @@
 													</tr>
 												</thead>
 												<tbody data-v-50d58b3a="">
+												  <c:forEach var="allBuyBid" items="${allBuyBidList}">
 													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">270 <!----></td>
+														<td class="table_td" data-v-50d58b3a="">${allBuyBid.size_type}<!----></td>
 														<td class="table_td align_right" data-v-50d58b3a="">
-															554,000원 <!---->
+															${allBuyBid.price}원 <!---->
 														</td>
 														<td class="table_td align_right" data-v-50d58b3a="">
-															1 <!---->
+															${allBuyBid.amount} <!---->
 														</td>
 													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">295 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															552,000원 <!---->
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															1 <!---->
-														</td>
-													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">295 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															551,000원 <!---->
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															1 <!---->
-														</td>
-													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">295 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															549,000원 <!---->
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															1 <!---->
-														</td>
-													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">295 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															548,000원 <!---->
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															1 <!---->
-														</td>
-													</tr>
+												  </c:forEach>
 												</tbody>
 											</table>
 										</div>
@@ -1147,47 +1045,203 @@
 				<span class="title" data-v-02e77beb="">스타일</span> <span class="num"
 					data-v-02e77beb="">2535</span>
 			</h2>
-			<div data-v-013cc4d0="" data-v-02e77beb="" class="social_feeds">
-				<div data-v-013cc4d0="" transition-duration="0"
-					item-selector=".item" gutter=".gutter_item" horizontal-order="true"
-					class="masonry_posts" style="position: relative; height: 939.96px;">
-					<div data-v-013cc4d0="" class="gutter_item"></div>
-					<div data-v-47728778="" data-v-013cc4d0=""
-						class="feed_card item vertical"
-						style="position: absolute; left: 0px; top: 0px;">
-						<a data-v-47728778="" href="#"><div data-v-47728778=""
-								class="card_box">
-								<div data-v-47728778="" class="social_img_box vertical">
-									<picture data-v-878ec45c="" data-v-47728778=""
-										class="picture social_img">
-									<source data-v-878ec45c="" type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTFfMjA0/MDAxNjczMzYzMjU0MjE0.k7vy9R9TGQrlVgDVFzKM1w2ko4x2CVUNz9t_0RBOenQg.tYGqtpErMCs1UqGKQTn77_HjwrC641kI2WU2bVnqs_cg.JPEG/p_174ef04a43f74962a008cb6adc2fe878.jpg?type=m_webp">
-									<source data-v-878ec45c=""
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTFfMjA0/MDAxNjczMzYzMjU0MjE0.k7vy9R9TGQrlVgDVFzKM1w2ko4x2CVUNz9t_0RBOenQg.tYGqtpErMCs1UqGKQTn77_HjwrC641kI2WU2bVnqs_cg.JPEG/p_174ef04a43f74962a008cb6adc2fe878.jpg?type=m">
-									<img data-v-878ec45c="" alt="소셜이미지"
-										src="https://kream-phinf.pstatic.net/MjAyMzAxMTFfMjA0/MDAxNjczMzYzMjU0MjE0.k7vy9R9TGQrlVgDVFzKM1w2ko4x2CVUNz9t_0RBOenQg.tYGqtpErMCs1UqGKQTn77_HjwrC641kI2WU2bVnqs_cg.JPEG/p_174ef04a43f74962a008cb6adc2fe878.jpg?type=m"
-										loading="lazy" class="image"></picture>
-								</div>
-								<div data-v-47728778="" class="card_detail">
-									<div data-v-47728778="" class="user_box">
-										<picture data-v-878ec45c="" data-v-47728778=""
-											class="picture img_profile">
-										<source data-v-878ec45c="" type="image/webp"
-											srcset="https://kream-phinf.pstatic.net/MjAyMjAyMDFfNTYg/MDAxNjQzNzEzNzU4Njg0.0aGk2viSVOMoZPwzx9S3FZwBGD-xf5JlDVAkcX19uI4g.TaCretI4COGRPbtr3oft7eXWLdaoUrG1beGETiRQZiUg.JPEG/p_e13f6fae6ab94322843dbafc28fc0d95.jpg?type=s_webp">
-										<source data-v-878ec45c=""
-											srcset="https://kream-phinf.pstatic.net/MjAyMjAyMDFfNTYg/MDAxNjQzNzEzNzU4Njg0.0aGk2viSVOMoZPwzx9S3FZwBGD-xf5JlDVAkcX19uI4g.TaCretI4COGRPbtr3oft7eXWLdaoUrG1beGETiRQZiUg.JPEG/p_e13f6fae6ab94322843dbafc28fc0d95.jpg?type=s">
-										<img data-v-878ec45c="" alt="사용자 프로필 이미지"
-											src="https://kream-phinf.pstatic.net/MjAyMjAyMDFfNTYg/MDAxNjQzNzEzNzU4Njg0.0aGk2viSVOMoZPwzx9S3FZwBGD-xf5JlDVAkcX19uI4g.TaCretI4COGRPbtr3oft7eXWLdaoUrG1beGETiRQZiUg.JPEG/p_e13f6fae6ab94322843dbafc28fc0d95.jpg?type=s"
-											loading="lazy" class="image"></picture>
-										<p data-v-47728778="" class="user_name">sistaup</p>
-										<span data-v-47728778="" aria-label="좋아요" role="button"
-											class="btn like"><svg data-v-47728778=""
-												xmlns="http://www.w3.org/2000/svg"
-												class="icon sprite-icons social-like-gray-sm">
-												<use data-v-47728778=""
-													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"
-													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"></use></svg><span
-											data-v-47728778="" class="like_count">20</span></span>
+			<!-- 긍부정에 대한 리뷰 -->
+			<div class="product-detail-tab tab-wrap2 anchor-wrap">
+				<ul class="tabs">
+					<li class="on">
+						<a href="#tab01">
+							<span>긍정리뷰</span>
+						</a>
+					</li>
+					<li class="">
+						<a href="#tab02">
+							<span id="tabReviewCnt">비판리뷰</span>
+						</a>
+					</li>
+				
+				</ul>
+				<div class="tabcontent">
+				<!-- 긍정리뷰 정보 -->
+				<section id="tab01"
+					class="anchor-section product-detail-review">
+					<h3 class="sec-title">긍정리뷰</h3>
+					<div class="review-total">
+						<div class="member-total-point">
+							<h4 class="tit">사용자 총 평점</h4>
+							<p class="point size-l">
+								<span class="ico" style="width: 98%;">별점</span> <span
+									class="num">4.9</span>
+							</p>
+						</div>
+
+						<div class="chart-wrap" id="chartSlide" data-slide-length="4">
+							<div class="slide-container swiper-container-horizontal">
+								<div class="swiper-wrapper"
+									style="transition-duration: 0ms; transform: translate3d(-592px, 0px, 0px);">
+									<div class="swiper-slide swiper-slide-duplicate"
+										data-swiper-slide-index="2" style="width: 296px;">
+										<div class="chart">
+											<p class="tit">신축성</p>
+											<div class="piechart-wrap">
+												<span class="piechart over" style="transform: rotate(0deg);">
+													<span class="rotate" style="transform: rotate(216deg);"><span>좋음</span></span>
+													<span class="percent"><strong class="num">60</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(216deg);">
+													<span class="rotate" style="transform: rotate(108deg);"><span>약간
+															있음</span></span> <span class="percent"><strong class="num">30</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(324deg);">
+													<span class="rotate" style="transform: rotate(36deg);"><span>없음</span></span>
+													<span class="percent"><strong class="num">10</strong>%</span>
+												</span>
+											</div>
+										</div>
+										<ul class="sub">
+											<li>좋음</li>
+											<li>약간 있음</li>
+											<li>없음</li>
+										</ul>
+									</div>
+									<div
+										class="swiper-slide swiper-slide-duplicate swiper-slide-prev"
+										data-swiper-slide-index="3" style="width: 296px;">
+										<div class="chart">
+											<p class="tit">비침</p>
+											<div class="piechart-wrap">
+												<span class="piechart" style="transform: rotate(0deg);">
+													<span class="rotate" style="transform: rotate(108deg);"><span>있음</span></span>
+													<span class="percent"><strong class="num">30</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(108deg);">
+													<span class="rotate" style="transform: rotate(0deg);"><span>약간
+															있음</span></span> <span class="percent"><strong class="num">0</strong>%</span>
+												</span> <span class="piechart over"
+													style="transform: rotate(108deg);"> <span
+													class="rotate" style="transform: rotate(252deg);"><span>없음</span></span>
+													<span class="percent"><strong class="num">70</strong>%</span>
+												</span>
+											</div>
+										</div>
+										<ul class="sub">
+											<li>있음</li>
+											<li>약간 있음</li>
+											<li>없음</li>
+										</ul>
+									</div>
+									<div class="swiper-slide swiper-slide-active"
+										data-swiper-slide-index="0" style="width: 296px;">
+										<div class="chart">
+											<p class="tit">핏감</p>
+											<div class="piechart-wrap">
+												<span class="piechart over" style="transform: rotate(0deg);">
+													<span class="rotate" style="transform: rotate(216deg);"><span>슬림</span></span>
+													<span class="percent"><strong class="num">60</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(216deg);">
+													<span class="rotate" style="transform: rotate(144deg);"><span>레귤러</span></span>
+													<span class="percent"><strong class="num">40</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(360deg);">
+													<span class="rotate" style="transform: rotate(0deg);"><span>오버사이즈</span></span>
+													<span class="percent"><strong class="num">0</strong>%</span>
+												</span>
+											</div>
+										</div>
+										<ul class="sub">
+											<li>슬림</li>
+											<li>레귤러</li>
+											<li>오버사이즈</li>
+										</ul>
+									</div>
+									<div class="swiper-slide swiper-slide-next"
+										data-swiper-slide-index="1" style="width: 296px;">
+										<div class="chart">
+											<p class="tit">두께감</p>
+											<div class="piechart-wrap">
+												<span class="piechart over" style="transform: rotate(0deg);">
+													<span class="rotate" style="transform: rotate(216deg);"><span>얇음</span></span>
+													<span class="percent"><strong class="num">60</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(216deg);">
+													<span class="rotate" style="transform: rotate(144deg);"><span>보통</span></span>
+													<span class="percent"><strong class="num">40</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(360deg);">
+													<span class="rotate" style="transform: rotate(0deg);"><span>도톰함</span></span>
+													<span class="percent"><strong class="num">0</strong>%</span>
+												</span>
+											</div>
+										</div>
+										<ul class="sub">
+											<li>얇음</li>
+											<li>보통</li>
+											<li>도톰함</li>
+										</ul>
+									</div>
+									<div class="swiper-slide" data-swiper-slide-index="2"
+										style="width: 296px;">
+										<div class="chart">
+											<p class="tit">신축성</p>
+											<div class="piechart-wrap">
+												<span class="piechart over" style="transform: rotate(0deg);">
+													<span class="rotate" style="transform: rotate(216deg);"><span>좋음</span></span>
+													<span class="percent"><strong class="num">60</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(216deg);">
+													<span class="rotate" style="transform: rotate(108deg);"><span>약간
+															있음</span></span> <span class="percent"><strong class="num">30</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(324deg);">
+													<span class="rotate" style="transform: rotate(36deg);"><span>없음</span></span>
+													<span class="percent"><strong class="num">10</strong>%</span>
+												</span>
+											</div>
+										</div>
+										<ul class="sub">
+											<li>좋음</li>
+											<li>약간 있음</li>
+											<li>없음</li>
+										</ul>
+									</div>
+									<div class="swiper-slide swiper-slide-duplicate-prev"
+										data-swiper-slide-index="3" style="width: 296px;">
+										<div class="chart">
+											<p class="tit">비침</p>
+											<div class="piechart-wrap">
+												<span class="piechart" style="transform: rotate(0deg);">
+													<span class="rotate" style="transform: rotate(108deg);"><span>있음</span></span>
+													<span class="percent"><strong class="num">30</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(108deg);">
+													<span class="rotate" style="transform: rotate(0deg);"><span>약간
+															있음</span></span> <span class="percent"><strong class="num">0</strong>%</span>
+												</span> <span class="piechart over"
+													style="transform: rotate(108deg);"> <span
+													class="rotate" style="transform: rotate(252deg);"><span>없음</span></span>
+													<span class="percent"><strong class="num">70</strong>%</span>
+												</span>
+											</div>
+										</div>
+										<ul class="sub">
+											<li>있음</li>
+											<li>약간 있음</li>
+											<li>없음</li>
+										</ul>
+									</div>
+									<div
+										class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
+										data-swiper-slide-index="0" style="width: 296px;">
+										<div class="chart">
+											<p class="tit">핏감</p>
+											<div class="piechart-wrap">
+												<span class="piechart over" style="transform: rotate(0deg);">
+													<span class="rotate" style="transform: rotate(216deg);"><span>슬림</span></span>
+													<span class="percent"><strong class="num">60</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(216deg);">
+													<span class="rotate" style="transform: rotate(144deg);"><span>레귤러</span></span>
+													<span class="percent"><strong class="num">40</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(360deg);">
+													<span class="rotate" style="transform: rotate(0deg);"><span>오버사이즈</span></span>
+													<span class="percent"><strong class="num">0</strong>%</span>
+												</span>
+											</div>
+										</div>
+										<ul class="sub">
+											<li>슬림</li>
+											<li>레귤러</li>
+											<li>오버사이즈</li>
+										</ul>
 									</div>
 									<p data-v-47728778="" class="text_box">질러버림 #조던1하이 #시카고2022</p>
 									<!---->
@@ -1326,192 +1380,461 @@
 									<!---->
 								</div>
 							</div>
-							<div data-v-47728778="" class="img_count">
-								<span data-v-47728778="" class="count">+3</span>
-							</div></a>
-					</div>
-					<div data-v-47728778="" data-v-013cc4d0=""
-						class="feed_card item square"
-						style="position: absolute; left: 0px; top: 437.988px;">
-						<a data-v-47728778="" href="#"><div data-v-47728778=""
-								class="card_box">
-								<div data-v-47728778="" class="social_img_box square">
-									<picture data-v-878ec45c="" data-v-47728778=""
-										class="picture social_img">
-									<source data-v-878ec45c="" type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTBfMTcx/MDAxNjczMzU1MDA3Mjcz.VUOYqirJ4MQtUPB_ZSl-arBcUbE_C8Wrsoz_627NDQIg.lkcBF8QwFjEOsjVnA0MylcLjHnjlJwkD92Mf1-Ex4GYg.JPEG/p_2c894b436462487783db5d322f4b23c9.jpeg?type=m_webp">
-									<source data-v-878ec45c=""
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTBfMTcx/MDAxNjczMzU1MDA3Mjcz.VUOYqirJ4MQtUPB_ZSl-arBcUbE_C8Wrsoz_627NDQIg.lkcBF8QwFjEOsjVnA0MylcLjHnjlJwkD92Mf1-Ex4GYg.JPEG/p_2c894b436462487783db5d322f4b23c9.jpeg?type=m">
-									<img data-v-878ec45c="" alt="소셜이미지"
-										src="https://kream-phinf.pstatic.net/MjAyMzAxMTBfMTcx/MDAxNjczMzU1MDA3Mjcz.VUOYqirJ4MQtUPB_ZSl-arBcUbE_C8Wrsoz_627NDQIg.lkcBF8QwFjEOsjVnA0MylcLjHnjlJwkD92Mf1-Ex4GYg.JPEG/p_2c894b436462487783db5d322f4b23c9.jpeg?type=m"
-										loading="lazy" class="image"></picture>
-								</div>
-								<div data-v-47728778="" class="card_detail">
-									<div data-v-47728778="" class="user_box">
-										<picture data-v-878ec45c="" data-v-47728778=""
-											class="picture img_profile">
-										<source data-v-878ec45c="" type="image/webp"
-											srcset="https://kream-phinf.pstatic.net/MjAyMjEyMzBfMTMx/MDAxNjcyMzY2ODE2NDE1.vZl2hrm-N5JGfUA4bXJi4rnQUrBeF3laOBB8cEc4nHcg.bNUaRBISQzo01hyVchlpt_XQgfPYCybXmd1Dlw37kukg.JPEG/p_712cdcf0a3b047eaa51ef7e90b74ad4d.jpeg?type=s_webp">
-										<source data-v-878ec45c=""
-											srcset="https://kream-phinf.pstatic.net/MjAyMjEyMzBfMTMx/MDAxNjcyMzY2ODE2NDE1.vZl2hrm-N5JGfUA4bXJi4rnQUrBeF3laOBB8cEc4nHcg.bNUaRBISQzo01hyVchlpt_XQgfPYCybXmd1Dlw37kukg.JPEG/p_712cdcf0a3b047eaa51ef7e90b74ad4d.jpeg?type=s">
-										<img data-v-878ec45c="" alt="사용자 프로필 이미지"
-											src="https://kream-phinf.pstatic.net/MjAyMjEyMzBfMTMx/MDAxNjcyMzY2ODE2NDE1.vZl2hrm-N5JGfUA4bXJi4rnQUrBeF3laOBB8cEc4nHcg.bNUaRBISQzo01hyVchlpt_XQgfPYCybXmd1Dlw37kukg.JPEG/p_712cdcf0a3b047eaa51ef7e90b74ad4d.jpeg?type=s"
-											loading="lazy" class="image"></picture>
-										<p data-v-47728778="" class="user_name">coppi33</p>
-										<span data-v-47728778="" aria-label="좋아요" role="button"
-											class="btn like"><svg data-v-47728778=""
-												xmlns="http://www.w3.org/2000/svg"
-												class="icon sprite-icons social-like-gray-sm">
-												<use data-v-47728778=""
-													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"
-													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"></use></svg><span
-											data-v-47728778="" class="like_count">26</span></span>
-									</div>
-									<p data-v-47728778="" class="text_box">#오오티디 #컨버스 #셀피 #패딩
-										#전신샷 #아디다스 #무채색코디 #결산템챌린지 #컬렉션 #이름다모름 #조던</p>
-									<!---->
-								</div>
-							</div> <!----></a>
-					</div>
-					<div data-v-47728778="" data-v-013cc4d0=""
-						class="feed_card item vertical"
-						style="position: absolute; left: 306.996px; top: 340.98px;">
-						<a data-v-47728778="" href="#"><div data-v-47728778=""
-								class="card_box">
-								<div data-v-47728778="" class="social_img_box vertical">
-									<picture data-v-878ec45c="" data-v-47728778=""
-										class="picture social_img">
-									<source data-v-878ec45c="" type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTBfMTYx/MDAxNjczMzUzNDAwMTYx.GKLollFvXbyiQP-0dD2GWgYt3VkhrHQMKvViwVK8Bukg.ollB8RrwspNrIFimTZtmzRqOKZi_-BxVz7PuhUfrD3Ig.JPEG/p_12de9be83e034b0fb101057968f7c959.jpeg?type=m_webp">
-									<source data-v-878ec45c=""
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTBfMTYx/MDAxNjczMzUzNDAwMTYx.GKLollFvXbyiQP-0dD2GWgYt3VkhrHQMKvViwVK8Bukg.ollB8RrwspNrIFimTZtmzRqOKZi_-BxVz7PuhUfrD3Ig.JPEG/p_12de9be83e034b0fb101057968f7c959.jpeg?type=m">
-									<img data-v-878ec45c="" alt="소셜이미지"
-										src="https://kream-phinf.pstatic.net/MjAyMzAxMTBfMTYx/MDAxNjczMzUzNDAwMTYx.GKLollFvXbyiQP-0dD2GWgYt3VkhrHQMKvViwVK8Bukg.ollB8RrwspNrIFimTZtmzRqOKZi_-BxVz7PuhUfrD3Ig.JPEG/p_12de9be83e034b0fb101057968f7c959.jpeg?type=m"
-										loading="lazy" class="image"></picture>
-								</div>
-								<div data-v-47728778="" class="card_detail">
-									<div data-v-47728778="" class="user_box">
-										<picture data-v-878ec45c="" data-v-47728778=""
-											class="picture img_profile">
-										<source data-v-878ec45c="" type="image/webp"
-											srcset="https://kream-phinf.pstatic.net/MjAyMjExMjFfMzIg/MDAxNjY5MDM1MjU2MDkx.5vQxSm8o_BVVN3u-PWNjDst9Ehp9OEvszBiGEtBH7T4g.wVpeF9IZFcphLhb5uHmKgsrJiFgvUV2iTfTpDrkhgNYg.JPEG/p_26623d9273334e54b7225d0aad923f65.jpeg?type=s_webp">
-										<source data-v-878ec45c=""
-											srcset="https://kream-phinf.pstatic.net/MjAyMjExMjFfMzIg/MDAxNjY5MDM1MjU2MDkx.5vQxSm8o_BVVN3u-PWNjDst9Ehp9OEvszBiGEtBH7T4g.wVpeF9IZFcphLhb5uHmKgsrJiFgvUV2iTfTpDrkhgNYg.JPEG/p_26623d9273334e54b7225d0aad923f65.jpeg?type=s">
-										<img data-v-878ec45c="" alt="사용자 프로필 이미지"
-											src="https://kream-phinf.pstatic.net/MjAyMjExMjFfMzIg/MDAxNjY5MDM1MjU2MDkx.5vQxSm8o_BVVN3u-PWNjDst9Ehp9OEvszBiGEtBH7T4g.wVpeF9IZFcphLhb5uHmKgsrJiFgvUV2iTfTpDrkhgNYg.JPEG/p_26623d9273334e54b7225d0aad923f65.jpeg?type=s"
-											loading="lazy" class="image"></picture>
-										<p data-v-47728778="" class="user_name">hxx_yxx_</p>
-										<span data-v-47728778="" aria-label="좋아요" role="button"
-											class="btn like"><svg data-v-47728778=""
-												xmlns="http://www.w3.org/2000/svg"
-												class="icon sprite-icons social-like-gray-sm">
-												<use data-v-47728778=""
-													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"
-													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"></use></svg><span
-											data-v-47728778="" class="like_count">23</span></span>
-									</div>
-									<p data-v-47728778="" class="text_box">중졸</p>
-									<!---->
-								</div>
-							</div> <!----></a>
-					</div>
-					<div data-v-47728778="" data-v-013cc4d0=""
-						class="feed_card item square"
-						style="position: absolute; left: 613.992px; top: 457.98px;">
-						<a data-v-47728778="" href="#"><div data-v-47728778=""
-								class="card_box">
-								<div data-v-47728778="" class="social_img_box square">
-									<picture data-v-878ec45c="" data-v-47728778=""
-										class="picture social_img">
-									<source data-v-878ec45c="" type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTBfNTYg/MDAxNjczMzUyMjkzMjg5.DS9qmrDy5r8LmABil-T_s6jJS2inoy64yVxPNivC-Lcg.fD5WrAm9H_1nX2QXR4-VM-H_RpaBNpy_TEdpd2bWBdIg.JPEG/p_33071e9a1e064122b81465df9de20034.jpeg?type=m_webp">
-									<source data-v-878ec45c=""
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTBfNTYg/MDAxNjczMzUyMjkzMjg5.DS9qmrDy5r8LmABil-T_s6jJS2inoy64yVxPNivC-Lcg.fD5WrAm9H_1nX2QXR4-VM-H_RpaBNpy_TEdpd2bWBdIg.JPEG/p_33071e9a1e064122b81465df9de20034.jpeg?type=m">
-									<img data-v-878ec45c="" alt="소셜이미지"
-										src="https://kream-phinf.pstatic.net/MjAyMzAxMTBfNTYg/MDAxNjczMzUyMjkzMjg5.DS9qmrDy5r8LmABil-T_s6jJS2inoy64yVxPNivC-Lcg.fD5WrAm9H_1nX2QXR4-VM-H_RpaBNpy_TEdpd2bWBdIg.JPEG/p_33071e9a1e064122b81465df9de20034.jpeg?type=m"
-										loading="lazy" class="image"></picture>
-								</div>
-								<div data-v-47728778="" class="card_detail">
-									<div data-v-47728778="" class="user_box">
-										<picture data-v-878ec45c="" data-v-47728778=""
-											class="picture img_profile">
-										<source data-v-878ec45c="" type="image/webp"
-											srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDVfMTcz/MDAxNjcyODkyNjI1MTA4.Hy8aysm-Zgtd175O0vRxfXz0hF1Sp4W5ATSXghEPvKgg.BCYIakxu-1qX3VNc2l44zgZtQSnOXQpqN3YzTIXQeOMg.JPEG/p_b7aecb4c76d34ace94c22da7dd0c1685.jpeg?type=s_webp">
-										<source data-v-878ec45c=""
-											srcset="https://kream-phinf.pstatic.net/MjAyMzAxMDVfMTcz/MDAxNjcyODkyNjI1MTA4.Hy8aysm-Zgtd175O0vRxfXz0hF1Sp4W5ATSXghEPvKgg.BCYIakxu-1qX3VNc2l44zgZtQSnOXQpqN3YzTIXQeOMg.JPEG/p_b7aecb4c76d34ace94c22da7dd0c1685.jpeg?type=s">
-										<img data-v-878ec45c="" alt="사용자 프로필 이미지"
-											src="https://kream-phinf.pstatic.net/MjAyMzAxMDVfMTcz/MDAxNjcyODkyNjI1MTA4.Hy8aysm-Zgtd175O0vRxfXz0hF1Sp4W5ATSXghEPvKgg.BCYIakxu-1qX3VNc2l44zgZtQSnOXQpqN3YzTIXQeOMg.JPEG/p_b7aecb4c76d34ace94c22da7dd0c1685.jpeg?type=s"
-											loading="lazy" class="image"></picture>
-										<p data-v-47728778="" class="user_name">mykream</p>
-										<span data-v-47728778="" aria-label="좋아요" role="button"
-											class="btn like"><svg data-v-47728778=""
-												xmlns="http://www.w3.org/2000/svg"
-												class="icon sprite-icons social-like-gray-sm">
-												<use data-v-47728778=""
-													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"
-													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"></use></svg><span
-											data-v-47728778="" class="like_count">24</span></span>
-									</div>
-									<!---->
-									<!---->
-								</div>
-							</div> <!----></a>
-					</div>
-					<div data-v-47728778="" data-v-013cc4d0=""
-						class="feed_card item vertical"
-						style="position: absolute; left: 920.988px; top: 457.98px;">
-						<a data-v-47728778="" href="#"><div data-v-47728778=""
-								class="card_box">
-								<div data-v-47728778="" class="social_img_box vertical">
-									<picture data-v-878ec45c="" data-v-47728778=""
-										class="picture social_img">
-									<source data-v-878ec45c="" type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTBfMTc5/MDAxNjczMzUxMzk1NjY5.-1npPT81f2sEpjCqur6ffVFz66pVxxbq12UyYw8Y80wg.n9nUsfX5wqFwB03ZqNQgPHrWv70maCki7skdPXtLLAog.JPEG/p_01db594350014a6aa0d95be8fa1f188d.jpeg?type=m_webp">
-									<source data-v-878ec45c=""
-										srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTBfMTc5/MDAxNjczMzUxMzk1NjY5.-1npPT81f2sEpjCqur6ffVFz66pVxxbq12UyYw8Y80wg.n9nUsfX5wqFwB03ZqNQgPHrWv70maCki7skdPXtLLAog.JPEG/p_01db594350014a6aa0d95be8fa1f188d.jpeg?type=m">
-									<img data-v-878ec45c="" alt="소셜이미지"
-										src="https://kream-phinf.pstatic.net/MjAyMzAxMTBfMTc5/MDAxNjczMzUxMzk1NjY5.-1npPT81f2sEpjCqur6ffVFz66pVxxbq12UyYw8Y80wg.n9nUsfX5wqFwB03ZqNQgPHrWv70maCki7skdPXtLLAog.JPEG/p_01db594350014a6aa0d95be8fa1f188d.jpeg?type=m"
-										loading="lazy" class="image"></picture>
-								</div>
-								<div data-v-47728778="" class="card_detail">
-									<div data-v-47728778="" class="user_box">
-										<picture data-v-878ec45c="" data-v-47728778=""
-											class="picture img_profile">
-										<source data-v-878ec45c="" type="image/webp"
-											srcset="/images/account_img_default.png?type=s_webp">
-										<source data-v-878ec45c=""
-											srcset="/images/account_img_default.png?type=s">
-										<img data-v-878ec45c="" alt="사용자 프로필 이미지"
-											src="/images/account_img_default.png?type=s" loading="lazy"
-											class="image"></picture>
-										<p data-v-47728778="" class="user_name">mijooh</p>
-										<span data-v-47728778="" aria-label="좋아요" role="button"
-											class="btn like"><svg data-v-47728778=""
-												xmlns="http://www.w3.org/2000/svg"
-												class="icon sprite-icons social-like-gray-sm">
-												<use data-v-47728778=""
-													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"
-													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"></use></svg><span
-											data-v-47728778="" class="like_count">21</span></span>
-									</div>
-									<p data-v-47728778="" class="text_box">#크림런#시카고2022로스트앤파운드</p>
-									<!---->
-								</div>
+
+							<div class="opt">
+								<button type="button" id="btnTogglePhotoReview"
+									class="btn-type1-sm" onclick="getPhotoReviewList(this);">
+									<span>포토리뷰</span>
+								</button>
+								<button type="button" class="btn-type4-sm"
+									onclick="location.href='/public/member/login';">
+									<span>리뷰작성</span>
+								</button>
 							</div>
-							<div data-v-47728778="" class="img_count">
-								<span data-v-47728778="" class="count">+2</span>
-							</div></a>
+						</div>
+
+						<div id="reviewNodata" class="nodata" style="display: none;">
+							지금 첫 리뷰를 작성해주세요.<br> 포토리뷰 1,000포인트, 텍스트 리뷰 300포인트를 증정합니다.
+							(상품구매시)
+						</div>
+
+						<div id="allReviewList" class="board-list board-review ui-fold"
+							style="">
+							<input type="hidden" name="allReviewTotalRow" value="10">
+							<input type="hidden" name="allReviewTotalScore" value="4.9">
+							<input type="hidden" id="allReviewTotalScorePercent" value="98">
+							<input type="hidden" id="godNo" value=""> <input
+								type="hidden" id="godEvlTurn" value="">
+
+							<ul class="list-content">
+								<li>
+									<div class="list-row fold-header">
+										<div class="cell-title">
+											<ul class="etc-info">
+												<li><span class="point size-m"><span class="ico"
+														style="width: 100%">별점 5점</span></span></li>
+												<li>
+													<button type="button" class="btn-like2"
+														onclick="addGodEvlLikeCount(this,addLikeList);"
+														godevlturn="10" reviewgodno="GM0121122308150">
+														<span class="like-count" likecnt="0"> - </span>
+													</button>
+												</li>
+												<li><span class="date">2022.12.02</span></li>
+											</ul>
+											<p class="title-review">기본니트</p>
+											<button type="button" class="btn-fold">열기</button>
+										</div>
+									</div>
+
+									<div class="fold-cont">
+										<div class="review-group">
+											<ul class="review-prd-info">
+												<li>
+													<div class="prd-name">lam****&nbsp;</div>
+												</li>
+												<li>
+													<div class="prd-option">
+
+														&nbsp;160cm ,보통체형 &nbsp;/ &nbsp; 구매옵션 : S<em
+															class="prd-option-color"> <span
+															class="pdColor-/colorchips/GM0121122308150_COLORCHIP.jpg">BLUE</span>
+														</em>
+													</div>
+												</li>
+											</ul>
+
+											<div class="txt-box">브이넥이 조금 깊은감은 있지만 니트재질이 너무 부드럽고
+												좋더라구요 사이즈는 정사이즈로 주문하시면 될듯합니다 크게 나온옷은 아닙니다.</div>
+											<p class="wear-feeling">
+												<span> 핏감 : 슬림 </span> <span> 두께감 : 얇음 </span> <span>
+													신축성 : 좋음 </span> <span> 비침 : 있음 </span>
+											</p>
+											<div class="review-report">
+												<button type="button" class="btn-report"
+													onclick="alert('로그인 후 참여 가능합니다.');location.href='/public/member/login'">
+													<span>신고하기</span>
+												</button>
+											</div>
+										</div>
+									</div>
+								</li>
+								
+							</ul>
+
+						</div>
+
+						<div id="photoReviewList" class="photo-list"
+							style="display: none;"></div>
 					</div>
-				</div>
-				<div data-v-02e77beb="" class="more_btn_box">
-					<button data-v-575aff82="" data-v-02e77beb="" type="button"
-						class="btn outlinegrey medium" data-v-013cc4d0="">더보기</button>
-				</div>
-				<div data-v-5f3540d5="" data-v-013cc4d0="" class="list_loading"
-					style="display: none;">
-					<img data-v-5f3540d5="" src="/_nuxt/img/loading.410eb77.gif"
-						loading="lazy" alt="리스트 로딩중입니다." class="loading_img">
-				</div>
+
+				</section>
+				<!-- 부정리뷰 정보 -->
+				<section id="tab02"
+					class="anchor-section product-detail-review">
+					<h3 class="sec-title">비판리뷰</h3>
+					<div class="review-total">
+						<div class="member-total-point">
+							<h4 class="tit">사용자 총 평점</h4>
+							<p class="point size-l">
+								<span class="ico" style="width: 98%;">별점</span> <span
+									class="num">4.9</span>
+							</p>
+						</div>
+
+						<div class="chart-wrap" id="chartSlide" data-slide-length="4">
+							<div class="slide-container swiper-container-horizontal">
+								<div class="swiper-wrapper"
+									style="transition-duration: 0ms; transform: translate3d(-592px, 0px, 0px);">
+									<div class="swiper-slide swiper-slide-duplicate"
+										data-swiper-slide-index="2" style="width: 296px;">
+										<div class="chart">
+											<p class="tit">신축성</p>
+											<div class="piechart-wrap">
+												<span class="piechart over" style="transform: rotate(0deg);">
+													<span class="rotate" style="transform: rotate(216deg);"><span>좋음</span></span>
+													<span class="percent"><strong class="num">60</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(216deg);">
+													<span class="rotate" style="transform: rotate(108deg);"><span>약간
+															있음</span></span> <span class="percent"><strong class="num">30</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(324deg);">
+													<span class="rotate" style="transform: rotate(36deg);"><span>없음</span></span>
+													<span class="percent"><strong class="num">10</strong>%</span>
+												</span>
+											</div>
+										</div>
+										<ul class="sub">
+											<li>좋음</li>
+											<li>약간 있음</li>
+											<li>없음</li>
+										</ul>
+									</div>
+									<div
+										class="swiper-slide swiper-slide-duplicate swiper-slide-prev"
+										data-swiper-slide-index="3" style="width: 296px;">
+										<div class="chart">
+											<p class="tit">비침</p>
+											<div class="piechart-wrap">
+												<span class="piechart" style="transform: rotate(0deg);">
+													<span class="rotate" style="transform: rotate(108deg);"><span>있음</span></span>
+													<span class="percent"><strong class="num">30</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(108deg);">
+													<span class="rotate" style="transform: rotate(0deg);"><span>약간
+															있음</span></span> <span class="percent"><strong class="num">0</strong>%</span>
+												</span> <span class="piechart over"
+													style="transform: rotate(108deg);"> <span
+													class="rotate" style="transform: rotate(252deg);"><span>없음</span></span>
+													<span class="percent"><strong class="num">70</strong>%</span>
+												</span>
+											</div>
+										</div>
+										<ul class="sub">
+											<li>있음</li>
+											<li>약간 있음</li>
+											<li>없음</li>
+										</ul>
+									</div>
+									<div class="swiper-slide swiper-slide-active"
+										data-swiper-slide-index="0" style="width: 296px;">
+										<div class="chart">
+											<p class="tit">핏감</p>
+											<div class="piechart-wrap">
+												<span class="piechart over" style="transform: rotate(0deg);">
+													<span class="rotate" style="transform: rotate(216deg);"><span>슬림</span></span>
+													<span class="percent"><strong class="num">60</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(216deg);">
+													<span class="rotate" style="transform: rotate(144deg);"><span>레귤러</span></span>
+													<span class="percent"><strong class="num">40</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(360deg);">
+													<span class="rotate" style="transform: rotate(0deg);"><span>오버사이즈</span></span>
+													<span class="percent"><strong class="num">0</strong>%</span>
+												</span>
+											</div>
+										</div>
+										<ul class="sub">
+											<li>슬림</li>
+											<li>레귤러</li>
+											<li>오버사이즈</li>
+										</ul>
+									</div>
+									<div class="swiper-slide swiper-slide-next"
+										data-swiper-slide-index="1" style="width: 296px;">
+										<div class="chart">
+											<p class="tit">두께감</p>
+											<div class="piechart-wrap">
+												<span class="piechart over" style="transform: rotate(0deg);">
+													<span class="rotate" style="transform: rotate(216deg);"><span>얇음</span></span>
+													<span class="percent"><strong class="num">60</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(216deg);">
+													<span class="rotate" style="transform: rotate(144deg);"><span>보통</span></span>
+													<span class="percent"><strong class="num">40</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(360deg);">
+													<span class="rotate" style="transform: rotate(0deg);"><span>도톰함</span></span>
+													<span class="percent"><strong class="num">0</strong>%</span>
+												</span>
+											</div>
+										</div>
+										<ul class="sub">
+											<li>얇음</li>
+											<li>보통</li>
+											<li>도톰함</li>
+										</ul>
+									</div>
+									<div class="swiper-slide" data-swiper-slide-index="2"
+										style="width: 296px;">
+										<div class="chart">
+											<p class="tit">신축성</p>
+											<div class="piechart-wrap">
+												<span class="piechart over" style="transform: rotate(0deg);">
+													<span class="rotate" style="transform: rotate(216deg);"><span>좋음</span></span>
+													<span class="percent"><strong class="num">60</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(216deg);">
+													<span class="rotate" style="transform: rotate(108deg);"><span>약간
+															있음</span></span> <span class="percent"><strong class="num">30</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(324deg);">
+													<span class="rotate" style="transform: rotate(36deg);"><span>없음</span></span>
+													<span class="percent"><strong class="num">10</strong>%</span>
+												</span>
+											</div>
+										</div>
+										<ul class="sub">
+											<li>좋음</li>
+											<li>약간 있음</li>
+											<li>없음</li>
+										</ul>
+									</div>
+									<div class="swiper-slide swiper-slide-duplicate-prev"
+										data-swiper-slide-index="3" style="width: 296px;">
+										<div class="chart">
+											<p class="tit">비침</p>
+											<div class="piechart-wrap">
+												<span class="piechart" style="transform: rotate(0deg);">
+													<span class="rotate" style="transform: rotate(108deg);"><span>있음</span></span>
+													<span class="percent"><strong class="num">30</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(108deg);">
+													<span class="rotate" style="transform: rotate(0deg);"><span>약간
+															있음</span></span> <span class="percent"><strong class="num">0</strong>%</span>
+												</span> <span class="piechart over"
+													style="transform: rotate(108deg);"> <span
+													class="rotate" style="transform: rotate(252deg);"><span>없음</span></span>
+													<span class="percent"><strong class="num">70</strong>%</span>
+												</span>
+											</div>
+										</div>
+										<ul class="sub">
+											<li>있음</li>
+											<li>약간 있음</li>
+											<li>없음</li>
+										</ul>
+									</div>
+									<div
+										class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
+										data-swiper-slide-index="0" style="width: 296px;">
+										<div class="chart">
+											<p class="tit">핏감</p>
+											<div class="piechart-wrap">
+												<span class="piechart over" style="transform: rotate(0deg);">
+													<span class="rotate" style="transform: rotate(216deg);"><span>슬림</span></span>
+													<span class="percent"><strong class="num">60</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(216deg);">
+													<span class="rotate" style="transform: rotate(144deg);"><span>레귤러</span></span>
+													<span class="percent"><strong class="num">40</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(360deg);">
+													<span class="rotate" style="transform: rotate(0deg);"><span>오버사이즈</span></span>
+													<span class="percent"><strong class="num">0</strong>%</span>
+												</span>
+											</div>
+										</div>
+										<ul class="sub">
+											<li>슬림</li>
+											<li>레귤러</li>
+											<li>오버사이즈</li>
+										</ul>
+									</div>
+									<div
+										class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next"
+										data-swiper-slide-index="1" style="width: 296px;">
+										<div class="chart">
+											<p class="tit">두께감</p>
+											<div class="piechart-wrap">
+												<span class="piechart over" style="transform: rotate(0deg);">
+													<span class="rotate" style="transform: rotate(216deg);"><span>얇음</span></span>
+													<span class="percent"><strong class="num">60</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(216deg);">
+													<span class="rotate" style="transform: rotate(144deg);"><span>보통</span></span>
+													<span class="percent"><strong class="num">40</strong>%</span>
+												</span> <span class="piechart" style="transform: rotate(360deg);">
+													<span class="rotate" style="transform: rotate(0deg);"><span>도톰함</span></span>
+													<span class="percent"><strong class="num">0</strong>%</span>
+												</span>
+											</div>
+										</div>
+										<ul class="sub">
+											<li>얇음</li>
+											<li>보통</li>
+											<li>도톰함</li>
+										</ul>
+									</div>
+								</div>
+								<div
+									class="slide-pagination swiper-pagination-clickable swiper-pagination-bullets">
+									<button type="button"
+										class="swiper-pagination-bullet swiper-pagination-bullet-active"
+										tabindex="0" role="button" aria-label="Go to slide 1">1</button>
+									<button type="button" class="swiper-pagination-bullet"
+										tabindex="0" role="button" aria-label="Go to slide 2">2</button>
+									<button type="button" class="swiper-pagination-bullet"
+										tabindex="0" role="button" aria-label="Go to slide 3">3</button>
+									<button type="button" class="swiper-pagination-bullet"
+										tabindex="0" role="button" aria-label="Go to slide 4">4</button>
+								</div>
+								<div class="slide-nav type3">
+									<button type="button" class="slide-nav-prev" tabindex="0"
+										role="button" aria-label="Previous slide">이전</button>
+									<button type="button" class="slide-nav-next" tabindex="0"
+										role="button" aria-label="Next slide">다음</button>
+								</div>
+								<span class="swiper-notification" aria-live="assertive"
+									aria-atomic="true"></span>
+							</div>
+						</div>
+					</div>
+
+
+
+					<div class="product-detail-review-list">
+						<div class="head">
+							<p class="txt">상품 구매 후 리뷰 작성시 H.Plus를 드립니다. (포토리뷰 1,000포인트,
+								텍스트리뷰 300포인트 증정)</p>
+							<div id="prdReviewFilter" class="opt">
+								<div class="select">
+									<button type="button" class="sel-btn"
+										onclick="select.trigger();">최신순</button>
+									<div id="reviewSortFilter" class="sel-list">
+										<ul>
+											<li><label><input type="radio" name="rvList"
+													value="new"> <span>최신순</span></label></li>
+											<li><label><input type="radio" name="rvList"
+													value="like"> <span>공감순</span></label></li>
+										</ul>
+									</div>
+								</div>
+
+								<div class="select">
+									<button type="button" class="sel-btn"
+										onclick="select.trigger();">사이즈</button>
+									<div class="sel-list">
+										<ul>
+											<li><label> <input type="radio" name="optValCd1"
+													value="XS"> <span>XS</span>
+											</label></li>
+											<li><label> <input type="radio" name="optValCd1"
+													value="S"> <span>S</span>
+											</label></li>
+											<li><label> <input type="radio" name="optValCd1"
+													value="M"> <span>M</span>
+											</label></li>
+											<li><label> <input type="radio" name="optValCd1"
+													value="L"> <span>L</span>
+											</label></li>
+										</ul>
+									</div>
+								</div>
+								<button type="button" class="btn-type1-sm"
+									onclick="getReviewList('1','F','F',null);">
+									<span>필터적용</span>
+								</button>
+							</div>
+
+							<div class="opt">
+								<button type="button" id="btnTogglePhotoReview"
+									class="btn-type1-sm" onclick="getPhotoReviewList(this);">
+									<span>포토리뷰</span>
+								</button>
+								<button type="button" class="btn-type4-sm"
+									onclick="location.href='/public/member/login';">
+									<span>리뷰작성</span>
+								</button>
+							</div>
+						</div>
+
+						<div id="reviewNodata" class="nodata" style="display: none;">
+							지금 첫 리뷰를 작성해주세요.<br> 포토리뷰 1,000포인트, 텍스트 리뷰 300포인트를 증정합니다.
+							(상품구매시)
+						</div>
+
+						<div id="allReviewList" class="board-list board-review ui-fold"
+							style="">
+							<input type="hidden" name="allReviewTotalRow" value="10">
+							<input type="hidden" name="allReviewTotalScore" value="4.9">
+							<input type="hidden" id="allReviewTotalScorePercent" value="98">
+							<input type="hidden" id="godNo" value=""> <input
+								type="hidden" id="godEvlTurn" value="">
+
+							<ul class="list-content">
+								<li>
+									<div class="list-row fold-header">
+										<div class="cell-title">
+											<ul class="etc-info">
+												<li><span class="point size-m"><span class="ico"
+														style="width: 100%">별점 5점</span></span></li>
+												<li>
+													<button type="button" class="btn-like2"
+														onclick="addGodEvlLikeCount(this,addLikeList);"
+														godevlturn="10" reviewgodno="GM0121122308150">
+														<span class="like-count" likecnt="0"> - </span>
+													</button>
+												</li>
+												<li><span class="date">2022.12.02</span></li>
+											</ul>
+											<p class="title-review">기본니트</p>
+											<button type="button" class="btn-fold">열기</button>
+										</div>
+									</div>
+
+									<div class="fold-cont">
+										<div class="review-group">
+											<ul class="review-prd-info">
+												<li>
+													<div class="prd-name">lam****&nbsp;</div>
+												</li>
+												<li>
+													<div class="prd-option">
+
+														&nbsp;160cm ,보통체형 &nbsp;/ &nbsp; 구매옵션 : S<em
+															class="prd-option-color"> <span
+															class="pdColor-/colorchips/GM0121122308150_COLORCHIP.jpg">BLUE</span>
+														</em>
+													</div>
+												</li>
+											</ul>
+
+											<div class="txt-box">브이넥이 조금 깊은감은 있지만 니트재질이 너무 부드럽고
+												좋더라구요 사이즈는 정사이즈로 주문하시면 될듯합니다 크게 나온옷은 아닙니다.</div>
+											<p class="wear-feeling">
+												<span> 핏감 : 슬림 </span> <span> 두께감 : 얇음 </span> <span>
+													신축성 : 좋음 </span> <span> 비침 : 있음 </span>
+											</p>
+											<div class="review-report">
+												<button type="button" class="btn-report"
+													onclick="alert('로그인 후 참여 가능합니다.');location.href='/public/member/login'">
+													<span>신고하기</span>
+												</button>
+											</div>
+										</div>
+									</div>
+								</li>
+								
+							</ul>
+
+						</div>
+
+						<div id="photoReviewList" class="photo-list"
+							style="display: none;"></div>
+					</div>
+
+				</section>
+			</div>
 			</div>
 		</div>
 	

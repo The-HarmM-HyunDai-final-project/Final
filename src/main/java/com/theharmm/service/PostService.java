@@ -21,31 +21,10 @@ public interface PostService {
 	public PostVO postGetOne(int post_id);
 	
 	public List<SocialVO> socialByPostid(int post_id);
-	
-	/* 사용자별 포스트 리스트 */
-	public List<PostVO> postGetByMailList(PostCriteria postcri , String member_email);
-	
-	/* 사용자별 포스트 리스트 갯수*/
-	public int postGetByMailTotal(String member_email);
-	
-	/* 팔로우 삽입 */
-	public int insertFollow(String follower, String following);
-	
-	/* 팔로워 가져오기 */
-	public List<String> getFollowerList(String member_email);
-	
-	/* 팔로잉 가져오기 */
-	public List<String> getFollowingList(String member_email);	
-	
-	/* 팔로워 갯수 세기 */
-	public int countFollower(String member_email);
-	
-	/* 팔로잉 갯수 */
-	public int countFollowing(String member_email);
-	
-	/* 팔로우 취소 */
-	public int deleteFollow(String follower, String following);
-	
-	/* 팔로우 하고 있는 사람인지 아닌지 확인 */
-	public boolean checkFollow(String follower, String following);
+
+	//긍정 리뷰 리스트 조회
+	public List<PostVO> selectPositivePostList(int pid);
+
+	//부정 리뷰 리스트 조회
+	public List<PostVO> selectNegativePostList(int pid);
 }

@@ -50,6 +50,8 @@ public interface PostMapper {
 	/* 팔로잉 취소 */
 	public int deleteFollow(@Param("follower_id") String follower_id, @Param("following_id") String following_id);
 
-	/* 팔로잉 중인지 체크 */
-	public int countFollow(@Param("follower_id") String follower_id, @Param("following_id") String following_id);
+	public List<PostVO> selectPositivePostList(int pid);
+
+	public List<PostVO> selectNegativePostList(int pid);
+
 }

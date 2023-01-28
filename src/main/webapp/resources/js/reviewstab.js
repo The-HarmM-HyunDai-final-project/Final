@@ -2,12 +2,12 @@
  * 
  */
 $(function(){
-  $('.tabcontent > div').hide();
+  $('.tabcontent > section').hide();
   $('.tabs a').click(function () {
-    $(this).addClass("on").siblings().removeClass("on");
-    $('.tabcontent > div').hide().filter(this.hash).fadeIn();
-    $('.tabs a').removeClass('on');
-    $(this).addClass('on');
+    //$('#').addClass("on").siblings().removeClass("on");
+    $('.tabcontent > section').hide().filter(this.hash).fadeIn();
+    $('.tabs li').removeClass('on');
+    $(this).parent('li').addClass('on');
     return false;
   }).filter(':eq(0)').click();
   });
