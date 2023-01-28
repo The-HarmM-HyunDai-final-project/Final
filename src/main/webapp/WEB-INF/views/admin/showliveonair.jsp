@@ -51,6 +51,23 @@ Milligram CSS
         /* width: 100%; */
         height: 65%;
       }
+      .video_area #onAirStatus{
+      	display:none;
+      	background:red;
+      	position: absolute;
+      	width:50px;
+      	top:40px;
+      	right:10px;
+      	border-radius:10px;
+      	text-align:center;
+      	color:white;
+      	
+      }
+      .video_area .user_count{
+      	position: absolute;
+      	top:10px;
+      	right:10px; 
+      }
       .preview_container{
       	width:100%;
       	height:100%;
@@ -73,6 +90,7 @@ Milligram CSS
         border-radius: 15px;
         padding : 15px;
         display:flex;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
       .info_area .default_info{
       	flex:2;
@@ -124,6 +142,7 @@ Milligram CSS
         flex-direction: column; */
         position:relative;
         border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
       .price_area{
       	position: absolute;
@@ -138,7 +157,7 @@ Milligram CSS
 	    bottom:0;
 	    width:90%;
 	    margin:0 auto;
-	    margin-bottom:15px;
+	    /* margin-bottom:15px; */
 	    padding:10px;
       }
       .auction_area_suggestion #auction_bid_success_btn{
@@ -170,16 +189,47 @@ Milligram CSS
         display: flex;
         flex-direction: column;
         border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
-      .user_count{
+      /* .user_count{
+      	
       	text-align:center;
+      } */
+      .tabs{
+      	width: 100%;
+        height: 80%;
+      }
+      .tabs .tabs_view{
+      	height:15%;
+      	width:100%;
+      	display: flex;
+      }
+      .tabs .tabs_view .tab_item{
+      	background : rgb(224, 224, 224);
+      	border-bottom:1px solid black;
+      	text-align:center;
+      	flex:1;
+      	display : flex;
+		justify-content : center;
+		align-items : center;
+		border-radius: 15px 15px 0 0;
+      }
+      .tabs .tabs_view .tab_item.selected{
+      	background : silver;
       }
       .chat_view {
         /* background: #ffffff; */
+        display:none;
         width: 100%;
-        height: 80%;
+        height:85%;
         padding: 10px;
         overflow-y: scroll;
+      }
+      .chat_view::-webkit-scrollbar {
+		display: none; /* Chrome, Safari, Opera*/
+	  }
+      .chat_view.show{
+      	display:block;
       }
       .chat_do {
       	display:flex;
@@ -288,11 +338,16 @@ Milligram CSS
       <div class="showlive_container">
         <div class="left_area">
           <div class="video_area">
-              <!-- Compositor preview -->
-			  <section class="preview_container">
-			    <canvas id="preview"></canvas>
-			  </section>
-
+			<!-- Compositor preview -->
+			<section class="preview_container">
+			  <canvas id="preview"></canvas>
+			</section>
+			<div id=onAirStatus>
+				LIVE
+			</div>
+			<div class="user_count" >
+              <p>   시청자 : <b id="connected_user">0</b> 명</p>
+            </div>
           </div>
           <div class="info_area">
           	<div class="default_info">
@@ -326,12 +381,17 @@ Milligram CSS
             </div>
           </div>
           <div class="chat_area">
-          	<div class="user_count" >
-              <p>   사용자 : <b id="connected_user">0</b> 명</p>
-            </div>
-            <div class="chat_view" id="message_box">
-
-            	
+          	<div class="tabs">
+          		<div class="tabs_view">
+	          		<!-- <input id="chat" type="radio" name="tab_item" checked> -->
+				    <label class="tab_item selected" for="chat" id="message_tab">채팅</label>
+				    <!-- <input id="programming" type="radio" name="tab_item"> -->
+				    <label class="tab_item" for="question" id="question_tab">질문 모아보기</label>
+			    </div>
+	            <div class="chat_view show" id="message_box">
+	            </div>
+	            <div class="chat_view" id="question_box">
+	            </div>
             </div>
             <div class="chat_do">
               <input class="chat_input" type="text" id="msg" placeholder="메시지를 입력해 주세요" onkeyup="chatEnterkey()"/>
@@ -433,6 +493,8 @@ Milligram CSS
 
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script>
+var success_bid_person = "";
+
 //가격에 콤마 찍기
 function priceToString(price) {
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -495,7 +557,23 @@ function onMessage(msg) {
 	var menent = "울라랄라라라~~~~~~~~~~";
 	
 	switch(type){
-		case 'QUESTION': case 'TALK':
+		case 'QUESTION': 
+			var str = 
+				`<div>
+	              <p>\${username} : \${message}</p>
+	            </div>`
+	            
+	        var question_str = 
+				`<div>
+	              <p>\${username} : \${message}</p>
+	              <p>\${insertDate}</p>
+	            </div>`
+	        //질문 모아보기창에 우선 넣기
+            $("#question_box").append(question_str);
+        	//질문창이 계속 올라갈떄  계속 아래로 보여지게 스크롤 조정 
+        	$("#question_box").scrollTop($("#question_box")[0].scrollHeight);
+			break
+		case 'TALK':
 			if(username == cur_session){
 				username = '나';
 			}
@@ -507,6 +585,7 @@ function onMessage(msg) {
 		case 'AUCTION':
 			$("#max_price").text(priceToString(maxSuggestPrice));
 			$("#max_price_user").text(maxSuggestUser);
+			success_bid_person = maxSuggestUser;
 			auctionPrevPrice = maxSuggestPrice;
 			break
 		case 'ENTER':
@@ -554,6 +633,11 @@ auctionBidSuccessBtn.addEventListener("click", () => {
 });
 //낙찰 모달에서 확인
 auctionBidSuccessModalYesBtn.addEventListener("click", () =>{
+	//만약 아직 아무도 입찰 제시 안했는데 낙찰하기 하면 alert창 띄우기
+	if(success_bid_person == ""){
+		alert("아직 제시한 사람이 없습니다");
+		return
+	}
 	sendMessage('AUCTION_END', '');
 	auctionBidSuccessModal.classList.toggle("show");
     if (auctionBidSuccessModal.classList.contains("show")) {
@@ -570,6 +654,35 @@ auctionBidSuccessModalCancleBtn.addEventListener("click", () =>{
     }
 });
 
+//메시지, 질문탭
+const messageTab = document.querySelector("#message_tab");
+const questionTab = document.querySelector("#question_tab");
+
+
+messageTab.addEventListener("click", () => {
+	console.log("탭누리1");
+	messageTab.classList.add("selected");
+	questionTab.classList.remove("selected");
+	
+	$("#message_box").addClass("show");
+	$("#question_box").removeClass("show");
+	
+	if($("#question_box").hasClass("show")){
+		$("#question_box").toggleClass("show");
+	}
+});
+questionTab.addEventListener("click", () => {
+	console.log("탭누리2");
+	questionTab.classList.add("selected");
+	messageTab.classList.remove("selected");
+	
+	$("#question_box").addClass("show");
+	$("#message_box").removeClass("show");
+	
+	if($("#message_box").hasClass("show")){
+		$("#message_box").toggleClass("show");
+	}
+});
 
 //모달모달 ~~
 const onAirModalOpenBtn = document.querySelector("#showlive_start");						//방송하기 모달여는 버튼
@@ -583,6 +696,8 @@ const onAirEndModal = document.querySelector("#liveshow_end_modal");						//방�
 const onAirEndBtn = document.querySelector("#liveshow_end_modal_yes_btn");					//방송종료 확인버튼
 const onAirEndModalCloseBtn = document.querySelector("#liveshow_end_modal_no_btn");			//방송종료 모달 닫기 버튼
 
+const onAirStatus = document.querySelector("#onAirStatus");
+
 onAirModalOpenBtn.addEventListener("click", () => {			//방송하기 모달여는 버튼눌렸을때
 	onAirModal.classList.toggle("show");
     if (onAirModal.classList.contains("show")) {
@@ -594,6 +709,7 @@ onAirStartBtn.addEventListener("click", () => {				//방송하기 버튼 눌렀�
     if (onAirModal.classList.contains("show")) {
       body.style.overflow = "hidden";
     }
+    onAirStatus.style.display = "block";//방송 시작하면 오른쪽 상단에 라이브 상태 뜨게
 	startBroadcast()
 });
 onAirModalCloseBtn.addEventListener("click", () => {		//방송하기 모달 닫기버튼 눌렸을때
@@ -610,6 +726,7 @@ onAirEndMoalOpenBtn.addEventListener("click", () => {		//방송종료 모달버�
 });
 onAirEndBtn.addEventListener("click", () => {				//방송종료 버튼 눌렸을떄 AWS 방송 종료 및 admin/amin 페이지로 이동
 	stopBroadcast();
+	onAirStatus.style.display = "none";//방송 끄면하면 오른쪽 상단에 라이브 상태 없어지게
 	console.log("방송종료");
 	onAirEndModal.classList.toggle("show");
     if (onAirEndModal.classList.contains("show")) {
