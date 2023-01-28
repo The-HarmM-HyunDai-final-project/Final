@@ -406,83 +406,26 @@
 													</tr>
 												</thead>
 												<tbody data-v-50d58b3a="">
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">260 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															419,000원 <i class="express_icon" data-v-50d58b3a=""><svg
-																	xmlns="http://www.w3.org/2000/svg"
-																	class="ico-express icon sprite-icons"
-																	data-v-50d58b3a="">
-																	<use
-																		href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		data-v-50d58b3a=""></use></svg><span class="blind"
-																data-v-50d58b3a="">빠른배송</span></i>
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															23/01/11 <!---->
-														</td>
-													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">250 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															398,000원 <!---->
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															23/01/11 <!---->
-														</td>
-													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">260 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															435,000원 <i class="express_icon" data-v-50d58b3a=""><svg
-																	xmlns="http://www.w3.org/2000/svg"
-																	class="ico-express icon sprite-icons"
-																	data-v-50d58b3a="">
-																	<use
-																		href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		data-v-50d58b3a=""></use></svg><span class="blind"
-																data-v-50d58b3a="">빠른배송</span></i>
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															23/01/11 <!---->
-														</td>
-													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">285 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															509,000원 <i class="express_icon" data-v-50d58b3a=""><svg
-																	xmlns="http://www.w3.org/2000/svg"
-																	class="ico-express icon sprite-icons"
-																	data-v-50d58b3a="">
-																	<use
-																		href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		data-v-50d58b3a=""></use></svg><span class="blind"
-																data-v-50d58b3a="">빠른배송</span></i>
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															23/01/11 <!---->
-														</td>
-													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">285 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															508,000원 <i class="express_icon" data-v-50d58b3a=""><svg
-																	xmlns="http://www.w3.org/2000/svg"
-																	class="ico-express icon sprite-icons"
-																	data-v-50d58b3a="">
-																	<use
-																		href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		data-v-50d58b3a=""></use></svg><span class="blind"
-																data-v-50d58b3a="">빠른배송</span></i>
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															23/01/11 <!---->
-														</td>
-													</tr>
+													<c:forEach var="allSignContract" items="${allSignContractList}">
+														<tr data-v-50d58b3a="">
+															<td class="table_td" data-v-50d58b3a="">${allSignContract.size_type } <!----></td>
+															<td class="table_td align_right" data-v-50d58b3a="">
+																${allSignContract.price }원 <i class="express_icon" data-v-50d58b3a=""><svg
+																		xmlns="http://www.w3.org/2000/svg"
+																		class="ico-express icon sprite-icons"
+																		data-v-50d58b3a="">
+																		<use
+																			href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
+																			xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
+																			data-v-50d58b3a=""></use></svg><span class="blind"
+																	data-v-50d58b3a="">빠른배송</span></i>
+															</td>
+															<td class="table_td align_right" data-v-50d58b3a="">
+																${allSignContract.nowdate } <!---->
+															</td>
+														</tr>
+													</c:forEach>
+													
 												</tbody>
 											</table>
 										</div>
@@ -514,59 +457,17 @@
 													</tr>
 												</thead>
 												<tbody data-v-50d58b3a="">
+												  <c:forEach var="allSellBid" items="${allSellBidList}">
 													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">250 <!----></td>
+														<td class="table_td" data-v-50d58b3a="">${allSellBid.size_type}<!----></td>
 														<td class="table_td align_right" data-v-50d58b3a="">
-															405,000원 <!---->
+															${allSellBid.price}원 <!---->
 														</td>
 														<td class="table_td align_right" data-v-50d58b3a="">
-															1 <!---->
-														</td>
-													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">255 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															408,000원 <!---->
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															1 <!---->
+															${allSellBid.amount}<!---->
 														</td>
 													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">255 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															409,000원 <i class="express_icon" data-v-50d58b3a=""><svg
-																	xmlns="http://www.w3.org/2000/svg"
-																	class="ico-express icon sprite-icons"
-																	data-v-50d58b3a="">
-																	<use
-																		href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-express"
-																		data-v-50d58b3a=""></use></svg><span class="blind"
-																data-v-50d58b3a="">빠른배송</span></i>
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															2 <!---->
-														</td>
-													</tr>
-												    	<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">255 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															410,000원 <!---->
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															2 <!---->
-														</td>
-													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">250 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															410,000원 <!---->
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															1 <!---->
-														</td>
-													</tr>
+												</c:forEach>
 												</tbody>
 											</table>
 										</div>
@@ -598,51 +499,17 @@
 													</tr>
 												</thead>
 												<tbody data-v-50d58b3a="">
+												  <c:forEach var="allBuyBid" items="${allBuyBidList}">
 													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">270 <!----></td>
+														<td class="table_td" data-v-50d58b3a="">${allBuyBid.size_type}<!----></td>
 														<td class="table_td align_right" data-v-50d58b3a="">
-															554,000원 <!---->
+															${allBuyBid.price}원 <!---->
 														</td>
 														<td class="table_td align_right" data-v-50d58b3a="">
-															1 <!---->
+															${allBuyBid.amount} <!---->
 														</td>
 													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">295 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															552,000원 <!---->
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															1 <!---->
-														</td>
-													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">295 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															551,000원 <!---->
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															1 <!---->
-														</td>
-													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">295 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															549,000원 <!---->
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															1 <!---->
-														</td>
-													</tr>
-													<tr data-v-50d58b3a="">
-														<td class="table_td" data-v-50d58b3a="">295 <!----></td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															548,000원 <!---->
-														</td>
-														<td class="table_td align_right" data-v-50d58b3a="">
-															1 <!---->
-														</td>
-													</tr>
+												  </c:forEach>
 												</tbody>
 											</table>
 										</div>

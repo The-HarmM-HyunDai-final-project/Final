@@ -153,5 +153,39 @@
            WHERE PID= #{pid}
 		  ]]>
 	</select>
+	
+	<select id="selectAllSignContract"
+		resultType="BuyDTO"
+		parameterType="Integer">
+		 <![CDATA[
+		   SELECT SIZE_TYPE, PRICE, NOWDATE 
+           FROM BUY 
+           WHERE STATUS1='진행완료' AND PID= #{pid}
+		  ]]>
+	</select>
+	
+	<select id="selectAllBuyBid"
+		resultType="BuyDTO"
+		parameterType="Integer">
+		 <![CDATA[
+		   SELECT SIZE_TYPE, PRICE, COUNT(SIZE_TYPE) AS AMOUNT 
+           FROM BUY 
+           WHERE STATUS1='구매입찰' AND PID= #{pid}
+           GROUP BY SIZE_TYPE, PRICE 
+           ORDER BY PRICE DESC
+		  ]]>
+	</select>
+	
+	<select id="selectAllSellBid"
+		resultType="SellDTO"
+		parameterType="Integer">
+		 <![CDATA[
+		   SELECT SIZE_TYPE, PRICE, COUNT(SIZE_TYPE) AS AMOUNT 
+           FROM SALE 
+           WHERE STATUS1='판매입찰' AND PID= #{pid}
+           GROUP BY SIZE_TYPE, PRICE 
+           ORDER BY PRICE ASC
+		  ]]>
+	</select>
 
 </mapper>

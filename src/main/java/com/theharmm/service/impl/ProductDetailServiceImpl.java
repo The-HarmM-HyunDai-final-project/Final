@@ -93,4 +93,25 @@ public class ProductDetailServiceImpl implements ProductDetailService{
 	public SellDTO selectMinSellProductPrice(int pid) {
 		return productDetailMapper.selectMinSellProductPrice(pid);
 	}
+
+
+	@Override
+	public List<BuyDTO> selectAllSignContract(int pid) {
+		
+		return productDetailMapper.selectAllSignContract(pid);
+	}
+
+
+	@Override
+	public List<SellDTO> selectAllSellBid(int pid) {
+		
+		return productDetailMapper.selectAllSellBid(pid);
+	}
+
+
+	@Override
+	public List<BuyDTO> selectAllBuyBid(int pid) {
+		
+		return productDetailMapper.selectAllBuyBid(pid);
+	}
 }
