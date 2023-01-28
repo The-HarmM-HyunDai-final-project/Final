@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.theharmm.mapper.AdminMapper">
+
+
+	<!-- 오늘 방문자수 -->
+	<select id="countToday" resultType="com.theharmm.domain.CountToday">
+		select to_char(member_login, 'YYYY-MM-DD') as login, count(*) as cnt FROM MEMBER
+		group by to_char(member_login, 'YYYY-MM-DD')
+		order by 1
+	
+	</select >
+	
+	
+	<!-- 신규가입자수 -->
+	<select id="registerToday" resultType="com.theharmm.domain.RegisterToday">
+		SELECT to_char(member_register, 'YYYY-MM-DD') as register, count(*) as cnt FROM MEMBER
+		group by to_char(member_register, 'YYYY-MM-DD')
+		order by 1
+	
+	</select >
+	
+	<!-- 거래 금액  -->
+	<select id="buyToday" resultType="com.theharmm.domain.BuySaleToday">
+		select to_char(nowdate, 'YYYY-MM-DD') as now, sum(price) as price from buy
+		group by to_char(nowdate, 'YYYY-MM-DD')
+		order by 1
+	</select>
+	
+	<!-- 판매 금액  -->
+	<select id="saleToday" resultType="com.theharmm.domain.BuySaleToday">
+		select to_char(nowdate, 'YYYY-MM-DD') as now, sum(price) as price from sale
+		group by to_char(nowdate, 'YYYY-MM-DD')
+		order by 1
+	</select>
+	
+	<!-- 상품리스트 -->
+	<select id="getProductList" resultType="com.theharmm.domain.ProductDTO">
+		select * from resell_product
+	
+	</select>
+</mapper>
