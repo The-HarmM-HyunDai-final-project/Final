@@ -39,4 +39,13 @@ public interface ProductDetailMapper{
 		public BuyDTO selectMinBuyProductPrice(int pid);
 		
 		public SellDTO selectMinSellProductPrice(int pid);
+		
+		
+		//체결거래, 판매입찰, 구매입찰 
+		public List<BuyDTO> selectAllSignContract(int pid);
+		
+		public List<BuyDTO> selectAllBuyBid(int pid);
+		
+		public List<SellDTO> selectAllSellBid(int pid);
+		
 }

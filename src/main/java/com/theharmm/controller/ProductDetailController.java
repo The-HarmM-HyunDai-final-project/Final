@@ -1,5 +1,7 @@
 package com.theharmm.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,15 +37,21 @@ public class ProductDetailController {
 		//구매버튼 
 		SellDTO sellDTO = productDetailService.selectMinSellProductPrice(pid);
 	
+		//체결거래 
+		List<BuyDTO> allSignContractList = productDetailService.selectAllSignContract(pid);
+		//판매입찰 
+		List<SellDTO> allSellBidList = productDetailService.selectAllSellBid(pid);
+		//구매입찰 
+		List<BuyDTO> allBuyBidList = productDetailService.selectAllBuyBid(pid);
 		
 		log.info("상품정보 : "+productDetailDTO.toString());
 		//session.setAttribute("totalRows", totalRows);
 		model.addAttribute("productDetailDTO", productDetailDTO);
 		model.addAttribute("buyDTO", buyDTO);
 		model.addAttribute("sellDTO", sellDTO);
-	
-
-		
+		model.addAttribute("allSignContractList", allSignContractList);
+		model.addAttribute("allSellBidList", allSellBidList);
+		model.addAttribute("allBuyBidList", allBuyBidList);
 		return "product/productdetail";
 	}
 	
