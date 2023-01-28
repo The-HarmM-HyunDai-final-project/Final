@@ -2,6 +2,9 @@ package com.theharmm.domain;
 
 import java.util.List;
 
+import lombok.Data;
+
+@Data
 public class PostVO {
 	/* 포스트 id */
 	private int post_id;
@@ -31,10 +34,10 @@ public class PostVO {
 	private int pid2;
 	
 	/* percent 긍부정 결과 퍼센트 */
-	private double percent;
+	private double sentiment_percent;
 	
-	/* percent 긍부정 결과 po or ne */
-	private String result;
+	/* percent 긍부정 결과 p or n */
+	private String sentiment_result;
 	
 	public int getPid1() {
 		return pid1;
@@ -52,21 +55,7 @@ public class PostVO {
 		this.pid2 = pid2;
 	}
 
-	public double getPercent() {
-		return percent;
-	}
-
-	public void setPercent(double percent) {
-		this.percent = percent;
-	}
-
-	public String getResult() {
-		return result;
-	}
-
-	public void setResult(String result) {
-		this.result = result;
-	}
+	
 
 	public int getPid0() {
 		return pid0;
