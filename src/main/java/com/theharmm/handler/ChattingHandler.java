@@ -25,7 +25,7 @@ import com.theharmm.showlive.ShowLiveMessage;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
-public class ChattingHandler extends TextWebSocketHandler{
+public class ChattingHandler  extends TextWebSocketHandler{
 	
 	@Inject
 	ShowLiveChannelStore showLiveChannelStore;
@@ -67,6 +67,7 @@ public class ChattingHandler extends TextWebSocketHandler{
 		//여기서 경매기능까지 들어올 경우 경매용인지 그냥 채팅용인지 구분하는 작업이 추후 필요
 		//테스트용
 		try {
+
             // convert JSON string to Map
             Map<String, String> dataFromJsp = objectMapper.readValue(message.getPayload(), Map.class);
             //ShowLiveMessage showLiveMessageFromJsp = objectMapper.readValue(message.getPayload(), ShowLiveMessage.class);
@@ -75,7 +76,6 @@ public class ChattingHandler extends TextWebSocketHandler{
             log.warn(dataFromJsp.toString());
             String contentMessage = dataFromJsp.get("message");
             String type = dataFromJsp.get("mType");
-            //String question_yn = dataFromJsp.get("question_yn");
             
             //메시지 생성
     		ShowLiveMessage showLiveMessage = createMessage(userId, roomNo, type);
@@ -83,7 +83,6 @@ public class ChattingHandler extends TextWebSocketHandler{
     		showLiveMessage.setUsername(userId);
     		showLiveMessage.setRoomNo(roomNo);
     		showLiveMessage.setMessage(contentMessage);
-    		//showLiveMessage.setQuestionYn(question_yn);//여기로 들어노는 massage는 경매, 채팅(추후 방닫기 등등이 있음)인데 채팅이 질문인지 아닌지 값을 넣어줌 -> ShowLiveChannel의 handleMessage에서 처리할꺼임
             
 			// it works
             //Map<String, String> map = mapper.readValue(json, new TypeReference<Map<String, String>>() {});
@@ -134,11 +133,7 @@ public class ChattingHandler extends TextWebSocketHandler{
 		ShowLiveMessage showLiveMessage = createMessage(userId, roomNo, "LEAVE");
 		
 		ShowLiveChannel showliveChannel = showLiveChannelStore.getChannelByRoomNo(roomNo);
-		
-		//이부분 방이 사라지고 나서 방에다가 메시지를 보내니까 null exception이 나서 예외 처리를 해줌
-		if(showliveChannel != null) {
-			showliveChannel.handleMessage(session, showLiveMessage);
-		}
+		showliveChannel.handleMessage(session, showLiveMessage);
 		
 		log.warn("쇼라이브 총 접속 인원 : " + totalConnectedPerson);
 	}
@@ -157,9 +152,6 @@ public class ChattingHandler extends TextWebSocketHandler{
 				break;
 			case "TALK":
 				message.setType(MessageType.TALK);
-				break;
-			case "QUESTION":
-				message.setType(MessageType.QUESTION);
 				break;
 			case "AUCTION":
 				message.setType(MessageType.AUCTION);

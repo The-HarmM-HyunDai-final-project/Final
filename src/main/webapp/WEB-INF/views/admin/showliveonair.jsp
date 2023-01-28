@@ -740,6 +740,5 @@ onAirEndModalCloseBtn.addEventListener("click", () => {		//방송종료 모달 �
       body.style.overflow = "hidden";
     }
 });
-
 </script>
 </html>

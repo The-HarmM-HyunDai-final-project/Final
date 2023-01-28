@@ -11,5 +11,4 @@ public class ShowLiveChatDTO {
 	private String chat_user_id;
 	private String chat_content;
 	private Date chat_date;
-	private String question_yn;
 }

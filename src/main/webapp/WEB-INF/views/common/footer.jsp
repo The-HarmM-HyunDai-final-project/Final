@@ -108,9 +108,9 @@
 								<div class="info_list" data-v-a1b21a74="">
 									<dl class="info_item" data-v-a1b21a74="">
 										<dt class="business_title" data-v-a1b21a74="">
-											더함 주식회사 · 대표 박신정<span class="blank"></span>사업자등록번호 :
+											크림 주식회사 · 대표 김창욱<span class="blank"></span>사업자등록번호 :
 											570-88-01618 <a
-												href="/admin/main">사업자정보확인</a><span
+												href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=5708801618">사업자정보확인</a><span
 												class="blank"></span>통신판매업 : 제 2021-성남분당C-0093호<span
 												class="blank"></span>사업장소재지 : 경기도 성남시 분당구 분당내곡로 131 판교테크원
 											타워1, 8층<span class="blank"></span>호스팅 서비스 : 네이버 클라우드 ㈜
