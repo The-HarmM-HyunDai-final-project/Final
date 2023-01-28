@@ -187,5 +187,4 @@
            ORDER BY PRICE ASC
 		  ]]>
 	</select>
-
 </mapper>

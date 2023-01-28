@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.theharmm.domain.MemberAuthVO;
 import com.theharmm.domain.MemberVO;
+import com.theharmm.security.domain.CustomUser;
+import com.theharmm.security.domain.CustomUser;
 import com.theharmm.service.MemberService;
 import com.theharmm.util.JoinUtil;
 
@@ -101,7 +103,9 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/my", method = RequestMethod.GET)
-	public String MyPage() {
+	public String MyPage(Model model) {
+		CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		model.addAttribute("member_email", user.getUsername());
 		return "member/my";
 	}
 }
