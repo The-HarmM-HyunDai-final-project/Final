@@ -313,8 +313,8 @@
 						</c:if>
 						<form action="/social/user/postEnroll" method="post" id="enrollForm">
 							<!-- 긍부정 percent, result 처리 -->
-							<input type = "hidden" id = "percent" name = "percent"/>
-							<input type = "hidden" id = "result" name = "result"/>
+							<input type = "hidden" id = "sentiment_percent" name = "sentiment_percent"/>
+							<input type = "hidden" id = "sentiment_result" name = "sentiment_result"/>
 							<div data-v-1a009402="" data-v-71b8d4b9="" data-v-61d3533a=""
 								class="layer_delivery layer lg" style="display: none;">
 								<div data-v-1a009402="" class="layer_container"
@@ -635,8 +635,8 @@
                     data: JSON.stringify(data),
                     success : function(res){
                     	alert("긍부정 결과는 "+res.percent+"% 확률로 "+res.result+" 입니다.");
-                    	$("#percent").val(res.percent);
-                    	$("#result").val(res.result);
+                    	$("#sentiment_percent").val(res.percent);
+                    	$("#sentiment_result").val(res.result);
                     	enrollForm.submit(); 
                         alert("등록이 완료되었습니다.");
                     	
