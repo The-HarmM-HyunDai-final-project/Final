@@ -88,7 +88,7 @@
 									<div
 										class="VideoBoxWrapper_wrap_Usbk7 HorizontalCardList_item_hESBz BroadcastUnderCard_tablet_XD7Qb">
 										<a
-											href="https://view.shoppinglive.naver.com/lives/831692?tr=lim&amp;fm=shoppinglive&amp;sn=home"
+											href="${pageContext.request.contextPath}/chat/${item.showlive_no}"
 											class="VideoBoxLinkWrapper_wrap_GLkZS"><div
 												class="VideoBox_wrap_S8G2B VideoBox_ratio_w2h3_NQrX8 VideoBox_tablet_-FQO7">
 												<div class="BroadcastAutoPlayCard_wrap_6irvX">
@@ -140,10 +140,9 @@
 																src="https://phinf.pstatic.net/dthumb/?src=%22https%3A%2F%2Fshop-phinf.pstatic.net%2F20230125_133%2F1674626353164vlDhd_JPEG%2F75762241833738690_1170248128.jpg%22&amp;service=selective&amp;type=f240_240_q90"
 																width="55" height="55" draggable="false" loading="eager"></span>
 															<div class="ProductBox_info_z1aIE">
-																<span class="ProductBox_name_zybcC">14k 18k 레디언트
-																	파인 풀 큐빅 반지 - 꼬냑 가드링 쌍지 이터니티 명품 1부</span>
+																<span class="ProductBox_name_zybcC">${item.product_name}</span>
 																<div class="ProductBox_price_wrap_0B+zk">
-																	<span class="ProductBox_discount_-M6AK">58%</span><span
+																	<span
 																		class="ProductBox_price_+L7cC"><strong>${item.showlive_start_price}원</strong></span>
 																</div>
 															</div>
@@ -151,16 +150,16 @@
 													</div>
 												</div>
 											</div> <span
-											class="VideoTitle_wrap_fuxqM VideoTitle_ellipsis2_KBkev BroadcastUnderCard_title_hsd54 VideoTitle_size_s_Imup5">[메이비투아]
-												14K 18K 신제품 할인 라이브</span></a><a href="/channels/59520"
+											class="VideoTitle_wrap_fuxqM VideoTitle_ellipsis2_KBkev BroadcastUnderCard_title_hsd54 VideoTitle_size_s_Imup5">
+												${item.product_name} 라이브</span></a><a href="/channels/59520"
 											class="VideoBoxLinkWrapper_wrap_GLkZS"><span
 											class="ChannelProfile_wrap_biIV9 ChannelProfile_size_20_c5bcc BroadcastUnderCard_channel_5OCf8"><div
 													class="ChannelProfile_thumbnail_9rQcB">
 													<img class="ChannelProfile_image_hKVL-" alt=""
 														src="https://phinf.pstatic.net/dthumb/?src=%22http%3A%2F%2Fshop1.phinf.naver.net%2F20200908_102%2F1599533193678t29qq_JPEG%2F668973403935301_1216046570.jpg%22&amp;service=selective&amp;type=f240_240_q90"
 														width="20" height="20" draggable="false" loading="eager">
-												</div> <span
-												class="ChannelProfile_name_jT9wN BroadcastUnderCard_name_+7+cK">메이비투아</span></span></a>
+												</div><!--  <span
+												class="ChannelProfile_name_jT9wN BroadcastUnderCard_name_+7+cK">메이비투아</span></span></a>-->
 									</div>
 								</c:forEach>
 							</div>

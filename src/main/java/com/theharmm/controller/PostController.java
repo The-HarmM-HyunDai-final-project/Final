@@ -60,41 +60,7 @@ public class PostController {
 	@RequestMapping(value = "/social/user", method = RequestMethod.GET)
 	public void postManageGET(PostCriteria postcri, Model model, @RequestParam("email") String email) throws Exception {
 		
-		log.info("postManageGET postcontroller" + email);
-		/* 포스트 리스트 데이터 */
-		List<PostVO> list = postService.postGetByMailList(postcri,email);
-		if (!list.isEmpty()) {
-			model.addAttribute("list", list);
-		} else {
-			model.addAttribute("listCheck", "empty");
-			
-		}
-		
-		int listTotal = postService.postGetByMailTotal(email);
-		/* 페이지 인터페이스 데이터 */
-		model.addAttribute("pageMaker", new PostPageDTO(postcri, postService.postGetTotal(postcri)));
-		CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		String loginedMember_email = user.getUsername();
-		int followerCnt = postService.countFollower(email);
-		int followingCnt = postService.countFollowing(email);
-		//List<String> followerList = postService.getFollowerList(email);
-		//List<String> followingList = postService.getFollowingList(email);
-		
-		// 여기서 팔로잉, 팔로우 처리 필요
-		if (loginedMember_email.equals(email)) {
-			model.addAttribute("user", "true");
-		} else {
-			if (postService.checkFollow(loginedMember_email,email)) {
-				model.addAttribute("user", "팔로잉");
-			} else {
-				model.addAttribute("user", "팔로우");				
-			}
-		}
-		log.info("email" + email);
-		model.addAttribute("member_email", email);
-		model.addAttribute("listTotal", listTotal);
-		model.addAttribute("followerCnt", followerCnt);
-		model.addAttribute("followingCnt", followingCnt);
+
 	}
 
 	/* 이미지 출력 */
@@ -126,8 +92,7 @@ public class PostController {
 	@PostMapping("/social/user/postEnroll")
 	public String postEnrollPOST(PostVO post, RedirectAttributes rttr) throws Exception{
 		logger.info("postEnrollPOST......" + post);
-		logger.info("퍼센트: "+post.getPercent());
-		logger.info("결과: "+post.getResult());
+
 		
 		
 		postService.postEnroll(post);
@@ -195,13 +160,7 @@ public class PostController {
 		String json;
 		
 		try {
-			int result = postService.insertFollow(follower, following);
-			int followerCnt = postService.countFollower(following);
-			List<String> followerList = postService.getFollowerList(following);
-			log.info(followerCnt);
-			jsonObject.put("result", result);
-			jsonObject.put("followerCnt", followerCnt);
-			jsonObject.put("followerList", followerList);
+
 			log.info("성공");
 		} catch (Exception e) {
 			jsonObject.put("result", -1);
@@ -222,13 +181,7 @@ public class PostController {
 		String json;
 		
 		try {
-			int result = postService.deleteFollow(follower, following);
-			int followerCnt = postService.countFollower(following);
-			List<String> followerList = postService.getFollowerList(following);
-			log.info(followerCnt);
-			jsonObject.put("result", result);
-			jsonObject.put("followerCnt", followerCnt);
-			jsonObject.put("followerList", followerList);
+
 			log.info("성공");
 		} catch (Exception e) {
 			jsonObject.put("result", -1);

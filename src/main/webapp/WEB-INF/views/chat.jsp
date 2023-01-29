@@ -214,7 +214,7 @@
 		      <div class="player-wrapper" style="width:100%; height:100%;">
 		        <div class="aspect-spacer"></div>
 		        <div class="pos-absolute full-width full-height top-0">
-		          <video id="video-player" class="el-player" playsinline controls></video>
+		          <video id="video-player" class="el-player" playsinline controls autoplay></video>
 		        </div>
 		      </div>
 <!--             <div class="user_count">
@@ -280,7 +280,7 @@
     </div>
     
     
-<%-- <script src="${pageContext.request.contextPath}/resources/js/test.js" defer=""></script> --%>
+<script src="${pageContext.request.contextPath}/resources/js/test.js" defer=""></script>
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script type="text/javascript">
 	var auctionPrevPrice = 100000;
