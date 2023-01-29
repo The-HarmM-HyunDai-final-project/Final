@@ -387,8 +387,12 @@ function requestPay() {
 								<input type="hidden" name="shippingFee" value="${shippingFee}"/>
 								<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
 							</form>
-							<button onclick="checkPay()">결제하기</button> 
-							<!---->
+							<div data-v-14995178="" class="btn_confirm">
+								<a data-v-575aff82="" data-v-14995178="" href="#" onclick="checkPay()"
+									class="btn full solid buy"> 결제하기 </a>
+							</div>
+							
+							<!--<button onclick="checkPay()">결제하기</button> -->
 							<div data-v-1a009402="" data-v-4ae17423="" data-v-b8efdcc8=""
 								class="layer_order_price_confirm layer lg" id="layer_order_price_confirm"
 								style="display: none;">
