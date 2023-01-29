@@ -27,5 +27,4 @@ public interface PostService {
 
 	//부정 리뷰 리스트 조회
 	public List<PostVO> selectNegativePostList(int pid);
-
 }

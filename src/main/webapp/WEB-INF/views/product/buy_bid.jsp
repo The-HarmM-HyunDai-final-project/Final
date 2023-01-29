@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+
 <script src="${pageContext.request.contextPath}/resources/js/buy_order_tab.js" defer=""></script>
 <!DOCTYPE html>
 <html lang="ko">
@@ -113,6 +115,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
 <script>
 
 var IMP = window.IMP;   // 생략 가능
@@ -179,6 +182,8 @@ function requestPay() {
       }
     });
   }
+  
+
 </script>
 </head>
 <body>
@@ -187,6 +192,7 @@ function requestPay() {
 		<div id="__layout">
 			<div data-v-0590ccc1="" tabindex="0" class="wrap lg win_os">
 				<%@ include file="/WEB-INF/views/common/header.jsp"%>
+				
 				<!---->
 				<div data-v-63d14162="" data-v-0590ccc1=""
 					class="container buy lg step-2">
@@ -391,14 +397,15 @@ function requestPay() {
 													<span data-v-3a2a7b6b="">입찰 마감 기한</span>
 													<!---->
 												</dt>
+												
 												<dd data-v-3a2a7b6b="" class="price_text">${dDay}일 -
-													2023/02/19까지</dd>
+													${bidDate}까지</dd>
 											</dl>
 										</div>
 									</div>
 								</div>
 							</section>
-						
+
 							<section data-v-b8efdcc8="" class="buy_check">
 								
 								<div data-v-14995178="" data-v-b8efdcc8=""

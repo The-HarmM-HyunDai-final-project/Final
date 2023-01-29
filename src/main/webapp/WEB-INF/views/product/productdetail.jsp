@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
-
+<jsp:useBean id="now" class="java.util.Date" />
 <link
 	href="${pageContext.request.contextPath}/resources/css/b69f662.css"
 	rel="stylesheet" type="text/css">
@@ -10,6 +10,7 @@
 	rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"> <!-- 배너추가 --> 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/product_detail_tab.js" defer=""></script>
 <script src="${pageContext.request.contextPath}/resources/js/reviewstab.js" defer=""></script>
  <script>
@@ -34,8 +35,10 @@
                 imgSlide.src = imgList[i];
             }
         }
+        
+        
  </script>
- 
+
 <div class="container detail lg" data-v-01e212dd="" data-v-3007c576="">
 	<div class="content" data-v-01e212dd="">
 		<h2 class="blind" data-v-01e212dd="">상품 상세</h2>
@@ -44,21 +47,16 @@
 			<div class="column is_fixed" data-v-01e212dd="">
 				<div class="spread" data-v-01e212dd=""></div>
 				<div class="column_box" data-v-01e212dd="">
-				<!-- 상품상세페이지 배너 -->
 					<div class="detail_banner_area lg" data-v-07f24dc5=""
 						data-v-01e212dd="">
-						
-						
-					<%-- <div data-v-3d1a4f76="" data-v-07f24dc5="" dir="ltr"
+						<div data-v-3d1a4f76="" data-v-07f24dc5="" dir="ltr"
 							class="banner_slide detail_slide slick-slider slick-initialized">
 							<button data-v-21137603="" data-v-3d1a4f76="" type="button"
 								data-role="none" class="slick-arrow slick-prev slick-disabled"
 								style="display: block;">Previous</button>
-							<!---->
 							<div data-v-3d1a4f76="" class="slick-list">
 								<div data-v-e4caeaf8="" data-v-3d1a4f76="" class="slick-track"
 									style="width: 2800px; opacity: 1;">
-									<!---->
 									<div data-v-e4caeaf8="" tabindex="-1" data-index="0"
 										aria-hidden="false"
 										class="slick-slide slick-active slick-current"
@@ -90,7 +88,6 @@
 											</div>
 										</div>
 									</div>
-									<!---->
 									<div data-v-e4caeaf8="" tabindex="-1" data-index="1"
 										aria-hidden="true" class="slick-slide"
 										style="outline: none; width: 560px; position: relative; left: -560px; opacity: 0; transition: opacity 500ms ease 0s, visibility 500ms ease 0s;">
@@ -121,7 +118,6 @@
 											</div>
 										</div>
 									</div>
-									<!---->
 									<div data-v-e4caeaf8="" tabindex="-1" data-index="2"
 										aria-hidden="true" class="slick-slide"
 										style="outline: none; width: 560px; position: relative; left: -1120px; opacity: 0; transition: opacity 500ms ease 0s, visibility 500ms ease 0s;">
@@ -152,7 +148,6 @@
 											</div>
 										</div>
 									</div>
-									<!---->
 									<div data-v-e4caeaf8="" tabindex="-1" data-index="3"
 										aria-hidden="true" class="slick-slide"
 										style="outline: none; width: 560px; position: relative; left: -1680px; opacity: 0; transition: opacity 500ms ease 0s, visibility 500ms ease 0s;">
@@ -183,7 +178,6 @@
 											</div>
 										</div>
 									</div>
-									<!---->
 									<div data-v-e4caeaf8="" tabindex="-1" data-index="4"
 										aria-hidden="true" class="slick-slide"
 										style="outline: none; width: 560px; position: relative; left: -2240px; opacity: 0; transition: opacity 500ms ease 0s, visibility 500ms ease 0s;">
@@ -214,7 +208,6 @@
 											</div>
 										</div>
 									</div>
-									<!---->
 								</div>
 							</div>
 							<button data-v-21137603="" data-v-3d1a4f76="" type="button"
@@ -227,28 +220,7 @@
 								<li class=""><button>4</button></li>
 								<li class=""><button>5</button></li>
 							</ul>
-						</div> --%>
-						<!-- 여기다 -->
-					</div>
-					<div class="banner_alert lg" data-v-32b7052e="" data-v-01e212dd="">
-						<a href="https://kream.co.kr/api/app/pages/notice_DZ5485-612.html"
-							class="alert_wrap" data-v-32b7052e=""><div
-								class="banner_alert_content" data-v-32b7052e="">
-								<p class="alert_title" data-v-32b7052e="">
-									<span class="care_mark" data-v-32b7052e="">주의</span><span
-										class="alert_text" data-v-32b7052e="">상품 특이사항 안내</span>
-								</p>
-								<p class="alert_subtext" data-v-32b7052e="">해당 상품의 개체별 특이사항
-									안내해드립니다.</p>
-							</div>
-							<div class="ico_arrow" style="display:;" data-v-32b7052e="">
-								<svg xmlns="http://www.w3.org/2000/svg"
-									class="ico-arr-type icon sprite-icons" data-v-32b7052e="">
-									<use
-										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-type"
-										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-type"
-										data-v-32b7052e=""></use></svg>
-							</div></a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -271,10 +243,19 @@
 							<div title="모든 사이즈" option-title="사이즈" class="detail_size"
 								data-v-ddee2978="" data-v-3900a1a2="">
 								<div class="title" data-v-ddee2978="">
-									
+									<span class="title_txt" data-v-ddee2978="">사이즈</span>
 								</div>
 								<div class="size" data-v-ddee2978="">
-								
+									<a href="#" class="btn_size" data-v-6c6430ce=""
+										data-v-ddee2978=""><span class="btn_text"
+										data-v-6c6430ce="">모든 사이즈</span> <svg
+											xmlns="http://www.w3.org/2000/svg"
+											class="ico-arr-dir-down-circle icon sprite-icons"
+											data-v-6c6430ce="">
+											<use
+												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-dir-down-circle"
+												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-dir-down-circle"
+												data-v-6c6430ce=""></use></svg></a>
 								</div>
 							</div>
 							<div class="detail_price" data-v-679b6792="" data-v-3900a1a2="">
@@ -300,6 +281,7 @@
 									data-v-23bbaa82="" class="title">구매</strong>
 									<div data-v-23bbaa82="" class="price">
 										<span data-v-23bbaa82="" class="amount"><em
+
 											data-v-23bbaa82="" class="num">${sellDTO.price}</em><span
 											data-v-23bbaa82="" class="won">원</span></span><span
 											data-v-23bbaa82="" class="desc">즉시 구매가</span>
@@ -312,7 +294,6 @@
 											data-v-23bbaa82="" class="desc">즉시 판매가</span>
 									</div></a>
 							</div>
-							
 						</div>
 					</div>
 					<div class="product_info_wrap" data-v-3900a1a2="">
@@ -365,6 +346,82 @@
 						</div>
 						
 					</div>
+					<div class="wrap_sales" data-v-69832834="" data-v-3900a1a2="">
+						<div class="tab_area" data-v-b6b2883e="" data-v-69832834="">
+							<ul role="tablist" class="tab_list" data-v-b6b2883e="">
+								<li data-v-b6b2883e="" role="tab" aria-selected="false"
+									aria-controls="sales_panel1" class="item on"><a
+									data-v-b6b2883e="" href="#" class="item_link">1개월</a></li>
+								<li data-v-b6b2883e="" role="tab" aria-selected="false"
+									aria-controls="sales_panel2" class="item"><a
+									data-v-b6b2883e="" href="#" class="item_link">3개월</a></li>
+								<li data-v-b6b2883e="" role="tab" aria-selected="false"
+									aria-controls="sales_panel3" class="item"><a
+									data-v-b6b2883e="" href="#" class="item_link">6개월</a></li>
+								<li data-v-b6b2883e="" role="tab" aria-selected="false"
+									aria-controls="sales_panel4" class="item"><a
+									data-v-b6b2883e="" href="#" class="item_link">1년</a></li>
+								<li data-v-b6b2883e="" role="tab" aria-selected="true"
+									aria-controls="sales_panel5" class="item"><a
+									data-v-b6b2883e="" href="#" class="item_link">전체</a></li>
+							</ul>
+							<br/><br/>
+							<div id="sales_panel1" role="tabpanel" span="1m"
+								class="tab_content show" data-v-3c9dd7e9="" data-v-69832834=""
+								data-v-b6b2883e="">
+								<div class="graph" data-v-04d43b10="" data-v-69832834=""
+									data-v-3c9dd7e9="">
+									<canvas data-v-04d43b10=""
+										id="sales_canvas1" height="0"
+										style="display: block; box-sizing: border-box; height:200px;width:530px;"
+										width="0"></canvas>
+								</div>
+							</div>
+							<div id="sales_panel2" role="tabpanel" span="3m"
+								class="tab_content" data-v-3c9dd7e9="" data-v-69832834=""
+								data-v-b6b2883e="">
+								<div class="graph" data-v-04d43b10="" data-v-69832834=""
+									data-v-3c9dd7e9="">
+									<canvas data-v-04d43b10=""
+										id="sales_canvas2" height="0"
+										style="display: block; box-sizing: border-box; height:200px;width:530px;"
+										width="0"></canvas>
+								</div>
+							</div>
+							<div id="sales_panel3" role="tabpanel" span="6m"
+								class="tab_content" data-v-3c9dd7e9="" data-v-69832834=""
+								data-v-b6b2883e="">
+								<div class="graph" data-v-04d43b10="" data-v-69832834=""
+									data-v-3c9dd7e9="">
+									<canvas data-v-04d43b10=""
+										id="sales_canvas3" height="0"
+										style="display: block; box-sizing: border-box; height:200px;width:530px;"
+										width="0"></canvas>
+								</div>
+							</div>
+							<div id="sales_panel4" role="tabpanel" span="1y"
+								class="tab_content" data-v-3c9dd7e9="" data-v-69832834=""
+								data-v-b6b2883e="">
+								<div class="graph" data-v-04d43b10="" data-v-69832834=""
+									data-v-3c9dd7e9="">
+									<canvas data-v-04d43b10=""
+										id="sales_canvas4" height="0"
+										style="display: block; box-sizing: border-box; height:200px;width:530px;"
+										width="0"></canvas>
+								</div>
+							</div>
+							<div id="sales_panel5" role="tabpanel" span="all"
+								class="tab_content" data-v-3c9dd7e9="" data-v-69832834=""
+								data-v-b6b2883e="">
+								<div class="graph" data-v-04d43b10="" data-v-69832834=""
+									data-v-3c9dd7e9="">
+									<canvas data-v-04d43b10=""
+										id="sales_canvas5" 
+										style="display: block; box-sizing: border-box; height:200px;width:530px;"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
 
 					<div class="detail_wrap" data-v-3900a1a2=""
 						style="margin-top: 30px">
@@ -373,7 +430,7 @@
 								<div class="tab_area" data-v-b6b2883e="" data-v-4379daa7="">
 									<ul role="tablist" class="tab_list" data-v-b6b2883e="">
 										<li data-v-b6b2883e="" role="tab" aria-selected="true"
-											aria-controls="panel1" class="item show on"><a
+											aria-controls="panel1" class="item on"><a
 											data-v-b6b2883e="" href="#" class="item_link">체결 거래</a></li>
 										<li data-v-b6b2883e="" role="tab" aria-selected="false"
 											aria-controls="panel2" class="item"><a
@@ -1033,8 +1090,7 @@
 			<!---->
 		</div>
 		<div class="feed_area" data-v-02e77beb="" data-v-01e212dd="">
-			<h2 class="feed_title" data-v-02e77beb="">
-			</h2>
+			
 			<!-- 긍부정에 대한 리뷰 -->
 			<div class="product-detail-tab tab-wrap2 anchor-wrap">
 				<ul class="tabs">
@@ -1057,7 +1113,7 @@
 					<h3 class="sec-title">긍정리뷰</h3>
 					<div class="review-total">
 						<div class="member-total-point">
-							<h4 class="tit">사용자 총 평점</h4>
+							<h4 class="tit">키워드</h4>
 							<p class="point size-l">
 								<span class="ico" style="width: 98%;">별점</span> <span
 									class="num">4.9</span>
@@ -1286,8 +1342,6 @@
 
 					<div class="product-detail-review-list">
 						<div class="head">
-							<p class="txt">상품 구매 후 리뷰 작성시 H.Plus를 드립니다. (포토리뷰 1,000포인트,
-								텍스트리뷰 300포인트 증정)</p>
 							<div id="prdReviewFilter" class="opt">
 								<div class="select">
 									<button type="button" class="sel-btn"
@@ -1354,59 +1408,48 @@
 								type="hidden" id="godEvlTurn" value="">
 
 							<ul class="list-content">
-								<li>
-									<div class="list-row fold-header">
-										<div class="cell-title">
-											<ul class="etc-info">
-												<li><span class="point size-m"><span class="ico"
-														style="width: 100%">별점 5점</span></span></li>
-												<li>
-													<button type="button" class="btn-like2"
-														onclick="addGodEvlLikeCount(this,addLikeList);"
-														godevlturn="10" reviewgodno="GM0121122308150">
-														<span class="like-count" likecnt="0"> - </span>
-													</button>
-												</li>
-												<li><span class="date">2022.12.02</span></li>
-											</ul>
-											<p class="title-review">기본니트</p>
-											<button type="button" class="btn-fold">열기</button>
-										</div>
-									</div>
-
-									<div class="fold-cont">
-										<div class="review-group">
-											<ul class="review-prd-info">
-												<li>
-													<div class="prd-name">lam****&nbsp;</div>
-												</li>
-												<li>
-													<div class="prd-option">
-
-														&nbsp;160cm ,보통체형 &nbsp;/ &nbsp; 구매옵션 : S<em
-															class="prd-option-color"> <span
-															class="pdColor-/colorchips/GM0121122308150_COLORCHIP.jpg">BLUE</span>
-														</em>
-													</div>
-												</li>
-											</ul>
-
-											<div class="txt-box">브이넥이 조금 깊은감은 있지만 니트재질이 너무 부드럽고
-												좋더라구요 사이즈는 정사이즈로 주문하시면 될듯합니다 크게 나온옷은 아닙니다.</div>
-											<p class="wear-feeling">
-												<span> 핏감 : 슬림 </span> <span> 두께감 : 얇음 </span> <span>
-													신축성 : 좋음 </span> <span> 비침 : 있음 </span>
-											</p>
-											<div class="review-report">
-												<button type="button" class="btn-report"
-													onclick="alert('로그인 후 참여 가능합니다.');location.href='/public/member/login'">
-													<span>신고하기</span>
-												</button>
+								<c:forEach var="positivePost" items="${positivePostList}">
+									<li>
+										<div class="list-row fold-header">
+											<div class="cell-title">
+												<div class="review-group">
+												<ul class="review-prd-info">
+													<li>
+														<div class="prd-name">${positivePost.member_email }&nbsp;</div>
+													</li>
+													<!-- <li>
+														<div class="prd-option">
+															구매옵션 : S
+														</div>
+													</li> -->
+													<li><span class="date">${positivePost.register_date }</span></li>
+												</ul>
+	
+												<div class="txt-box"> ${positivePost.contents }</div>
+												
+												
+											</div>
+												<button type="button" class="btn-fold">열기</button>
 											</div>
 										</div>
-									</div>
-								</li>
-								
+	
+										<div class="fold-cont">
+											<div class="review-group">
+													<ul class="files">
+														<li class="img-file">
+															<button type="button" onclick="layerViewImg();"
+																style="background-image: url(${pageContext.request.contextPath}/${positivePost.upload_path}/${positivePost.uuid}_${positivePost.file_name}); transform: rotate(0deg);">
+																<img
+																	src="${pageContext.request.contextPath}/${positivePost.upload_path}/${positivePost.uuid}_${positivePost.file_name}"
+																	alt="2023-01-18-16-29-33-366"
+																	style="transform: rotate(0deg);">
+															</button>
+														</li>
+													</ul>
+												</div>
+										</div>
+									</li>
+								</c:forEach>
 							</ul>
 
 						</div>
@@ -1422,7 +1465,7 @@
 					<h3 class="sec-title">비판리뷰</h3>
 					<div class="review-total">
 						<div class="member-total-point">
-							<h4 class="tit">사용자 총 평점</h4>
+							<h4 class="tit">키워드</h4>
 							<p class="point size-l">
 								<span class="ico" style="width: 98%;">별점</span> <span
 									class="num">4.9</span>
@@ -1719,59 +1762,48 @@
 								type="hidden" id="godEvlTurn" value="">
 
 							<ul class="list-content">
-								<li>
-									<div class="list-row fold-header">
-										<div class="cell-title">
-											<ul class="etc-info">
-												<li><span class="point size-m"><span class="ico"
-														style="width: 100%">별점 5점</span></span></li>
-												<li>
-													<button type="button" class="btn-like2"
-														onclick="addGodEvlLikeCount(this,addLikeList);"
-														godevlturn="10" reviewgodno="GM0121122308150">
-														<span class="like-count" likecnt="0"> - </span>
-													</button>
-												</li>
-												<li><span class="date">2022.12.02</span></li>
-											</ul>
-											<p class="title-review">기본니트</p>
-											<button type="button" class="btn-fold">열기</button>
-										</div>
-									</div>
-
-									<div class="fold-cont">
-										<div class="review-group">
-											<ul class="review-prd-info">
-												<li>
-													<div class="prd-name">lam****&nbsp;</div>
-												</li>
-												<li>
-													<div class="prd-option">
-
-														&nbsp;160cm ,보통체형 &nbsp;/ &nbsp; 구매옵션 : S<em
-															class="prd-option-color"> <span
-															class="pdColor-/colorchips/GM0121122308150_COLORCHIP.jpg">BLUE</span>
-														</em>
-													</div>
-												</li>
-											</ul>
-
-											<div class="txt-box">브이넥이 조금 깊은감은 있지만 니트재질이 너무 부드럽고
-												좋더라구요 사이즈는 정사이즈로 주문하시면 될듯합니다 크게 나온옷은 아닙니다.</div>
-											<p class="wear-feeling">
-												<span> 핏감 : 슬림 </span> <span> 두께감 : 얇음 </span> <span>
-													신축성 : 좋음 </span> <span> 비침 : 있음 </span>
-											</p>
-											<div class="review-report">
-												<button type="button" class="btn-report"
-													onclick="alert('로그인 후 참여 가능합니다.');location.href='/public/member/login'">
-													<span>신고하기</span>
-												</button>
+								<c:forEach var="negativePost" items="${negativePostList}">
+									<li>
+										<div class="list-row fold-header">
+											<div class="cell-title">
+												<div class="review-group">
+												<ul class="review-prd-info">
+													<li>
+														<div class="prd-name">${negativePost.member_email }&nbsp;</div>
+													</li>
+													<!-- <li>
+														<div class="prd-option">
+															구매옵션 : S
+														</div>
+													</li> -->
+													<li><span class="date">${negativePost.register_date }</span></li>
+												</ul>
+	
+												<div class="txt-box"> ${negativePost.contents }</div>
+												
+												
+											</div>
+												<button type="button" class="btn-fold">열기</button>
 											</div>
 										</div>
-									</div>
-								</li>
-								
+	
+										<div class="fold-cont">
+											<div class="review-group">
+													<ul class="files">
+														<li class="img-file">
+															<button type="button" onclick="layerViewImg();"
+																style="background-image: url(${pageContext.request.contextPath}/${negativePost.upload_path}/${negativePost.uuid}_${negativePost.file_name}); transform: rotate(0deg);">
+																<img
+																	src="${pageContext.request.contextPath}/${negativePost.upload_path}/${negativePost.uuid}_${negativePost.file_name}"
+																	alt="2023-01-18-16-29-33-366"
+																	style="transform: rotate(0deg);">
+															</button>
+														</li>
+													</ul>
+												</div>
+										</div>
+									</li>
+								</c:forEach>
 							</ul>
 
 						</div>
@@ -1782,12 +1814,9 @@
 
 				</section>
 			</div>
-				
-
-			
 			</div>
 		</div>
-
+	
 		<!---->
 	</div>
 	<div data-v-01e212dd="">
@@ -1828,4 +1857,126 @@
 
 
 <!-- </div> -->
+
+<script>
+var date_list1 = new Array();
+var money_list1 = new Array();
+
+var date_list2 = new Array();
+var money_list2 = new Array(); 
+
+var date_list3 = new Array();
+var money_list3 = new Array(); 
+
+var date_list4 = new Array();
+var money_list4 = new Array(); 
+
+var date_list5 = new Array();
+var money_list5 = new Array(); 
+ 
+<fmt:parseNumber var="today" value="${now.time / (1000*60*60*24)}" />
+ 
+
+<c:forEach var="allSignContract" items="${allSignContractList}">
+<fmt:parseNumber var="dealday" value="${allSignContract.nowdate.time/ (1000*60*60*24)}"  />
+date_list5.push("${allSignContract.nowdate}");
+money_list5.push("${allSignContract.price}");
+<c:if test="${today - dealday <= 30}">
+date_list1.push("${allSignContract.nowdate}");
+money_list1.push("${allSignContract.price}");
+</c:if>
+<c:if test="${today - dealday <= 90}">
+date_list2.push("${allSignContract.nowdate}");
+money_list2.push("${allSignContract.price}");
+</c:if>
+<c:if test="${today - dealday <= 180}">
+date_list3.push("${allSignContract.nowdate}");
+money_list3.push("${allSignContract.price}");
+</c:if>
+<c:if test="${today - dealday <= 365}">
+date_list4.push("${allSignContract.nowdate}");
+money_list4.push("${allSignContract.price}");
+</c:if>
+</c:forEach>
+
+
+
+
+
+<c:forEach var="i" begin="1" end="5" >
+	const labels${i} = date_list${i};
+
+	  const data${i} = {
+	    labels: labels${i},
+	    datasets: [{
+	    	 type: 'line',
+	    	    
+	    	    borderColor: 'rgb(255, 0, 0)',
+	    	    pointHitRadius: 5, // 호버 했을때 영억
+	    	    lineTension: 0.1, // 꺾임 정도
+	    	    fill: false,
+	    	    data: money_list${i},
+	    }]
+	  };
+
+	  const config${i} = {
+	    type: 'line',
+	    data: data${i},
+	    options: {legend: {
+      	display: false
+      },
+      responsive: true,
+      // 플러그인 설정
+      plugins: {
+        // data labels 플러그인
+        datalabels: {
+          display: false,
+        },
+      },
+      scales: {
+          // Y축
+          yAxes: [ 
+            {
+            ticks: { 
+              // 간격 설정
+              fontColor: '#aaaaaa',
+              fontSize: 11,
+            },
+            position: 'right',
+              gridLines: { 
+                // grid line 설정
+                display: false, 
+                drawBorder: false,
+                color: '#3c3d40',
+              },
+            },
+          ],
+          // X축
+          xAxes: [ 
+            {
+              // bar 너비 조정
+              categoryPercentage: 0.7,
+              maxBarThickness: 20,
+              ticks: {
+                fontColor: '#ffffff',
+                fontSize: 0,
+              },
+              gridLines: {
+               display: false,
+              },
+            },
+          ],
+        },
+	    } 
+	  };
+	  
+
+
+const myChart${i} = new Chart(
+document.getElementById('sales_canvas${i}'),
+config${i}
+);
+</c:forEach>
+
+</script>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

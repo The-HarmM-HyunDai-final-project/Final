@@ -82,7 +82,6 @@ public class ProductDetailServiceImpl implements ProductDetailService{
 		return productDetailMapper.insertBuyOrder(buyInfoMap);
 	}
 
-
 	@Override
 	public BuyDTO selectMinBuyProductPrice(int pid) {
 		return productDetailMapper.selectMinBuyProductPrice(pid);
@@ -114,4 +113,5 @@ public class ProductDetailServiceImpl implements ProductDetailService{
 		
 		return productDetailMapper.selectAllBuyBid(pid);
 	}
+
 }

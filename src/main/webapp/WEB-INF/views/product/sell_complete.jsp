@@ -137,8 +137,8 @@
 											<!---->
 										</div>
 										<div data-v-ee9fa48c="" class="complete_btn_box">
-											<a
-												data-v-575aff82="" data-v-ee9fa48c="" href="#"
+
+										<a	data-v-575aff82="" data-v-ee9fa48c="" href="#"
 												class="btn outlinegrey medium"> SHOP 바로가기 </a>
 										</div>
 										
