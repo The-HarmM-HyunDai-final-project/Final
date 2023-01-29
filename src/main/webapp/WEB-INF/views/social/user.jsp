@@ -123,6 +123,8 @@
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>	
 <!-- 알림 -->	
  <script src="${pageContext.request.contextPath}/resources/js/alarm.js" ></script>
+
+
 <!-- 서은 추가 -->
 
 <link rel="stylesheet"
@@ -913,14 +915,42 @@
 			      						document.getElementById("followerCnt").innerText = data.followerCnt;
 			      						
 			      						if (socket) {
-			      							let socketMsg = "follow," + follower +","+ following +","+ following +","+ " ";
+			      							let socketMsg = "followin," + follower +","+ following +","+ following +","+ " ";
 			      							console.log("msgmsg : " + socketMsg);
 			      							socket.send(socketMsg);
 			      						}
 			      						
 			      						
 			      					} else {
-			      						alert("팔로우 에러");
+			      						alert("팔로우 에러22");
+					      				 console.log(following);
+					      				 console.log(follower);
+					      				 
+					      					$.ajax({
+					      						url: "/social/deleteFollow",
+					      						data: {
+					      							"follower" : follower,
+					      							"following" : following
+					      						}
+					      					}).done(function (data) {
+					      						console.log("delete" + data.result);
+					      						if (data.result === 1) {
+					      							alert("팔로우를 취소 합니다");
+					      							$("#followBtn").removeClass('outlinegrey');
+					      							$("#followBtn").addClass('solid');
+					      							document.getElementById("followBtn").innerText = "팔로우"
+					      							document.getElementById("followerCnt").innerText = data.followerCnt;
+					      							
+						      						if (socket) {
+						      							let socketMsg = "followdel," + follower +","+ following +","+ following +","+ " ";
+						      							console.log("msgmsg : " + socketMsg);
+						      							socket.send(socketMsg);
+						      						}
+						      						
+					      						} else {
+					      							alert("팔로우 취소 에러");
+					      						}
+					      					});	 
 			      					}
 			      				});	 	
 			      			} else {	
@@ -941,15 +971,18 @@
 			      							$("#followBtn").addClass('solid');
 			      							document.getElementById("followBtn").innerText = "팔로우"
 			      							document.getElementById("followerCnt").innerText = data.followerCnt;
+			      							
+				      						if (socket) {
+				      							let socketMsg = "followdel," + follower +","+ following +","+ following +","+ " ";
+				      							console.log("msgmsg : " + socketMsg);
+				      							socket.send(socketMsg);
+				      						}
 			      						} else {
 			      							alert("팔로우 취소 에러");
 			      						}
 			      					});	 
 			      			}
-			            });	
-			            
-			            
-						
+			            });		
 					});
 </script>
 	<link

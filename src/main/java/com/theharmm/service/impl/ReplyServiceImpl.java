@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.theharmm.domain.AlarmDTO;
 import com.theharmm.domain.ReplyDTO;
 import com.theharmm.mapper.ReplyMapper;
 import com.theharmm.service.ReplyService;
@@ -85,6 +86,31 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public List<ReplyDTO> getChildReplyList(int post_id, int depth) {
 		return replymapper.getChildReplyList(post_id, depth);
+	}
+
+	@Override
+	public int insertAlarm(AlarmDTO alarm) {
+		return replymapper.insertAlarm(alarm);
+	}
+
+	@Override
+	public int deleteAlarm(int alarmid) {
+		return replymapper.deleteAlarm(alarmid);
+	}
+
+	@Override
+	public List<AlarmDTO> getAlarmList(String receiverEmail) {
+		return replymapper.alarmList(receiverEmail);
+	}
+
+	@Override
+	public int countAlarm(String receiverEmail) {
+		return replymapper.countAlarm(receiverEmail);
+	}
+
+	@Override
+	public int getAlarmid() {
+		return replymapper.alarmid() ;
 	}
 
 }

@@ -7,12 +7,15 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import com.theharmm.domain.AlarmDTO;
 import com.theharmm.domain.MemberVO;
+import com.theharmm.service.ReplyService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -21,6 +24,9 @@ public class EchoHandler extends TextWebSocketHandler {
 	
 	//로그인 한 전체
 	List<WebSocketSession> sessions = new ArrayList<WebSocketSession>();
+	
+	@Autowired
+	ReplyService replyservice;
 	
 	// 1대1
 	Map<String, WebSocketSession> userSessionsMap = new HashMap<String, WebSocketSession>();
@@ -55,16 +61,62 @@ public class EchoHandler extends TextWebSocketHandler {
 				// 작성자가 로그인해서 있다면
 				WebSocketSession boardWriterSession = userSessionsMap.get(receiverUsername);
 				
-				if("reply".equals(cmd) && boardWriterSession != null) {
+				if("reply".equals(cmd) && boardWriterSession != null) {					
 					TextMessage tmpMsg = new TextMessage(caller + "님이 " + 
 										"<a type='external' href='${pageContext.request.contextPath}/social/user/details?post_id="+seq+"'>" + seq + "</a> 번 게시글에 댓글을 남겼습니다.");
 					boardWriterSession.sendMessage(tmpMsg); //로그인해있는 유저에게 보내기
-				
-				}else if("follow".equals(cmd) && boardWriterSession != null) {
+					log.info("소켓 실행");
+					AlarmDTO alarm = new AlarmDTO();
+					alarm.setAlarmid(0);
+					alarm.setCaller(caller);
+					alarm.setCmd(cmd);
+					alarm.setReceiver(receiver);
+					alarm.setReceiverEmail(receiverUsername);
+					alarm.setSeq(seq);
+					
+					int result = replyservice.insertAlarm(alarm);
+					log.info("알람 insert " + result);
+					
+				}else if("followin".equals(cmd) && boardWriterSession != null) {
+					log.info("소켓 실행");
+					AlarmDTO alarm = new AlarmDTO();
+					alarm.setAlarmid(0);
+					alarm.setCaller(caller);
+					alarm.setCmd(cmd);
+					alarm.setReceiver(receiver);
+					alarm.setReceiverEmail(receiverUsername);
+					alarm.setSeq(seq);
+					
+					int result = replyservice.insertAlarm(alarm);
+					log.info("알람 insert " + result);
+					
+					int nowAlarmid = replyservice.getAlarmid();
+					
 					TextMessage tmpMsg = new TextMessage(caller + "님이 " + receiver +
-							 "님을 팔로우를 시작했습니다.");
+							 "님을 팔로우를 시작했습니다.!"+ nowAlarmid);
 					boardWriterSession.sendMessage(tmpMsg);
 					
+					
+					
+				}else if("followdel".equals(cmd) && boardWriterSession != null) {
+					log.info("소켓 실행");
+					AlarmDTO alarm = new AlarmDTO();
+					alarm.setAlarmid(0);
+					alarm.setCaller(caller);
+					alarm.setCmd(cmd);
+					alarm.setReceiver(receiver);
+					alarm.setReceiverEmail(receiverUsername);
+					alarm.setSeq(seq);
+					
+					int result = replyservice.insertAlarm(alarm);
+					log.info("알람 delete " + result);
+					
+					int nowAlarmid = replyservice.getAlarmid();
+					
+					TextMessage tmpMsg = new TextMessage(caller + "님이 " + receiver +
+							 "님을 팔로우 취소 했습니다.!"+ nowAlarmid);
+					boardWriterSession.sendMessage(tmpMsg);
+
 				}
 			}
 		}

@@ -15,6 +15,7 @@
 <link rel="shortcut icon" href="#">
 <!-- 한글 깨짐방지로 넣어봄 -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta data-n-head="ssr" charset="utf-8">
 <meta data-n-head="ssr" data-hid="viewport" name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
@@ -58,15 +59,18 @@
 <script async="" src="https://websdk.appsflyer.com?st=pba&amp;"></script>
 <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
 
+<!-- 부트스트랩  -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/bootstrap.min.css">
+<script
+	src="${pageContext.request.contextPath}/resources/bootstrap/bootstrap.min.js"></script>
+ 
 <!-- 제이쿼리 cdn -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <!-- sockJS -->
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>	
-<!-- 알림 -->	
- <script src="${pageContext.request.contextPath}/resources/js/alarm.js"></script>
-	
+
 <script data-n-head="ssr" type="application/ld+json">
         {
             "@context": "http://schema.org",
@@ -133,6 +137,9 @@
 	href="${pageContext.request.contextPath}/resources/css/48656c7.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/ae12c7f.css">
+	
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/pop.css">
 <style type="text/css">
 /*# sourceMappingURL=contenteditable.vue.map */
 </style>
@@ -141,11 +148,12 @@
 	
 </script>
 <script
-	src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-SRFKTMTR0R"
-	async=""></script>
+	src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-SRFKTMTR0R" async=""></script>
+
 </head>
 
 <body class="vsc-initialized">
+
 	<div id="__nuxt">
 		<!---->
 		<div id="__layout">
@@ -196,6 +204,9 @@
 					</div>
 					<div class="header_main" data-v-147586e1="">
 						<div class="main_inner" data-v-147586e1="">
+						<!-- 알림창 -->
+							
+							<!-- 알림창 -->
 							<h1 data-v-147586e1="">
 								<a href="/" aria-label="홈" class="logo" data-v-147586e1="">
 									<img
@@ -216,15 +227,23 @@
 												ABOUT </a></li>
 									</ul>
 								</nav>
-								<div class="search_btn_box" data-v-147586e1="">
-									<a aria-label="검색" href="#" class="btn_search"
-										data-v-147586e1=""><svg xmlns="http://www.w3.org/2000/svg"
-											class="nav-search icon sprite-icons" data-v-147586e1="">
-                                            <use
-												href="/resources/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-nav-search"
-												xlink:href="/resources/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-nav-search"
-												data-v-147586e1=""></use>
-                                        </svg></a>
+								<div class="search_btn_box" data-v-147586e1="" id = "showAlarm">
+									<notification-indicator> <a
+										
+										class="Header-link notification-indicator position-relative tooltipped tooltipped-sw"
+										 id="AppHeader-notifications-button">
+
+										<span data-target="notification-indicator.badge"
+										class="mail-status unread" style="color: gray" id = "alarmCnt"> 0 </span> <svg
+											aria-hidden="true" height="16" viewBox="0 0 16 16"
+											version="1.1" width="16" data-view-component="true"
+											class="octicon octicon-bell">
+    <path
+												d="M8 16a2 2 0 001.985-1.75c.017-.137-.097-.25-.235-.25h-3.5c-.138 0-.252.113-.235.25A2 2 0 008 16z"></path>
+											<path fill-rule="evenodd"
+												d="M8 1.5A3.5 3.5 0 004.5 5v2.947c0 .346-.102.683-.294.97l-1.703 2.556a.018.018 0 00-.003.01l.001.006c0 .002.002.004.004.006a.017.017 0 00.006.004l.007.001h10.964l.007-.001a.016.016 0 00.006-.004.016.016 0 00.004-.006l.001-.007a.017.017 0 00-.003-.01l-1.703-2.554a1.75 1.75 0 01-.294-.97V5A3.5 3.5 0 008 1.5zM3 5a5 5 0 0110 0v2.947c0 .05.015.098.042.139l1.703 2.555A1.518 1.518 0 0113.482 13H2.518a1.518 1.518 0 01-1.263-2.36l1.703-2.554A.25.25 0 003 7.947V5z"></path>
+</svg>
+									</a> </notification-indicator>
 								</div>
 							</div>
 							<div style="display: none;" data-v-147586e1="">
@@ -328,4 +347,115 @@
 							<!---->
 						</div>
 					</div>
+					<!-- 알람 모달 -->
+					<div aria-live="polite" aria-atomic="true"
+						class="position-relative" >
+						<!-- Position it: -->
+						<!-- - `.toast-container` for spacing between toasts -->
+						<!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner -->
+						<!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
+						<div class="toast-container position-absolute top-0 end-0 p-3" id = "toastContainer">
+
+						</div>
+					</div>
+					<!-- 알람 모달  -->
+					<sec:authorize access="hasRole('ROLE_MEMBER')">
+						<sec:authentication property="principal.username" var="MID" />
+					</sec:authorize>
+					<input type="hidden" name="mid" id="mid" value="${MID}">
 				</div>
+
+<script>
+	$(document).ready(function () {
+		
+		var mid = $("#mid").val();
+		console.log("mid-------------" + mid);
+		
+		countAlarm(mid);
+		
+		function countAlarm(mid) {
+			console.log(mid);
+			$.ajax({		
+				url: "/alarm/countAlarm"
+
+			}).done(function (data) {
+				console.log("countAlarm " + data);
+				//$('#alarmCnt').addClass('bell-badge-danger bell-badge')
+				$('#alarmCnt').text(data);
+			});	
+		}
+		
+        // 검색목록 클릭시
+        $(document).on("click", ".btn-close", function (e) {
+        	console.log(e.currentTarget.dataset.alarmid);
+        	var alarmid = e.currentTarget.dataset.alarmid;
+        	
+        	console.log(alarmid);
+        	
+			$.ajax({		
+				url: "/alarm/deleteAlarm",
+				data: {
+						"alarmid" : alarmid
+					}
+			}).done(function (data) {
+				console.log("deleteAlarm " + data);
+				if (data == 1) {
+					console.log("알람창" + document.getElementById('alarmid'+alarmid).style.display);
+					document.getElementById('alarmid'+alarmid).style.display = "none";
+					countAlarm(mid);
+				} else {
+					console.log("알람창 삭제 오류");
+				}
+				
+			});	
+        });
+        
+		function showAlarmList () {
+			console.log(mid);
+			$.ajax({		
+				url: "/alarm/getAlarmList"
+
+			}).done(function (data) {
+				console.log("알람 리스트 반환" + data);
+				alarm_array = data.alarms;
+				let html = "";
+				for (let i = 0; i < alarm_array.length; i++) { 
+					let alarm = alarm_array.at(i);
+					let tmp_html = "";
+					let msg = "";
+					
+					if("reply" == alarm.cmd) {
+						msg = alarm.caller + "님이 " + "<a type='external' href='${pageContext.request.contextPath}/social/user/details?post_id="+alarm.seq+"'>"  + alarm.seq + "</a> 번 게시글의"+ alarm.receiver +"님에게 댓글을 남겼습니다."
+					} else if("followin" == alarm.cmd) {
+						msg = alarm.caller + "님이 " + alarm.receiver + "님을 팔로우를 시작했습니다."
+					} else if("followdel" == alarm.cmd) {
+						msg = alarm.caller + "님이 " + alarm.receiver + "님을 팔로우 취소 했습니다."
+					}
+					
+					tmp_html =
+						`	<div class="toast" role="alert" aria-live="assertive"  style="display : block; font-size: 1.5rem; background-color: rosybrown;"
+								aria-atomic="true" data-alarmid = "`+alarm.alarmid +`" id = "alarmid`+alarm.alarmid+`">
+								<div class="toast-header">
+									<strong
+										class="me-auto">ALARM</strong> 
+									<button type="button" class="btn-close" data-bs-dismiss="toast" 
+										aria-label="Close" data-alarmid = "`+alarm.alarmid+`"></button>
+								</div>
+								<div class="toast-body">`+ msg + `</div>
+							</div> `	   		
+	   
+					html += tmp_html;
+				}
+				$("#toastContainer").html(html); 
+			});	
+		}
+		
+		
+		 $("#showAlarm").on("click", function (e) {
+			 showAlarmList ();
+		 });
+		
+        
+	});	
+	
+</script>

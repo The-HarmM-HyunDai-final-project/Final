@@ -2,6 +2,7 @@
    var socket = null;
 
    $(document).ready(function (){
+	   
 	   connectWs();
    });
 
@@ -15,26 +16,40 @@
            console.log('info: connection opened.');
      };
 
+     // 클라이언트 쪽에서 수신된 메세지를 받고 실행되는 부분
     sock.onmessage = function(evt) {
 	 	var data = evt.data;
-	   	console.log("ReceivMessage : " + data + "\n");
-
+	   	//console.log("ReceivMessage : " + data + "\n");
+	   	//var receiverEmail = urlParams.get("email");
+		//console.log("receiverEmail " + receiverEmail);
+		var list = data.split("!");
 	   	// 이건 알림시 알림 숫자 올리기
-	   	/*$.ajax({
-			url : '/mentor/member/countAlarm',
-			type : 'POST',
+/*	   	$.ajax({
+			url : '/alarm/countAlarm',
 			dataType: 'text',
+			data : {
+				"receiverEmail" : receiverEmail
+			},
 			success : function(data) {
 				if(data == '0'){
 				}else{
-					$('#alarmCountSpan').addClass('bell-badge-danger bell-badge')
-					$('#alarmCountSpan').text(data);
+					//$('#alarmCnt').addClass('bell-badge-danger bell-badge')
+					$('#alarmCnt').text(data);
 				}
 			},
 			error : function(err){
 				alert('err');
 			}
 	   	});*/
+	   	
+			$.ajax({		
+					url: "/alarm/countAlarm",
+					
+				}).done(function (data) {
+					console.log("countAlarm " + data);
+					//$('#alarmCnt').addClass('bell-badge-danger bell-badge')
+					$('#alarmCnt').text(data);
+				});	
 
 	   	// 모달 알림
 	   	/*var toastTop = app.toast.create({
@@ -44,7 +59,22 @@
           });
           toastTop.open(); */
 	   	
-	   	alert(data);
+	   	alert(list[0] + list[1]);
+	   	
+	   	let toast = "";
+	   		   	toast = `
+	   								<div class="toast" role="alert" aria-live="assertive"  style="display : block; font-size: 1.5rem; background-color: rosybrown;"
+	   									aria-atomic="true" data-alarmid = "`+list[1]+`" id = "alarmid`+list[1]+`">
+	   									<div class="toast-header">
+	   										<strong
+	   											class="me-auto">ALARM</strong> 
+	   										<button type="button" class="btn-close" data-bs-dismiss="toast" 
+	   											aria-label="Close" data-alarmid = "`+list[1]+`"></button>
+	   									</div>
+	   									<div class="toast-body">`+ list[0] + `</div>
+	   								</div>	   		
+	   		   	`
+	   		   	$("#toastContainer").append(toast); 
     };
 
     sock.onclose = function() {
