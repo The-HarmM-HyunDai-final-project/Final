@@ -113,6 +113,7 @@ var IMP = window.IMP;
 </head>
 
 <body style="">
+
    <div id="__nuxt">
       <!---->
       <div id="__layout">

@@ -126,9 +126,7 @@ public class PostController {
 	@PostMapping("/social/user/postEnroll")
 	public String postEnrollPOST(PostVO post, RedirectAttributes rttr) throws Exception{
 		logger.info("postEnrollPOST......" + post);
-		logger.info("퍼센트: "+post.getPercent());
-		logger.info("결과: "+post.getResult());
-		
+	
 		
 		postService.postEnroll(post);
 		rttr.addFlashAttribute("enroll_result", post.getPost_id());
