@@ -264,7 +264,7 @@
 								</div>
 								<div class="price" data-v-679b6792="">
 									<div class="amount" data-v-679b6792="">
-										<span class="num" data-v-679b6792="">${productDetailDTO.release_price}</span><span
+										<span class="num" data-v-679b6792=""><fmt:formatNumber type="number" maxFractionDigits="3" value="${productDetailDTO.release_price}" /></span><span
 											class="won" data-v-679b6792="">원</span>
 									</div>
 									<!-- 가격변화 추세 주석처리(임시) -->
@@ -282,14 +282,14 @@
 									<div data-v-23bbaa82="" class="price">
 										<span data-v-23bbaa82="" class="amount"><em
 
-											data-v-23bbaa82="" class="num">${sellDTO.price}</em><span
+											data-v-23bbaa82="" class="num"><fmt:formatNumber type="number" maxFractionDigits="3" value="${sellDTO.price}" /></em><span
 											data-v-23bbaa82="" class="won">원</span></span><span
 											data-v-23bbaa82="" class="desc">즉시 구매가</span>
 									</div></a><a data-v-23bbaa82="" href="/sell/select/${productDetailDTO.pid}?size=${size}" class="btn_division sell"><strong
 									data-v-23bbaa82="" class="title">판매</strong>
 									<div data-v-23bbaa82="" class="price">
 										<span data-v-23bbaa82="" class="amount"><em
-											data-v-23bbaa82="" class="num">${buyDTO.price}</em><span
+											data-v-23bbaa82="" class="num"><fmt:formatNumber type="number" maxFractionDigits="3" value="${buyDTO.price}" /></em><span
 											data-v-23bbaa82="" class="won">원</span></span><span
 											data-v-23bbaa82="" class="desc">즉시 판매가</span>
 									</div></a>
@@ -316,7 +316,7 @@
 								</div>
 								<div class="detail_box" data-v-b809b0a6="">
 									<dt class="product_title" data-v-b809b0a6="">발매가</dt>
-									<dd class="product_info" data-v-b809b0a6="">${productDetailDTO.release_price}원</dd>
+									<dd class="product_info" data-v-b809b0a6=""><fmt:formatNumber type="number" maxFractionDigits="3" value="${productDetailDTO.release_price}" />원</dd>
 								</div>
 							</dl>
 						</div>
@@ -416,7 +416,7 @@
 								<div class="graph" data-v-04d43b10="" data-v-69832834=""
 									data-v-3c9dd7e9="">
 									<canvas data-v-04d43b10=""
-										id="sales_canvas5" 
+										id="sales_canvas5" height="0"
 										style="display: block; box-sizing: border-box; height:200px;width:530px;"></canvas>
 								</div>
 							</div>
@@ -463,11 +463,11 @@
 													</tr>
 												</thead>
 												<tbody data-v-50d58b3a="">
-													<c:forEach var="allSignContract" items="${allSignContractList}">
+													<c:forEach var="allSignContract" items="${allSignContractList}"  begin="0" end="4" step="1" >
 														<tr data-v-50d58b3a="">
 															<td class="table_td" data-v-50d58b3a="">${allSignContract.size_type } <!----></td>
 															<td class="table_td align_right" data-v-50d58b3a="">
-																${allSignContract.price }원 <i class="express_icon" data-v-50d58b3a=""><svg
+																<fmt:formatNumber type="number" maxFractionDigits="3" value="${allSignContract.price }" />원 <i class="express_icon" data-v-50d58b3a=""><svg
 																		xmlns="http://www.w3.org/2000/svg"
 																		class="ico-express icon sprite-icons"
 																		data-v-50d58b3a="">
@@ -486,7 +486,7 @@
 												</tbody>
 											</table>
 										</div>
-										<a href="#" class="btn outlinegrey full medium"
+										<a href="#" class="btn outlinegrey full medium" id="moreSignContract"
 											data-v-575aff82="" data-v-4379daa7="" data-v-3c9dd7e9="">
 											체결 내역 더보기 </a>
 									</div>
@@ -514,11 +514,11 @@
 													</tr>
 												</thead>
 												<tbody data-v-50d58b3a="">
-												  <c:forEach var="allSellBid" items="${allSellBidList}">
+												  <c:forEach var="allSellBid" items="${allSellBidList}" begin="0" end="4" step="1">
 													<tr data-v-50d58b3a="">
 														<td class="table_td" data-v-50d58b3a="">${allSellBid.size_type}<!----></td>
 														<td class="table_td align_right" data-v-50d58b3a="">
-															${allSellBid.price}원 <!---->
+															<fmt:formatNumber type="number" maxFractionDigits="3" value="${allSellBid.price}" />원 <!---->
 														</td>
 														<td class="table_td align_right" data-v-50d58b3a="">
 															${allSellBid.amount}<!---->
@@ -528,7 +528,7 @@
 												</tbody>
 											</table>
 										</div>
-										<a href="#" class="btn outlinegrey full medium"
+										<a href="#" class="btn outlinegrey full medium" id="moreSellBid"
 											data-v-575aff82="" data-v-4379daa7="" data-v-3c9dd7e9="">
 											입찰 내역 더보기 </a>
 									</div>
@@ -556,11 +556,11 @@
 													</tr>
 												</thead>
 												<tbody data-v-50d58b3a="">
-												  <c:forEach var="allBuyBid" items="${allBuyBidList}">
+												  <c:forEach var="allBuyBid" items="${allBuyBidList}" begin="0" end="4" step="1">
 													<tr data-v-50d58b3a="">
 														<td class="table_td" data-v-50d58b3a="">${allBuyBid.size_type}<!----></td>
 														<td class="table_td align_right" data-v-50d58b3a="">
-															${allBuyBid.price}원 <!---->
+															<fmt:formatNumber type="number" maxFractionDigits="3" value="${allBuyBid.price}" />원 <!---->
 														</td>
 														<td class="table_td align_right" data-v-50d58b3a="">
 															${allBuyBid.amount} <!---->
@@ -570,7 +570,7 @@
 												</tbody>
 											</table>
 										</div>
-										<a href="#" class="btn outlinegrey full medium"
+										<a href="#" class="btn outlinegrey full medium" id="moreBuyBid"
 											data-v-575aff82="" data-v-4379daa7="" data-v-3c9dd7e9="">
 											입찰 내역 더보기 </a>
 									</div>
@@ -581,6 +581,257 @@
 						<!---->
 					</div>
 					<!---->
+					<div data-v-1a009402="" data-v-0a44efea="" data-v-3900a1a2=""
+						class="layer_market_price layer lg" style="display:none;">
+						<div data-v-1a009402="" class="layer_container">
+							<a data-v-0a44efea="" data-v-1a009402="" href="#"
+								class="btn_layer_close"><svg data-v-0a44efea=""
+									data-v-1a009402="" xmlns="http://www.w3.org/2000/svg"
+									class="ico-close icon sprite-icons">
+									<use data-v-0a44efea="" data-v-1a009402=""
+										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"
+										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"></use></svg></a>
+							<div data-v-1a009402="" class="layer_header">
+								<h2 data-v-0a44efea="" data-v-1a009402="" class="title">시세</h2>
+							</div>
+							<div data-v-1a009402="" class="layer_content">
+								<div data-v-0a44efea="" data-v-1a009402="" class="buy_product">
+									<div data-v-09fbcf09="" data-v-0a44efea="" class="product"
+										data-v-1a009402=""
+										style="background-color: rgb(235, 240, 245);">
+										<picture data-v-878ec45c="" data-v-09fbcf09=""
+											class="picture product_img">
+										<img data-v-878ec45c="" alt="상품 이미지" referrerpolicy="no-referrer"
+											src="${productDetailDTO.img1}"
+											loading="lazy" class="image"></picture>
+										<!---->
+										<!---->
+										<!---->
+										<!---->
+									</div>
+									<div data-v-0a44efea="" data-v-1a009402="" class="buy_info">
+										<div data-v-664f0148="" data-v-0a44efea="" class="model_info"
+											data-v-1a009402="">
+											<strong data-v-664f0148="" class="model_number">
+												<!---->
+												<span data-v-664f0148="" class="text"></span>
+											</strong>
+											<p data-v-664f0148="" class="model_title">${productDetailDTO.pname_e}</p>
+											<p data-v-664f0148="" class="model_ko">${productDetailDTO.pname_k}</p>
+											<div data-v-664f0148="" class="size_select_wrap">
+												<button data-v-575aff82="" data-v-664f0148="" type="button"
+													class="btn btn_size" slot="button">
+													<span data-v-664f0148="" class="size">모든 사이즈</span>
+													<svg data-v-664f0148="" xmlns="http://www.w3.org/2000/svg"
+														class="ico-arr-dir-down-circle icon sprite-icons">
+														<use data-v-664f0148=""
+															href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-dir-down-circle"
+															xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-dir-down-circle"></use></svg>
+												</button>
+												<div data-v-1a009402="" data-v-d26890d2=""
+													data-v-664f0148="" class="layer_size_list layer lg"
+													style="display: none;">
+													<div data-v-1a009402="" class="layer_container">
+														<a data-v-d26890d2="" data-v-1a009402="" href="#"
+															class="btn_layer_close"><svg data-v-d26890d2=""
+																data-v-1a009402="" xmlns="http://www.w3.org/2000/svg"
+																class="ico-close icon sprite-icons">
+																<use data-v-d26890d2="" data-v-1a009402=""
+																	href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"
+																	xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"></use></svg></a>
+														<div data-v-1a009402="" class="layer_header">
+															<h2 data-v-d26890d2="" data-v-1a009402="" class="title">사이즈
+																선택</h2>
+														</div>
+														<div data-v-1a009402="" class="layer_content">
+															<ul data-v-d26890d2="" data-v-1a009402=""
+																class="size_list">
+																<li data-v-d26890d2="" data-v-1a009402=""
+																	class="size_item item_on"><a data-v-d26890d2=""
+																	data-v-1a009402="" href="#" class="size_link"> 모든
+																		사이즈 <svg data-v-d26890d2="" data-v-1a009402=""
+																			xmlns="http://www.w3.org/2000/svg"
+																			class="ico-check-s icon sprite-icons">
+																			<use data-v-d26890d2="" data-v-1a009402=""
+																				href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-s"
+																				xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-check-s"></use></svg>
+																</a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!---->
+								<div data-v-0a44efea="" data-v-1a009402="" class="tab_info">
+									<div data-v-b6b2883e="" data-v-0a44efea="" class="tab_area"
+										data-v-1a009402="">
+										<ul data-v-b6b2883e="" role="tablist" class="tab_list">
+											<li data-v-b6b2883e="" role="tab" aria-selected="true" id="tab_info_panel1"
+												aria-controls="panel1" class="item on"><a
+												data-v-b6b2883e="" href="#" class="item_link">체결 거래</a></li>
+											<li data-v-b6b2883e="" role="tab" aria-selected="false" id="tab_info_panel2"
+												aria-controls="panel2" class="item"><a
+												data-v-b6b2883e="" href="#" class="item_link">판매 입찰</a></li>
+											<li data-v-b6b2883e="" role="tab" aria-selected="false" id="tab_info_panel3"
+												aria-controls="panel3" class="item"><a
+												data-v-b6b2883e="" href="#" class="item_link">구매 입찰</a></li>
+										</ul>
+										<div data-v-3c9dd7e9="" data-v-0a44efea="" id="panel1"
+											role="tabpanel" class="tab_content show" span="sales"
+											data-v-b6b2883e="">
+											<div data-v-af29303e="" data-v-0a44efea=""
+												class="price_table" data-v-3c9dd7e9="">
+												<div data-v-af29303e="" class="market_price_table" style="">
+													<div data-v-af29303e="" class="price_head">
+														<div data-v-af29303e="" class="head_box">
+															<div data-v-af29303e="" class="head_sort">
+																<a data-v-af29303e="" href="#" class="sort_link sort"><span
+																	data-v-af29303e="" class="sort_txt">사이즈</span></a>
+															</div>
+															<div data-v-af29303e="" class="head_sort">
+																<a data-v-af29303e="" href="#" class="sort_link sort"><span
+																	data-v-af29303e="" class="sort_txt">거래가</span></a>
+															</div>
+															<div data-v-af29303e=""
+																class="head_sort is_active descending">
+																<a data-v-af29303e="" href="#" class="sort_link sort"><span
+																	data-v-af29303e="" class="sort_txt">거래일</span></a>
+															</div>
+														</div>
+													</div>
+													<div data-v-af29303e="" class="price_body">
+														<c:forEach var="allSignContract" items="${allSignContractList}">
+														<div data-v-af29303e="" class="body_list">
+															<div data-v-af29303e="" class="list_txt">
+																${allSignContract.size_type }
+																<!---->
+															</div>
+															<div data-v-af29303e="" class="list_txt">
+																<fmt:formatNumber type="number" maxFractionDigits="3" value="${allSignContract.price }" />원
+																<!---->
+															</div>
+															<div data-v-af29303e="" class="list_txt is_active">
+																${allSignContract.nowdate }
+																<!---->
+															</div>
+														</div>
+														</c:forEach>
+													</div>
+												</div>
+												<!---->
+											</div>
+										</div>
+										<div data-v-3c9dd7e9="" data-v-0a44efea="" id="panel2"
+											role="tabpanel" class="tab_content" span="asks"
+											data-v-b6b2883e="">
+											<div data-v-af29303e="" data-v-0a44efea=""
+												class="price_table" data-v-3c9dd7e9="">
+												<div data-v-af29303e="" class="market_price_table"
+													>
+													<div data-v-af29303e="" class="price_head">
+														<div data-v-af29303e="" class="head_box">
+															<div data-v-af29303e="" class="head_sort">
+																<a data-v-af29303e="" href="#" class="sort_link sort"><span
+																	data-v-af29303e="" class="sort_txt">사이즈</span></a>
+															</div>
+															<div data-v-af29303e="" class="head_sort">
+																<a data-v-af29303e="" href="#" class="sort_link sort"><span
+																	data-v-af29303e="" class="sort_txt">판매 희망가</span></a>
+															</div>
+															<div data-v-af29303e="" class="head_sort">
+																<a data-v-af29303e="" href="#" class="sort_link"><span
+																	data-v-af29303e="" class="sort_txt">수량</span></a>
+															</div>
+														</div>
+													</div>
+													<div data-v-af29303e="" class="price_body">
+														<c:forEach var="allSellBid" items="${allSellBidList}">
+															<div data-v-af29303e="" class="body_list">
+																<div data-v-af29303e="" class="list_txt">
+																	${allSellBid.size_type }
+																	<!---->
+																</div>
+																<div data-v-af29303e="" class="list_txt is_active">
+																	<fmt:formatNumber type="number" maxFractionDigits="3" value="${allSellBid.price}" />원
+																	<!---->
+																</div>
+																<div data-v-af29303e="" class="list_txt ">
+																	${allSellBid.amount }
+																	<!---->
+																</div>
+															</div>
+														</c:forEach>
+													</div>
+												</div>
+												<div data-v-e43faba2="" class="empty_content lg"
+													data-v-af29303e="" style="display: none;">
+													<div data-v-e43faba2="" class="empty_bg">
+														<span data-v-e43faba2="" class="blind">빈 데이터 이미지</span>
+													</div>
+													<p data-v-e43faba2="" class="empty_text">판매 희망가가 아직
+														없습니다</p>
+												</div>
+											</div>
+										</div>
+										<div data-v-3c9dd7e9="" data-v-0a44efea="" id="panel3"
+											role="tabpanel" class="tab_content" span="bids"
+											data-v-b6b2883e="">
+											<div data-v-af29303e="" data-v-0a44efea=""
+												class="price_table" data-v-3c9dd7e9="">
+												<div data-v-af29303e="" class="market_price_table">
+													<div data-v-af29303e="" class="price_head">
+														<div data-v-af29303e="" class="head_box">
+															<div data-v-af29303e="" class="head_sort">
+																<a data-v-af29303e="" href="#" class="sort_link sort"><span
+																	data-v-af29303e="" class="sort_txt">사이즈</span></a>
+															</div>
+															<div data-v-af29303e="" class="head_sort">
+																<a data-v-af29303e="" href="#" class="sort_link sort"><span
+																	data-v-af29303e="" class="sort_txt">구매 희망가</span></a>
+															</div>
+															<div data-v-af29303e="" class="head_sort">
+																<a data-v-af29303e="" href="#" class="sort_link"><span
+																	data-v-af29303e="" class="sort_txt">수량</span></a>
+															</div>
+														</div>
+													</div>
+													<div data-v-af29303e="" class="price_body">
+														<c:forEach var="allBuyBid" items="${allBuyBidList}">
+														<div data-v-af29303e="" class="body_list">
+															<div data-v-af29303e="" class="list_txt">
+																${allBuyBid.size_type }
+																<!---->
+															</div>
+															<div data-v-af29303e="" class="list_txt is_active">
+																<fmt:formatNumber type="number" maxFractionDigits="3" value="${allBuyBid.price }" />원
+																<!---->
+															</div>
+															<div data-v-af29303e="" class="list_txt ">
+																${allBuyBid.amount }
+																<!---->
+															</div>
+														</div>
+														</c:forEach>
+													</div>
+												</div>
+												<div data-v-e43faba2="" class="empty_content lg"
+													data-v-af29303e="" style="display: none;">
+													<div data-v-e43faba2="" class="empty_bg">
+														<span data-v-e43faba2="" class="blind">빈 데이터 이미지</span>
+													</div>
+													<p data-v-e43faba2="" class="empty_text">구매 희망가가 아직
+														없습니다</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 					<!---->
 					<div class="floating_price lg" data-v-07cd4e36=""
 						data-v-3900a1a2="">
@@ -590,10 +841,6 @@
 									style="background-color: rgb(246, 238, 237);">
 									<picture data-v-878ec45c="" data-v-07cd4e36=""
 										class="picture product_img">
-									<source data-v-878ec45c="" type="image/webp"
-										srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfMTkw/MDAxNjY3NTQzNTAxNjcw.yXF_j7EUnejzPqHyxvoziRB8ukEBpGX7RgDL8ziMtOEg.tjPT99BA1fdYa1THeylVQhNonJ_gqkCMxCTyqSEGhdQg.PNG/a_9388c64f95f54d29834d8fc13082a68e.png?type=m_webp">
-									<source data-v-878ec45c=""
-										srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfMTkw/MDAxNjY3NTQzNTAxNjcw.yXF_j7EUnejzPqHyxvoziRB8ukEBpGX7RgDL8ziMtOEg.tjPT99BA1fdYa1THeylVQhNonJ_gqkCMxCTyqSEGhdQg.PNG/a_9388c64f95f54d29834d8fc13082a68e.png?type=m">
 									<img data-v-878ec45c="" alt="상품 이미지"
 										src="https://kream-phinf.pstatic.net/MjAyMjExMDRfMTkw/MDAxNjY3NTQzNTAxNjcw.yXF_j7EUnejzPqHyxvoziRB8ukEBpGX7RgDL8ziMtOEg.tjPT99BA1fdYa1THeylVQhNonJ_gqkCMxCTyqSEGhdQg.PNG/a_9388c64f95f54d29834d8fc13082a68e.png?type=m"
 										loading="lazy" class="image"></picture>
@@ -675,7 +922,7 @@
 								data-v-09fbcf09="" data-v-2367be08="">
 								<picture class="picture product_img" data-v-878ec45c=""
 									data-v-09fbcf09="">
-								<img alt="상품 이미지"
+								<img alt="상품 이미지" referrerpolicy="no-referrer"
 									src="${productBrand.img1}"
 									loading="lazy" class="image" data-v-878ec45c=""></picture>
 								<!---->
@@ -688,389 +935,12 @@
 								<p class="name" data-v-2367be08="">${productBrand.pname_e}</p>
 							</div>
 							<div class="product_price" data-v-2367be08="">
-								<p class="origin_price" data-v-2367be08="">550,000</p>
+								<p class="origin_price" data-v-2367be08=""><fmt:formatNumber type="number" maxFractionDigits="3" value="${productBrand.release_price }" /></p>
 							</div>
 						</div></a>
 				  </div>
 				 </c:forEach>
-				<div class="stock_list_item" data-v-2367be08="" data-v-b5bc0164="">
-					<a href="/products/stock/1915678" class="item_inner"
-						data-v-2367be08=""><div class="product_thumb"
-							data-v-2367be08="">
-							<div class="product" style="background-color: #f2f2f2;"
-								data-v-09fbcf09="" data-v-2367be08="">
-								<picture class="picture product_img" data-v-878ec45c=""
-									data-v-09fbcf09="">
-								<source type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMDlfMjE3/MDAxNjcwNTc0MDc3MTgz.FWHjFBpoe_ghXUO_6x_lnDNnmcIpXdR40XHavKzSl7Eg.a79X7Z-yqyDjcWv2-6p-9Ts6DUFQH7tBpwRQYAgsQbAg.PNG/a_c36d30fd18594badab0ad2b88e327d7f.png?type=m_webp"
-									data-v-878ec45c="">
-								<source
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMDlfMjE3/MDAxNjcwNTc0MDc3MTgz.FWHjFBpoe_ghXUO_6x_lnDNnmcIpXdR40XHavKzSl7Eg.a79X7Z-yqyDjcWv2-6p-9Ts6DUFQH7tBpwRQYAgsQbAg.PNG/a_c36d30fd18594badab0ad2b88e327d7f.png?type=m"
-									data-v-878ec45c="">
-								<img alt="상품 이미지"
-									src="https://kream-phinf.pstatic.net/MjAyMjEyMDlfMjE3/MDAxNjcwNTc0MDc3MTgz.FWHjFBpoe_ghXUO_6x_lnDNnmcIpXdR40XHavKzSl7Eg.a79X7Z-yqyDjcWv2-6p-9Ts6DUFQH7tBpwRQYAgsQbAg.PNG/a_c36d30fd18594badab0ad2b88e327d7f.png?type=m"
-									loading="lazy" class="image" data-v-878ec45c=""></picture>
-								<!---->
-								<!---->
-								<em class="stocked_status_mark" data-v-09fbcf09=""> 95점 </em>
-								<!---->
-							</div>
-							<!---->
-						</div>
-						<div class="product_info" data-v-2367be08="">
-							<div class="product_detail" data-v-2367be08="">
-								<p class="size" data-v-2367be08="">240(US 6)</p>
-								<p class="name" data-v-2367be08="">Jordan 1 Retro High OG
-									Chicago 2022</p>
-								<span class="express_mark" data-v-2367be08="">빠른배송</span>
-							</div>
-							<div class="product_price" data-v-2367be08="">
-								<!---->
-								<p class="discount_price" data-v-2367be08="">
-									<!---->
-									<span class="amount" data-v-2367be08="">589,000</span><span
-										class="won" data-v-2367be08="">원</span>
-								</p>
-								<p class="price_desc" data-v-2367be08="">95점 구매가</p>
-							</div>
-						</div></a>
-				</div>
-				<div class="stock_list_item" data-v-2367be08="" data-v-b5bc0164="">
-					<a href="/products/stock/1916738" class="item_inner"
-						data-v-2367be08=""><div class="product_thumb"
-							data-v-2367be08="">
-							<div class="product" style="background-color: #f2f2f2;"
-								data-v-09fbcf09="" data-v-2367be08="">
-								<picture class="picture product_img" data-v-878ec45c=""
-									data-v-09fbcf09="">
-								<source type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMTJfMjQ4/MDAxNjcwODA4NDE0Nzgx.nTTvlTCVGNygglG5NkEdjv0cfdOPWlwD2ctHc-eu8wYg.bDmT0EzfsZGee54gkvuQvj-O_s4g0rek-wwBaJKMJlog.PNG/a_70a999b7fd5849f2b27cc36198ad6b52.png?type=m_webp"
-									data-v-878ec45c="">
-								<source
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMTJfMjQ4/MDAxNjcwODA4NDE0Nzgx.nTTvlTCVGNygglG5NkEdjv0cfdOPWlwD2ctHc-eu8wYg.bDmT0EzfsZGee54gkvuQvj-O_s4g0rek-wwBaJKMJlog.PNG/a_70a999b7fd5849f2b27cc36198ad6b52.png?type=m"
-									data-v-878ec45c="">
-								<img alt="상품 이미지"
-									src="https://kream-phinf.pstatic.net/MjAyMjEyMTJfMjQ4/MDAxNjcwODA4NDE0Nzgx.nTTvlTCVGNygglG5NkEdjv0cfdOPWlwD2ctHc-eu8wYg.bDmT0EzfsZGee54gkvuQvj-O_s4g0rek-wwBaJKMJlog.PNG/a_70a999b7fd5849f2b27cc36198ad6b52.png?type=m"
-									loading="lazy" class="image" data-v-878ec45c=""></picture>
-								<!---->
-								<!---->
-								<em class="stocked_status_mark" data-v-09fbcf09=""> 95점 </em>
-								<!---->
-							</div>
-							<!---->
-						</div>
-						<div class="product_info" data-v-2367be08="">
-							<div class="product_detail" data-v-2367be08="">
-								<p class="size" data-v-2367be08="">265</p>
-								<p class="name" data-v-2367be08="">Jordan 1 Retro High OG
-									Chicago 2022</p>
-								<span class="express_mark" data-v-2367be08="">빠른배송</span>
-							</div>
-							<div class="product_price" data-v-2367be08="">
-								<!---->
-								<p class="discount_price" data-v-2367be08="">
-									<!---->
-									<span class="amount" data-v-2367be08="">489,000</span><span
-										class="won" data-v-2367be08="">원</span>
-								</p>
-								<p class="price_desc" data-v-2367be08="">95점 구매가</p>
-							</div>
-						</div></a>
-				</div>
-				<div class="stock_list_item" data-v-2367be08="" data-v-b5bc0164="">
-					<a href="/products/stock/1951867" class="item_inner"
-						data-v-2367be08=""><div class="product_thumb"
-							data-v-2367be08="">
-							<div class="product" style="background-color: #f2f2f2;"
-								data-v-09fbcf09="" data-v-2367be08="">
-								<picture class="picture product_img" data-v-878ec45c=""
-									data-v-09fbcf09="">
-								<source type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMDhfMjcy/MDAxNjcwNDY1NjM3MjYw.UnyhxRhWIto4hIIu_GGBE8c5iMP1An1Hcv7G-HbMxxQg._eKCr-V9ORT8kpaxlDgfTQtMI5QMcdDRB6dMXLiE2sYg.PNG/a_82023ceca539427882a6c3c8d1b55b66.png?type=m_webp"
-									data-v-878ec45c="">
-								<source
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMDhfMjcy/MDAxNjcwNDY1NjM3MjYw.UnyhxRhWIto4hIIu_GGBE8c5iMP1An1Hcv7G-HbMxxQg._eKCr-V9ORT8kpaxlDgfTQtMI5QMcdDRB6dMXLiE2sYg.PNG/a_82023ceca539427882a6c3c8d1b55b66.png?type=m"
-									data-v-878ec45c="">
-								<img alt="상품 이미지"
-									src="https://kream-phinf.pstatic.net/MjAyMjEyMDhfMjcy/MDAxNjcwNDY1NjM3MjYw.UnyhxRhWIto4hIIu_GGBE8c5iMP1An1Hcv7G-HbMxxQg._eKCr-V9ORT8kpaxlDgfTQtMI5QMcdDRB6dMXLiE2sYg.PNG/a_82023ceca539427882a6c3c8d1b55b66.png?type=m"
-									loading="lazy" class="image" data-v-878ec45c=""></picture>
-								<!---->
-								<!---->
-								<em class="stocked_status_mark" data-v-09fbcf09=""> 95점 </em>
-								<!---->
-							</div>
-							<!---->
-						</div>
-						<div class="product_info" data-v-2367be08="">
-							<div class="product_detail" data-v-2367be08="">
-								<p class="size" data-v-2367be08="">265</p>
-								<p class="name" data-v-2367be08="">Jordan 1 Retro High OG
-									Chicago 2022</p>
-								<span class="express_mark" data-v-2367be08="">빠른배송</span>
-							</div>
-							<div class="product_price" data-v-2367be08="">
-								<!---->
-								<p class="discount_price" data-v-2367be08="">
-									<!---->
-									<span class="amount" data-v-2367be08="">500,000</span><span
-										class="won" data-v-2367be08="">원</span>
-								</p>
-								<p class="price_desc" data-v-2367be08="">95점 구매가</p>
-							</div>
-						</div></a>
-				</div>
-				<div class="stock_list_item" data-v-2367be08="" data-v-b5bc0164="">
-					<a href="/products/stock/2000907" class="item_inner"
-						data-v-2367be08=""><div class="product_thumb"
-							data-v-2367be08="">
-							<div class="product" style="background-color: #f2f2f2;"
-								data-v-09fbcf09="" data-v-2367be08="">
-								<picture class="picture product_img" data-v-878ec45c=""
-									data-v-09fbcf09="">
-								<source type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjBfNjIg/MDAxNjcxNTIyMzkxOTk5.KHoaNSE6IdAZFUtM_uBuVAXe-zwZ09DfvhzjvVO_XgQg.k70XJVhY2_h8hf4slRbahLR0HNBlm2U3AUvqDuGZ0tkg.PNG/a_a7201d1d7c524a21a28aa24d27184bdd.png?type=m_webp"
-									data-v-878ec45c="">
-								<source
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjBfNjIg/MDAxNjcxNTIyMzkxOTk5.KHoaNSE6IdAZFUtM_uBuVAXe-zwZ09DfvhzjvVO_XgQg.k70XJVhY2_h8hf4slRbahLR0HNBlm2U3AUvqDuGZ0tkg.PNG/a_a7201d1d7c524a21a28aa24d27184bdd.png?type=m"
-									data-v-878ec45c="">
-								<img alt="상품 이미지"
-									src="https://kream-phinf.pstatic.net/MjAyMjEyMjBfNjIg/MDAxNjcxNTIyMzkxOTk5.KHoaNSE6IdAZFUtM_uBuVAXe-zwZ09DfvhzjvVO_XgQg.k70XJVhY2_h8hf4slRbahLR0HNBlm2U3AUvqDuGZ0tkg.PNG/a_a7201d1d7c524a21a28aa24d27184bdd.png?type=m"
-									loading="lazy" class="image" data-v-878ec45c=""></picture>
-								<!---->
-								<!---->
-								<em class="stocked_status_mark" data-v-09fbcf09=""> 95점 </em>
-								<!---->
-							</div>
-							<!---->
-						</div>
-						<div class="product_info" data-v-2367be08="">
-							<div class="product_detail" data-v-2367be08="">
-								<p class="size" data-v-2367be08="">230</p>
-								<p class="name" data-v-2367be08="">Jordan 1 Retro High OG
-									Chicago 2022</p>
-								<span class="express_mark" data-v-2367be08="">빠른배송</span>
-							</div>
-							<div class="product_price" data-v-2367be08="">
-								<!---->
-								<p class="discount_price" data-v-2367be08="">
-									<!---->
-									<span class="amount" data-v-2367be08="">450,000</span><span
-										class="won" data-v-2367be08="">원</span>
-								</p>
-								<p class="price_desc" data-v-2367be08="">95점 구매가</p>
-							</div>
-						</div></a>
-				</div>
-				<div class="stock_list_item" data-v-2367be08="" data-v-b5bc0164="">
-					<a href="/products/stock/2017459" class="item_inner"
-						data-v-2367be08=""><div class="product_thumb"
-							data-v-2367be08="">
-							<div class="product" style="background-color: #f2f2f2;"
-								data-v-09fbcf09="" data-v-2367be08="">
-								<picture class="picture product_img" data-v-878ec45c=""
-									data-v-09fbcf09="">
-								<source type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMTVfMTY5/MDAxNjcxMTEyOTUzODA1.ae8-WWKYv7HIdMCY9LpLP8Fd8S09fh3cZyI0hJ3PPbAg.WgojVzP3jcqxdTq2wmzvMPGLnZZzT8njQTyyHWdN3isg.PNG/a_56f740dd136249f6b527977be34a288f.png?type=m_webp"
-									data-v-878ec45c="">
-								<source
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMTVfMTY5/MDAxNjcxMTEyOTUzODA1.ae8-WWKYv7HIdMCY9LpLP8Fd8S09fh3cZyI0hJ3PPbAg.WgojVzP3jcqxdTq2wmzvMPGLnZZzT8njQTyyHWdN3isg.PNG/a_56f740dd136249f6b527977be34a288f.png?type=m"
-									data-v-878ec45c="">
-								<img alt="상품 이미지"
-									src="https://kream-phinf.pstatic.net/MjAyMjEyMTVfMTY5/MDAxNjcxMTEyOTUzODA1.ae8-WWKYv7HIdMCY9LpLP8Fd8S09fh3cZyI0hJ3PPbAg.WgojVzP3jcqxdTq2wmzvMPGLnZZzT8njQTyyHWdN3isg.PNG/a_56f740dd136249f6b527977be34a288f.png?type=m"
-									loading="lazy" class="image" data-v-878ec45c=""></picture>
-								<!---->
-								<!---->
-								<em class="stocked_status_mark" data-v-09fbcf09=""> 95점 </em>
-								<!---->
-							</div>
-							<!---->
-						</div>
-						<div class="product_info" data-v-2367be08="">
-							<div class="product_detail" data-v-2367be08="">
-								<p class="size" data-v-2367be08="">280</p>
-								<p class="name" data-v-2367be08="">Jordan 1 Retro High OG
-									Chicago 2022</p>
-								<span class="express_mark" data-v-2367be08="">빠른배송</span>
-							</div>
-							<div class="product_price" data-v-2367be08="">
-								<p class="origin_price" data-v-2367be08="">507,000</p>
-								<p class="discount_price" data-v-2367be08="">
-									<em class="discount_per" data-v-2367be08="">2%</em><span
-										class="amount" data-v-2367be08="">500,000</span><span
-										class="won" data-v-2367be08="">원</span>
-								</p>
-								<p class="price_desc" data-v-2367be08="">95점 구매가</p>
-							</div>
-						</div></a>
-				</div>
-				<div class="stock_list_item" data-v-2367be08="" data-v-b5bc0164="">
-					<a href="/products/stock/2027745" class="item_inner"
-						data-v-2367be08=""><div class="product_thumb"
-							data-v-2367be08="">
-							<div class="product" style="background-color: #f2f2f2;"
-								data-v-09fbcf09="" data-v-2367be08="">
-								<picture class="picture product_img" data-v-878ec45c=""
-									data-v-09fbcf09="">
-								<source type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjFfMTUx/MDAxNjcxNjE5MjkwMjAx.1yE01BKaTSnVErARlMU3eWJxdIQqqiZvM5VbqF-wKlMg.y3id-kPD0FppSgjABtplXDxGwXaZ8hgUbAZB0nsoYwQg.PNG/a_e4fa75dbdf744a458b7aeb49faa5e3a6.png?type=m_webp"
-									data-v-878ec45c="">
-								<source
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjFfMTUx/MDAxNjcxNjE5MjkwMjAx.1yE01BKaTSnVErARlMU3eWJxdIQqqiZvM5VbqF-wKlMg.y3id-kPD0FppSgjABtplXDxGwXaZ8hgUbAZB0nsoYwQg.PNG/a_e4fa75dbdf744a458b7aeb49faa5e3a6.png?type=m"
-									data-v-878ec45c="">
-								<img alt="상품 이미지"
-									src="https://kream-phinf.pstatic.net/MjAyMjEyMjFfMTUx/MDAxNjcxNjE5MjkwMjAx.1yE01BKaTSnVErARlMU3eWJxdIQqqiZvM5VbqF-wKlMg.y3id-kPD0FppSgjABtplXDxGwXaZ8hgUbAZB0nsoYwQg.PNG/a_e4fa75dbdf744a458b7aeb49faa5e3a6.png?type=m"
-									loading="lazy" class="image" data-v-878ec45c=""></picture>
-								<!---->
-								<!---->
-								<em class="stocked_status_mark" data-v-09fbcf09=""> 95점 </em>
-								<!---->
-							</div>
-							<!---->
-						</div>
-						<div class="product_info" data-v-2367be08="">
-							<div class="product_detail" data-v-2367be08="">
-								<p class="size" data-v-2367be08="">230</p>
-								<p class="name" data-v-2367be08="">Jordan 1 Retro High OG
-									Chicago 2022</p>
-								<span class="express_mark" data-v-2367be08="">빠른배송</span>
-							</div>
-							<div class="product_price" data-v-2367be08="">
-								<!---->
-								<p class="discount_price" data-v-2367be08="">
-									<!---->
-									<span class="amount" data-v-2367be08="">448,000</span><span
-										class="won" data-v-2367be08="">원</span>
-								</p>
-								<p class="price_desc" data-v-2367be08="">95점 구매가</p>
-							</div>
-						</div></a>
-				</div>
-				<div class="stock_list_item" data-v-2367be08="" data-v-b5bc0164="">
-					<a href="/products/stock/2033241" class="item_inner"
-						data-v-2367be08=""><div class="product_thumb"
-							data-v-2367be08="">
-							<div class="product" style="background-color: #f2f2f2;"
-								data-v-09fbcf09="" data-v-2367be08="">
-								<picture class="picture product_img" data-v-878ec45c=""
-									data-v-09fbcf09="">
-								<source type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjJfMTMz/MDAxNjcxNjg2OTkxMTYz.NJCS0zq5kghnX3bP1NO1RQckh8y2r52qynq6ixbyPv0g.-SovkGe8jwf8lK1IeIApykAMCgzJhBYf2Yo1blmSbRUg.PNG/a_46f8a5a581bb408cb0b92106ea620d5f.png?type=m_webp"
-									data-v-878ec45c="">
-								<source
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjJfMTMz/MDAxNjcxNjg2OTkxMTYz.NJCS0zq5kghnX3bP1NO1RQckh8y2r52qynq6ixbyPv0g.-SovkGe8jwf8lK1IeIApykAMCgzJhBYf2Yo1blmSbRUg.PNG/a_46f8a5a581bb408cb0b92106ea620d5f.png?type=m"
-									data-v-878ec45c="">
-								<img alt="상품 이미지"
-									src="https://kream-phinf.pstatic.net/MjAyMjEyMjJfMTMz/MDAxNjcxNjg2OTkxMTYz.NJCS0zq5kghnX3bP1NO1RQckh8y2r52qynq6ixbyPv0g.-SovkGe8jwf8lK1IeIApykAMCgzJhBYf2Yo1blmSbRUg.PNG/a_46f8a5a581bb408cb0b92106ea620d5f.png?type=m"
-									loading="lazy" class="image" data-v-878ec45c=""></picture>
-								<!---->
-								<!---->
-								<em class="stocked_status_mark" data-v-09fbcf09=""> 95점 </em>
-								<!---->
-							</div>
-							<!---->
-						</div>
-						<div class="product_info" data-v-2367be08="">
-							<div class="product_detail" data-v-2367be08="">
-								<p class="size" data-v-2367be08="">240(US 6)</p>
-								<p class="name" data-v-2367be08="">Jordan 1 Retro High OG
-									Chicago 2022</p>
-								<span class="express_mark" data-v-2367be08="">빠른배송</span>
-							</div>
-							<div class="product_price" data-v-2367be08="">
-								<!---->
-								<p class="discount_price" data-v-2367be08="">
-									<!---->
-									<span class="amount" data-v-2367be08="">549,000</span><span
-										class="won" data-v-2367be08="">원</span>
-								</p>
-								<p class="price_desc" data-v-2367be08="">95점 구매가</p>
-							</div>
-						</div></a>
-				</div>
-				<div class="stock_list_item" data-v-2367be08="" data-v-b5bc0164="">
-					<a href="/products/stock/2056191" class="item_inner"
-						data-v-2367be08=""><div class="product_thumb"
-							data-v-2367be08="">
-							<div class="product" style="background-color: #f2f2f2;"
-								data-v-09fbcf09="" data-v-2367be08="">
-								<picture class="picture product_img" data-v-878ec45c=""
-									data-v-09fbcf09="">
-								<source type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjBfMzEg/MDAxNjcxNTE2ODU3MjMy.sL1nw2-wONObqm-a43ENWNfSevNtXankNOEdvFiS93wg.PeN6eQ5D-CyJRhwzz1h3Q2M1uijw6zj7-t7uVRTZM6Eg.PNG/a_25c2a765ae8947dbaea58d74a43bb2a3.png?type=m_webp"
-									data-v-878ec45c="">
-								<source
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjBfMzEg/MDAxNjcxNTE2ODU3MjMy.sL1nw2-wONObqm-a43ENWNfSevNtXankNOEdvFiS93wg.PeN6eQ5D-CyJRhwzz1h3Q2M1uijw6zj7-t7uVRTZM6Eg.PNG/a_25c2a765ae8947dbaea58d74a43bb2a3.png?type=m"
-									data-v-878ec45c="">
-								<img alt="상품 이미지"
-									src="https://kream-phinf.pstatic.net/MjAyMjEyMjBfMzEg/MDAxNjcxNTE2ODU3MjMy.sL1nw2-wONObqm-a43ENWNfSevNtXankNOEdvFiS93wg.PeN6eQ5D-CyJRhwzz1h3Q2M1uijw6zj7-t7uVRTZM6Eg.PNG/a_25c2a765ae8947dbaea58d74a43bb2a3.png?type=m"
-									loading="lazy" class="image" data-v-878ec45c=""></picture>
-								<!---->
-								<!---->
-								<em class="stocked_status_mark" data-v-09fbcf09=""> 95점 </em>
-								<!---->
-							</div>
-							<!---->
-						</div>
-						<div class="product_info" data-v-2367be08="">
-							<div class="product_detail" data-v-2367be08="">
-								<p class="size" data-v-2367be08="">255</p>
-								<p class="name" data-v-2367be08="">Jordan 1 Retro High OG
-									Chicago 2022</p>
-								<span class="express_mark" data-v-2367be08="">빠른배송</span>
-							</div>
-							<div class="product_price" data-v-2367be08="">
-								<!---->
-								<p class="discount_price" data-v-2367be08="">
-									<!---->
-									<span class="amount" data-v-2367be08="">550,000</span><span
-										class="won" data-v-2367be08="">원</span>
-								</p>
-								<p class="price_desc" data-v-2367be08="">95점 구매가</p>
-							</div>
-						</div></a>
-				</div>
-				<div class="stock_list_item" data-v-2367be08="" data-v-b5bc0164="">
-					<a href="/products/stock/2078989" class="item_inner"
-						data-v-2367be08=""><div class="product_thumb"
-							data-v-2367be08="">
-							<div class="product" style="background-color: #f2f2f2;"
-								data-v-09fbcf09="" data-v-2367be08="">
-								<picture class="picture product_img" data-v-878ec45c=""
-									data-v-09fbcf09="">
-								<source type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMzBfNTAg/MDAxNjcyMzY0NDM2OTcy.ggWqXpm0fXWSXa3ZtFbDb04YoQ-jyYjjTVocAIBG_fMg.KK4BpSd8gNrW5Qs82s4G4c8ri3agn9U4dR3-pS1Zr_8g.PNG/a_4e5d1dcfe3a74fbfa81b03ff56eb071f.png?type=m_webp"
-									data-v-878ec45c="">
-								<source
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMzBfNTAg/MDAxNjcyMzY0NDM2OTcy.ggWqXpm0fXWSXa3ZtFbDb04YoQ-jyYjjTVocAIBG_fMg.KK4BpSd8gNrW5Qs82s4G4c8ri3agn9U4dR3-pS1Zr_8g.PNG/a_4e5d1dcfe3a74fbfa81b03ff56eb071f.png?type=m"
-									data-v-878ec45c="">
-								<img alt="상품 이미지"
-									src="https://kream-phinf.pstatic.net/MjAyMjEyMzBfNTAg/MDAxNjcyMzY0NDM2OTcy.ggWqXpm0fXWSXa3ZtFbDb04YoQ-jyYjjTVocAIBG_fMg.KK4BpSd8gNrW5Qs82s4G4c8ri3agn9U4dR3-pS1Zr_8g.PNG/a_4e5d1dcfe3a74fbfa81b03ff56eb071f.png?type=m"
-									loading="lazy" class="image" data-v-878ec45c=""></picture>
-								<!---->
-								<!---->
-								<em class="stocked_status_mark" data-v-09fbcf09=""> 95점 </em>
-								<!---->
-							</div>
-							<!---->
-						</div>
-						<div class="product_info" data-v-2367be08="">
-							<div class="product_detail" data-v-2367be08="">
-								<p class="size" data-v-2367be08="">225</p>
-								<p class="name" data-v-2367be08="">Jordan 1 Retro High OG
-									Chicago 2022</p>
-								<span class="express_mark" data-v-2367be08="">빠른배송</span>
-							</div>
-							<div class="product_price" data-v-2367be08="">
-								<p class="origin_price" data-v-2367be08="">430,000</p>
-								<p class="discount_price" data-v-2367be08="">
-									<em class="discount_per" data-v-2367be08="">3%</em><span
-										class="amount" data-v-2367be08="">420,000</span><span
-										class="won" data-v-2367be08="">원</span>
-								</p>
-								<p class="price_desc" data-v-2367be08="">95점 구매가</p>
-							</div>
-						</div></a>
-				</div>
+				
 			</div>
 			<!---->
 		</div>

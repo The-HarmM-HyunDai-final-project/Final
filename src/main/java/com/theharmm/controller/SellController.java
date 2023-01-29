@@ -1,5 +1,9 @@
 package com.theharmm.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -116,6 +120,11 @@ public class SellController {
 			model.addAttribute("type",type);// 타입 
 			model.addAttribute("shippingFee",shippingFee);
 			
+			Calendar cal = Calendar.getInstance();
+		    cal.setTime(new Date());
+		    DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+		    cal.add(Calendar.DATE, dDay);
+		    String bidDate = df.format(cal.getTime());
 			
 			if(type.equals("즉시판매")) {
 				fee = (int)(productBuySizeDTO.getPrice()*0.025);
@@ -130,6 +139,8 @@ public class SellController {
 			model.addAttribute("price",price);
 			model.addAttribute("totalPrice",price-fee-shippingFee);
 			model.addAttribute("dDay",dDay);
+			model.addAttribute("bidDate",bidDate);
+
 			
 			if(type.equals("즉시판매")) {
 		
