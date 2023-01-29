@@ -768,13 +768,13 @@
 		<div class="other_stock" data-v-b5bc0164="" data-v-01e212dd="">
 			<div class="title" data-v-b5bc0164="">
 				<h3 class="title_text" data-v-b5bc0164="">
-					<em>같은 브랜드 추천</em>
+					<em>${productDetailDTO.brand} 브랜드 추천</em>
 				</h3>			
 			</div>
 			<div class="other_stock_list" data-v-b5bc0164="">
 			   <c:forEach var="productBrand" items="${productBrandList}">
 				<div class="stock_list_item" data-v-2367be08="" data-v-b5bc0164="">
-					<a href="/products/stock/1838312" class="item_inner"
+					<a href="/products/${productBrand.pid}" class="item_inner"
 						data-v-2367be08=""><div class="product_thumb"
 							data-v-2367be08="">
 							<div class="product" style="background-color: #f2f2f2;"
@@ -1153,7 +1153,7 @@
 														<li class="img-file">
 															<button type="button" onclick="layerViewImg();"
 																style="background-image: url(${pageContext.request.contextPath}/${positivePost.upload_path}/${positivePost.uuid}_${positivePost.file_name}); transform: rotate(0deg);">
-																<img
+																<img referrerpolicy="no-referrer"
 																	src="${pageContext.request.contextPath}/${positivePost.upload_path}/${positivePost.uuid}_${positivePost.file_name}"
 																	alt="2023-01-18-16-29-33-366"
 																	style="transform: rotate(0deg);">
@@ -1507,7 +1507,7 @@
 														<li class="img-file">
 															<button type="button" onclick="layerViewImg();"
 																style="background-image: url(${pageContext.request.contextPath}/${negativePost.upload_path}/${negativePost.uuid}_${negativePost.file_name}); transform: rotate(0deg);">
-																<img
+																<img referrerpolicy="no-referrer"
 																	src="${pageContext.request.contextPath}/${negativePost.upload_path}/${negativePost.uuid}_${negativePost.file_name}"
 																	alt="2023-01-18-16-29-33-366"
 																	style="transform: rotate(0deg);">
