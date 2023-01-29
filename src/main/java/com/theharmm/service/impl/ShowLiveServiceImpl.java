@@ -51,7 +51,6 @@ public class ShowLiveServiceImpl implements ShowLiveService{
 	@Override
 	public void insertAuction(ShowLiveBiddingDTO bid) {
 		showLivemapper.insertAuction(bid);
-		
 	}
 	//라이브중인 쇼라이브 목록 가져오기
 	@Override
@@ -60,6 +59,10 @@ public class ShowLiveServiceImpl implements ShowLiveService{
 		List<ShowLiveChannelDTO> channelList = showLivemapper.getLiveChannels();
 		log.warn("채널목록들 !!! : " + channelList.toString());
 		return channelList;
+	}
+	//라이브중인 쇼라이브 목록 가져옥 - ShowLiveChannelStore에 저장된 channelDTO들은 모두 생방송인걸로 생각하니까 Store에서 channelDTO를 가져옴
+	public List<ShowLiveChannelDTO> getLiveChannelsFromChannelStore(){
+		return showLiveChannelStore.getChannelDTO();
 	}
 	//방 번호로 쇼라이브 목록 가져오기
 	@Override
@@ -73,7 +76,13 @@ public class ShowLiveServiceImpl implements ShowLiveService{
 	public int changeLiveStatus(ShowLiveChannelDTO channel) {
 		return showLivemapper.changeLiveStatus(channel);
 	}
-
+	
+	//방금 생성된 쇼라이브가져오기
+	@Override
+	public ShowLiveChannelDTO getShowLiveChannelInfo() {
+		return showLivemapper.getShowLiveChannelInfo();
+	}
 
 
 }
+

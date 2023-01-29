@@ -137,9 +137,8 @@
 											<!---->
 										</div>
 										<div data-v-ee9fa48c="" class="complete_btn_box">
-											<a data-v-575aff82="" data-v-ee9fa48c="" href="#"
-												class="btn outlinegrey medium"> 내역 상세보기 </a><a
-												data-v-575aff82="" data-v-ee9fa48c="" href="#"
+											<a
+												data-v-575aff82="" data-v-ee9fa48c="" href="/product/productlist?page=1"
 												class="btn outlinegrey medium"> SHOP 바로가기 </a>
 										</div>
 										<p data-v-ee9fa48c="" class="complete_desc">'판매내역 &gt; 입찰
@@ -209,7 +208,7 @@
 														<!---->
 													</dt>
 													<dd data-v-3a2a7b6b="" class="price_text">${dDay}일 -
-														2023/01/24까지</dd>
+														${bidDate}까지</dd>
 												</dl>
 											</div>
 										</div>

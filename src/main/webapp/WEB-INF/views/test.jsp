@@ -22,17 +22,6 @@
         </div>
       </div>
 
-      <!-- Quiz UI -->
-      <div class="quiz-wrap">
-        <div id="waiting"><span class="waiting-text float">Waiting for the next question</span></div>
-        <div id="quiz" class="card drop">
-          <div id="card-inner">
-            <h2 id="question"></h2>
-            <div id="answers"></div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 

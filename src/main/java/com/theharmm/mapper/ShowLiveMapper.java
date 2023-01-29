@@ -20,4 +20,6 @@ public interface ShowLiveMapper {
 	public List<ShowLiveChannelDTO> getLiveChannels();
 	//쇼라이브 라이브 상태 변경
 	public int changeLiveStatus(ShowLiveChannelDTO channel);
+	//방금 생선된 라이브쇼 객체 가져오기
+	public ShowLiveChannelDTO getShowLiveChannelInfo();
 }	

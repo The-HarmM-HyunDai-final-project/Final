@@ -2,6 +2,7 @@ package com.theharmm.showlive;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -75,6 +76,13 @@ public class ShowLiveChannelStore {
 	
 	public Map<String, ShowLiveChannel> getChannelList(){
 		return RoomList;
+	}
+	public List<ShowLiveChannelDTO> getChannelDTO(){
+		List<ShowLiveChannelDTO> channelList = new ArrayList<ShowLiveChannelDTO>();
+		for(String roomNo : channelDTOList.keySet()) {
+			channelList.add(channelDTOList.get(roomNo));
+		}
+		return channelList;
 	}
 	
 }

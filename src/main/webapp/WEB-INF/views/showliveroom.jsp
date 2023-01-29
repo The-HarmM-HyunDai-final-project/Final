@@ -418,6 +418,9 @@
 					</div></div>`
 				$("#connected_user").text(totalUser)
 				break
+			case 'AUCTION_END':
+				console.log("낙찰 완료 경매 종료"); 
+				break
 		}
 		
 		$("#message_box").append(str);

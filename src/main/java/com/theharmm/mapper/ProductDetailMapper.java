@@ -1,13 +1,13 @@
 package com.theharmm.mapper;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Mapper;
-
+import com.theharmm.domain.BuyDTO;
+import com.theharmm.domain.ProductDTO;
 import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.ProductSizeDTO;
+import com.theharmm.domain.SellDTO;
 
 
 public interface ProductDetailMapper{
@@ -32,4 +32,22 @@ public interface ProductDetailMapper{
 		public Long insertSaleOrder(Map<String, Object> saleInfoMap);
 
 		public Long insertBuyOrder(Map<String, Object> buyInfoMap);
+
+		
+		//상품상세페이지 구매 판매 가격 
+		public BuyDTO selectMinBuyProductPrice(int pid);
+		
+		public SellDTO selectMinSellProductPrice(int pid);
+		
+		
+		//체결거래, 판매입찰, 구매입찰 
+		public List<BuyDTO> selectAllSignContract(int pid);
+		
+		public List<BuyDTO> selectAllBuyBid(int pid);
+		
+		public List<SellDTO> selectAllSellBid(int pid);
+		
+		//같은 브랜드 리스트
+		public List<ProductDTO> selectProductBrandList(int pid);
+
 }

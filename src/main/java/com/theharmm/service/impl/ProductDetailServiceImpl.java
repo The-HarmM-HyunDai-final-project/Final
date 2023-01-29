@@ -5,9 +5,11 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-
+import com.theharmm.domain.BuyDTO;
+import com.theharmm.domain.ProductDTO;
 import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.ProductSizeDTO;
+import com.theharmm.domain.SellDTO;
 import com.theharmm.mapper.ProductDetailMapper;
 import com.theharmm.service.ProductDetailService;
 
@@ -80,4 +82,44 @@ public class ProductDetailServiceImpl implements ProductDetailService{
 	public Long insertBuyOrder(Map<String, Object> buyInfoMap) {
 		return productDetailMapper.insertBuyOrder(buyInfoMap);
 	}
+
+	@Override
+	public BuyDTO selectMinBuyProductPrice(int pid) {
+		return productDetailMapper.selectMinBuyProductPrice(pid);
+	}
+
+
+	@Override
+	public SellDTO selectMinSellProductPrice(int pid) {
+		return productDetailMapper.selectMinSellProductPrice(pid);
+	}
+
+
+	@Override
+	public List<BuyDTO> selectAllSignContract(int pid) {
+		
+		return productDetailMapper.selectAllSignContract(pid);
+	}
+
+
+	@Override
+	public List<SellDTO> selectAllSellBid(int pid) {
+		
+		return productDetailMapper.selectAllSellBid(pid);
+	}
+
+
+	@Override
+	public List<BuyDTO> selectAllBuyBid(int pid) {
+		
+		return productDetailMapper.selectAllBuyBid(pid);
+	}
+
+
+	@Override
+	public List<ProductDTO> selectProductBrandList(int pid) {
+		
+		return productDetailMapper.selectProductBrandList(pid);
+	}
+
 }

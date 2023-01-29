@@ -84,8 +84,8 @@ public class ShowLiveChannel {
 			showliveMessage.setMessage(showliveMessage.getMessage());
 		}else if (showliveMessage.getType() == MessageType.QUESTION){
 			showliveMessage.setMessage(showliveMessage.getMessage());
-			//BJ한테 우선적으로 보내주기!
-			sendMessageToBJ(showliveMessage);
+			//BJ한테 우선적으로 보내주기! -> 이거까지하면 2개 가서 일단 취소
+			//sendMessageToBJ(showliveMessage);
 		}
 			if(showliveMessage.getType() == MessageType.AUCTION) {	//경매 용도
 			//입력받은 입찰 제시금이 지금보다 크면 모두에게 새로운 제시금을 보냄
@@ -113,6 +113,8 @@ public class ShowLiveChannel {
 			showliveMessage.setChannelTotalUser(connectedUsers);
 			showliveMessage.setMessage(userId + " 님이 퇴장하셨습니다");
 			log.warn(roomNum + "번방 접속자 수 :" + connectedUsers);
+		}else if(showliveMessage.getType() == MessageType.AUCTION_END) {	//라이브가 종료 되었을 때
+			log.warn(roomNum + "낙찰 완료!" + roomNum +" 방 경매가 종료 되었습니다");
 		}else if(showliveMessage.getType() == MessageType.LIVE_END) {	//라이브가 종료 되었을 때
 			connectedUsers--;
 			sessionsRoomNo.remove(session);

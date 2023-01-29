@@ -132,5 +132,80 @@
 	 ]]>
 	</insert>
 	
-
+	<!-- 상품상세페이지에서 가격, 판매버튼에 가격 보이도록 하는 mapper -->
+	
+	<select id="selectMinBuyProductPrice"
+		resultType="BuyDTO"
+		parameterType="Integer">
+		 <![CDATA[
+		   SELECT MIN(PRICE) AS PRICE
+           FROM SALE 
+           WHERE PID= #{pid}
+		  ]]>
+	</select>
+	
+	<select id="selectMinSellProductPrice"
+		resultType="SellDTO"
+		parameterType="Integer">
+		 <![CDATA[
+		   SELECT MIN(PRICE) AS PRICE 
+           FROM BUY 
+           WHERE PID= #{pid}
+		  ]]>
+	</select>
+	
+	<select id="selectAllSignContract"
+		resultType="BuyDTO"
+		parameterType="Integer">
+		 <![CDATA[
+		   SELECT *
+		     FROM 
+		     (SELECT SIZE_TYPE, PRICE, NOWDATE 
+                FROM BUY 
+               WHERE STATUS1='진행완료' AND PID= #{pid}
+               UNION ALL
+              SELECT SIZE_TYPE, PRICE, NOWDATE
+                FROM SALE
+               WHERE STATUS1='진행완료' AND PID= #{pid}
+              )
+            ORDER BY NOWDATE DESC
+		  ]]>
+	</select>
+	
+	<select id="selectAllBuyBid"
+		resultType="BuyDTO"
+		parameterType="Integer">
+		 <![CDATA[
+		   SELECT SIZE_TYPE, PRICE, COUNT(SIZE_TYPE) AS AMOUNT 
+           FROM BUY 
+           WHERE STATUS1='구매입찰' AND PID= #{pid}
+           GROUP BY SIZE_TYPE, PRICE 
+           ORDER BY PRICE DESC
+		  ]]>
+	</select>
+	
+	<select id="selectAllSellBid"
+		resultType="SellDTO"
+		parameterType="Integer">
+		 <![CDATA[
+		   SELECT SIZE_TYPE, PRICE, COUNT(SIZE_TYPE) AS AMOUNT 
+           FROM SALE 
+           WHERE STATUS1='판매입찰' AND PID= #{pid}
+           GROUP BY SIZE_TYPE, PRICE 
+           ORDER BY PRICE ASC
+		  ]]>
+	</select>
+	
+	<!--같은 브랜드 리스트-->
+	<select id="selectProductBrandList"
+		resultType="productDTO"
+		parameterType="Integer">
+		 <![CDATA[
+		   SELECT PID, PNAME_E, PNAME_K, RELEASE_PRICE, IMG1 
+           FROM RESELL_PRODUCT 
+           WHERE BRAND IN (SELECT BRAND
+                           FROM RESELL_PRODUCT
+                           WHERE PID= #{pid})
+		  ]]>
+	</select>
 </mapper>

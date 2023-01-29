@@ -26,6 +26,11 @@ public interface ShowLiveService {
 	public ShowLiveChannelDTO getChannelDTOByRoomNo(String roomNo);
 	//라이브중인 쇼라이브 목록 가져오기
 	public List<ShowLiveChannelDTO> getLiveChannels();
+	//라이브중인 쇼라이브 목록 가져옥 - ShowLiveChannelStore에 저장된 channelDTO들은 모두 생방송인걸로 생각하니까 Store에서 channelDTO를 가져옴
+	public List<ShowLiveChannelDTO> getLiveChannelsFromChannelStore();
 	//쇼라이브 라이브 상태 변경
 	public int changeLiveStatus(ShowLiveChannelDTO channel);
+	//방금 생선된 라이브쇼 객체 가져오기
+	public ShowLiveChannelDTO getShowLiveChannelInfo();
 }
+
