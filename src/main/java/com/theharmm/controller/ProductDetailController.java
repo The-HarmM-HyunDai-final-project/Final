@@ -64,6 +64,7 @@ public class ProductDetailController {
 		log.info("상품정보 : "+productDetailDTO.toString());
 		log.info("긍정리뷰 : "+positivePostList.toString());
 		log.info("부정리뷰 : "+negativePostList.toString());
+		log.info("체결데이터 조회 : "+allSignContractList.toString());
 		//session.setAttribute("totalRows", totalRows);
 		model.addAttribute("productDetailDTO", productDetailDTO);
 
@@ -74,6 +75,7 @@ public class ProductDetailController {
 		model.addAttribute("allSignContractList", allSignContractList);
 		model.addAttribute("allSellBidList", allSellBidList);
 		model.addAttribute("allBuyBidList", allBuyBidList);
+		
 
 		return "product/productdetail";
 	}

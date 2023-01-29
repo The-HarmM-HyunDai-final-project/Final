@@ -1,6 +1,10 @@
 
 package com.theharmm.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.theharmm.domain.AccountDTO;
 import com.theharmm.domain.MemberAddressDTO;
 import com.theharmm.domain.MemberVO;
 import com.theharmm.domain.ProductDetailDTO;
@@ -112,7 +115,12 @@ public class BuyController {
 		model.addAttribute("type",type);// 타입 
 		model.addAttribute("shippingFee",shippingFee);
 		
-		
+		Calendar cal = Calendar.getInstance();
+	    cal.setTime(new Date());
+	    DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+	    cal.add(Calendar.DATE, dDay);
+	    String bidDate = df.format(cal.getTime());
+	    
 		if(type.equals("즉시구매")) {
 			price = productSaleSizeDTO.getPrice();
 			fee = (int)(productSaleSizeDTO.getPrice()*0.015);
@@ -125,6 +133,7 @@ public class BuyController {
 		model.addAttribute("price",price);
 		model.addAttribute("totalPrice",price+fee+shippingFee);
 		model.addAttribute("dDay",dDay);
+		model.addAttribute("bidDate",bidDate);
 		
 		if(type.equals("즉시구매")) {
 	
@@ -238,6 +247,12 @@ public class BuyController {
 			user.setMember_name("신미림");
 			user.setMember_phone("01053030542");
 			
+			Calendar cal = Calendar.getInstance();
+		    cal.setTime(new Date());
+		    DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+		    cal.add(Calendar.DATE, dDay);
+		    String bidDate = df.format(cal.getTime());
+			
 			//상품정보 가져오기
 			ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 			
@@ -247,6 +262,7 @@ public class BuyController {
 			model.addAttribute("fee", fee);
 			model.addAttribute("totalPrice", totalPrice);
 			model.addAttribute("dDay", dDay);
+			model.addAttribute("bidDate", bidDate);
 			model.addAttribute("shippingFee", shippingFee);
 			
 			
