@@ -141,7 +141,7 @@
 										</div>
 										<div data-v-ead20452="" class="complete_btn_box">
 											<a
-												data-v-575aff82="" data-v-ead20452="" href="#"
+												data-v-575aff82="" data-v-ead20452="" href="/product/productlist?page=1"
 												class="btn outlinegrey medium"> SHOP 바로가기 </a>
 											<!---->
 										</div>
