@@ -666,6 +666,7 @@
 				</div>
 			</div>
 			<div class="other_stock_list" data-v-b5bc0164="">
+			   <c:forEach var="productBrand" items="${productBrandList}">
 				<div class="stock_list_item" data-v-2367be08="" data-v-b5bc0164="">
 					<a href="/products/stock/1838312" class="item_inner"
 						data-v-2367be08=""><div class="product_thumb"
@@ -674,40 +675,24 @@
 								data-v-09fbcf09="" data-v-2367be08="">
 								<picture class="picture product_img" data-v-878ec45c=""
 									data-v-09fbcf09="">
-								<source type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMDFfNDgg/MDAxNjY5ODc1MzI5ODcx.6mQdYYNr4LEpe-z89jGl5DqPP6oVsd_IkufyHaXS9AUg.Mr3n5Q4GEB9h-w4sB2vQS1GMBhpoFcDK427oaq_G_7cg.PNG/a_bd794001d93d41519a64b3178fe65da0.png?type=m_webp"
-									data-v-878ec45c="">
-								<source
-									srcset="https://kream-phinf.pstatic.net/MjAyMjEyMDFfNDgg/MDAxNjY5ODc1MzI5ODcx.6mQdYYNr4LEpe-z89jGl5DqPP6oVsd_IkufyHaXS9AUg.Mr3n5Q4GEB9h-w4sB2vQS1GMBhpoFcDK427oaq_G_7cg.PNG/a_bd794001d93d41519a64b3178fe65da0.png?type=m"
-									data-v-878ec45c="">
 								<img alt="상품 이미지"
-									src="https://kream-phinf.pstatic.net/MjAyMjEyMDFfNDgg/MDAxNjY5ODc1MzI5ODcx.6mQdYYNr4LEpe-z89jGl5DqPP6oVsd_IkufyHaXS9AUg.Mr3n5Q4GEB9h-w4sB2vQS1GMBhpoFcDK427oaq_G_7cg.PNG/a_bd794001d93d41519a64b3178fe65da0.png?type=m"
+									src="${productBrand.img1}"
 									loading="lazy" class="image" data-v-878ec45c=""></picture>
-								<!---->
-								<!---->
-								<em class="stocked_status_mark" data-v-09fbcf09=""> 95점 </em>
 								<!---->
 							</div>
 							<!---->
 						</div>
 						<div class="product_info" data-v-2367be08="">
 							<div class="product_detail" data-v-2367be08="">
-								<p class="size" data-v-2367be08="">310</p>
-								<p class="name" data-v-2367be08="">Jordan 1 Retro High OG
-									Chicago 2022</p>
-								<span class="express_mark" data-v-2367be08="">빠른배송</span>
+								<p class="size" data-v-2367be08="">${productBrand.pname_k}</p>
+								<p class="name" data-v-2367be08="">${productBrand.pname_e}</p>
 							</div>
 							<div class="product_price" data-v-2367be08="">
 								<p class="origin_price" data-v-2367be08="">550,000</p>
-								<p class="discount_price" data-v-2367be08="">
-									<em class="discount_per" data-v-2367be08="">10%</em><span
-										class="amount" data-v-2367be08="">500,000</span><span
-										class="won" data-v-2367be08="">원</span>
-								</p>
-								<p class="price_desc" data-v-2367be08="">95점 구매가</p>
 							</div>
 						</div></a>
-				</div>
+				  </div>
+				 </c:forEach>
 				<div class="stock_list_item" data-v-2367be08="" data-v-b5bc0164="">
 					<a href="/products/stock/1915678" class="item_inner"
 						data-v-2367be08=""><div class="product_thumb"

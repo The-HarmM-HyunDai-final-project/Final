@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.theharmm.domain.BuyDTO;
 import com.theharmm.domain.PostVO;
+import com.theharmm.domain.ProductDTO;
 import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.SellDTO;
 import com.theharmm.service.PostService;
@@ -75,6 +76,11 @@ public class ProductDetailController {
 		model.addAttribute("allSignContractList", allSignContractList);
 		model.addAttribute("allSellBidList", allSellBidList);
 		model.addAttribute("allBuyBidList", allBuyBidList);
+		
+		
+		//같은 브랜드 리스트 띄우기 
+		List<ProductDTO> ProductBrandList = productDetailService.selectProductBrandList(pid);
+		model.addAttribute("productBrandList", ProductBrandList);
 		
 
 		return "product/productdetail";
