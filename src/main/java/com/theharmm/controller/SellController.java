@@ -255,11 +255,18 @@ public class SellController {
 			saleInfoMap.put("dDay",dDay);
 			productDetailService.insertSaleOrder(saleInfoMap);
 			
+			Calendar cal = Calendar.getInstance();
+		    cal.setTime(new Date());
+		    DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+		    cal.add(Calendar.DATE, dDay);
+		    String bidDate = df.format(cal.getTime());
+			
 			model.addAttribute("productDetailDTO", productDetailDTO);
 			model.addAttribute("price", price);
 			model.addAttribute("fee", fee);
 			model.addAttribute("totalPrice", totalPrice);
 			model.addAttribute("dDay", dDay);
+			model.addAttribute("bidDate", bidDate);
 			
 			return "product/sell_bid_complete";
 		}

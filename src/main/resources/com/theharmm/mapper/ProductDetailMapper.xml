@@ -201,7 +201,7 @@
 		resultType="productDTO"
 		parameterType="Integer">
 		 <![CDATA[
-		   SELECT PNAME_E, PNAME_K, RELEASE_PRICE, IMG1 
+		   SELECT PID, PNAME_E, PNAME_K, RELEASE_PRICE, IMG1 
            FROM RESELL_PRODUCT 
            WHERE BRAND IN (SELECT BRAND
                            FROM RESELL_PRODUCT

@@ -51,9 +51,7 @@
 						data-v-01e212dd="">
 						<div data-v-3d1a4f76="" data-v-07f24dc5="" dir="ltr"
 							class="banner_slide detail_slide slick-slider slick-initialized">
-							<button data-v-21137603="" data-v-3d1a4f76="" type="button"
-								data-role="none" class="slick-arrow slick-prev slick-disabled"
-								style="display: block;">Previous</button>
+							
 							<div data-v-3d1a4f76="" class="slick-list">
 								<div data-v-e4caeaf8="" data-v-3d1a4f76="" class="slick-track"
 									style="width: 2800px; opacity: 1;">
@@ -88,138 +86,8 @@
 											</div>
 										</div>
 									</div>
-									<div data-v-e4caeaf8="" tabindex="-1" data-index="1"
-										aria-hidden="true" class="slick-slide"
-										style="outline: none; width: 560px; position: relative; left: -560px; opacity: 0; transition: opacity 500ms ease 0s, visibility 500ms ease 0s;">
-										<div data-v-e4caeaf8="">
-											<div data-v-07f24dc5="" data-v-e4caeaf8="" tabindex="-1"
-												class="slide_content"
-												style="width: 100%; display: inline-block;">
-												<div data-v-07f24dc5="" data-v-e4caeaf8="" href="/"
-													class="slide_item"
-													style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
-													<div data-v-07f24dc5="" data-v-e4caeaf8=""
-														class="item_inner">
-														<div data-v-09fbcf09="" data-v-07f24dc5="" class="product"
-															data-v-e4caeaf8=""
-															style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
-															<picture data-v-878ec45c="" data-v-09fbcf09=""
-																class="picture product_img">
-															<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="상품 이미지" 
-																src="${productDetailDTO.img2}"
-																loading="lazy" fetchpriority="high" class="image"></picture>
-															<!---->
-															<!---->
-															<!---->
-															<!---->
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div data-v-e4caeaf8="" tabindex="-1" data-index="2"
-										aria-hidden="true" class="slick-slide"
-										style="outline: none; width: 560px; position: relative; left: -1120px; opacity: 0; transition: opacity 500ms ease 0s, visibility 500ms ease 0s;">
-										<div data-v-e4caeaf8="">
-											<div data-v-07f24dc5="" data-v-e4caeaf8="" tabindex="-1"
-												class="slide_content"
-												style="width: 100%; display: inline-block;">
-												<div data-v-07f24dc5="" data-v-e4caeaf8="" href="/"
-													class="slide_item"
-													style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
-													<div data-v-07f24dc5="" data-v-e4caeaf8=""
-														class="item_inner">
-														<div data-v-09fbcf09="" data-v-07f24dc5="" class="product"
-															data-v-e4caeaf8=""
-															style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
-															<picture data-v-878ec45c="" data-v-09fbcf09=""
-																class="picture product_img">
-															<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="상품 이미지" 
-																src="${productDetailDTO.img3}"
-																loading="lazy" fetchpriority="high" class="image"></picture>
-															<!---->
-															<!---->
-															<!---->
-															<!---->
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div data-v-e4caeaf8="" tabindex="-1" data-index="3"
-										aria-hidden="true" class="slick-slide"
-										style="outline: none; width: 560px; position: relative; left: -1680px; opacity: 0; transition: opacity 500ms ease 0s, visibility 500ms ease 0s;">
-										<div data-v-e4caeaf8="">
-											<div data-v-07f24dc5="" data-v-e4caeaf8="" tabindex="-1"
-												class="slide_content"
-												style="width: 100%; display: inline-block;">
-												<div data-v-07f24dc5="" data-v-e4caeaf8="" href="/"
-													class="slide_item"
-													style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
-													<div data-v-07f24dc5="" data-v-e4caeaf8=""
-														class="item_inner">
-														<div data-v-09fbcf09="" data-v-07f24dc5="" class="product"
-															data-v-e4caeaf8=""
-															style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
-															<picture data-v-878ec45c="" data-v-09fbcf09=""
-																class="picture product_img">
-															<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="상품 이미지" 
-																src="${productDetailDTO.img4}"
-																loading="lazy" fetchpriority="high" class="image"></picture>
-															<!---->
-															<!---->
-															<!---->
-															<!---->
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div data-v-e4caeaf8="" tabindex="-1" data-index="4"
-										aria-hidden="true" class="slick-slide"
-										style="outline: none; width: 560px; position: relative; left: -2240px; opacity: 0; transition: opacity 500ms ease 0s, visibility 500ms ease 0s;">
-										<div data-v-e4caeaf8="">
-											<div data-v-07f24dc5="" data-v-e4caeaf8="" tabindex="-1"
-												class="slide_content"
-												style="width: 100%; display: inline-block;">
-												<div data-v-07f24dc5="" data-v-e4caeaf8="" href="/"
-													class="slide_item"
-													style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
-													<div data-v-07f24dc5="" data-v-e4caeaf8=""
-														class="item_inner">
-														<div data-v-09fbcf09="" data-v-07f24dc5="" class="product"
-															data-v-e4caeaf8=""
-															style="background-color: rgb(${productDetailDTO.bg_r}, ${productDetailDTO.bg_g}, ${productDetailDTO.bg_b});">
-															<picture data-v-878ec45c="" data-v-09fbcf09=""
-																class="picture product_img">
-															<img data-v-878ec45c="" referrerpolicy="no-referrer" alt="상품 이미지" 
-																src="${productDetailDTO.img5}"
-																loading="lazy" fetchpriority="high" class="image"></picture>
-															<!---->
-															<!---->
-															<!---->
-															<!---->
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
 								</div>
 							</div>
-							<button data-v-21137603="" data-v-3d1a4f76="" type="button"
-								data-role="none" class="slick-arrow slick-next"
-								style="display: block;">Next</button>
-							<ul data-v-3d1a4f76="" class="slick-dots" style="display: block;">
-								<li class="slick-active"><button>1</button></li>
-								<li class=""><button>2</button></li>
-								<li class=""><button>3</button></li>
-								<li class=""><button>4</button></li>
-								<li class=""><button>5</button></li>
-							</ul>
 						</div>
 					</div>
 				</div>
@@ -900,22 +768,13 @@
 		<div class="other_stock" data-v-b5bc0164="" data-v-01e212dd="">
 			<div class="title" data-v-b5bc0164="">
 				<h3 class="title_text" data-v-b5bc0164="">
-					<em>95점</em> 추천 상품
-				</h3>
-				<div class="title_desc" data-v-b5bc0164="">
-					<a href="#" class="help_btn" data-v-b5bc0164="">95점<svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="ico-help icon sprite-icons" data-v-b5bc0164="">
-							<use
-								href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-help"
-								xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-help"
-								data-v-b5bc0164=""></use></svg></a>
-				</div>
+					<em>${productDetailDTO.brand} 브랜드 추천</em>
+				</h3>			
 			</div>
 			<div class="other_stock_list" data-v-b5bc0164="">
 			   <c:forEach var="productBrand" items="${productBrandList}">
 				<div class="stock_list_item" data-v-2367be08="" data-v-b5bc0164="">
-					<a href="/products/stock/1838312" class="item_inner"
+					<a href="/products/${productBrand.pid}" class="item_inner"
 						data-v-2367be08=""><div class="product_thumb"
 							data-v-2367be08="">
 							<div class="product" style="background-color: #f2f2f2;"
@@ -1294,7 +1153,7 @@
 														<li class="img-file">
 															<button type="button" onclick="layerViewImg();"
 																style="background-image: url(${pageContext.request.contextPath}/${positivePost.upload_path}/${positivePost.uuid}_${positivePost.file_name}); transform: rotate(0deg);">
-																<img
+																<img referrerpolicy="no-referrer"
 																	src="${pageContext.request.contextPath}/${positivePost.upload_path}/${positivePost.uuid}_${positivePost.file_name}"
 																	alt="2023-01-18-16-29-33-366"
 																	style="transform: rotate(0deg);">
@@ -1648,7 +1507,7 @@
 														<li class="img-file">
 															<button type="button" onclick="layerViewImg();"
 																style="background-image: url(${pageContext.request.contextPath}/${negativePost.upload_path}/${negativePost.uuid}_${negativePost.file_name}); transform: rotate(0deg);">
-																<img
+																<img referrerpolicy="no-referrer"
 																	src="${pageContext.request.contextPath}/${negativePost.upload_path}/${negativePost.uuid}_${negativePost.file_name}"
 																	alt="2023-01-18-16-29-33-366"
 																	style="transform: rotate(0deg);">
