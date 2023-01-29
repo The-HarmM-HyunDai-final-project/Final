@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+
 <script src="${pageContext.request.contextPath}/resources/js/buy_order_tab.js" defer=""></script>
 <!DOCTYPE html>
 <html lang="ko">
@@ -113,6 +115,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
 <script>
 
 var IMP = window.IMP;   // 생략 가능
@@ -179,6 +182,8 @@ function requestPay() {
       }
     });
   }
+  
+
 </script>
 </head>
 <body>
@@ -187,6 +192,7 @@ function requestPay() {
 		<div id="__layout">
 			<div data-v-0590ccc1="" tabindex="0" class="wrap lg win_os">
 				<%@ include file="/WEB-INF/views/common/header.jsp"%>
+				
 				<!---->
 				<div data-v-63d14162="" data-v-0590ccc1=""
 					class="container buy lg step-2">
@@ -248,20 +254,6 @@ function requestPay() {
 												</dl>
 											</div>
 											
-										</div>
-										<div data-v-6b0ea0a8="" data-v-e7203b1c="">
-											<div data-v-6b0ea0a8="" class="button_shipping_memo_wrap">
-												<button data-v-6b0ea0a8="" class="button_shipping_memo">
-													<span data-v-6b0ea0a8="" class="updated_memo">경비실에
-														맡겨 주세요</span>
-													<svg data-v-6b0ea0a8="" xmlns="http://www.w3.org/2000/svg"
-														class="ico-arr-right icon sprite-icons">
-														<use data-v-6b0ea0a8=""
-															href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-right"
-															xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-right"></use></svg>
-												</button>
-											</div>
-											<!---->
 										</div>
 									</div>
 								</div>
@@ -405,51 +397,13 @@ function requestPay() {
 													<span data-v-3a2a7b6b="">입찰 마감 기한</span>
 													<!---->
 												</dt>
+												
 												<dd data-v-3a2a7b6b="" class="price_text">${dDay}일 -
-													2023/02/19까지</dd>
+													${bidDate}까지</dd>
 											</dl>
 										</div>
 									</div>
 								</div>
-							</section>
-							<section data-v-7282eac8="" data-v-b8efdcc8="">
-								<div data-v-7282eac8="" class="section_title">
-									<h3 data-v-7282eac8="" class="title_txt">결제 방법</h3>
-								</div>
-								<div data-v-7282eac8="" class="section_content">
-									<!---->
-									<div data-v-7282eac8="" class="simple_payment">
-										<h4 data-v-7282eac8="" class="method_title">
-											<div data-v-7282eac8="" class="main_title">
-												카드 간편결제 <span data-v-7282eac8="" class="sub_title">일시불</span>
-											</div>
-											<!---->
-										</h4>
-										<div data-v-647680cc="" data-v-7282eac8="" class="card_list">
-											<div data-v-647680cc="" class="main_card selected">
-												<a data-v-647680cc="" href="#" class="regist_link"><span
-													data-v-647680cc="" class="regist_text">카드를 등록해주세요</span>
-												<svg data-v-647680cc="" xmlns="http://www.w3.org/2000/svg"
-														class="ico-arr-down icon sprite-icons">
-														<use data-v-647680cc=""
-															href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-down"
-															xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-down"></use></svg></a>
-											</div>
-											<div data-v-647680cc="" class="other_card"
-												style="display: none;">
-												<ul data-v-647680cc="" class="other_card_list"></ul>
-											</div>
-										</div>
-									</div>
-									<!---->
-									<div data-v-7282eac8="" class="method_desc">
-										<p data-v-7282eac8="" class="desc_txt">구매 입찰은 일시불만 지원하며,
-											카드사 홈페이지나 앱에서 분할 납부로 변경 가능합니다. 단, 카드사별 정책에 따라 분할 납부 변경 시 수수료가
-											발생할 수 있습니다.</p>
-									</div>
-								</div>
-								<!---->
-								<!---->
 							</section>
 							<section data-v-b8efdcc8="" class="buy_check">
 								

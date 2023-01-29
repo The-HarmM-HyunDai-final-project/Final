@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
-
+<jsp:useBean id="now" class="java.util.Date" />
 <link
 	href="${pageContext.request.contextPath}/resources/css/b69f662.css"
 	rel="stylesheet" type="text/css">
@@ -10,6 +10,7 @@
 	rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"> <!-- 배너추가 --> 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/product_detail_tab.js" defer=""></script>
 <script src="${pageContext.request.contextPath}/resources/js/reviewstab.js" defer=""></script>
  <script>
@@ -34,8 +35,10 @@
                 imgSlide.src = imgList[i];
             }
         }
+        
+        
  </script>
- 
+
 <div class="container detail lg" data-v-01e212dd="" data-v-3007c576="">
 	<div class="content" data-v-01e212dd="">
 		<h2 class="blind" data-v-01e212dd="">상품 상세</h2>
@@ -219,26 +222,6 @@
 							</ul>
 						</div>
 					</div>
-					<div class="banner_alert lg" data-v-32b7052e="" data-v-01e212dd="">
-						<a href="https://kream.co.kr/api/app/pages/notice_DZ5485-612.html"
-							class="alert_wrap" data-v-32b7052e=""><div
-								class="banner_alert_content" data-v-32b7052e="">
-								<p class="alert_title" data-v-32b7052e="">
-									<span class="care_mark" data-v-32b7052e="">주의</span><span
-										class="alert_text" data-v-32b7052e="">상품 특이사항 안내</span>
-								</p>
-								<p class="alert_subtext" data-v-32b7052e="">해당 상품의 개체별 특이사항
-									안내해드립니다.</p>
-							</div>
-							<div class="ico_arrow" style="display:;" data-v-32b7052e="">
-								<svg xmlns="http://www.w3.org/2000/svg"
-									class="ico-arr-type icon sprite-icons" data-v-32b7052e="">
-									<use
-										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-type"
-										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-type"
-										data-v-32b7052e=""></use></svg>
-							</div></a>
-					</div>
 				</div>
 			</div>
 			<div class="column" data-v-01e212dd="">
@@ -311,16 +294,6 @@
 											data-v-23bbaa82="" class="desc">즉시 판매가</span>
 									</div></a>
 							</div>
-							<a data-v-575aff82="" data-v-2d0ab5c1="" data-v-3900a1a2=""
-								href="#" class="btn full outlinegrey large btn_wish"
-								aria-label="관심상품"><svg data-v-2d0ab5c1=""
-									xmlns="http://www.w3.org/2000/svg"
-									class="icon sprite-icons ico-wish-off">
-									<use data-v-2d0ab5c1=""
-										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-off"
-										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-off"></use></svg><span
-								data-v-2d0ab5c1="" class="btn_text">관심상품</span><span
-								data-v-2d0ab5c1="" class="wish_count_num">3.2만</span></a>
 						</div>
 					</div>
 					<div class="product_info_wrap" data-v-3900a1a2="">
@@ -372,6 +345,82 @@
 							<!---->
 						</div>
 						
+					</div>
+					<div class="wrap_sales" data-v-69832834="" data-v-3900a1a2="">
+						<div class="tab_area" data-v-b6b2883e="" data-v-69832834="">
+							<ul role="tablist" class="tab_list" data-v-b6b2883e="">
+								<li data-v-b6b2883e="" role="tab" aria-selected="false"
+									aria-controls="sales_panel1" class="item on"><a
+									data-v-b6b2883e="" href="#" class="item_link">1개월</a></li>
+								<li data-v-b6b2883e="" role="tab" aria-selected="false"
+									aria-controls="sales_panel2" class="item"><a
+									data-v-b6b2883e="" href="#" class="item_link">3개월</a></li>
+								<li data-v-b6b2883e="" role="tab" aria-selected="false"
+									aria-controls="sales_panel3" class="item"><a
+									data-v-b6b2883e="" href="#" class="item_link">6개월</a></li>
+								<li data-v-b6b2883e="" role="tab" aria-selected="false"
+									aria-controls="sales_panel4" class="item"><a
+									data-v-b6b2883e="" href="#" class="item_link">1년</a></li>
+								<li data-v-b6b2883e="" role="tab" aria-selected="true"
+									aria-controls="sales_panel5" class="item"><a
+									data-v-b6b2883e="" href="#" class="item_link">전체</a></li>
+							</ul>
+							<br/><br/>
+							<div id="sales_panel1" role="tabpanel" span="1m"
+								class="tab_content show" data-v-3c9dd7e9="" data-v-69832834=""
+								data-v-b6b2883e="">
+								<div class="graph" data-v-04d43b10="" data-v-69832834=""
+									data-v-3c9dd7e9="">
+									<canvas data-v-04d43b10=""
+										id="sales_canvas1" height="0"
+										style="display: block; box-sizing: border-box; height:200px;width:530px;"
+										width="0"></canvas>
+								</div>
+							</div>
+							<div id="sales_panel2" role="tabpanel" span="3m"
+								class="tab_content" data-v-3c9dd7e9="" data-v-69832834=""
+								data-v-b6b2883e="">
+								<div class="graph" data-v-04d43b10="" data-v-69832834=""
+									data-v-3c9dd7e9="">
+									<canvas data-v-04d43b10=""
+										id="sales_canvas2" height="0"
+										style="display: block; box-sizing: border-box; height:200px;width:530px;"
+										width="0"></canvas>
+								</div>
+							</div>
+							<div id="sales_panel3" role="tabpanel" span="6m"
+								class="tab_content" data-v-3c9dd7e9="" data-v-69832834=""
+								data-v-b6b2883e="">
+								<div class="graph" data-v-04d43b10="" data-v-69832834=""
+									data-v-3c9dd7e9="">
+									<canvas data-v-04d43b10=""
+										id="sales_canvas3" height="0"
+										style="display: block; box-sizing: border-box; height:200px;width:530px;"
+										width="0"></canvas>
+								</div>
+							</div>
+							<div id="sales_panel4" role="tabpanel" span="1y"
+								class="tab_content" data-v-3c9dd7e9="" data-v-69832834=""
+								data-v-b6b2883e="">
+								<div class="graph" data-v-04d43b10="" data-v-69832834=""
+									data-v-3c9dd7e9="">
+									<canvas data-v-04d43b10=""
+										id="sales_canvas4" height="0"
+										style="display: block; box-sizing: border-box; height:200px;width:530px;"
+										width="0"></canvas>
+								</div>
+							</div>
+							<div id="sales_panel5" role="tabpanel" span="all"
+								class="tab_content" data-v-3c9dd7e9="" data-v-69832834=""
+								data-v-b6b2883e="">
+								<div class="graph" data-v-04d43b10="" data-v-69832834=""
+									data-v-3c9dd7e9="">
+									<canvas data-v-04d43b10=""
+										id="sales_canvas5" 
+										style="display: block; box-sizing: border-box; height:200px;width:530px;"></canvas>
+								</div>
+							</div>
+						</div>
 					</div>
 
 					<div class="detail_wrap" data-v-3900a1a2=""
@@ -1064,7 +1113,7 @@
 					<h3 class="sec-title">긍정리뷰</h3>
 					<div class="review-total">
 						<div class="member-total-point">
-							<h4 class="tit">사용자 총 평점</h4>
+							<h4 class="tit">키워드</h4>
 							<p class="point size-l">
 								<span class="ico" style="width: 98%;">별점</span> <span
 									class="num">4.9</span>
@@ -1293,8 +1342,6 @@
 
 					<div class="product-detail-review-list">
 						<div class="head">
-							<p class="txt">상품 구매 후 리뷰 작성시 H.Plus를 드립니다. (포토리뷰 1,000포인트,
-								텍스트리뷰 300포인트 증정)</p>
 							<div id="prdReviewFilter" class="opt">
 								<div class="select">
 									<button type="button" class="sel-btn"
@@ -1418,7 +1465,7 @@
 					<h3 class="sec-title">비판리뷰</h3>
 					<div class="review-total">
 						<div class="member-total-point">
-							<h4 class="tit">사용자 총 평점</h4>
+							<h4 class="tit">키워드</h4>
 							<p class="point size-l">
 								<span class="ico" style="width: 98%;">별점</span> <span
 									class="num">4.9</span>
@@ -1811,5 +1858,125 @@
 
 <!-- </div> -->
 
+<script>
+var date_list1 = new Array();
+var money_list1 = new Array();
 
+var date_list2 = new Array();
+var money_list2 = new Array(); 
+
+var date_list3 = new Array();
+var money_list3 = new Array(); 
+
+var date_list4 = new Array();
+var money_list4 = new Array(); 
+
+var date_list5 = new Array();
+var money_list5 = new Array(); 
+ 
+<fmt:parseNumber var="today" value="${now.time / (1000*60*60*24)}" />
+ 
+
+<c:forEach var="allSignContract" items="${allSignContractList}">
+<fmt:parseNumber var="dealday" value="${allSignContract.nowdate.time/ (1000*60*60*24)}"  />
+date_list5.push("${allSignContract.nowdate}");
+money_list5.push("${allSignContract.price}");
+<c:if test="${today - dealday <= 30}">
+date_list1.push("${allSignContract.nowdate}");
+money_list1.push("${allSignContract.price}");
+</c:if>
+<c:if test="${today - dealday <= 90}">
+date_list2.push("${allSignContract.nowdate}");
+money_list2.push("${allSignContract.price}");
+</c:if>
+<c:if test="${today - dealday <= 180}">
+date_list3.push("${allSignContract.nowdate}");
+money_list3.push("${allSignContract.price}");
+</c:if>
+<c:if test="${today - dealday <= 365}">
+date_list4.push("${allSignContract.nowdate}");
+money_list4.push("${allSignContract.price}");
+</c:if>
+</c:forEach>
+
+
+
+
+
+<c:forEach var="i" begin="1" end="5" >
+	const labels${i} = date_list${i};
+
+	  const data${i} = {
+	    labels: labels${i},
+	    datasets: [{
+	    	 type: 'line',
+	    	    
+	    	    borderColor: 'rgb(255, 0, 0)',
+	    	    pointHitRadius: 5, // 호버 했을때 영억
+	    	    lineTension: 0.1, // 꺾임 정도
+	    	    fill: false,
+	    	    data: money_list${i},
+	    }]
+	  };
+
+	  const config${i} = {
+	    type: 'line',
+	    data: data${i},
+	    options: {legend: {
+      	display: false
+      },
+      responsive: true,
+      // 플러그인 설정
+      plugins: {
+        // data labels 플러그인
+        datalabels: {
+          display: false,
+        },
+      },
+      scales: {
+          // Y축
+          yAxes: [ 
+            {
+            ticks: { 
+              // 간격 설정
+              fontColor: '#aaaaaa',
+              fontSize: 11,
+            },
+            position: 'right',
+              gridLines: { 
+                // grid line 설정
+                display: false, 
+                drawBorder: false,
+                color: '#3c3d40',
+              },
+            },
+          ],
+          // X축
+          xAxes: [ 
+            {
+              // bar 너비 조정
+              categoryPercentage: 0.7,
+              maxBarThickness: 20,
+              ticks: {
+                fontColor: '#ffffff',
+                fontSize: 0,
+              },
+              gridLines: {
+               display: false,
+              },
+            },
+          ],
+        },
+	    } 
+	  };
+	  
+
+
+const myChart${i} = new Chart(
+document.getElementById('sales_canvas${i}'),
+config${i}
+);
+</c:forEach>
+
+</script>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

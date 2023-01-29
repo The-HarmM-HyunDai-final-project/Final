@@ -140,8 +140,7 @@
 											<!---->
 										</div>
 										<div data-v-ead20452="" class="complete_btn_box">
-											<a data-v-575aff82="" data-v-ead20452="" href="#"
-												class="btn outlinegrey medium"> 내역 상세보기 </a><a
+											<a
 												data-v-575aff82="" data-v-ead20452="" href="#"
 												class="btn outlinegrey medium"> SHOP 바로가기 </a>
 											<!---->
