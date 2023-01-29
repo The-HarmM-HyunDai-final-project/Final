@@ -165,7 +165,7 @@ public class BuyController {
 		saleInfoMap.put("saleid",saleid);
 		
 		//판매입찰 데이터 업데이트 - 구매완료 처리
-		productDetailService.updateBuyOrder(saleInfoMap);
+		productDetailService.updateBuyOrder(saleInfoMap);// 판매입찰로 올라온 데이터가 진행완료 처리 되는거임 
 		
 		//여기서 구매입찰로 들어온 경우는 최종가격에 수수료 제거 해줘야함 !!!!!! 
 		

@@ -368,7 +368,7 @@ var IMP = window.IMP;
                                     </dt>
                                     
                                     <dd data-v-3a2a7b6b="" class="price_text">${dDay}일 -
-                                       <fmt:formatDate var="today" value="${ now }" pattern="yyyy-mm-dd"/>까지</dd>
+													${bidDate}까지</dd>
                                  </dl>
                               </div>
                            </div>
