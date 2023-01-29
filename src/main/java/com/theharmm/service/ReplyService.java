@@ -13,6 +13,7 @@ public interface ReplyService {
     public List<List<ReplyDTO>> getReplyList(int post_id);
     public List<ReplyDTO> getParentReplyList(int post_id);
     public List<ReplyDTO> getChildReplyList(int post_id, int depth);
+    public String getMember_email(int sid);
     
 	/* insert, delete, list, 총 갯수 */
 		 

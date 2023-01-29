@@ -433,8 +433,7 @@
 					}
 					
 					tmp_html =
-						`	<div class="toast" role="alert" aria-live="assertive"  style="display : block; font-size: 1.5rem; background-color: rosybrown;"
-								aria-atomic="true" data-alarmid = "`+alarm.alarmid +`" id = "alarmid`+alarm.alarmid+`">
+						`	<div class="toast" role="alert" aria-live="assertive"  style="display : block; font-size: 1.5rem; background-color: rosybrown;" aria-atomic="true" data-alarmid = "`+alarm.alarmid +`" id = "alarmid`+alarm.alarmid+`">
 								<div class="toast-header">
 									<strong
 										class="me-auto">ALARM</strong> 

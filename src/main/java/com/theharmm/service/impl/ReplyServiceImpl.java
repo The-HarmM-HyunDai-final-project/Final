@@ -113,4 +113,9 @@ public class ReplyServiceImpl implements ReplyService {
 		return replymapper.alarmid() ;
 	}
 
+	@Override
+	public String getMember_email(int sid) {
+		return replymapper.getMember_email(sid);
+	}
+
 }

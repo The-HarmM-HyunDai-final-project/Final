@@ -58,13 +58,16 @@ public class EchoHandler extends TextWebSocketHandler {
 				String receiverUsername = strs[3];
 				String seq = strs[4];	
 				
+				
 				// 작성자가 로그인해서 있다면
 				WebSocketSession boardWriterSession = userSessionsMap.get(receiverUsername);
 				
-				if("reply".equals(cmd) && boardWriterSession != null) {					
-					TextMessage tmpMsg = new TextMessage(caller + "님이 " + 
-										"<a type='external' href='${pageContext.request.contextPath}/social/user/details?post_id="+seq+"'>" + seq + "</a> 번 게시글에 댓글을 남겼습니다.");
-					boardWriterSession.sendMessage(tmpMsg); //로그인해있는 유저에게 보내기
+				
+				if("reply".equals(cmd) && boardWriterSession != null) {	
+					
+					//receiver = replyservice.getMember_email(Integer.parseInt(receiver));
+					//receiverUsername = replyservice.getMember_email(Integer.parseInt(receiverUsername));
+
 					log.info("소켓 실행");
 					AlarmDTO alarm = new AlarmDTO();
 					alarm.setAlarmid(0);
@@ -76,6 +79,13 @@ public class EchoHandler extends TextWebSocketHandler {
 					
 					int result = replyservice.insertAlarm(alarm);
 					log.info("알람 insert " + result);
+					
+					int nowAlarmid = replyservice.getAlarmid();
+					
+					
+					TextMessage tmpMsg = new TextMessage(caller + "님이 " + 
+										"<a type='external' href='${pageContext.request.contextPath}/social/user/details?post_id="+seq+"'>" + seq + "</a> 번 게시글에 댓글을 남겼습니다.!"+ nowAlarmid);
+					boardWriterSession.sendMessage(tmpMsg); //로그인해있는 유저에게 보내기
 					
 				}else if("followin".equals(cmd) && boardWriterSession != null) {
 					log.info("소켓 실행");
