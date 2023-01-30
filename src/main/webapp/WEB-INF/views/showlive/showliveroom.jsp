@@ -44,6 +44,9 @@
       	right:10px;
       	z-index:10;
       }
+      .video_area .user_count p{
+      	color:white;
+      }
       .user_count {
         /* position: absolute;
         right: 8px; */
@@ -302,7 +305,7 @@
             <div class="price_area">
 	            <b> 최고제시가격 : </b></br>
 	            <b id="max_price"></b>
-	            <b>만원 </b>
+	            <b>원 </b>
             </div>
             
             <br />
@@ -382,7 +385,7 @@
         <button class="canvasBtn" id="startButton">Drop Confetti</button>
     </div>
     <canvas id="canvas"></canvas>
-<%-- <script src="${pageContext.request.contextPath}/resources/js/test.js" defer=""></script> --%>
+<script src="${pageContext.request.contextPath}/resources/js/test.js" defer=""></script>
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script type="text/javascript">
 	var auctionPrevPrice = 100000;
@@ -414,7 +417,7 @@
 			const chat_content = $("#msg").val();
 			$.ajax({
 	          type: "POST", //다른 서버로 보낼 때도 Post를 써야하나
-	          url: "http://127.0.0.1:5000/question",
+	          url: "http://192.168.0.14:5000/question",
 	          // data: GET은 전송할 http의 body가 없음. 그래서 data 필드가 필요없음
 	          // contentType: 전송할 data가 없으니까 그 data를 설명할 필드가 필요없음
 	          dataType: "text", // 목적: 파싱해줌. json데이터를 응답받으면 바이트스트링으로 들어옴. 응답받은 데이터는 json이 아니라 string이다. 그래서 json이 들어오면 자바스크립트 오브젝트로 파싱해줘야 함
@@ -450,7 +453,7 @@
 		  //5개 연속이 3초 이상이면 10초간 채팅전송버튼 금지
 		  if (chat_log[chat_log.length - 1].getTime() - chat_log[0].getTime() < 3000) {
 			chatBtn.disabled = true;
-			$("#msg").attr("placeholder", "채팅 금지입니다");
+			$("#msg").attr("placeholder", "채팅 그만해 이놈들아");
 		    setTimeout(function () {
 	    		chatBtn.disabled = false;
 	    		$("#msg").attr("placeholder", "메시지를 입력해 주세요");
@@ -470,7 +473,7 @@
             $("#bidding_modal").toggle("show");
         }, 6000);
     }
-	var sock = new SockJS('http://localhost:8080/chatting');
+	var sock = new SockJS('/chatting');
 	sock.onmessage = onMessage;
 	sock.onclose = onClose;
 	sock.onopen = onOpen;
@@ -504,6 +507,7 @@
 		var totalUser = messageData['channelTotalUser'];
 		var maxSuggestUser = messageData['channelMaxSuggestUser'];
 		var maxSuggestPrice = messageData['channelMaxSuggestPrice'];
+		var auctionYn = messageData['auctionYn'];
 		
 		var cur_session = '${userid}'; //현재 세션에 로그인 한 사람(controller model에서 가져온값)
 		//console.log("cur_session : " + cur_session);
@@ -538,18 +542,28 @@
 				$("#max_price_user").text(maxSuggestUser);
 		        $("#connected_user").text(totalUser)
 		        auctionPrevPrice = maxSuggestPrice;
+		        
+		        if(auctionYn == 'yes'){
+		        	$("#auction_sugest").attr("placeholder", "경매가 종료 되었습니다.");
+		        	$("#auction_btn").attr("disabled",true);
+		        	$("#auction_btn").css("background","black");
+		        }
 		        console.log(auctionPrevPrice);
 				break
 			case 'LEAVE':
 				var str = 
-					`<div class='col-6'>
-					<div class='alert alert-secondary'>
-					<b>\${message}</b>
-					</div></div>`
+					`<div>
+						<b>\${message}</b>
+					</div>`
 				$("#connected_user").text(totalUser)
 				break
 			case 'AUCTION_END':
 				reAction();
+				if(auctionYn == 'yes'){
+		        	$("#auction_sugest").attr("placeholder", "경매가 종료 되었습니다.");
+		        	$("#auction_btn").attr("disabled",true);
+		        	$("#auction_btn").css("background","black");
+		        }
 				break
 			case 'LIVE_END':
 				$("#leave_modal").toggle("show");

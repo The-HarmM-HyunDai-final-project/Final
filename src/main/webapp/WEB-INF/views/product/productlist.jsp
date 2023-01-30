@@ -3299,10 +3299,10 @@
 													let tmp = "";
 
 													tmp += "<div data-v-19fda891='' data-v-01f4e1bc='' class='product_card'>";
-													tmp += "	<a data-v-19fda891='' href='productdetail?pid="
+													tmp += "	<a data-v-19fda891='' href='/products/"
 															+ product_array
 																	.at(i).product.pid
-															+ " class='item_inner'>";
+															+ "' class='item_inner'>";
 													tmp += "		<div data-v-09fbcf09='' class='product' style='background-color: rgb(244, 244, 244);'>"
 													tmp += "			<picture data-v-878ec45c='' data-v-09fbcf09='' class='picture product_img'>"
 													tmp += "				<source data-v-878ec45c='' type='image/webp'"

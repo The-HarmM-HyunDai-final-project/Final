@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.theharmm.domain.BuyDTO;
+import com.theharmm.domain.ProductDTO;
 import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.ProductSizeDTO;
 import com.theharmm.domain.SellDTO;
@@ -46,5 +47,7 @@ public interface ProductDetailService {
 	List<SellDTO> selectAllSellBid(int pid);
 
 	List<BuyDTO> selectAllBuyBid(int pid);
+	//같은 브랜드 상품리스트
+	List<ProductDTO> selectProductBrandList(int pid);
 }
 

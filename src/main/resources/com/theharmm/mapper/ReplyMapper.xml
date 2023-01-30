@@ -24,5 +24,32 @@
 	<select id="getChildReplyList" resultType="com.theharmm.domain.ReplyDTO" parameterType="int">
 		select * from style_reply where post_id = #{post_id} and parent_id != 0 and depth = #{depth} order by regdate asc
 	</select>
+	
+	<!-- 댓글 id로 작성자 가지고 오기 -->
+	<select id="getMember_email" resultType="String" parameterType="int">
+		select member_email from style_reply where sid = #{sid}
+	</select>
+	
+	<!-- 알람 등록 -->
+	<insert id="insertAlarm">
+		insert into alarm ( alarmid, cmd, caller, receiver, receiverEmail, seq)
+		values(alarm_seq.NEXTVAL, #{cmd}, #{caller}, #{receiver},#{receiverEmail}, #{seq})
+	</insert>
+
+	<delete id="deleteAlarm" parameterType="int">
+		delete from alarm where alarmid = #{alarmid}
+	</delete>
+	
+	<select id="alarmList" resultType="com.theharmm.domain.AlarmDTO" parameterType="String">
+		select * from alarm where receiverEmail = #{receiverEmail}
+	</select>
+	
+	<select id="countAlarm" resultType="int" parameterType="String">
+		select count(*) from alarm where receiverEmail = #{receiverEmail}
+	</select>
+
+	<select id="alarmid" resultType="int">
+		select max(alarmid) from alarm
+	</select>	
 
 </mapper>

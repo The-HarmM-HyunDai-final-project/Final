@@ -15,10 +15,10 @@ $(function(){
   
   $('.btn-fold').click(function () {
 
-	  $('.fold-cont').removeClass('open');
-	  $('.list-content li').removeClass('on');
-	  $(this).parents('li').addClass('on');
-	  $(this).parents('li').find('.fold-cont').addClass('open')
+     $('.fold-cont').removeClass('open');
+     $('.list-content li').removeClass('on');
+     $(this).parents('li').addClass('on');
+     $(this).parents('li').find('.fold-cont').addClass('open')
   }).filter(':eq(0)').click();
   
   

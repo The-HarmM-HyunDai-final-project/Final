@@ -12,6 +12,8 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.theharmm.domain.ShowLiveAuctionFinalPersonDTO;
+import com.theharmm.domain.ShowLiveBiddingDTO;
 import com.theharmm.service.ShowLiveService;
 import com.theharmm.showlive.MessageType;
 import com.theharmm.showlive.ShowLiveChannel;
@@ -86,6 +88,8 @@ public class BJChattingHandler extends TextWebSocketHandler{
             
     		ShowLiveChannel showliveChannel = showLiveChannelStore.getChannelByRoomNo(roomNoOfBj);
     		showliveChannel.handleMessage(session, showLiveMessage);
+    		
+    		insertShowliveInfostoDBFromBJ(showLiveMessage);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -142,6 +146,29 @@ public class BJChattingHandler extends TextWebSocketHandler{
 				break;
 		}
 		return message;
+	}
+	
+	private void insertShowliveInfostoDBFromBJ(ShowLiveMessage message) {
+		switch(message.getType()) {
+			case AUCTION_END:
+				insertAuctionFinalPersonDTOtoDB(message);
+				break;
+		}
+	}
+	private void insertAuctionFinalPersonDTOtoDB(ShowLiveMessage message){
+		
+		ShowLiveChannel showliveChannel = showLiveChannelStore.getChannelByRoomNo(message.getRoomNo());
+		
+		String maxUser = showliveChannel.getMaxSuggestionUser();
+		int maxPrice = showliveChannel.getMaxSuggestionPrice();
+		
+		ShowLiveAuctionFinalPersonDTO personDTO = new ShowLiveAuctionFinalPersonDTO();
+		personDTO.setShowlive_no(Integer.parseInt(message.getRoomNo()));
+		personDTO.setFinal_bbider(maxUser);
+		personDTO.setFinal_price(maxPrice);
+		personDTO.setPayment_yn("0");
+		
+		showliveService.insertAuctionFinalPerson(personDTO);
 	}
 	
 }

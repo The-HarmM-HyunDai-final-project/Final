@@ -32,7 +32,7 @@ public class ShowLiveServiceTests {
 	private ShowLiveService service;
 	
 	//쇼라이브 채널 만들기
-	@Test
+	//@Test
 	public void createChannel() throws Exception{
 		ShowLiveChannelDTO channel = new ShowLiveChannelDTO();
 		channel.setShowlive_name("아놔 테스트용3333");
@@ -55,11 +55,13 @@ public class ShowLiveServiceTests {
 		Date date = new java.util.Date();
 		
 		ShowLiveChatDTO chatdto = new ShowLiveChatDTO();
-		chatdto.setShowlive_no(2);
+		chatdto.setShowlive_no(513);
 		chatdto.setChat_user_id("asd");
 		chatdto.setChat_content("이것은 테스트3!");
 		chatdto.setChat_date(date);
+		chatdto.setQuestion_yn("false");
 		
+		log.warn("dasdasd" + chatdto.toString());
 		service.insertChat(chatdto);
 	
 	}
@@ -74,6 +76,16 @@ public class ShowLiveServiceTests {
 		
 		service.insertAuction(bid);
 		
+	}
+	//@Test
+	public void insertFinalAuctionPerson() throws Exception{
+		ShowLiveAuctionFinalPersonDTO person = new ShowLiveAuctionFinalPersonDTO();
+		person.setShowlive_no(515);
+		person.setFinal_bbider("asd");
+		person.setFinal_price(20);
+		person.setPayment_yn("0");
+
+		service.insertAuctionFinalPerson(person);
 	}
 	//라이브중인 목록 가져오기
 	//@Test

@@ -108,7 +108,7 @@ public class AdminController {
     }
     
     /* 관리자  구매판매 페이지 이동 */
-    @RequestMapping(value="buyAndSell", method = RequestMethod.GET)
+    @RequestMapping(value="buyandsell", method = RequestMethod.GET)
     public void adminBuyAndSellGET() throws Exception{
         
         logger.info("관리자 구매판매 이동");
@@ -142,6 +142,7 @@ public class AdminController {
 		if(roomNo != 0) {
 			log.warn(roomNo + " : 방번호 ");
 			log.warn("방이 잘 만들어졌습니다.");
+			log.warn(createdChannel.getRestricted_grade());
 		}
 		
 		model.addAttribute("channelDTO", createdChannel);

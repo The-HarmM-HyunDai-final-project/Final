@@ -16,7 +16,7 @@
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
 </head>
-<body class="bg-primary">
+<body class="bg-dark">
 	<div id="layoutAuthentication">
 		<div id="layoutAuthentication_content">
 			<main>
@@ -39,15 +39,15 @@
 										<div class="col-md-6">
 											<div class="form-floating">
 												<div class="btn-group">
-												  <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												  <button type="button" class="btn btn-dark btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												    제한 등급
 												  </button>
 												  <div class="dropdown-menu">
-												    <a class="dropdown-item" href="javascript:void(0);">Bronze</a>
-												    <a class="dropdown-item" href="javascript:void(0);">Silver</a>
-												    <a class="dropdown-item" href="javascript:void(0);">Gold</a>
-												    <a class="dropdown-item" href="javascript:void(0);">Platinum</a>
-												    <a class="dropdown-item" href="javascript:void(0);">Diamond</a>
+												    <a class="dropdown-item" href="javascript:void(0);">BRONZE</a>
+												    <a class="dropdown-item" href="javascript:void(0);">SILVER</a>
+												    <a class="dropdown-item" href="javascript:void(0);">GOLD</a>
+												    <a class="dropdown-item" href="javascript:void(0);">PLATINUM</a>
+												    <a class="dropdown-item" href="javascript:void(0);">DIAMOND</a>
 												  </div>
 												  <input class="form-control" type="hidden" id="restrict_grade" type="text" name="restricted_grade" />
 												</div>
@@ -82,7 +82,7 @@
 									</div>
 									<div class="mt-4 mb-0">
 										<div class="d-grid">
-											<a class="btn btn-primary btn-block" href="" name="enrollBtn" id="enrollBtn">라이브쇼
+											<a class="btn btn-dark btn-block" href="" name="enrollBtn" id="enrollBtn">라이브쇼
 												시작하기</a><input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
 										</div>
 									</div>									

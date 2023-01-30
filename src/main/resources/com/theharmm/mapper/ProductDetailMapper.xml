@@ -195,4 +195,17 @@
            ORDER BY PRICE ASC
 		  ]]>
 	</select>
+	
+	<!--같은 브랜드 리스트-->
+	<select id="selectProductBrandList"
+		resultType="productDTO"
+		parameterType="Integer">
+		 <![CDATA[
+		   SELECT PID, PNAME_E, PNAME_K, RELEASE_PRICE, IMG1 
+           FROM RESELL_PRODUCT 
+           WHERE BRAND IN (SELECT BRAND
+                           FROM RESELL_PRODUCT
+                           WHERE PID= #{pid})
+		  ]]>
+	</select>
 </mapper>
