@@ -124,6 +124,8 @@
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>	
 <!-- 알림 -->	
  <script src="${pageContext.request.contextPath}/resources/js/alarm.js" ></script>
+
+
 <!-- 서은 추가 -->
 
 <link rel="stylesheet"
@@ -205,20 +207,20 @@
 								<!---->
 							</div>
 
-							<c:if test="${user eq '팔로우'}">
+							<c:if test="${userCheck eq '팔로우'}">
 								<div data-v-cf374a10="" data-v-45542174="">
 									<!---->
 									<button data-v-575aff82="" data-v-625671d1=""
 										data-v-cf374a10="" type="button" id = "followBtn"
-										class="btn solid medium btn_follow medium">${user}</button>
+										class="btn solid medium btn_follow medium">${userCheck}</button>
 								</div>
 							</c:if>
-							<c:if test="${user eq '팔로잉'}">
+							<c:if test="${userCheck eq '팔로잉'}">
 								<div data-v-cf374a10="" data-v-45542174="">
 									<!---->
 									<button data-v-575aff82="" data-v-625671d1=""
 										data-v-cf374a10="" type="button" id = "followBtn"
-										class="btn outlinegrey medium btn_follow medium">${user}</button>
+										class="btn outlinegrey medium btn_follow medium">${userCheck}</button>
 								</div>
 							</c:if>
 
@@ -415,52 +417,12 @@
 									</h2>
 								</div>
 								<div data-v-1a009402="" class="layer_content">
-								
-									<!-- 팔로우가 없는 경우 -->
-									<div data-v-6c53047a="" data-v-55a73341=""
-										class="social_feeds_empty" data-v-1a009402="">
-										<div data-v-6c53047a="" class="empty_box">
-											<svg data-v-6c53047a="" xmlns="http://www.w3.org/2000/svg"
-												class="empty_icon icon sprite-icons">
-                                    <use data-v-6c53047a=""
-													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-user-big"
-													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-user-big"></use></svg>
-											<strong data-v-6c53047a="" class="empty_title">팔로워</strong>
-											<p data-v-6c53047a="" class="empty_txt">tmdgk95님을 팔로우하는
-												사용자가 없습니다.</p>
-
-										</div>
-									</div>
-									<!-- 팔로우가 없는 경우 -->
 									
 									<!-- 팔로우 있는 경우 -->
 									<div data-v-754300ce="" data-v-55a73341=""
 										class="user_list_content" style = "display = none" data-v-1a009402="">
-										<ul data-v-754300ce="" class="user_list">
-											<li data-v-754300ce="" class="user_item"><div
-													data-v-754300ce="" class="user_box">
-													<a data-v-754300ce="" href="#" class="user_link"><div
-															data-v-754300ce="" class="img_box">
-															<img data-v-754300ce=""
-																src="https://kream-phinf.pstatic.net/MjAyMDExMDZfMjAz/MDAxNjA0NjQ5OTM1NDk5.edZ7v2ODWVS7_M8PXg8B0PNU5UlsTWup2XHwuKkEEXsg.lNHXDE66TKM0yl1nIOO70PWNUtK4TcdgD1lImetPB48g.JPEG/p_8d36c20aaeb94c6681619dcd775f5286.jpeg?type=sl"
-																alt="KREAM 프로필 이미지" class="profile_img">
-														</div>
-														<div data-v-754300ce="" class="info_box">
-															<span data-v-754300ce="" class="user_name is_official"><span
-																data-v-754300ce="" class="user_name_text">kream.challenge</span></span><span
-																data-v-754300ce="" class="user_subname">KREAM 챌린지</span>
-														</div></a>
-													<div data-v-754300ce="" class="user_box_follow">
-														<button data-v-575aff82="" data-v-625671d1=""
-															data-v-754300ce="" type="button"
-															class="btn solid small btn_follow small">팔로우</button>
-													</div>
-												</div></li>
-											<div data-v-5f3540d5="" data-v-754300ce=""
-												class="list_loading" style="display: none;">
-												<img data-v-5f3540d5="" src="/_nuxt/img/loading.410eb77.gif"
-													loading="lazy" alt="리스트 로딩중입니다." class="loading_img">
-											</div>
+										<ul data-v-754300ce="" class="user_list" id = "follower_container">
+											<!-- 팔로우 리스트 뜨는 곳 -->
 										</ul>
 										<!---->
 									</div>
@@ -477,40 +439,15 @@
 						<div data-v-1a009402="" data-v-71b8d4b9="" data-v-61d3533a=""
 							class="layer_delivery layer lg3" style="display: none;">
 							<div data-v-1a009402="" class="layer_container">
-								<a data-v-55a73341="" data-v-1a009402="" class="btn_layer_close"><svg
-										data-v-55a73341="" data-v-1a009402=""
-										xmlns="http://www.w3.org/2000/svg"
-										class="ico-close icon sprite-icons">
-                              <use data-v-55a73341="" data-v-1a009402=""
-											href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"
-											xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"></use></svg></a>
-								<div data-v-1a009402="" class="layer_header">
-									<h2 data-v-55a73341="" data-v-1a009402="" class="title">
-										팔로잉 <span data-v-55a73341="" data-v-1a009402="" class="count"></span>
-									</h2>
-								</div>
-								<div data-v-1a009402="" class="layer_content">
+								<!-- 팔로우 있는 경우 -->
+								<div data-v-754300ce="" data-v-55a73341=""
+									class="user_list_content" style = "display = none" data-v-1a009402="">
+									<ul data-v-754300ce="" class="user_list" id = "following_container">
+										<!-- 팔로우 리스트 뜨는 곳 -->
+									</ul>
 									<!---->
-									<div data-v-6c53047a="" data-v-55a73341=""
-										class="social_feeds_empty" data-v-1a009402="">
-										<div data-v-6c53047a="" class="empty_box">
-											<svg data-v-6c53047a="" xmlns="http://www.w3.org/2000/svg"
-												class="empty_icon icon sprite-icons">
-                                    <use data-v-6c53047a=""
-													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-user-big"
-													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-user-big"></use></svg>
-											<strong data-v-6c53047a="" class="empty_title">팔로잉</strong>
-											<p data-v-6c53047a="" class="empty_txt">tmdgk95님이 팔로잉하는
-												사용자가 없습니다.</p>
-
-										</div>
-									</div>
-									<div data-v-71b8d4b9="" data-v-1a009402="" class="layer_btn">
-										<a data-v-575aff82="" data-v-71b8d4b9=""
-											class="btn btn_delete3 outlinegrey medium" data-v-1a009402="">
-											취소 </a>
-									</div>
 								</div>
+								<!-- 팔로우가 있는 경우 -->
 							</div>
 						</div>
 					</div>
@@ -914,14 +851,42 @@
 			      						document.getElementById("followerCnt").innerText = data.followerCnt;
 			      						
 			      						if (socket) {
-			      							let socketMsg = "follow," + follower +","+ following +","+ following +","+ " ";
+			      							let socketMsg = "followin," + follower +","+ following +","+ following +","+ " ";
 			      							console.log("msgmsg : " + socketMsg);
 			      							socket.send(socketMsg);
 			      						}
 			      						
 			      						
 			      					} else {
-			      						alert("팔로우 에러");
+			      						alert("팔로우 에러22");
+					      				 console.log(following);
+					      				 console.log(follower);
+					      				 
+					      					$.ajax({
+					      						url: "/social/deleteFollow",
+					      						data: {
+					      							"follower" : follower,
+					      							"following" : following
+					      						}
+					      					}).done(function (data) {
+					      						console.log("delete" + data.result);
+					      						if (data.result === 1) {
+					      							alert("팔로우를 취소 합니다");
+					      							$("#followBtn").removeClass('outlinegrey');
+					      							$("#followBtn").addClass('solid');
+					      							document.getElementById("followBtn").innerText = "팔로우"
+					      							document.getElementById("followerCnt").innerText = data.followerCnt;
+					      							
+						      						if (socket) {
+						      							let socketMsg = "followdel," + follower +","+ following +","+ following +","+ " ";
+						      							console.log("msgmsg : " + socketMsg);
+						      							socket.send(socketMsg);
+						      						}
+						      						
+					      						} else {
+					      							alert("팔로우 취소 에러");
+					      						}
+					      					});	 
 			      					}
 			      				});	 	
 			      			} else {	
@@ -942,6 +907,12 @@
 			      							$("#followBtn").addClass('solid');
 			      							document.getElementById("followBtn").innerText = "팔로우"
 			      							document.getElementById("followerCnt").innerText = data.followerCnt;
+			      							
+				      						if (socket) {
+				      							let socketMsg = "followdel," + follower +","+ following +","+ following +","+ " ";
+				      							console.log("msgmsg : " + socketMsg);
+				      							socket.send(socketMsg);
+				      						}
 			      						} else {
 			      							alert("팔로우 취소 에러");
 			      						}
@@ -949,8 +920,136 @@
 			      			}
 			            });	
 			            
+			            setFollowerList (email) {
+			    			$.ajax({		
+			    				url: "/social/followList",
+			    				data: {
+			    						"email" : email
+			    					}
+			    			}).done(function (data) {
+			    				console.log("followList " + data);
+			    				let follewer = "";
+			    				let following = "";
+			    				
+			    				if (followList.followingList.length == 0) {
+			    					console.log("리스트 0개");
+			    				    follewer = 
+			    				    	
+			    				    						`	<div data-v-6c53047a="" class="empty_box">
+			    															<svg data-v-6c53047a="" xmlns="http://www.w3.org/2000/svg" class="empty_icon icon sprite-icons">
+			    				                                    <use data-v-6c53047a="" href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-user-big" xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-user-big"></use></svg>
+			    															<strong data-v-6c53047a="" class="empty_title">팔로워</strong>
+			    															<p data-v-6c53047a="" class="empty_txt">`+email+`님이 팔로잉하는
+			    																사용자가 없습니다.</p>
+
+			    												</div> `   		
+			    				    		
+			    				} else {
+			    					console.log("리스트 불러오기");
+			    					//let follerList = "";
+			    					//let followingList = "";
+			    					
+			    					// 팔로잉 리스트
+			    					for (let i = 0; i < followList.followingList.length; i++) { 
+			    						let following = followList.followingList.at(i);
+			    						
+			    						let tmp = 
+			    							`
+			    							<li data-v-754300ce="" class="user_item">
+			    								<div data-v-754300ce="" class="user_box">
+			    									<a data-v-754300ce="" href="#" class="user_link">
+			    										<div data-v-754300ce="" class="img_box">
+			    											<img data-v-754300ce=""
+			    												src="https://kream-phinf.pstatic.net/MjAyMDExMDZfMjAz/MDAxNjA0NjQ5OTM1NDk5.edZ7v2ODWVS7_M8PXg8B0PNU5UlsTWup2XHwuKkEEXsg.lNHXDE66TKM0yl1nIOO70PWNUtK4TcdgD1lImetPB48g.JPEG/p_8d36c20aaeb94c6681619dcd775f5286.jpeg?type=sl"
+			    												alt="KREAM 프로필 이미지" class="profile_img">
+			    										</div>
+			    										<div data-v-754300ce="" class="info_box">
+			    											<span data-v-754300ce="" class="user_name is_official"><span data-v-754300ce=""
+			    													class="user_name_text">`+following.user+`</span></span><span data-v-754300ce=""
+			    												class="user_subname">KREAM 챌린지</span>
+			    										</div>
+			    									</a>
+			    									<div data-v-754300ce="" class="user_box_follow">` ;
+			    								if (following.follow == '팔로잉') {
+			    									tmp += `
+			    											<button data-v-575aff82="" data-v-625671d1="" data-v-754300ce="" type="button"
+			    											class="btn solid small btn_follow small">팔로잉</button>`;
+			    									
+			    								} else {
+			    									tmp += `
+			    										<button data-v-575aff82="" data-v-625671d1="" data-v-754300ce="" type="button"
+			    										class="btn solid small btn_follow small">팔로우</button>	`;			
+			    								}
+
+			    						tmp += `			</div>
+			    									</div>
+			    								</li>`
+			    						follewer += tmp;	
+			    					}		    						
+			    				}
+			    				
+			    				// 팔로워 리스트
+			    				if (followList.followerList.length == 0) {
+			    					console.log("리스트 0개");
+			    				    follewer = 
+			    				    	
+			    				    						`	<div data-v-6c53047a="" class="empty_box">
+			    															<svg data-v-6c53047a="" xmlns="http://www.w3.org/2000/svg" class="empty_icon icon sprite-icons">
+			    				                                    <use data-v-6c53047a="" href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-user-big" xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-user-big"></use></svg>
+			    															<strong data-v-6c53047a="" class="empty_title">팔로워</strong>
+			    															<p data-v-6c53047a="" class="empty_txt">`+email+`님을 팔로우하는
+			    																사용자가 없습니다.</p>
+
+			    												</div> `   		
+			    				    		
+			    				} else {
+			    					console.log("리스트 불러오기");
+			    					//let follerList = "";
+			    					//let followingList = "";
+			    					
+			    					for (let i = 0; i < followList.followerList.length; i++) { 
+			    						let following = followList.followerList.at(i);
+			    						
+			    						let tmp = 
+			    							`
+			    							<li data-v-754300ce="" class="user_item">
+			    								<div data-v-754300ce="" class="user_box">
+			    									<a data-v-754300ce="" href="#" class="user_link">
+			    										<div data-v-754300ce="" class="img_box">
+			    											<img data-v-754300ce=""
+			    												src="https://kream-phinf.pstatic.net/MjAyMDExMDZfMjAz/MDAxNjA0NjQ5OTM1NDk5.edZ7v2ODWVS7_M8PXg8B0PNU5UlsTWup2XHwuKkEEXsg.lNHXDE66TKM0yl1nIOO70PWNUtK4TcdgD1lImetPB48g.JPEG/p_8d36c20aaeb94c6681619dcd775f5286.jpeg?type=sl"
+			    												alt="KREAM 프로필 이미지" class="profile_img">
+			    										</div>
+			    										<div data-v-754300ce="" class="info_box">
+			    											<span data-v-754300ce="" class="user_name is_official"><span data-v-754300ce=""
+			    													class="user_name_text">`+following.user+`</span></span><span data-v-754300ce=""
+			    												class="user_subname">KREAM 챌린지</span>
+			    										</div>
+			    									</a>
+			    									<div data-v-754300ce="" class="user_box_follow">` ;
+			    								if (following.follow == '팔로잉') {
+			    									tmp += `
+			    											<button data-v-575aff82="" data-v-625671d1="" data-v-754300ce="" type="button"
+			    											class="btn solid small btn_follow small">팔로잉</button>`;
+			    									
+			    								} else {
+			    									tmp += `
+			    										<button data-v-575aff82="" data-v-625671d1="" data-v-754300ce="" type="button"
+			    										class="btn solid small btn_follow small">팔로우</button>	`;			
+			    								}
+
+			    						tmp += `			</div>
+			    									</div>
+			    								</li>`
+			    						following += tmp;	
+			    					}		    						
+			    				}
+			    				
+			    				$("#follower_container").html(follower); 
+			    				$("#following_container").html(following); 
+			    			});	
+			            }
 			            
-						
 					});
 </script>
 	<link

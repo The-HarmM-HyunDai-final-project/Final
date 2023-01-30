@@ -52,7 +52,7 @@
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 회원관리
-						</a> <a class="nav-link" href="/admin/buyAndSell">
+						</a> <a class="nav-link" href="/admin/buyandsell">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-book-open"></i>
 							</div> 구매 및 판매 관리

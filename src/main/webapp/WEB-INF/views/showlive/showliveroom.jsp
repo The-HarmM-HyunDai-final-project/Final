@@ -381,7 +381,7 @@
         <button class="canvasBtn" id="startButton">Drop Confetti</button>
     </div>
     <canvas id="canvas"></canvas>
-<%-- <script src="${pageContext.request.contextPath}/resources/js/test.js" defer=""></script> --%>
+<script src="${pageContext.request.contextPath}/resources/js/test.js" defer=""></script>
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script type="text/javascript">
 	var auctionPrevPrice = 100000;

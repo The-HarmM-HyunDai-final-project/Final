@@ -4,7 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.theharmm.mapper.PostMapper">
-
    <insert id="postEnroll">
       insert into post values(post_seq.nextval, 'asd', sysdate, #{contents}, #{pid0}, #{pid1}, #{pid2}, #{sentiment_percent},#{sentiment_result})
    </insert>
@@ -116,9 +115,7 @@
       SELECT
       COUNT(*)
       FROM follow
-      where follower_id = #{following_id} and following_id = #{following_id}
+      where follower_id = #{follower_id} and following_id = #{following_id}
    </select>
-   
-   
-   
+         
 </mapper>

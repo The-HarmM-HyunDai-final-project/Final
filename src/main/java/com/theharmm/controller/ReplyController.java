@@ -26,7 +26,7 @@ public class ReplyController {
 	
 	@RequestMapping(value = "social/insertReply", produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public int insertReply(String member_email, int post_id, String content,
+	public String insertReply(String member_email, int post_id, String content,
 				@RequestParam(defaultValue = "0") int parent_id, @RequestParam(defaultValue = "0") int depth) {
 		
 		ReplyDTO dto = new ReplyDTO();
@@ -45,7 +45,15 @@ public class ReplyController {
 			log.info("댓글 등록 실패");
 		}
 		log.info(result);
-		return result;
+		
+		String parent_member_email = replyservice.getMember_email(parent_id);
+		
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result",result);
+		jsonObject.put("parent_member_email",parent_member_email);
+		
+		String json = jsonObject.toString();
+		return json;
 	}
 	
 	@GetMapping(value = "social/getReplyList", produces = "application/json; charset=UTF-8")
@@ -77,8 +85,10 @@ public class ReplyController {
 					mObject.put("regdate", replys.get(i).getRegdate());
 					mObject.put("sid", replys.get(i).getSid());
 					
+					
 					tmpObject.put("Mreply", mObject);
 				} else {
+					String parent_member_email = replyservice.getMember_email(replys.get(i).getParent_id());
 					sObjectTmp.put("status","sub");
 					sObjectTmp.put("member_email", replys.get(i).getMember_email());
 					sObjectTmp.put("post_id", replys.get(i).getPost_id());
@@ -87,6 +97,7 @@ public class ReplyController {
 					sObjectTmp.put("depth", replys.get(i).getDepth());
 					sObjectTmp.put("regdate", replys.get(i).getRegdate());
 					sObjectTmp.put("sid", replys.get(i).getSid());
+					sObjectTmp.put("parent_member_email", parent_member_email);
 					sObject.put(sObjectTmp);
 				}				
 			}

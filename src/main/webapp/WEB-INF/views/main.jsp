@@ -68,14 +68,14 @@
 				<!---->
 				<div class="shortcut_items_wrap" data-v-281f2319="">
 					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
-						<div class="shortcut_item_img_wrap" data-v-155cff51="">
-							
-							
-							<img
-								src="${pageContext.request.contextPath}/resources/images/live2.png"
-								loading="lazy" style="width:400px; height:80px;" class="image"  data-v-878ec45c="">
-						</div>
-						
+						<a href="/showlive/showlivelist" style="width:400px; height:80px;">
+							<div class="shortcut_item_img_wrap" data-v-155cff51="">
+	
+								<img
+									src="${pageContext.request.contextPath}/resources/images/live2.png"
+									loading="lazy" style="width:400px; height:80px;" class="image"  data-v-878ec45c="">
+							</div>
+						</a>
 					</div>
 					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
 						<div class="shortcut_item_img_wrap" data-v-155cff51="">
