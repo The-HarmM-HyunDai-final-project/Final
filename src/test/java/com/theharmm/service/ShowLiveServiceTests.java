@@ -94,4 +94,13 @@ public class ShowLiveServiceTests {
 		
 		log.warn("================ 생방중인 채널 목록들" + channels.toString());
 	}
+	//방송 종료시 생방상태 및 종료시간 변경하기
+	@Test
+	public void changeStatusShowLive() throws Exception{
+		ShowLiveChannelDTO channel = new ShowLiveChannelDTO();
+		channel.setShowlive_no(489);
+		channel.setShowlive_end_date(new java.util.Date());
+		
+		service.changeLiveStatus(channel);
+	}
 }

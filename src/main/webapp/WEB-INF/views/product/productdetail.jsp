@@ -116,14 +116,7 @@
 								<div class="size" data-v-ddee2978="">
 									<a href="#" class="btn_size" data-v-6c6430ce=""
 										data-v-ddee2978=""><span class="btn_text"
-										data-v-6c6430ce="">모든 사이즈</span> <svg
-											xmlns="http://www.w3.org/2000/svg"
-											class="ico-arr-dir-down-circle icon sprite-icons"
-											data-v-6c6430ce="">
-											<use
-												href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-dir-down-circle"
-												xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-arr-dir-down-circle"
-												data-v-6c6430ce=""></use></svg></a>
+										data-v-6c6430ce="">모든 사이즈</span></a>
 								</div>
 							</div>
 							<div class="detail_price" data-v-679b6792="" data-v-3900a1a2="">
@@ -833,8 +826,15 @@
 									class="num">4.9</span>
 							</p>
 						</div>
+						<!-- <div class="graph" data-v-04d43b10="" data-v-69832834=""
+									data-v-3c9dd7e9="">
+									<canvas data-v-04d43b10=""
+										id="sales_canvas1" height="0"
+										style="display: block; box-sizing: border-box; height:200px;width:530px;"
+										width="0"></canvas>
+						</div> -->
 
-						<div class="chart-wrap" id="chartSlide" data-slide-length="4">
+						<!-- <div class="chart-wrap" id="chartSlide" data-slide-length="4">
 							<div class="slide-container swiper-container-horizontal">
 								<div class="swiper-wrapper"
 									style="transition-duration: 0ms; transform: translate3d(-592px, 0px, 0px);">
@@ -1049,7 +1049,7 @@
 								<span class="swiper-notification" aria-live="assertive"
 									aria-atomic="true"></span>
 							</div>
-						</div>
+						</div> -->
 					</div>
 
 
@@ -1408,58 +1408,18 @@
 
 					<div class="product-detail-review-list">
 						<div class="head">
-							<p class="txt">상품 구매 후 리뷰 작성시 H.Plus를 드립니다. (포토리뷰 1,000포인트,
-								텍스트리뷰 300포인트 증정)</p>
-							<div id="prdReviewFilter" class="opt">
-								<div class="select">
-									<button type="button" class="sel-btn"
-										onclick="select.trigger();">최신순</button>
-									<div id="reviewSortFilter" class="sel-list">
-										<ul>
-											<li><label><input type="radio" name="rvList"
-													value="new"> <span>최신순</span></label></li>
-											<li><label><input type="radio" name="rvList"
-													value="like"> <span>공감순</span></label></li>
-										</ul>
-									</div>
-								</div>
-
-								<div class="select">
-									<button type="button" class="sel-btn"
-										onclick="select.trigger();">사이즈</button>
-									<div class="sel-list">
-										<ul>
-											<li><label> <input type="radio" name="optValCd1"
-													value="XS"> <span>XS</span>
-											</label></li>
-											<li><label> <input type="radio" name="optValCd1"
-													value="S"> <span>S</span>
-											</label></li>
-											<li><label> <input type="radio" name="optValCd1"
-													value="M"> <span>M</span>
-											</label></li>
-											<li><label> <input type="radio" name="optValCd1"
-													value="L"> <span>L</span>
-											</label></li>
-										</ul>
-									</div>
-								</div>
+							   <button type="button" class="btn-type1-sm"
+									onclick="getReviewList('1','F','F',null);">
+									<span>키워드1</span>
+								</button>
 								<button type="button" class="btn-type1-sm"
 									onclick="getReviewList('1','F','F',null);">
-									<span>필터적용</span>
+									<span>키워드2</span>
 								</button>
-							</div>
-
-							<div class="opt">
-								<button type="button" id="btnTogglePhotoReview"
-									class="btn-type1-sm" onclick="getPhotoReviewList(this);">
-									<span>포토리뷰</span>
+								<button type="button" class="btn-type1-sm"
+									onclick="getReviewList('1','F','F',null);">
+									<span>키워드3</span>
 								</button>
-								<button type="button" class="btn-type4-sm"
-									onclick="location.href='/public/member/login';">
-									<span>리뷰작성</span>
-								</button>
-							</div>
 						</div>
 
 						<div id="reviewNodata" class="nodata" style="display: none;">

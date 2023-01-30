@@ -404,6 +404,13 @@
 	function writePrice() {
 	  $("#max_price").text(priceToString(auctionPrevPrice));
 	}
+	//가격 제시할때 제한 금액 이상 못적게 하기
+	$("#auction_sugest").keyup(function(){
+		if($("#auction_sugest").val() > 2147483640){
+			$("#auction_sugest").val(2147483640);
+		}
+	})
+	
 	//채팅치고있을때 엔터 누르면 알아서 전송버튼 눌리게
 	function chatEnterkey(){
 		if (window.event.keyCode == 13) {
@@ -625,6 +632,12 @@
 	  	var mySuggestion = Number($("#auction_sugest").val());
 	  	//이전 가격의 1/10 보다 높은지 확인 하고 제안을 받아들임
 	  	if ( mySuggestion - auctionPrevPrice >= auctionPrevPrice / 10) {
+	  		
+	  		//가격 제시할때 제한 금액 이상 못적게 하기
+  			if($("#auction_sugest").val() > 2147483640){
+  				$("#auction_sugest").val(2147483640);
+  			}
+	  		
 	    	modal.classList.toggle("show");
 	      	const my_suggest_price = priceToString(document.querySelector("#auction_sugest").value);
 	      	modal_price.innerText = my_suggest_price;

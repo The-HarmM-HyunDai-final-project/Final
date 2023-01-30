@@ -138,8 +138,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/ae12c7f.css">
 	
-<%-- <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/pop.css"> --%>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/pop.css">
 <style type="text/css">
 /*# sourceMappingURL=contenteditable.vue.map */
 </style>

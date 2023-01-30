@@ -14,6 +14,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.theharmm.domain.ShowLiveAuctionFinalPersonDTO;
 import com.theharmm.domain.ShowLiveBiddingDTO;
+import com.theharmm.domain.ShowLiveChannelDTO;
 import com.theharmm.service.ShowLiveService;
 import com.theharmm.showlive.MessageType;
 import com.theharmm.showlive.ShowLiveChannel;
@@ -107,8 +108,10 @@ public class BJChattingHandler extends TextWebSocketHandler{
 		
 		//사용자들에게 방송이 끝났다는걸 알리고 view에서는 아무 조작이 안되고 홈버튼 혹은 뒤로가기만 가능하게끔!
 		showLiveChannel.handleMessage(session, msg);
-		//db에도 라이브 상태를 바꿔주고
-		showliveService.changeLiveStatus(showLiveChannelStore.getChannelDTOByRoomNo(roomNoOfBj));
+		//db에도 라이브 상태를 바꾸고 종료 시간을 찍자!
+		ShowLiveChannelDTO channel = showLiveChannelStore.getChannelDTOByRoomNo(roomNoOfBj);
+		channel.setShowlive_end_date(new java.util.Date());
+		showliveService.changeLiveStatus(channel);
 		//store에서 channel을 완전 지워버리자!
 		showLiveChannelStore.removeBJandRoomNoandChannel(BJId,roomNoOfBj);
 		
