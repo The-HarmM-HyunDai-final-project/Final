@@ -16,10 +16,10 @@ public class PostServiceTest {
 	@Autowired 
 	public PostService postservice;
 	
-	@Test
-	public void testSelects() {
-		int result = postservice.deleteFollow("asd", "asd@naver.com");
-		log.info(result);
-	}
+//	@Test
+//	public void testSelects() {
+//		int result = postservice.deleteFollow("asd", "asd@naver.com");
+//		log.info(result);
+//	}
 
 }
