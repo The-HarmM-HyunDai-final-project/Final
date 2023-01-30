@@ -14,7 +14,7 @@
 		        FROM KEYWORD
 		        WHERE PID =#{pid}
 		        ORDER BY COUNT DESC)
-		   WHERE ROWNUM <6;  
+		   WHERE ROWNUM <6  
 		  ]]>
 	</select>
 
