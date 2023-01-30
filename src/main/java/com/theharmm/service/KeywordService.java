@@ -7,5 +7,8 @@ import com.theharmm.domain.KeywordDTO;
 
 public interface KeywordService {
 
-	List<KeywordDTO> selectKeywordBest(int pid);
+	public List<KeywordDTO> selectPosKeywordBest(int pid);
+	
+	public List<KeywordDTO> selectNegKeywordBest(int pid);
+	
 }

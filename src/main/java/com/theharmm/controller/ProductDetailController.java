@@ -87,10 +87,13 @@ public class ProductDetailController {
 		List<ProductDTO> ProductBrandList = productDetailService.selectProductBrandList(pid);
 		model.addAttribute("productBrandList", ProductBrandList);
 		
-		//키워드 베스트 가져오기 (5개까지 가져오고, 대표 키워드는 3가지로 한다) 
-		List<KeywordDTO> KeywordBestList = keywordService.selectKeywordBest(pid); 
-		model.addAttribute("keywordBestList", KeywordBestList);
-		
+		//긍정키워드 베스트 가져오기 (5개까지 가져오고, 대표 키워드는 3가지로 한다) 
+		List<KeywordDTO> PosKeywordBestList = keywordService.selectPosKeywordBest(pid); 
+		model.addAttribute("keywordBestList", PosKeywordBestList);
+				
+		//부정키워드 베스트 가져오기 (5개까지 가져오고, 대표 키워드는 3가지로 한다) 
+		List<KeywordDTO> NegKeywordBestList = keywordService.selectNegKeywordBest(pid); 
+		model.addAttribute("keywordBestList", NegKeywordBestList);
 
 		return "product/productdetail";
 	}
