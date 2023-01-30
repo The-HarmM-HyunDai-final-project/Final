@@ -8,16 +8,22 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
-import com.theharmm.service.KeyWordService;
+import com.theharmm.domain.KeywordDTO;
+import com.theharmm.mapper.KeywordMapper;
+import com.theharmm.service.KeywordService;
 
 import kr.co.shineware.nlp.komoran.constant.DEFAULT_MODEL;
 import kr.co.shineware.nlp.komoran.core.Komoran;
 import kr.co.shineware.nlp.komoran.model.KomoranResult;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Service
-public class KeyWordServiceImpl implements KeyWordService{
+@AllArgsConstructor
+public class KeywordServiceImpl implements KeywordService{
+	private KeywordMapper keywordMapper;
+	
 	//자연어 처리 - 형태소 분석기인 Komoran를 메모리에 올리기 위해 WordAnalysisService 클래스 내 전역 변수로 설정합니다.
 	Komoran nlp = null;
 	
@@ -25,7 +31,7 @@ public class KeyWordServiceImpl implements KeyWordService{
 	//톰켓이 메모리에 올릴 때, 생성자에 선언한 Komoran도 같이 메모리에 올라가도록 생성자에 코딩합니다.
 	//생성자에서 Komoran을 메모리에 올리면, 매번 메모리에 올려서 호출하는 것이 아니라, 
 	// 메모리에 올리간 객체만 불러와서 사용할 수 있기 때문에 처리 속도가 빠릅니다.
-	public KeyWordServiceImpl() {
+	public KeywordServiceImpl() {
 		
 		log.info(this.getClass().getName() + ".WordAnalysisService creator Start !");
 		
@@ -35,8 +41,15 @@ public class KeyWordServiceImpl implements KeyWordService{
 	
 		log.info("난 톰켓이 부팅되면서 스프링 프렝미워크가 자동 실행되었고, 스프링 실행될 때 nlp 변수에 Komoran 객체를 생성하여 저장하였다.");
 		
-		log.info(this.getClass().getName() + ".KeyWordServiceImpl creator End !");
+		log.info(this.getClass().getName() + ".WordAnalysisService creator End !");
+	
+	
+	}
+	
+	@Override
+	public List<KeywordDTO> selectKeywordBest(int pid) {
 		
+		return keywordMapper.selectKeywordBest(pid);
 	}
 	
 	@Override
@@ -61,6 +74,7 @@ public class KeyWordServiceImpl implements KeyWordService{
 		
 		//형태소 분석 결과 중 명삼나 가져오기
 		List<String> rList = analyzeResultList.getNouns();
+		Set<String> set = new HashSet<>();
 		
 		if (rList == null) {
 			rList = new ArrayList<String>();
@@ -68,17 +82,19 @@ public class KeyWordServiceImpl implements KeyWordService{
 		
 		//분석 결과 확인을 위한 로그 찍기
 		Iterator<String> it = rList.iterator();
-		Set<String> set = new HashSet<>();
 		
 		while (it.hasNext()) {
 			//추출된 명서
 			String word = it.next();
 			set.add(word);
+			
 			log.info("word : " + word);
-		}		
+		}
+		
 		
 		log.info(this.getClass().getName() + ".doWordAnalysis End !");
 		
 		return set;
 	}
+
 }

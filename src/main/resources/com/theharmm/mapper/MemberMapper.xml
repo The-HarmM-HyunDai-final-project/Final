@@ -9,6 +9,7 @@
 	<!-- property : VO의 담을 변수값, column : DB에서 가져와서 넣을 값 -->
 	<resultMap type="com.theharmm.domain.MemberVO" id="memberMap">
 		<id property="member_email" column="member_email" />
+		<result property="member_grade" column="member_grade" />
 		<result property="member_email" column="member_email" />
 		<result property="member_password" column="member_password" />
 		<result property="member_name" column="member_name" />
@@ -63,7 +64,7 @@
 
 	<!-- 권한을 포함한 모든 회원의 정보를 가져오기 -->
 	<select id="read" resultMap="memberMap">
-		SELECT member_email, member_password, member_name, member_phone, member_shoes_size, authority
+		SELECT member_grade, member_email, member_password, member_name, member_phone, member_shoes_size, authority
 		FROM member mem
 		LEFT OUTER JOIN AUTHORITIES auth
 		on mem.member_email = auth.username

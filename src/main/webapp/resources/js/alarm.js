@@ -85,8 +85,6 @@
     sock.onerror = function (err) {console.log('Errors : ' , err);};
     
   /*  test************************************************ */
-
-
-		
+	
 
    }

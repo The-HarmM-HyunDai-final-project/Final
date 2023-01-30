@@ -45,7 +45,7 @@ public class ShowLiveChannelStore {
 		RoomList.remove(roomNo);
 		roomNoOfBJ.remove(BJId);
 	}
-	
+
 	
 	//채널 저장소니까 채널번호로 채널을 가지고오도록
 	public ShowLiveChannel getChannelAndAddUser(WebSocketSession session, String userId, String roomNo) {
