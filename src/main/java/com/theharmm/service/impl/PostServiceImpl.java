@@ -136,10 +136,10 @@ public class PostServiceImpl implements PostService {
    @Override
    public boolean checkFollow(String follower, String following) {
       int cnt = postMapper.countFollow(follower, following);
-      if (cnt == 0) {
-         return false;
-      } else {
+      if (cnt == 1) {
          return true;
+      } else {
+         return false;
       }
    }   
 }
