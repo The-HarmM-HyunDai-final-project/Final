@@ -318,6 +318,7 @@
                      <!-- 긍부정 percent, result 처리 -->
                      <input type = "hidden" id = "sentiment_percent" name = "sentiment_percent"/>
                      <input type = "hidden" id = "sentiment_result" name = "sentiment_result"/>
+                     <input type = "hidden" id = "keyword_list" name = "keyword_list"/>
                      <div data-v-1a009402="" data-v-71b8d4b9="" data-v-61d3533a=""
                         class="layer_delivery layer lg" style="display: none;">
                         <div data-v-1a009402="" class="layer_container"
@@ -601,6 +602,7 @@
                        });
                        $("#sentiment_percent").val(res.percent);
                        $("#sentiment_result").val(res.result);
+                       $("#keyword_list").val(res.keyword_list);
                        enrollForm.submit(); 
                         alert("등록이 완료되었습니다.");
                        
