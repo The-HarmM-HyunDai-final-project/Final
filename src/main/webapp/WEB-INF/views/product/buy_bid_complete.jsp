@@ -140,9 +140,8 @@
 											<!---->
 										</div>
 										<div data-v-ead20452="" class="complete_btn_box">
-											<a data-v-575aff82="" data-v-ead20452="" href="#"
-												class="btn outlinegrey medium"> 내역 상세보기 </a><a
-												data-v-575aff82="" data-v-ead20452="" href="#"
+											<a
+												data-v-575aff82="" data-v-ead20452="" href="/product/productlist?page=1"
 												class="btn outlinegrey medium"> SHOP 바로가기 </a>
 											<!---->
 										</div>
@@ -212,7 +211,7 @@
 													<!---->
 												</dt>
 												<dd data-v-3a2a7b6b="" class="price_text">${dDay}일 -
-													2023/01/25까지</dd>
+													${bidDate}까지</dd>
 											</dl>
 										</div>
 									</div>

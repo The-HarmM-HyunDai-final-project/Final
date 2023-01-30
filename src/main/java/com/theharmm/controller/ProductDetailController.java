@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.theharmm.domain.BuyDTO;
 import com.theharmm.domain.PostVO;
+import com.theharmm.domain.ProductDTO;
 import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.SellDTO;
 import com.theharmm.service.PostService;
@@ -64,6 +65,7 @@ public class ProductDetailController {
 		log.info("상품정보 : "+productDetailDTO.toString());
 		log.info("긍정리뷰 : "+positivePostList.toString());
 		log.info("부정리뷰 : "+negativePostList.toString());
+		log.info("체결데이터 조회 : "+allSignContractList.toString());
 		//session.setAttribute("totalRows", totalRows);
 		model.addAttribute("productDetailDTO", productDetailDTO);
 
@@ -74,6 +76,12 @@ public class ProductDetailController {
 		model.addAttribute("allSignContractList", allSignContractList);
 		model.addAttribute("allSellBidList", allSellBidList);
 		model.addAttribute("allBuyBidList", allBuyBidList);
+		
+		
+		//같은 브랜드 리스트 띄우기 
+		List<ProductDTO> ProductBrandList = productDetailService.selectProductBrandList(pid);
+		model.addAttribute("productBrandList", ProductBrandList);
+		
 
 		return "product/productdetail";
 	}

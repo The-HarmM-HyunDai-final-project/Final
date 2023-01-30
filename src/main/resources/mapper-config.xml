@@ -23,7 +23,9 @@
 		<typeAlias alias="SellDTO"
 			type="com.theharmm.domain.SellDTO" />
 		<typeAlias alias="BuyDTO"
-			type="com.theharmm.domain.BuyDTO" />	
+			type="com.theharmm.domain.BuyDTO" />
+		<typeAlias alias="ProductDTO"
+			type="com.theharmm.domain.ProductDTO" />	
 		<!-- ShowLive -->
 		<typeAlias alias="ShowLiveChatDTO"
 			type="com.theharmm.domain.ShowLiveChatDTO" />

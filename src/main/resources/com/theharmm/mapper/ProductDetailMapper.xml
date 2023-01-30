@@ -158,9 +158,17 @@
 		resultType="BuyDTO"
 		parameterType="Integer">
 		 <![CDATA[
-		   SELECT SIZE_TYPE, PRICE, NOWDATE 
-           FROM BUY 
-           WHERE STATUS1='진행완료' AND PID= #{pid}
+		   SELECT *
+		     FROM 
+		     (SELECT SIZE_TYPE, PRICE, NOWDATE 
+                FROM BUY 
+               WHERE STATUS1='진행완료' AND PID= #{pid}
+               UNION ALL
+              SELECT SIZE_TYPE, PRICE, NOWDATE
+                FROM SALE
+               WHERE STATUS1='진행완료' AND PID= #{pid}
+              )
+            ORDER BY NOWDATE DESC
 		  ]]>
 	</select>
 	
@@ -185,6 +193,19 @@
            WHERE STATUS1='판매입찰' AND PID= #{pid}
            GROUP BY SIZE_TYPE, PRICE 
            ORDER BY PRICE ASC
+		  ]]>
+	</select>
+	
+	<!--같은 브랜드 리스트-->
+	<select id="selectProductBrandList"
+		resultType="productDTO"
+		parameterType="Integer">
+		 <![CDATA[
+		   SELECT PID, PNAME_E, PNAME_K, RELEASE_PRICE, IMG1 
+           FROM RESELL_PRODUCT 
+           WHERE BRAND IN (SELECT BRAND
+                           FROM RESELL_PRODUCT
+                           WHERE PID= #{pid})
 		  ]]>
 	</select>
 </mapper>

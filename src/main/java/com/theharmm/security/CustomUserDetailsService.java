@@ -26,6 +26,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 		
 //		log.warn("Query by username :" + username);
 		MemberVO vo = member.read(m);		
+		log.warn(vo.toString());
 //		log.warn("Query by memebr maper :" +vo);
 			
 		//���׽�

@@ -88,7 +88,7 @@
 									<div
 										class="VideoBoxWrapper_wrap_Usbk7 HorizontalCardList_item_hESBz BroadcastUnderCard_tablet_XD7Qb">
 										<a
-											href="${pageContext.request.contextPath}/chat/${item.showlive_no}"
+											href="${pageContext.request.contextPath}/showlive/${item.showlive_no}"
 											class="VideoBoxLinkWrapper_wrap_GLkZS"><div
 												class="VideoBox_wrap_S8G2B VideoBox_ratio_w2h3_NQrX8 VideoBox_tablet_-FQO7">
 												<div class="BroadcastAutoPlayCard_wrap_6irvX">
@@ -108,7 +108,7 @@
 														draggable="false" loading="eager"></span>
 													<div class="BroadcastAutoPlayCard_react_player_ZO26T"
 														style="width: 100%; height: 100%;">
-														<video preload="auto" autoplay="" playsinline=""
+														<video preload="auto" autoplay playsinline
 															webkit-playsinline="" x5-playsinline=""
 															src="blob:https://shoppinglive.naver.com/f30b456c-f622-43ad-93ca-4cfe407396a3"
 															style="width: 100%; height: 100%;"></video>
@@ -143,7 +143,7 @@
 																<span class="ProductBox_name_zybcC">${item.product_name}</span>
 																<div class="ProductBox_price_wrap_0B+zk">
 																	<span
-																		class="ProductBox_price_+L7cC"><strong>${item.showlive_start_price}원</strong></span>
+																		class="ProductBox_price_+L7cC"><strong>${item.showlive_start_price}만원</strong></span>
 																</div>
 															</div>
 														</div>
@@ -151,14 +151,13 @@
 												</div>
 											</div> <span
 											class="VideoTitle_wrap_fuxqM VideoTitle_ellipsis2_KBkev BroadcastUnderCard_title_hsd54 VideoTitle_size_s_Imup5">
-												${item.product_name} 라이브</span></a><a href="/channels/59520"
+												${item.showlive_name} 라이브</span></a><a href="/channels/59520"
 											class="VideoBoxLinkWrapper_wrap_GLkZS"><span
 											class="ChannelProfile_wrap_biIV9 ChannelProfile_size_20_c5bcc BroadcastUnderCard_channel_5OCf8"><div
 													class="ChannelProfile_thumbnail_9rQcB">
-													<img class="ChannelProfile_image_hKVL-" alt=""
-														src="https://phinf.pstatic.net/dthumb/?src=%22http%3A%2F%2Fshop1.phinf.naver.net%2F20200908_102%2F1599533193678t29qq_JPEG%2F668973403935301_1216046570.jpg%22&amp;service=selective&amp;type=f240_240_q90"
-														width="20" height="20" draggable="false" loading="eager">
-												</div><!--  <span
+												</div>
+													</span></a>
+													<!-- <span>
 												class="ChannelProfile_name_jT9wN BroadcastUnderCard_name_+7+cK">메이비투아</span></span></a>-->
 									</div>
 								</c:forEach>

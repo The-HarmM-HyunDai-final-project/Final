@@ -406,14 +406,21 @@
 															function(data) {
 																console
 																		.log(data);
-																if (data == 1) {
+																if (data.result == 1) {
 																	alert("댓글이 등록 되었습니다");
 																	document
 																			.getElementById('reply').value = "";
+																	
 																	showReplyList(post_id);
+
+										      						if (socket) {
+										      							let socketMsg = "reply," + member_email +","+ data.parent_member_email +","+ data.parent_member_email +","+ post_id;
+										      							console.log("msgmsg : " + socketMsg);
+										      							socket.send(socketMsg);
+										      						}
+										      						
 																	parent_id = 0;
 																	depth = 0;
-
 																} else {
 																	alert("댓글을 작성해 주세요");
 																}
@@ -565,7 +572,7 @@
 																+ `</span><span data-v-4862de99=""                                           `+
 								`												class="comment_txt"><a class="reply_user_name"                                                                               `+
 								`													href="https://kream.co.kr/social/users/@u4vw97">@`
-																+ subreply.parent_id
+																+ subreply.parent_member_email
 																+ `</a> `
 																+ subreply.content
 																+ `  </span>                                                           `

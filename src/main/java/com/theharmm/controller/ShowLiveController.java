@@ -1,5 +1,6 @@
-
 package com.theharmm.controller;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -21,9 +22,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.theharmm.domain.MemberVO;
 import com.theharmm.domain.ShowLiveChannelDTO;
 import com.theharmm.security.domain.CustomUser;
 import com.theharmm.service.ShowLiveService;
+import com.theharmm.showlive.GradeType;
+import com.theharmm.showlive.MessageType;
 import com.theharmm.showlive.ShowLiveChannel;
 import com.theharmm.showlive.ShowLiveChannelStore;
 
@@ -87,11 +91,29 @@ public class ShowLiveController {
 		if(channel == null) {
 			return "showlive/showlivenoroom";
 		}
+			else {
+			GradeType curUsersGrade = GradeType.BRONZE;
+			
+			log.warn("u"+user.getMember().getMember_grade());
+			log.warn(getGradeType(user.getMember().getMember_grade()).ordinal());
+			log.warn("c"+channel.getRestricted_grade());
+			log.warn(getGradeType(channel.getRestricted_grade()).ordinal());
+			
+			if(getGradeType(user.getMember().getMember_grade()).ordinal() >= getGradeType(channel.getRestricted_grade()).ordinal()) {
+				model.addAttribute("userid", user.getUsername());
+				model.addAttribute("usergrade", user.getMember().getMember_grade());
+				model.addAttribute("channelDTO", channel);
+				
+				return "showlive/showliveroom";
+			}else {
+				model.addAttribute("msg", "회원님의 등급이 개설자의 등급보다 낮습니다.");
+				model.addAttribute("url", "/showlive/showlivelist");
+				return "/showlive/alert";
+			}
+		}
 		
-		model.addAttribute("userid", user.getUsername());
-		model.addAttribute("channelDTO", channel);
 		
-		return "showlive/showliveroom";
+		
 	}
 	
 	@RequestMapping(value = "/showlivenoroom", method = RequestMethod.GET)
@@ -100,5 +122,27 @@ public class ShowLiveController {
 		return "showlive/showlivenoroom";
 	}
 	
+	
+	private GradeType getGradeType(String type) {
+		GradeType Grade = GradeType.BRONZE;
+		switch(type) {
+		case "BRONZE":
+			Grade = GradeType.BRONZE;
+			break;
+		case "SILVER":
+			Grade = GradeType.SILVER;
+			break;
+		case "GOLD":
+			Grade = GradeType.GOLD;
+			break;
+		case "PLATINUM":
+			Grade = GradeType.PLATINUM;
+			break;
+		case "DIAMOND":
+			Grade = GradeType.DIAMOND;
+			break;
+		}
+		
+		return Grade;
+	}
 }
-
