@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.theharmm.domain.KeywordDTO;
@@ -22,6 +23,8 @@ import lombok.extern.log4j.Log4j;
 @Service
 @AllArgsConstructor
 public class KeywordServiceImpl implements KeywordService{
+	
+	@Autowired
 	private KeywordMapper keywordMapper;
 	
 	//자연어 처리 - 형태소 분석기인 Komoran를 메모리에 올리기 위해 WordAnalysisService 클래스 내 전역 변수로 설정합니다.
@@ -47,9 +50,9 @@ public class KeywordServiceImpl implements KeywordService{
 	}
 	
 	@Override
-	public List<KeywordDTO> selectKeywordBest(int pid) {
+	public List<KeywordDTO> selectPosKeywordBest(int pid) {
 		
-		return keywordMapper.selectKeywordBest(pid);
+		return keywordMapper.selectPosKeywordBest(pid);
 	}
 	
 	@Override
@@ -96,5 +99,13 @@ public class KeywordServiceImpl implements KeywordService{
 		
 		return set;
 	}
+
+	@Override
+	public List<KeywordDTO> selectNegKeywordBest(int pid) {
+		
+		return keywordMapper.selectNegKeywordBest(pid);
+	}
+
+	
 
 }

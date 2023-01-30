@@ -817,7 +817,7 @@
 				<!-- 긍정리뷰 정보 -->
 				<section id="tab01"
 					class="anchor-section product-detail-review">
-					<h3 class="sec-title">긍정리뷰</h3>
+					<h3 class="sec-title"><em>긍정리뷰</em></h3>
 					<div class="review-total">
 						<div class="member-total-point">
 							<h4 class="tit">키워드</h4>
@@ -826,230 +826,12 @@
 									class="num">4.9</span>
 							</p>
 						</div>
-						<!-- <div class="graph" data-v-04d43b10="" data-v-69832834=""
+						<div class="graph" data-v-04d43b10="" data-v-69832834=""
 									data-v-3c9dd7e9="">
-									<canvas data-v-04d43b10=""
-										id="sales_canvas1" height="0"
-										style="display: block; box-sizing: border-box; height:200px;width:530px;"
-										width="0"></canvas>
-						</div> -->
+									<canvas id="keyword_canvas1" style="display: block; height: 300px; width: 980px; margin:-15px; padding:-5px;"></canvas>
+						</div>
 
-						<!-- <div class="chart-wrap" id="chartSlide" data-slide-length="4">
-							<div class="slide-container swiper-container-horizontal">
-								<div class="swiper-wrapper"
-									style="transition-duration: 0ms; transform: translate3d(-592px, 0px, 0px);">
-									<div class="swiper-slide swiper-slide-duplicate"
-										data-swiper-slide-index="2" style="width: 296px;">
-										<div class="chart">
-											<p class="tit">신축성</p>
-											<div class="piechart-wrap">
-												<span class="piechart over" style="transform: rotate(0deg);">
-													<span class="rotate" style="transform: rotate(216deg);"><span>좋음</span></span>
-													<span class="percent"><strong class="num">60</strong>%</span>
-												</span> <span class="piechart" style="transform: rotate(216deg);">
-													<span class="rotate" style="transform: rotate(108deg);"><span>약간
-															있음</span></span> <span class="percent"><strong class="num">30</strong>%</span>
-												</span> <span class="piechart" style="transform: rotate(324deg);">
-													<span class="rotate" style="transform: rotate(36deg);"><span>없음</span></span>
-													<span class="percent"><strong class="num">10</strong>%</span>
-												</span>
-											</div>
-										</div>
-										<ul class="sub">
-											<li>좋음</li>
-											<li>약간 있음</li>
-											<li>없음</li>
-										</ul>
-									</div>
-									<div
-										class="swiper-slide swiper-slide-duplicate swiper-slide-prev"
-										data-swiper-slide-index="3" style="width: 296px;">
-										<div class="chart">
-											<p class="tit">비침</p>
-											<div class="piechart-wrap">
-												<span class="piechart" style="transform: rotate(0deg);">
-													<span class="rotate" style="transform: rotate(108deg);"><span>있음</span></span>
-													<span class="percent"><strong class="num">30</strong>%</span>
-												</span> <span class="piechart" style="transform: rotate(108deg);">
-													<span class="rotate" style="transform: rotate(0deg);"><span>약간
-															있음</span></span> <span class="percent"><strong class="num">0</strong>%</span>
-												</span> <span class="piechart over"
-													style="transform: rotate(108deg);"> <span
-													class="rotate" style="transform: rotate(252deg);"><span>없음</span></span>
-													<span class="percent"><strong class="num">70</strong>%</span>
-												</span>
-											</div>
-										</div>
-										<ul class="sub">
-											<li>있음</li>
-											<li>약간 있음</li>
-											<li>없음</li>
-										</ul>
-									</div>
-									<div class="swiper-slide swiper-slide-active"
-										data-swiper-slide-index="0" style="width: 296px;">
-										<div class="chart">
-											<p class="tit">핏감</p>
-											<div class="piechart-wrap">
-												<span class="piechart over" style="transform: rotate(0deg);">
-													<span class="rotate" style="transform: rotate(216deg);"><span>슬림</span></span>
-													<span class="percent"><strong class="num">60</strong>%</span>
-												</span> <span class="piechart" style="transform: rotate(216deg);">
-													<span class="rotate" style="transform: rotate(144deg);"><span>레귤러</span></span>
-													<span class="percent"><strong class="num">40</strong>%</span>
-												</span> <span class="piechart" style="transform: rotate(360deg);">
-													<span class="rotate" style="transform: rotate(0deg);"><span>오버사이즈</span></span>
-													<span class="percent"><strong class="num">0</strong>%</span>
-												</span>
-											</div>
-										</div>
-										<ul class="sub">
-											<li>슬림</li>
-											<li>레귤러</li>
-											<li>오버사이즈</li>
-										</ul>
-									</div>
-									<div class="swiper-slide swiper-slide-next"
-										data-swiper-slide-index="1" style="width: 296px;">
-										<div class="chart">
-											<p class="tit">두께감</p>
-											<div class="piechart-wrap">
-												<span class="piechart over" style="transform: rotate(0deg);">
-													<span class="rotate" style="transform: rotate(216deg);"><span>얇음</span></span>
-													<span class="percent"><strong class="num">60</strong>%</span>
-												</span> <span class="piechart" style="transform: rotate(216deg);">
-													<span class="rotate" style="transform: rotate(144deg);"><span>보통</span></span>
-													<span class="percent"><strong class="num">40</strong>%</span>
-												</span> <span class="piechart" style="transform: rotate(360deg);">
-													<span class="rotate" style="transform: rotate(0deg);"><span>도톰함</span></span>
-													<span class="percent"><strong class="num">0</strong>%</span>
-												</span>
-											</div>
-										</div>
-										<ul class="sub">
-											<li>얇음</li>
-											<li>보통</li>
-											<li>도톰함</li>
-										</ul>
-									</div>
-									<div class="swiper-slide" data-swiper-slide-index="2"
-										style="width: 296px;">
-										<div class="chart">
-											<p class="tit">신축성</p>
-											<div class="piechart-wrap">
-												<span class="piechart over" style="transform: rotate(0deg);">
-													<span class="rotate" style="transform: rotate(216deg);"><span>좋음</span></span>
-													<span class="percent"><strong class="num">60</strong>%</span>
-												</span> <span class="piechart" style="transform: rotate(216deg);">
-													<span class="rotate" style="transform: rotate(108deg);"><span>약간
-															있음</span></span> <span class="percent"><strong class="num">30</strong>%</span>
-												</span> <span class="piechart" style="transform: rotate(324deg);">
-													<span class="rotate" style="transform: rotate(36deg);"><span>없음</span></span>
-													<span class="percent"><strong class="num">10</strong>%</span>
-												</span>
-											</div>
-										</div>
-										<ul class="sub">
-											<li>좋음</li>
-											<li>약간 있음</li>
-											<li>없음</li>
-										</ul>
-									</div>
-									<div class="swiper-slide swiper-slide-duplicate-prev"
-										data-swiper-slide-index="3" style="width: 296px;">
-										<div class="chart">
-											<p class="tit">비침</p>
-											<div class="piechart-wrap">
-												<span class="piechart" style="transform: rotate(0deg);">
-													<span class="rotate" style="transform: rotate(108deg);"><span>있음</span></span>
-													<span class="percent"><strong class="num">30</strong>%</span>
-												</span> <span class="piechart" style="transform: rotate(108deg);">
-													<span class="rotate" style="transform: rotate(0deg);"><span>약간
-															있음</span></span> <span class="percent"><strong class="num">0</strong>%</span>
-												</span> <span class="piechart over"
-													style="transform: rotate(108deg);"> <span
-													class="rotate" style="transform: rotate(252deg);"><span>없음</span></span>
-													<span class="percent"><strong class="num">70</strong>%</span>
-												</span>
-											</div>
-										</div>
-										<ul class="sub">
-											<li>있음</li>
-											<li>약간 있음</li>
-											<li>없음</li>
-										</ul>
-									</div>
-									<div
-										class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
-										data-swiper-slide-index="0" style="width: 296px;">
-										<div class="chart">
-											<p class="tit">핏감</p>
-											<div class="piechart-wrap">
-												<span class="piechart over" style="transform: rotate(0deg);">
-													<span class="rotate" style="transform: rotate(216deg);"><span>슬림</span></span>
-													<span class="percent"><strong class="num">60</strong>%</span>
-												</span> <span class="piechart" style="transform: rotate(216deg);">
-													<span class="rotate" style="transform: rotate(144deg);"><span>레귤러</span></span>
-													<span class="percent"><strong class="num">40</strong>%</span>
-												</span> <span class="piechart" style="transform: rotate(360deg);">
-													<span class="rotate" style="transform: rotate(0deg);"><span>오버사이즈</span></span>
-													<span class="percent"><strong class="num">0</strong>%</span>
-												</span>
-											</div>
-										</div>
-										<ul class="sub">
-											<li>슬림</li>
-											<li>레귤러</li>
-											<li>오버사이즈</li>
-										</ul>
-									</div>
-									<div
-										class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next"
-										data-swiper-slide-index="1" style="width: 296px;">
-										<div class="chart">
-											<p class="tit">두께감</p>
-											<div class="piechart-wrap">
-												<span class="piechart over" style="transform: rotate(0deg);">
-													<span class="rotate" style="transform: rotate(216deg);"><span>얇음</span></span>
-													<span class="percent"><strong class="num">60</strong>%</span>
-												</span> <span class="piechart" style="transform: rotate(216deg);">
-													<span class="rotate" style="transform: rotate(144deg);"><span>보통</span></span>
-													<span class="percent"><strong class="num">40</strong>%</span>
-												</span> <span class="piechart" style="transform: rotate(360deg);">
-													<span class="rotate" style="transform: rotate(0deg);"><span>도톰함</span></span>
-													<span class="percent"><strong class="num">0</strong>%</span>
-												</span>
-											</div>
-										</div>
-										<ul class="sub">
-											<li>얇음</li>
-											<li>보통</li>
-											<li>도톰함</li>
-										</ul>
-									</div>
-								</div>
-								<div
-									class="slide-pagination swiper-pagination-clickable swiper-pagination-bullets">
-									<button type="button"
-										class="swiper-pagination-bullet swiper-pagination-bullet-active"
-										tabindex="0" role="button" aria-label="Go to slide 1">1</button>
-									<button type="button" class="swiper-pagination-bullet"
-										tabindex="0" role="button" aria-label="Go to slide 2">2</button>
-									<button type="button" class="swiper-pagination-bullet"
-										tabindex="0" role="button" aria-label="Go to slide 3">3</button>
-									<button type="button" class="swiper-pagination-bullet"
-										tabindex="0" role="button" aria-label="Go to slide 4">4</button>
-								</div>
-								<div class="slide-nav type3">
-									<button type="button" class="slide-nav-prev" tabindex="0"
-										role="button" aria-label="Previous slide">이전</button>
-									<button type="button" class="slide-nav-next" tabindex="0"
-										role="button" aria-label="Next slide">다음</button>
-								</div>
-								<span class="swiper-notification" aria-live="assertive"
-									aria-atomic="true"></span>
-							</div>
-						</div> -->
+						
 					</div>
 
 
@@ -1057,39 +839,14 @@
 					<div class="product-detail-review-list">
 						<div class="head">
 							<div id="prdReviewFilter" class="opt">
-								<div class="select">
-									<button type="button" class="sel-btn"
-										onclick="select.trigger();">최신순</button>
-									<div id="reviewSortFilter" class="sel-list">
-										<ul>
-											<li><label><input type="radio" name="rvList"
-													value="new"> <span>최신순</span></label></li>
-											<li><label><input type="radio" name="rvList"
-													value="like"> <span>공감순</span></label></li>
-										</ul>
-									</div>
-								</div>
-
-								<div class="select">
-									<button type="button" class="sel-btn"
-										onclick="select.trigger();">사이즈</button>
-									<div class="sel-list">
-										<ul>
-											<li><label> <input type="radio" name="optValCd1"
-													value="XS"> <span>XS</span>
-											</label></li>
-											<li><label> <input type="radio" name="optValCd1"
-													value="S"> <span>S</span>
-											</label></li>
-											<li><label> <input type="radio" name="optValCd1"
-													value="M"> <span>M</span>
-											</label></li>
-											<li><label> <input type="radio" name="optValCd1"
-													value="L"> <span>L</span>
-											</label></li>
-										</ul>
-									</div>
-								</div>
+								<button type="button" class="btn-type1-sm"
+									onclick="getReviewList('1','F','F',null);">
+									<span>필터적용</span>
+								</button>
+								<button type="button" class="btn-type1-sm"
+									onclick="getReviewList('1','F','F',null);">
+									<span>필터적용</span>
+								</button>
 								<button type="button" class="btn-type1-sm"
 									onclick="getReviewList('1','F','F',null);">
 									<span>필터적용</span>
@@ -1175,7 +932,7 @@
 				</section>
 				<!-- 부정리뷰 정보 -->
 				<section id="tab02"
-					class="anchor-section product-detail-review">
+					class="anchor-section product-detail-review" >
 					<h3 class="sec-title">비판리뷰</h3>
 					<div class="review-total">
 						<div class="member-total-point">
@@ -1651,6 +1408,81 @@ document.getElementById('sales_canvas${i}'),
 config${i}
 );
 </c:forEach>
+
+</script>
+
+
+<script>
+var keyword_list = new Array();
+var count_list = new Array();
+
+ 
+
+<c:forEach var="keywordBest" items="${PoskeywordBestList}">
+keyword_list.push("${keywordBest.keyword}");
+count_list.push("${keywordBest.count}");
+</c:forEach>
+
+var ctx = document.getElementById('keyword_canvas1').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: keyword_list,
+        datasets: [{
+            label: '키워드 TOP5',
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.5)',
+                'rgba(54, 162, 235, 0.5)',
+                'rgba(255, 206, 86, 0.5)',
+                'rgba(75, 192, 192, 0.5)',
+                'rgba(153, 102, 255, 0.5)',
+                'rgba(255, 159, 64, 0.5)'],
+            borderColor: ['rgb(255, 99, 132,1.5)',
+                'rgba(54, 162, 235, 1.5)',
+                'rgba(255, 206, 86, 1.5)',
+                'rgba(75, 192, 192, 1.5)',
+                'rgba(153, 102, 255, 1.5)',
+                'rgba(255, 159, 64, 1.5)'],
+            data: count_list
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+        title: {
+            display: false,
+            text: '★방문해 주셔서 감사합니다★',
+            fontSize: 30,
+            fontColor: 'rgba(46, 49, 49, 1)'
+        },
+        legend: {
+            labels: {
+                fontColor: 'rgba(83, 51, 237, 1)',
+                fontSize: 15
+            }
+        },
+        scales: {
+            xAxes: [{
+                ticks: {
+                    fontColor: 'rgba(27, 163, 156, 1)',
+                    fontSize: '15'
+                }
+            }],
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    fontColor: 'rgba(246, 36, 89, 1)',
+                    fontSize: '15'
+                }
+            }]
+        }
+    }
+});
+
+
 
 </script>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

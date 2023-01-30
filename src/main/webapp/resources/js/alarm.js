@@ -9,7 +9,7 @@
    function connectWs(){
       
       //sock = new SockJS('/replyEcho');
-      sock = new SockJS('/echo');
+      sock = new SockJS('http://localhost:8080/echo');
       socket = sock;
 
       sock.onopen = function() {
@@ -86,5 +86,6 @@
     
   /*  test************************************************ */
    
+
 
    }

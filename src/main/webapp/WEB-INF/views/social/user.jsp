@@ -596,6 +596,9 @@
                     data: JSON.stringify(data),
                     success : function(res){
                        alert("긍부정 결과는 "+res.percent+"% 확률로 "+res.result+" 입니다.");
+                       res.keyword_list.forEach(function(keyword) {
+                    	    console.log(keyword);
+                       });
                        $("#sentiment_percent").val(res.percent);
                        $("#sentiment_result").val(res.result);
                        enrollForm.submit(); 
