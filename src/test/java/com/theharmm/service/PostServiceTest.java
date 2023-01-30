@@ -18,7 +18,7 @@ public class PostServiceTest {
 	
 	@Test
 	public void testSelects() {
-		int result = postservice.deleteFollow("asd", "asd@naver.com");
+		boolean result = postservice.checkFollow("asd", "asd@naver.com");
 		log.info(result);
 	}
 

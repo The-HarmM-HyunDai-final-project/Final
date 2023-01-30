@@ -116,9 +116,7 @@
       SELECT
       COUNT(*)
       FROM follow
-      where follower_id = #{following_id} and following_id = #{following_id}
+      where follower_id = #{follower_id} and following_id = #{following_id}
    </select>
-   
-   
-   
+         
 </mapper>

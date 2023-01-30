@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -82,14 +83,15 @@ public class PostController {
       
       // 여기서 팔로잉, 팔로우 처리 필요
       if (loginedMember_email.equals(email)) {
-         model.addAttribute("user", "true");
+         model.addAttribute("userCheck", "true");
       } else {
          if (postService.checkFollow(loginedMember_email,email)) {
-            model.addAttribute("user", "팔로잉");
+            model.addAttribute("userCheck", "팔로잉");
          } else {
-            model.addAttribute("user", "팔로우");            
+            model.addAttribute("userCheck", "팔로우");            
          }
       }
+      log.info("userCheck" + postService.checkFollow(loginedMember_email,email));
       log.info("email" + email);
       model.addAttribute("member_email", email);
       model.addAttribute("listTotal", listTotal);
@@ -238,6 +240,63 @@ public class PostController {
       } finally {
          json = jsonObject.toString();
       }      
-      return json;   }
+      return json;   
+      
+   }
+   
+   @RequestMapping(value = "/social/followList", produces = "application/json; charset=UTF-8")
+   @ResponseBody
+   public String followList(@RequestParam("email") String email) {
+      log.info("리스트 실행");
+      CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+      String username = user.getUsername();
+      
+      JSONObject jsonObject = new JSONObject();
+      String json;
+      
+      try {
+    	 List<String> followingList = postService.getFollowingList(email);
+    	 List<String> followerList = postService.getFollowerList(email);
+
+         log.info(followingList.toString());
+         log.info(followerList.toString());
+         
+         JSONArray Object1 = new JSONArray();
+         JSONArray Object2 = new JSONArray();
+         for (String f : followingList) {
+        	 JSONObject tmpObject = new JSONObject();
+        	 tmpObject.put("user",f);  
+        	 if (f.equals(username) || postService.checkFollow(username,f)) {
+        		 tmpObject.put("follow", "팔로잉");
+        	 } else {
+        		 tmpObject.put("follow", "팔로우");
+        	 }
+        	 Object1.put(tmpObject);
+         }
+         jsonObject.put("followingList", Object1);
+         
+         for (String f : followerList) {
+        	 JSONObject tmpObject2 = new JSONObject();
+        	 tmpObject2.put("user",f);
+        	 if (f.equals(username) || postService.checkFollow(username,f)) {
+        		 tmpObject2.put("follow", "팔로잉"); 
+        	 } else {
+        		 tmpObject2.put("follow", "팔로우");
+        	 }
+        	 Object2.put(tmpObject2);
+         }
+         jsonObject.put("followerList", Object2);
+
+         log.info("성공");
+      } catch (Exception e) {
+         log.info("실패");
+      } finally {
+    	 
+         json = jsonObject.toString();
+         log.info(json);
+      }      
+      return json;   
+      
+   }
 
 }
