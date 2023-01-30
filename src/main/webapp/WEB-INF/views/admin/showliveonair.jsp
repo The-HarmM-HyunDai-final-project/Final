@@ -601,10 +601,9 @@ function onMessage(msg) {
 			break
 		case 'LEAVE':
 			var str = 
-				`<div class='col-6'>
-				<div class='alert alert-secondary'>
-				<b>\${message}</b>
-				</div></div>`
+				`<div>
+					<b>\${message}</b>
+				</div>`
 			$("#connected_user").text(totalUser)
 			break
 	}

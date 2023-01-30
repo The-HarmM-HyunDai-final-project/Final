@@ -30,40 +30,40 @@ public class MemberServiceTests {
 	@Autowired
 	private MemberService service;
 	
-	//ÀÌ¸ÞÀÏ Áßº¹È®ÀÎ
+	//ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ßºï¿½È®ï¿½ï¿½
 	//@Test
 	public void checkEmail() throws Exception{
 		MemberVO member = new MemberVO();
 		member.setMember_email("asd");
 		
-		log.info(" ÀÌ¸ÞÀÏÀº Áßº¹? :" + service.checkEmail(member));
+		log.info(" ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ßºï¿½? :" + service.checkEmail(member));
 	}
 	
-	//´Ð³×ÀÓ Áßº¹È®ÀÎ
-	@Test
+	//ï¿½Ð³ï¿½ï¿½ï¿½ ï¿½ßºï¿½È®ï¿½ï¿½
+	//@Test
 	public void checkNickName() throws Exception{
 		MemberVO member = new MemberVO();
-		member.setMember_nickname("¿©¶ò");
+		member.setMember_nickname("ï¿½ï¿½ï¿½ï¿½");
 		
-		log.info(" ´Ð³×ÀÓ Áßº¹? :" + service.checkNickName(member));
+		log.info(" ï¿½Ð³ï¿½ï¿½ï¿½ ï¿½ßºï¿½? :" + service.checkNickName(member));
 	}
 	
-	//@Test
+	@Test
 	public void Join() throws Exception{
 		BCryptPasswordEncoder scpwd = new BCryptPasswordEncoder();
-		String password = scpwd.encode("asd");
+		String password = scpwd.encode("qkrwlstn");
 		
 		MemberVO member = new MemberVO();
-		member.setMember_email("asd");
+		member.setMember_email("qkrwlstn");
 		member.setMember_password(password);
-		member.setMember_name("¹Ú¿©¸í");
-		member.setMember_nickname("¿©¶ò");
-		member.setMember_phone("01040818409");
+		member.setMember_name("ë°•ì§„ìˆ˜");
+		member.setMember_nickname("ì§„ìˆ˜");
+		member.setMember_phone("01000000000");
 		member.setMember_shoes_size(275);
 		member.setMember_register("2020/01/01");
 		member.setMember_login("2020/01/01");
-		member.setMember_messege_info("ÀÌ°Ç ¹¹ÇÏ´Â ÄÃ·³ÀÌ¾ß");
-		member.setMember_email_info("ÀÌ°Ç ¹¹ÇÏ´Â ÄÃ·³ÀÌ¾ß");
+		member.setMember_messege_info("true");
+		member.setMember_email_info("true");
 		
 		service.joinMember(member);
 	}
