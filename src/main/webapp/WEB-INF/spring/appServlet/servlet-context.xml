@@ -32,7 +32,7 @@
 	<beans:bean id="echoHandler" class="com.theharmm.handler.EchoHandler" />
 	
 	<!-- 웹소켓 활성화~! -->
- 	<websocket:handlers>
+ 	<websocket:handlers allowed-origins="*">
 		<websocket:mapping handler="chattingHandler" path="/chatting"/>
 		<websocket:mapping handler="BJchattingHandler" path="/BJchatting"/>
 		<websocket:mapping handler="echoHandler" path="/echo" />

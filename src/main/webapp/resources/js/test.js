@@ -44,12 +44,12 @@ const cardInnerEl = document.getElementById("card-inner");
   player.addEventListener(PlayerState.READY, function () {
     console.log("Player State - READY");
   });
-  player.addEventListener(PlayerEventType.ERROR, function (err) {
-    console.warn("Player Event - ERROR:", err);
-    setTimeout(function(){
-    	location.reload();
-    	},3000);
-  });
+//  player.addEventListener(PlayerEventType.ERROR, function (err) {
+//    console.warn("Player Event - ERROR:", err);
+//    setTimeout(function(){
+//    	location.reload();
+//    	},3000);
+//  });
 
   player.addEventListener(PlayerEventType.TEXT_METADATA_CUE, function (cue) {
     const metadataText = cue.text;
