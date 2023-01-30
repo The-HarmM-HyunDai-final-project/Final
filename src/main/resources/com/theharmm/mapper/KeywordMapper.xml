@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.theharmm.mapper.KeywordMapper">
+
+<!--키워드 가져오기 5개 -->
+	<select id="selectKeywordBest"
+		resultType="KeywordDTO"
+		parameterType="Integer">
+		 <![CDATA[
+		   SELECT KEYWORD 
+		   FROM(SELECT KEYWORD, COUNT
+		        FROM KEYWORD
+		        WHERE PID =#{pid}
+		        ORDER BY COUNT DESC)
+		   WHERE ROWNUM <6;  
+		  ]]>
+	</select>
+
+</mapper>
