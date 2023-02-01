@@ -1,6 +1,8 @@
 package com.theharmm.controller;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,17 +10,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.theharmm.domain.BuyDTO;
+import com.theharmm.domain.KeywordDTO;
 import com.theharmm.domain.PostVO;
 import com.theharmm.domain.ProductDTO;
 import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.SellDTO;
-import com.theharmm.domain.KeywordDTO;
-import com.theharmm.service.PostService;
 import com.theharmm.service.KeywordService;
-
+import com.theharmm.service.PostService;
 import com.theharmm.service.ProductDetailService;
 
 import lombok.RequiredArgsConstructor;
@@ -98,5 +100,26 @@ public class ProductDetailController {
 		return "product/productdetail";
 	}
 	
+	@RequestMapping(value = "word/analysis")
+	@ResponseBody
+	public Set<String> analysis(@RequestParam("test") String test) throws Exception {
+		
+		log.info(this.getClass().getName() + ".inputForm !");
+		
+		//분석할 문장
+		//String text = "재질이 안좋아요";
+		
+		//신조어 및 새롭게 생겨난 가수 및 그룹명은 제대로 된 분석이 불가능합니다.
+		// 새로운 명사 단어들은 어떻게 데이터를 처리해야 할까?? => 데이터사전의 주기적인 업데이트
+
+		Set<String> rSet = keywordService.doWordNouns(test);
+		
+		if(rSet == null) {
+			rSet = new HashSet<String>();
+		}
+		
+		
+		return rSet;
+	}
 	
 }

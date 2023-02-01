@@ -67,6 +67,7 @@
 <!-- 제이쿼리 cdn -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 <!-- sockJS -->
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>	
@@ -217,7 +218,7 @@
 								<nav class="gnb" data-v-147586e1="">
 									<ul class="gnb_list" data-v-147586e1="">
 										<li class="gnb_item" data-v-147586e1=""><a
-											href="/social/trending" class="gnb_link" data-v-147586e1="">
+											href="${pageContext.request.contextPath}/social/trendings" class="gnb_link" data-v-147586e1="">
 												STYLE </a></li>
 										<li class="gnb_item" data-v-147586e1=""><a
 											href="${pageContext.request.contextPath}/product/productlist?page=1"
@@ -302,7 +303,7 @@
 									<div class="navigation" data-v-0eda3817="">
 										<div class="navigation_inner" data-v-0eda3817="">
 											<ul class="nav_list" data-v-0eda3817="">
-												<li class="nav_item" data-v-0eda3817=""><a href="#"
+												<li class="nav_item" data-v-0eda3817=""><a href="${pageContext.request.contextPath}/social/trendings"
 													class="nav_link" data-v-0eda3817=""> STYLE </a></li>
 												<li class="nav_item" data-v-0eda3817=""><a
 													href="${pageContext.request.contextPath}/product/productlist?page=1"
@@ -363,6 +364,25 @@
 						<sec:authentication property="principal.username" var="MID" />
 					</sec:authorize>
 					<input type="hidden" name="mid" id="mid" value="${MID}">
+					
+					<!-- 챗봇 모달 -->
+					<!--  채팅 -->
+<%-- 					<h3>채팅 입력</h3>
+					<form id="chatForm" enctype="multipart/form-data">
+						내용 : <input type="text" id="inputText" name="inputText"> <input
+							type="submit" value="결과 확인">
+					</form>
+					<br> <br>
+
+					<!-- 결과 출력 (텍스트) -->
+					<h3>응답 결과</h3>
+					<div id="resultDiv"></div>
+					<br> <br> --%>
+					<!-- 챗봇 모달 -->
+					
+					<style>
+						
+					</style>
 				</div>
 
 <script>
@@ -430,6 +450,8 @@
 						msg = alarm.caller + "님이 " + alarm.receiver + "님을 팔로우를 시작했습니다."
 					} else if("followdel" == alarm.cmd) {
 						msg = alarm.caller + "님이 " + alarm.receiver + "님을 팔로우 취소 했습니다."
+					} else if("auctionbidder" == alarm.cmd){
+						msg = alarm.seq + "번방 쇼라이브에서 물건을 낙찰 되셨습니다. 결제를 하셔야 합니다. "
 					}
 					
 					tmp_html =
@@ -454,6 +476,32 @@
 			 showAlarmList ();
 		 });
 		
+		    // submit 했을 때 처리
+		    $('#chatForm').on('submit', function (event) {
+		        event.preventDefault();
+		        
+	 			let csrfHeaderName ="${_csrf.headerName}";
+	            let csrfTokenValue="${_csrf.token}";
+	            
+		        var formData = new FormData($('#chatForm')[0]);
+		        $.ajax({
+		            type : "post",
+		            enctype : "multipart/form-data",
+		            url : "chatbotSend",
+		            data : formData,
+		            processData : false, // 필수
+		            contentType : false, // 필수
+					beforeSend: function(xhr) {
+	                    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+	                },
+		            success:function (result) {
+		                $('#resultDiv').text(result);
+		            },
+		            error:function (e) {
+		                alert("오류 발생" + e);
+		            }
+		        });
+		    })
         
 	});	
 	

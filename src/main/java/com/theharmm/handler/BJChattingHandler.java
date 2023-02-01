@@ -12,9 +12,11 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.theharmm.domain.AlarmDTO;
 import com.theharmm.domain.ShowLiveAuctionFinalPersonDTO;
 import com.theharmm.domain.ShowLiveBiddingDTO;
 import com.theharmm.domain.ShowLiveChannelDTO;
+import com.theharmm.service.ReplyService;
 import com.theharmm.service.ShowLiveService;
 import com.theharmm.showlive.MessageType;
 import com.theharmm.showlive.ShowLiveChannel;
@@ -28,6 +30,9 @@ public class BJChattingHandler extends TextWebSocketHandler{
 	
 	@Autowired
 	ShowLiveService showliveService;
+	
+	@Autowired
+	ReplyService replyService;
 	
 	// "Java Object" =Serialize=> "JSON" or "JSON" =Deserialize=> "Java Object" 역할을 맡음
 	private final ObjectMapper objectMapper = new ObjectMapper();
@@ -152,19 +157,20 @@ public class BJChattingHandler extends TextWebSocketHandler{
 	}
 	
 	private void insertShowliveInfostoDBFromBJ(ShowLiveMessage message) {
-		switch(message.getType()) {
-			case AUCTION_END:
-				insertAuctionFinalPersonDTOtoDB(message);
-				break;
-		}
-	}
-	private void insertAuctionFinalPersonDTOtoDB(ShowLiveMessage message){
 		
 		ShowLiveChannel showliveChannel = showLiveChannelStore.getChannelByRoomNo(message.getRoomNo());
 		
 		String maxUser = showliveChannel.getMaxSuggestionUser();
 		int maxPrice = showliveChannel.getMaxSuggestionPrice();
 		
+		switch(message.getType()) {
+			case AUCTION_END:
+				insertAuctionFinalPersonDTOtoDB(message, maxUser, maxPrice);
+				insertAlarmFianlBidder(message, maxUser, maxPrice);
+				break;
+		}
+	}
+	private void insertAuctionFinalPersonDTOtoDB(ShowLiveMessage message, String maxUser, int maxPrice){
 		ShowLiveAuctionFinalPersonDTO personDTO = new ShowLiveAuctionFinalPersonDTO();
 		personDTO.setShowlive_no(Integer.parseInt(message.getRoomNo()));
 		personDTO.setFinal_bbider(maxUser);
@@ -172,6 +178,16 @@ public class BJChattingHandler extends TextWebSocketHandler{
 		personDTO.setPayment_yn("0");
 		
 		showliveService.insertAuctionFinalPerson(personDTO);
+	}
+	private void insertAlarmFianlBidder(ShowLiveMessage message, String maxUser, int maxPrice) {
+		AlarmDTO alarm = new AlarmDTO();
+		alarm.setCmd("auctionbidder");
+		alarm.setCaller(message.getUsername());
+		alarm.setReceiver(maxUser);
+		alarm.setReceiverEmail(maxUser);
+		alarm.setSeq(message.getRoomNo());
+		
+		replyService.insertAlarm(alarm);
 	}
 	
 }
