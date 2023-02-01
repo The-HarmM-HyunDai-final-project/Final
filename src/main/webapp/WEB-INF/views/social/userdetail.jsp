@@ -563,7 +563,7 @@
 																.log("222fffffffffffffffffffffffff22");
 														tmp2 = `							<div data-v-4862de99="" data-v-e139a0b8="" class="comment_unit reply">                                                                           `
 																+ `								<div data-v-4862de99="" class="comment_box">                                                                                                 `
-																+ `									<a data-v-4862de99="" href="/social/trending?email=`+ subreply.member_email +`" class="profile_link"><img data-v-4862de99=""                                    `+
+																+ `									<a data-v-4862de99="" href="/social/trending?email=`+ subreply.member_email +`&member_email=`+mid+`" class="profile_link"><img data-v-4862de99=""                                    `+
 								`											src=""                                                                                                                           `+
 								`											alt="KREAM 프로필 이미지" class="profile_img"></a>                                                                               `
 																+ `									<div data-v-4862de99="" class="comment_detail">                                                                                          `
