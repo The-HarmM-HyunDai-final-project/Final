@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@charset "UTF-8";
 
 @-webkit-keyframes animate-width {
     0% {
@@ -3436,7 +3435,7 @@ body.gnb-show #container::before {
     padding: 0 10px;
     line-height: 28px;
     font-size: 12px;
-    border-radius: 2px;
+    border-radius: 12px;
 }
 
 .btn-type1-m {
@@ -37513,5 +37512,4 @@ select.select-sm {
         margin: 0 auto !important;
     }
 }
-
 /*# sourceMappingURL=ui.min.css.map */

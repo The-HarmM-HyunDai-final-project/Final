@@ -202,7 +202,7 @@
 					<div data-v-7227e9f0="" class="title_box">
 						<span data-v-7227e9f0="" class="main_title">카테고리</span>
 						<!---->
-						<span data-v-7227e9f0="" class="placeholder" id="allcategory">모든
+						<span data-v-7227e9f0="" class="placeholder" id="allcategory" style="background-color:white">모든
 							카테고리</span>
 					</div>
 					<div data-v-7227e9f0="" class="ico_box">
@@ -250,7 +250,7 @@
 					onclick="openMenu(this);">
 					<div data-v-7227e9f0="" class="title_box">
 						<span data-v-7227e9f0="" class="main_title">브랜드</span> <span
-							data-v-7227e9f0="" class="placeholder">모든 브랜드</span>
+							data-v-7227e9f0="" class="placeholder" style="background-color:white" >모든 브랜드</span>
 						<!---->
 					</div>
 					<div data-v-7227e9f0="" class="ico_box">
@@ -2960,7 +2960,7 @@
 						onclick="openMenu(this);">
 						<div data-v-7227e9f0="" class="title_box">
 							<span data-v-7227e9f0="" class="main_title">신발 사이즈</span> <span
-								data-v-7227e9f0="" class="placeholder">모든 사이즈</span>
+								data-v-7227e9f0="" class="placeholder" style="background-color:white" >모든 사이즈</span>
 							<!---->
 						</div>
 						<div data-v-7227e9f0="" class="ico_box">
@@ -3008,7 +3008,7 @@
 						onclick="openMenu(this);">
 						<div data-v-7227e9f0="" class="title_box">
 							<span data-v-7227e9f0="" class="main_title">의류 사이즈</span> <span
-								data-v-7227e9f0="" class="placeholder">모든 사이즈</span>
+								data-v-7227e9f0="" class="placeholder" style="background-color:white">모든 사이즈</span>
 							<!---->
 						</div>
 						<div data-v-7227e9f0="" class="ico_box">
@@ -3053,7 +3053,7 @@
 						<div data-v-7227e9f0="" class="title_box">
 							<span data-v-7227e9f0="" class="main_title"
 								onclick="openMenu(this);">가격</span> <span data-v-7227e9f0=""
-								class="placeholder">모든 가격</span>
+								class="placeholder" style="background-color:white">모든 가격</span>
 							<!---->
 						</div>
 						<div data-v-7227e9f0="" class="ico_box">
@@ -3120,7 +3120,7 @@
 						<button data-v-235653ca="" type="button" class="sorting_title">
 							인기순</button>
 						<ul data-v-235653ca="" class="sorting_list"
-							style="display: block;">
+							style="display: none;">
 							<li data-v-235653ca="" class="sorting_item item_on"><a
 								data-v-235653ca="" href="#" class="sorting_link"><div
 										data-v-235653ca="" class="sorting_desc">
@@ -3322,14 +3322,13 @@
 															+ "</p>"
 													tmp += "				</div>"
 													tmp += "			</div>"
-													tmp += "			<div data-v-6da6dff3='' data-v-c90cb1da='' class='badge badge_product shipping_express'>빠른배송</div>"
+		
 
 													tmp += "		</div>"
 
 													tmp += "		<div data-v-ef71e3ac='' data-v-7dab533a='' class='price price_area'>"
 													tmp += "			 <p data-v-ef71e3ac='' class='amount'>"
-															+ product_array
-																	.at(i).product.pname_k
+															+ product_array.at(i).product.release_price
 															+ "</p>"
 													tmp += "			 <p data-v-ef71e3ac='' class='desc'>즉시 구매가</p>"
 													tmp += "		</div>"
@@ -3348,7 +3347,7 @@
 													tmp += " 			</use>";
 													tmp += " 			</svg>";
 													tmp += "			</span>";
-													tmp += "			<span data-v-152760b3='' class='text'>스크랩수</span>"
+
 													tmp += "		</span>";
 
 													tmp += "		<span data-v-152760b3=''";
@@ -3364,7 +3363,7 @@
 													tmp += "					</use>"
 													tmp += "				</svg>"
 													tmp += "			</span>";
-													tmp += "			<span data-v-152760b3='' class='text'>리뷰 갯수</span>";
+
 													tmp += "		</span>";
 
 													tmp += "	</div>";

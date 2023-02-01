@@ -42,9 +42,20 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
 		<security:intercept-url pattern="/social/user"
 			access="permitAll" />
+		
+<!-- 		<security:intercept-url pattern="/social/insertReply"
+			access="hasRole('ROLE_ADMIN')" />
+			
+		<security:intercept-url pattern="/social/insertFollow"
+			access="hasRole('ROLE_ADMIN')" />
+			
+		<security:intercept-url pattern="/social/deleteFollow"
+			access="hasRole('ROLE_ADMIN')" /> -->
 			
 		<security:intercept-url pattern="/admin/*" 
 			access="hasRole('ROLE_ADMIN')"/>
+			
+			
 
 		<!-- 로그인 할 일이 있다면 member/loginpage로 보내고 인증 확인을 customLoginSuccess 핸들러가 받아서 처리 -->
 		<security:form-login
