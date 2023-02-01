@@ -450,6 +450,8 @@
 						msg = alarm.caller + "님이 " + alarm.receiver + "님을 팔로우를 시작했습니다."
 					} else if("followdel" == alarm.cmd) {
 						msg = alarm.caller + "님이 " + alarm.receiver + "님을 팔로우 취소 했습니다."
+					} else if("auctionbidder" == alarm.cmd){
+						msg = alarm.seq + "번방 쇼라이브에서 물건을 낙찰 되셨습니다. 결제를 하셔야 합니다. "
 					}
 					
 					tmp_html =

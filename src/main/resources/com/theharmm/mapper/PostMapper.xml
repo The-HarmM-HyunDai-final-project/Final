@@ -53,6 +53,35 @@
      </select>
      
      
+     <update id="mergeKeywordList" parameterType="KeywordDTO">
+
+        MERGE INTO KEYWORD
+            USING DUAL ON
+            (
+                KEYWORD = #{keyword}
+            AND PID = #{pid}
+            AND SENTIMENT_RESULT = #{sentiment_result}
+            )
+           WHEN MATCHED THEN 
+                UPDATE SET
+                        COUNT = COUNT + #{count}
+            WHEN NOT MATCHED THEN
+                INSERT
+                (
+                   KEYWORD,
+                   COUNT,
+                   PID,
+                   SENTIMENT_RESULT
+                )
+                VALUES
+                (
+                    #{keyword},
+                    #{count},
+                    #{pid},
+                    #{sentiment_result}
+                )
+	</update>
+     
      <!-- 사용자별 포스트 리스트 -->
      <select id="postGetByMailList" resultType="com.theharmm.domain.PostVO" parameterType="String">
       select p.post_id as post_id, p.member_email as member_email, 

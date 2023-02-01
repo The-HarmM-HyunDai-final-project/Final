@@ -5,16 +5,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.theharmm.domain.ShowLiveBiddingDTO;
 import com.theharmm.domain.ShowLiveChannelDTO;
+import com.theharmm.domain.ShowLiveChatDTO;
+import com.theharmm.mapper.ShowLiveMapper;
+import com.theharmm.service.ShowLiveService;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j;
+
 
 @Data
 @Log4j
@@ -33,6 +40,8 @@ public class ShowLiveChannel {
 	private int maxSuggestionPrice;
 	//해당 채널에서 진행하는 최고 가격 제시한 유저
 	private String maxSuggestionUser;
+	//해당 채널에서 경매가 종료되었는지 아닌지
+	private String auctionYn;
 	//접속한 사용자들 담자는 배열 -> 아래 Map 객체떄문에 사용 안해도 될것 같음
 	//private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
 	private Map<WebSocketSession, String> bjList = new ConcurrentHashMap<WebSocketSession, String>();
@@ -47,6 +56,7 @@ public class ShowLiveChannel {
 		showliveChannel.connectedUsers = 0;
 		showliveChannel.maxSuggestionPrice = channelDTO.getShowlive_start_price(); //지금 임의로 한거고 관리자가 방 만들때는 직접 입력한 금액을 여기에 넣음
 		showliveChannel.maxSuggestionUser = "";
+		showliveChannel.auctionYn = "no";
 		return showliveChannel;
 	}
 	
@@ -82,12 +92,13 @@ public class ShowLiveChannel {
 //				log.warn("이거 질문이니까 따로보여주기");
 //			}
 			showliveMessage.setMessage(showliveMessage.getMessage());
+			
 		}else if (showliveMessage.getType() == MessageType.QUESTION){
 			showliveMessage.setMessage(showliveMessage.getMessage());
 			//BJ한테 우선적으로 보내주기! -> 이거까지하면 2개 가서 일단 취소
 			//sendMessageToBJ(showliveMessage);
-		}
-			if(showliveMessage.getType() == MessageType.AUCTION) {	//경매 용도
+			
+		}else if(showliveMessage.getType() == MessageType.AUCTION) {	//경매 용도
 			//입력받은 입찰 제시금이 지금보다 크면 모두에게 새로운 제시금을 보냄
 			if(Integer.parseInt(showliveMessage.getMessage()) > maxSuggestionPrice) {
 				maxSuggestionPrice = Integer.parseInt(showliveMessage.getMessage());
@@ -106,6 +117,7 @@ public class ShowLiveChannel {
 			showliveMessage.setMessage(userId + " 님이 입장하셨습니다");
 			showliveMessage.setChannelMaxSuggestUser(maxSuggestionUser);
 			showliveMessage.setChannelMaxSuggestPrice(maxSuggestionPrice);
+			showliveMessage.setAuctionYn(auctionYn);
 			log.warn(roomNum + "번방 접속자 수 :" + connectedUsers);
 		}else if(showliveMessage.getType() == MessageType.LEAVE) {		//방 나갔을 때
 			connectedUsers--;
@@ -114,6 +126,8 @@ public class ShowLiveChannel {
 			showliveMessage.setMessage(userId + " 님이 퇴장하셨습니다");
 			log.warn(roomNum + "번방 접속자 수 :" + connectedUsers);
 		}else if(showliveMessage.getType() == MessageType.AUCTION_END) {	//라이브가 종료 되었을 때
+			auctionYn = "yes";
+			showliveMessage.setAuctionYn(auctionYn);
 			log.warn(roomNum + "낙찰 완료!" + roomNum +" 방 경매가 종료 되었습니다");
 		}else if(showliveMessage.getType() == MessageType.LIVE_END) {	//라이브가 종료 되었을 때
 			connectedUsers--;
@@ -123,6 +137,11 @@ public class ShowLiveChannel {
 		}
 		
 		sendMessage(showliveMessage);
+		//메시지를 보내고 DB 작업을 해야하나?
+//		if(showliveMessage.getType() == MessageType.TALK) {
+//			insertChatDTOtoDB(showliveMessage);//DB 넣어주기
+//		}
+		
 	}
 	
 	public void sendMessage(ShowLiveMessage showLiveMessage) throws Exception {
@@ -160,5 +179,6 @@ public class ShowLiveChannel {
 	public void removeSession (WebSocketSession session) {
 		sessionsRoomNo.remove(session);
 	}
+
 	
 }

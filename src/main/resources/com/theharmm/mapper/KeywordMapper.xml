@@ -4,15 +4,31 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.theharmm.mapper.KeywordMapper">
 
-<!--키워드 가져오기 5개 -->
-	<select id="selectKeywordBest"
+<!--긍정 키워드 가져오기 5개 -->
+	<select id="selectPosKeywordBest"
 		resultType="KeywordDTO"
 		parameterType="Integer">
 		 <![CDATA[
-		   SELECT KEYWORD 
+		   SELECT KEYWORD,COUNT
 		   FROM(SELECT KEYWORD, COUNT
 		        FROM KEYWORD
 		        WHERE PID =#{pid}
+		          AND SENTIMENT_REUSLT = 'P' 
+		        ORDER BY COUNT DESC)
+		   WHERE ROWNUM <6  
+		  ]]>
+	</select>
+	
+<!--부정 키워드 가져오기 5개 -->
+	<select id="selectNegKeywordBest"
+		resultType="KeywordDTO"
+		parameterType="Integer">
+		 <![CDATA[
+		   SELECT KEYWORD,COUNT
+		   FROM(SELECT KEYWORD, COUNT
+		        FROM KEYWORD
+		        WHERE PID =#{pid}
+		          AND SENTIMENT_REUSLT = 'N' 
 		        ORDER BY COUNT DESC)
 		   WHERE ROWNUM <6  
 		  ]]>
