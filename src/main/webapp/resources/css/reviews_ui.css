@@ -3436,7 +3436,7 @@ body.gnb-show #container::before {
     padding: 0 10px;
     line-height: 28px;
     font-size: 12px;
-    border-radius: 2px;
+    border-radius: 12px;
 }
 
 .btn-type1-m {
