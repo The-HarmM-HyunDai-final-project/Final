@@ -13,7 +13,7 @@
 		   FROM(SELECT KEYWORD, COUNT
 		        FROM KEYWORD
 		        WHERE PID =#{pid}
-		          AND SENTIMENT_REUSLT = 'P' 
+		          AND SENTIMENT_RESULT = 'P' 
 		        ORDER BY COUNT DESC)
 		   WHERE ROWNUM <6  
 		  ]]>
@@ -28,7 +28,7 @@
 		   FROM(SELECT KEYWORD, COUNT
 		        FROM KEYWORD
 		        WHERE PID =#{pid}
-		          AND SENTIMENT_REUSLT = 'N' 
+		          AND SENTIMENT_RESULT = 'N' 
 		        ORDER BY COUNT DESC)
 		   WHERE ROWNUM <6  
 		  ]]>

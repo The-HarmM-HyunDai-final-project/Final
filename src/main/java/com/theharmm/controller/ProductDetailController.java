@@ -89,11 +89,11 @@ public class ProductDetailController {
 		
 		//긍정키워드 베스트 가져오기 (5개까지 가져오고, 대표 키워드는 3가지로 한다) 
 		List<KeywordDTO> PosKeywordBestList = keywordService.selectPosKeywordBest(pid); 
-		model.addAttribute("keywordBestList", PosKeywordBestList);
+		model.addAttribute("poskeywordBestList", PosKeywordBestList);
 				
 		//부정키워드 베스트 가져오기 (5개까지 가져오고, 대표 키워드는 3가지로 한다) 
 		List<KeywordDTO> NegKeywordBestList = keywordService.selectNegKeywordBest(pid); 
-		model.addAttribute("keywordBestList", NegKeywordBestList);
+		model.addAttribute("negkeywordBestList", NegKeywordBestList);
 
 		return "product/productdetail";
 	}
