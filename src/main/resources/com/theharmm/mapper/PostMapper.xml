@@ -16,6 +16,9 @@
       contents, pid0, pid1, pid2
       from post p, social s where p.post_id = s.post_id
       and (s.file_name like '%.jpg' or s.file_name like '%.png')
+       <![CDATA[  
+       	and rownum <= 12
+       ]]>
       order by p.register_date desc
      </select>
    

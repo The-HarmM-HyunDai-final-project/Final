@@ -37,8 +37,8 @@
 								alt="KREAM 프로필 이미지" class="profile_img">
 						</div>
 						<div data-v-271ab2d7="" class="profile_info">
-							<p data-v-271ab2d7="" href="#" class="user_name">${member_email}</p>
-							<p data-v-271ab2d7="" class="upload_time">4일 전</p>
+							<p data-v-271ab2d7="" href="#" class="user_name">${user}</p>
+							<p data-v-271ab2d7="" class="upload_time">${register_date}</p>
 						</div> <!----></a>
 				</div>
 				<div data-v-46fdf25a="" data-v-a55f4638="" class="social_image_box">
@@ -187,8 +187,8 @@
 					<!-- 댓글 -->
 					<div class="social_comment" data-v-44fd9edd="" data-v-6d810e86="">
 						<div class="comment_area" data-v-44fd9edd="">
-							<a href="#" class="comment_count" data-v-44fd9edd=""> 댓글 <strong
-								data-v-44fd9edd="">5</strong>개
+							<a href="#" class="comment_count" data-v-44fd9edd="" > 댓글 <strong id="comment_count"
+								data-v-44fd9edd=""> 0 </strong>개
 							</a>
 							<div class="comment_list" data-v-44fd9edd="" >
 							<div id="comment_list">
@@ -222,16 +222,16 @@
 										<div data-v-4862de99="" data-v-e139a0b8=""
 											class="comment_unit" data-v-1a009402="">
 											<div data-v-4862de99="" class="comment_box">
-												<a data-v-4862de99="" href="/social/users/${member_email}"
+												<a data-v-4862de99="" href="/social/users?email=${user}"
 													class="profile_link"><img data-v-4862de99=""
-													src="https://kream-phinf.pstatic.net/MjAyMjExMDlfMjU2/MDAxNjY3OTU3ODY0MzY4.t3fpARn1DEJYhj-d0iTQwdakC1caQ_JQ0UsTg-pFpe4g.2RbzvEDyow1eUoRDMgLPnVncL8HG069N_242c-aQuyMg.JPEG/p_174ceb2e78124c53ac64163decaad402.jpeg?type=sl"
+													src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png"
 													alt="KREAM 프로필 이미지" class="profile_img"></a>
 												<div data-v-4862de99="" class="comment_detail">
 													<div data-v-4862de99="" class="main">
-														<span data-v-4862de99="" class="user_name">${member_email}</span><span
+														<span data-v-4862de99="" class="user_name">${user}</span><span
 															data-v-4862de99="" class="comment_txt"></span>
 													</div>
-													<!-- contents넣어야 함!!!!!!!!!!!! -->
+													${contents}
 													<div data-v-4862de99="" class="sub">
 														<span data-v-4862de99="" class="upload_time">2022년
 															11월 22일</span>
@@ -459,6 +459,7 @@
 											function(data) {
 												console.log("data :" + data);
 												reply_array = data.replyList;
+												var mid = $("#mid").val();
 
 												if (reply_array == null
 														|| reply_array.length == 0) {
@@ -470,23 +471,23 @@
 												let html_tmp = "";
 												let html_tmp3 = "";
 
+												let comment_count = reply_array.length;
+												$("#comment_count").html(comment_count);
+												
 												for (let i = 0; i < reply_array.length; i++) {
 													let reply = reply_array
 															.at(i);
 													let subreplys = reply.Sreplys;
 													let mainreply = reply.Mreply;
-													/* 							
-													 console.log(reply)
-													 console.log(subreplys)
-													 console.log(mainreply) */
+
 
 													let tmp = "";
 													let tmp3 = "";
 													
 													tmp3 = `			<div data-v-4862de99="" data-v-e139a0b8="" class="comment_unit" data-v-1a009402="">                                                                      `
 														+ `						<div data-v-4862de99="" class="comment_box">                                                                                                         `
-														+ `							<a data-v-4862de99="" href="/social/user?email="`+ mainreply.member_email+`" class="profile_link"><img data-v-4862de99=""                                                  `+
-`									src="/images/account_img_default.png" alt="KREAM 프로필 이미지" class="profile_img"></a>                                                 `
+														+ `							<a data-v-4862de99="" href="/social/user?email=`+ mainreply.member_email+`& member_email = `+mid+`" class="profile_link"><img data-v-4862de99=""                                                  `+
+`									src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png" alt="KREAM 프로필 이미지" class="profile_img"></a>                                                 `
 														+ `							<div data-v-4862de99="" class="comment_detail">                                                                                                  `
 														+ `								<div data-v-4862de99="" class="main">                                                                                                        `
 														+ `									<span data-v-4862de99="" class="user_name">`
@@ -516,8 +517,8 @@
 
 													tmp = `			<div data-v-4862de99="" data-v-e139a0b8="" class="comment_unit" data-v-1a009402="">                                                                      `
 															+ `						<div data-v-4862de99="" class="comment_box">                                                                                                         `
-															+ `							<a data-v-4862de99="" href="/social/user?email=`+ mainreply.member_email+`" class="profile_link"><img data-v-4862de99=""                                                  `+
-`									src="/images/account_img_default.png" alt="KREAM 프로필 이미지" class="profile_img"></a>                                                 `
+															+ `							<a data-v-4862de99="" href="/social/trending?email=`+ mainreply.member_email+` & member_email = `+mid+`" class="profile_link"><img data-v-4862de99=""                                                  `+
+`									src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png" alt="KREAM 프로필 이미지" class="profile_img"></a>                                                 `
 															+ `							<div data-v-4862de99="" class="comment_detail">                                                                                                  `
 															+ `								<div data-v-4862de99="" class="main">                                                                                                        `
 															+ `									<span data-v-4862de99="" class="user_name">`
@@ -562,7 +563,7 @@
 																.log("222fffffffffffffffffffffffff22");
 														tmp2 = `							<div data-v-4862de99="" data-v-e139a0b8="" class="comment_unit reply">                                                                           `
 																+ `								<div data-v-4862de99="" class="comment_box">                                                                                                 `
-																+ `									<a data-v-4862de99="" href="/social/users?email=`+ subreply.member_email +`" class="profile_link"><img data-v-4862de99=""                                    `+
+																+ `									<a data-v-4862de99="" href="/social/trending?email=`+ subreply.member_email +`" class="profile_link"><img data-v-4862de99=""                                    `+
 								`											src=""                                                                                                                           `+
 								`											alt="KREAM 프로필 이미지" class="profile_img"></a>                                                                               `
 																+ `									<div data-v-4862de99="" class="comment_detail">                                                                                          `
@@ -571,7 +572,7 @@
 																+ subreply.member_email
 																+ `</span><span data-v-4862de99=""                                           `+
 								`												class="comment_txt"><a class="reply_user_name"                                                                               `+
-								`													href="https://kream.co.kr/social/users/@u4vw97">@`
+								`													href="/social/trending?email=`+ subreply.member_email +`&member_email=`+mid+`">@`
 																+ subreply.parent_member_email
 																+ `</a> `
 																+ subreply.content

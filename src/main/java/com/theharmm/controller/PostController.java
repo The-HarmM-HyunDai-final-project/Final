@@ -57,9 +57,54 @@ public class PostController {
    @Autowired
    private AttachService attachService;
 
+   
+   /* 전체 포스트 */
+   @RequestMapping(value = "/social/trendings", method = RequestMethod.GET)
+   public String postAllGET(PostCriteria postcri, Model model) throws Exception {
+	   List<PostVO> list = postService.postGetList(postcri);
+	   model.addAttribute("list", list);
+	   return "social/trendings";
+   }
+   
+   
    /* 포스트 관리(포스트목록) 페이지 접속 */
    @RequestMapping(value = "/social/user", method = RequestMethod.GET)
-   public void postManageGET(PostCriteria postcri, Model model, @RequestParam("email") String email) throws Exception {
+   public void postManageGET(PostCriteria postcri, Model model) throws Exception {
+	      CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	      String email = user.getUsername();
+      log.info("postManageGET postcontroller" + email);
+      /* 포스트 리스트 데이터 */
+      List<PostVO> list = postService.postGetByMailList(postcri,email);
+      if (!list.isEmpty()) {
+         model.addAttribute("list", list);
+      } else {
+         model.addAttribute("listCheck", "empty");
+         
+      }
+      
+      int listTotal = postService.postGetByMailTotal(email);
+      /* 페이지 인터페이스 데이터 */
+      model.addAttribute("pageMaker", new PostPageDTO(postcri, postService.postGetTotal(postcri)));
+
+      int followerCnt = postService.countFollower(email);
+      int followingCnt = postService.countFollowing(email);
+      //List<String> followerList = postService.getFollowerList(email);
+      //List<String> followingList = postService.getFollowingList(email);
+      
+      model.addAttribute("userCheck", "true");
+      // 여기서 팔로잉, 팔로우 처리 필요
+
+      //log.info("userCheck" + postService.checkFollow(loginedMember_email,email));
+      log.info("email" + email);
+      model.addAttribute("member_email", email);
+      model.addAttribute("listTotal", listTotal);
+      model.addAttribute("followerCnt", followerCnt);
+      model.addAttribute("followingCnt", followingCnt);
+   }
+   
+   /* 포스트 관리(포스트목록) 페이지 접속 */
+   @RequestMapping(value = "/social/trending", method = RequestMethod.GET)
+   public String postManageGET(PostCriteria postcri, Model model, @RequestParam(defaultValue = "") String email, @RequestParam(defaultValue = "") String member_email) throws Exception {
       
       log.info("postManageGET postcontroller" + email);
       /* 포스트 리스트 데이터 */
@@ -74,31 +119,34 @@ public class PostController {
       int listTotal = postService.postGetByMailTotal(email);
       /* 페이지 인터페이스 데이터 */
       model.addAttribute("pageMaker", new PostPageDTO(postcri, postService.postGetTotal(postcri)));
-      CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-      String loginedMember_email = user.getUsername();
+      //CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+      //String loginedMember_email = user.getUsername();
       int followerCnt = postService.countFollower(email);
       int followingCnt = postService.countFollowing(email);
       //List<String> followerList = postService.getFollowerList(email);
       //List<String> followingList = postService.getFollowingList(email);
       
       // 여기서 팔로잉, 팔로우 처리 필요
-      if (loginedMember_email.equals(email)) {
+      if (member_email.equals(email)) {
          model.addAttribute("userCheck", "true");
       } else {
-         if (postService.checkFollow(loginedMember_email,email)) {
+         if (postService.checkFollow(member_email,email)) {
             model.addAttribute("userCheck", "팔로잉");
          } else {
             model.addAttribute("userCheck", "팔로우");            
          }
       }
-      log.info("userCheck" + postService.checkFollow(loginedMember_email,email));
+      //model.addAttribute("userCheck", "팔로잉");
+      log.info("userCheck" + postService.checkFollow(member_email,email));
       log.info("email" + email);
       model.addAttribute("member_email", email);
       model.addAttribute("listTotal", listTotal);
       model.addAttribute("followerCnt", followerCnt);
       model.addAttribute("followingCnt", followingCnt);
+      
+      return "social/user";
    }
-
+   
    /* 이미지 출력 */
    @GetMapping("/social/user/display")
    public ResponseEntity<byte[]> getImage(String fileName) {
@@ -141,7 +189,58 @@ public class PostController {
    /* 포스트 상세 */
 
    @GetMapping("/social/user/details")
-   public String getPostDetail(int post_id, Model model) {
+   public String getPostDetail(int post_id, Model model,String user) {
+      logger.info("getPostDetail.........." + post_id);
+      PostVO postvo = postService.postGetOne(post_id);
+      List<SocialVO> socials = postService.socialByPostid(post_id);
+
+      for (int i = 0; i < socials.size(); i++) {
+         if (socials.get(i).getFile_name().contains("mp4")) {
+            model.addAttribute("video", socials.get(i).getUpload_path() + "/" + socials.get(i).getUuid() + "_"
+                  + socials.get(i).getFile_name());
+            log.info(socials.get(i).getUpload_path() + "/" + socials.get(i).getUuid() + "_"
+                  + socials.get(i).getFile_name());
+         } else {
+            model.addAttribute("poster", socials.get(i).getUpload_path() + "/" + socials.get(i).getUuid() + "_"
+                  + socials.get(i).getFile_name());
+            log.info(socials.get(i).getUpload_path() + "/" + socials.get(i).getUuid() + "_"
+                  + socials.get(i).getFile_name());
+         }
+      }
+      model.addAttribute("post_id", postvo.getPost_id());
+      model.addAttribute("contents", postvo.getContents());
+      model.addAttribute("register_date", postvo.getRegister_date());
+      
+      List<ProductDTO> productList = new ArrayList<>();
+      if (postvo.getPid0() != 0) {
+         ProductDTO tmp1 = productService.getProduct(postvo.getPid0());
+         productList.add(tmp1);
+      }
+      if (postvo.getPid1() != 0) {
+         ProductDTO tmp2 = productService.getProduct(postvo.getPid1());
+         productList.add(tmp2);
+      }      
+      if (postvo.getPid2() != 0) {
+         ProductDTO tmp3 = productService.getProduct(postvo.getPid2());
+         productList.add(tmp3);
+      }      
+      
+      model.addAttribute("user", user);
+      model.addAttribute("products", productList);
+      model.addAttribute("pcount", productList.size());
+      CustomUser member_email = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+      model.addAttribute("member_email", member_email.getUsername());
+      model.addAttribute("replyList", replyService.getReplyList(post_id));
+      
+      log.info(replyService.getReplyList(post_id));
+
+      return "social/userdetail";
+   }
+   
+   /* 포스트 상세 */
+
+   @GetMapping("/social/trending/details")
+   public String getPostDetails(int post_id, Model model,String user) {
       logger.info("getPostDetail.........." + post_id);
       PostVO postvo = postService.postGetOne(post_id);
       List<SocialVO> socials = postService.socialByPostid(post_id);
@@ -178,8 +277,12 @@ public class PostController {
       
       model.addAttribute("products", productList);
       model.addAttribute("pcount", productList.size());
-      CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-      model.addAttribute("member_email", user.getUsername());
+		/*
+		 * CustomUser user = (CustomUser)
+		 * SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		 * model.addAttribute("member_email", user.getUsername());
+		 */
+      model.addAttribute("user", user);
       model.addAttribute("replyList", replyService.getReplyList(post_id));
       
       log.info(replyService.getReplyList(post_id));

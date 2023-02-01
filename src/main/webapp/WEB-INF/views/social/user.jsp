@@ -191,7 +191,7 @@
 							<div data-v-45542174="" class="user_top">
 								<div data-v-45542174="" class="profile_img_box">
 									<img data-v-45542174=""
-										src="${pageContext.request.contextPath}/resources/images/test2.jpg"
+										src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png"
 										alt="KREAM 프로필 이미지" class="profile_img">
 								</div>
 								<div data-v-45542174="" class="profile_info_box">
@@ -274,7 +274,7 @@
 										<div data-v-47728778="" data-v-013cc4d0=""
 											class="feed_card item vertical"
 											style="position: absolute; left: ${status.index*300%1200}px; top: ${(status.index/4-status.index%4/4) * 500 }px;">
-											<a data-v-47728778="" href="${pageContext.request.contextPath}/social/user/details?post_id=${item.post_id}"><div data-v-47728778=""
+											<a data-v-47728778="" href="${pageContext.request.contextPath}/social/user/details?post_id=${item.post_id}&user=${member_email}"><div data-v-47728778=""
 													class="card_box">
 													<div data-v-47728778="" class="social_img_box vertical">
 														<picture data-v-878ec45c="" data-v-47728778=""
@@ -289,7 +289,7 @@
 																class="picture img_profile"> <img
 																data-v-878ec45c="" alt="사용자 프로필 이미지"
 																referrerpolicy="no-referrer"
-																src="${pageContext.request.contextPath}/resources/images/test2.jpg"
+																src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png"
 																loading="auto" class="image"></picture>
 															<p data-v-47728778="" class="user_name">${item.member_email}</p>
 															<span data-v-47728778="" aria-label="좋아요" role="button"
@@ -990,7 +990,7 @@
 			        								<a data-v-754300ce="" href="#" class="user_link">
 			        									<div data-v-754300ce="" class="img_box">
 			        										<img data-v-754300ce=""
-			        											src="https://kream-phinf.pstatic.net/MjAyMDExMDZfMjAz/MDAxNjA0NjQ5OTM1NDk5.edZ7v2ODWVS7_M8PXg8B0PNU5UlsTWup2XHwuKkEEXsg.lNHXDE66TKM0yl1nIOO70PWNUtK4TcdgD1lImetPB48g.JPEG/p_8d36c20aaeb94c6681619dcd775f5286.jpeg?type=sl"
+			        											src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png"
 			        											alt="KREAM 프로필 이미지" class="profile_img">
 			        									</div>
 			        									<div data-v-754300ce="" class="info_box">
