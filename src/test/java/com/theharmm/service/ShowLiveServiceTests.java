@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.theharmm.domain.AlarmDTO;
 import com.theharmm.domain.MemberVO;
 import com.theharmm.domain.ShowLiveAuctionFinalPersonDTO;
 import com.theharmm.domain.ShowLiveBiddingDTO;
@@ -30,6 +31,9 @@ public class ShowLiveServiceTests {
 
 	@Autowired
 	private ShowLiveService service;
+	
+	@Autowired
+	ReplyService replyService;
 	
 	//쇼라이브 채널 만들기
 	//@Test
@@ -95,12 +99,24 @@ public class ShowLiveServiceTests {
 		log.warn("================ 생방중인 채널 목록들" + channels.toString());
 	}
 	//방송 종료시 생방상태 및 종료시간 변경하기
-	@Test
+	//@Test
 	public void changeStatusShowLive() throws Exception{
 		ShowLiveChannelDTO channel = new ShowLiveChannelDTO();
 		channel.setShowlive_no(489);
 		channel.setShowlive_end_date(new java.util.Date());
 		
 		service.changeLiveStatus(channel);
+	}
+	//방송 종료후 낙찰자에게 보낼 알람 DB에 넣기
+	@Test
+	public void insertAlarmToFinalBidder() throws Exception{
+		AlarmDTO alarm = new AlarmDTO();
+		alarm.setCmd("auctionbidder");
+		alarm.setCaller("admin");
+		alarm.setReceiver("asd");
+		alarm.setReceiverEmail("asd");
+		alarm.setSeq("529");
+		
+		replyService.insertAlarm(alarm);
 	}
 }
