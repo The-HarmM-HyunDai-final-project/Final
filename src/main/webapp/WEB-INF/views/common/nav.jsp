@@ -16,6 +16,8 @@
 						href="/my/buying" class="menu_link"> 구매 내역 </a></li>
 					<li data-v-4d11470e="" class="menu_item"><a data-v-4d11470e=""
 						href="/my/selling" class="menu_link"> 판매 내역 </a></li>
+					<li data-v-4d11470e="" class="menu_item"><a data-v-4d11470e=""
+						href="${pageContext.request.contextPath}/member/auction" class="menu_link"> 낙찰 내역 </a></li>
 				</ul>
 			</div>
 			<div data-v-7bcac446="" class="snb_list">
@@ -25,10 +27,8 @@
 						href="/my/profile" class="menu_link"> 프로필 정보 </a></li>
 					<li data-v-4d11470e="" class="menu_item"><a data-v-4d11470e=""
 						href="/my/address" class="menu_link"> 주소록 </a></li>
-					<li data-v-4d11470e="" class="menu_item menu_on"><a
-						data-v-4d11470e="" href="/my/payment"
-						class="menu_link nuxt-link-exact-active nuxt-link-active"
-						aria-current="page"> 결제 정보 </a></li>
+					<li data-v-4d11470e="" class="menu_item"><a data-v-4d11470e=""
+						href="/my/address" class="menu_link"> 결제 정보 </a></li>
 					<li data-v-4d11470e="" class="menu_item"><a data-v-4d11470e=""
 						href="/my/account" class="menu_link"> 판매 정산 계좌 </a></li>
 					<li data-v-4d11470e="" class="menu_item"><a data-v-4d11470e=""

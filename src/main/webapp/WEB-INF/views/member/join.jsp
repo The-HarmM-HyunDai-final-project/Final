@@ -15,7 +15,7 @@
 						주소</h3>
 					<div data-v-1c44afeb="" class="input_item">
 						<input data-v-1c44afeb="" id="input_email" type="email"
-							placeholder="예) kream@kream.co.kr" autocomplete="off" name="newEmail" class="input_txt">
+							placeholder="예) theharmm@theharmm.co.kr" autocomplete="off" name="newEmail" class="input_txt">
 					</div>
 					<p data-v-429a8655="" id="error_email" data-v-1c44afeb="" class="input_error" style="font-size: 11px; color: #f15746" ></p>
 				</div>

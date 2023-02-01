@@ -71,8 +71,13 @@
 		WHERE mem.member_email = #{member_email}
 	</select>
 	
+	<!-- 로그인할 때마다 로그인한 시간 업데이트하기 -->
 	<update id="updateLoign">
 		update member set member_login = sysdate where member_email=#{member_email}
-	
 	</update>
+	
+	<select id="getBySns" resultType="com.theharmm.domain.MemberVO">
+        select * from Member where member_email = #{member_email}
+    </select>
+	
 </mapper>

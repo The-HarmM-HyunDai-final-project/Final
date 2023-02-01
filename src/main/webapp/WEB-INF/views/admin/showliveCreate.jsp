@@ -69,6 +69,10 @@
 										</div>
 									</div>
 									<div class="form-floating mb-3">
+ 										<input class="form-control" type="file" id="formFileMultiple" multiple 
+ 										style="padding-bottom: 20px; padding-top: 20px; padding-left: 30px; padding-right: 30px;">
+									</div>
+									<div class="form-floating mb-3">
 										<input class="form-control" id="inputFive" type="password" name="aws_stream_key"
 											placeholder="" /> <label for="inputFive">Stream Key</label>
 									</div>
@@ -85,7 +89,7 @@
 											<a class="btn btn-dark btn-block" href="" name="enrollBtn" id="enrollBtn">라이브쇼
 												시작하기</a><input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
 										</div>
-									</div>									
+									</div>
 								</form>
 							</div>
 						</div>

@@ -35,7 +35,7 @@
 			<div class="input-group">
 				<input class="form-control" type="text" placeholder="Search for..."
 					aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-				<button class="btn btn-primary" id="btnNavbarSearch" type="button">
+				<button class="btn btn-secondary" id="btnNavbarSearch" type="button">
 					<i class="fas fa-search"></i>
 				</button>
 			</div>
@@ -52,10 +52,6 @@
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 회원관리
-						</a> <a class="nav-link" href="/admin/buyandsell">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-book-open"></i>
-							</div> 구매 및 판매 관리
 						</a> <a class="nav-link" href="/admin/showliveCreate">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-book-open"></i>
@@ -63,7 +59,7 @@
 						</a> <a class="nav-link" href="/admin/charts">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> Charts
+							</div> 구매 및 판매 관리
 						</a> <a class="nav-link" href="/admin/product">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
@@ -127,7 +123,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="js/scripts.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/admin/scripts.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
 		crossorigin="anonymous"></script>
@@ -136,8 +132,8 @@
       $(document).ready(function(){ 
     		getGraphCount();
     		getGraphRegister();
-    		getGraphBuy()
-    		getGraphSale()
+    		getGraphBuy();
+    		getGraphSale();
     	});
       
       function getGraphCount(){

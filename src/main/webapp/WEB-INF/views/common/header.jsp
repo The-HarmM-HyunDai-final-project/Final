@@ -11,7 +11,7 @@
 <html lang="ko" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22ko%22%7D%7D">
 
 <head>
-<title>theharmm | 한정판 거래의 FLEX</title>
+<title>THE HarmM</title>
 <link rel="shortcut icon" href="#">
 <!-- 한글 깨짐방지로 넣어봄 -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

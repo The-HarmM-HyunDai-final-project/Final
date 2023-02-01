@@ -8,10 +8,10 @@
 </head>
 <body>
 	<script>
-    var msg = "${msg}";
-    var url = "${pageContext.request.contextPath}/showlive/showlivelist";
-    alert(msg);
-    location.href = url;
-</script>
+	    var msg = "${msg}";
+	    var url = "${pageContext.request.contextPath}/showlive/showlivelist";
+	    alert(msg);
+	    location.href = url;
+	</script>
 </body>
 </html>

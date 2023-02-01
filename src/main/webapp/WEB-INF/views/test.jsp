@@ -11,7 +11,6 @@
 <body>
  <div id="app">
     <div class="inner">
-
       <!-- Player wrapper, forcing 16:9 aspect ratio -->
       <div class="player-wrapper">
         <div class="aspect-spacer"></div>
@@ -21,7 +20,6 @@
           </video>
         </div>
       </div>
-
     </div>
   </div>
 

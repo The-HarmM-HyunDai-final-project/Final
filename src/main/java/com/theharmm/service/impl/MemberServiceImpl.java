@@ -88,8 +88,13 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
-	public void updateLogin(MemberVO member) {
-		mapper.updateLoign(member);
+	public void updateLogin(String member_email) {
+		mapper.updateLoign(member_email);
+	}
+	
+	@Override
+	public MemberVO getBySns(MemberVO member) {
+		return mapper.getBySns(member);
 	}
 	
 }

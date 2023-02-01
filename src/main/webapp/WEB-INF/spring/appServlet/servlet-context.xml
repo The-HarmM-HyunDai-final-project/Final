@@ -56,5 +56,23 @@
 
 	<tx:annotation-driven />
 	
+	 <!-- oauth2 login -->
+	<beans:bean id="naverClientID" class="java.lang.String">
+	   <beans:constructor-arg value="G7joUmdEtU6bwszPS2kH" />
+    </beans:bean>
+	<beans:bean id="naverClientSecret" class="java.lang.String">
+		<beans:constructor-arg value="HPszQbOWXP" />
+	</beans:bean>
+	<beans:bean id="naverRedirectUrl" class="java.lang.String">
+		<beans:constructor-arg value="http://localhost:8080/member/naver/callback" />
+	</beans:bean>
+
+	<beans:bean id="naverSns" class="com.theharmm.auth.SnsValue">
+		<beans:constructor-arg value="naver" />
+		<beans:constructor-arg ref="naverClientID" />
+		<beans:constructor-arg ref="naverClientSecret" />
+		<beans:constructor-arg ref="naverRedirectUrl" />
+	</beans:bean>
+	
 	<context:component-scan base-package="com.theharmm.controller" />
 </beans:beans>

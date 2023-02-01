@@ -49,6 +49,7 @@ public class ShowLiveController {
 		//Map<String, ShowLiveChannelDTO> channelDTOList = new ConcurrentHashMap<String, ShowLiveChannelDTO>();
 		//store에서 가져온 channelDTO 목록을 model에 넣고 반환
 		List<ShowLiveChannelDTO> channelList = showLiveService.getLiveChannelsFromChannelStore();
+		List<Integer> channelUserCountList = showLiveService.getLiveChannelsUserCountList();
 //		DecimalFormat df = new DecimalFormat("###,###");
 //		for (ShowLiveChannelDTO slcdto : channelList) {
 //			JSONObject tmpObject = new JSONObject();
@@ -71,6 +72,9 @@ public class ShowLiveController {
 //		String json = jsonObject.toString();
 		
 		model.addAttribute("channelList", channelList);
+		model.addAttribute("channelUserCountList", channelUserCountList);
+		log.info(channelList);
+		log.info(channelUserCountList);
 		log.info("=============SHOWLIVECONTROLLER=================");
 		return "showlive/showlivelist";
 	}
