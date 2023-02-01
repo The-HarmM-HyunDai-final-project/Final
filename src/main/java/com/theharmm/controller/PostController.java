@@ -104,7 +104,7 @@ public class PostController {
    
    /* 포스트 관리(포스트목록) 페이지 접속 */
    @RequestMapping(value = "/social/trending", method = RequestMethod.GET)
-   public String postManageGET(PostCriteria postcri, Model model, @RequestParam(defaultValue = "") String email, @RequestParam(defaultValue = "") String member_email) throws Exception {
+   public String postManageGET(PostCriteria postcri, Model model, @RequestParam(defaultValue = " ") String email, @RequestParam(defaultValue = "") String member_email) throws Exception {
       
       log.info("postManageGET postcontroller" + email);
       /* 포스트 리스트 데이터 */
@@ -144,6 +144,8 @@ public class PostController {
       model.addAttribute("followerCnt", followerCnt);
       model.addAttribute("followingCnt", followingCnt);
       
+      log.info("followerCnt" + followerCnt);
+      log.info("followingCnt" + followingCnt);
       return "social/user";
    }
    

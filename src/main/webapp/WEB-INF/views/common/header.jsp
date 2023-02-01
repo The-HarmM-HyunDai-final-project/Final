@@ -65,9 +65,8 @@
 	src="${pageContext.request.contextPath}/resources/bootstrap/bootstrap.min.js"></script>
  
 <!-- 제이쿼리 cdn -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <!-- sockJS -->
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>	
@@ -367,8 +366,8 @@
 					
 					<!-- 챗봇 모달 -->
 					<!--  채팅 -->
-<%-- 					<h3>채팅 입력</h3>
-					<form id="chatForm" enctype="multipart/form-data">
+					<h3>채팅 입력</h3>
+					<form id="chatForm" >
 						내용 : <input type="text" id="inputText" name="inputText"> <input
 							type="submit" value="결과 확인">
 					</form>
@@ -377,7 +376,7 @@
 					<!-- 결과 출력 (텍스트) -->
 					<h3>응답 결과</h3>
 					<div id="resultDiv"></div>
-					<br> <br> --%>
+					<br> <br>
 					<!-- 챗봇 모달 -->
 					
 					<style>
@@ -486,7 +485,7 @@
 		        var formData = new FormData($('#chatForm')[0]);
 		        $.ajax({
 		            type : "post",
-		            enctype : "multipart/form-data",
+		            //enctype : "multipart/form-data",
 		            url : "chatbotSend",
 		            data : formData,
 		            processData : false, // 필수

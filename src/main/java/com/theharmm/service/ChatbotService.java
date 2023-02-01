@@ -2,13 +2,18 @@ package com.theharmm.service;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Base64;
 import java.util.Date;
-import java.util.UUID;
+import java.util.List;
+import java.util.Map;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -20,7 +25,7 @@ import org.springframework.stereotype.Service;
 public class ChatbotService {
 	
     public String main(String voiceMessage) {
-        String secretKey = "YWNqR2tadElrZEJwa2drb3RhbkVQVUhmTFBadFV5dXM=";
+        String secretKey = "eHNPeE1pZVBlRktDUFVIaE9IT1RWS2plSWJzZ2t5dFE=";
         String apiURL = "https://kj8nqdj0ls.apigw.ntruss.com/custom/v1/9177/f572daa24e7730df9489facf258b25ee36ea4fdd05eb095f302fed630cd1f175";
 
         String chatbotMessage = ""; // 응답 메세지
@@ -30,7 +35,7 @@ public class ChatbotService {
             URL url = new URL(apiURL);
 
             String message = getReqMessage(voiceMessage);
-            System.out.println("##" + message);
+            System.out.println("## 메세지 출력" + message);
 
             String encodeBase64String = makeSignature(message, secretKey);
 
@@ -63,7 +68,7 @@ public class ChatbotService {
                 in.close();
                 // 응답 메세지 출력
                 System.out.println(chatbotMessage);
-                chatbotMessage = jsonToString(chatbotMessage);
+                //chatbotMessage = jsonToString(chatbotMessage);
             } else {  // Error occurred
                 chatbotMessage = con.getResponseMessage();
             }
@@ -85,7 +90,7 @@ public class ChatbotService {
             mac.init(signingKey);
 
             byte[] rawHmac = mac.doFinal(message.getBytes("UTF-8"));
-//            encodeBase64String = Base64.encodeToString(rawHmac, Base64.NO_WRAP);
+            //encodeBase64String = Base64.encodeToString(rawHmac, Base64.NO_WRAP);
             encodeBase64String = Base64.getEncoder().encodeToString(rawHmac);
 
             return encodeBase64String;
@@ -112,8 +117,8 @@ public class ChatbotService {
 
             obj.put("version", "v2");
 
-            String uuid = UUID.randomUUID().toString();
-            obj.put("userId", uuid);
+            //String uuid = UUID.randomUUID().toString();
+            obj.put("userId", "beb61972-ce7d-45b1-ba96-87d506af8fa2");
 //=> userId is a unique code for each chat user, not a fixed value, recommend use UUID. use different id for each user could help you to split chat history for users.
 
             obj.put("timestamp", timestamp);
@@ -125,6 +130,7 @@ public class ChatbotService {
             JSONObject data_obj = new JSONObject();
             data_obj.put("description", voiceMessage);
 
+            
             bubbles_obj.put("type", "text");
             bubbles_obj.put("data", data_obj);
 
@@ -141,6 +147,7 @@ public class ChatbotService {
         }
         return requestBody;
     }
+    
     public String jsonToString(String jsonResultStr) {
         String resultText = "";
         // API 호출 결과 받은 JSON 형태 문자열에서 텍스트 추출
@@ -158,6 +165,52 @@ public class ChatbotService {
             System.out.println("없음");
         }
         return resultText;
+    }
+    
+    
+    //---------------------------------------------------------------------
+    
+    // DialogFlow API Detect Intent sample with text inputs.
+    public static Map<String, QueryResult> detectIntentTexts(
+        String projectId, List<String> texts, String sessionId, String languageCode)
+        throws IOException, ApiException {
+      Map<String, QueryResult> queryResults = Maps.newHashMap();
+      // Instantiates a client
+      try (SessionsClient sessionsClient = SessionsClient.create()) {
+        // Set the session name using the sessionId (UUID) and projectID (my-project-id)
+        SessionName session = SessionName.of(projectId, sessionId);
+        System.out.println("Session Path: " + session.toString());
+
+        // Detect intents for each text input
+        for (String text : texts) {
+          // Set the text (hello) and language code (en-US) for the query
+          TextInput.Builder textInput =
+              TextInput.newBuilder().setText(text).setLanguageCode(languageCode);
+
+          // Build the query with the TextInput
+          QueryInput queryInput = QueryInput.newBuilder().setText(textInput).build();
+
+          // Performs the detect intent request
+          DetectIntentResponse response = sessionsClient.detectIntent(session, queryInput);
+
+          // Display the query result
+          QueryResult queryResult = response.getQueryResult();
+
+          System.out.println("====================");
+          System.out.format("Query Text: '%s'\n", queryResult.getQueryText());
+          System.out.format(
+              "Detected Intent: %s (confidence: %f)\n",
+              queryResult.getIntent().getDisplayName(), queryResult.getIntentDetectionConfidence());
+          System.out.format(
+              "Fulfillment Text: '%s'\n",
+              queryResult.getFulfillmentMessagesCount() > 0
+                  ? queryResult.getFulfillmentMessages(0).getText()
+                  : "Triggered Default Fallback Intent");
+
+          queryResults.put(text, queryResult);
+        }
+      }
+      return queryResults;
     }
 }
 
