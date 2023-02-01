@@ -24,7 +24,6 @@ public class ReplyController {
 	@Autowired
 	ReplyService replyservice;
 	
-	
 	@RequestMapping(value = "social/insertReply", produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public String insertReply(String member_email, int post_id, String content,
