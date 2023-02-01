@@ -56,16 +56,16 @@ public class SNSLogin {
 		
 		if (this.sns.isNaver()) {
 			JsonNode resNode = rootNode.get("response");
-			member.setNaverid(resNode.get("email").asText());
+			//member.setNaverid(resNode.get("email").asText());
 			//member.setNickname(resNode.get("nickname").asText());
 			member.setMember_email(resNode.get("email").asText());
 			member.setMember_grade("BRONZE");
 			
-			//member.setMember_password(request.getParameter("newPwd"));
-			//member.setMember_name(request.getParameter("newName"));
-			//member.setMember_nickname(request.getParameter("newNickName"));
-			//member.setMember_phone(request.getParameter("newPhone"));
-			//member.setMember_shoes_size(Integer.parseInt(request.getParameter("newShoes")));
+			member.setMember_password("1234");
+			member.setMember_name(resNode.get("email").asText());
+			member.setMember_nickname(resNode.get("email").asText());
+			member.setMember_phone("01000000000");
+			member.setMember_shoes_size(260);
 			
 			member.setMember_register(curdate);
 			member.setMember_login(curdate);

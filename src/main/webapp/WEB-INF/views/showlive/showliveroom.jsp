@@ -44,6 +44,9 @@
       	right:10px;
       	z-index:10;
       }
+      .video_area .user_count p{
+      	color:white;
+      }
       .user_count {
         /* position: absolute;
         right: 8px; */
@@ -302,7 +305,7 @@
             <div class="price_area">
 	            <b> 최고제시가격 : </b></br>
 	            <b id="max_price"></b>
-	            <b>만원 </b>
+	            <b>원 </b>
             </div>
             
             <br />
@@ -325,7 +328,8 @@
 	            </div>
             </div>
             <div class="chat_do">
-              <input class="chat_input" type="text" id="msg" placeholder="메시지를 입력해 주세요" onkeyup="chatEnterkey()"/>
+              <!-- <input class="chat_input" type="text" id="msg" placeholder="메시지를 입력해 주세요" onkeyup="chatEnterkey()"/> -->
+              <textarea rows="5" cols="40" class="chat_input" type="text" id="msg" placeholder="메시지를 입력해 주세요" onkeyup="chatEnterkey()" ></textarea>
               <button class="my_btn" id="button-talk-send">전송</button>
             </div>
           </div>
@@ -386,6 +390,9 @@
 <script type="text/javascript">
 	var auctionPrevPrice = 100000;
 	
+	const chat_log = [];										//채팅저장배열
+	const chatBtn = document.getElementById("button-talk-send");//채팅버튼
+	
 	//writePrice();//시작할때 처음 제시가격 찍기
 	
 	//가격에 콤마 찍기
@@ -397,6 +404,13 @@
 	function writePrice() {
 	  $("#max_price").text(priceToString(auctionPrevPrice));
 	}
+	//가격 제시할때 제한 금액 이상 못적게 하기
+	$("#auction_sugest").keyup(function(){
+		if($("#auction_sugest").val() > 2147483640){
+			$("#auction_sugest").val(2147483640);
+		}
+	})
+	
 	//채팅치고있을때 엔터 누르면 알아서 전송버튼 눌리게
 	function chatEnterkey(){
 		if (window.event.keyCode == 13) {
@@ -406,34 +420,56 @@
 	}
 	//채팅전송 버튼 누르는 이벤트
 	$("#button-talk-send").on("click", function (e) {
-		const chat_content = $("#msg").val();
-		$.ajax({
-          type: "POST", //다른 서버로 보낼 때도 Post를 써야하나
-          url: "http://127.0.0.1:5000/question",
-          // data: GET은 전송할 http의 body가 없음. 그래서 data 필드가 필요없음
-          // contentType: 전송할 data가 없으니까 그 data를 설명할 필드가 필요없음
-          dataType: "text", // 목적: 파싱해줌. json데이터를 응답받으면 바이트스트링으로 들어옴. 응답받은 데이터는 json이 아니라 string이다. 그래서 json이 들어오면 자바스크립트 오브젝트로 파싱해줘야 함
-          // dataType: 응답되는 데이터를 자바스크립트 오브젝트로 파싱하는 용도 text면 생략가능
-          data: {
-            content : chat_content, 
-          },
-          success: function (response) {
-        	if(response == '1'){
-        		console.log("질문입니다");	
-        		sendMessage("QUESTION", chat_content);
-        	}else{
-        		console.log("질문이 아닙니다");
-        		sendMessage("TALK", chat_content);
-        	}
-          },
-          error: function(){
-        	  alert("지금은 채팅 할 수 없어요");
-          }
-        });
-		//잠시 꺼놓을께요
-		//sendMessage("TALK", $("#msg").val());
- 		$("#msg").val("");
+		if(chatRestrict()){
+			const chat_content = $("#msg").val();
+			$.ajax({
+	          type: "POST", //다른 서버로 보낼 때도 Post를 써야하나
+	          url: "http://192.168.0.14:5000/question",
+	          // data: GET은 전송할 http의 body가 없음. 그래서 data 필드가 필요없음
+	          // contentType: 전송할 data가 없으니까 그 data를 설명할 필드가 필요없음
+	          dataType: "text", // 목적: 파싱해줌. json데이터를 응답받으면 바이트스트링으로 들어옴. 응답받은 데이터는 json이 아니라 string이다. 그래서 json이 들어오면 자바스크립트 오브젝트로 파싱해줘야 함
+	          // dataType: 응답되는 데이터를 자바스크립트 오브젝트로 파싱하는 용도 text면 생략가능
+	          data: {
+	            content : chat_content, 
+	          },
+	          success: function (response) {
+	        	if(response == '1'){
+	        		console.log("질문입니다");	
+	        		sendMessage("QUESTION", chat_content);
+	        	}else{
+	        		console.log("질문이 아닙니다");
+	        		sendMessage("TALK", chat_content);
+	        	}
+	          },
+	          error: function(){
+	        	  alert("지금은 채팅 할 수 없어요");
+	          }
+	        });
+		}
+		$("#msg").val("");
 	});
+	//5개 연속을 3초안에 하면 채팅 금지!!! 3초간
+	function chatRestrict(){
+		chat_log.push(new Date());
+		if (chat_log.length > 4) {
+		  chat_log.shift();
+		  console.log(
+		    chat_log[chat_log.length - 1].getTime() - chat_log[0].getTime()
+		  );
+		  console.log(chat_log);
+		  //5개 연속이 3초 이상이면 10초간 채팅전송버튼 금지
+		  if (chat_log[chat_log.length - 1].getTime() - chat_log[0].getTime() < 3000) {
+			chatBtn.disabled = true;
+			$("#msg").attr("placeholder", "채팅 그만해 이놈들아");
+		    setTimeout(function () {
+	    		chatBtn.disabled = false;
+	    		$("#msg").attr("placeholder", "메시지를 입력해 주세요");
+		    }, 3000);
+		    return 0;
+		  }
+		}
+		return 1;
+	}
 	//폭죽 날리기~
 	/* const sbmodal = document.querySelector("#bidding_modal"); */
 	function reAction() {
@@ -444,7 +480,7 @@
             $("#bidding_modal").toggle("show");
         }, 6000);
     }
-	var sock = new SockJS('http://localhost:8080/chatting');
+	var sock = new SockJS('/chatting');
 	sock.onmessage = onMessage;
 	sock.onclose = onClose;
 	sock.onopen = onOpen;
@@ -478,6 +514,7 @@
 		var totalUser = messageData['channelTotalUser'];
 		var maxSuggestUser = messageData['channelMaxSuggestUser'];
 		var maxSuggestPrice = messageData['channelMaxSuggestPrice'];
+		var auctionYn = messageData['auctionYn'];
 		
 		var cur_session = '${userid}'; //현재 세션에 로그인 한 사람(controller model에서 가져온값)
 		//console.log("cur_session : " + cur_session);
@@ -512,18 +549,28 @@
 				$("#max_price_user").text(maxSuggestUser);
 		        $("#connected_user").text(totalUser)
 		        auctionPrevPrice = maxSuggestPrice;
+		        
+		        if(auctionYn == 'yes'){
+		        	$("#auction_sugest").attr("placeholder", "경매가 종료 되었습니다.");
+		        	$("#auction_btn").attr("disabled",true);
+		        	$("#auction_btn").css("background","black");
+		        }
 		        console.log(auctionPrevPrice);
 				break
 			case 'LEAVE':
 				var str = 
-					`<div class='col-6'>
-					<div class='alert alert-secondary'>
-					<b>\${message}</b>
-					</div></div>`
+					`<div>
+						<b>\${message}</b>
+					</div>`
 				$("#connected_user").text(totalUser)
 				break
 			case 'AUCTION_END':
 				reAction();
+				if(auctionYn == 'yes'){
+		        	$("#auction_sugest").attr("placeholder", "경매가 종료 되었습니다.");
+		        	$("#auction_btn").attr("disabled",true);
+		        	$("#auction_btn").css("background","black");
+		        }
 				break
 			case 'LIVE_END':
 				$("#leave_modal").toggle("show");
@@ -585,6 +632,12 @@
 	  	var mySuggestion = Number($("#auction_sugest").val());
 	  	//이전 가격의 1/10 보다 높은지 확인 하고 제안을 받아들임
 	  	if ( mySuggestion - auctionPrevPrice >= auctionPrevPrice / 10) {
+	  		
+	  		//가격 제시할때 제한 금액 이상 못적게 하기
+  			if($("#auction_sugest").val() > 2147483640){
+  				$("#auction_sugest").val(2147483640);
+  			}
+	  		
 	    	modal.classList.toggle("show");
 	      	const my_suggest_price = priceToString(document.querySelector("#auction_sugest").value);
 	      	modal_price.innerText = my_suggest_price;

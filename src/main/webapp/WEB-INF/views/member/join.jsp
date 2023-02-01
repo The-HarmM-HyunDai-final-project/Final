@@ -14,7 +14,7 @@
 					<h3 data-v-429a8655="" id="title_email" data-v-1c44afeb="" class="input_title ess">이메일
 						주소</h3>
 					<div data-v-1c44afeb="" class="input_item">
-						<input data-v-1c44afeb="" id="input_email" type="email"
+						<input data-v-1c44afeb="" id="input_email" type="email" value="${member.member_email}"
 							placeholder="예) theharmm@theharmm.co.kr" autocomplete="off" name="newEmail" class="input_txt">
 					</div>
 					<p data-v-429a8655="" id="error_email" data-v-1c44afeb="" class="input_error" style="font-size: 11px; color: #f15746" ></p>
@@ -206,7 +206,7 @@
 				<!-- 시큐리티 사용 토큰 발급 룰루~ -->
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<a data-v-575aff82="" id="joinBtn" data-v-429a8655="" href="javascript:void(0)"
-					class="btn btn_join full solid disabled"> 가입하기 </a>
+					class="btn btn_join full solid"> 가입하기 </a>
 			</form>
 		</div>
 		<div data-v-1a009402="" data-v-feb03f9c="" data-v-429a8655=""

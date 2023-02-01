@@ -9,14 +9,19 @@ import java.util.concurrent.ConcurrentHashMap;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.theharmm.domain.ShowLiveBiddingDTO;
+import com.theharmm.domain.ShowLiveChatDTO;
 import com.theharmm.security.domain.CustomUser;
+import com.theharmm.service.ShowLiveService;
 import com.theharmm.showlive.MessageType;
 import com.theharmm.showlive.ShowLiveChannel;
 import com.theharmm.showlive.ShowLiveChannelStore;
@@ -24,8 +29,12 @@ import com.theharmm.showlive.ShowLiveMessage;
 
 import lombok.extern.log4j.Log4j;
 
+
 @Log4j
 public class ChattingHandler extends TextWebSocketHandler{
+	
+	@Autowired
+	ShowLiveService showLiveService;
 	
 	@Inject
 	ShowLiveChannelStore showLiveChannelStore;
@@ -43,6 +52,7 @@ public class ChattingHandler extends TextWebSocketHandler{
 		
 		//지금 접속한 유저를 session에서 Custom유저를 가지고와서 roomNo을 가지고옴
 		Map<String,Object> map = session.getAttributes();
+		log.warn(map.toString());
 		String userId = session.getPrincipal().getName();
 		String roomNo = (String)map.get("roomNo");
 		//메세지 생성
@@ -61,6 +71,8 @@ public class ChattingHandler extends TextWebSocketHandler{
 		
 		//지금 접속한 유저를 session에서 Custom유저를 가지고와서 roomNo을 가지고옴
 		Map<String,Object> map = session.getAttributes();
+		log.warn(map.toString());
+		
 		String userId = session.getPrincipal().getName();
 		String roomNo = (String)map.get("roomNo");
 		
@@ -90,11 +102,14 @@ public class ChattingHandler extends TextWebSocketHandler{
             
     		ShowLiveChannel showliveChannel = showLiveChannelStore.getChannelByRoomNo(roomNo);
     		showliveChannel.handleMessage(session, showLiveMessage);
+    		
+    		insertShowliveInfostoDB(showLiveMessage);//DB저장! 왜 Channel객체에서는 안되는거야 ..
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 		//-------------
+		
 		
 		
 		
@@ -183,5 +198,42 @@ public class ChattingHandler extends TextWebSocketHandler{
 		
 		return result;
 		
+	}
+	private void insertShowliveInfostoDB(ShowLiveMessage message) {
+		switch(message.getType()) {
+			case QUESTION: case TALK:
+				insertChatDTOtoDB(message);
+				break;
+			case AUCTION:
+				insertShowLiveBiddingDTOtoDB(message);
+				break;
+		}
+		
+	}
+	
+	//메시지가 TALK, QUESTION일때 DB에 채팅 내역으로  저장해버리기
+	private void insertChatDTOtoDB(ShowLiveMessage message) {
+		ShowLiveChatDTO chatDTO = new ShowLiveChatDTO();
+		chatDTO.setShowlive_no(Integer.parseInt(message.getRoomNo()));
+		chatDTO.setChat_user_id(message.getUsername());
+		chatDTO.setChat_content(message.getMessage());
+		chatDTO.setChat_date(message.getInsertDate());
+		//메시지가 단순 채팅이면 false, 질문이면 true
+		if(message.getType() == MessageType.QUESTION) {
+			chatDTO.setQuestion_yn("true");
+		}else {
+			chatDTO.setQuestion_yn("false");
+		}
+		log.warn(chatDTO.toString());
+		showLiveService.insertChat(chatDTO);
+	}
+	private void insertShowLiveBiddingDTOtoDB(ShowLiveMessage message){
+		ShowLiveBiddingDTO bidDTO = new ShowLiveBiddingDTO();
+		bidDTO.setShowlive_no(Integer.parseInt(message.getRoomNo()));
+		bidDTO.setUser_name(message.getUsername());
+		bidDTO.setSuggest_price(Integer.parseInt(message.getMessage()));
+		bidDTO.setSuggest_date(message.getInsertDate());
+		
+		showLiveService.insertAuction(bidDTO);
 	}
 }

@@ -334,7 +334,9 @@
  		$("#msg").val("");
 	});
 	
-	var sock = new SockJS('http://localhost:8080/chatting');
+	//var sock = new SockJS('http://localhost:8080/chatting');
+	var sock = new SockJS('http://192.168.0.14/chatting');
+	
 	sock.onmessage = onMessage;
 	sock.onclose = onClose;
 	sock.onopen = onOpen;

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.theharmm.domain.ShowLiveAuctionFinalPersonDTO;
 import com.theharmm.domain.ShowLiveBiddingDTO;
 import com.theharmm.domain.ShowLiveChannelDTO;
 import com.theharmm.domain.ShowLiveChatDTO;
@@ -22,6 +23,8 @@ public interface ShowLiveService {
 	public void insertChat(ShowLiveChatDTO chat);
 	//경매요청넣기
 	public void insertAuction(ShowLiveBiddingDTO bid);
+	//최종 낙찰 넣기
+	public void insertAuctionFinalPerson(ShowLiveAuctionFinalPersonDTO finalPerson);
 	//Room번호로 해당 채널을 가져오기
 	public ShowLiveChannelDTO getChannelDTOByRoomNo(String roomNo);
 	//라이브중인 쇼라이브 목록 가져오기

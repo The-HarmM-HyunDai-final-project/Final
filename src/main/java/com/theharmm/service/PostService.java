@@ -56,5 +56,8 @@ public interface PostService {
    /* 팔로우 하고 있는 사람인지 아닌지 확인 */
    public boolean checkFollow(String follower, String following);
 
+   /* 키워드 리스트 저장 */
+   public int mergeKeywordList(PostVO post, List<String> keyword_list);
+
 
 }

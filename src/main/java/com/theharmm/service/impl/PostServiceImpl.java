@@ -9,16 +9,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.theharmm.controller.PostController;
+import com.theharmm.domain.KeywordDTO;
 import com.theharmm.domain.PostCriteria;
 import com.theharmm.domain.PostVO;
 import com.theharmm.domain.SocialVO;
-import com.theharmm.mapper.MemberMapper;
 import com.theharmm.mapper.PostMapper;
 import com.theharmm.mapper.SocialMapper;
 import com.theharmm.service.PostService;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j;
 
 @Service
 @AllArgsConstructor
@@ -141,5 +140,33 @@ public class PostServiceImpl implements PostService {
       } else {
          return false;
       }
-   }   
+   }
+
+	@Override
+	public int mergeKeywordList(PostVO post, List<String> keyword_list) {
+		int cnt = 0;
+		KeywordDTO keywordDTO = new KeywordDTO();
+		for(String keyword:keyword_list) {
+			keywordDTO.setCount(1);
+			keywordDTO.setKeyword(keyword);
+			keywordDTO.setSentiment_result(post.getSentiment_result());
+			if(post.getPid0()!=0) {
+				keywordDTO.setPid(post.getPid0());
+				cnt += postMapper.mergeKeywordList(keywordDTO);
+				
+			}
+			if(post.getPid1()!=0) {
+				keywordDTO.setPid(post.getPid1());
+				cnt += postMapper.mergeKeywordList(keywordDTO);
+				
+			}
+			if(post.getPid2()!=0) {
+				keywordDTO.setPid(post.getPid2());
+				cnt += postMapper.mergeKeywordList(keywordDTO);
+				
+			}
+		}
+		
+		return cnt;
+	}   
 }

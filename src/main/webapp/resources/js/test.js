@@ -48,6 +48,7 @@ const cardInnerEl = document.getElementById("card-inner");
     console.warn("Player Event - ERROR:", err);
   });
 
+
   player.addEventListener(PlayerEventType.TEXT_METADATA_CUE, function (cue) {
     const metadataText = cue.text;
     const position = player.getPosition().toFixed(2);

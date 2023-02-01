@@ -3197,26 +3197,16 @@
 		</div>
 	</div>
 	<div data-v-e5d8b6f4="" data-v-692bb569="" class="banner_bottom lg">
-		<a data-v-e5d8b6f4="" href="#" class="banner_box"><img
-			data-v-e5d8b6f4="" src="/_nuxt/img/home_banner_bottom1.79549cb.png"
-			loading="lazy" width="350" height="200" alt="SERVICE GUIDE"
-			class="bg">
+		<a data-v-e5d8b6f4="" href="#" class="banner_box">
 			<div data-v-e5d8b6f4="" class="banner_info">
-				<strong data-v-e5d8b6f4="" class="info_subtitle">service
-					guide</strong>
 				<p data-v-e5d8b6f4="" class="info_title">
-					KREAM은 처음이지? <br>서비스 소개를 확인해보세요.
+					The HarmM은 처음이지? <br>서비스 소개를 확인해보세요.
 				</p>
 				<span data-v-e5d8b6f4="" class="info_txt">서비스 안내</span>
-			</div></a><a data-v-e5d8b6f4="" href="#" class="banner_box"><img
-			data-v-e5d8b6f4="" src="/_nuxt/img/home_banner_bottom2.0077547.png"
-			loading="lazy" width="350" height="200" alt="DOWNLOAD THE APP"
-			class="bg">
+			</div></a><a data-v-e5d8b6f4="" href="#" class="banner_box">
 			<div data-v-e5d8b6f4="" class="banner_info">
-				<strong data-v-e5d8b6f4="" class="info_subtitle">download
-					the app</strong>
 				<p data-v-e5d8b6f4="" class="info_title">
-					KREAM 앱을 설치하여 <br>한정판 스니커즈를 FLEX 하세요!
+					The HarmM 앱을 설치하여 <br>한정판 스니커즈를 FLEX 하세요!
 				</p>
 				<span data-v-e5d8b6f4="" class="info_txt">앱 설치하기</span>
 			</div></a>

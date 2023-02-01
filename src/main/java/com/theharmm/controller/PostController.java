@@ -126,13 +126,17 @@ public class PostController {
 
    /* 포스트 등록 */
    @PostMapping("/social/user/postEnroll")
-   public String postEnrollPOST(PostVO post, RedirectAttributes rttr) throws Exception{
+   public String postEnrollPOST(PostVO post,@RequestParam List<String> keyword_list ,RedirectAttributes rttr) throws Exception{
       logger.info("postEnrollPOST......" + post);
       logger.info("퍼센트: "+post.getSentiment_percent());
       logger.info("결과: "+post.getSentiment_result());
-      
+      logger.info("키워드리스트: "+keyword_list);
+    
       
       postService.postEnroll(post);
+      
+      postService.mergeKeywordList(post,keyword_list);
+      
       rttr.addFlashAttribute("enroll_result", post.getPost_id());
       //휘발성
       return "redirect:/social/user";
@@ -298,5 +302,4 @@ public class PostController {
       return json;   
       
    }
-
 }

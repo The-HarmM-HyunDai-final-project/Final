@@ -40,7 +40,7 @@ public class MemberController {
 	private SnsValue naverSns;
 	
 	@GetMapping("/join")
-	public String Join() {
+	public String Join(Model model, HttpSession session) {
 		return "member/join";
 	}
 	//이메일 중복확인
@@ -105,15 +105,16 @@ public class MemberController {
 		System.out.println("Profile>>  " + snsUser);
 		
 		// 3. DB 해당 유저가 존재하는 체크 (googleid, naverid 컬럼 추가)
-		MemberVO user = memberService.getBySns(snsUser);
-		if (user == null) {
-			model.addAttribute("result", "존재하지 않는 사용자입니다. 가입해 주세요.");
+		MemberVO member = memberService.getBySns(snsUser);
+		if (member == null) {
+			log.info("소셜로그인 회원 : " + member);
+			int result = memberService.joinMember(snsUser);
 			//model.addAttribute("url", "/showlive/showlivelist");
-			return "member/loginResult";
+			return "main";
 			//미존재시 가입페이지로!!
 		} else {
-			model.addAttribute("result", user.getMember_email() + "님 반갑습니다.");
-			return "member/loginResult";
+			model.addAttribute("result", member.getMember_email() + "님이 반갑습니다.");
+			return "main";
 			// 4. 존재시 강제로그인
 			//session.setAttribute(SessionNames.LOGIN, user);
 		}

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.theharmm.domain.KeywordDTO;
 import com.theharmm.domain.PostCriteria;
 import com.theharmm.domain.PostVO;
 import com.theharmm.domain.SocialVO;
@@ -57,4 +58,7 @@ public interface PostMapper {
 
    /* 팔로잉 중인지 체크 */
    public int countFollow(@Param("follower_id") String follower_id, @Param("following_id") String following_id);
+
+   
+   public int mergeKeywordList(KeywordDTO keywordDTO);
 }

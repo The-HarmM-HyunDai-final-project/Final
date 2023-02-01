@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.theharmm.domain.ShowLiveAuctionFinalPersonDTO;
 import com.theharmm.domain.ShowLiveBiddingDTO;
 import com.theharmm.domain.ShowLiveChannelDTO;
 import com.theharmm.domain.ShowLiveChatDTO;
@@ -53,6 +54,11 @@ public class ShowLiveServiceImpl implements ShowLiveService{
 	public void insertAuction(ShowLiveBiddingDTO bid) {
 		showLivemapper.insertAuction(bid);
 	}
+	//최종 낙찰 넣기
+	@Override
+	public void insertAuctionFinalPerson(ShowLiveAuctionFinalPersonDTO finalPerson) {
+		showLivemapper.insertAuctionFinalPerson(finalPerson);
+	}
 	//라이브중인 쇼라이브 목록 가져오기
 	@Override
 	public List<ShowLiveChannelDTO> getLiveChannels() {
@@ -94,6 +100,8 @@ public class ShowLiveServiceImpl implements ShowLiveService{
 	public ShowLiveChannelDTO getShowLiveChannelInfo() {
 		return showLivemapper.getShowLiveChannelInfo();
 	}
+
+
 
 
 }
