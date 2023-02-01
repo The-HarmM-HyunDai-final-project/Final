@@ -61,8 +61,10 @@ public class ProductDetailController {
 	
 		//체결거래 
 		List<BuyDTO> allSignContractList = productDetailService.selectAllSignContract(pid);
+		
 		//판매입찰 
 		List<SellDTO> allSellBidList = productDetailService.selectAllSellBid(pid);
+		
 		//구매입찰 
 		List<BuyDTO> allBuyBidList = productDetailService.selectAllBuyBid(pid);
 
