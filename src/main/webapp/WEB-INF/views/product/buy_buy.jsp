@@ -258,7 +258,7 @@
 									
 										<div data-v-14995178="" class="btn_confirm">
 											<a data-v-575aff82="" data-v-14995178="" href="#" id="bidBuyActionClick"
-												class="btn full solid false">
+												class="btn full solid1 false">
 												구매 입찰 계속 </a> 
 											
 										</div>
@@ -305,7 +305,7 @@
 							            <input type="hidden" name="price" value="${productSaleSizeDTO.price}"/>
 										<div data-v-14995178="" class="btn_confirm">
 											<a data-v-575aff82="" data-v-14995178="" href="#" onclick="document.getElementById('orderBuyNowAction').submit()"
-												class="btn full solid false"> 즉시 구매 계속 </a>
+												class="btn full solid1 false"> 즉시 구매 계속 </a>
 										</div>
 								</form>
 								

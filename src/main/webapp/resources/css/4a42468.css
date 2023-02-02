@@ -280,8 +280,15 @@
 .solid[data-v-575aff82] {
 	font-weight: 700;
 	color: #fff;
-	background-color: #222
+	background-color: #48665a
 }
+
+.solid1[data-v-575aff82] {
+	font-weight: 700;
+	color: #fff;
+	background-color:  #efe3ed
+}
+
 
 .solid[data-v-575aff82]:active {
 	background-color: rgba(34, 34, 34, .8);
@@ -295,11 +302,11 @@
 }
 
 .solid.buy[data-v-575aff82] {
-	background-color: #ef6253
+	background-color: #efe3ed
 }
 
 .solid.sell[data-v-575aff82] {
-	background-color: #41b979
+	background-color: #48665a
 }
 
 .solid.sell.disabled[data-v-575aff82], .solid.sell[data-v-575aff82]:disabled

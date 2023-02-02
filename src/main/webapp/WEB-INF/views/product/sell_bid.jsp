@@ -386,7 +386,18 @@ var IMP = window.IMP;
                            <input type="hidden" name="size" value="${productBuySizeDTO.model_size}"/>
                            <input type="hidden" name="dDay" value="${dDay}"/>
                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                           
+                           <div data-v-679d7250="" data-v-14995178="" class="price_total">
+										<dl data-v-679d7250="" class="price_box">
+											<dt data-v-679d7250="" class="price_title">정산금액</dt>
+											<dd data-v-679d7250="" class="price">
+												<span data-v-679d7250="" class="amount"><fmt:formatNumber type="number" maxFractionDigits="3" value="${totalPrice}" /></span><span
+													data-v-679d7250="" class="unit">원</span>
+											</dd>
+										</dl>
+										<span data-v-679d7250="" class="price_warning"
+											style="display: none;"><em data-v-679d7250="">주의!
+										</em></span>
+							</div>
                            <div data-v-14995178="" class="btn_confirm">
                            <a data-v-575aff82="" data-v-14995178="" onclick="document.getElementById('sellBidCompleteAction').submit()"
                               <c:if test="${empty accountDTO or empty addressDTO}"> disabled="disabled"</c:if>
@@ -398,6 +409,8 @@ var IMP = window.IMP;
                            </form>
                         </div>
                      </section>
+                     
+                     
                      
                      
                      
