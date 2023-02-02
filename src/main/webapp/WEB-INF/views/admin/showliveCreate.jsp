@@ -15,6 +15,8 @@
 	rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
 </head>
 <body class="bg-dark">
 	<div id="layoutAuthentication">
@@ -69,7 +71,7 @@
 										</div>
 									</div>
 									<div class="form-floating mb-3">
- 										<input class="form-control" type="file" id="formFileMultiple" multiple 
+ 										<input name="uploadFile" class="form-control" type="file" id="formFileMultiple" multiple 
  										style="padding-bottom: 20px; padding-top: 20px; padding-left: 30px; padding-right: 30px;">
 									</div>
 									<div class="form-floating mb-3">
@@ -84,10 +86,14 @@
 										<input class="form-control" id="inputSeven" type="password" name="aws_channel_url"
 											placeholder="" /> <label for="inputSeven">URL</label>
 									</div>
+										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+										<input class="images" type="hidden" name="prouct_img1" value="" />
+										<input class="images" type="hidden" name="prouct_img2" value="" />
+										<input class="images" type="hidden" name="prouct_img3" value="" />
 									<div class="mt-4 mb-0">
 										<div class="d-grid">
 											<a class="btn btn-dark btn-block" href="" name="enrollBtn" id="enrollBtn">라이브쇼
-												시작하기</a><input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+												시작하기</a> 
 										</div>
 									</div>
 								</form>
@@ -99,22 +105,85 @@
 			</main>
 		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<!-- 제이쿼리 cdn -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/admin/scripts.js"></script>
+	<%-- <script src="${pageContext.request.contextPath}/resources/js/admin/scripts.js"></script> --%>
+	
 	<script>
-		let enrollForm = $("#enrollForm");
-		$(".dropdown-menu a ").click(function(){
-
-			  $(".btn-lg:first-child").html($(this).text()+' <span class="caret"></span>');
-			});
-
-		$(".dropdown-item").on("click", function(){
-			$("#restrict_grade").val($(this).text());
-			//console.log($("#restrict_grade").val());
+	let enrollForm = $("#enrollForm");
+	$(".dropdown-menu a ").click(function(){
+		  $(".btn-lg:first-child").html($(this).text()+' <span class="caret"></span>');
 		});
+	//등급 선택
+	$(".dropdown-item").on("click", function(){
+		$("#restrict_grade").val($(this).text());
+		//console.log($("#restrict_grade").val());
+	});
 		
+			// 파일 사이즈 검사
+			var maxSize = 5242880; //한 이미지당 5MB를 넘을 수 없음
+			function checkExtension(fileSize) {
+				if (fileSize >= maxSize) {
+					alert("파일 사이즈 초과");
+					return false;
+				}//end if
+				return true;
+			}
+			function upLoadImg(){
+			   let fileInput = $('input[name="uploadFile"]');
+			   let fileList = fileInput[0].files;
+			   let fileObj = fileList[0];
+			   
+			   let csrfHeaderName ="${_csrf.headerName}";
+			   let csrfTokenValue="${_csrf.token}";
+			   //크기 체크 있으면 좋은데...
+			   
+			   var formData = new FormData();
+			   
+			   //파일 formdata에 추가
+				for (var i = 0; i < fileList.length; i++) {
+					// 크기 체크
+					if (!checkExtension(fileList[i].size)) {
+						return false;
+					}
+					formData.append("uploadFile", fileList[i])
+				}//end for
+				
+				$.ajax({
+					url : "/admin/uploadAjaxAction",
+					processData : false,
+					contentType : false,
+					data : formData,
+					type : "post",
+					dataType : 'json',
+					beforeSend : function(xhr) {
+						xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+					},
+					success : function(result) {
+						//alert("Upload");
+						//fileObject = result;
+						var idx = 0;
+						$.each(result, function(index, item){
+							if(idx < 3){
+								const order = index+1;
+								$('input[name="prouct_img' + order + '"]').val(item);
+								console.log($('input[name="prouct_img' + order + '"]').val());
+							}
+							idx++;
+						});
+						
+					}//end suce..			
+				});//end ajax	
+			}
+			
+			/* 이미지 업로드 */
+			$("input[type='file']").on("change", function(e) {
+				upLoadImg();
+			});
+	    
+
 		/* 개설하기 버튼 */
 		$("#enrollBtn").on("click",function(e){
 			
@@ -123,7 +192,7 @@
 			enrollForm.submit();
 			
 		});
-	
+		
 	</script>
 </body>
 </html>

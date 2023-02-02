@@ -79,5 +79,12 @@
 	<select id="getBySns" resultType="com.theharmm.domain.MemberVO">
         select * from Member where member_email = #{member_email}
     </select>
+    
+    <!-- 낙찰내역에서 showlivechannelDTO 가져오기 -->
+    <select id="getShowLiveChannelDTOByAuction" resultType="com.theharmm.domain.MemberAuctionDTO">
+    	select sl.*, fp.FINAL_PRICE, fp.PAYMENT_YN
+		from show_live sl, (select * from auction_final_person where FINAL_BIDER = #{member_email}) fp
+		where sl.showlive_no = fp.showlive_no
+    </select>
 	
 </mapper>

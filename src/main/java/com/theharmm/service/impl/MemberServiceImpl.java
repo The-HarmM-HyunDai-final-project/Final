@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.theharmm.domain.MemberAuctionDTO;
 import com.theharmm.domain.MemberAuthVO;
 import com.theharmm.domain.MemberVO;
 import com.theharmm.mapper.MemberMapper;
@@ -95,6 +96,12 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public MemberVO getBySns(MemberVO member) {
 		return mapper.getBySns(member);
+	}
+	
+	// 낙찰내역 가져오기
+	@Override
+	public List<MemberAuctionDTO> getShowLiveChannelDTOByAuction(String member_email) {
+		return mapper.getShowLiveChannelDTOByAuction(member_email);
 	}
 	
 }

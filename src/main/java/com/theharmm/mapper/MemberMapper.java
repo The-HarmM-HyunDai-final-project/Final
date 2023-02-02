@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.theharmm.domain.MemberAuctionDTO;
 import com.theharmm.domain.MemberAuthVO;
 import com.theharmm.domain.MemberVO;
 
@@ -28,4 +29,6 @@ public interface MemberMapper {
 	public void updateLoign(String member_email);
 	// SNS
 	public MemberVO getBySns(MemberVO member);
+	// 낙찰내역 가져오기
+	public List<MemberAuctionDTO> getShowLiveChannelDTOByAuction(@Param("member_email") String member_email);
 }
