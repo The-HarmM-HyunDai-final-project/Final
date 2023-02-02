@@ -18,9 +18,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.theharmm.domain.BuySaleToday;
 import com.theharmm.domain.CountToday;
+import com.theharmm.domain.MemberVO;
 import com.theharmm.domain.ProductDTO;
 import com.theharmm.domain.RegisterToday;
 import com.theharmm.domain.ShowLiveChannelDTO;
+import com.theharmm.domain.TopProduct;
 import com.theharmm.security.domain.CustomUser;
 import com.theharmm.service.AdminService;
 import com.theharmm.service.ShowLiveService;
@@ -39,7 +41,6 @@ public class AdminController {
 	private ShowLiveService showLiveService;
  
     private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
-    
     
     /* 관리자 오늘방문자수 */
     @RequestMapping(value="countToday", method = RequestMethod.GET)
@@ -77,19 +78,33 @@ public class AdminController {
 		return saleToday;
     }
     
-    @RequestMapping(value="main", method = RequestMethod.GET)
-    public void adminMainGET() throws Exception{
-        
-        logger.info("관리자 페이지 이동");
-        
+    /* TOP5 구매 */
+    @RequestMapping(value="buyTop", method = RequestMethod.GET)
+    public @ResponseBody List<TopProduct> adminTop5BuyList(Model model){
+        logger.info(" TOP5 구매 ");
+        List<TopProduct> buyTop = adminService.getTop5BuyList();
+		model.addAttribute("buyTop", buyTop);
+		return buyTop;
     }
     
-    /* 관리자  차트 페이지 이동 */
+    /* TOP5 판매 */
+    @RequestMapping(value="saleTop", method = RequestMethod.GET)
+    public @ResponseBody List<TopProduct> adminTop5SaleList(Model model){
+        logger.info(" TOP5 판매 ");
+        List<TopProduct> saleTop = adminService.getTop5SaleList();
+		model.addAttribute("saleTop", saleTop);
+		return saleTop;
+    }
+    
+    @RequestMapping(value="main", method = RequestMethod.GET)
+    public void adminMainGET() throws Exception{
+        logger.info("관리자 페이지 이동");
+    }
+    
+    /* 관리자  구매판매 페이지 이동 */
     @RequestMapping(value="charts", method = RequestMethod.GET)
     public void adminChartsGET() throws Exception{
-        
-        logger.info("관리자 페이지 이동");
-        
+    	logger.info("관리자 구매판매 이동");
     }
     
     /* 관리자 상품 페이지 이동 */
@@ -101,18 +116,19 @@ public class AdminController {
         return product;
     }
     
+    /* 관리자 회원 페이지 이동 */
+    @GetMapping(value="member")
+    public List<MemberVO> adminMemberGET(Model model){
+        logger.info("관리자 회원 페이지 이동");
+        List<MemberVO> member = adminService.getMemberList();
+		model.addAttribute("member", member);
+        return member;
+    }
+    
     /* 관리자  라이브쇼 페이지 이동 */
     @RequestMapping(value="showliveCreate", method = RequestMethod.GET)
     public void adminLiveshowGET() throws Exception{
         logger.info("관리자 라이브쇼 생성창 이동");
-        
-    }
-    
-    /* 관리자  구매판매 페이지 이동 */
-    @RequestMapping(value="buyandsell", method = RequestMethod.GET)
-    public void adminBuyAndSellGET() throws Exception{
-        
-        logger.info("관리자 구매판매 이동");
         
     }
     
