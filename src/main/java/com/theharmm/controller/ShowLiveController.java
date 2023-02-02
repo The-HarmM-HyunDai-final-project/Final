@@ -2,6 +2,10 @@ package com.theharmm.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +16,9 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -126,6 +133,21 @@ public class ShowLiveController {
 		return "showlive/showlivenoroom";
 	}
 	
+	//@GetMapping("/getShowLiveProductImg/{id}")
+	@GetMapping("/getShowLiveProductImg")
+    public ResponseEntity<byte[]> GetShowLiveProductImg(String id) throws IOException {
+    	log.warn("id : ===============" + id);
+    	
+    	File file = new File("C://showlive/"+id);
+    	//File file = new File("C://Dev/"+id );
+    	Path path = file.toPath();
+    	byte[] byes = Files.readAllBytes(file.toPath());
+    	
+    	HttpHeaders headers = new HttpHeaders();
+    	headers.add("Content-Type", Files.probeContentType(path));
+        headers.add("Content-Length", String.valueOf(byes.length));
+    	return new ResponseEntity<byte[]>(byes,headers, HttpStatus.OK);
+    }
 	
 	private GradeType getGradeType(String type) {
 		GradeType Grade = GradeType.BRONZE;

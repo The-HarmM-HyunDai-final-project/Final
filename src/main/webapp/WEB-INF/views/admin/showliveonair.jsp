@@ -86,7 +86,7 @@ Milligram CSS
         right: 8px; */
       }
       .info_area {
-        background: #efe3ed;
+        background: rgb(224, 224, 224);
         width: 100%;
         height: 20%;
         margin-top:15px;
@@ -137,7 +137,7 @@ Milligram CSS
       
       }
       .auction_area {
-        background: #efe3ed;
+        background: rgb(224, 224, 224);
         width: 100%;
         height: 30%;
         padding:15px;
@@ -185,7 +185,7 @@ Milligram CSS
       	width:30%;
       } */
       .chat_area {
-        background: #efe3ed;
+        background: rgb(224, 224, 224);
         width: 100%;
         height: 60%;
         margin-top:15px;

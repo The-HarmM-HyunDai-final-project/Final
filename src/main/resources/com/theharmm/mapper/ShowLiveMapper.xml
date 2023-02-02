@@ -8,8 +8,8 @@
 	<!-- 쇼라이브(경매)채널생성 -->
 	<!-- useGeneratedKeys="true" keyColumn="SHOWLIVE_NO" keyProperty="showlive_no" parameterType="ShowLiveChannelDTO" 여기는 SHOWLIVE_NO를 Auto Increasment해서 값을 넣을때 증가되는걸 넣자마자 그걸 가져오기 위한 부분! -->
 	<insert id="createChannel" useGeneratedKeys="true" keyColumn="SHOWLIVE_NO" keyProperty="showlive_no" parameterType="ShowLiveChannelDTO">
-		insert into SHOW_LIVE (SHOWLIVE_NAME, SHOW_HOST, PRODUCT_NAME, LIVE_STATUS, SHOWLIVE_START_DATE, SHOWLIVE_START_PRICE, RESTRICTED_GRADE, AWS_STREAM_KEY, AWS_ENDPOINT, AWS_CHANNEL_URL) 
-		values(#{showlive_name}, #{show_host}, #{product_name}, #{live_status}, #{showlive_start_date}, #{showlive_start_price}, #{restricted_grade}, #{aws_stream_key}, #{aws_endpoint}, #{aws_channel_url})
+		insert into SHOW_LIVE (SHOWLIVE_NAME, SHOW_HOST, PRODUCT_NAME, LIVE_STATUS, SHOWLIVE_START_DATE, SHOWLIVE_START_PRICE, RESTRICTED_GRADE, AWS_STREAM_KEY, AWS_ENDPOINT, AWS_CHANNEL_URL, PROUCT_IMG1, PROUCT_IMG2, PROUCT_IMG3) 
+		values(#{showlive_name}, #{show_host}, #{product_name}, #{live_status}, #{showlive_start_date}, #{showlive_start_price}, #{restricted_grade}, #{aws_stream_key}, #{aws_endpoint}, #{aws_channel_url}, #{prouct_img1}, #{prouct_img2}, #{prouct_img3})
 	</insert>
 	<!-- 쇼라이브 채팅 넣기  -->
 	<insert id="insertChat">
