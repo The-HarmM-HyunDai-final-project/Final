@@ -19,12 +19,12 @@
        <![CDATA[  
        	and rownum <= 12
        ]]>
-      order by p.register_date desc
+      order by p.register_date
      </select>
    
    <!-- 포스트 총 개수 -->
      <select id="postGetTotal" resultType="int">
-        select count(*) from post
+        select count(*) from post                                       
      </select> 
      
      <!-- 사용자별 포스트 하나 가져오기 -->

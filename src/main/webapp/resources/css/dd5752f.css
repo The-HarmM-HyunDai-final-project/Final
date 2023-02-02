@@ -846,7 +846,10 @@
 
 .btn_order.inventory_ask .box[data-v-c631041c], .btn_order.order_buy.bid .box[data-v-c631041c],
 	.btn_order.order_buy.buy .box[data-v-c631041c] {
-	background-color: #efe3ed
+	background-color: #efe3ed;
+	 box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
 }
 
 .btn_order.buy_95 .box[data-v-c631041c] {
@@ -854,8 +857,15 @@
 }
 
 .btn_order.order_sell.ask .box[data-v-c631041c], .btn_order.order_sell.sell .box[data-v-c631041c]
-	{
-	background-color: #48665a
+{
+	color: #fff;
+	background-color: #48665a;
+	 box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+}
+.order_price{
+	color: #fff;
 }
 
 .btn_order.buy_95 .order_desc[data-v-c631041c]:before, .btn_order.buy_100 .order_desc[data-v-c631041c]:before

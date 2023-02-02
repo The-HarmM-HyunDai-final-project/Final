@@ -37,7 +37,7 @@ public interface ProductDetailService {
 	Long insertBuyOrder(Map<String, Object> buyInfoMap);
 	
 	//상품상세페이지 구매, 판매 가장 작은 값 가져오기 
-	BuyDTO selectMinBuyProductPrice(int pid); 
+	BuyDTO selectMaxBuyProductPrice(int pid); 
 	
 	SellDTO selectMinSellProductPrice(int pid); 
 	
@@ -49,5 +49,8 @@ public interface ProductDetailService {
 	List<BuyDTO> selectAllBuyBid(int pid);
 	//같은 브랜드 상품리스트
 	List<ProductDTO> selectProductBrandList(int pid);
+	
+	//다음 결제번호 조회
+	int selectPaySeqNextVal();
 }
 

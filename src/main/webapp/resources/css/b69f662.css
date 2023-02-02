@@ -2244,7 +2244,7 @@
 	-webkit-box-align: center;
 	align-items: center;
 	border-radius: 10px;
-	color: #fff
+	color: rgb(11 10 10);
 }
 
 .division_btn_box .btn_division[data-v-23bbaa82]:before {
@@ -2262,11 +2262,17 @@
 }
 
 .division_btn_box .btn_division.buy[data-v-23bbaa82] {
-	background-color: #efe3ed
+	background-color: #efe3ed;
+    box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
 }
 
 .division_btn_box .btn_division.sell[data-v-23bbaa82] {
-	background-color: #48665a
+	background-color: #48665a;
+	box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
 }
 
 .division_btn_box .btn_division.ready[data-v-23bbaa82] {

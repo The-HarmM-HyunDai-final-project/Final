@@ -134,13 +134,14 @@
 	
 	<!-- 상품상세페이지에서 가격, 판매버튼에 가격 보이도록 하는 mapper -->
 	
-	<select id="selectMinBuyProductPrice"
+	<select id="selectMaxBuyProductPrice"
 		resultType="BuyDTO"
 		parameterType="Integer">
 		 <![CDATA[
-		   SELECT MIN(PRICE) AS PRICE
-           FROM SALE 
+		   SELECT MAX(PRICE) AS PRICE
+           FROM BUY 
            WHERE PID= #{pid}
+             AND STATUS1 = '구매입찰'
 		  ]]>
 	</select>
 	
@@ -149,8 +150,9 @@
 		parameterType="Integer">
 		 <![CDATA[
 		   SELECT MIN(PRICE) AS PRICE 
-           FROM BUY 
+           FROM SALE 
            WHERE PID= #{pid}
+             AND STATUS1 = '판매입찰'
 		  ]]>
 	</select>
 	
@@ -208,4 +210,14 @@
                            WHERE PID= #{pid})
 		  ]]>
 	</select>
+	
+	<!--다음 결제번호 조회-->
+	<select id="selectPaySeqNextVal"
+		resultType="Integer">
+		 <![CDATA[
+		   SELECT PAY_SEQ.NEXTVAL 
+		     FROM DUAL
+         ]]>
+	</select>
+	
 </mapper>

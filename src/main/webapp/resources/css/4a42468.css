@@ -280,15 +280,20 @@
 .solid[data-v-575aff82] {
 	font-weight: 700;
 	color: #fff;
-	background-color: #48665a
+	background-color: #48665a;
+	box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
 }
 
 .solid1[data-v-575aff82] {
 	font-weight: 700;
-	color: #fff;
-	background-color:  #efe3ed
+	color: rgb(11 10 10);
+	background-color:  #efe3ed;
+	box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
 }
-
 
 .solid[data-v-575aff82]:active {
 	background-color: rgba(34, 34, 34, .8);
@@ -302,7 +307,11 @@
 }
 
 .solid.buy[data-v-575aff82] {
-	background-color: #efe3ed
+	background-color: #efe3ed;
+	color: rgb(11 10 10);
+	box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
 }
 
 .solid.sell[data-v-575aff82] {

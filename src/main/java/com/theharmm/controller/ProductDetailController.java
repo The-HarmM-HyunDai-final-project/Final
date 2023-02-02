@@ -52,7 +52,7 @@ public class ProductDetailController {
 		ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 
 		//판매버튼
-		BuyDTO buyDTO = productDetailService.selectMinBuyProductPrice(pid);
+		BuyDTO buyDTO = productDetailService.selectMaxBuyProductPrice(pid);
 		//구매버튼 
 		SellDTO sellDTO = productDetailService.selectMinSellProductPrice(pid);
 

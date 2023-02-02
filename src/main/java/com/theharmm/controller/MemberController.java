@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.theharmm.auth.SNSLogin;
 import com.theharmm.auth.SnsValue;
 import com.theharmm.domain.MemberAuctionDTO;
+import com.theharmm.domain.BuyDTO;
+import com.theharmm.domain.KeywordDTO;
 import com.theharmm.domain.MemberVO;
 import com.theharmm.security.domain.CustomUser;
 import com.theharmm.service.MemberService;
@@ -146,7 +148,13 @@ public class MemberController {
 	@RequestMapping(value = "/my", method = RequestMethod.GET)
 	public String MyPage(Model model) {
 		CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    
 		model.addAttribute("member_email", user.getUsername());
+		
+		//구매내역 가지고 오기 - 미림 수정(혹시나 문제있을까봐 써놓음) 
+		
+		List<BuyDTO> myBuyList = memberService.selectMyBuyList(user.getUsername()); 
+		model.addAttribute("myBuyList", myBuyList);
 		return "member/my";
 	}
 	

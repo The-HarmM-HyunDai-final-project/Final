@@ -35,7 +35,7 @@ public interface ProductDetailMapper{
 
 		
 		//상품상세페이지 구매 판매 가격 
-		public BuyDTO selectMinBuyProductPrice(int pid);
+		public BuyDTO selectMaxBuyProductPrice(int pid);
 		
 		public SellDTO selectMinSellProductPrice(int pid);
 		
@@ -49,5 +49,8 @@ public interface ProductDetailMapper{
 		
 		//같은 브랜드 리스트
 		public List<ProductDTO> selectProductBrandList(int pid);
+
+		//다음 결제번호 조회
+		public int selectPaySeqNextVal();
 
 }
