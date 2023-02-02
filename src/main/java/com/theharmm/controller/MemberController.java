@@ -1,8 +1,11 @@
 package com.theharmm.controller;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,12 +13,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.theharmm.auth.SNSLogin;
+import com.theharmm.auth.SnsValue;
 import com.theharmm.domain.MemberVO;
-import com.theharmm.security.domain.CustomUser;
 import com.theharmm.security.domain.CustomUser;
 import com.theharmm.service.MemberService;
 import com.theharmm.util.JoinUtil;
@@ -30,8 +36,11 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Inject
+	private SnsValue naverSns;
+	
 	@GetMapping("/join")
-	public String Join() {
+	public String Join(Model model, HttpSession session) {
 		return "member/join";
 	}
 	//이메일 중복확인
@@ -81,18 +90,47 @@ public class MemberController {
 		log.info(request.getParameter("newEmail") + "님 회원가입을 축하드립니다~");
 		return "member/loginpage";
 	}
+	
+	@RequestMapping(value = "/{snsService}/callback", method = { RequestMethod.GET, RequestMethod.POST})
+	public String snsLoginCallback(@PathVariable String snsService, Model model, @RequestParam String code, HttpSession session) throws Exception {
+		SnsValue sns = null;
+		if (StringUtils.equals("naver", snsService))
+			sns = naverSns;
+		log.info("sns 로그인");
+		// 1. code를 이용해서 access_token 받기
+		// 2. access_token을 이용해서 사용자 profile 정보 가져오기
+		SNSLogin snsLogin = new SNSLogin(sns);
+		
+		MemberVO snsUser = snsLogin.getUserProfile(code); // 1,2번 동시
+		System.out.println("Profile>>  " + snsUser);
+		
+		// 3. DB 해당 유저가 존재하는 체크 (googleid, naverid 컬럼 추가)
+		MemberVO member = memberService.getBySns(snsUser);
+		if (member == null) {
+			log.info("소셜로그인 회원 : " + member);
+			int result = memberService.joinMember(snsUser);
+			//model.addAttribute("url", "/showlive/showlivelist");
+			return "main";
+			//미존재시 가입페이지로!!
+		} else {
+			model.addAttribute("result", member.getMember_email() + "님이 반갑습니다.");
+			return "main";
+			// 4. 존재시 강제로그인
+			//session.setAttribute(SessionNames.LOGIN, user);
+		}
+	}
 		
 	@RequestMapping(value = "/loginpage", method = RequestMethod.GET)
-	public String LoginPage(HttpServletRequest request, Model mode) {
+	public String LoginPage(HttpServletRequest request, Model model) {
 		//로그인 전에 페이지로 돌아가기위한 Referer헤더값(이전 URL)을 세션의 prevPage라는 이름으로 저장
 		String uri = request.getHeader("Referer");
 		if(uri != null && uri.contains("/loginpage")) {
 			request.getSession().setAttribute("prevPage", uri);
 		}
+		SNSLogin snsLogin = new SNSLogin(naverSns);
+		model.addAttribute("naver_url", snsLogin.getNaverAuthURL());
 		return "member/loginpage";
 	}
-	
-
 	
 	@RequestMapping(value = "/accessError", method = RequestMethod.GET)
 	public String accessDenied(Authentication auth, Model model) {
@@ -108,4 +146,13 @@ public class MemberController {
 		model.addAttribute("member_email", user.getUsername());
 		return "member/my";
 	}
+	
+	@RequestMapping(value = "/auction", method = RequestMethod.GET)
+	public String Auction(Model model) {
+		CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		model.addAttribute("member_email", user.getUsername());
+		return "member/auction";
+	}
+	
+
 }

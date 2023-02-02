@@ -80,7 +80,10 @@
 	href="${pageContext.request.contextPath}/resources/css/07ff34c.css">
 <link rel="preload" as="style"
 	href="${pageContext.request.contextPath}/resources/css/34bdc77.css">
-
+<link rel="preload" as="style"
+	href="${pageContext.request.contextPath}/resources/css/style.css">
+<link rel="preload" as="style"
+	href="${pageContext.request.contextPath}/resources/css/pop.css">
 
 <div data-v-067026cb="" data-v-78c3a0e6="" social=""
 	class="container social lg">
@@ -98,7 +101,67 @@
 				class="trend_keyword"> # 살로몬 </a><a data-v-1b26777f=""
 				data-v-067026cb="" href="#" class="trend_keyword"> # 결산템챌린지 </a>
 		</div>
-		<div data-v-013cc4d0="" data-v-067026cb="" class="social_feeds">
+
+
+
+
+		<div data-v-013cc4d0="" data-v-47cbe816="" class="social_feeds"
+			style="height: 1000px;">
+			<div data-v-013cc4d0="" transition-duration="0" item-selector=".item"
+				gutter=".gutter_item" horizontal-order="true" class="masonry_posts"
+				style="position: relative; height: 1462px;">
+				<div data-v-013cc4d0="" class="gutter_item"></div>
+<%-- 				<div>${list}</div>
+				<div>${pageMaker }</div> --%>
+				<c:forEach items="${list}" var="item" varStatus="status">
+					<c:set var="i" value="${i+300}" />
+					<div data-v-47728778="" data-v-013cc4d0=""
+						class="feed_card item vertical"
+						style="position: absolute; left: ${status.index*300%1200}px; top: ${(status.index/4-status.index%4/4) * 500 }px;">
+						<a data-v-47728778=""
+							href="${pageContext.request.contextPath}/social/trending/details?post_id=${item.post_id}&user=${item.member_email}">
+							<div data-v-47728778="" class="card_box">
+								<div data-v-47728778="" class="social_img_box vertical">
+									<picture data-v-878ec45c="" data-v-47728778=""
+										class="picture social_img"> <img referrerpolicy="no-referrer"
+										src="${pageContext.request.contextPath}/${item.upload_path}/${item.uuid}_${item.file_name}"
+										loading="auto" class="image"></picture>
+								</div>
+								<div data-v-47728778="" class="card_detail">
+									<div data-v-47728778="" class="user_box">
+										<picture data-v-878ec45c="" data-v-47728778=""
+											class="picture img_profile"> <img
+											data-v-878ec45c="" alt="사용자 프로필 이미지"
+											referrerpolicy="no-referrer"
+											src="${pageContext.request.contextPath}/resources/images/test2.jpg"
+											loading="auto" class="image"></picture>
+										<p data-v-47728778="" class="user_name">${item.member_email}</p>
+										<span data-v-47728778="" aria-label="좋아요" role="button"
+											class="btn like"><svg data-v-47728778=""
+												xmlns="http://www.w3.org/2000/svg"
+												class="icon sprite-icons social-like-gray-sm">
+                                          <use data-v-47728778=""
+													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"
+													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-social-like-gray-sm"></use></svg><span
+											data-v-47728778="" class="like_count">${item.post_id}</span></span>
+									</div>
+									<p data-v-47728778="" class="text_box">${item.contents}</p>
+									<!---->
+								</div>
+							</div>
+							<div data-v-47728778="" class="img_count">
+								<span data-v-47728778="" class="count"></span>
+							</div></a>
+					</div>
+
+				</c:forEach>
+			</div>
+		</div>
+
+
+
+
+		<!-- 		<div data-v-013cc4d0="" data-v-067026cb="" class="social_feeds">
 			<div data-v-013cc4d0="" transition-duration="0" item-selector=".item"
 				gutter=".gutter_item" horizontal-order="true" class="masonry_posts"
 				style="position: relative; height: 2466px;">
@@ -143,7 +206,7 @@
 								</div>
 								<p data-v-47728778="" class="text_box">#스타일컬렉터 #크림스타일
 									#크림챌린지KREAM챌린지 #크림코디</p>
-								<!---->
+								
 							</div>
 						</div>
 						<div data-v-47728778="" class="img_count">
@@ -190,7 +253,7 @@
 								</div>
 								<p data-v-47728778="" class="text_box">#KREAMSTYLE #크림스타일
 									#데일리룩</p>
-								<!---->
+								
 							</div>
 						</div>
 						<div data-v-47728778="" class="img_count">
@@ -199,7 +262,7 @@
 				</div>
 
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
 

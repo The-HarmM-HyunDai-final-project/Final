@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <html lang="ko">
 <head>
-<title>KREAM | 한정판 거래의 FLEX</title>
+<title>THE HarmM</title>
 <meta data-n-head="ssr" charset="utf-8">
 <meta data-n-head="ssr" data-hid="viewport" name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
@@ -160,7 +160,7 @@
 								<div data-v-5acef129="" class="user_detail">
 									<div data-v-5acef129="" class="user_thumb">
 										<img data-v-5acef129=""
-											src="${pageContext.request.contextPath}/resources/images/test2.jpg"
+											src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png"
 											alt="사용자 이미지" class="thumb_img">
 									</div>
 									<div data-v-5acef129="" class="user_info">
@@ -169,7 +169,7 @@
 											<p data-v-5acef129="" class="email">${member_email}</p>
 											<a data-v-575aff82="" data-v-5acef129="" href="/my/profile"
 												class="btn btn outlinegrey small" type="button"> 프로필 수정
-											</a><a data-v-575aff82="" data-v-5acef129="" href="/social/user?email=${member_email}"
+											</a><a data-v-575aff82="" data-v-5acef129="" href="/social/user"
 												class="btn btn btn_my_style outlinegrey small" type="button">
 												내 스타일 </a>
 										</div>

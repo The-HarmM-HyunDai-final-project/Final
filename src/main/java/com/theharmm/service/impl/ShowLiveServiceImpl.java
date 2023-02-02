@@ -1,5 +1,6 @@
 package com.theharmm.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +70,17 @@ public class ShowLiveServiceImpl implements ShowLiveService{
 	//라이브중인 쇼라이브 목록 가져옥 - ShowLiveChannelStore에 저장된 channelDTO들은 모두 생방송인걸로 생각하니까 Store에서 channelDTO를 가져옴
 	public List<ShowLiveChannelDTO> getLiveChannelsFromChannelStore(){
 		return showLiveChannelStore.getChannelDTO();
+	}
+	
+	// 각 채널당 접속한 사용자수 가져오기
+	public List<Integer> getLiveChannelsUserCountList(){
+		List<Integer> channelUserCountList = new ArrayList<Integer>();
+		for( ShowLiveChannelDTO channelDTO :showLiveChannelStore.getChannelDTO()) {
+			channelUserCountList.add(showLiveChannelStore.getChannelByRoomNo(Integer.toString(channelDTO.getShowlive_no())).getConnectedUsers());
+		}
+		return channelUserCountList;
+		
+	
 	}
 	//방 번호로 쇼라이브 목록 가져오기
 	@Override

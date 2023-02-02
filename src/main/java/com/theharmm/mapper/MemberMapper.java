@@ -23,6 +23,9 @@ public interface MemberMapper {
 	public MemberVO login(MemberVO member);
 	//유저 정보 가져오기
 	public MemberVO read(MemberVO member);
+	
 	// 로그인 후 로그인 시간 업데이트
-	public void updateLoign(MemberVO member);
+	public void updateLoign(String member_email);
+	// SNS
+	public MemberVO getBySns(MemberVO member);
 }

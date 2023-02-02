@@ -1,6 +1,8 @@
 package com.theharmm.controller;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,17 +10,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.theharmm.domain.BuyDTO;
+import com.theharmm.domain.KeywordDTO;
 import com.theharmm.domain.PostVO;
 import com.theharmm.domain.ProductDTO;
 import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.SellDTO;
-import com.theharmm.domain.KeywordDTO;
-import com.theharmm.service.PostService;
 import com.theharmm.service.KeywordService;
-
+import com.theharmm.service.PostService;
 import com.theharmm.service.ProductDetailService;
 
 import lombok.RequiredArgsConstructor;
@@ -61,8 +63,10 @@ public class ProductDetailController {
 	
 		//체결거래 
 		List<BuyDTO> allSignContractList = productDetailService.selectAllSignContract(pid);
+		
 		//판매입찰 
 		List<SellDTO> allSellBidList = productDetailService.selectAllSellBid(pid);
+		
 		//구매입찰 
 		List<BuyDTO> allBuyBidList = productDetailService.selectAllBuyBid(pid);
 
@@ -89,14 +93,13 @@ public class ProductDetailController {
 		
 		//긍정키워드 베스트 가져오기 (5개까지 가져오고, 대표 키워드는 3가지로 한다) 
 		List<KeywordDTO> PosKeywordBestList = keywordService.selectPosKeywordBest(pid); 
-		model.addAttribute("keywordBestList", PosKeywordBestList);
+		model.addAttribute("poskeywordBestList", PosKeywordBestList);
 				
 		//부정키워드 베스트 가져오기 (5개까지 가져오고, 대표 키워드는 3가지로 한다) 
 		List<KeywordDTO> NegKeywordBestList = keywordService.selectNegKeywordBest(pid); 
-		model.addAttribute("keywordBestList", NegKeywordBestList);
+		model.addAttribute("negkeywordBestList", NegKeywordBestList);
 
 		return "product/productdetail";
 	}
-	
 	
 }

@@ -20,4 +20,6 @@ public class MemberVO {
 	private String member_email_info;
 	
 	private List<MemberAuthVO> authList;
+	
+	private String naverid;
 }

@@ -26,6 +26,7 @@
 	<!-- 거래 금액  -->
 	<select id="buyToday" resultType="com.theharmm.domain.BuySaleToday">
 		select to_char(nowdate, 'YYYY-MM-DD') as now, sum(price) as price from buy
+		where nowdate is not null
 		group by to_char(nowdate, 'YYYY-MM-DD')
 		order by 1
 	</select>
@@ -33,6 +34,7 @@
 	<!-- 판매 금액  -->
 	<select id="saleToday" resultType="com.theharmm.domain.BuySaleToday">
 		select to_char(nowdate, 'YYYY-MM-DD') as now, sum(price) as price from sale
+		where nowdate is not null
 		group by to_char(nowdate, 'YYYY-MM-DD')
 		order by 1
 	</select>
@@ -41,5 +43,23 @@
 	<select id="getProductList" resultType="com.theharmm.domain.ProductDTO">
 		select * from resell_product
 	
+	</select>
+	
+	<!-- 멤버리스트 -->
+	<select id="getMemberList" resultType="com.theharmm.domain.MemberVO">
+		select * from member
+	
+	</select>
+	
+	<!-- TOP 5 판매상품 -->
+	<select id="getTop5SaleList" resultType="com.theharmm.domain.TopProduct">
+		select ss.price as sum_price, pname_k from (select sum(price) as price, pid from sale group by pid order by 1 desc) ss, 
+		resell_product rp where ss.pid = rp.pid and <![CDATA[rownum <= 5]]>
+	</select>
+	
+	<!-- TOP 5 구매상품 -->
+	<select id="getTop5BuyList" resultType="com.theharmm.domain.TopProduct">
+		select bb.price as sum_price, pname_k from (select sum(price) as price, pid from buy group by pid order by 1 desc) bb, 
+		resell_product rp where bb.pid = rp.pid and <![CDATA[rownum <= 5]]>
 	</select>
 </mapper>
