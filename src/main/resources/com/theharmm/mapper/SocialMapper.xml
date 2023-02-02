@@ -12,5 +12,10 @@
 	 <!-- post_id로 socialvo가져오기 -->
   	<select id="socialByPostid" resultType="com.theharmm.domain.SocialVO">
   		select * from social where post_id = #{post_id}
-  	</select> 
+  	</select>
+  	
+  	<!-- 상품 등록 -->
+	<insert id="socialEnroll2">
+		insert into social2 values(#{product_name}, #{file_name}, #{upload_path}, #{uuid}, sysdate)
+	</insert>
 </mapper>

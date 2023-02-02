@@ -5,13 +5,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.theharmm.domain.PostVO;
 import com.theharmm.domain.ShowLiveAuctionFinalPersonDTO;
 import com.theharmm.domain.ShowLiveBiddingDTO;
 import com.theharmm.domain.ShowLiveChannelDTO;
 import com.theharmm.domain.ShowLiveChatDTO;
+import com.theharmm.domain.SocialVO;
 import com.theharmm.mapper.MemberMapper;
 import com.theharmm.mapper.ShowLiveMapper;
+import com.theharmm.mapper.SocialMapper;
 import com.theharmm.service.ShowLiveService;
 import com.theharmm.showlive.ShowLiveChannel;
 import com.theharmm.showlive.ShowLiveChannelStore;
@@ -26,7 +30,7 @@ public class ShowLiveServiceImpl implements ShowLiveService{
 	
 	@Autowired
 	private ShowLiveMapper showLivemapper;
-	
+
 	@Autowired
 	private ShowLiveChannelStore showLiveChannelStore;
 	
@@ -39,6 +43,7 @@ public class ShowLiveServiceImpl implements ShowLiveService{
 	@Override
 	public Integer createChannel(ShowLiveChannelDTO channel) {
 		showLivemapper.createChannel(channel);
+		log.warn("지금 채널은 다음과 같습니다" + channel);
 		showLiveChannelStore.createNewChannel(channel);
 		log.warn("지금까지 채널은 다음과 같습니다" + showLiveChannelStore.getChannelList().toString());
 		
@@ -100,9 +105,4 @@ public class ShowLiveServiceImpl implements ShowLiveService{
 	public ShowLiveChannelDTO getShowLiveChannelInfo() {
 		return showLivemapper.getShowLiveChannelInfo();
 	}
-
-
-
-
 }
-
