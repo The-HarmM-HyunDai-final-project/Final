@@ -149,6 +149,7 @@ public class PostController {
       return "social/user";
    }
    
+   
    /* 이미지 출력 */
    @GetMapping("/social/user/display")
    public ResponseEntity<byte[]> getImage(String fileName) {
