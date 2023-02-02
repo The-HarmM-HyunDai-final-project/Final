@@ -34,8 +34,7 @@
 						<p data-v-33a8744d="" class="name">${productDetailDTO.pname_e}</p>
 						<p data-v-33a8744d="" class="translated_name">${productDetailDTO.pname_k}</p>
 						<!---->
-						<div data-v-6da6dff3="" data-v-33a8744d=""
-							class="badge badge_product shipping_express">빠른배송</div>
+						
 					</div>
 				</div>
 				<div data-v-3f89f857="" class="sell_before_select">

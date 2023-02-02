@@ -358,8 +358,7 @@ function requestPay() {
                      
                      <section data-v-b8efdcc8="" class="buy_check">
                         
-                        <div data-v-14995178="" data-v-b8efdcc8=""
-                           class="buy_total_confirm" is-instant="true">
+                        <div data-v-14995178="" data-v-b8efdcc8="" class="buy_total_confirm" is-instant="true">
                            <div data-v-679d7250="" data-v-14995178="" class="price_total">
                               <dl data-v-679d7250="" class="price_box">
                                  <dt data-v-679d7250="" class="price_title">총 결제금액</dt>
@@ -372,7 +371,10 @@ function requestPay() {
                                  style="display: none;"><em data-v-679d7250="">주의!
                               </em></span>
                            </div>
-                            
+                            <div data-v-14995178="" class="btn_confirm">
+		                        <a data-v-575aff82="" data-v-14995178="" href="#" onclick="checkPay()"
+		                           class="btn full solid buy"> 결제하기 </a>
+                           </div>
                            
                         </div>
                      
@@ -387,11 +389,7 @@ function requestPay() {
                         <input type="hidden" name="shippingFee" value="${shippingFee}"/>
                         <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
                      </form>
-                     <div data-v-14995178="" class="btn_confirm">
-                        <a data-v-575aff82="" data-v-14995178="" href="#" onclick="checkPay()"
-                           class="btn full solid buy"> 결제하기 </a>
-                     </div>
-                     
+                  
                      <!--<button onclick="checkPay()">결제하기</button> -->
                      <div data-v-1a009402="" data-v-4ae17423="" data-v-b8efdcc8=""
                         class="layer_order_price_confirm layer lg" id="layer_order_price_confirm"

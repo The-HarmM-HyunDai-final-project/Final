@@ -1,6 +1,7 @@
 package com.theharmm.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.theharmm.domain.PostCriteria;
 import com.theharmm.domain.PostVO;
@@ -58,6 +59,10 @@ public interface PostService {
 
    /* 키워드 리스트 저장 */
    public int mergeKeywordList(PostVO post, List<String> keyword_list);
+
+   /* 키워드를 포함한 리뷰 조회 */
+   public List<PostVO> selectKeywordPostList(Map<String, Object> postInfo);
+
 
 
 }

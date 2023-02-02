@@ -338,7 +338,7 @@
 }
 
 .select_link.buy .price[data-v-28805923] {
-	color: #f15746
+	color: #F361A6
 }
 
 .select_link.sell .price[data-v-28805923] {
@@ -846,7 +846,7 @@
 
 .btn_order.inventory_ask .box[data-v-c631041c], .btn_order.order_buy.bid .box[data-v-c631041c],
 	.btn_order.order_buy.buy .box[data-v-c631041c] {
-	background-color: #333
+	background-color: #efe3ed
 }
 
 .btn_order.buy_95 .box[data-v-c631041c] {
@@ -855,7 +855,7 @@
 
 .btn_order.order_sell.ask .box[data-v-c631041c], .btn_order.order_sell.sell .box[data-v-c631041c]
 	{
-	background-color: #41b979
+	background-color: #48665a
 }
 
 .btn_order.buy_95 .order_desc[data-v-c631041c]:before, .btn_order.buy_100 .order_desc[data-v-c631041c]:before

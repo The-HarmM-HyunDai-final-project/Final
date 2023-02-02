@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <jsp:useBean id="now" class="java.util.Date" />
+<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
+<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
 <link
 	href="${pageContext.request.contextPath}/resources/css/b69f662.css"
 	rel="stylesheet" type="text/css">
@@ -13,6 +15,45 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/product_detail_tab.js" defer=""></script>
 <script src="${pageContext.request.contextPath}/resources/js/reviewstab.js" defer=""></script>
+<script>
+function getReviewList(keyword,sentiment_result){
+	alert("zz");
+	let csrfHeaderName ="${_csrf.headerName}";
+    let csrfTokenValue="${_csrf.token}";
+   
+    $.ajax({
+       url:"/products/keywordFilter",
+       method: 'post',
+       beforeSend : function(xhr){
+           xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+       }, 
+       data:{
+          keyword:keyword,
+          pid:${productDetailDTO.pid},
+          sentiment_result:sentiment_result
+       },
+       success: function(res){
+          alert("top키워드완료");
+          if(sentiment_result=='P'){
+        	  $("#positivePostList").html(res); 
+          }
+          else if(sentiment_result=='N'){
+        	  $("#negativePostList").html(res); 
+          }
+          
+       
+       },
+       error: function(){
+    	   alert("gg");
+       }
+    })
+}
+
+
+ 
+
+</script>
+
 
 <div class="container detail lg" data-v-01e212dd="" data-v-3007c576="">
 	<div class="content" data-v-01e212dd="">
@@ -774,12 +815,12 @@
 				<ul class="tabs">
 					<li class="on">
 						<a href="#tab01">
-							<span>긍정리뷰</span>
+							<span>긍정 스타일</span>
 						</a>
 					</li>
 					<li class="">
 						<a href="#tab02">
-							<span id="tabReviewCnt">비판리뷰</span>
+							<span id="tabReviewCnt">비판 스타일</span>
 						</a>
 					</li>
 				
@@ -788,7 +829,7 @@
 				<!-- 긍정리뷰 정보 -->
 				<section id="tab01"
 					class="anchor-section product-detail-review">
-					<h3 class="sec-title"><em>긍정리뷰</em></h3>
+					<h3 class="sec-title"><em>긍정 스타일</em></h3>
 					<div class="review-total">
 						<div class="member-total-point">
 							<h4 class="tit">별점</h4>
@@ -811,16 +852,16 @@
 						<div class="head">
 							<div id="prdReviewFilter" class="opt">
 								<button type="button" class="btn-type1-sm"
-									onclick="getReviewList('1','F','F',null);">
-									<span>${poskeywordBestList[0].keyword}</span>
+									onclick="getReviewList('${poskeywordBestList[0].keyword}','P');">
+									<span id="postop">${poskeywordBestList[0].keyword}</span>
 								</button>
 								<button type="button" class="btn-type1-sm"
-									onclick="getReviewList('1','F','F',null);">
-									<span>${poskeywordBestList[1].keyword}</span>
+									onclick="getReviewList('${poskeywordBestList[1].keyword}','P');">
+									<span id="postop">${poskeywordBestList[1].keyword}</span>
 								</button>
 								<button type="button" class="btn-type1-sm"
-									onclick="getReviewList('1','F','F',null);">
-									<span>${poskeywordBestList[2].keyword}</span>
+									onclick="getReviewList('${poskeywordBestList[2].keyword}','P');">
+									<span id="postop">${poskeywordBestList[2].keyword}</span>
 								</button>
 							</div>
 
@@ -839,7 +880,7 @@
 							<input type="hidden" id="godNo" value=""> <input
 								type="hidden" id="godEvlTurn" value="">
 
-							<ul class="list-content">
+							<ul class="list-content" id="positivePostList">
 								<c:forEach var="positivePost" items="${positivePostList}">
 									<li>
 										<div class="list-row fold-header">
@@ -859,6 +900,7 @@
 														</div>
 													</li> -->
 													<li><span class="date">${positivePost.register_date }</span></li>
+													
 												</ul>
 	
 												<div class="txt-box"> ${positivePost.contents }</div>
@@ -898,7 +940,7 @@
 				<!-- 부정리뷰 정보 -->
 				<section id="tab02"
 					class="anchor-section product-detail-review" >
-					<h3 class="sec-title">비판리뷰</h3>
+					<h3 class="sec-title">비판 스타일</h3>
 					<div class="review-total">
 						<div class="member-total-point">
 							<h4 class="tit">별점</h4>
@@ -921,15 +963,15 @@
 						<div class="head">
 							  <div id="prdReviewFilter" class="opt">
 								<button type="button" class="btn-type1-sm"
-									onclick="getReviewList('1','F','F',null);">
+									onclick="getReviewList('${negkeywordBestList[0].keyword}','N');">
 									<span>${negkeywordBestList[0].keyword}</span>
 								</button>
 								<button type="button" class="btn-type1-sm"
-									onclick="getReviewList('1','F','F',null);">
+									onclick="getReviewList('${negkeywordBestList[1].keyword}','N');">
 									<span>${negkeywordBestList[1].keyword}</span>
 								</button>
 								<button type="button" class="btn-type1-sm"
-									onclick="getReviewList('1','F','F',null);">
+									onclick="getReviewList('${negkeywordBestList[2].keyword}','N');">
 									<span>${negkeywordBestList[2].keyword}</span>
 								</button>
 							 </div>
@@ -948,7 +990,7 @@
 							<input type="hidden" id="godNo" value=""> <input
 								type="hidden" id="godEvlTurn" value="">
 
-							<ul class="list-content">
+							<ul class="list-content" id="negativePostList">
 								<c:forEach var="negativePost" items="${negativePostList}">
 									<li>
 										<div class="list-row fold-header">
@@ -967,6 +1009,7 @@
 														</div>
 													</li> -->
 													<li><span class="date">${negativePost.register_date }</span></li>
+													<li><button>style상세보기</button></li>
 												</ul>
 	
 												<div class="txt-box"> ${negativePost.contents }</div>
