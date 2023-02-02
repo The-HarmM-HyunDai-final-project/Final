@@ -1,6 +1,7 @@
 package com.theharmm.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -168,5 +169,10 @@ public class PostServiceImpl implements PostService {
 		}
 		
 		return cnt;
+	}  
+	
+	@Override
+	public List<PostVO> selectKeywordPostList(Map<String, Object> postInfo) {
+		return postMapper.selectKeywordPostList(postInfo);
 	}   
 }
