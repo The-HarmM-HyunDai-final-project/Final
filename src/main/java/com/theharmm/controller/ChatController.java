@@ -25,6 +25,7 @@ public class ChatController {
 	@Autowired
 	private ShowLiveService showLiveService;
 
+	
 	@RequestMapping(value = "/chat/{roomNo}", method = RequestMethod.GET)
 	public String Chat(Model model, @PathVariable("roomNo") String roomNo , HttpSession session) {
 		CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
