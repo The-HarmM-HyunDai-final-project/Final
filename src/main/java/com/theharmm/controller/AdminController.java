@@ -1,3 +1,4 @@
+
 package com.theharmm.controller;
 
 import java.util.Date;
@@ -147,6 +148,8 @@ public class AdminController {
 		createdChannel.setShow_host(bjUsername);
 		createdChannel.setLive_status(1);
 		createdChannel.setShowlive_start_date(curDate);
+		//createdChannel.setProduct_name(createdChannel.getProduct_name().replace("&#39;", "'"));
+		log.warn(createdChannel.getProduct_name());
 		
 		//log.warn(createdChannel.toString());
 		
@@ -172,4 +175,5 @@ public class AdminController {
 	public String onAir() {
 		return "admin/showliveonair";
 	}
+
 }

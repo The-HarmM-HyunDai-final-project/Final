@@ -15,7 +15,10 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
-
+		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>google-cloud-dialogflow</artifactId>
+		</dependency>
 		<!-- xss-filter -->
 		<dependency>
 			<groupId>com.navercorp.lucy</groupId>
@@ -309,5 +312,17 @@
 			<id>jitpack.id</id>
 			<url>https://jitpack.io</url>
 		</repository>
-	</repositories>	
+	</repositories>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.google.cloud</groupId>
+				<artifactId>libraries-bom</artifactId>
+				<version>26.1.3</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>

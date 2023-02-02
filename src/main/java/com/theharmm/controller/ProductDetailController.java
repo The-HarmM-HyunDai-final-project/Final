@@ -115,5 +115,4 @@ public class ProductDetailController {
 		model.addAttribute("keywordPostList",keywordPostList);
 		return "product/productfilter";
 	}
-	
 }

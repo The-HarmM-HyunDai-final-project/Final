@@ -5,7 +5,7 @@
 
 <mapper namespace="com.theharmm.mapper.PostMapper">
    <insert id="postEnroll">
-      insert into post values(post_seq.nextval, 'asd', sysdate, #{contents}, #{pid0}, #{pid1}, #{pid2}, #{sentiment_percent},#{sentiment_result})
+      insert into post values(post_seq.nextval, #{member_email}, sysdate, #{contents}, #{pid0}, #{pid1}, #{pid2}, #{sentiment_percent},#{sentiment_result})
    </insert>
    
    

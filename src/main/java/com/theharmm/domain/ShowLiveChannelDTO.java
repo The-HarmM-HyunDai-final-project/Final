@@ -1,6 +1,7 @@
 package com.theharmm.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -22,3 +23,4 @@ public class ShowLiveChannelDTO {
 	private String prouct_img2;
 	private String prouct_img3;
 }
+
