@@ -17,7 +17,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/reviewstab.js" defer=""></script>
 <script>
 function getReviewList(keyword,sentiment_result){
-	alert("zz");
+
 	let csrfHeaderName ="${_csrf.headerName}";
     let csrfTokenValue="${_csrf.token}";
    
@@ -33,12 +33,15 @@ function getReviewList(keyword,sentiment_result){
           sentiment_result:sentiment_result
        },
        success: function(res){
-          alert("top키워드완료");
+          
           if(sentiment_result=='P'){
+        	  
         	  $("#positivePostList").html(res); 
+        	  //$("#positiveTab").trigger("click");
           }
           else if(sentiment_result=='N'){
-        	  $("#negativePostList").html(res); 
+        	  $("#negativePostList").html(res);
+        	  $("#negativeTab").trigger("click");
           }
           
        
@@ -49,6 +52,9 @@ function getReviewList(keyword,sentiment_result){
     })
 }
 
+function layerViewImg(post_id,member_email,sentiment_result){
+	location.href="/social/trending/details?post_id="+post_id+"&user="+member_email;
+}
 
  
 
@@ -461,13 +467,11 @@ function getReviewList(keyword,sentiment_result){
 					<div data-v-1a009402="" data-v-0a44efea="" data-v-3900a1a2=""
 						class="layer_market_price layer lg" style="display:none;">
 						<div data-v-1a009402="" class="layer_container">
-							<a data-v-0a44efea="" data-v-1a009402="" href="#"
-								class="btn_layer_close"><svg data-v-0a44efea=""
-									data-v-1a009402="" xmlns="http://www.w3.org/2000/svg"
-									class="ico-close icon sprite-icons">
-									<use data-v-0a44efea="" data-v-1a009402=""
-										href="${pageContext.request.contextPath}/resources/icon/x_ic.png"
-										xlink:href="${pageContext.request.contextPath}/resources/icon/x_ic.png"></use></svg></a>
+							<a data-v-6fc13fac="" data-v-1a009402="" href="#" id="btn_layer_close"
+											class="btn_layer_close">
+												<img src="${pageContext.request.contextPath}/resources/icon/x_ic.png" width="15" height="15">
+							</a>
+
 							<div data-v-1a009402="" class="layer_header">
 								<h2 data-v-0a44efea="" data-v-1a009402="" class="title">시세</h2>
 							</div>
@@ -814,12 +818,12 @@ function getReviewList(keyword,sentiment_result){
 			<div class="product-detail-tab tab-wrap2 anchor-wrap">
 				<ul class="tabs">
 					<li class="on">
-						<a href="#tab01">
+						<a href="#tab01" id="positiveTab">
 							<span>긍정 스타일</span>
 						</a>
 					</li>
 					<li class="">
-						<a href="#tab02">
+						<a href="#tab02" id="negativeTab">
 							<span id="tabReviewCnt">비판 스타일</span>
 						</a>
 					</li>
@@ -851,17 +855,17 @@ function getReviewList(keyword,sentiment_result){
 					<div class="product-detail-review-list">
 						<div class="head">
 							<div id="prdReviewFilter" class="opt">
-								<button type="button" class="btn-type1-sm"
+								<button type="button" class="custom-btn btn-1"
 									onclick="getReviewList('${poskeywordBestList[0].keyword}','P');">
-									<span id="postop">${poskeywordBestList[0].keyword}</span>
+									<span>${poskeywordBestList[0].keyword}</span>
 								</button>
-								<button type="button" class="btn-type1-sm"
+								<button type="button" class="custom-btn btn-1"
 									onclick="getReviewList('${poskeywordBestList[1].keyword}','P');">
-									<span id="postop">${poskeywordBestList[1].keyword}</span>
+									<span>${poskeywordBestList[1].keyword}</span>
 								</button>
-								<button type="button" class="btn-type1-sm"
+								<button type="button" class="custom-btn btn-1"
 									onclick="getReviewList('${poskeywordBestList[2].keyword}','P');">
-									<span id="postop">${poskeywordBestList[2].keyword}</span>
+									<span>${poskeywordBestList[2].keyword}</span>
 								</button>
 							</div>
 
@@ -915,7 +919,7 @@ function getReviewList(keyword,sentiment_result){
 											<div class="review-group">
 													<ul class="files">
 														<li class="img-file">
-															<button type="button" onclick="layerViewImg();"
+															<button type="button" onclick="layerViewImg('${positivePost.post_id}','${positivePost.member_email }','P');"
 																style="background-image: url(${pageContext.request.contextPath}/${positivePost.upload_path}/${positivePost.uuid}_${positivePost.file_name}); transform: rotate(0deg);">
 																<img referrerpolicy="no-referrer"
 																	src="${pageContext.request.contextPath}/${positivePost.upload_path}/${positivePost.uuid}_${positivePost.file_name}"
@@ -962,15 +966,15 @@ function getReviewList(keyword,sentiment_result){
 					<div class="product-detail-review-list">
 						<div class="head">
 							  <div id="prdReviewFilter" class="opt">
-								<button type="button" class="btn-type1-sm"
+								<button type="button" class="custom-btn btn-1"
 									onclick="getReviewList('${negkeywordBestList[0].keyword}','N');">
 									<span>${negkeywordBestList[0].keyword}</span>
 								</button>
-								<button type="button" class="btn-type1-sm"
+								<button type="button" class="custom-btn btn-1"
 									onclick="getReviewList('${negkeywordBestList[1].keyword}','N');">
 									<span>${negkeywordBestList[1].keyword}</span>
 								</button>
-								<button type="button" class="btn-type1-sm"
+								<button type="button" class="custom-btn btn-1"
 									onclick="getReviewList('${negkeywordBestList[2].keyword}','N');">
 									<span>${negkeywordBestList[2].keyword}</span>
 								</button>
@@ -1024,7 +1028,7 @@ function getReviewList(keyword,sentiment_result){
 											<div class="review-group">
 													<ul class="files">
 														<li class="img-file">
-															<button type="button" onclick="layerViewImg();"
+															<button type="button" onclick="layerViewImg('${negativePost.post_id}','${negativePost.member_email }','N');"
 																style="background-image: url(${pageContext.request.contextPath}/${negativePost.upload_path}/${negativePost.uuid}_${negativePost.file_name}); transform: rotate(0deg);">
 																<img referrerpolicy="no-referrer"
 																	src="${pageContext.request.contextPath}/${negativePost.upload_path}/${negativePost.uuid}_${negativePost.file_name}"
@@ -1052,34 +1056,7 @@ function getReviewList(keyword,sentiment_result){
 	
 		<!---->
 	</div>
-	<div data-v-01e212dd="">
-		<div data-v-e5d8b6f4="" data-v-01e212dd="" class="banner_bottom lg">
-			<a data-v-e5d8b6f4="" href="#" class="banner_box"><img
-				data-v-e5d8b6f4="" src="/_nuxt/img/home_banner_bottom1.79549cb.png"
-				loading="lazy" width="350" height="200" alt="SERVICE GUIDE"
-				class="bg">
-				<div data-v-e5d8b6f4="" class="banner_info">
-					<strong data-v-e5d8b6f4="" class="info_subtitle">service
-						guide</strong>
-					<p data-v-e5d8b6f4="" class="info_title">
-						KREAM은 처음이지? <br>서비스 소개를 확인해보세요.
-					</p>
-					<span data-v-e5d8b6f4="" class="info_txt">서비스 안내</span>
-				</div></a><a data-v-e5d8b6f4="" href="#" class="banner_box"><img
-				data-v-e5d8b6f4="" src="/_nuxt/img/home_banner_bottom2.0077547.png"
-				loading="lazy" width="350" height="200" alt="DOWNLOAD THE APP"
-				class="bg">
-				<div data-v-e5d8b6f4="" class="banner_info">
-					<strong data-v-e5d8b6f4="" class="info_subtitle">download
-						the app</strong>
-					<p data-v-e5d8b6f4="" class="info_title">
-						KREAM 앱을 설치하여 <br>한정판 스니커즈를 FLEX 하세요!
-					</p>
-					<span data-v-e5d8b6f4="" class="info_txt">앱 설치하기</span>
-				</div></a>
-			<!---->
-		</div>
-	</div>
+	
 	<!---->
 	<!---->
 	<!---->
@@ -1242,12 +1219,12 @@ var chart = new Chart(ctx, {
                 'rgba(204, 204, 204, 0.5)',
                 'rgba(204, 204, 204, 0.5)',
                 'rgba(204, 204, 204, 0.5)'],
-            borderColor: ['rgb(255, 99, 132,1.5)',
-                'rgba(54, 162, 235, 1.5)',
-                'rgba(255, 206, 86, 1.5)',
-                'rgba(75, 192, 192, 1.5)',
-                'rgba(153, 102, 255, 1.5)',
-                'rgba(255, 159, 64, 1.5)'],
+            borderColor: ['rgb(204, 204, 204,1.5)',
+            	 'rgba(204, 204, 204, 1.5)',
+                 'rgba(204, 204, 204, 1.5)',
+                 'rgba(204, 204, 204, 1.5)',
+                 'rgba(204, 204, 204, 1.5)',
+                 'rgba(204, 204, 204, 1.5)'],
             data: count_list
         }]
     },
@@ -1262,14 +1239,14 @@ var chart = new Chart(ctx, {
         },
         legend: {
             labels: {
-                fontColor: 'rgba(83, 51, 237, 1)',
+                fontColor: 'rgb(11 10 10)',
                 fontSize: 15
             }
         },
         scales: {
             xAxes: [{
                 ticks: {
-                    fontColor: 'rgba(27, 163, 156, 1)',
+                    fontColor: 'rgb(11 10 10)',
                     fontSize: '15'
                 }
             }],
@@ -1316,12 +1293,12 @@ var chart = new Chart(ctx, {
                 'rgba(204, 204, 204, 0.5)',
                 'rgba(204, 204, 204, 0.5)',
                 'rgba(204, 204, 204, 0.5)'],
-            borderColor: ['rgb(255, 99, 132,1.5)',
-                'rgba(54, 162, 235, 1.5)',
-                'rgba(255, 206, 86, 1.5)',
-                'rgba(75, 192, 192, 1.5)',
-                'rgba(153, 102, 255, 1.5)',
-                'rgba(255, 159, 64, 1.5)'],
+            borderColor: ['rgb(204, 204, 204,1.5)',
+                'rgba(204, 204, 204, 1.5)',
+                'rgba(204, 204, 204, 1.5)',
+                'rgba(204, 204, 204, 1.5)',
+                'rgba(204, 204, 204, 1.5)',
+                'rgba(204, 204, 204, 1.5)'],
             data: count_list
         }]
     },
@@ -1336,14 +1313,14 @@ var chart = new Chart(ctx, {
         },
         legend: {
             labels: {
-                fontColor: 'rgba(83, 51, 237, 1)',
+            	fontColor: 'rgb(11 10 10)',
                 fontSize: 15
             }
         },
         scales: {
             xAxes: [{
                 ticks: {
-                    fontColor: 'rgba(27, 163, 156, 1)',
+                	fontColor: 'rgb(11 10 10)',
                     fontSize: '15'
                 }
             }],

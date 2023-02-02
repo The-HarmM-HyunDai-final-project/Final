@@ -84,8 +84,8 @@ public class ProductDetailServiceImpl implements ProductDetailService{
 	}
 
 	@Override
-	public BuyDTO selectMinBuyProductPrice(int pid) {
-		return productDetailMapper.selectMinBuyProductPrice(pid);
+	public BuyDTO selectMaxBuyProductPrice(int pid) {
+		return productDetailMapper.selectMaxBuyProductPrice(pid);
 	}
 
 
@@ -120,6 +120,12 @@ public class ProductDetailServiceImpl implements ProductDetailService{
 	public List<ProductDTO> selectProductBrandList(int pid) {
 		
 		return productDetailMapper.selectProductBrandList(pid);
+	}
+
+
+	@Override
+	public int selectPaySeqNextVal() {
+		return productDetailMapper.selectPaySeqNextVal();
 	}
 
 }

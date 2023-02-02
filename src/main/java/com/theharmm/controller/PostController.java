@@ -74,7 +74,7 @@ public class PostController {
 	      String email = user.getUsername();
       log.info("postManageGET postcontroller" + email);
       /* 포스트 리스트 데이터 */
-      List<PostVO> list = postService.postGetByMailList(postcri,email);
+      List<PostVO> list = postService.postGetByMailList(postcri,email);    
       if (!list.isEmpty()) {
          model.addAttribute("list", list);
       } else {
