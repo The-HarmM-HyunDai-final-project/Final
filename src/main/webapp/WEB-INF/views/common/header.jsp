@@ -60,17 +60,19 @@
 <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
 
 <!-- 부트스트랩  -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/bootstrap.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/bootstrap/bootstrap.min.css">
 <script
 	src="${pageContext.request.contextPath}/resources/bootstrap/bootstrap.min.js"></script>
- 
+
 <!-- 제이쿼리 cdn -->
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <!-- sockJS -->
-<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>	
+<script
+	src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 
 <script data-n-head="ssr" type="application/ld+json">
         {
@@ -138,7 +140,7 @@
 	href="${pageContext.request.contextPath}/resources/css/48656c7.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/ae12c7f.css">
-	
+
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/pop.css">
 <style type="text/css">
@@ -149,7 +151,8 @@
 	
 </script>
 <script
-	src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-SRFKTMTR0R" async=""></script>
+	src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-SRFKTMTR0R"
+	async=""></script>
 
 </head>
 
@@ -164,7 +167,7 @@
 					<div class="header_top" style="" data-v-147586e1="">
 						<div class="top_inner" data-v-147586e1="">
 							<ul class="top_list" data-v-147586e1="">
-								
+
 								<li class="top_item" data-v-147586e1=""><a href="/notice"
 									class="top_link" data-v-147586e1=""> 고객센터 </a></li>
 								<li class="top_item" data-v-147586e1=""><a href="/my/wish"
@@ -205,8 +208,8 @@
 					</div>
 					<div class="header_main" data-v-147586e1="">
 						<div class="main_inner" data-v-147586e1="">
-						<!-- 알림창 -->
-							
+							<!-- 알림창 -->
+
 							<!-- 알림창 -->
 							<h1 data-v-147586e1="">
 								<a href="/" aria-label="홈" class="logo" data-v-147586e1="">
@@ -218,8 +221,8 @@
 								<nav class="gnb" data-v-147586e1="">
 									<ul class="gnb_list" data-v-147586e1="">
 										<li class="gnb_item" data-v-147586e1=""><a
-											href="${pageContext.request.contextPath}/social/trendings" class="gnb_link" data-v-147586e1="">
-												STYLE </a></li>
+											href="${pageContext.request.contextPath}/social/trendings"
+											class="gnb_link" data-v-147586e1=""> STYLE </a></li>
 										<li class="gnb_item" data-v-147586e1=""><a
 											href="${pageContext.request.contextPath}/product/productlist?page=1"
 											class="gnb_link" data-v-147586e1=""> SHOP </a></li>
@@ -228,15 +231,13 @@
 												ABOUT </a></li>
 									</ul>
 								</nav>
-								<div class="search_btn_box" data-v-147586e1="" id = "showAlarm">
+								<div class="search_btn_box" data-v-147586e1="" id="showAlarm">
 									<notification-indicator> <a
-										
 										class="Header-link notification-indicator position-relative tooltipped tooltipped-sw"
-										 id="AppHeader-notifications-button">
-
-										<span data-target="notification-indicator.badge"
-										class="mail-status unread" style="color: gray" id = "alarmCnt"> 0 </span> <svg
-											aria-hidden="true" height="16" viewBox="0 0 16 16"
+										id="AppHeader-notifications-button"> <span
+										data-target="notification-indicator.badge"
+										class="mail-status unread" style="color: gray" id="alarmCnt">
+											0 </span> <svg aria-hidden="true" height="16" viewBox="0 0 16 16"
 											version="1.1" width="16" data-view-component="true"
 											class="octicon octicon-bell">
     <path
@@ -303,7 +304,8 @@
 									<div class="navigation" data-v-0eda3817="">
 										<div class="navigation_inner" data-v-0eda3817="">
 											<ul class="nav_list" data-v-0eda3817="">
-												<li class="nav_item" data-v-0eda3817=""><a href="${pageContext.request.contextPath}/social/trendings"
+												<li class="nav_item" data-v-0eda3817=""><a
+													href="${pageContext.request.contextPath}/social/trendings"
 													class="nav_link" data-v-0eda3817=""> STYLE </a></li>
 												<li class="nav_item" data-v-0eda3817=""><a
 													href="${pageContext.request.contextPath}/product/productlist?page=1"
@@ -350,42 +352,54 @@
 					</div>
 					<!-- 알람 모달 -->
 					<div aria-live="polite" aria-atomic="true"
-						class="position-relative" >
+						class="position-relative">
 						<!-- Position it: -->
 						<!-- - `.toast-container` for spacing between toasts -->
 						<!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner -->
 						<!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
-						<div class="toast-container position-absolute top-0 end-0 p-3" id = "toastContainer">
-
-						</div>
+						<div class="toast-container position-absolute top-0 end-0 p-3"
+							id="toastContainer"></div>
 					</div>
 					<!-- 알람 모달  -->
 					<sec:authorize access="hasRole('ROLE_MEMBER')">
 						<sec:authentication property="principal.username" var="MID" />
 					</sec:authorize>
 					<input type="hidden" name="mid" id="mid" value="${MID}">
-					
+
 					<!-- 챗봇 모달 -->
 					<!--  채팅 -->
-<%-- 					<h3>채팅 입력</h3>
-					<form id="chatForm" enctype="multipart/form-data">
-						내용 : <input type="text" id="inputText" name="inputText"> <input
-							type="submit" value="결과 확인">
-					</form>
-					<br> <br>
-
-					<!-- 결과 출력 (텍스트) -->
-					<h3>응답 결과</h3>
-					<div id="resultDiv"></div>
-					<br> <br> --%>
+					<div data-v-02612e7b=""
+						class="fixed-test-box light-blue text-center header-thumb">
+						<i data-v-02612e7b="" class="icon-ms"></i> <span
+							data-v-02612e7b="" class="test-box-title">테스트</span>
+					</div>
 					<!-- 챗봇 모달 -->
-					
-					<style>
-						
-					</style>
-				</div>
 
-<script>
+
+				</div>
+<style>
+.fixed-test-box[data-v-02612e7b] {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 52px;
+    height: 52px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #1390e9;
+    background: -webkit-gradient(linear,left top,left bottom,from(#149eea),to(#138de9));
+    background: linear-gradient(180deg,#149eea,#138de9);
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 1010;
+}
+</style>
+				<script>
 	$(document).ready(function () {
 		
 		var mid = $("#mid").val();
@@ -486,7 +500,7 @@
 		        var formData = new FormData($('#chatForm')[0]);
 		        $.ajax({
 		            type : "post",
-		            enctype : "multipart/form-data",
+		            //enctype : "multipart/form-data",
 		            url : "chatbotSend",
 		            data : formData,
 		            processData : false, // 필수

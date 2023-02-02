@@ -60,6 +60,9 @@
 	href="${pageContext.request.contextPath}/resources/css/89cc0f2.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/4de604f.css">
+<link rel="stylesheet"
+	href="/resources/css/61927c8.css">
+	
 <style type="text/css"> /*# sourceMappingURL=contenteditable.vue.map */
 </style>
 <script type="text/javascript" async=""
@@ -89,23 +92,17 @@
 	class="container social lg">
 	<div data-v-067026cb="" class="content">
 		<div data-v-067026cb="" class="keyword_bind">
-			<a data-v-1b26777f="" data-v-067026cb="" href="#"
-				class="trend_keyword"> # 스타일컬렉터 </a><a data-v-1b26777f=""
-				data-v-067026cb="" href="#" class="trend_keyword"> # 스투시 </a><a
-				data-v-1b26777f="" data-v-067026cb="" href="#" class="trend_keyword">
-				# KREAMSTYLE </a><a data-v-1b26777f="" data-v-067026cb="" href="#"
-				class="trend_keyword"> # 에센셜 </a><a data-v-1b26777f=""
-				data-v-067026cb="" href="#" class="trend_keyword"> # 스타일픽 </a><a
-				data-v-1b26777f="" data-v-067026cb="" href="#" class="trend_keyword">
-				# outfit </a><a data-v-1b26777f="" data-v-067026cb="" href="#"
-				class="trend_keyword"> # 살로몬 </a><a data-v-1b26777f=""
-				data-v-067026cb="" href="#" class="trend_keyword"> # 결산템챌린지 </a>
+			<div class="brand_info" data-v-a1e4e5b6="">
+				<p class="brand_name" data-v-a1e4e5b6="">STYLE</p>
+				
+			</div>
 		</div>
 
 
 
 
-		<div data-v-013cc4d0="" data-v-47cbe816="" class="social_feeds"
+
+		<div data-v-013cc4d0="" data-v-47cbe816="" class="social_feeds2"
 			style="height: 1000px;">
 			<div data-v-013cc4d0="" transition-duration="0" item-selector=".item"
 				gutter=".gutter_item" horizontal-order="true" class="masonry_posts"
@@ -281,6 +278,21 @@
 		</div>
 	</div>
 </div>
+<style>
+
+.brand_name[data-v-a1e4e5b6] {
+    font-size: 42px;
+    letter-spacing: -.16px;
+    font-weight: 600;
+    line-height: 38px;
+    margin-top: 40px;
+}
+
+
+.social_feeds2[data-v-013cc4d0] {
+    padding: 100px 40px 0;
+}
+</style>
 <link
 	href="${pageContext.request.contextPath}/resources/css/4de604f.css"
 	rel="stylesheet" type="text/css">
