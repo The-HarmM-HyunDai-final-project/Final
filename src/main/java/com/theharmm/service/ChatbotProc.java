@@ -1,47 +1,42 @@
 package com.theharmm.service;
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Base64;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.springframework.stereotype.Service;
+import org.junit.Test;
 
-import com.google.api.client.util.Maps;
-import com.google.api.gax.rpc.ApiException;
-import com.google.cloud.dialogflow.v2.DetectIntentResponse;
-import com.google.cloud.dialogflow.v2.QueryInput;
-import com.google.cloud.dialogflow.v2.QueryResult;
-import com.google.cloud.dialogflow.v2.SessionName;
-import com.google.cloud.dialogflow.v2.SessionsClient;
-import com.google.cloud.dialogflow.v2.TextInput;
 
-@Service
-public class ChatbotService {
+
+
+
+public class ChatbotProc {
+
+	@Test
+	public void maint() {
+		testmain("관리자","https://kj8nqdj0ls.apigw.ntruss.com/custom/v1/9177/f572daa24e7730df9489facf258b25ee36ea4fdd05eb095f302fed630cd1f175","eHNPeE1pZVBlRktDUFVIaE9IT1RWS2plSWJzZ2t5dFE=");
+	}
 	
-    public String main(String voiceMessage) {
-        String secretKey = "eHNPeE1pZVBlRktDUFVIaE9IT1RWS2plSWJzZ2t5dFE=";
-        String apiURL = "https://kj8nqdj0ls.apigw.ntruss.com/custom/v1/9177/f572daa24e7730df9489facf258b25ee36ea4fdd05eb095f302fed630cd1f175";
+  public static String testmain(String voiceMessage, String apiURL, String secretKey) {
 
-        String chatbotMessage = ""; // 응답 메세지
+
+        String chatbotMessage = "";
+
         try {
             //String apiURL = "https://ex9av8bv0e.apigw.ntruss.com/custom_chatbot/prod/";
 
             URL url = new URL(apiURL);
 
             String message = getReqMessage(voiceMessage);
-            System.out.println("## 메세지 출력" + message);
+            System.out.println("##" + message);
 
             String encodeBase64String = makeSignature(message, secretKey);
 
@@ -60,8 +55,9 @@ public class ChatbotService {
 
             BufferedReader br;
 
+            System.out.println("responseCode " + responseCode);
             if(responseCode==200) { // Normal call
-                System.out.println(con.getResponseMessage());
+                System.out.println("1 : " + con.getResponseMessage());
 
                 BufferedReader in = new BufferedReader(
                         new InputStreamReader(
@@ -72,15 +68,15 @@ public class ChatbotService {
                 }
                 //chatbotMessage = decodedString;
                 in.close();
-                // 응답 메세지 출력
-                System.out.println(chatbotMessage);
-                //chatbotMessage = jsonToString(chatbotMessage);
+
             } else {  // Error occurred
                 chatbotMessage = con.getResponseMessage();
             }
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        System.out.println("chatbotMessage "+chatbotMessage);
         return chatbotMessage;
     }
 
@@ -96,7 +92,7 @@ public class ChatbotService {
             mac.init(signingKey);
 
             byte[] rawHmac = mac.doFinal(message.getBytes("UTF-8"));
-            //encodeBase64String = Base64.encodeToString(rawHmac, Base64.NO_WRAP);
+           // encodeBase64String = Base64.encodeToString(rawHmac, Base64.NO_WRAP);
             encodeBase64String = Base64.getEncoder().encodeToString(rawHmac);
 
             return encodeBase64String;
@@ -122,9 +118,7 @@ public class ChatbotService {
             System.out.println("##"+timestamp);
 
             obj.put("version", "v2");
-
-            //String uuid = UUID.randomUUID().toString();
-            obj.put("userId", "U47b00b58c90f8e47428af8b7bddcda3d");
+            obj.put("userId", "U47b00b58c90f8e47428af8b7bddc1231heo2");
 //=> userId is a unique code for each chat user, not a fixed value, recommend use UUID. use different id for each user could help you to split chat history for users.
 
             obj.put("timestamp", timestamp);
@@ -136,7 +130,6 @@ public class ChatbotService {
             JSONObject data_obj = new JSONObject();
             data_obj.put("description", voiceMessage);
 
-            
             bubbles_obj.put("type", "text");
             bubbles_obj.put("data", data_obj);
 
@@ -151,31 +144,9 @@ public class ChatbotService {
         } catch (Exception e){
             System.out.println("## Exception : " + e);
         }
-        return requestBody;
-    }
-    
-    public String jsonToString(String jsonResultStr) {
-        String resultText = "";
-        // API 호출 결과 받은 JSON 형태 문자열에서 텍스트 추출
-        // JSONParser  사용하지 않음
-        JSONObject jsonObj = new JSONObject(jsonResultStr);
-        JSONArray chatArray = (JSONArray) jsonObj.get("bubbles");
-        if(chatArray != null) {
-            JSONObject tempObj = (JSONObject) chatArray.get(0);
-            JSONObject dataObj = (JSONObject) tempObj.get("data");
-            if(dataObj != null) {
-//                tempObj = (JSONObject) dataObj.get("description");
-                resultText += (String) dataObj.get("description");
-            }
-        } else {
-            System.out.println("없음");
-        }
-        return resultText;
-    }
-    
-    
-    //---------------------------------------------------------------------
-    
 
+        return requestBody;
+
+    }
 }
 
