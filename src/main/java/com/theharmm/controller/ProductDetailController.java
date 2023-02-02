@@ -1,7 +1,9 @@
 package com.theharmm.controller;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -101,4 +104,17 @@ public class ProductDetailController {
 
 		return "product/productdetail";
 	}
+	@PostMapping(value = "keywordFilter")
+	public String selectKeywordPostList(@RequestParam String keyword,@RequestParam int pid, @RequestParam String sentiment_result,Model model) throws Exception {
+		log.info("selectKeywordPostList 실행");
+		log.info(keyword+" "+pid+" "+sentiment_result);
+		Map<String,Object> postInfo = new HashMap<String,Object>();
+		postInfo.put("keyword",keyword);
+		postInfo.put("pid",pid);
+		postInfo.put("sentiment_result",sentiment_result);
+		List<PostVO> keywordPostList = postService.selectKeywordPostList(postInfo);
+		model.addAttribute("keywordPostList",keywordPostList);
+		return "product/productfilter";
+	}
+	
 }
