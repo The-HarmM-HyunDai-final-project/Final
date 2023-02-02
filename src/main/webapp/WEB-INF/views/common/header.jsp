@@ -226,9 +226,9 @@
 										<li class="gnb_item" data-v-147586e1=""><a
 											href="${pageContext.request.contextPath}/product/productlist?page=1"
 											class="gnb_link" data-v-147586e1=""> SHOP </a></li>
-										<li class="gnb_item" data-v-147586e1=""><a href="/about"
-											target="_blank" class="gnb_link" data-v-147586e1="">
-												ABOUT </a></li>
+										<li class="gnb_item" data-v-147586e1=""><a href="/showlive/showlivelist"
+											target="_blank" class="gnb_link" data-v-147586e1="" style="color:red">
+												LIVE </a></li>
 									</ul>
 								</nav>
 								<div class="search_btn_box" data-v-147586e1="" id="showAlarm">
@@ -353,12 +353,10 @@
 					<!-- 알람 모달 -->
 					<div aria-live="polite" aria-atomic="true"
 						class="position-relative">
-						<!-- Position it: -->
-						<!-- - `.toast-container` for spacing between toasts -->
-						<!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner -->
-						<!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
 						<div class="toast-container position-absolute top-0 end-0 p-3"
-							id="toastContainer"></div>
+							id="toastContainer">
+							
+							</div>
 					</div>
 					<!-- 알람 모달  -->
 					<sec:authorize access="hasRole('ROLE_MEMBER')">
@@ -369,9 +367,10 @@
 					<!-- 챗봇 모달 -->
 					<!--  채팅 -->
 					<div data-v-02612e7b=""
-						class="fixed-test-box light-blue text-center header-thumb">
-						<i data-v-02612e7b="" class="icon-ms"></i> <span
-							data-v-02612e7b="" class="test-box-title">테스트</span>
+						class="fixed-test-box text-center header-thumb">
+						<button data-v-575aff82="" data-v-625671d1="" data-v-cf374a10=""
+							type="button"  style="font-weight: bold; font-size: 20px;background-color: #efe3ed;" 
+							class="btn solid2 medium btn_follow medium">1:1 채팅</button>
 					</div>
 					<!-- 챗봇 모달 -->
 
@@ -386,18 +385,28 @@
     height: 52px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    border-radius: 50%;
     overflow: hidden;
     background: #1390e9;
-    background: -webkit-gradient(linear,left top,left bottom,from(#149eea),to(#138de9));
-    background: linear-gradient(180deg,#149eea,#138de9);
+   
+    background: #efe3ed;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     z-index: 1010;
+        width: 180;
+    height: 70px;
+    border-radius: 30px 30px 30px 30px;
 }
+
+.solid2[data-v-575aff82] {
+    font-weight: 700;
+    color: #48665a;
+    background-color: #efe3ed;
+}
+
+
 </style>
 				<script>
 	$(document).ready(function () {
@@ -453,6 +462,7 @@
 				console.log("알람 리스트 반환" + data);
 				alarm_array = data.alarms;
 				let html = "";
+
 				for (let i = 0; i < alarm_array.length; i++) { 
 					let alarm = alarm_array.at(i);
 					let tmp_html = "";
@@ -469,18 +479,26 @@
 					}
 					
 					tmp_html =
-						`	<div class="toast" role="alert" aria-live="assertive"  style="display : block; font-size: 1.5rem; background-color: rosybrown;" aria-atomic="true" data-alarmid = "`+alarm.alarmid +`" id = "alarmid`+alarm.alarmid+`">
-								<div class="toast-header">
-									<strong
-										class="me-auto">ALARM</strong> 
-									<button type="button" class="btn-close" data-bs-dismiss="toast" 
-										aria-label="Close" data-alarmid = "`+alarm.alarmid+`"></button>
-								</div>
-								<div class="toast-body">`+ msg + `</div>
-							</div> `	   		
+						 `
+						<div class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" style="display : block; font-size: 1.3rem; background-color: rosybrown; box-shadow: 5px 5px 10px grey;"
+						    aria-atomic="true" data-alarmid="`+alarm.alarmid +`"  id = "alarmid`+alarm.alarmid+`">
+						    <div class="d-flex">
+						        <div class="toast-body">`+ msg + `</div>
+						        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+						            aria-label="Close" data-alarmid="`+alarm.alarmid+`"></button>
+						    </div>
+						</div>
+         			`   		
 	   
 					html += tmp_html;
 				}
+ 				if (alarm_array.length > 0) {
+					console.log("알람 변경");
+					//consolo.log("$("#alarmCnt").style.fontSize" + document.getElementById('alarmCnt').style);
+					//document.getElementById('alarmCnt').style
+					//$("#alarmCnt").css.width = '30';
+					//$("#alarmCnt").css.height = '30';
+				} 
 				$("#toastContainer").html(html); 
 			});	
 		}
@@ -488,6 +506,7 @@
 		
 		 $("#showAlarm").on("click", function (e) {
 			 showAlarmList ();
+			 $("#toastContainer").slideToggle(200);
 		 });
 		
 		    // submit 했을 때 처리

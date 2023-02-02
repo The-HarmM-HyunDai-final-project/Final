@@ -241,14 +241,14 @@
 								<nav class="gnb" data-v-147586e1="">
 									<ul class="gnb_list" data-v-147586e1="">
 										<li class="gnb_item" data-v-147586e1=""><a
-											href="/social/trending" class="gnb_link" data-v-147586e1="">
-												STYLE </a></li>
+											href="${pageContext.request.contextPath}/social/trendings"
+											class="gnb_link" data-v-147586e1=""> STYLE </a></li>
 										<li class="gnb_item" data-v-147586e1=""><a
 											href="${pageContext.request.contextPath}/product/productlist?page=1"
 											class="gnb_link" data-v-147586e1=""> SHOP </a></li>
-										<li class="gnb_item" data-v-147586e1=""><a href="/about"
-											target="_blank" class="gnb_link" data-v-147586e1="">
-												ABOUT </a></li>
+										<li class="gnb_item" data-v-147586e1=""><a href="/showlive/showlivelist"
+											target="_blank" class="gnb_link" data-v-147586e1="" style="color:red">
+												LIVE </a></li>
 									</ul>
 								</nav>
 								<div class="search_btn_box" data-v-147586e1="" id="showAlarm">

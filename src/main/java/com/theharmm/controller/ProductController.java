@@ -100,7 +100,7 @@ public class ProductController {
 		log.info(keyword);
 		Criteria cri = new Criteria();
 		
-		cri.setAmount(5);
+		cri.setAmount(8);
 		cri.setPageNum(page);
 		cri.setType("K");
 		cri.setKeyword(keyword);
