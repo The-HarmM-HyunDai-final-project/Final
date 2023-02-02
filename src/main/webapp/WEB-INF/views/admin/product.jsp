@@ -35,7 +35,7 @@
 			<div class="input-group">
 				<input class="form-control" type="text" placeholder="Search for..."
 					aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-				<button class="btn btn-primary" id="btnNavbarSearch" type="button">
+				<button class="btn btn-secondary" id="btnNavbarSearch" type="button">
 					<i class="fas fa-search"></i>
 				</button>
 			</div>
@@ -51,10 +51,6 @@
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 회원관리
-						</a> <a class="nav-link" href="/admin/buyandsell">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-book-open"></i>
-							</div> 구매 및 판매 관리
 						</a> <a class="nav-link" href="/admin/showliveCreate">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-book-open"></i>
@@ -62,7 +58,7 @@
 						</a> <a class="nav-link" href="/admin/charts">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> Charts
+							</div> 구매 및 판매 관리
 						</a> <a class="nav-link" href="/admin/product">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>

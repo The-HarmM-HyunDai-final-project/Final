@@ -11,6 +11,4 @@ public interface KeywordService {
 	
 	public List<KeywordDTO> selectNegKeywordBest(int pid);
 	
-
-	Set<String> doWordNouns(String text) throws Exception;
 }

@@ -17,6 +17,8 @@ public interface MemberService {
 	//유저 정보 가져오기
 	public MemberVO read(MemberVO member);
 	
-	public void updateLogin(MemberVO member);
+	public void updateLogin(String member_email);
+	
+	public MemberVO getBySns(MemberVO member);
 	
 }

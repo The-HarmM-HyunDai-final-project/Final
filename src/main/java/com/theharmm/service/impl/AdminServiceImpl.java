@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.theharmm.domain.BuySaleToday;
 import com.theharmm.domain.CountToday;
+import com.theharmm.domain.MemberVO;
 import com.theharmm.domain.ProductDTO;
 import com.theharmm.domain.RegisterToday;
 import com.theharmm.domain.ShowLiveChannelDTO;
+import com.theharmm.domain.TopProduct;
 import com.theharmm.mapper.AdminMapper;
 import com.theharmm.mapper.ShowLiveMapper;
 import com.theharmm.service.AdminService;
@@ -55,6 +57,21 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<ProductDTO> getProductList() {
 		return mapper.getProductList();
+	}
+	
+	@Override
+	public List<MemberVO> getMemberList() {
+		return mapper.getMemberList();
+	}
+	
+	@Override
+	public List<TopProduct> getTop5BuyList() {
+		return mapper.getTop5BuyList();
+	}
+	
+	@Override
+	public List<TopProduct> getTop5SaleList() {
+		return mapper.getTop5SaleList();
 	}
 
 	@Override

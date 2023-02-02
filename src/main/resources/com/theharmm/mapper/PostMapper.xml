@@ -44,7 +44,8 @@
      
      <!-- 부정리뷰 리스트 조회 -->
      <select id="selectNegativePostList" resultType="com.theharmm.domain.PostVO">
-        SELECT T1.*, T2.FILE_NAME, T2.UPLOAD_PATH, T2.UUID
+         SELECT T1.POST_ID, T1.MEMBER_EMAIL, T1.REGISTER_DATE, T1.CONTENTS, T1.PID0, T1.PID1, T1.PID2, T1.SENTIMENT_RESULT, (100-T1.SENTIMENT_PERCENT) AS SENTIMENT_PERCENT,
+               T2.FILE_NAME, T2.UPLOAD_PATH, T2.UUID
           FROM POST T1, SOCIAL T2
          WHERE T1.POST_ID = T2.POST_ID (+)
            AND ( T1.PID0 = #{pid} OR T1.PID1 = #{pid} OR T1.PID2 = #{pid} )
