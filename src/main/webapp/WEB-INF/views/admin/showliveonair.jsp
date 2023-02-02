@@ -68,6 +68,9 @@ Milligram CSS
       	top:10px;
       	right:10px; 
       }
+      .video_area .user_count p{
+      	color:white;
+      }
       .preview_container{
       	width:100%;
       	height:100%;
@@ -83,7 +86,7 @@ Milligram CSS
         right: 8px; */
       }
       .info_area {
-        background: rgb(224, 224, 224);
+        background: #efe3ed;
         width: 100%;
         height: 20%;
         margin-top:15px;
@@ -113,11 +116,11 @@ Milligram CSS
         -webkit-transform: scale(1.1, 1.1);
       }
       .info_area .special_info #showlive_start{
-      	background: #00ae68;
+      	background: #48665a;
       	flex:1;
       }
       .info_area .special_info #showlive_end{
-      	background: #ffaa40;
+      	background: #48665a;
       	flex:1;
       }
       .info_area .room_title{
@@ -134,7 +137,7 @@ Milligram CSS
       
       }
       .auction_area {
-        background: rgb(224, 224, 224);
+        background: #efe3ed;
         width: 100%;
         height: 30%;
         padding:15px;
@@ -162,7 +165,7 @@ Milligram CSS
       }
       .auction_area_suggestion #auction_bid_success_btn{
       	flex:1;
-      	background: silver;
+      	background: #48665a;
         height: 50px;
         border: 0;
         border-radius: 15px;
@@ -182,7 +185,7 @@ Milligram CSS
       	width:30%;
       } */
       .chat_area {
-        background: rgb(224, 224, 224);
+        background: #efe3ed;
         width: 100%;
         height: 60%;
         margin-top:15px;
@@ -205,7 +208,7 @@ Milligram CSS
       	display: flex;
       }
       .tabs .tabs_view .tab_item{
-      	background : rgb(224, 224, 224);
+      	background : #efe3ed;
       	border-bottom:1px solid black;
       	text-align:center;
       	flex:1;
@@ -215,7 +218,7 @@ Milligram CSS
 		border-radius: 15px 15px 0 0;
       }
       .tabs .tabs_view .tab_item.selected{
-      	background : silver;
+      	background : #48665a;
       }
       .chat_view {
         /* background: #ffffff; */
@@ -239,7 +242,7 @@ Milligram CSS
       }
       .my_btn{
       border-radius: 15px;
-      	background:silver;
+      	background:#48665a;
       	width:30%;
       	margin : 0 auto;
       }
