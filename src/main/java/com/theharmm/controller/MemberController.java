@@ -135,6 +135,7 @@ public class MemberController {
 			//session.setAttribute(SessionNames.LOGIN, user);
 		}
 		
+		
 		//시큐리티 로그인 처리
 		UserDetails naverVO = new CustomUser(memberService.read(snsUser));
 		//UserDetails naverVO = (UserDetails) cuds.loadUserByUsername();
