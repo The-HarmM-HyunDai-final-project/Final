@@ -159,12 +159,30 @@
                    datasets: [{ 
                        data: countList, // 값
                        label: "방문자 수",
-                       borderColor: "#3e95cd",
+                       backgroundColor: [
+                   	      'rgba(255, 99, 132, 0.2)',
+                   	      'rgba(255, 159, 64, 0.2)',
+                   	      'rgba(255, 205, 86, 0.2)',
+                   	      'rgba(75, 192, 192, 0.2)',
+                   	      'rgba(54, 162, 235, 0.2)',
+                   	      'rgba(153, 102, 255, 0.2)',
+                   	      'rgba(201, 203, 207, 0.2)'
+                   	    ],
+                   	    borderColor: [
+                   	      'rgb(255, 99, 132)',
+                   	      'rgb(255, 159, 64)',
+                   	      'rgb(255, 205, 86)',
+                   	      'rgb(75, 192, 192)',
+                   	      'rgb(54, 162, 235)',
+                   	      'rgb(153, 102, 255)',
+                   	      'rgb(201, 203, 207)'
+                   	    ],
                        fill: true
                      }
                    ]
                  },
                  options: {
+                	 legend: { display: false }, 
                    title: {
                      display: true,
                      text: '방문자 현황'
@@ -209,12 +227,30 @@
     		    	    datasets: [{ 
     		    	        data: registerList, // 값
     		    	        label: "가입자 수",
-    		    	        borderColor: "#3e95cd",
+    		    	        backgroundColor: [
+    	                   	      'rgba(255, 99, 132, 0.2)',
+    	                   	      'rgba(255, 159, 64, 0.2)',
+    	                   	      'rgba(255, 205, 86, 0.2)',
+    	                   	      'rgba(75, 192, 192, 0.2)',
+    	                   	      'rgba(54, 162, 235, 0.2)',
+    	                   	      'rgba(153, 102, 255, 0.2)',
+    	                   	      'rgba(201, 203, 207, 0.2)'
+    	                   	    ],
+    	                   	    borderColor: [
+    	                   	      'rgb(255, 99, 132)',
+    	                   	      'rgb(255, 159, 64)',
+    	                   	      'rgb(255, 205, 86)',
+    	                   	      'rgb(75, 192, 192)',
+    	                   	      'rgb(54, 162, 235)',
+    	                   	      'rgb(153, 102, 255)',
+    	                   	      'rgb(201, 203, 207)'
+    	                   	    ],
     		    	        fill: true
     		    	      }
     		    	    ]
     		    	  },
     		    	  options: {
+    		    		  legend: { display: false },
     		    	    title: {
     		    	      display: true,
     		    	      text: '가입자 현황'
@@ -259,12 +295,29 @@
     		    	    datasets: [{ 
     		    	        data: buyList, // 값
     		    	        label: "거래금액",
-    		    	        borderColor: "#3e95cd",
-    		    	        fill: true
+    		    	        backgroundColor: [
+    	                   	      'rgba(255, 99, 132, 0.2)',
+    	                   	      'rgba(255, 159, 64, 0.2)',
+    	                   	      'rgba(255, 205, 86, 0.2)',
+    	                   	      'rgba(75, 192, 192, 0.2)',
+    	                   	      'rgba(54, 162, 235, 0.2)',
+    	                   	      'rgba(153, 102, 255, 0.2)',
+    	                   	      'rgba(201, 203, 207, 0.2)'
+    	                   	    ],
+    	                   	    borderColor: [
+    	                   	      'rgb(255, 99, 132)',
+    	                   	      'rgb(255, 159, 64)',
+    	                   	      'rgb(255, 205, 86)',
+    	                   	      'rgb(75, 192, 192)',
+    	                   	      'rgb(54, 162, 235)',
+    	                   	      'rgb(153, 102, 255)',
+    	                   	      'rgb(201, 203, 207)'
+    	                   	    ],
     		    	      }
     		    	    ]
     		    	  },
     		    	  options: {
+    		    		  legend: { display: false },
     		    	    title: {
     		    	      display: true,
     		    	      text: '거래 현황'
@@ -306,12 +359,30 @@
     		    	    datasets: [{ 
     		    	        data: saleList, // 값
     		    	        label: "판매금액",
-    		    	        borderColor: "#3e95cd",
+    		    	        backgroundColor: [
+    	                   	      'rgba(255, 99, 132, 0.2)',
+    	                   	      'rgba(255, 159, 64, 0.2)',
+    	                   	      'rgba(255, 205, 86, 0.2)',
+    	                   	      'rgba(75, 192, 192, 0.2)',
+    	                   	      'rgba(54, 162, 235, 0.2)',
+    	                   	      'rgba(153, 102, 255, 0.2)',
+    	                   	      'rgba(201, 203, 207, 0.2)'
+    	                   	    ],
+    	                   	    borderColor: [
+    	                   	      'rgb(255, 99, 132)',
+    	                   	      'rgb(255, 159, 64)',
+    	                   	      'rgb(255, 205, 86)',
+    	                   	      'rgb(75, 192, 192)',
+    	                   	      'rgb(54, 162, 235)',
+    	                   	      'rgb(153, 102, 255)',
+    	                   	      'rgb(201, 203, 207)'
+    	                   	    ],
     		    	        fill: true
     		    	      }
     		    	    ]
     		    	  },
     		    	  options: {
+    		    		  legend: { display: false },
     		    	    title: {
     		    	      display: true,
     		    	      text: '판매 현황'

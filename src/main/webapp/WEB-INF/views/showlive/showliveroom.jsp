@@ -38,6 +38,17 @@
         /* width: 100%; */
         height: 65%;
       }
+      .video_area #player-ready{
+		position: absolute;
+		top:0;
+		left:0;
+      	z-index:5;
+      	display : flex;
+		justify-content : center;
+		align-items : center;
+		background : white;
+		font-size :50px;
+      }
       .video_area .user_count{
       	position: absolute;
       	top:10px;
@@ -126,7 +137,7 @@
       	display: flex;
       }
       .tabs .tabs_view .tab_item{
-      	background : rgb(224, 224, 224);
+      	background : #efe3ed;
       	border-bottom:1px solid black;
       	text-align:center;
       	flex:1;
@@ -136,7 +147,7 @@
 		border-radius: 15px 15px 0 0;
       }
       .tabs .tabs_view .tab_item.selected{
-      	background : silver;
+      	background : #48665a;
       }
       .chat_view {
         /* background: #ffffff; */
@@ -160,7 +171,7 @@
       }
       .my_btn{
       border-radius: 15px;
-      	background:silver;
+      	background:#48665a;
       	width:30%;
       	margin : 0 auto;
       }
@@ -243,10 +254,10 @@
         transition: all 0.2s;
       }
       .modal_body .modal_btns button.yes_btn {
-        background: #00ae68;
+        background: #48665a;
       }
       .modal_body .modal_btns button.close_btn {
-        background: #ffaa40;
+        background: #efe3ed;
       }
       .modal_body .modal_btns button.leave_btn {
         background: red;
@@ -287,6 +298,9 @@
             </div> -->
             <div class="user_count" >
               <p>   사용자 : <b id="connected_user">0</b> 명</p>
+            </div>
+            <div id="player-ready" style="width:100%; height:100%;">
+            	방송 준비중입니다.
             </div>
           </div>
           <div class="info_area">
@@ -385,7 +399,11 @@
         <button class="canvasBtn" id="startButton">Drop Confetti</button>
     </div>
     <canvas id="canvas"></canvas>
-<script src="${pageContext.request.contextPath}/resources/js/test.js" defer=""></script>
+    
+    <input type="text" id="playbackUrl" value="${channelDTO.aws_channel_url}"/>
+    
+<%-- <script src="${pageContext.request.contextPath}/resources/js/test.js" defer=""></script> --%>
+<script src="${pageContext.request.contextPath}/resources/js/watchlive.js" defer=""></script>
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script type="text/javascript">
 	var auctionPrevPrice = 100000;
@@ -686,5 +704,4 @@
     	location.href="/";
     });
 	//모달모달=====================
-
 </script>

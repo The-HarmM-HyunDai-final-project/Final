@@ -203,69 +203,65 @@
 										<a data-v-0c307fea="" href="#" class="tab_link"><dl
 												data-v-0c307fea="" class="tab_box">
 												<dt data-v-0c307fea="" class="title">전체</dt>
-												<dd data-v-0c307fea="" class="count">0</dd>
+												<dd data-v-0c307fea="" class="count">${auction_length}</dd>
 											</dl></a>
 									</div>
 									<div data-v-0c307fea="" class="tab_item tab_on">
 										<a data-v-0c307fea="" href="#" class="tab_link"><dl
 												data-v-0c307fea="" class="tab_box">
 												<dt data-v-0c307fea="" class="title">낙찰 요청 중</dt>
-												<dd data-v-0c307fea="" class="count">0</dd>
+												<dd data-v-0c307fea="" class="count">${payNoCnt}</dd>
 											</dl></a>
 									</div>
 									<div data-v-0c307fea="" class="tab_item">
 										<a data-v-0c307fea="" href="#" class="tab_link"><dl
 												data-v-0c307fea="" class="tab_box">
 												<dt data-v-0c307fea="" class="title">낙찰 완료</dt>
-												<dd data-v-0c307fea="" class="count">0</dd>
+												<dd data-v-0c307fea="" class="count">${payYesCnt}</dd>
 											</dl></a>
 									</div>
 								</div>
 								<div data-v-5419f155="">
-									<div data-v-0d2f7c95="" data-v-5419f155=""
-										class="purchase_list all ask">
-										<!---->
-										<div data-v-0d2f7c95="">
-											<div data-v-96f66296="" data-v-0d2f7c95="">
-												<div data-v-96f66296="" class="purchase_list_display_item"
-													style="background-color: rgba(255, 136, 36, 0.05);">
-													<div data-v-96f66296="" class="purchase_list_product">
-														<div data-v-96f66296="" class="list_item_img_wrap">
-															<img data-v-96f66296="" alt="product_image" referrerpolicy="no-referrer"
-																src="https://kream-phinf.pstatic.net/MjAyMjA4MDFfMTIx/MDAxNjU5MzQwODMzMDc3.PzhWN_CoGllmWG7XgAaifLpEXzt6mI_koqrP43iaEUEg.ESuJOcRJB9Ox4pObNyTz2hv-isp0iuzHNGy-LAZy7esg.PNG/a_ad597a3bae0f4eaaada28e57b1ab6592.png?type=m"
-																class="list_item_img"
-																style="background-color: rgb(235, 240, 245);">
-															<!---->
+									<c:forEach items="${maDTO}" var="item" varStatus="status">
+										<div data-v-0d2f7c95="" data-v-5419f155=""
+											class="purchase_list all ask">
+											<!---->
+											<div data-v-0d2f7c95="">
+												<div data-v-96f66296="" data-v-0d2f7c95="">
+													<div data-v-96f66296="" class="purchase_list_display_item"
+														style="background-color: rgba(255, 136, 36, 0.05);">
+														<div data-v-96f66296="" class="purchase_list_product">
+															<div data-v-96f66296="" class="list_item_img_wrap">
+																<img data-v-96f66296="" alt="product_image"
+																	src="../showlive/getShowLiveProductImg?id=${item.prouct_img1}"
+																	class="list_item_img"
+																	style="background-color: rgb(235, 240, 245);">
+																<!---->
+															</div>
+															<div data-v-96f66296="" class="list_item_title_wrap">
+																<!---->
+																<p data-v-96f66296="" class="list_item_title">${item.product_name }</p>
+																<p data-v-96f66296="" class="list_item_description">${item.showlive_no} 번방</p>
+																<p data-v-96f66296="" class="list_item_description">${item.showlive_name}</p>
+															</div>
 														</div>
-														<div data-v-96f66296="" class="list_item_title_wrap">
+														<div data-v-96f66296="" class="list_item_status">
 															<!---->
-															<p data-v-96f66296="" class="list_item_title">Nike
-																Air Force 1 '07 WB Flax</p>
-															<p data-v-96f66296="" class="list_item_description">265</p>
-														</div>
-													</div>
-													<div data-v-96f66296="" class="list_item_status">
-														<!---->
-														<div data-v-96f66296=""
-															class="list_item_column column_last">
-															<p data-v-e22435d8="" data-v-96f66296=""
-																class="last_title display_paragraph"
-																style="color: rgb(255, 117, 0);"> 낙찰 금액 </p>
-															<p data-v-e22435d8="" data-v-96f66296=""
-																class="last_description display_paragraph action_named_action"
-																style="color: rgba(34, 34, 34, 0.8);"> 165000원 </p>
+															<div data-v-96f66296=""
+																class="list_item_column column_last">
+																<p data-v-e22435d8="" data-v-96f66296=""
+																	class="last_title display_paragraph"
+																	style="color: rgb(255, 117, 0);"> 낙찰 금액 </p>
+																<p data-v-e22435d8="" data-v-96f66296=""
+																	class="last_description display_paragraph action_named_action"
+																	style="color: rgba(34, 34, 34, 0.8);"> ${item.final_price}원 </p>
+															</div>
 														</div>
 													</div>
 												</div>
-												<!---->
 											</div>
 										</div>
-										<!---->
-										<!---->
-										<!---->
-										<!---->
-										<!---->
-									</div>
+									</c:forEach>
 									<!---->
 								</div>
 								<div data-v-5419f155="">

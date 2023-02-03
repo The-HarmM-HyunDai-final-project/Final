@@ -230,7 +230,7 @@ async function startBroadcast() {
 
   //try {
   //  start.disabled = true;
-    await window.client.startBroadcast("sk_us-east-1_FAn9dMuE8GCD_bAOiV4sBNsCku1w9AcBcUEJtcSEXse", "5fe30a074ce5.global-contribute.live-video.net");
+    await window.client.startBroadcast(streamKeyEl.value, endpointEl.value);
   //} catch (err) {
   //  start.disabled = false;
   //  setError(err.toString());

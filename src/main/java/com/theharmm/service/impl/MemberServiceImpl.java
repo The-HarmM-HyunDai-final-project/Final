@@ -7,9 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.theharmm.domain.MemberAuctionDTO;
+import com.theharmm.domain.BuyDTO;
 import com.theharmm.domain.MemberAuthVO;
 import com.theharmm.domain.MemberVO;
 import com.theharmm.mapper.MemberMapper;
+import com.theharmm.mapper.ProductDetailMapper;
 import com.theharmm.service.MemberService;
 
 import lombok.AllArgsConstructor;
@@ -22,6 +25,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Autowired
 	private MemberMapper mapper;
+	
 
 	//회원가입 시 member, authorities 테이블에 값을 넣기 때문에 하나의 작업단위로 묶어야 하기 때문에 Transaction 묶음!
 	@Transactional
@@ -95,6 +99,18 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public MemberVO getBySns(MemberVO member) {
 		return mapper.getBySns(member);
+	}
+	
+	// 낙찰내역 가져오기
+	@Override
+	public List<MemberAuctionDTO> getShowLiveChannelDTOByAuction(String member_email) {
+		return mapper.getShowLiveChannelDTOByAuction(member_email);
+	}
+	@Override
+	public List<BuyDTO> selectMyBuyList(String member_email) {
+		// TODO Auto-generated method stub
+		return mapper.selectMyBuyList(member_email);
+
 	}
 	
 }

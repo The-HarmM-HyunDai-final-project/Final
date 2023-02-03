@@ -54,4 +54,9 @@ public class HomeController {
 	public void temp() {
 		log.warn("임시요");
 	}
+	
+	@GetMapping("/home")
+	public void home() {
+		log.warn("home임시요");
+	}
 }

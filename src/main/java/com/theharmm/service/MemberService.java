@@ -1,5 +1,13 @@
 package com.theharmm.service;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.theharmm.domain.MemberAuctionDTO;
+
+import com.theharmm.domain.BuyDTO;
+
 import com.theharmm.domain.MemberVO;
 
 public interface MemberService {
@@ -21,4 +29,9 @@ public interface MemberService {
 	
 	public MemberVO getBySns(MemberVO member);
 	
+	// 낙찰내역 가져오기
+	public List<MemberAuctionDTO> getShowLiveChannelDTOByAuction(String member_email);	
+	
+	//회원 구매내역 가져오기 
+	public List<BuyDTO> selectMyBuyList(String member_email);
 }

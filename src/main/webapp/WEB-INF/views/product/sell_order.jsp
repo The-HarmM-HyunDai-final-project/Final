@@ -183,12 +183,9 @@
 									class="layer_payout_account layer lg" style="display:none;">
 									<div data-v-1a009402="" class="layer_container">
 										<a data-v-6fc13fac="" data-v-1a009402="" href="#" id="btn_layer_close"
-											class="btn_layer_close"><svg data-v-6fc13fac=""
-												data-v-1a009402="" xmlns="http://www.w3.org/2000/svg"
-												class="ico-close icon sprite-icons">
-												<use data-v-6fc13fac="" data-v-1a009402=""
-													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"
-													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"></use></svg></a>
+											class="btn_layer_close">
+												<img src="${pageContext.request.contextPath}/resources/icon/x_ic.png" width="15" height="15">
+										</a>
 										<div data-v-1a009402="" class="layer_header">
 											<h2 data-v-6fc13fac="" data-v-1a009402="" class="title">판매
 												정산 계좌</h2>

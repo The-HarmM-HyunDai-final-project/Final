@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <jsp:useBean id="now" class="java.util.Date" />
+<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
+<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
 <link
 	href="${pageContext.request.contextPath}/resources/css/b69f662.css"
 	rel="stylesheet" type="text/css">
@@ -13,6 +15,51 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/product_detail_tab.js" defer=""></script>
 <script src="${pageContext.request.contextPath}/resources/js/reviewstab.js" defer=""></script>
+<script>
+function getReviewList(keyword,sentiment_result){
+
+	let csrfHeaderName ="${_csrf.headerName}";
+    let csrfTokenValue="${_csrf.token}";
+   
+    $.ajax({
+       url:"/products/keywordFilter",
+       method: 'post',
+       beforeSend : function(xhr){
+           xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+       }, 
+       data:{
+          keyword:keyword,
+          pid:${productDetailDTO.pid},
+          sentiment_result:sentiment_result
+       },
+       success: function(res){
+          
+          if(sentiment_result=='P'){
+        	  
+        	  $("#positivePostList").html(res); 
+        	  //$("#positiveTab").trigger("click");
+          }
+          else if(sentiment_result=='N'){
+        	  $("#negativePostList").html(res);
+        	  $("#negativeTab").trigger("click");
+          }
+          
+       
+       },
+       error: function(){
+    	   alert("gg");
+       }
+    })
+}
+
+function layerViewImg(post_id,member_email,sentiment_result){
+	location.href="/social/trending/details?post_id="+post_id+"&user="+member_email;
+}
+
+ 
+
+</script>
+
 
 <div class="container detail lg" data-v-01e212dd="" data-v-3007c576="">
 	<div class="content" data-v-01e212dd="">
@@ -420,13 +467,11 @@
 					<div data-v-1a009402="" data-v-0a44efea="" data-v-3900a1a2=""
 						class="layer_market_price layer lg" style="display:none;">
 						<div data-v-1a009402="" class="layer_container">
-							<a data-v-0a44efea="" data-v-1a009402="" href="#"
-								class="btn_layer_close"><svg data-v-0a44efea=""
-									data-v-1a009402="" xmlns="http://www.w3.org/2000/svg"
-									class="ico-close icon sprite-icons">
-									<use data-v-0a44efea="" data-v-1a009402=""
-										href="${pageContext.request.contextPath}/resources/icon/x_ic.png"
-										xlink:href="${pageContext.request.contextPath}/resources/icon/x_ic.png"></use></svg></a>
+							<a data-v-6fc13fac="" data-v-1a009402="" href="#" id="btn_layer_close"
+											class="btn_layer_close">
+												<img src="${pageContext.request.contextPath}/resources/icon/x_ic.png" width="15" height="15">
+							</a>
+
 							<div data-v-1a009402="" class="layer_header">
 								<h2 data-v-0a44efea="" data-v-1a009402="" class="title">시세</h2>
 							</div>
@@ -773,13 +818,13 @@
 			<div class="product-detail-tab tab-wrap2 anchor-wrap">
 				<ul class="tabs">
 					<li class="on">
-						<a href="#tab01">
-							<span>긍정리뷰</span>
+						<a href="#tab01" id="positiveTab">
+							<span>긍정 스타일</span>
 						</a>
 					</li>
 					<li class="">
-						<a href="#tab02">
-							<span id="tabReviewCnt">비판리뷰</span>
+						<a href="#tab02" id="negativeTab">
+							<span id="tabReviewCnt">비판 스타일</span>
 						</a>
 					</li>
 				
@@ -788,7 +833,7 @@
 				<!-- 긍정리뷰 정보 -->
 				<section id="tab01"
 					class="anchor-section product-detail-review">
-					<h3 class="sec-title"><em>긍정리뷰</em></h3>
+					<h3 class="sec-title"><em>긍정 스타일</em></h3>
 					<div class="review-total">
 						<div class="member-total-point">
 							<h4 class="tit">별점</h4>
@@ -810,16 +855,16 @@
 					<div class="product-detail-review-list">
 						<div class="head">
 							<div id="prdReviewFilter" class="opt">
-								<button type="button" class="btn-type1-sm"
-									onclick="getReviewList('1','F','F',null);">
+								<button type="button" class="custom-btn btn-1"
+									onclick="getReviewList('${poskeywordBestList[0].keyword}','P');">
 									<span>${poskeywordBestList[0].keyword}</span>
 								</button>
-								<button type="button" class="btn-type1-sm"
-									onclick="getReviewList('1','F','F',null);">
+								<button type="button" class="custom-btn btn-1"
+									onclick="getReviewList('${poskeywordBestList[1].keyword}','P');">
 									<span>${poskeywordBestList[1].keyword}</span>
 								</button>
-								<button type="button" class="btn-type1-sm"
-									onclick="getReviewList('1','F','F',null);">
+								<button type="button" class="custom-btn btn-1"
+									onclick="getReviewList('${poskeywordBestList[2].keyword}','P');">
 									<span>${poskeywordBestList[2].keyword}</span>
 								</button>
 							</div>
@@ -839,7 +884,7 @@
 							<input type="hidden" id="godNo" value=""> <input
 								type="hidden" id="godEvlTurn" value="">
 
-							<ul class="list-content">
+							<ul class="list-content" id="positivePostList">
 								<c:forEach var="positivePost" items="${positivePostList}">
 									<li>
 										<div class="list-row fold-header">
@@ -859,6 +904,7 @@
 														</div>
 													</li> -->
 													<li><span class="date">${positivePost.register_date }</span></li>
+													
 												</ul>
 	
 												<div class="txt-box"> ${positivePost.contents }</div>
@@ -873,7 +919,7 @@
 											<div class="review-group">
 													<ul class="files">
 														<li class="img-file">
-															<button type="button" onclick="layerViewImg();"
+															<button type="button" onclick="layerViewImg('${positivePost.post_id}','${positivePost.member_email }','P');"
 																style="background-image: url(${pageContext.request.contextPath}/${positivePost.upload_path}/${positivePost.uuid}_${positivePost.file_name}); transform: rotate(0deg);">
 																<img referrerpolicy="no-referrer"
 																	src="${pageContext.request.contextPath}/${positivePost.upload_path}/${positivePost.uuid}_${positivePost.file_name}"
@@ -898,7 +944,7 @@
 				<!-- 부정리뷰 정보 -->
 				<section id="tab02"
 					class="anchor-section product-detail-review" >
-					<h3 class="sec-title">비판리뷰</h3>
+					<h3 class="sec-title">비판 스타일</h3>
 					<div class="review-total">
 						<div class="member-total-point">
 							<h4 class="tit">별점</h4>
@@ -920,16 +966,16 @@
 					<div class="product-detail-review-list">
 						<div class="head">
 							  <div id="prdReviewFilter" class="opt">
-								<button type="button" class="btn-type1-sm"
-									onclick="getReviewList('1','F','F',null);">
+								<button type="button" class="custom-btn btn-1"
+									onclick="getReviewList('${negkeywordBestList[0].keyword}','N');">
 									<span>${negkeywordBestList[0].keyword}</span>
 								</button>
-								<button type="button" class="btn-type1-sm"
-									onclick="getReviewList('1','F','F',null);">
+								<button type="button" class="custom-btn btn-1"
+									onclick="getReviewList('${negkeywordBestList[1].keyword}','N');">
 									<span>${negkeywordBestList[1].keyword}</span>
 								</button>
-								<button type="button" class="btn-type1-sm"
-									onclick="getReviewList('1','F','F',null);">
+								<button type="button" class="custom-btn btn-1"
+									onclick="getReviewList('${negkeywordBestList[2].keyword}','N');">
 									<span>${negkeywordBestList[2].keyword}</span>
 								</button>
 							 </div>
@@ -948,7 +994,7 @@
 							<input type="hidden" id="godNo" value=""> <input
 								type="hidden" id="godEvlTurn" value="">
 
-							<ul class="list-content">
+							<ul class="list-content" id="negativePostList">
 								<c:forEach var="negativePost" items="${negativePostList}">
 									<li>
 										<div class="list-row fold-header">
@@ -967,6 +1013,7 @@
 														</div>
 													</li> -->
 													<li><span class="date">${negativePost.register_date }</span></li>
+													<li><button>style상세보기</button></li>
 												</ul>
 	
 												<div class="txt-box"> ${negativePost.contents }</div>
@@ -981,7 +1028,7 @@
 											<div class="review-group">
 													<ul class="files">
 														<li class="img-file">
-															<button type="button" onclick="layerViewImg();"
+															<button type="button" onclick="layerViewImg('${negativePost.post_id}','${negativePost.member_email }','N');"
 																style="background-image: url(${pageContext.request.contextPath}/${negativePost.upload_path}/${negativePost.uuid}_${negativePost.file_name}); transform: rotate(0deg);">
 																<img referrerpolicy="no-referrer"
 																	src="${pageContext.request.contextPath}/${negativePost.upload_path}/${negativePost.uuid}_${negativePost.file_name}"
@@ -1009,34 +1056,7 @@
 	
 		<!---->
 	</div>
-	<div data-v-01e212dd="">
-		<div data-v-e5d8b6f4="" data-v-01e212dd="" class="banner_bottom lg">
-			<a data-v-e5d8b6f4="" href="#" class="banner_box"><img
-				data-v-e5d8b6f4="" src="/_nuxt/img/home_banner_bottom1.79549cb.png"
-				loading="lazy" width="350" height="200" alt="SERVICE GUIDE"
-				class="bg">
-				<div data-v-e5d8b6f4="" class="banner_info">
-					<strong data-v-e5d8b6f4="" class="info_subtitle">service
-						guide</strong>
-					<p data-v-e5d8b6f4="" class="info_title">
-						KREAM은 처음이지? <br>서비스 소개를 확인해보세요.
-					</p>
-					<span data-v-e5d8b6f4="" class="info_txt">서비스 안내</span>
-				</div></a><a data-v-e5d8b6f4="" href="#" class="banner_box"><img
-				data-v-e5d8b6f4="" src="/_nuxt/img/home_banner_bottom2.0077547.png"
-				loading="lazy" width="350" height="200" alt="DOWNLOAD THE APP"
-				class="bg">
-				<div data-v-e5d8b6f4="" class="banner_info">
-					<strong data-v-e5d8b6f4="" class="info_subtitle">download
-						the app</strong>
-					<p data-v-e5d8b6f4="" class="info_title">
-						KREAM 앱을 설치하여 <br>한정판 스니커즈를 FLEX 하세요!
-					</p>
-					<span data-v-e5d8b6f4="" class="info_txt">앱 설치하기</span>
-				</div></a>
-			<!---->
-		</div>
-	</div>
+	
 	<!---->
 	<!---->
 	<!---->
@@ -1199,12 +1219,12 @@ var chart = new Chart(ctx, {
                 'rgba(204, 204, 204, 0.5)',
                 'rgba(204, 204, 204, 0.5)',
                 'rgba(204, 204, 204, 0.5)'],
-            borderColor: ['rgb(255, 99, 132,1.5)',
-                'rgba(54, 162, 235, 1.5)',
-                'rgba(255, 206, 86, 1.5)',
-                'rgba(75, 192, 192, 1.5)',
-                'rgba(153, 102, 255, 1.5)',
-                'rgba(255, 159, 64, 1.5)'],
+            borderColor: ['rgb(204, 204, 204,1.5)',
+            	 'rgba(204, 204, 204, 1.5)',
+                 'rgba(204, 204, 204, 1.5)',
+                 'rgba(204, 204, 204, 1.5)',
+                 'rgba(204, 204, 204, 1.5)',
+                 'rgba(204, 204, 204, 1.5)'],
             data: count_list
         }]
     },
@@ -1219,14 +1239,14 @@ var chart = new Chart(ctx, {
         },
         legend: {
             labels: {
-                fontColor: 'rgba(83, 51, 237, 1)',
+                fontColor: 'rgb(11 10 10)',
                 fontSize: 15
             }
         },
         scales: {
             xAxes: [{
                 ticks: {
-                    fontColor: 'rgba(27, 163, 156, 1)',
+                    fontColor: 'rgb(11 10 10)',
                     fontSize: '15'
                 }
             }],
@@ -1273,12 +1293,12 @@ var chart = new Chart(ctx, {
                 'rgba(204, 204, 204, 0.5)',
                 'rgba(204, 204, 204, 0.5)',
                 'rgba(204, 204, 204, 0.5)'],
-            borderColor: ['rgb(255, 99, 132,1.5)',
-                'rgba(54, 162, 235, 1.5)',
-                'rgba(255, 206, 86, 1.5)',
-                'rgba(75, 192, 192, 1.5)',
-                'rgba(153, 102, 255, 1.5)',
-                'rgba(255, 159, 64, 1.5)'],
+            borderColor: ['rgb(204, 204, 204,1.5)',
+                'rgba(204, 204, 204, 1.5)',
+                'rgba(204, 204, 204, 1.5)',
+                'rgba(204, 204, 204, 1.5)',
+                'rgba(204, 204, 204, 1.5)',
+                'rgba(204, 204, 204, 1.5)'],
             data: count_list
         }]
     },
@@ -1293,14 +1313,14 @@ var chart = new Chart(ctx, {
         },
         legend: {
             labels: {
-                fontColor: 'rgba(83, 51, 237, 1)',
+            	fontColor: 'rgb(11 10 10)',
                 fontSize: 15
             }
         },
         scales: {
             xAxes: [{
                 ticks: {
-                    fontColor: 'rgba(27, 163, 156, 1)',
+                	fontColor: 'rgb(11 10 10)',
                     fontSize: '15'
                 }
             }],

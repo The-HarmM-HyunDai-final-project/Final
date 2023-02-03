@@ -189,10 +189,10 @@
         transition: all 0.2s;
       }
       .modal_body .modal_btns button.yes_btn {
-        background: #00ae68;
+        background: #48665a;
       }
       .modal_body .modal_btns button.close_btn {
-        background: #ffaa40;
+        background: #efe3ed;
       }
       .modal_body .modal_btns button:hover {
         margin-top: -2px;

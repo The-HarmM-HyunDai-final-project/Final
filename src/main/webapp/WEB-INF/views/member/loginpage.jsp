@@ -63,9 +63,9 @@
 							비밀번호 찾기 </a></li>
 				</ul>
 				<br>
-				<div class="social_login" data-v-5e2d3411="">
+				<!-- <div class="social_login" data-v-5e2d3411="">
 					 <a href="${ naver_url }"><img width="400" src="${pageContext.request.contextPath}/resources/images/naver-login.png" alt="Naver Login" /></a>
-				</div>
+				</div>-->
 			</form>
 		</div>
 	</div>

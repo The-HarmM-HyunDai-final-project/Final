@@ -280,7 +280,19 @@
 .solid[data-v-575aff82] {
 	font-weight: 700;
 	color: #fff;
-	background-color: #222
+	background-color: #48665a;
+	box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+}
+
+.solid1[data-v-575aff82] {
+	font-weight: 700;
+	color: rgb(11 10 10);
+	background-color:  #efe3ed;
+	box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
 }
 
 .solid[data-v-575aff82]:active {
@@ -295,11 +307,15 @@
 }
 
 .solid.buy[data-v-575aff82] {
-	background-color: #ef6253
+	background-color: #efe3ed;
+	color: rgb(11 10 10);
+	box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
 }
 
 .solid.sell[data-v-575aff82] {
-	background-color: #41b979
+	background-color: #48665a
 }
 
 .solid.sell.disabled[data-v-575aff82], .solid.sell[data-v-575aff82]:disabled

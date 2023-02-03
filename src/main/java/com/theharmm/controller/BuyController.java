@@ -135,6 +135,9 @@ public class BuyController {
 		model.addAttribute("dDay",dDay);
 		model.addAttribute("bidDate",bidDate);
 		
+		int paySeq = productDetailService.selectPaySeqNextVal();
+		
+		model.addAttribute("paySeq",paySeq);
 		if(type.equals("즉시구매")) {
 	
 			return "product/buy_order";

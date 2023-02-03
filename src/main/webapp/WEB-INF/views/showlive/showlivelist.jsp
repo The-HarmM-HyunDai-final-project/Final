@@ -444,16 +444,18 @@
 												class="VideoBox_wrap_S8G2B VideoBox_ratio_w2h3_NQrX8 VideoBox_tablet_-FQO7">
 												<div class="BroadcastAutoPlayCard_wrap_6irvX">
 													<div class="inner">
-												      <!-- Player wrapper, forcing 16:9 aspect ratio -->
-												      <div class="player-wrapper">
-												        <div class="aspect-spacer"></div>
-												        <div class="pos-absolute full-width full-height top-0">
-												          <video controls id="video-player" class="el-player" autoplay  preload="auto" style="width:229px; height:400px;">
-												          	<!-- playsinline -->
-												          </video>
-												        </div>
-												      </div>
-												    </div>
+														<!-- Player wrapper, forcing 16:9 aspect ratio -->
+														<div class="player-wrapper">
+															<div class="aspect-spacer"></div>
+															<div class="pos-absolute full-width full-height top-0">
+																<video controls id="video-player" class="el-player"
+																	autoplay preload="auto"
+																	style="width: 229px; height: 400px;">
+																	<!-- playsinline -->
+																</video>
+															</div>
+														</div>
+													</div>
 												</div>
 												<div class="VideoBox_content_AS2US">
 													<div class="VideoBox_top_9paAV">
@@ -468,6 +470,16 @@
 														<div
 															class="ProductBox_wrap_Id3Nl ProductBox_type_under_VxRxX ProductBox_tablet_E+dar"
 															style="height: 40px;">
+															<span
+																class="CardThumbnail_wrap_TmtOY ProductBox_thumbnail_3RInI CardThumbnail_type_product_6wo0I"><svg
+																	xmlns="http://www.w3.org/2000/svg" width="19"
+																	height="15" viewBox="0 0 19 15" focusable="false"
+																	aria-hidden="true" class="CardThumbnail_icon_OF8Ch">
+																	</svg><img
+																class="CardThumbnail_image_d88Hz"
+																alt="${item.product_name}" referrerpolicy="no-referrer"
+																src=""
+																width="55" height="55" draggable="false" loading="eager"/></span>
 															<div class="ProductBox_info_z1aIE">
 																<span class="ProductBox_name_zybcC">${item.product_name}</span>
 																<div class="ProductBox_price_wrap_0B+zk">

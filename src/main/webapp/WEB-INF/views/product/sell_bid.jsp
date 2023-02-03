@@ -199,13 +199,10 @@ var IMP = window.IMP;
                         <div data-v-1a009402="" data-v-6fc13fac="" data-v-218008a6="" id = "layer_payout_account"
                            class="layer_payout_account layer lg" style="display:none;">
                            <div data-v-1a009402="" class="layer_container">
-                              <a data-v-6fc13fac="" data-v-1a009402="" href="#" id="btn_layer_close"
-                                 class="btn_layer_close"><svg data-v-6fc13fac=""
-                                    data-v-1a009402="" xmlns="http://www.w3.org/2000/svg"
-                                    class="ico-close icon sprite-icons">
-                                    <use data-v-6fc13fac="" data-v-1a009402=""
-                                       href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"
-                                       xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"></use></svg></a>
+                             <a data-v-6fc13fac="" data-v-1a009402="" href="#" id="btn_layer_close"
+											class="btn_layer_close">
+												<img src="${pageContext.request.contextPath}/resources/icon/x_ic.png" width="15" height="15">
+							 </a>
                               <div data-v-1a009402="" class="layer_header">
                                  <h2 data-v-6fc13fac="" data-v-1a009402="" class="title">판매
                                     정산 계좌</h2>
@@ -386,7 +383,18 @@ var IMP = window.IMP;
                            <input type="hidden" name="size" value="${productBuySizeDTO.model_size}"/>
                            <input type="hidden" name="dDay" value="${dDay}"/>
                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                           
+                           <div data-v-679d7250="" data-v-14995178="" class="price_total">
+										<dl data-v-679d7250="" class="price_box">
+											<dt data-v-679d7250="" class="price_title">정산금액</dt>
+											<dd data-v-679d7250="" class="price">
+												<span data-v-679d7250="" class="amount"><fmt:formatNumber type="number" maxFractionDigits="3" value="${totalPrice}" /></span><span
+													data-v-679d7250="" class="unit">원</span>
+											</dd>
+										</dl>
+										<span data-v-679d7250="" class="price_warning"
+											style="display: none;"><em data-v-679d7250="">주의!
+										</em></span>
+							</div>
                            <div data-v-14995178="" class="btn_confirm">
                            <a data-v-575aff82="" data-v-14995178="" onclick="document.getElementById('sellBidCompleteAction').submit()"
                               <c:if test="${empty accountDTO or empty addressDTO}"> disabled="disabled"</c:if>
@@ -398,6 +406,8 @@ var IMP = window.IMP;
                            </form>
                         </div>
                      </section>
+                     
+                     
                      
                      
                      
