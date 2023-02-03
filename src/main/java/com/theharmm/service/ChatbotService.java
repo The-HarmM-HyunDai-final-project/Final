@@ -66,7 +66,7 @@ public class ChatbotService {
                 in.close();
                 // 응답 메세지 출력
                 System.out.println(chatbotMessage);
-                //chatbotMessage = jsonToString(chatbotMessage);
+                chatbotMessage = jsonToString(chatbotMessage);
             } else {  // Error occurred
                 chatbotMessage = con.getResponseMessage();
             }

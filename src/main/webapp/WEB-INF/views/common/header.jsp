@@ -454,7 +454,7 @@
             </button>
         </header>
         <!-- 채팅 영역 -->
-        <div class="KEP-ChatArea" style="background-image: url() !important; ">
+        <div class="KEP-ChatArea" style="background-image: url() !important; " id = "chatArea">
 
             <div class="KEP-Receiver">
                 <div class="KEP-Receiver__avatar">
@@ -1937,7 +1937,6 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 				
 			});	
         });
-        //우리 코딩 그만하고 이제 그만 합치자 시연 해야지
        
 		function showAlarmList () {
 			console.log(mid);
@@ -1980,10 +1979,6 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 				}
  				if (alarm_array.length > 0) {
 					console.log("알람 변경");
-					//consolo.log("$("#alarmCnt").style.fontSize" + document.getElementById('alarmCnt').style);
-					//document.getElementById('alarmCnt').style
-					//$("#alarmCnt").css.width = '30';
-					//$("#alarmCnt").css.height = '30';
 				} 
 				$("#toastContainer").html(html); 
 			});	
@@ -2014,32 +2009,97 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 			 document.getElementById('chatbotcontainer').style.display = 'none';
 		 });
 		
-		    // submit 했을 때 처리
-		    $('#chatForm').on('submit', function (event) {
-		        event.preventDefault();
-		        
-	 			let csrfHeaderName ="${_csrf.headerName}";
-	            let csrfTokenValue="${_csrf.token}";
-	            
-		        var formData = new FormData($('#chatForm')[0]);
-		        $.ajax({
-		            type : "post",
-		            //enctype : "multipart/form-data",
-		            url : "chatbotSend",
-		            data : formData,
-		            processData : false, // 필수
-		            contentType : false, // 필수
-					beforeSend: function(xhr) {
-	                    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-	                },
-		            success:function (result) {
-		                $('#resultDiv').text(result);
-		            },
-		            error:function (e) {
-		                alert("오류 발생" + e);
-		            }
-		        });
-		    })
+		// submit 했을 때 처리
+		 $('#chatForm').on('submit', function (event) {
+		     event.preventDefault();
+		     
+		      let csrfHeaderName ="${_csrf.headerName}";
+		     let csrfTokenValue="${_csrf.token}";
+		     
+		     var formData = new FormData($('#chatForm')[0]);
+			 console.log(formData);
+			 var inputText = $("#inputText").val();
+			 console.log(inputText);
+			 
+		     tmphtml = "";
+		     tmphtml += 
+			     `
+			          <div class="KEP-Sender">
+			             <div class="KEP-Sender__msgArea">
+			                 <div class="KEP-Sender__blocksArea">
+			                     <div class="KEP-Sender__speech" style=" background: #8770BA !important; color: #FFFFFF !important; ">
+			                         <span class="KEP-Sender__tail">
+			                             <svg width="11" height="11" viewBox="0 0 11 11" fill="none"
+			                                 xmlns="http://www.w3.org/2000/svg">
+			                                 <path d="M1 0H8.58579C9.47669 0 9.92286 1.07714 9.29289 1.70711L1 10V0Z"
+			                                     fill="#8770BA"></path>
+			                                 <path
+			                                     d="M0.966666 0.52002H8.59556C9.02257 0.52002 9.23701 1.03577 8.93588 1.33852L0.45 9.87002"
+			                                     stroke="black" stroke-opacity="0.03"></path>
+			                                 <rect width="1" height="11" transform="matrix(-1 0 0 1 1 0)" fill="#8770BA"></rect>
+			                             </svg>
+			                         </span>`+ inputText +`<span class="KEP-Sender__read">읽음</span>
+			                         <span class="KEP-Sender__time">시간</span>
+			                     </div>
+			                 </div>
+			             </div>
+			         </div>
+			     ` 
+		     
+		     $("#chatArea").append(tmphtml);
+			 $("#inputText").val("");
+
+		     $.ajax({
+		         type : "post",
+		         enctype : "multipart/form-data",
+		         url : "chatbotSend",
+		         data : formData,
+		         processData : false, // 필수
+		         contentType : false, // 필수
+		         beforeSend: function(xhr) {
+		             xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+		         },
+		         success:function (result) {
+		        	 tmpresponse = "";
+		        	 tmpresponse +=
+		        		 
+		             console.log(result);
+ 		        	 tmpres = 
+		        	 `
+		             <div class="KEP-Receiver">
+		                 <div class="KEP-Receiver__avatar">
+		                     <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+		                         <defs>
+		                             <path id="shapeSquircle"
+		                                 d="M17 0C29.4003 0 34 4.59973 34 17C34 29.4003 29.4003 34 17 34C4.59973 34 0 29.4003 0 17C0 4.59973 4.59973 0 17 0Z">
+		                             </path>
+		                             <clipPath id="clipSquircle">
+		                                 <use xlink:href="#shapeSquircle"></use>
+		                             </clipPath>
+		                         </defs>
+		                         <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice"
+		                             clip-path="url(#clipSquircle)"
+		                             xlink:href="https://objectstorage.kr-central-1.kakaoi.io/v1/735f5d2ed4d742468bcbcd6e533b26aa/builder-prod/OU9mbkRta1VhdTFXRUJfQ0hBVEJPVF9wcm9maWw=">
+		                         </image>
+		                     </svg>
+		                 </div>
+		                 <div class="KEP-Receiver__msgArea">
+		                     <div class="KEP-Receiver__nickName">젤뽀</div>
+		                     <div class="KEP-Receiver__blocksArea">
+		                         <div class="KEP-Receiver__speech">`+result+`<span class="KEP-Receiver__time">오전 11:27</span>
+		                         </div>
+		                     </div>
+		                 </div>
+		             </div>
+		 `
+		 
+		          $("#chatArea").append(tmpres); 
+		         },
+		         error:function (e) {
+		             alert("오류 발생" + e);
+		         }
+		     });
+		 })
         
 	});	
 	
