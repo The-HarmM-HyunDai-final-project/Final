@@ -1,6 +1,8 @@
 package com.theharmm.controller;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -9,8 +11,13 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -27,6 +34,7 @@ import com.theharmm.domain.MemberAuctionDTO;
 import com.theharmm.domain.BuyDTO;
 import com.theharmm.domain.KeywordDTO;
 import com.theharmm.domain.MemberVO;
+import com.theharmm.security.CustomUserDetailsService;
 import com.theharmm.security.domain.CustomUser;
 import com.theharmm.service.MemberService;
 import com.theharmm.util.JoinUtil;
@@ -43,6 +51,8 @@ public class MemberController {
 	
 	@Inject
 	private SnsValue naverSns;
+	
+	private CustomUserDetailsService cuds =  new CustomUserDetailsService();
 	
 	@GetMapping("/join")
 	public String Join(Model model, HttpSession session) {
@@ -97,16 +107,18 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/{snsService}/callback", method = { RequestMethod.GET, RequestMethod.POST})
-	public String snsLoginCallback(@PathVariable String snsService, Model model, @RequestParam String code, HttpSession session) throws Exception {
+	public String snsLoginCallback(HttpServletRequest request, @PathVariable String snsService, Model model, @RequestParam String code, HttpSession session) throws Exception {
 		SnsValue sns = null;
-		if (StringUtils.equals("naver", snsService))
+		if (StringUtils.equals("naver", snsService)) {
 			sns = naverSns;
+		}
 		log.info("sns 로그인");
 		// 1. code를 이용해서 access_token 받기
 		// 2. access_token을 이용해서 사용자 profile 정보 가져오기
 		SNSLogin snsLogin = new SNSLogin(sns);
 		
 		MemberVO snsUser = snsLogin.getUserProfile(code); // 1,2번 동시
+		log.warn(snsUser);
 		System.out.println("Profile>>  " + snsUser);
 		
 		// 3. DB 해당 유저가 존재하는 체크 (googleid, naverid 컬럼 추가)
@@ -115,14 +127,27 @@ public class MemberController {
 			log.info("소셜로그인 회원 : " + member);
 			int result = memberService.joinMember(snsUser);
 			//model.addAttribute("url", "/showlive/showlivelist");
-			return "main";
-			//미존재시 가입페이지로!!
 		} else {
 			model.addAttribute("result", member.getMember_email() + "님이 반갑습니다.");
-			return "main";
+			model.addAttribute("memberVO", snsUser);
+			//return "main";
 			// 4. 존재시 강제로그인
 			//session.setAttribute(SessionNames.LOGIN, user);
 		}
+		
+		
+		//시큐리티 로그인 처리
+		UserDetails naverVO = new CustomUser(memberService.read(snsUser));
+		//UserDetails naverVO = (UserDetails) cuds.loadUserByUsername();
+		
+		Authentication authentication = new UsernamePasswordAuthenticationToken(naverVO, naverVO.getPassword(), naverVO.getAuthorities());
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        securityContext.setAuthentication(authentication);
+        session = request.getSession(true);
+        session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+
+		return "redirect:/";
+
 	}
 		
 	@RequestMapping(value = "/loginpage", method = RequestMethod.GET)

@@ -34,7 +34,8 @@ public class HomeController {
 
 		return "main";
 	}
-
+	
+	
 	@GetMapping("/test")
 	public String test() {
 		return "test";
