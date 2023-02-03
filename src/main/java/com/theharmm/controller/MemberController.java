@@ -34,7 +34,11 @@ import com.theharmm.domain.MemberAuctionDTO;
 import com.theharmm.domain.BuyDTO;
 import com.theharmm.domain.KeywordDTO;
 import com.theharmm.domain.MemberVO;
+
+import com.theharmm.domain.SellDTO;
+
 import com.theharmm.security.CustomUserDetailsService;
+
 import com.theharmm.security.domain.CustomUser;
 import com.theharmm.service.MemberService;
 import com.theharmm.util.JoinUtil;
@@ -177,11 +181,15 @@ public class MemberController {
 		model.addAttribute("member_email", user.getUsername());
 		
 		//구매내역 가지고 오기 - 미림 수정(혹시나 문제있을까봐 써놓음) 
-		
 		List<BuyDTO> myBuyList = memberService.selectMyBuyList(user.getUsername()); 
 		model.addAttribute("myBuyList", myBuyList);
+		
+		//판매내역 가지고 오기 - 미림 수정 
+		List<SellDTO> mySellList = memberService.selectMySellList(user.getUsername()); 
+		model.addAttribute("mySellList", mySellList); 
 		return "member/my";
 	}
+	
 	
 	@RequestMapping(value = "/auction", method = RequestMethod.GET)
 	public String Auction(Model model) {
