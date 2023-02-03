@@ -9,7 +9,7 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-	
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>	
 <%
 	Date nowTime = new Date();
 	SimpleDateFormat sf = new SimpleDateFormat("a hh:mm");
@@ -1896,7 +1896,10 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 		var mid = $("#mid").val();
 		console.log("mid-------------" + mid);
 		
-		countAlarm(mid);
+		if (mid != "") {
+			countAlarm(mid);
+		}
+		
 		
 		function countAlarm(mid) {
 			console.log(mid);
@@ -1934,7 +1937,8 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 				
 			});	
         });
-        
+        //우리 코딩 그만하고 이제 그만 합치자 시연 해야지
+       
 		function showAlarmList () {
 			console.log(mid);
 			$.ajax({		
@@ -1987,8 +1991,12 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 		
 		
 		 $("#showAlarm").on("click", function (e) {
-			 showAlarmList ();
-			 $("#toastContainer").slideToggle(200);
+				if (mid != "") {
+					 showAlarmList ();
+					 $("#toastContainer").slideToggle(200);
+				} else {
+					alert("로그인 후 확인해 주세요")
+				}
 		 });
 		 
 		 $("#chatBtn").on("click", function (e) {

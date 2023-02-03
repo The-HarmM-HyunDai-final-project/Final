@@ -231,14 +231,50 @@
 								<div data-v-5419f155="">
 									<div data-v-0d2f7c95="" data-v-5419f155=""
 										class="purchase_list all bid">
-										<!---->
-										<div data-v-e2f6767a="" data-v-0d2f7c95="" class="empty_area">
-											<p data-v-e2f6767a="" class="desc">거래 내역이 없습니다.</p>
-											<!---->
-										</div>
-										<!---->
-										<!---->
-										<!---->
+										<!--  -->
+										<c:choose>
+											<c:when test="${fn:length(myBuyList)} == 0}">
+												<div data-v-e2f6767a="" data-v-0d2f7c95="" class="empty_area">
+													<p data-v-e2f6767a="" class="desc">거래 내역이 없습니다.</p>
+													<!---->
+												</div>
+											</c:when>
+
+											<c:otherwise>
+												<c:forEach items="${myBuyList}" var="item" varStatus="status">
+												<div data-v-0d2f7c95="" data-v-5419f155="" class="purchase_list all ask">
+													<!---->
+													<div data-v-0d2f7c95="">
+														<div data-v-96f66296="" data-v-0d2f7c95="">
+															<div data-v-96f66296="" class="purchase_list_display_item" style="background-color: rgba(255, 136, 36, 0.05);">
+																<div data-v-96f66296="" class="purchase_list_product">
+																	<div data-v-96f66296="" class="list_item_img_wrap">
+																		<img data-v-96f66296="" alt="product_image" src="${item.img1}" referrerpolicy="no-referrer" class="list_item_img" style="background-color: rgb(235, 240, 245);">
+																		<!---->
+																	</div>
+																	<div data-v-96f66296="" class="list_item_title_wrap">
+																		<!---->
+																		<p data-v-96f66296="" class="list_item_title">${item.pname_e}</p>
+																		<p data-v-96f66296="" class="list_item_title">${item.pname_k}</p>
+																		<p data-v-96f66296="" class="list_item_description">${item.size_type}</p>
+																		
+																	</div>
+																</div>
+																<div data-v-96f66296="" class="list_item_status">
+																	<!---->
+																	<div data-v-96f66296="" class="list_item_column column_last">
+																		<p data-v-e22435d8="" data-v-96f66296="" class="last_title display_paragraph" style="color: rgb(255, 117, 0);">${item.status1}</p>
+																		
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
+
 										<!---->
 									</div>
 									<!---->
@@ -291,13 +327,48 @@
 									<div data-v-0d2f7c95="" data-v-5419f155=""
 										class="purchase_list all ask">
 										<!---->
-										<div data-v-e2f6767a="" data-v-0d2f7c95="" class="empty_area">
-											<p data-v-e2f6767a="" class="desc">거래 내역이 없습니다.</p>
-											<!---->
-										</div>
-										<!---->
-										<!---->
-										<!---->
+										<c:choose>
+											<c:when test="${fn:length(mySellList)} == 0}">
+												<div data-v-e2f6767a="" data-v-0d2f7c95="" class="empty_area">
+													<p data-v-e2f6767a="" class="desc">거래 내역이 없습니다.</p>
+													<!---->
+												</div>
+											</c:when>
+
+											<c:otherwise>
+												<c:forEach items="${mySellList}" var="item" varStatus="status">
+												<div data-v-0d2f7c95="" data-v-5419f155="" class="purchase_list all ask">
+													<!---->
+													<div data-v-0d2f7c95="">
+														<div data-v-96f66296="" data-v-0d2f7c95="">
+															<div data-v-96f66296="" class="purchase_list_display_item" style="background-color: rgba(255, 136, 36, 0.05);">
+																<div data-v-96f66296="" class="purchase_list_product">
+																	<div data-v-96f66296="" class="list_item_img_wrap">
+																		<img data-v-96f66296="" alt="product_image" src="${item.img1}" referrerpolicy="no-referrer" class="list_item_img" style="background-color: rgb(235, 240, 245);">
+																		<!---->
+																	</div>
+																	<div data-v-96f66296="" class="list_item_title_wrap">
+																		<!---->
+																		<p data-v-96f66296="" class="list_item_title">${item.pname_e}</p>
+																		<p data-v-96f66296="" class="list_item_title">${item.pname_k}</p>
+																		<p data-v-96f66296="" class="list_item_description">${item.size_type}</p>
+																		
+																	</div>
+																</div>
+																<div data-v-96f66296="" class="list_item_status">
+																	<!---->
+																	<div data-v-96f66296="" class="list_item_column column_last">
+																		<p data-v-e22435d8="" data-v-96f66296="" class="last_title display_paragraph" style="color: rgb(255, 117, 0);">${item.status1}</p>
+																		
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
 										<!---->
 									</div>
 									<!---->
