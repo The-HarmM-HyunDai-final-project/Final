@@ -59,6 +59,7 @@ public class SocialController {
 		String webappRoot = servletContext.getRealPath("/");
 		String relativeFolder = "resources" + File.separator + "temp.txt";
 		
+		//String myPath = webappRoot.split(".metadata")[0] + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
 		String myPath = webappRoot.split(".metadata")[0] + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
 		log.warn(myPath);
 		
@@ -102,7 +103,8 @@ public class SocialController {
 		
 		String webappRoot = servletContext.getRealPath("/");
 	      
-	    String myRootPath = webappRoot.split(".metadata")[0] + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
+	    //String myRootPath = webappRoot.split(".metadata")[0] + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
+	    String myRootPath = "C:" + File.separator + "Users" + File.separator + "user" + File.separator + "git" + File.separator + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
         String relativePath = "resources" + File.separator + "images" + File.separator + "postimages" + File.separator;
 	    System.out.println(relativePath);
 		String uploadFolder = "C:\\upload";
