@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
-<script src="${pageContext.request.contextPath}/resources/js/banner.js" defer=""></script>
+
+<iframe style="position:absolute;top:0;left:0;width:100%;height:100%;"
+    src="https://www.youtube.com/embed/dbrGzkVPpEc?playlist=dbrGzkVPpEc&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;controls=0&amp;showinfo=0"
+    title="YouTube video player" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
 
 <link href="${pageContext.request.contextPath}/resources/css/banner.css" rel="stylesheet" type="text/css">
 <div class="container" data-v-7f67e7a6="" data-v-3007c576="">
@@ -31,41 +36,17 @@
 							data-v-1b035e08=""></use></svg></a>
 			</div>
 		</div>
-		<div class="home_card_list" data-v-2e68e8ca="" data-v-7f67e7a6="">
+		<div class="home_card_list" data-v-2e68e8ca="" data-v-7f67e7a6="" style="margin-top : 700px">
 		
 		<!-- banner -->
-			<div class="slideshow-container">
 
-				<div class="mySlides fade">
-					<div class="numbertext">1 / 3</div>
-					<img src="${pageContext.request.contextPath}/resources/images/banner2.jpg" referrerpolicy="no-referrer" style="aspect-ratio: 10/3; width : 100%">
-					
-				</div>
-
-				<div class="mySlides fade">
-					<div class="numbertext">2 / 3</div>
-					<img src="${pageContext.request.contextPath}/resources/images/banner3.jpg" referrerpolicy="no-referrer" style="aspect-ratio: 10/3; width : 100%">
-					
-				</div>
-
-				<div class="mySlides fade">
-					<div class="numbertext">3 / 3</div>
-					<img src="${pageContext.request.contextPath}/resources/images/banner4.jpg" referrerpolicy="no-referrer" style="aspect-ratio: 10/3; width : 100%">
-					
-				</div>
-
-			</div>
 			<br>
 
-			<div style="text-align: center">
-				<span class="dot"></span> <span class="dot"></span> <span
-					class="dot"></span>
-			</div>
 
 			<div class="home_products" data-v-2e68e8ca="">
 				<div class="product_title lg" data-v-b71614ae="">
-					<div class="title" data-v-b71614ae="">Just Dropped</div>
-					<div class="sub_title" data-v-b71614ae="">발매 상품</div>
+					<div class="title" data-v-b71614ae="" style="color:white" >Just Dropped</div>
+					<div class="sub_title" data-v-b71614ae="" style="color:white" >발매 상품</div>
 				</div>
 				<div class="product_list_wrap lg" data-v-05239fed="">
 					<div class="product_list list_first" data-v-05239fed="">
