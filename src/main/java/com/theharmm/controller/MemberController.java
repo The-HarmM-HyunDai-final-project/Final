@@ -190,6 +190,12 @@ public class MemberController {
 		return "member/my";
 	}
 	
+	@RequestMapping(value = "/address", method = RequestMethod.GET)
+	public String Address(Model model) {
+		CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		model.addAttribute("member_email", user.getUsername());
+		return "member/address";
+	}
 	
 	@RequestMapping(value = "/auction", method = RequestMethod.GET)
 	public String Auction(Model model) {

@@ -26,7 +26,7 @@
 					<li data-v-4d11470e="" class="menu_item"><a data-v-4d11470e=""
 						href="/my/profile" class="menu_link"> 프로필 정보 </a></li>
 					<li data-v-4d11470e="" class="menu_item"><a data-v-4d11470e=""
-						href="/my/address" class="menu_link"> 주소록 </a></li>
+						href="${pageContext.request.contextPath}/member/address" class="menu_link"> 주소록 </a></li>
 					<li data-v-4d11470e="" class="menu_item"><a data-v-4d11470e=""
 						href="/my/address" class="menu_link"> 결제 정보 </a></li>
 					<li data-v-4d11470e="" class="menu_item"><a data-v-4d11470e=""
