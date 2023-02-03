@@ -71,6 +71,9 @@ public class SNSLogin {
 			member.setMember_login(curdate);
 			member.setMember_messege_info("true");
 			member.setMember_email_info("true");
+			
+			String password = scpwd.encode(member.getMember_password());
+			member.setMember_password(password);
 		}
 		
 		return member;

@@ -197,7 +197,8 @@ html {
 
 body {
     width: 100%;
-    font-family: "ct", "Noto", "돋움", Dotum, arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, AppleSDGothicNeo-Regular, NanumBarunGothic, NanumGothic, 나눔고딕, Segoe UI, Helveica, Arial, Malgun Gothic, Dotum, sans-serif;
+   
     font-weight: 400;
     color: #000;
     background-color: #fff;
