@@ -195,6 +195,7 @@ public class PostController {
    }
 
    /* 포스트 상세 */
+   
 
    @GetMapping("/social/user/details")
    public String getPostDetail(int post_id, Model model,String user) {
