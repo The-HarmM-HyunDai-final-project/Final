@@ -70,13 +70,13 @@
 		</div>
 	</div>
 	<div class="banner_bottom lg" data-v-e5d8b6f4="" data-v-464f7370="">
-		<a href="#" class="banner_box" data-v-e5d8b6f4="">
+		<a href="#" class="banner_box" data-v-e5d8b6f4="" style="background-color: #efe3ed;">
 			<div class="banner_info" data-v-e5d8b6f4="">
 				<p class="info_title" data-v-e5d8b6f4="">
 					The harmM은 처음이지? <br>서비스 소개를 확인해보세요.
 				</p>
 				<span class="info_txt" data-v-e5d8b6f4="">서비스 안내</span>
-			</div></a><a href="#" class="banner_box" data-v-e5d8b6f4="">
+			</div></a><a href="#" class="banner_box" data-v-e5d8b6f4="" style="background-color: #48665a;">
 			<div class="banner_info" data-v-e5d8b6f4="">
 				<p class="info_title" data-v-e5d8b6f4="">
 					The harmM 앱을 설치하여 <br>한정판 스니커즈를 FLEX 하세요!
