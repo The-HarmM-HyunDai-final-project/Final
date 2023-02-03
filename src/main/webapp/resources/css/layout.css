@@ -1,0 +1,19 @@
+
+/* 2022-04-06 추가 : S */
+#header .chat-message	{position:fixed; z-index: 9999; right:0; top:151px; }
+#header .chat-message	h2 {margin: 0;}
+#header .chat-message	h2 a {overflow: hidden; display: block; position: relative; width:70px; height: 70px; font-size: 0; white-space: nowrap; text-indent: 100%; color: #ffffff; text-decoration: none;}
+#header .chat-message	h2 a:after {content: ''; display: block; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: -1; background-image: url(/images/webhome/outlets/layout/chat_message.png); background-repeat: no-repeat; background-position: 0 0;}
+/* 2022-04-06 추가 : E */
+
+/* 2022-11-22 추가 [S] */
+.chat_message{position: fixed; bottom:196px; right:20px; z-index: 1000; width: 70px; border-radius: 35px;  overflow: hidden; height: 70px; transition: 0.3s; display: flex; flex-direction: row; align-items: center; background-color: #fff;cursor:pointer;}
+.chat_message.active{width: 400px; transition: width 0.3s;}
+.chat_message a:hover{text-decoration: none;}
+.chat_message .chat_open_wrap{position: relative; display: flex; flex-direction: row; align-items: center; padding-left: 80px;  background-color: #fff;}
+.chat_message .chat_open_btn{width: 70px; height: 70px; background:url(/images/webhome/outlets/layout/chatbot_off.png) no-repeat; background-size: 70px 70px; position: absolute; left: 0; top: 0; z-index: 1000;}
+.chat_message .chat_close_btn{display: none; width:25px; height: 25px; background:url(https://www.ehyundai.com/images/webhome/outlets/layout/chatbot_off.png) no-repeat; background-size: 100%; font-size:0; margin-left: 30px; position: absolute; right: 0;}
+.chat_message.active .chat_close_btn{display: block;}
+.chat_btn_txt_wrap{width: 305px;}
+.chat_message .chat_btn_txt{display: none;  font-size: 18px; color: #222;z-index: -2; padding-right: 30px; height: 70px; line-height: 70px;}
+.chat_message .chat_btn_txt.on{display: inline-block!important; height: 70px;}
