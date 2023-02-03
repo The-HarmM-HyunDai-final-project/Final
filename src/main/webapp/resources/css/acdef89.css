@@ -1232,7 +1232,8 @@ to {
 .header .gnb_link[data-v-147586e1] {
    position: relative;
    font-size: 15px;
-   letter-spacing: -.15px;
+   /* <!--letter-spacing: -.15px;--> */
+   font-weight: 500;
 }
 
 .header .gnb_link[data-v-147586e1], .header .search_btn_box[data-v-147586e1]

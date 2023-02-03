@@ -102,7 +102,8 @@ public class SocialController {
 		
 		String webappRoot = servletContext.getRealPath("/");
 	      
-	    String myRootPath = webappRoot.split(".metadata")[0] + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
+	    //String myRootPath = webappRoot.split(".metadata")[0] + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
+		String myRootPath = "C:" + File.separator + "Users" + File.separator + "kosa2" + File.separator + "git" + File.separator + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
         String relativePath = "resources" + File.separator + "images" + File.separator + "postimages" + File.separator;
 	    System.out.println(relativePath);
 		String uploadFolder = "C:\\upload";
@@ -156,7 +157,7 @@ public class SocialController {
 	@PostMapping("/user/deleteFile")
 	public ResponseEntity<String> deleteFile(String fileName) {
 		logger.info("deleteFile........" + fileName);
-		String myRootPath = "C:" + File.separator + "Users" + File.separator + "user" + File.separator + "git" + File.separator + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
+		String myRootPath = "C:" + File.separator + "Users" + File.separator + "kosa2" + File.separator + "git" + File.separator + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
 		String relativePath = "resources" + File.separator + "images" + File.separator + "postimages" + File.separator;
 		 
 		File file = null;

@@ -179,7 +179,7 @@ $(function(){
 									class="btn_order order_buy buy clickable"><div data-v-c631041c="" class="box">
 												<!---->
 									<div data-v-c631041c="" class="order_case_info">
-										<span data-v-c631041c="" class="order_price"><strong>구매하기</strong></span>
+										<span data-v-c631041c="" class="order_price"><strong style="color: #101010;">구매하기</strong></span>
 									</div>
 								</div></a>
 							</div>

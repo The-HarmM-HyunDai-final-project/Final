@@ -9,6 +9,7 @@ import com.theharmm.domain.MemberAuctionDTO;
 import com.theharmm.domain.BuyDTO;
 
 import com.theharmm.domain.MemberVO;
+import com.theharmm.domain.SellDTO;
 
 public interface MemberService {
 	
@@ -34,4 +35,6 @@ public interface MemberService {
 	
 	//회원 구매내역 가져오기 
 	public List<BuyDTO> selectMyBuyList(String member_email);
+	//회원 판매내역 가져오기 
+	public List<SellDTO> selectMySellList(String member_email);
 }

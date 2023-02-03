@@ -15,6 +15,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/product_detail_tab.js" defer=""></script>
 <script src="${pageContext.request.contextPath}/resources/js/reviewstab.js" defer=""></script>
+<style>
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, AppleSDGothicNeo-Regular, NanumBarunGothic, NanumGothic, 나눔고딕, Segoe UI, Helveica, Arial, Malgun Gothic, Dotum, sans-serif;
+    color: #222;
+}
+</style>
 <script>
 function getReviewList(keyword,sentiment_result){
 
@@ -169,12 +174,12 @@ function layerViewImg(post_id,member_email,sentiment_result){
 											data-v-23bbaa82="" class="won">원</span></span><span
 											data-v-23bbaa82="" class="desc">즉시 구매가</span>
 									</div></a><a data-v-23bbaa82="" href="/sell/select/${productDetailDTO.pid}?size=${size}" class="btn_division sell"><strong
-									data-v-23bbaa82="" class="title">판매</strong>
+									data-v-23bbaa82="" class="title" style="color:white">판매</strong>
 									<div data-v-23bbaa82="" class="price">
-										<span data-v-23bbaa82="" class="amount"><em
+										<span data-v-23bbaa82="" class="amount" style="color:white;" ><em
 											data-v-23bbaa82="" class="num"><fmt:formatNumber type="number" maxFractionDigits="3" value="${buyDTO.price}" /></em><span
-											data-v-23bbaa82="" class="won">원</span></span><span
-											data-v-23bbaa82="" class="desc">즉시 판매가</span>
+											data-v-23bbaa82="" class="won" style="color:white">원</span></span><span
+											data-v-23bbaa82="" class="desc" style="color:white">즉시 판매가</span>
 									</div></a>
 							</div>
 						</div>
@@ -749,7 +754,7 @@ function layerViewImg(post_id,member_email,sentiment_result){
 										<div class="price" data-v-23bbaa82="">
 											<span class="amount" data-v-23bbaa82=""><em
 												class="num" data-v-23bbaa82="">405,000</em><span class="won"
-												data-v-23bbaa82="">원</span></span><span class="desc"
+												data-v-23bbaa82="">원</span></span><span class="desc" style="color:block"
 												data-v-23bbaa82="">즉시 구매가</span>
 										</div></a><a href="#" class="btn_division sell" data-v-23bbaa82=""><strong
 										class="title" data-v-23bbaa82="">판매</strong>

@@ -11,6 +11,7 @@ import com.theharmm.domain.MemberAuctionDTO;
 import com.theharmm.domain.BuyDTO;
 import com.theharmm.domain.MemberAuthVO;
 import com.theharmm.domain.MemberVO;
+import com.theharmm.domain.SellDTO;
 import com.theharmm.mapper.MemberMapper;
 import com.theharmm.mapper.ProductDetailMapper;
 import com.theharmm.service.MemberService;
@@ -111,6 +112,11 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return mapper.selectMyBuyList(member_email);
 
+	}
+	@Override
+	public List<SellDTO> selectMySellList(String member_email) {
+		
+		return mapper.selectMySellList(member_email);
 	}
 	
 }
