@@ -93,7 +93,7 @@
 	<div data-v-067026cb="" class="content">
 		<div data-v-067026cb="" class="keyword_bind">
 			<div class="brand_info" data-v-a1e4e5b6="">
-				<p class="brand_name" data-v-a1e4e5b6="">STYLE</p>
+				<p class="brand_name" data-v-a1e4e5b6="" style="text-shadow: 4px 2px 2px gray;">STYLE</p>
 				
 			</div>
 		</div>
@@ -130,7 +130,7 @@
 											class="picture img_profile"> <img
 											data-v-878ec45c="" alt="사용자 프로필 이미지"
 											referrerpolicy="no-referrer"
-											src="${pageContext.request.contextPath}/resources/images/test2.jpg"
+											src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png"
 											loading="auto" class="image"></picture>
 										<p data-v-47728778="" class="user_name">${item.member_email}</p>
 										<span data-v-47728778="" aria-label="좋아요" role="button"

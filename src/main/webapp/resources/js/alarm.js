@@ -49,6 +49,7 @@
                console.log("countAlarm " + data);
                //$('#alarmCnt').addClass('bell-badge-danger bell-badge')
                $('#alarmCnt').text(data);
+               $("#alarmCnt").css.fontSize = '20px';
             });   
 
          // 모달 알림
@@ -62,7 +63,7 @@
          alert(list[0] + list[1]);
          
          let toast = "";
-                  toast = `
+/*                  toast = `
                               <div class="toast" role="alert" aria-live="assertive"  style="display : block; font-size: 1.5rem; background-color: rosybrown;"
                                  aria-atomic="true" data-alarmid = "`+list[1]+`" id = "alarmid`+list[1]+`">
                                  <div class="toast-header">
@@ -73,8 +74,34 @@
                                  </div>
                                  <div class="toast-body">`+ list[0] + `</div>
                               </div>            
-                  `
+                  `*/
+         		
+         			toast = `
+						<div class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" style="display : block; font-size: 1.3rem; background-color: rosybrown; box-shadow: 5px 5px 10px grey;"
+						    aria-atomic="true" data-alarmid="`+list[1]+`" id="alarmid`+list[1]+`">
+						    <div class="d-flex">
+						        <div class="toast-body">`+ list[0] + `</div>
+						        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+						            aria-label="Close" data-alarmid="`+list[1]+`"></button>
+						    </div>
+						</div>
+         			`
+						            
+
+         
+/*         		toast = `
+					<div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+					  <div class="d-flex">
+					    <div class="toast-body">
+					    Hello, world! This is a toast message.
+					   </div>
+					    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+					  </div>
+					</div>
+         		`*/
                   $("#toastContainer").append(toast); 
+                  
+                  
     };
 
     sock.onclose = function() {

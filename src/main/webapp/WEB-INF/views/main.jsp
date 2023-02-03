@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
-<script src="${pageContext.request.contextPath}/resources/js/banner.js" defer=""></script>
+
+<iframe style="position:absolute;top:0;left:0;width:100%;height:100%;"
+    src="https://www.youtube.com/embed/dbrGzkVPpEc?playlist=dbrGzkVPpEc&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;controls=0&amp;showinfo=0"
+    title="YouTube video player" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
 
 <link href="${pageContext.request.contextPath}/resources/css/banner.css" rel="stylesheet" type="text/css">
 <div class="container" data-v-7f67e7a6="" data-v-3007c576="">
@@ -31,68 +36,17 @@
 							data-v-1b035e08=""></use></svg></a>
 			</div>
 		</div>
-		<div class="home_card_list" data-v-2e68e8ca="" data-v-7f67e7a6="">
+		<div class="home_card_list" data-v-2e68e8ca="" data-v-7f67e7a6="" style="margin-top : 700px">
 		
 		<!-- banner -->
-			<div class="slideshow-container">
 
-				<div class="mySlides fade">
-					<div class="numbertext">1 / 3</div>
-					<img src="${pageContext.request.contextPath}/resources/images/banner2.jpg" referrerpolicy="no-referrer" style="aspect-ratio: 10/3; width : 100%">
-					
-				</div>
-
-				<div class="mySlides fade">
-					<div class="numbertext">2 / 3</div>
-					<img src="${pageContext.request.contextPath}/resources/images/banner3.jpg" referrerpolicy="no-referrer" style="aspect-ratio: 10/3; width : 100%">
-					
-				</div>
-
-				<div class="mySlides fade">
-					<div class="numbertext">3 / 3</div>
-					<img src="${pageContext.request.contextPath}/resources/images/banner4.jpg" referrerpolicy="no-referrer" style="aspect-ratio: 10/3; width : 100%">
-					
-				</div>
-
-			</div>
 			<br>
 
-			<div style="text-align: center">
-				<span class="dot"></span> <span class="dot"></span> <span
-					class="dot"></span>
-			</div>
 
-
-			<div container-index="1" class="shortcut_collection"
-				data-v-281f2319="" data-v-2e68e8ca="">
-				<!---->
-				<div class="shortcut_items_wrap" data-v-281f2319="">
-					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
-						<a href="/showlive/showlivelist" style="width:400px; height:80px;">
-							<div class="shortcut_item_img_wrap" data-v-155cff51="">
-	
-								<img
-									src="${pageContext.request.contextPath}/resources/images/live2.png"
-									loading="lazy" style="width:400px; height:80px;" class="image"  data-v-878ec45c="">
-							</div>
-						</a>
-					</div>
-					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
-						<div class="shortcut_item_img_wrap" data-v-155cff51="">
-							
-							
-							<img
-								src="${pageContext.request.contextPath}/resources/images/the_handsome.png"
-								loading="lazy" class="image" data-v-878ec45c="">
-						</div>
-						
-					</div>
-				</div>
-			</div>
 			<div class="home_products" data-v-2e68e8ca="">
 				<div class="product_title lg" data-v-b71614ae="">
-					<div class="title" data-v-b71614ae="">Just Dropped</div>
-					<div class="sub_title" data-v-b71614ae="">발매 상품</div>
+					<div class="title" data-v-b71614ae="" style="color:white" >Just Dropped</div>
+					<div class="sub_title" data-v-b71614ae="" style="color:white" >발매 상품</div>
 				</div>
 				<div class="product_list_wrap lg" data-v-05239fed="">
 					<div class="product_list list_first" data-v-05239fed="">
@@ -134,15 +88,7 @@
 									<p class="name" data-v-a6a1a7c0="">Converse x Drkshdw
 										Turbowpn Black Cream</p>
 									<!---->
-									<div class="price" data-v-a6a1a7c0="">
-										<div class="amount lg" data-v-a6a1a7c0="">
-											<!---->
-											<em class="num" data-v-a6a1a7c0=""> 348,000원 </em>
-										</div>
-										<div class="desc" data-v-a6a1a7c0="">
-											<p data-v-a6a1a7c0="">즉시 구매가</p>
-										</div>
-									</div>
+
 								</div></a>
 						</div>
 						<div class="product_item" data-v-a6a1a7c0="" data-v-05239fed="">
@@ -183,15 +129,7 @@
 									<p class="name" data-v-a6a1a7c0="">Jordan 1 Low Golf Rust
 										Pink</p>
 									<!---->
-									<div class="price" data-v-a6a1a7c0="">
-										<div class="amount lg" data-v-a6a1a7c0="">
-											<!---->
-											<em class="num" data-v-a6a1a7c0=""> 183,000원 </em>
-										</div>
-										<div class="desc" data-v-a6a1a7c0="">
-											<p data-v-a6a1a7c0="">즉시 구매가</p>
-										</div>
-									</div>
+
 								</div></a>
 						</div>
 						<div class="product_item" data-v-a6a1a7c0="" data-v-05239fed="">
@@ -233,15 +171,7 @@
 									<p class="name" data-v-a6a1a7c0="">The Quiett Millionaire
 										Poetry Purple</p>
 									<!---->
-									<div class="price" data-v-a6a1a7c0="">
-										<div class="amount lg" data-v-a6a1a7c0="">
-											<!---->
-											<em class="num" data-v-a6a1a7c0=""> 73,000원 </em>
-										</div>
-										<div class="desc" data-v-a6a1a7c0="">
-											<p data-v-a6a1a7c0="">즉시 구매가</p>
-										</div>
-									</div>
+
 								</div></a>
 						</div>
 						<div class="product_item" data-v-a6a1a7c0="" data-v-05239fed="">
@@ -282,15 +212,6 @@
 									<p class="name" data-v-a6a1a7c0="">(W) Adidas Gazelle
 										Indoor Blue Fusion Cloud White</p>
 									<!---->
-									<div class="price" data-v-a6a1a7c0="">
-										<div class="amount lg" data-v-a6a1a7c0="">
-											<!---->
-											<em class="num" data-v-a6a1a7c0=""> 135,000원 </em>
-										</div>
-										<div class="desc" data-v-a6a1a7c0="">
-											<p data-v-a6a1a7c0="">즉시 구매가</p>
-										</div>
-									</div>
 								</div></a>
 						</div>
 					</div>
@@ -302,66 +223,91 @@
 					<div class="title" data-v-b71614ae="">Brand Focus</div>
 					<div class="sub_title" data-v-b71614ae="">추천 브랜드</div>
 				</div>
-				<div class="shortcut_items_wrap2" data-v-281f2319="">
+				<div class="shortcut_items_wrap2" data-v-281f2319="" style="margin-top:30px">
 					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
 						<div class="shortcut_item_img_wrap" data-v-155cff51="">
 							<picture class="picture shortcut_item_img_bg"
 								style="background-color:#f4f4f4;" data-v-878ec45c=""
-								data-v-155cff51="">
-							
-							<img
-								src="${pageContext.request.contextPath}/resources/images/adidas.jpg"
+								data-v-024bc264="">
+							<source type="image/webp"
+								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMjlfMTQ5/MDAxNjc0OTk4OTMwOTgz.goN3QmMaA3FyWT76bOzmp1gq5HAWMpjYdPkysqdPcoMg.Rjm06HI3G1K81fpuaEbpuKOFaZEdI4UGZlUB4KC_TsYg.JPEG/a_a5e5dac604724b8098c9f5574a852efb.jpg?type=m_webp"
+								data-v-878ec45c="">
+							<source
+								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMjlfMTQ5/MDAxNjc0OTk4OTMwOTgz.goN3QmMaA3FyWT76bOzmp1gq5HAWMpjYdPkysqdPcoMg.Rjm06HI3G1K81fpuaEbpuKOFaZEdI4UGZlUB4KC_TsYg.JPEG/a_a5e5dac604724b8098c9f5574a852efb.jpg?type=m"
+								data-v-878ec45c="">
+							<img referrerpolicy="no-referrer"
+								src="https://kream-phinf.pstatic.net/MjAyMzAxMjlfMTQ5/MDAxNjc0OTk4OTMwOTgz.goN3QmMaA3FyWT76bOzmp1gq5HAWMpjYdPkysqdPcoMg.Rjm06HI3G1K81fpuaEbpuKOFaZEdI4UGZlUB4KC_TsYg.JPEG/a_a5e5dac604724b8098c9f5574a852efb.jpg?type=m"
 								loading="lazy" class="image" data-v-878ec45c=""></picture>
 						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">아디다스</p>
+						<p class="shortcut_item_title" data-v-155cff51="">샤넬</p>
 					</div>
 					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
 						<div class="shortcut_item_img_wrap" data-v-155cff51="">
 							<picture class="picture shortcut_item_img_bg"
 								style="background-color:#f4f4f4;" data-v-878ec45c=""
-								data-v-155cff51="">
-					
+								data-v-024bc264="">
+							<source type="image/webp"
+								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTZfNyAg/MDAxNjczODMzOTQ5MjI3.-iSHmXtR5u2qX2tZ8UGq_MzvD4xahR44_iRSKL5JwGkg.uPE350enMLya1zNxyDxA2hXmjv8Lkdhh2cO2FkW6L40g.JPEG/a_656b88192e914b98aee7468d790e298e.jpg?type=m_webp"
+								data-v-878ec45c="">
+							<source
+								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTZfNyAg/MDAxNjczODMzOTQ5MjI3.-iSHmXtR5u2qX2tZ8UGq_MzvD4xahR44_iRSKL5JwGkg.uPE350enMLya1zNxyDxA2hXmjv8Lkdhh2cO2FkW6L40g.JPEG/a_656b88192e914b98aee7468d790e298e.jpg?type=m"
+								data-v-878ec45c="">
 							<img
-								src="${pageContext.request.contextPath}/resources/images/jordan.jpg" 
-								loading="lazy" class="image" data-v-878ec45c=""></picture>
+								src="https://kream-phinf.pstatic.net/MjAyMzAxMTZfNyAg/MDAxNjczODMzOTQ5MjI3.-iSHmXtR5u2qX2tZ8UGq_MzvD4xahR44_iRSKL5JwGkg.uPE350enMLya1zNxyDxA2hXmjv8Lkdhh2cO2FkW6L40g.JPEG/a_656b88192e914b98aee7468d790e298e.jpg?type=m"
+								loading="lazy" referrerpolicy="no-referrer" class="image" data-v-878ec45c=""></picture>
 						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">조던</p>
+						<p class="shortcut_item_title" data-v-155cff51="">애플</p>
 					</div>
 					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
 						<div class="shortcut_item_img_wrap" data-v-155cff51="">
 							<picture class="picture shortcut_item_img_bg"
 								style="background-color:#f4f4f4;" data-v-878ec45c=""
-								data-v-155cff51="">
-							
+								data-v-024bc264="">
+							<source type="image/webp"
+								srcset="https://kream-phinf.pstatic.net/MjAyMjExMTVfNDgg/MDAxNjY4NTA1NzA3MzI3.L5kmitgXDJHRFlnDSMbocZw_zGJfT3uJtAXmHrUHeDsg.Or1t21QFgr85JP4yYjPBFNIZbLLduAbrfxzZNnWd6P8g.JPEG/a_8794766db1a54066a0cba842e713b87c.jpg?type=m_webp"
+								data-v-878ec45c="">
+							<source
+								srcset="https://kream-phinf.pstatic.net/MjAyMjExMTVfNDgg/MDAxNjY4NTA1NzA3MzI3.L5kmitgXDJHRFlnDSMbocZw_zGJfT3uJtAXmHrUHeDsg.Or1t21QFgr85JP4yYjPBFNIZbLLduAbrfxzZNnWd6P8g.JPEG/a_8794766db1a54066a0cba842e713b87c.jpg?type=m"
+								data-v-878ec45c="">
 							<img
-								src="${pageContext.request.contextPath}/resources/images/prada.jpg"
-								loading="lazy" class="image" data-v-878ec45c=""></picture>
+								src="https://kream-phinf.pstatic.net/MjAyMjExMTVfNDgg/MDAxNjY4NTA1NzA3MzI3.L5kmitgXDJHRFlnDSMbocZw_zGJfT3uJtAXmHrUHeDsg.Or1t21QFgr85JP4yYjPBFNIZbLLduAbrfxzZNnWd6P8g.JPEG/a_8794766db1a54066a0cba842e713b87c.jpg?type=m"
+								loading="lazy" class="image"  referrerpolicy="no-referrer" data-v-878ec45c=""></picture>
 						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">프라다</p>
+						<p class="shortcut_item_title" data-v-155cff51="">우엉미</p>
 					</div>
 					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
 						<div class="shortcut_item_img_wrap" data-v-155cff51="">
 							<picture class="picture shortcut_item_img_bg"
 								style="background-color:#f4f4f4;" data-v-878ec45c=""
-								data-v-155cff51="">
-						
+								data-v-024bc264="">
+							<source type="image/webp"
+								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjZfMjU3/MDAxNjcyMDQ5MzI2ODY4.WdKrbrndxZPpjpekhE1evnprY0b1r4EMIyWLtrMeJKog.kTXWFN9YdjheMWZe_lGmmRtAuLAHcXVWgMDoKw8nDecg.JPEG/a_280777eb1ba440bc9bc6112000c541da.jpg?type=m_webp"
+								data-v-878ec45c="">
+							<source
+								srcset="https://kream-phinf.pstatic.net/MjAyMjEyMjZfMjU3/MDAxNjcyMDQ5MzI2ODY4.WdKrbrndxZPpjpekhE1evnprY0b1r4EMIyWLtrMeJKog.kTXWFN9YdjheMWZe_lGmmRtAuLAHcXVWgMDoKw8nDecg.JPEG/a_280777eb1ba440bc9bc6112000c541da.jpg?type=m"
+								data-v-878ec45c="">
 							<img
-								src="${pageContext.request.contextPath}/resources/images/supreme.jpg"
-								loading="lazy" class="image" data-v-878ec45c=""></picture>
+								src="https://kream-phinf.pstatic.net/MjAyMjEyMjZfMjU3/MDAxNjcyMDQ5MzI2ODY4.WdKrbrndxZPpjpekhE1evnprY0b1r4EMIyWLtrMeJKog.kTXWFN9YdjheMWZe_lGmmRtAuLAHcXVWgMDoKw8nDecg.JPEG/a_280777eb1ba440bc9bc6112000c541da.jpg?type=m"
+								loading="lazy" referrerpolicy="no-referrer" class="image" data-v-878ec45c=""></picture>
 						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">슈프림</p>
+						<p class="shortcut_item_title" data-v-155cff51="">롤렉스</p>
 					</div>
 					<div class="shortcut_item" data-v-155cff51="" data-v-281f2319="">
 						<div class="shortcut_item_img_wrap" data-v-155cff51="">
 							<picture class="picture shortcut_item_img_bg"
 								style="background-color:#f4f4f4;" data-v-878ec45c=""
-								data-v-155cff51="">
-							
+								data-v-024bc264="">
+							<source type="image/webp"
+								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTZfMTk4/MDAxNjczODM0MTY3NTEx.zjDY7GEpcDo59jY0E_O0f5f7NkhWJeCxteVczQVZImAg.f_4h16SS6Ms3-bOayI5whDHvjwS7UQcRXURsaNoA9TAg.JPEG/a_cfe35c2cfda64a50a4bb7d6f7bc04f01.jpg?type=m_webp"
+								data-v-878ec45c="">
+							<source
+								srcset="https://kream-phinf.pstatic.net/MjAyMzAxMTZfMTk4/MDAxNjczODM0MTY3NTEx.zjDY7GEpcDo59jY0E_O0f5f7NkhWJeCxteVczQVZImAg.f_4h16SS6Ms3-bOayI5whDHvjwS7UQcRXURsaNoA9TAg.JPEG/a_cfe35c2cfda64a50a4bb7d6f7bc04f01.jpg?type=m"
+								data-v-878ec45c="">
 							<img
-								src="${pageContext.request.contextPath}/resources/images/ysl_logo.jpg"
-								loading="lazy" class="image" data-v-878ec45c=""></picture>
+								src="https://kream-phinf.pstatic.net/MjAyMzAxMTZfMTk4/MDAxNjczODM0MTY3NTEx.zjDY7GEpcDo59jY0E_O0f5f7NkhWJeCxteVczQVZImAg.f_4h16SS6Ms3-bOayI5whDHvjwS7UQcRXURsaNoA9TAg.JPEG/a_cfe35c2cfda64a50a4bb7d6f7bc04f01.jpg?type=m"
+								loading="lazy" class="image" referrerpolicy="no-referrer" data-v-878ec45c=""></picture>
 						</div>
-						<p class="shortcut_item_title" data-v-155cff51="">생 로랑</p>
+						<p class="shortcut_item_title" data-v-155cff51="">폴로</p>
 					</div>
 				</div>
 			</div>

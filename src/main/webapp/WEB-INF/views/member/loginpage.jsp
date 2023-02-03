@@ -63,20 +63,20 @@
 							비밀번호 찾기 </a></li>
 				</ul>
 				<br>
-				<!-- <div class="social_login" data-v-5e2d3411="">
+				<div class="social_login" data-v-5e2d3411="">
 					 <a href="${ naver_url }"><img width="400" src="${pageContext.request.contextPath}/resources/images/naver-login.png" alt="Naver Login" /></a>
-				</div>-->
+				</div>
 			</form>
 		</div>
 	</div>
 	<div class="banner_bottom lg" data-v-e5d8b6f4="" data-v-464f7370="">
-		<a href="#" class="banner_box" data-v-e5d8b6f4="">
+		<a href="#" class="banner_box" data-v-e5d8b6f4="" style="background-color: #efe3ed;">
 			<div class="banner_info" data-v-e5d8b6f4="">
 				<p class="info_title" data-v-e5d8b6f4="">
 					The harmM은 처음이지? <br>서비스 소개를 확인해보세요.
 				</p>
 				<span class="info_txt" data-v-e5d8b6f4="">서비스 안내</span>
-			</div></a><a href="#" class="banner_box" data-v-e5d8b6f4="">
+			</div></a><a href="#" class="banner_box" data-v-e5d8b6f4="" style="background-color: #48665a;">
 			<div class="banner_info" data-v-e5d8b6f4="">
 				<p class="info_title" data-v-e5d8b6f4="">
 					The harmM 앱을 설치하여 <br>한정판 스니커즈를 FLEX 하세요!
@@ -86,7 +86,20 @@
 		<!---->
 	</div>
 </div>
+
+<%-- <form id="loginForm2" name="loginForm2" action="/login" method="post" style="display:none;">
+		<input id="socialLoginId" type="email" name="username"
+				placeholder="예) theharmm@theharmm.co.kr" autocomplete="off"
+				class="input_txt" data-v-1c44afeb="">
+		<input id="socialLoginPw" type="password" name="password" placeholder=""
+				autocomplete="off" class="input_txt" data-v-1c44afeb=""
+				onkeypress="if( event.keyCode == 13 ){btn_click();}">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" /> 
+</form> --%>
+
 <script>
+	
 	function btn_click() {
 		/* var referer = document.referrer;
 		$("#referer").val(referer); */
@@ -97,5 +110,18 @@
 		$("#loginForm").submit();
 
 	};
+	
+	/* $( document ).ready(function() {
+	    console.log( "ready!" );
+	    var username = "${memberVO.member_email}"
+	    var password = "${memberVO.member_password}"
+	    if(username != ""){
+	    	console.log(username);	
+	    	$("#socialLoginId").val(username);
+	    	$("#socialLoginPw").val("1234");
+	    	$("#loginForm2").submit();
+	    }
+	    
+	}); */
 </script>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

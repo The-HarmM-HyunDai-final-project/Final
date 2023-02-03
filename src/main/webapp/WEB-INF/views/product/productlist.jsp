@@ -3913,7 +3913,7 @@
 													
 													let tmp = "";
 													
-													tmp += "<div data-v-6c61cf2d='' class='suggest_item'><a data-v-6c61cf2d='' href='/products/43348' class='suggest_link'>"
+													tmp += "<div data-v-6c61cf2d='' class='suggest_item'><a data-v-6c61cf2d='' href='/products/"+product_array.at(i).product.pid+"' class='suggest_link'>"
  													tmp += "	<div data-v-6c61cf2d='' class='suggest_thumb' style='background-color: rgb(244, 244, 244);'>"
 													tmp += "			<picture data-v-878ec45c='' data-v-09fbcf09='' class='picture thumb_img'>"
 													tmp += "				<source data-v-878ec45c='' type='image/webp'"

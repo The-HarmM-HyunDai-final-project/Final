@@ -687,14 +687,14 @@ span{
     padding: 0;
 }
 
-.search_area .search {
+/* .search_area .search {
     position: relative;
     padding: 0 4rem 0 4.4rem;
     height: 4rem;
     background-color: #f4f4f4;
     border-radius: .8rem;
 }
-
+ */
 .search_area .ico-search-gray { position: absolute; top: .8rem; left: 1.2rem; }
 
 .search_area .input_search {

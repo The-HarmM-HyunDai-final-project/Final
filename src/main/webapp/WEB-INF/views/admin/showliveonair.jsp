@@ -15,9 +15,12 @@ Milligram CSS
       width: 100%;
       height: 100vh;
     } */
+    
+    
     .container {
         height: 100vh;
-        width: 99%
+        width: 99%;
+        font-size : 16px;
         /* background: #f00fff; */
       }
       .showlive_container {
@@ -116,11 +119,17 @@ Milligram CSS
         -webkit-transform: scale(1.1, 1.1);
       }
       .info_area .special_info #showlive_start{
-      	background: #48665a;
+      	background: #efe3ed;
+      	border-radius: 15px;
+      	width:200px;
+      	height:50px;
       	flex:1;
       }
       .info_area .special_info #showlive_end{
-      	background: #48665a;
+      	background: #efe3ed;
+      	border-radius: 15px;
+      	width:200px;
+      	height:50px;
       	flex:1;
       }
       .info_area .room_title{

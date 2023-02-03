@@ -3,6 +3,7 @@ package com.theharmm.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -146,7 +147,7 @@ public class PostController {
       
       log.info("followerCnt" + followerCnt);
       log.info("followingCnt" + followingCnt);
-      return "social/user";
+      return "social/trending";
    }
    
    
@@ -194,6 +195,7 @@ public class PostController {
    }
 
    /* 포스트 상세 */
+   
 
    @GetMapping("/social/user/details")
    public String getPostDetail(int post_id, Model model,String user) {
@@ -214,9 +216,16 @@ public class PostController {
                   + socials.get(i).getFile_name());
          }
       }
+      
+		/*
+		 * SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		 * String formattedDate = simpleDateFormat.format(postvo.getRegister_date());
+		 * java.sql.Date date1 = java.sql.Date.valueOf(formattedDate); log.info(date1);
+		 */
+      
       model.addAttribute("post_id", postvo.getPost_id());
       model.addAttribute("contents", postvo.getContents());
-      model.addAttribute("register_date", postvo.getRegister_date());
+      model.addAttribute("register_date",postvo.getRegister_date());
       
       List<ProductDTO> productList = new ArrayList<>();
       if (postvo.getPid0() != 0) {
@@ -232,11 +241,13 @@ public class PostController {
          productList.add(tmp3);
       }      
       
-      model.addAttribute("user", user);
-      model.addAttribute("products", productList);
-      model.addAttribute("pcount", productList.size());
       CustomUser member_email = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
       model.addAttribute("member_email", member_email.getUsername());
+      
+      model.addAttribute("user", member_email.getUsername());
+      model.addAttribute("products", productList);
+      model.addAttribute("pcount", productList.size());
+
       model.addAttribute("replyList", replyService.getReplyList(post_id));
       
       log.info(replyService.getReplyList(post_id));

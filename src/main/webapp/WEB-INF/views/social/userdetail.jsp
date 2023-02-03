@@ -31,7 +31,7 @@
 			<div data-v-a55f4638="" data-v-07ebf68b="" id="p681677"
 				class="social_post_detail empty_comments">
 				<div data-v-271ab2d7="" data-v-a55f4638="" class="social_user_state">
-					<a data-v-271ab2d7="" href="#" class="user_state_box"><div
+					<a data-v-271ab2d7="" href="/social/trending?email=${user}&member_email=${MID}" class="user_state_box"><div
 							data-v-271ab2d7="" class="profile_img_box">
 							<img data-v-271ab2d7="" src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png"
 								alt="KREAM 프로필 이미지" class="profile_img">
@@ -61,11 +61,27 @@
 												<div data-v-46fdf25a="" data-v-e4caeaf8=""
 													class="slide_item">
 													<div data-v-46fdf25a="" data-v-e4caeaf8="" class="img_box">
-														<video id="video1" controls autoplay loop width="100%"
-															height="60%" loop poster="" controlsList="nodownload"
-															poster="${pageContext.request.contextPath}/${poster}">
-															<source src="${pageContext.request.contextPath}/${video}">
-														</video>
+													<!--  -->
+													  <!-- 객체가 null인지 비교 -->
+														<c:choose>
+															<c:when test="${video eq null}">
+																<img data-v-878ec45c="" alt="소셜이미지"
+																	referrerpolicy="no-referrer"
+																	src="${pageContext.request.contextPath}/${poster}"
+																	loading="auto" class="image">
+															</c:when>
+
+															<c:otherwise>
+																<video id="video1" controls autoplay loop width="100%"
+																	height="60%" loop poster="" controlsList="nodownload"
+																	poster="${pageContext.request.contextPath}/${poster}">
+																	<source
+																		src="${pageContext.request.contextPath}/${video}">
+																</video>
+															</c:otherwise>
+														</c:choose>
+
+														
 													</div>
 												</div>
 											</div>
@@ -220,21 +236,20 @@
 									<div data-v-e139a0b8="" data-v-1a009402=""
 										class="comment_top_scroll">
 										<div data-v-4862de99="" data-v-e139a0b8=""
-											class="comment_unit" data-v-1a009402="">
+											class="comment_unit" data-v-1a009402="" style="overflow-y: hidden">
 											<div data-v-4862de99="" class="comment_box">
 												<a data-v-4862de99="" href="/social/users?email=${user}"
 													class="profile_link"><img data-v-4862de99=""
 													src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png"
 													alt="KREAM 프로필 이미지" class="profile_img"></a>
 												<div data-v-4862de99="" class="comment_detail">
-													<div data-v-4862de99="" class="main">
+													<div data-v-4862de99="" class="main" style="margin-bottom:15px">
 														<span data-v-4862de99="" class="user_name">${user}</span><span
 															data-v-4862de99="" class="comment_txt"></span>
 													</div>
 													${contents}
-													<div data-v-4862de99="" class="sub">
-														<span data-v-4862de99="" class="upload_time">2022년
-															11월 22일</span>
+													<div data-v-4862de99="" class="sub" style="margin-top:15px">
+														<span data-v-4862de99="" class="upload_time">${register_date}</span>
 														<!---->
 														<!---->
 														<!---->
@@ -345,6 +360,8 @@
 						showReplyList(post_id);
 
 						var mid = $("#mid").val();
+						var user = $("#user").val();
+						
 						console.log("mid-------------" + mid);
 
 						document
@@ -373,58 +390,65 @@
 								.addEventListener(
 										'click',
 										function() {
-											console.log("tkfk");
-
-											var tmp_content = document
-													.getElementById('reply').value;
-											var tmpArr = tmp_content.split(" ");
-											var content = "";
-
-											if (tmpArr.length == 1) {
-												content = tmp_content;
+											
+											if (mid == "") {
+												alert("로그인 후 이용해 주세요");
+												document
+												.getElementById('reply').value = "";
 											} else {
-												for (var i = 1; i < tmpArr.length; i++) {
-													content += tmpArr[i] + " ";
-												}
+												var tmp_content = document
+												.getElementById('reply').value;
+										var tmpArr = tmp_content.split(" ");
+										var content = "";
+
+										if (tmpArr.length == 1) {
+											content = tmp_content;
+										} else {
+											for (var i = 1; i < tmpArr.length; i++) {
+												content += tmpArr[i] + " ";
+											}
+										}
+
+										console.log("content" + content);
+
+										$
+												.ajax(
+														{
+															url : "/social/insertReply",
+															data : {
+																"member_email" : mid,
+																"post_id" : post_id,
+																"content" : content,
+																"parent_id" : parent_id,
+																"depth" : depth
+															}
+														})
+												.done(
+														function(data) {
+															console
+																	.log(data);
+															if (data.result == 1) {
+																alert("댓글이 등록 되었습니다");
+																document
+																		.getElementById('reply').value = "";
+																
+																showReplyList(post_id);
+
+									      						if (socket) {
+									      							let socketMsg = "reply," + mid +","+ data.parent_member_email +","+ data.parent_member_email +","+ post_id;
+									      							console.log("msgmsg : " + socketMsg);
+									      							socket.send(socketMsg);
+									      						}
+									      						
+																parent_id = 0;
+																depth = 0;
+															} else {
+																alert("댓글을 작성해 주세요");
+															}
+														});
 											}
 
-											console.log("content" + content);
 
-											$
-													.ajax(
-															{
-																url : "/social/insertReply",
-																data : {
-																	"member_email" : member_email,
-																	"post_id" : post_id,
-																	"content" : content,
-																	"parent_id" : parent_id,
-																	"depth" : depth
-																}
-															})
-													.done(
-															function(data) {
-																console
-																		.log(data);
-																if (data.result == 1) {
-																	alert("댓글이 등록 되었습니다");
-																	document
-																			.getElementById('reply').value = "";
-																	
-																	showReplyList(post_id);
-
-										      						if (socket) {
-										      							let socketMsg = "reply," + member_email +","+ data.parent_member_email +","+ data.parent_member_email +","+ post_id;
-										      							console.log("msgmsg : " + socketMsg);
-										      							socket.send(socketMsg);
-										      						}
-										      						
-																	parent_id = 0;
-																	depth = 0;
-																} else {
-																	alert("댓글을 작성해 주세요");
-																}
-															});
 
 										});
 
@@ -486,7 +510,7 @@
 													
 													tmp3 = `			<div data-v-4862de99="" data-v-e139a0b8="" class="comment_unit" data-v-1a009402="">                                                                      `
 														+ `						<div data-v-4862de99="" class="comment_box">                                                                                                         `
-														+ `							<a data-v-4862de99="" href="/social/user?email=`+ mainreply.member_email+`& member_email = `+mid+`" class="profile_link"><img data-v-4862de99=""                                                  `+
+														+ `							<a data-v-4862de99="" href="/social/trending?email=`+mainreply.member_email+`&member_email=`+mid+`" class="profile_link"><img data-v-4862de99=""                                                  `+
 `									src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png" alt="KREAM 프로필 이미지" class="profile_img"></a>                                                 `
 														+ `							<div data-v-4862de99="" class="comment_detail">                                                                                                  `
 														+ `								<div data-v-4862de99="" class="main">                                                                                                        `

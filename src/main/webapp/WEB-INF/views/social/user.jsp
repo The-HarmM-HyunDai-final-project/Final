@@ -192,7 +192,7 @@
 							<div data-v-45542174="" class="user_top">
 								<div data-v-45542174="" class="profile_img_box">
 									<img data-v-45542174=""
-										src="${pageContext.request.contextPath}/resources/images/test2.jpg"
+										src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png"
 										alt="KREAM 프로필 이미지" class="profile_img">
 								</div>
 								<div data-v-45542174="" class="profile_info_box">
@@ -204,8 +204,8 @@
 								</div>
 							</div>
 							<div data-v-45542174="" class="user_explain">
-								<p data-v-45542174="" class="main_txt"></p>
-								<!---->
+								<p data-v-45542174="" class="main_txt">${member_email}</p>
+								<p data-v-45542174="" class="sub_txt">👟${member_email}의 style피드에 오신걸 환영합니다💨👟</p>
 							</div>
 
 							<c:if test="${userCheck eq '팔로우'}">
@@ -277,7 +277,7 @@
 											style="position: absolute; left: ${status.index*300%1200}px; top: ${(status.index/4-status.index%4/4) * 500 }px;">
 											
 											<a data-v-47728778="" class = "linkto"
-												href="${pageContext.request.contextPath}/social/trending/details?post_id=${item.post_id}">
+												href="${pageContext.request.contextPath}/social/user/details?post_id=${item.post_id}">
 												<div data-v-47728778="" class="card_box">
 													<div data-v-47728778="" class="social_img_box vertical">
 														<picture data-v-878ec45c="" data-v-47728778=""
@@ -292,7 +292,7 @@
 																class="picture img_profile"> <img
 																data-v-878ec45c="" alt="사용자 프로필 이미지"
 																referrerpolicy="no-referrer"
-																src="${pageContext.request.contextPath}/resources/images/test2.jpg"
+																src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png"
 																loading="auto" class="image"></picture>
 															<p data-v-47728778="" class="user_name">${item.member_email}</p>
 															<span data-v-47728778="" aria-label="좋아요" role="button"
@@ -488,8 +488,9 @@
 
 					</div>
 				</div>
+				<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 			</div>
-			<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+
 			<div data-v-34025556="">
 				<!---->
 				<div data-v-66ae1b7c="" id="toast" class="toast lg">
@@ -748,10 +749,11 @@
          .ready(
                function() {
             	   
+            	  console.log("mid" + $("#mid").val());
             	  if ($("#mid").val() == "") {
-            		  $('#input_search').href = "${pageContext.request.contextPath}/social/trending/details?post_id=${item.post_id}"
+            		  $('.linkto').href = "${pageContext.request.contextPath}/social/trending/details?post_id=${item.post_id}"
             	  } else {
-            		  $('#input_search').href = "${pageContext.request.contextPath}/social/user/details?post_id=${item.post_id}"
+            		  $('.linkto').href = "${pageContext.request.contextPath}/social/user/details?post_id=${item.post_id}"
             	  }
             	  
             	   
