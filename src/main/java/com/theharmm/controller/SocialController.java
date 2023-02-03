@@ -61,6 +61,7 @@ public class SocialController {
 		
 		//String myPath = webappRoot.split(".metadata")[0] + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
 		String myPath = webappRoot.split(".metadata")[0] + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
+
 		log.warn(myPath);
 		
 //		log.warn(webappRoot);
@@ -102,9 +103,14 @@ public class SocialController {
 		}
 		
 		String webappRoot = servletContext.getRealPath("/");
+		
 	    String myRootPath = "C:" + File.separator + "Users" + File.separator + "kosa2" + File.separator + "git" + File.separator + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
 	    //String myRootPath = "C:" + File.separator + "Users" + File.separator + "user" + File.separator + "git" + File.separator + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
 	    //String myRootPath = "C:" + File.separator + "sts3" + File.separator + "workspace" + File.separator + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
+	    
+		//여명이꺼
+		String myRootPath2 = "C:/Users/kosa/Desktop/final_project/Final/src/main/webapp/";
+		
         String relativePath = "resources" + File.separator + "images" + File.separator + "postimages" + File.separator;
 	    System.out.println(relativePath);
 		String uploadFolder = "C:\\upload";
@@ -114,7 +120,7 @@ public class SocialController {
 		String str = sdf.format(date);
 		String datePath = str.replace("-", File.separator);
 
-		File uploadPath = new File(myRootPath + relativePath);
+		File uploadPath = new File(myRootPath2 + relativePath);
 		
 		/* 이미저 정보 담는 객체 */
 		List<SocialVO> list = new ArrayList();
@@ -158,7 +164,7 @@ public class SocialController {
 	@PostMapping("/user/deleteFile")
 	public ResponseEntity<String> deleteFile(String fileName) {
 		logger.info("deleteFile........" + fileName);
-		String myRootPath = "C:" + File.separator + "sts3" + File.separator + "workspace" + File.separator + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
+		String myRootPath = "C:" + File.separator + "Users" + File.separator + "kosa2" + File.separator + "git" + File.separator + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
 		String relativePath = "resources" + File.separator + "images" + File.separator + "postimages" + File.separator;
 		 
 		File file = null;
