@@ -60,7 +60,7 @@ public class AdminChatServiceImpl implements AdminChatService {
 		try {
 			ChatRoomDTO chatRoomDTO = null;
 			int result = adminChatMapper.addChatRoom(member_email);
-			if(result == 1) {
+			if(result != 0) {
 				chatRoomDTO = adminChatMapper.selectCurrentMemberChatRoom(member_email);
 			}
 			return chatRoomDTO;
