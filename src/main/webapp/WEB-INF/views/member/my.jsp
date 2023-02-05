@@ -374,53 +374,6 @@
 									<!---->
 								</div>
 							</div>
-							<div data-v-6752ceb2="" data-v-5419f155="" class="my_home_title">
-								<h3 data-v-6752ceb2="" class="title">관심 상품</h3>
-								<!---->
-							</div>
-							<div data-v-5419f155="" class="interest_product">
-								<div data-v-5419f155="" class="product_list">
-									<div data-v-a6a1a7c0="" data-v-5419f155="" class="product_item">
-										<a data-v-a6a1a7c0="" href="/products/83900"
-											class="item_inner"><div data-v-a6a1a7c0=""
-												class="thumb_box">
-												<div data-v-09fbcf09="" data-v-a6a1a7c0="" class="product"
-													style="background-color: rgb(246, 238, 237);">
-													<picture data-v-878ec45c="" data-v-09fbcf09=""
-														class="picture product_img"> <img
-														data-v-878ec45c="" alt="조던 1 레트로 하이 OG 시카고 2022"
-														src="${pageContext.request.contextPath}/resources/images/test3.jpg"
-														loading="lazy" class="image"></picture>
-													<!---->
-													<!---->
-													<!---->
-													<!---->
-												</div>
-											</div>
-											<div data-v-a6a1a7c0="" class="info_box">
-												<div data-v-a6a1a7c0="" class="brand">
-													<!---->
-													<p data-v-a6a1a7c0="" class="brand-text">Jordan</p>
-													<!---->
-												</div>
-												<p data-v-a6a1a7c0="" class="name">Jordan 1 Retro High
-													OG Chicago 2022</p>
-												<div data-v-6da6dff3="" data-v-a6a1a7c0=""
-													class="badge badge_product shipping_express">빠른배송</div>
-												<div data-v-a6a1a7c0="" class="price">
-													<div data-v-a6a1a7c0="" class="amount lg">
-														<!---->
-														<em data-v-a6a1a7c0="" class="num"> 450,000원 </em>
-													</div>
-													<div data-v-a6a1a7c0="" class="desc">
-														<p data-v-a6a1a7c0="">즉시 구매가</p>
-													</div>
-												</div>
-											</div></a>
-									</div>
-								</div>
-								<!---->
-							</div>
 							<!---->
 							<!---->
 						</div>

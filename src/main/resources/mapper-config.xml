@@ -37,5 +37,10 @@
 			type="com.theharmm.domain.ShowLiveBiddingDTO" />
 		<typeAlias alias="ShowLiveAuctionFinalPersonDTO"
 			type="com.theharmm.domain.ShowLiveAuctionFinalPersonDTO" />
+		<!-- AdminChatting -->
+		<typeAlias alias="ChatRoomDTO"
+			type="com.theharmm.domain.ChatRoomDTO" />
+		<typeAlias alias="ChatMessageDTO"
+			type="com.theharmm.domain.ChatMessageDTO" />
 	</typeAliases>
 </configuration>

@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ChatbotService {
-	
+   
     public String main(String voiceMessage) {
         String secretKey = "eHNPeE1pZVBlRktDUFVIaE9IT1RWS2plSWJzZ2t5dFE=";
         String apiURL = "https://kj8nqdj0ls.apigw.ntruss.com/custom/v1/9177/f572daa24e7730df9489facf258b25ee36ea4fdd05eb095f302fed630cd1f175";
@@ -177,17 +177,20 @@ public class ChatbotService {
             JSONObject dataObj = (JSONObject) tempObj.get("data");
             if(dataObj != null) {
                 if((String) dataObj.get("description") == "") {
-                	JSONObject dataObj2 = (JSONObject) dataObj.get("cover");
-                	resultText += (String) dataObj2.get("description");
+                   JSONObject dataObj2 = (JSONObject) dataObj.get("cover");
+                   resultText += (String) dataObj2.get("description");
                 } else {
-                	resultText += (String) dataObj.get("description");
+                   resultText += (String) dataObj.get("description");
                 }
             }
         } else {
              System.out.println("없음");
         }*/
         return chatbotMessage;
-    }    
+    }
+    
+    
+    //---------------------------------------------------------------------
+    
 
 }
-

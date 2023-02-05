@@ -14,6 +14,7 @@
 	Date nowTime = new Date();
 	SimpleDateFormat sf = new SimpleDateFormat("a hh:mm");
 %>
+<c:set var="now" value="<%=new java.util.Date()%>" />
 
 <html lang="ko" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22ko%22%7D%7D">
 
@@ -395,7 +396,7 @@
         <header class="KEP-ChatHeader">
             <div class="KEP-ChatHeader__center">
                 <p class="KEP-ChatHeader__botName">
-                    TheHarmM
+                    TheHarm
                     <svg class="KEP-ChatHeader__arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         viewBox="0 0 16 16" fill="none" style="display: inline-block !important;">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M8.5 11L11.5 7H5.5L8.5 11Z" fill="black">
@@ -421,7 +422,7 @@
                                     </image>
                                 </svg>
                             </div>
-                            <span class="KEP-ChatHeader__botItemName">TheHarmM</span>
+                            <span class="KEP-ChatHeader__botItemName">TheHarm</span>
                         </li>
                         <li class="KEP-ChatHeader__botItem" obbi="6304614a9798e74cfeaf6ad5"
                             ebbi="kepr4KuE1z5ROGtanfL0VF73Q" buildertype="">
@@ -469,20 +470,20 @@
                         </defs>
                         <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice"
                             clip-path="url(#clipSquircle)"
-                            xlink:href="https://objectstorage.kr-central-1.kakaoi.io/v1/735f5d2ed4d742468bcbcd6e533b26aa/builder-prod/OU9mbkRta1VhdTFXRUJfQ0hBVEJPVF9wcm9maWw=">
+                            xlink:href="/resources/images/logo_the.png">
                         </image>
                     </svg>
                 </div>
                 <div class="KEP-Receiver__msgArea">
                     <div class="KEP-Receiver__nickName">젤뽀</div>
                     <div class="KEP-Receiver__blocksArea">
-                        <div class="KEP-Receiver__speech">안녕하세요! <br>TheHarmM웹사이트에 오신걸 환영합니다.<br><br>궁금한 내용을 질문해
+                        <div class="KEP-Receiver__speech">안녕하세요! <br>TheHarm웹사이트에 오신걸 환영합니다.<br><br>궁금한 내용을 질문해
                             주세요♥<span class="KEP-Receiver__time"><%= sf.format(nowTime) %></span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="KEP-Sender">
+<!--             <div class="KEP-Sender">
                 <div class="KEP-Sender__msgArea">
                     <div class="KEP-Sender__blocksArea">
                         <div class="KEP-Sender__speech" style=" background: #8770BA !important; color: #FFFFFF !important; ">
@@ -502,34 +503,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="KEP-Receiver">
-                <div class="KEP-Receiver__avatar">
-                    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <path id="shapeSquircle"
-                                d="M17 0C29.4003 0 34 4.59973 34 17C34 29.4003 29.4003 34 17 34C4.59973 34 0 29.4003 0 17C0 4.59973 4.59973 0 17 0Z">
-                            </path>
-                            <clipPath id="clipSquircle">
-                                <use xlink:href="#shapeSquircle"></use>
-                            </clipPath>
-                        </defs>
-                        <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice"
-                            clip-path="url(#clipSquircle)"
-                            xlink:href="https://objectstorage.kr-central-1.kakaoi.io/v1/735f5d2ed4d742468bcbcd6e533b26aa/builder-prod/OU9mbkRta1VhdTFXRUJfQ0hBVEJPVF9wcm9maWw=">
-                        </image>
-                    </svg>
-                </div>
-                <div class="KEP-Receiver__msgArea">
-                    <div class="KEP-Receiver__nickName">젤뽀</div>
-                    <div class="KEP-Receiver__blocksArea">
-                        <div class="KEP-Receiver__speech">안녕하세요! 저는 젤뽀입니다.<br><br>흰디에게 무엇이든 알려주길 좋아하는 대표 오지라퍼이기도
-                            해요.<br><br>고객님께도 무엇이든 알려드리고 싶어서 웨스티 행성에서 지구로 내려왔어요!<br><br>지금부터 제가 쇼핑을 도와드릴게요 ♥<span
-                                class="KEP-Receiver__time">오전 11:27</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div> -->
+
         </div>
 
         <!-- 퀵리플라이 영역 -->
@@ -626,8 +601,8 @@
 .chat_message{position: fixed; bottom:56px; right:60px; z-index: 1000; width: 70px; border-radius: 35px;  overflow: hidden; height: 70px; transition: 0.3s; display: flex; flex-direction: row; align-items: center; background-color: #fff;cursor:pointer;}
 .chat_message.active{width: 400px; transition: width 0.3s;}
 .chat_message a:hover{text-decoration: none;}
-.chat_message .chat_open_wrap{position: relative; display: flex; flex-direction: row; align-items: center; padding-left: 80px;  background-color: #fff;}
-.chat_message .chat_open_btn{width: 70px; height: 70px; background:url(https://www.ehyundai.com/images/webhome/outlets/layout/chatbot_off.png) no-repeat; background-size: 70px 70px; position: absolute; left: 0; top: 0; z-index: 1000;}
+.chat_message .chat_open_wrap{position: relative; display: flex; flex-direction: row; align-items: center; padding-left: 80px;  background-color: black;}
+.chat_message .chat_open_btn{width: 70px; height: 70px; background:url(/resources/images/logo3.jpg) no-repeat; background-size: 70px 70px; position: absolute; left: 0; top: 0; z-index: 1000;  background-color: black;}
 .chat_message .chat_close_btn{display: none; width:25px; height: 25px; background:url(https://www.ehyundai.com/images/webhome/outlets/layout/chatbot_off.png) no-repeat; background-size: 100%; font-size:0; margin-left: 30px; position: absolute; right: 0;}
 .chat_message.active .chat_close_btn{display: block;}
 .chat_btn_txt_wrap{width: 305px;}
@@ -1890,8 +1865,15 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 }
 
 </style>
-				<script>
+<script>
+	
+	
+	
+
+
 	$(document).ready(function () {
+		
+		
 		
 		var mid = $("#mid").val();
 		console.log("mid-------------" + mid);
@@ -2008,6 +1990,8 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 		 $("#chatcloseBtn").on("click", function (e) {
 			 document.getElementById('chatbotcontainer').style.display = 'none';
 		 });
+		 
+		
 		
 		// submit 했을 때 처리
 		 $('#chatForm').on('submit', function (event) {
@@ -2039,7 +2023,7 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 			                                 <rect width="1" height="11" transform="matrix(-1 0 0 1 1 0)" fill="#8770BA"></rect>
 			                             </svg>
 			                         </span>`+ inputText +`<span class="KEP-Sender__read">읽음</span>
-			                         <span class="KEP-Sender__time">시간</span>
+			                         <span class="KEP-Sender__time"><fmt:formatDate value="${now}" pattern="a hh:mm" /></span>
 			                     </div>
 			                 </div>
 			             </div>
@@ -2047,6 +2031,7 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 			     ` 
 		     
 		     $("#chatArea").append(tmphtml);
+			 $('.KEP-ChatArea').scrollTop($('.KEP-ChatArea')[0].scrollHeight);
 			 $("#inputText").val("");
 
 		     $.ajax({
@@ -2059,11 +2044,13 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 		         beforeSend: function(xhr) {
 		             xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 		         },
+		         dataType: "json",
 		         success:function (result) {
 		        	 tmpresponse = "";
 		        	 tmpresponse +=
 		        		 
 		             console.log(result);
+		        	
  		        	 tmpres = 
 		        	 `
 		             <div class="KEP-Receiver">
@@ -2079,27 +2066,175 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 		                         </defs>
 		                         <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice"
 		                             clip-path="url(#clipSquircle)"
-		                             xlink:href="https://objectstorage.kr-central-1.kakaoi.io/v1/735f5d2ed4d742468bcbcd6e533b26aa/builder-prod/OU9mbkRta1VhdTFXRUJfQ0hBVEJPVF9wcm9maWw=">
+		                             xlink:href="/resources/images/logo_the.png">
 		                         </image>
 		                     </svg>
 		                 </div>
 		                 <div class="KEP-Receiver__msgArea">
 		                     <div class="KEP-Receiver__nickName">젤뽀</div>
 		                     <div class="KEP-Receiver__blocksArea">
-		                         <div class="KEP-Receiver__speech">`+result+`<span class="KEP-Receiver__time">오전 11:27</span>
+		                         <div class="KEP-Receiver__speech">`+result.msg+`<br>`+result.button+`<span class="KEP-Receiver__time">`+result.chatTime+`</span>
 		                         </div>
 		                     </div>
 		                 </div>
 		             </div>
-		 `
+		 			`
 		 
 		          $("#chatArea").append(tmpres); 
+		 		  $('.KEP-ChatArea').scrollTop($('.KEP-ChatArea')[0].scrollHeight);
+ 		          $("#connectAdmin").on("click", function (e) {
+ 		        	 console.log("connectAdmin");
+ 		        let sock = new SockJS("http://localhost:8080/admin/chat");
+ 		   		//let sock = new SockJS("/admin/chat/", null, {transports: ["websocket", "xhr-streaming", "xhr-polling"]});
+ 		   		console.log(sock);
+ 		   		sock.onmessage = onMessage;
+ 		   		sock.onopen = onOpen;
+ 		   		sock.onclose = onClose;
+ 		   		
+ 		   		
+ 		   		function onOpen() {
+ 		   			
+ 		   			   const msg = {
+ 		   			         "chat_no" : 0,
+ 		   			         "room_no" : 0,
+ 		   			     	 "member_name" : "신미림",
+ 		   			         "member_email" : "tlsalfla96@naver.com",
+ 		   			         "chat_message" : "ENTER-CHAT",
+ 		   			         "chat_type" : "enter",
+ 		   			         "chat_date" : "0",
+ 		   			         "room_host" : "tlsalfla96@naver.com"
+ 		   			       
+ 		   			         }
+ 		   			      console.log('start socket : ' + msg);
+ 		   			      let jsonData = JSON.stringify(msg);
+ 		   			      
+ 		   			      
+ 		   			      sock.send(jsonData);
+ 		   		}
+ 		   		
+ 		   		// 메시지 전송
+ 		   		function sendMessage() {
+ 		   		   let chatType = "client";
+ 		   		   
+ 		   		   
+ 		   		   const msg = {
+ 		   			   "chat_no" : 0,
+ 		   		       "room_no" : 0,
+ 		   		       "member_name" : "신미림",
+ 		   		       "member_email" : "tlsalfla96@naver.com",
+ 		   		       "chat_message" : "ENTER-CHAT",
+ 		   		       "chat_type" : chatType,
+ 		   		       "chat_date" : "0",
+ 		   		       "room_host" : "tlsalfla96@naver.com"
+ 		   		   }
+ 		   		   
+ 		   		   let jsonData = JSON.stringify(msg);
+ 		   		   console.log(jsonData);
+ 		   		   sock.send(jsonData);
+ 		   		}
+ 		   		
+ 		   		// 서버로부터 메시지를 받았을 때
+ 		   		function onMessage(msg) {
+ 		   		   console.log(msg);
+ 		   		   let receive = msg.data.split(",");
+ 		   		   console.log(receive);
+ 		   		   const data = {
+ 		   		   "member_name" : receive[0],
+ 		   		   "member_email" : receive[1],
+ 		   		   "chat_message" : receive[2],
+ 		   		   "chat_type" : receive[3],
+ 		   		   "chat_no" : receive[4],
+ 		   		   "chat_date": receive[5]
+ 		   		   };
+ 		   		   let tmphtml ="";
+ 		   		   if(data.member_email=="tlsalfla96@naver.com"){
+ 		   			   tmphtml += 
+ 		   				     `
+ 		   				          <div class="KEP-Sender">
+ 		   				             <div class="KEP-Sender__msgArea">
+ 		   				                 <div class="KEP-Sender__blocksArea">
+ 		   				                     <div class="KEP-Sender__speech" style=" background: #8770BA !important; color: #FFFFFF !important; ">
+ 		   				                         <span class="KEP-Sender__tail">
+ 		   				                             <svg width="11" height="11" viewBox="0 0 11 11" fill="none"
+ 		   				                                 xmlns="http://www.w3.org/2000/svg">
+ 		   				                                 <path d="M1 0H8.58579C9.47669 0 9.92286 1.07714 9.29289 1.70711L1 10V0Z"
+ 		   				                                     fill="#8770BA"></path>
+ 		   				                                 <path
+ 		   				                                     d="M0.966666 0.52002H8.59556C9.02257 0.52002 9.23701 1.03577 8.93588 1.33852L0.45 9.87002"
+ 		   				                                     stroke="black" stroke-opacity="0.03"></path>
+ 		   				                                 <rect width="1" height="11" transform="matrix(-1 0 0 1 1 0)" fill="#8770BA"></rect>
+ 		   				                             </svg>
+ 		   				                         </span>`+ data.chat_message +`<span class="KEP-Sender__read">읽음</span>
+ 		   				                         <span class="KEP-Sender__time">`+data.chat_date+`</span>
+ 		   				                     </div>
+ 		   				                 </div>
+ 		   				             </div>
+ 		   				         </div>
+ 		   				     ` 
+ 		   		   }
+ 		   		   else{
+ 		   			   tmphtml += 
+ 		   			   `
+ 		   	             <div class="KEP-Receiver">
+ 		   	                 <div class="KEP-Receiver__avatar">
+ 		   	                     <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+ 		   	                         <defs>
+ 		   	                             <path id="shapeSquircle"
+ 		   	                                 d="M17 0C29.4003 0 34 4.59973 34 17C34 29.4003 29.4003 34 17 34C4.59973 34 0 29.4003 0 17C0 4.59973 4.59973 0 17 0Z">
+ 		   	                             </path>
+ 		   	                             <clipPath id="clipSquircle">
+ 		   	                                 <use xlink:href="#shapeSquircle"></use>
+ 		   	                             </clipPath>
+ 		   	                         </defs>
+ 		   	                         <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice"
+ 		   	                             clip-path="url(#clipSquircle)"
+ 		   	                             xlink:href="https://objectstorage.kr-central-1.kakaoi.io/v1/735f5d2ed4d742468bcbcd6e533b26aa/builder-prod/OU9mbkRta1VhdTFXRUJfQ0hBVEJPVF9wcm9maWw=">
+ 		   	                         </image>
+ 		   	                     </svg>
+ 		   	                 </div>
+ 		   	                 <div class="KEP-Receiver__msgArea">
+ 		   	                     <div class="KEP-Receiver__nickName">젤뽀</div>
+ 		   	                     <div class="KEP-Receiver__blocksArea">
+ 		   	                         <div class="KEP-Receiver__speech">`+data.chat_message+`<span class="KEP-Receiver__time">`+data.chat_date+`</span>
+ 		   	                         </div>
+ 		   	                     </div>
+ 		   	                 </div>
+ 		   	             </div>
+ 		   	 			`
+ 		   		   }
+ 		   		   $("#chatArea").append(tmpres); 
+ 		   	 		$('.KEP-ChatArea').scrollTop($('.KEP-ChatArea')[0].scrollHeight);
+ 		   		}
+ 		   		// 서버와 연결을 끊었을 때
+ 		   		function onClose(evt) {
+ 		   		   console.log("연결이 끊겼습니다. 다시 접속하세요.");
+ 		   		   
+ 		   		   const msg = {
+ 		   				   "chat_no" : 0,
+ 		   			       "room_no" : 0,
+ 		   			       "member_email" : "tlsalfla96@naver.com",
+ 		   			       "chat_date" : "0",
+ 		   			       "room_host" : "tlsalfla96@naver.com",
+ 		   			       "chat_message" : "CLOSE-CHAT",
+ 		   			       "chat_type" : "close"
+ 		   			         }
+ 		   			      console.log('end socket : ' + msg);
+ 		   			      let jsonData = JSON.stringify(msg);
+ 		   			      
+ 		   			      
+ 		   			      sock.send(jsonData);
+ 		   		}
+ 		        	 
+ 		    			
+ 		    	  });
 		         },
 		         error:function (e) {
 		             alert("오류 발생" + e);
 		         }
 		     });
 		 })
+		 
+		 
         
 	});	
 	
