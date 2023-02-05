@@ -396,7 +396,7 @@
         <header class="KEP-ChatHeader">
             <div class="KEP-ChatHeader__center">
                 <p class="KEP-ChatHeader__botName">
-                    TheHarmM
+                    TheHarm
                     <svg class="KEP-ChatHeader__arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         viewBox="0 0 16 16" fill="none" style="display: inline-block !important;">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M8.5 11L11.5 7H5.5L8.5 11Z" fill="black">
@@ -422,7 +422,7 @@
                                     </image>
                                 </svg>
                             </div>
-                            <span class="KEP-ChatHeader__botItemName">TheHarmM</span>
+                            <span class="KEP-ChatHeader__botItemName">TheHarm</span>
                         </li>
                         <li class="KEP-ChatHeader__botItem" obbi="6304614a9798e74cfeaf6ad5"
                             ebbi="kepr4KuE1z5ROGtanfL0VF73Q" buildertype="">
@@ -470,20 +470,20 @@
                         </defs>
                         <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice"
                             clip-path="url(#clipSquircle)"
-                            xlink:href="https://objectstorage.kr-central-1.kakaoi.io/v1/735f5d2ed4d742468bcbcd6e533b26aa/builder-prod/OU9mbkRta1VhdTFXRUJfQ0hBVEJPVF9wcm9maWw=">
+                            xlink:href="/resources/images/logo_the.png">
                         </image>
                     </svg>
                 </div>
                 <div class="KEP-Receiver__msgArea">
                     <div class="KEP-Receiver__nickName">젤뽀</div>
                     <div class="KEP-Receiver__blocksArea">
-                        <div class="KEP-Receiver__speech">안녕하세요! <br>TheHarmM웹사이트에 오신걸 환영합니다.<br><br>궁금한 내용을 질문해
+                        <div class="KEP-Receiver__speech">안녕하세요! <br>TheHarm웹사이트에 오신걸 환영합니다.<br><br>궁금한 내용을 질문해
                             주세요♥<span class="KEP-Receiver__time"><%= sf.format(nowTime) %></span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="KEP-Sender">
+<!--             <div class="KEP-Sender">
                 <div class="KEP-Sender__msgArea">
                     <div class="KEP-Sender__blocksArea">
                         <div class="KEP-Sender__speech" style=" background: #8770BA !important; color: #FFFFFF !important; ">
@@ -503,34 +503,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="KEP-Receiver">
-                <div class="KEP-Receiver__avatar">
-                    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <path id="shapeSquircle"
-                                d="M17 0C29.4003 0 34 4.59973 34 17C34 29.4003 29.4003 34 17 34C4.59973 34 0 29.4003 0 17C0 4.59973 4.59973 0 17 0Z">
-                            </path>
-                            <clipPath id="clipSquircle">
-                                <use xlink:href="#shapeSquircle"></use>
-                            </clipPath>
-                        </defs>
-                        <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice"
-                            clip-path="url(#clipSquircle)"
-                            xlink:href="https://objectstorage.kr-central-1.kakaoi.io/v1/735f5d2ed4d742468bcbcd6e533b26aa/builder-prod/OU9mbkRta1VhdTFXRUJfQ0hBVEJPVF9wcm9maWw=">
-                        </image>
-                    </svg>
-                </div>
-                <div class="KEP-Receiver__msgArea">
-                    <div class="KEP-Receiver__nickName">젤뽀</div>
-                    <div class="KEP-Receiver__blocksArea">
-                        <div class="KEP-Receiver__speech">안녕하세요! 저는 젤뽀입니다.<br><br>흰디에게 무엇이든 알려주길 좋아하는 대표 오지라퍼이기도
-                            해요.<br><br>고객님께도 무엇이든 알려드리고 싶어서 웨스티 행성에서 지구로 내려왔어요!<br><br>지금부터 제가 쇼핑을 도와드릴게요 ♥<span
-                                class="KEP-Receiver__time">오전 11:27</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div> -->
+
         </div>
 
         <!-- 퀵리플라이 영역 -->
@@ -627,8 +601,8 @@
 .chat_message{position: fixed; bottom:56px; right:60px; z-index: 1000; width: 70px; border-radius: 35px;  overflow: hidden; height: 70px; transition: 0.3s; display: flex; flex-direction: row; align-items: center; background-color: #fff;cursor:pointer;}
 .chat_message.active{width: 400px; transition: width 0.3s;}
 .chat_message a:hover{text-decoration: none;}
-.chat_message .chat_open_wrap{position: relative; display: flex; flex-direction: row; align-items: center; padding-left: 80px;  background-color: #fff;}
-.chat_message .chat_open_btn{width: 70px; height: 70px; background:url(https://www.ehyundai.com/images/webhome/outlets/layout/chatbot_off.png) no-repeat; background-size: 70px 70px; position: absolute; left: 0; top: 0; z-index: 1000;}
+.chat_message .chat_open_wrap{position: relative; display: flex; flex-direction: row; align-items: center; padding-left: 80px;  background-color: black;}
+.chat_message .chat_open_btn{width: 70px; height: 70px; background:url(/resources/images/logo3.jpg) no-repeat; background-size: 70px 70px; position: absolute; left: 0; top: 0; z-index: 1000;  background-color: black;}
 .chat_message .chat_close_btn{display: none; width:25px; height: 25px; background:url(https://www.ehyundai.com/images/webhome/outlets/layout/chatbot_off.png) no-repeat; background-size: 100%; font-size:0; margin-left: 30px; position: absolute; right: 0;}
 .chat_message.active .chat_close_btn{display: block;}
 .chat_btn_txt_wrap{width: 305px;}
@@ -2092,7 +2066,7 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 		                         </defs>
 		                         <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice"
 		                             clip-path="url(#clipSquircle)"
-		                             xlink:href="https://objectstorage.kr-central-1.kakaoi.io/v1/735f5d2ed4d742468bcbcd6e533b26aa/builder-prod/OU9mbkRta1VhdTFXRUJfQ0hBVEJPVF9wcm9maWw=">
+		                             xlink:href="/resources/images/logo_the.png">
 		                         </image>
 		                     </svg>
 		                 </div>
