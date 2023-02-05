@@ -1873,8 +1873,162 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 
 	$(document).ready(function () {
 		
+		let sock = null;
+		var formDate = "";
+		var inputText = "";
 		
-		
+		function onOpen() {
+	   			chatMode = "adminChat";
+	   			var now = new Date(); // 현재 시간
+	   			var utcNow = now.getTime() + (now.getTimezoneOffset() * 60 * 1000); // 현재 시간을 utc로 변환한 밀리세컨드값
+	   			var koreaTimeDiff = 9 * 60 * 60 * 1000; // 한국 시간은 UTC보다 9시간 빠름(9시간의 밀리세컨드 표현)
+	   			var koreaNow = new Date(utcNow + koreaTimeDiff);
+	   			
+	   			   const msg = {
+	   			         "chat_no" : 0,
+	   			         "room_no" : 0,
+	   			     	 "member_name" : "신미림",
+	   			         "member_email" : "tlsalfla96@naver.com",
+	   			         "chat_message" : "ENTER-CHAT",
+	   			         "chat_type" : "enter",
+	   			         "chat_date" : koreaNow,
+	   			         "room_host" : "tlsalfla96@naver.com"
+	   			       
+	   			         }
+	   			      console.log('start socket : ' + msg);
+	   			      let jsonData = JSON.stringify(msg);
+	   			      
+	   			      
+	   			      sock.send(jsonData);
+	   		}
+	   		
+	   		// 메시지 전송
+	   		function sendMessage() {
+				let chatType = "client";
+				var now = new Date(); // 현재 시간
+				var utcNow = now.getTime() + (now.getTimezoneOffset() * 60 * 1000); // 현재 시간을 utc로 변환한 밀리세컨드값
+				var koreaTimeDiff = 9 * 60 * 60 * 1000; // 한국 시간은 UTC보다 9시간 빠름(9시간의 밀리세컨드 표현)
+				var koreaNow = new Date(utcNow + koreaTimeDiff);
+	   		   
+	   		   const msg = {
+	   			   "chat_no" : 0,
+	   		       "room_no" : 0,
+	   		       "member_name" : "신미림",
+	   		       "member_email" : "tlsalfla96@naver.com",
+	   		       "chat_message" : inputText,
+	   		       "chat_type" : chatType,
+	   		       "chat_date" : koreaNow,
+	   		       "room_host" : "tlsalfla96@naver.com"
+	   		   }
+	   		   
+	   		   let jsonData = JSON.stringify(msg);
+	   		   console.log(jsonData);
+	   		   sock.send(jsonData);
+	   		}
+	   		
+	   		// 서버로부터 메시지를 받았을 때
+	   		function onMessage(msg) {
+				
+	   			
+	   		   console.log(msg);
+	   		   let receive = msg.data.split(",");
+	   		   console.log(receive);
+	   		   const data = {
+	   		   "member_name" : receive[0],
+	   		   "member_email" : receive[1],
+	   		   "chat_message" : receive[2],
+	   		   "chat_type" : receive[3],
+	   		   "chat_no" : receive[4],
+	   		   "chat_date": receive[5]
+	   		   };
+	   		   
+	   		   let msghtml ="";
+	   		   if(data.member_email=="tlsalfla96@naver.com"){
+	   			   msghtml += 
+	   				     `
+	   				          <div class="KEP-Sender">
+	   				             <div class="KEP-Sender__msgArea">
+	   				                 <div class="KEP-Sender__blocksArea">
+	   				                     <div class="KEP-Sender__speech" style=" background: #8770BA !important; color: #FFFFFF !important; ">
+	   				                         <span class="KEP-Sender__tail">
+	   				                             <svg width="11" height="11" viewBox="0 0 11 11" fill="none"
+	   				                                 xmlns="http://www.w3.org/2000/svg">
+	   				                                 <path d="M1 0H8.58579C9.47669 0 9.92286 1.07714 9.29289 1.70711L1 10V0Z"
+	   				                                     fill="#8770BA"></path>
+	   				                                 <path
+	   				                                     d="M0.966666 0.52002H8.59556C9.02257 0.52002 9.23701 1.03577 8.93588 1.33852L0.45 9.87002"
+	   				                                     stroke="black" stroke-opacity="0.03"></path>
+	   				                                 <rect width="1" height="11" transform="matrix(-1 0 0 1 1 0)" fill="#8770BA"></rect>
+	   				                             </svg>
+	   				                         </span>`+ data.chat_message +`<span class="KEP-Sender__read">전송됨</span>
+	   				                         <span class="KEP-Sender__time">`+data.chat_date+`</span>
+	   				                     </div>
+	   				                 </div>
+	   				             </div>
+	   				         </div>
+	   				     ` 
+	   		   }
+	   		   else{
+	   			msghtml += 
+	   			   `
+	   	             <div class="KEP-Receiver">
+	   	                 <div class="KEP-Receiver__avatar">
+	   	                     <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+	   	                         <defs>
+	   	                             <path id="shapeSquircle"
+	   	                                 d="M17 0C29.4003 0 34 4.59973 34 17C34 29.4003 29.4003 34 17 34C4.59973 34 0 29.4003 0 17C0 4.59973 4.59973 0 17 0Z">
+	   	                             </path>
+	   	                             <clipPath id="clipSquircle">
+	   	                                 <use xlink:href="#shapeSquircle"></use>
+	   	                             </clipPath>
+	   	                         </defs>
+	   	                         <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice"
+	   	                             clip-path="url(#clipSquircle)"
+	   	                             xlink:href="https://objectstorage.kr-central-1.kakaoi.io/v1/735f5d2ed4d742468bcbcd6e533b26aa/builder-prod/OU9mbkRta1VhdTFXRUJfQ0hBVEJPVF9wcm9maWw=">
+	   	                         </image>
+	   	                     </svg>
+	   	                 </div>
+	   	                 <div class="KEP-Receiver__msgArea">
+	   	                     <div class="KEP-Receiver__nickName">젤뽀</div>
+	   	                     <div class="KEP-Receiver__blocksArea">
+	   	                         <div class="KEP-Receiver__speech">`+data.chat_message+`<span class="KEP-Receiver__time">`+data.chat_date+`</span>
+	   	                         </div>
+	   	                     </div>
+	   	                 </div>
+	   	             </div>
+	   	 			`
+	   		   }
+	   		   $("#chatArea").append(msghtml); 
+	   	 		$('.KEP-ChatArea').scrollTop($('.KEP-ChatArea')[0].scrollHeight);
+	   	 	    $("#inputText").val("");
+	   		}
+	   		// 서버와 연결을 끊었을 때
+	   		function onClose(evt) {
+	   			var now = new Date(); // 현재 시간
+				var utcNow = now.getTime() + (now.getTimezoneOffset() * 60 * 1000); // 현재 시간을 utc로 변환한 밀리세컨드값
+				var koreaTimeDiff = 9 * 60 * 60 * 1000; // 한국 시간은 UTC보다 9시간 빠름(9시간의 밀리세컨드 표현)
+				var koreaNow = new Date(utcNow + koreaTimeDiff);
+	   			
+	   		   console.log("연결이 끊겼습니다. 다시 접속하세요.");
+	   		   chatMode = "bot";
+	   		   const msg = {
+	   				   "chat_no" : 0,
+	   			       "room_no" : 0,
+	   			       "member_email" : "tlsalfla96@naver.com",
+	   			       "chat_date" : koreaNow,
+	   			       "room_host" : "tlsalfla96@naver.com",
+	   			       "chat_message" : "CLOSE-CHAT",
+	   			       "chat_type" : "close"
+	   			         }
+	   			      console.log('end socket : ' + msg);
+	   			      let jsonData = JSON.stringify(msg);
+	   			      
+	   			      
+	   			      sock.send(jsonData);
+	   		}
+	        	 
+	    			
+	    			
 		var mid = $("#mid").val();
 		console.log("mid-------------" + mid);
 		
@@ -1992,7 +2146,7 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 		 });
 		 
 		
-		
+		let chatMode = "bot";
 		// submit 했을 때 처리
 		 $('#chatForm').on('submit', function (event) {
 		     event.preventDefault();
@@ -2000,10 +2154,13 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 		      let csrfHeaderName ="${_csrf.headerName}";
 		     let csrfTokenValue="${_csrf.token}";
 		     
-		     var formData = new FormData($('#chatForm')[0]);
+		     formData = new FormData($('#chatForm')[0]);
 			 console.log(formData);
-			 var inputText = $("#inputText").val();
+			 inputText = $("#inputText").val();
 			 console.log(inputText);
+			 if(chatMode == "bot"){
+				 
+			 
 			 
 		     tmphtml = "";
 		     tmphtml += 
@@ -2037,7 +2194,7 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 		     $.ajax({
 		         type : "post",
 		         enctype : "multipart/form-data",
-		         url : "chatbotSend",
+		         url : "/chatbotSend",
 		         data : formData,
 		         processData : false, // 필수
 		         contentType : false, // 필수
@@ -2082,159 +2239,30 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 		 
 		          $("#chatArea").append(tmpres); 
 		 		  $('.KEP-ChatArea').scrollTop($('.KEP-ChatArea')[0].scrollHeight);
- 		          $("#connectAdmin").on("click", function (e) {
+ 		          $(".connectAdmin").on("click", function (e) {
  		        	 console.log("connectAdmin");
- 		        let sock = new SockJS("http://localhost:8080/admin/chat");
- 		   		//let sock = new SockJS("/admin/chat/", null, {transports: ["websocket", "xhr-streaming", "xhr-polling"]});
- 		   		console.log(sock);
- 		   		sock.onmessage = onMessage;
- 		   		sock.onopen = onOpen;
- 		   		sock.onclose = onClose;
+ 		        	sock=new SockJS("http://localhost:8080/admin/chat");
+ 			   		console.log(sock);
+ 			   		sock.onmessage = onMessage;
+ 			   		sock.onopen = onOpen;
+ 			   		sock.onclose = onClose;
+ 		          });
  		   		
  		   		
- 		   		function onOpen() {
- 		   			
- 		   			   const msg = {
- 		   			         "chat_no" : 0,
- 		   			         "room_no" : 0,
- 		   			     	 "member_name" : "신미림",
- 		   			         "member_email" : "tlsalfla96@naver.com",
- 		   			         "chat_message" : "ENTER-CHAT",
- 		   			         "chat_type" : "enter",
- 		   			         "chat_date" : "0",
- 		   			         "room_host" : "tlsalfla96@naver.com"
- 		   			       
- 		   			         }
- 		   			      console.log('start socket : ' + msg);
- 		   			      let jsonData = JSON.stringify(msg);
- 		   			      
- 		   			      
- 		   			      sock.send(jsonData);
- 		   		}
- 		   		
- 		   		// 메시지 전송
- 		   		function sendMessage() {
- 		   		   let chatType = "client";
- 		   		   
- 		   		   
- 		   		   const msg = {
- 		   			   "chat_no" : 0,
- 		   		       "room_no" : 0,
- 		   		       "member_name" : "신미림",
- 		   		       "member_email" : "tlsalfla96@naver.com",
- 		   		       "chat_message" : "ENTER-CHAT",
- 		   		       "chat_type" : chatType,
- 		   		       "chat_date" : "0",
- 		   		       "room_host" : "tlsalfla96@naver.com"
- 		   		   }
- 		   		   
- 		   		   let jsonData = JSON.stringify(msg);
- 		   		   console.log(jsonData);
- 		   		   sock.send(jsonData);
- 		   		}
- 		   		
- 		   		// 서버로부터 메시지를 받았을 때
- 		   		function onMessage(msg) {
- 		   		   console.log(msg);
- 		   		   let receive = msg.data.split(",");
- 		   		   console.log(receive);
- 		   		   const data = {
- 		   		   "member_name" : receive[0],
- 		   		   "member_email" : receive[1],
- 		   		   "chat_message" : receive[2],
- 		   		   "chat_type" : receive[3],
- 		   		   "chat_no" : receive[4],
- 		   		   "chat_date": receive[5]
- 		   		   };
- 		   		   let tmphtml ="";
- 		   		   if(data.member_email=="tlsalfla96@naver.com"){
- 		   			   tmphtml += 
- 		   				     `
- 		   				          <div class="KEP-Sender">
- 		   				             <div class="KEP-Sender__msgArea">
- 		   				                 <div class="KEP-Sender__blocksArea">
- 		   				                     <div class="KEP-Sender__speech" style=" background: #8770BA !important; color: #FFFFFF !important; ">
- 		   				                         <span class="KEP-Sender__tail">
- 		   				                             <svg width="11" height="11" viewBox="0 0 11 11" fill="none"
- 		   				                                 xmlns="http://www.w3.org/2000/svg">
- 		   				                                 <path d="M1 0H8.58579C9.47669 0 9.92286 1.07714 9.29289 1.70711L1 10V0Z"
- 		   				                                     fill="#8770BA"></path>
- 		   				                                 <path
- 		   				                                     d="M0.966666 0.52002H8.59556C9.02257 0.52002 9.23701 1.03577 8.93588 1.33852L0.45 9.87002"
- 		   				                                     stroke="black" stroke-opacity="0.03"></path>
- 		   				                                 <rect width="1" height="11" transform="matrix(-1 0 0 1 1 0)" fill="#8770BA"></rect>
- 		   				                             </svg>
- 		   				                         </span>`+ data.chat_message +`<span class="KEP-Sender__read">읽음</span>
- 		   				                         <span class="KEP-Sender__time">`+data.chat_date+`</span>
- 		   				                     </div>
- 		   				                 </div>
- 		   				             </div>
- 		   				         </div>
- 		   				     ` 
- 		   		   }
- 		   		   else{
- 		   			   tmphtml += 
- 		   			   `
- 		   	             <div class="KEP-Receiver">
- 		   	                 <div class="KEP-Receiver__avatar">
- 		   	                     <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
- 		   	                         <defs>
- 		   	                             <path id="shapeSquircle"
- 		   	                                 d="M17 0C29.4003 0 34 4.59973 34 17C34 29.4003 29.4003 34 17 34C4.59973 34 0 29.4003 0 17C0 4.59973 4.59973 0 17 0Z">
- 		   	                             </path>
- 		   	                             <clipPath id="clipSquircle">
- 		   	                                 <use xlink:href="#shapeSquircle"></use>
- 		   	                             </clipPath>
- 		   	                         </defs>
- 		   	                         <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice"
- 		   	                             clip-path="url(#clipSquircle)"
- 		   	                             xlink:href="https://objectstorage.kr-central-1.kakaoi.io/v1/735f5d2ed4d742468bcbcd6e533b26aa/builder-prod/OU9mbkRta1VhdTFXRUJfQ0hBVEJPVF9wcm9maWw=">
- 		   	                         </image>
- 		   	                     </svg>
- 		   	                 </div>
- 		   	                 <div class="KEP-Receiver__msgArea">
- 		   	                     <div class="KEP-Receiver__nickName">젤뽀</div>
- 		   	                     <div class="KEP-Receiver__blocksArea">
- 		   	                         <div class="KEP-Receiver__speech">`+data.chat_message+`<span class="KEP-Receiver__time">`+data.chat_date+`</span>
- 		   	                         </div>
- 		   	                     </div>
- 		   	                 </div>
- 		   	             </div>
- 		   	 			`
- 		   		   }
- 		   		   $("#chatArea").append(tmpres); 
- 		   	 		$('.KEP-ChatArea').scrollTop($('.KEP-ChatArea')[0].scrollHeight);
- 		   		}
- 		   		// 서버와 연결을 끊었을 때
- 		   		function onClose(evt) {
- 		   		   console.log("연결이 끊겼습니다. 다시 접속하세요.");
- 		   		   
- 		   		   const msg = {
- 		   				   "chat_no" : 0,
- 		   			       "room_no" : 0,
- 		   			       "member_email" : "tlsalfla96@naver.com",
- 		   			       "chat_date" : "0",
- 		   			       "room_host" : "tlsalfla96@naver.com",
- 		   			       "chat_message" : "CLOSE-CHAT",
- 		   			       "chat_type" : "close"
- 		   			         }
- 		   			      console.log('end socket : ' + msg);
- 		   			      let jsonData = JSON.stringify(msg);
- 		   			      
- 		   			      
- 		   			      sock.send(jsonData);
- 		   		}
- 		        	 
- 		    			
- 		    	  });
 		         },
 		         error:function (e) {
 		             alert("오류 발생" + e);
 		         }
 		     });
+		     
+			 }
+			 else{
+				 sendMessage();
+				
+			 }
 		 })
 		 
-		 
+		
         
 	});	
 	
