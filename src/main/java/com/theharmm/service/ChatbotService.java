@@ -147,27 +147,47 @@ public class ChatbotService {
     }
     
     public String jsonToString(String jsonResultStr) {
-        String resultText = "";
+        String chatbotMessage  = "";
         // API 호출 결과 받은 JSON 형태 문자열에서 텍스트 추출
         // JSONParser  사용하지 않음
         JSONObject jsonObj = new JSONObject(jsonResultStr);
-        JSONArray chatArray = (JSONArray) jsonObj.get("bubbles");
-        if(chatArray != null) {
+        JSONArray bubbles  = jsonObj.getJSONArray("bubbles");
+        
+        for (int i =0; i < bubbles.length(); i++){
+
+            JSONObject bubble = bubbles.getJSONObject(i);
+
+            String chatType = bubble.getString("type");
+
+            if (chatType.equals("text")){
+
+                chatbotMessage = bubble.getJSONObject("data").getString("description");
+
+            }else if (chatType.equals("template")) {
+
+                chatbotMessage = bubble.getJSONObject("data").getJSONObject("cover").getJSONObject("data").getString("description");
+
+            }else {
+                chatbotMessage = "";
+            }
+        }
+            
+/*        if(chatArray != null) {
             JSONObject tempObj = (JSONObject) chatArray.get(0);
             JSONObject dataObj = (JSONObject) tempObj.get("data");
             if(dataObj != null) {
-//                tempObj = (JSONObject) dataObj.get("description");
-                resultText += (String) dataObj.get("description");
+                if((String) dataObj.get("description") == "") {
+                	JSONObject dataObj2 = (JSONObject) dataObj.get("cover");
+                	resultText += (String) dataObj2.get("description");
+                } else {
+                	resultText += (String) dataObj.get("description");
+                }
             }
         } else {
-            System.out.println("없음");
-        }
-        return resultText;
-    }
-    
-    
-    //---------------------------------------------------------------------
-    
+             System.out.println("없음");
+        }*/
+        return chatbotMessage;
+    }    
 
 }
 
