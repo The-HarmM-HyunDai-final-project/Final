@@ -1082,7 +1082,7 @@
                                             <div data-v-754300ce="" class="info_box">
                                                <span data-v-754300ce="" class="user_name is_official"><span data-v-754300ce=""
                                                      class="user_name_text">`+follower.user+`</span></span><span data-v-754300ce=""
-                                                  class="user_subname">KREAM 챌린지</span>
+                                                  class="user_subname">Theharm 챌린지</span>
                                             </div>
                                          </a>
                                          <div data-v-754300ce="" class="user_box_follow">` ;
