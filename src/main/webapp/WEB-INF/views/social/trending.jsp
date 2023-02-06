@@ -277,7 +277,7 @@
 											style="position: absolute; left: ${status.index*300%1200}px; top: ${(status.index/4-status.index%4/4) * 500 }px;">
 											
 											<a data-v-47728778="" class = "linkto"
-												href="${pageContext.request.contextPath}/social/trending/details?post_id=${item.post_id}">
+												href="${pageContext.request.contextPath}/social/trending/details?post_id=${item.post_id}&user=${member_email}">
 												<div data-v-47728778="" class="card_box">
 													<div data-v-47728778="" class="social_img_box vertical">
 														<picture data-v-878ec45c="" data-v-47728778=""

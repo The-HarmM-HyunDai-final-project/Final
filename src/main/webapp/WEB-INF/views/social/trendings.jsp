@@ -98,10 +98,6 @@
 			</div>
 		</div>
 
-
-
-
-
 		<div data-v-013cc4d0="" data-v-47cbe816="" class="social_feeds2"
 			style="height: 1000px;">
 			<div data-v-013cc4d0="" transition-duration="0" item-selector=".item"
