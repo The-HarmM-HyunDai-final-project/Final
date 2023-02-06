@@ -25,7 +25,7 @@
 	<select id="selectCurrentMemberChatRoom" parameterType="String" resultType="ChatRoomDTO">
 	SELECT ROOM_HOST, MAX(ROOM_NO) AS ROOM_NO
 	  FROM CHATROOM
-	 WHERE ROOM_HOST = #{room_host}
+	 WHERE ROOM_HOST = #{member_email}
 	 GROUP BY ROOM_HOST
 	</select>
 	

@@ -41,15 +41,13 @@ public class ChatBotController {
         
 
         if(msg.equals("상담 직원을 연결해 드릴까요")) {
-        	button = "<button id='connectAdmin' class='btn_division' style='background-color:#48665a;'>상담원 연결하기</button>";
+        	button = "<button class='btn_division connectAdmin' style='background-color:#48665a;'>상담원 연결하기</button>";
         }
        
         Map<String,Object> map = new HashMap<>();
         map.put("msg",msg);
         map.put("chatTime",chatTime);
         map.put("button",button);
-        
-        log.info(button);
         
         String chatbotMessage =  "";
 		/*
