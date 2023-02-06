@@ -475,7 +475,7 @@
                     </svg>
                 </div>
                 <div class="KEP-Receiver__msgArea">
-                    <div class="KEP-Receiver__nickName">젤뽀</div>
+                    <div class="KEP-Receiver__nickName">TheHarm</div>
                     <div class="KEP-Receiver__blocksArea">
                         <div class="KEP-Receiver__speech">안녕하세요! <br>TheHarm웹사이트에 오신걸 환영합니다.<br><br>궁금한 내용을 질문해
                             주세요♥<span class="KEP-Receiver__time"><%= sf.format(nowTime) %></span>
@@ -1989,7 +1989,7 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 	   	                     </svg>
 	   	                 </div>
 	   	                 <div class="KEP-Receiver__msgArea">
-	   	                     <div class="KEP-Receiver__nickName">젤뽀</div>
+	   	                     <div class="KEP-Receiver__nickName">THeharm</div>
 	   	                     <div class="KEP-Receiver__blocksArea">
 	   	                         <div class="KEP-Receiver__speech">`+data.chat_message+`<span class="KEP-Receiver__time">`+data.chat_date+`</span>
 	   	                         </div>
@@ -2228,7 +2228,7 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 		                     </svg>
 		                 </div>
 		                 <div class="KEP-Receiver__msgArea">
-		                     <div class="KEP-Receiver__nickName">젤뽀</div>
+		                     <div class="KEP-Receiver__nickName">Theharm</div>
 		                     <div class="KEP-Receiver__blocksArea">
 		                         <div class="KEP-Receiver__speech">`+result.msg+`<br>`+result.button+`<span class="KEP-Receiver__time">`+result.chatTime+`</span>
 		                         </div>
@@ -2241,6 +2241,19 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 		 		  $('.KEP-ChatArea').scrollTop($('.KEP-ChatArea')[0].scrollHeight);
  		          $(".connectAdmin").on("click", function (e) {
  		        	 console.log("connectAdmin");
+
+                    if (mid == "") {
+                        alert("로그인 후 상담직원 연결을 이용해 주세요");
+                        return;
+                    }
+                    
+                    // 관리자에게 알람 부분
+                    if (socket) {
+                        let socketMsg = "admin," + mid +","+ "admin" +","+ "admin" +","+ " ";
+                        console.log("관리자 호출 msgmsg : " + socketMsg);
+                        socket.send(socketMsg);
+                    }   
+
  		        	sock=new SockJS("http://localhost:8080/admin/chat");
  			   		console.log(sock);
  			   		sock.onmessage = onMessage;

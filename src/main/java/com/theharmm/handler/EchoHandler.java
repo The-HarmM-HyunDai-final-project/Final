@@ -127,6 +127,24 @@ public class EchoHandler extends TextWebSocketHandler {
 							 "님을 팔로우 취소 했습니다.!"+ nowAlarmid);
 					boardWriterSession.sendMessage(tmpMsg);
 
+				}else if("admin".equals(cmd) && boardWriterSession != null) {
+					log.info("소켓 실행");
+					AlarmDTO alarm = new AlarmDTO();
+					alarm.setAlarmid(0);
+					alarm.setCaller(caller);
+					alarm.setCmd(cmd);
+					alarm.setReceiver(receiver);
+					alarm.setReceiverEmail(receiverUsername);
+					alarm.setSeq(seq);
+					
+					int result = replyservice.insertAlarm(alarm);
+					log.info("관리자 알람 insert " + result);
+					
+					int nowAlarmid = replyservice.getAlarmid();
+					
+					TextMessage tmpMsg = new TextMessage(caller + "님이 관리자를 호출 했습니다.!"+ nowAlarmid);
+					boardWriterSession.sendMessage(tmpMsg);
+
 				}
 			}
 		}
