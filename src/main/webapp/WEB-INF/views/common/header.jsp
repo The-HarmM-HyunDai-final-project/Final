@@ -222,7 +222,7 @@
 							<h1 data-v-147586e1="">
 								<a href="/" aria-label="홈" class="logo" data-v-147586e1="">
 									<img
-									src="${pageContext.request.contextPath}/resources/images/logo_the.png" />
+									src="${pageContext.request.contextPath}/resources/images/logo6.png" />
 								</a>
 							</h1>
 							<div class="gnb_area" data-v-147586e1="">

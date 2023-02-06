@@ -89,13 +89,10 @@ public class PostController {
 
       int followerCnt = postService.countFollower(email);
       int followingCnt = postService.countFollowing(email);
-      //List<String> followerList = postService.getFollowerList(email);
-      //List<String> followingList = postService.getFollowingList(email);
-      
+
       model.addAttribute("userCheck", "true");
       // 여기서 팔로잉, 팔로우 처리 필요
 
-      //log.info("userCheck" + postService.checkFollow(loginedMember_email,email));
       log.info("email" + email);
       model.addAttribute("member_email", email);
       model.addAttribute("listTotal", listTotal);
@@ -120,12 +117,9 @@ public class PostController {
       int listTotal = postService.postGetByMailTotal(email);
       /* 페이지 인터페이스 데이터 */
       model.addAttribute("pageMaker", new PostPageDTO(postcri, postService.postGetTotal(postcri)));
-      //CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-      //String loginedMember_email = user.getUsername();
       int followerCnt = postService.countFollower(email);
       int followingCnt = postService.countFollowing(email);
-      //List<String> followerList = postService.getFollowerList(email);
-      //List<String> followingList = postService.getFollowingList(email);
+
       
       // 여기서 팔로잉, 팔로우 처리 필요
       if (member_email.equals(email)) {
@@ -217,12 +211,6 @@ public class PostController {
          }
       }
       
-		/*
-		 * SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		 * String formattedDate = simpleDateFormat.format(postvo.getRegister_date());
-		 * java.sql.Date date1 = java.sql.Date.valueOf(formattedDate); log.info(date1);
-		 */
-      
       model.addAttribute("post_id", postvo.getPost_id());
       model.addAttribute("contents", postvo.getContents());
       model.addAttribute("register_date",postvo.getRegister_date());
@@ -295,11 +283,7 @@ public class PostController {
       
       model.addAttribute("products", productList);
       model.addAttribute("pcount", productList.size());
-		/*
-		 * CustomUser user = (CustomUser)
-		 * SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		 * model.addAttribute("member_email", user.getUsername());
-		 */
+
       model.addAttribute("user", user);
       model.addAttribute("replyList", replyService.getReplyList(post_id));
       
