@@ -56,32 +56,6 @@ public class ChatBotController {
 		 * 
 		 * }
 		 */
-		
-
-		
-      /*
-       * JSONObject jsonObject = new JSONObject(msg); JSONArray bubbles =
-       * jsonObject.getJSONArray("bubbles");
-       * 
-       * for (int i =0; i < bubbles.length(); i++){ JSONObject bubble =
-       * bubbles.getJSONObject(i);
-       * 
-       * String chatType = bubble.getString("type");
-       * 
-       * if (chatType.equals("text")){
-       * 
-       * chatbotMessage = bubble.getJSONObject("data").getString("description");
-       * 
-       * }else if (chatType.equals("template")) {
-       * 
-       * chatbotMessage =
-       * bubble.getJSONObject("data").getJSONObject("cover").getJSONObject("data").
-       * getString("description");
-       * 
-       * }else { chatbotMessage = ""; }
-       * 
-       * log.info("chatbotMessage"+chatbotMessage); }
-       */
 
         return map;
     }
