@@ -40,7 +40,7 @@ public class ChatBotController {
 	    String chatTime = df.format(cal.getTime());
         
 
-        if(msg.equals("상담직원을 연결해 드릴까요")) {
+        if(msg.equals("상담 직원을 연결해 드릴까요")) {
         	button = "<button id='connectAdmin' class='btn_division' style='background-color:#48665a;'>상담원 연결하기</button>";
         }
        
@@ -48,6 +48,8 @@ public class ChatBotController {
         map.put("msg",msg);
         map.put("chatTime",chatTime);
         map.put("button",button);
+        
+        log.info(button);
         
         String chatbotMessage =  "";
 		/*
