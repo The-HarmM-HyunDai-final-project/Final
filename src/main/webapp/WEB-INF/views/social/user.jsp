@@ -204,8 +204,8 @@
 								</div>
 							</div>
 							<div data-v-45542174="" class="user_explain">
-								<p data-v-45542174="" class="main_txt">${member_email}</p>
-								<p data-v-45542174="" class="sub_txt">👟${member_email}의 style피드에 오신걸 환영합니다💨👟</p>
+								<p data-v-45542174="" class="main_txt">✌️✌️${member_email}✌️✌️</p>
+								<p data-v-45542174="" class="sub_txt">✌️✌️${member_email}의 style피드에 오신걸 환영합니다💨👟</p>
 							</div>
 
 							<c:if test="${userCheck eq '팔로우'}">
@@ -1023,13 +1023,13 @@
                                          <a data-v-754300ce="" href="#" class="user_link">
                                             <div data-v-754300ce="" class="img_box">
                                                <img data-v-754300ce=""
-                                                  src="https://kream-phinf.pstatic.net/MjAyMDExMDZfMjAz/MDAxNjA0NjQ5OTM1NDk5.edZ7v2ODWVS7_M8PXg8B0PNU5UlsTWup2XHwuKkEEXsg.lNHXDE66TKM0yl1nIOO70PWNUtK4TcdgD1lImetPB48g.JPEG/p_8d36c20aaeb94c6681619dcd775f5286.jpeg?type=sl"
+                                                  src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png"
                                                   alt="KREAM 프로필 이미지" class="profile_img">
                                             </div>
                                             <div data-v-754300ce="" class="info_box">
                                                <span data-v-754300ce="" class="user_name is_official"><span data-v-754300ce=""
                                                      class="user_name_text">`+following.user+`</span></span><span data-v-754300ce=""
-                                                  class="user_subname">KREAM 챌린지</span>
+                                                  class="user_subname">TheHarmM 챌린지</span>
                                             </div>
                                          </a>
                                          <div data-v-754300ce="" class="user_box_follow">` ;
@@ -1076,13 +1076,13 @@
                                          <a data-v-754300ce="" href="#" class="user_link">
                                             <div data-v-754300ce="" class="img_box">
                                                <img data-v-754300ce=""
-                                                  src="https://kream-phinf.pstatic.net/MjAyMDExMDZfMjAz/MDAxNjA0NjQ5OTM1NDk5.edZ7v2ODWVS7_M8PXg8B0PNU5UlsTWup2XHwuKkEEXsg.lNHXDE66TKM0yl1nIOO70PWNUtK4TcdgD1lImetPB48g.JPEG/p_8d36c20aaeb94c6681619dcd775f5286.jpeg?type=sl"
+                                                  src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png"
                                                   alt="KREAM 프로필 이미지" class="profile_img">
                                             </div>
                                             <div data-v-754300ce="" class="info_box">
                                                <span data-v-754300ce="" class="user_name is_official"><span data-v-754300ce=""
                                                      class="user_name_text">`+follower.user+`</span></span><span data-v-754300ce=""
-                                                  class="user_subname">KREAM 챌린지</span>
+                                                  class="user_subname">Theharm 챌린지</span>
                                             </div>
                                          </a>
                                          <div data-v-754300ce="" class="user_box_follow">` ;

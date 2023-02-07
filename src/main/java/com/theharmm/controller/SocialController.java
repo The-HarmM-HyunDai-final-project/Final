@@ -103,11 +103,11 @@ public class SocialController {
 		}
 		
 		String webappRoot = servletContext.getRealPath("/");
-	      
-	    //String myRootPath = webappRoot.split(".metadata")[0] + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
-		String myRootPath = "C:" + File.separator + "Users" + File.separator + "kosa2" + File.separator + "git" + File.separator + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
-	  //String myRootPath = "C:" + File.separator + "Users" + File.separator + "user" + File.separator + "git" + File.separator + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
-
+		
+	    //String myRootPath = "C:" + File.separator + "Users" + File.separator + "kosa2" + File.separator + "git" + File.separator + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
+	    //String myRootPath = "C:" + File.separator + "Users" + File.separator + "user" + File.separator + "git" + File.separator + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
+	    String myRootPath = "C:" + File.separator + "sts3" + File.separator + "workspace" + File.separator + "Final" + File.separator + "src" + File.separator + "main" + File.separator + "webapp" + File.separator;
+	    
 		//여명이꺼
 		String myRootPath2 = "C:/Users/kosa/Desktop/final_project/Final/src/main/webapp/";
 		

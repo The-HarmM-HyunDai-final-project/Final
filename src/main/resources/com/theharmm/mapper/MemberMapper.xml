@@ -89,18 +89,24 @@
     
     <!--구매내역 가져오기 -->
     <select id="selectMyBuyList" resultType="com.theharmm.domain.BuyDTO">
-    	select t1.buyid, t1.member_email, t1.pid, t1.price, t1.size_type, t1.status1, t2.img1 
+    	select t1.buyid, t1.member_email, t1.pid, t1.price, t1.size_type, t1.status1, t2.img1 ,t2.pname_e, t2.pname_k
 		from buy t1, resell_product t2
 		where t1.pid = t2.pid 
 		and t1.member_email= #{member_email}
+		<![CDATA[  
+		and rownum <= 2
+		]]>
     </select>
     
     <!--판매내역 가져오기 -->
     <select id="selectMySellList" resultType="com.theharmm.domain.SellDTO">
-    	select t1.buyid, t1.member_email, t1.pid, t1.price, t1.size_type, t1.status1, t2.img1 
+    	select t1.buyid, t1.member_email, t1.pid, t1.price, t1.size_type, t1.status1, t2.img1 ,t2.pname_e, t2.pname_k
 		from sale t1, resell_product t2
 		where t1.pid = t2.pid 
 		and t1.member_email= #{member_email}
+		<![CDATA[  
+		and rownum <= 2
+		]]>
     </select>
 	
 </mapper>

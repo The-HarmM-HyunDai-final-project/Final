@@ -30,9 +30,11 @@
 	<beans:bean id="chattingHandler" class="com.theharmm.handler.ChattingHandler"/>
 	<beans:bean id="BJchattingHandler" class="com.theharmm.handler.BJChattingHandler"/>
 	<beans:bean id="echoHandler" class="com.theharmm.handler.EchoHandler" />
+	<beans:bean id="adminChatHandler" class="com.theharmm.handler.AdminChatHandler" />
 	
-	<!-- 웹소켓 활성화~! -->
+
  	<websocket:handlers allowed-origins="*">
+ 		<websocket:mapping handler="adminChatHandler" path="/admin/chat" />
 		<websocket:mapping handler="chattingHandler" path="/chatting"/>
 		<websocket:mapping handler="BJchattingHandler" path="/BJchatting"/>
 		<websocket:mapping handler="echoHandler" path="/echo" />
@@ -40,7 +42,7 @@
 	    <websocket:handshake-interceptors>
 	   		<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
 	    </websocket:handshake-interceptors>
-		<websocket:sockjs/>
+		<websocket:sockjs websocket-enabled="true" />
 	</websocket:handlers>
 
 	<!-- 업로드 관련 빈 -->
@@ -74,5 +76,7 @@
 		<beans:constructor-arg ref="naverRedirectUrl" />
 	</beans:bean>
 	
+	<context:component-scan base-package="com.theharmm.handler" />
 	<context:component-scan base-package="com.theharmm.controller" />
+	
 </beans:beans>

@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ChatbotService {
-	
+   
     public String main(String voiceMessage) {
         String secretKey = "eHNPeE1pZVBlRktDUFVIaE9IT1RWS2plSWJzZ2t5dFE=";
         String apiURL = "https://kj8nqdj0ls.apigw.ntruss.com/custom/v1/9177/f572daa24e7730df9489facf258b25ee36ea4fdd05eb095f302fed630cd1f175";
@@ -66,7 +66,7 @@ public class ChatbotService {
                 in.close();
                 // 응답 메세지 출력
                 System.out.println(chatbotMessage);
-                //chatbotMessage = jsonToString(chatbotMessage);
+                chatbotMessage = jsonToString(chatbotMessage);
             } else {  // Error occurred
                 chatbotMessage = con.getResponseMessage();
             }
@@ -147,22 +147,46 @@ public class ChatbotService {
     }
     
     public String jsonToString(String jsonResultStr) {
-        String resultText = "";
+        String chatbotMessage  = "";
         // API 호출 결과 받은 JSON 형태 문자열에서 텍스트 추출
         // JSONParser  사용하지 않음
         JSONObject jsonObj = new JSONObject(jsonResultStr);
-        JSONArray chatArray = (JSONArray) jsonObj.get("bubbles");
-        if(chatArray != null) {
+        JSONArray bubbles  = jsonObj.getJSONArray("bubbles");
+        
+        for (int i =0; i < bubbles.length(); i++){
+
+            JSONObject bubble = bubbles.getJSONObject(i);
+
+            String chatType = bubble.getString("type");
+
+            if (chatType.equals("text")){
+
+                chatbotMessage = bubble.getJSONObject("data").getString("description");
+
+            }else if (chatType.equals("template")) {
+
+                chatbotMessage = bubble.getJSONObject("data").getJSONObject("cover").getJSONObject("data").getString("description");
+
+            }else {
+                chatbotMessage = "";
+            }
+        }
+            
+/*        if(chatArray != null) {
             JSONObject tempObj = (JSONObject) chatArray.get(0);
             JSONObject dataObj = (JSONObject) tempObj.get("data");
             if(dataObj != null) {
-//                tempObj = (JSONObject) dataObj.get("description");
-                resultText += (String) dataObj.get("description");
+                if((String) dataObj.get("description") == "") {
+                   JSONObject dataObj2 = (JSONObject) dataObj.get("cover");
+                   resultText += (String) dataObj2.get("description");
+                } else {
+                   resultText += (String) dataObj.get("description");
+                }
             }
         } else {
-            System.out.println("없음");
-        }
-        return resultText;
+             System.out.println("없음");
+        }*/
+        return chatbotMessage;
     }
     
     
@@ -170,4 +194,3 @@ public class ChatbotService {
     
 
 }
-

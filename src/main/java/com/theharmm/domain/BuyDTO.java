@@ -23,4 +23,6 @@ public class BuyDTO {
 	//상세페이지에 체결거래, 판매입찰, 구매입찰 탭에서 사용
 	private int amount;
 	private String img1;
+	private String pname_e;
+	private String pname_k;
 }

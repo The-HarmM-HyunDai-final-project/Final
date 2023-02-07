@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.theharmm.mapper.AdminChatMapper">
+
+
+	<select id="getChatRoom" parameterType="Integer" resultType="ChatRoomDTO">
+	SELECT *
+	  FROM CHATROOM
+	 WHERE ROOM_NO=#{room_no}
+	</select>
+	
+	<insert id="addMessage" parameterType="ChatMessageDTO">
+	INSERT INTO CHATMESSAGE(CHAT_NO, ROOM_NO, MEMBER_EMAIL, CHAT_MESSAGE, CHAT_DATE)
+	VALUES(CHAT_SEQ.NEXTVAL, #{room_no}, #{member_email}, #{chat_message}, SYSDATE)
+	</insert>
+	
+	<insert id="addChatRoom" parameterType="ChatRoomDTO">
+	INSERT INTO CHATROOM(ROOM_NO, ROOM_HOST, MEMBER_COUNT)
+	VALUES(ROOM_SEQ.NEXTVAL, #{room_host},0)
+	</insert>
+	
+	<select id="selectCurrentMemberChatRoom" parameterType="String" resultType="ChatRoomDTO">
+	SELECT ROOM_HOST, MAX(ROOM_NO) AS ROOM_NO
+	  FROM CHATROOM
+	 WHERE ROOM_HOST = #{member_email}
+	 GROUP BY ROOM_HOST
+	</select>
+	
+	<select id="selectClientChatHistory" parameterType="Map" resultType="ChatMessageDTO">
+	SELECT T2.CHAT_NO ,T2.CHAT_MESSAGE, T2.ROOM_NO, T2.MEMBER_EMAIL, T2.CHAT_DATE,T1.ROOM_HOST, T3.MEMBER_NAME, T3.MEMBER_NICKNAME
+   	  FROM CHATROOM T1, CHATMESSAGE T2, MEMBER T3
+	 WHERE T1.ROOM_NO = T2.ROOM_NO
+	   AND T2.MEMBER_EMAIL = T3.MEMBER_EMAIL
+	   AND T1.ROOM_NO = #{room_no}
+	 ORDER BY T2.CHAT_NO ASC
+	</select>
+	
+</mapper>

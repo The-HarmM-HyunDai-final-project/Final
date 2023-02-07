@@ -45,7 +45,7 @@ import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnails;
 
 @Controller
-@RequestMapping("/admin/*")
+@RequestMapping("/admin")
 @Log4j
 public class AdminController {
 	

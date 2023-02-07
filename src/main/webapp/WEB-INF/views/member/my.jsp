@@ -231,14 +231,50 @@
 								<div data-v-5419f155="">
 									<div data-v-0d2f7c95="" data-v-5419f155=""
 										class="purchase_list all bid">
-										<!---->
-										<div data-v-e2f6767a="" data-v-0d2f7c95="" class="empty_area">
-											<p data-v-e2f6767a="" class="desc">거래 내역이 없습니다.</p>
-											<!---->
-										</div>
-										<!---->
-										<!---->
-										<!---->
+										<!--  -->
+										<c:choose>
+											<c:when test="${fn:length(myBuyList)} == 0}">
+												<div data-v-e2f6767a="" data-v-0d2f7c95="" class="empty_area">
+													<p data-v-e2f6767a="" class="desc">거래 내역이 없습니다.</p>
+													<!---->
+												</div>
+											</c:when>
+
+											<c:otherwise>
+												<c:forEach items="${myBuyList}" var="item" varStatus="status">
+												<div data-v-0d2f7c95="" data-v-5419f155="" class="purchase_list all ask">
+													<!---->
+													<div data-v-0d2f7c95="">
+														<div data-v-96f66296="" data-v-0d2f7c95="">
+															<div data-v-96f66296="" class="purchase_list_display_item" style="background-color: rgba(255, 136, 36, 0.05);">
+																<div data-v-96f66296="" class="purchase_list_product">
+																	<div data-v-96f66296="" class="list_item_img_wrap">
+																		<img data-v-96f66296="" alt="product_image" src="${item.img1}" referrerpolicy="no-referrer" class="list_item_img" style="background-color: rgb(235, 240, 245);">
+																		<!---->
+																	</div>
+																	<div data-v-96f66296="" class="list_item_title_wrap">
+																		<!---->
+																		<p data-v-96f66296="" class="list_item_title">${item.pname_e}</p>
+																		<p data-v-96f66296="" class="list_item_title">${item.pname_k}</p>
+																		<p data-v-96f66296="" class="list_item_description">${item.size_type}</p>
+																		
+																	</div>
+																</div>
+																<div data-v-96f66296="" class="list_item_status">
+																	<!---->
+																	<div data-v-96f66296="" class="list_item_column column_last">
+																		<p data-v-e22435d8="" data-v-96f66296="" class="last_title display_paragraph" style="color: rgb(255, 117, 0);">${item.status1}</p>
+																		
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
+
 										<!---->
 									</div>
 									<!---->
@@ -291,64 +327,52 @@
 									<div data-v-0d2f7c95="" data-v-5419f155=""
 										class="purchase_list all ask">
 										<!---->
-										<div data-v-e2f6767a="" data-v-0d2f7c95="" class="empty_area">
-											<p data-v-e2f6767a="" class="desc">거래 내역이 없습니다.</p>
-											<!---->
-										</div>
-										<!---->
-										<!---->
-										<!---->
+										<c:choose>
+											<c:when test="${fn:length(mySellList)} == 0}">
+												<div data-v-e2f6767a="" data-v-0d2f7c95="" class="empty_area">
+													<p data-v-e2f6767a="" class="desc">거래 내역이 없습니다.</p>
+													<!---->
+												</div>
+											</c:when>
+
+											<c:otherwise>
+												<c:forEach items="${mySellList}" var="item" varStatus="status">
+												<div data-v-0d2f7c95="" data-v-5419f155="" class="purchase_list all ask">
+													<!---->
+													<div data-v-0d2f7c95="">
+														<div data-v-96f66296="" data-v-0d2f7c95="">
+															<div data-v-96f66296="" class="purchase_list_display_item" style="background-color: rgba(255, 136, 36, 0.05);">
+																<div data-v-96f66296="" class="purchase_list_product">
+																	<div data-v-96f66296="" class="list_item_img_wrap">
+																		<img data-v-96f66296="" alt="product_image" src="${item.img1}" referrerpolicy="no-referrer" class="list_item_img" style="background-color: rgb(235, 240, 245);">
+																		<!---->
+																	</div>
+																	<div data-v-96f66296="" class="list_item_title_wrap">
+																		<!---->
+																		<p data-v-96f66296="" class="list_item_title">${item.pname_e}</p>
+																		<p data-v-96f66296="" class="list_item_title">${item.pname_k}</p>
+																		<p data-v-96f66296="" class="list_item_description">${item.size_type}</p>
+																		
+																	</div>
+																</div>
+																<div data-v-96f66296="" class="list_item_status">
+																	<!---->
+																	<div data-v-96f66296="" class="list_item_column column_last">
+																		<p data-v-e22435d8="" data-v-96f66296="" class="last_title display_paragraph" style="color: rgb(255, 117, 0);">${item.status1}</p>
+																		
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
 										<!---->
 									</div>
 									<!---->
 								</div>
-							</div>
-							<div data-v-6752ceb2="" data-v-5419f155="" class="my_home_title">
-								<h3 data-v-6752ceb2="" class="title">관심 상품</h3>
-								<!---->
-							</div>
-							<div data-v-5419f155="" class="interest_product">
-								<div data-v-5419f155="" class="product_list">
-									<div data-v-a6a1a7c0="" data-v-5419f155="" class="product_item">
-										<a data-v-a6a1a7c0="" href="/products/83900"
-											class="item_inner"><div data-v-a6a1a7c0=""
-												class="thumb_box">
-												<div data-v-09fbcf09="" data-v-a6a1a7c0="" class="product"
-													style="background-color: rgb(246, 238, 237);">
-													<picture data-v-878ec45c="" data-v-09fbcf09=""
-														class="picture product_img"> <img
-														data-v-878ec45c="" alt="조던 1 레트로 하이 OG 시카고 2022"
-														src="${pageContext.request.contextPath}/resources/images/test3.jpg"
-														loading="lazy" class="image"></picture>
-													<!---->
-													<!---->
-													<!---->
-													<!---->
-												</div>
-											</div>
-											<div data-v-a6a1a7c0="" class="info_box">
-												<div data-v-a6a1a7c0="" class="brand">
-													<!---->
-													<p data-v-a6a1a7c0="" class="brand-text">Jordan</p>
-													<!---->
-												</div>
-												<p data-v-a6a1a7c0="" class="name">Jordan 1 Retro High
-													OG Chicago 2022</p>
-												<div data-v-6da6dff3="" data-v-a6a1a7c0=""
-													class="badge badge_product shipping_express">빠른배송</div>
-												<div data-v-a6a1a7c0="" class="price">
-													<div data-v-a6a1a7c0="" class="amount lg">
-														<!---->
-														<em data-v-a6a1a7c0="" class="num"> 450,000원 </em>
-													</div>
-													<div data-v-a6a1a7c0="" class="desc">
-														<p data-v-a6a1a7c0="">즉시 구매가</p>
-													</div>
-												</div>
-											</div></a>
-									</div>
-								</div>
-								<!---->
 							</div>
 							<!---->
 							<!---->

@@ -109,13 +109,11 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public List<BuyDTO> selectMyBuyList(String member_email) {
-		// TODO Auto-generated method stub
 		return mapper.selectMyBuyList(member_email);
 
 	}
 	@Override
-	public List<SellDTO> selectMySellList(String member_email) {
-		
+	public List<SellDTO> selectMySellList(String member_email) {		
 		return mapper.selectMySellList(member_email);
 	}
 	
