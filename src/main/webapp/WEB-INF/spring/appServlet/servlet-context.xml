@@ -61,7 +61,7 @@
 	   <beans:constructor-arg value="G7joUmdEtU6bwszPS2kH" />
     </beans:bean>
 	<beans:bean id="naverClientSecret" class="java.lang.String">
-		<beans:constructor-arg value="HPszQbOWXP" />
+		<beans:constructor-arg value="Fh7gBYDxMx" />
 	</beans:bean>
 	<beans:bean id="naverRedirectUrl" class="java.lang.String">
 		<beans:constructor-arg value="http://localhost:8080/member/naver/callback" />
