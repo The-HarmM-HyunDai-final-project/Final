@@ -176,7 +176,7 @@
 						<div class="top_inner" data-v-147586e1="">
 							<ul class="top_list" data-v-147586e1="">
 
-								<li class="top_item" data-v-147586e1=""><a href="/notice"
+								<li class="top_item" data-v-147586e1=""><a href="/extra/admin/chat/list"
 									class="top_link" data-v-147586e1=""> 고객센터 </a></li>
 								<li class="top_item" data-v-147586e1=""><a href="/my/wish"
 									class="top_link" data-v-147586e1=""> 관심상품 </a></li>
@@ -237,6 +237,9 @@
 										<li class="gnb_item" data-v-147586e1=""><a href="/showlive/showlivelist"
 											target="_blank" class="gnb_link" data-v-147586e1="" style="color:red">
 												LIVE </a></li>
+										<li class="gnb_item" data-v-147586e1=""><a href="/extra/brand/chat"
+											class="gnb_link" data-v-147586e1="" style="color:BLUE">
+												BRAND CHAT </a></li>
 									</ul>
 								</nav>
 								<div class="search_btn_box" data-v-147586e1="" id="showAlarm">

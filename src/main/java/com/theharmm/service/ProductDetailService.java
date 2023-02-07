@@ -52,5 +52,7 @@ public interface ProductDetailService {
 	
 	//다음 결제번호 조회
 	int selectPaySeqNextVal();
+
+	List<ProductDTO> selectProductList();
 }
 

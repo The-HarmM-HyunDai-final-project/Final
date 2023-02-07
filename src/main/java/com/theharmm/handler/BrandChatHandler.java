@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,20 +19,18 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.theharmm.domain.ChatMessageDTO;
-import com.theharmm.domain.ChatRoomDTO;
-import com.theharmm.domain.MemberVO;
-import com.theharmm.security.domain.CustomUser;
-import com.theharmm.service.AdminChatService;
+import com.theharmm.domain.BrandChatMessageDTO;
+import com.theharmm.domain.BrandChatRoomDTO;
+import com.theharmm.service.BrandChatService;
 
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Controller
-public class AdminChatHandler extends TextWebSocketHandler{
+public class BrandChatHandler extends TextWebSocketHandler{
 	
 	@Autowired
-	AdminChatService adminChatService;
+	BrandChatService brandChatService;
 	
 	private Map<String, ArrayList<WebSocketSession>> RoomList = new ConcurrentHashMap<String, ArrayList<WebSocketSession>>();
 	private Map<WebSocketSession, String> sessionList = new ConcurrentHashMap<WebSocketSession, String>();
@@ -56,9 +53,9 @@ public class AdminChatHandler extends TextWebSocketHandler{
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		   
 	      String msg = message.getPayload();
-	      ChatMessageDTO chatMessage = objectMapper.readValue(msg, ChatMessageDTO.class);
+	      BrandChatMessageDTO chatMessage = objectMapper.readValue(msg, BrandChatMessageDTO.class);
 	      log.info("[CyatSys] 메시지 -> "+chatMessage.toString() );
-	      ChatRoomDTO chatRoom = null;
+	      BrandChatRoomDTO chatRoom = null;
 	      
 	      Calendar cal = Calendar.getInstance();
 		  cal.setTime(chatMessage.getChat_date());
@@ -66,28 +63,25 @@ public class AdminChatHandler extends TextWebSocketHandler{
 		  String chatTime = df.format(cal.getTime());
 	      
 	      
-	      if(chatMessage.getChat_type().equals("enter") && chatMessage.getRoom_no()==0) {
-	    	  chatRoom = new ChatRoomDTO();
+	      if(chatMessage.getRoom_no()==0) {
+	    	  chatRoom = new BrandChatRoomDTO();
 	    	  chatRoom.setRoom_no(0);
 	      }
 	      else if(chatMessage.getRoom_no()==0){
 	    	  
-	    	  chatRoom = adminChatService.selectCurrentMemberChatRoom(chatMessage.getMember_email());
 	    	  chatMessage.setRoom_no(chatRoom.getRoom_no());
-	    	  chatMessage.setRoom_host(chatRoom.getRoom_host());
+	    	 
 	    	  System.out.println("문의: "+chatRoom.toString());
 	      }
 	      else {
-	    	  chatRoom = adminChatService.getChatRoom(chatMessage.getRoom_no());
+	    	  chatRoom = brandChatService.getChatRoom(chatMessage.getRoom_no());
 	    	  chatMessage.setRoom_no(chatRoom.getRoom_no());
-	    	  chatMessage.setRoom_host(chatRoom.getRoom_host());
 	    	  System.out.println("상담사: "+chatRoom.toString());
 	      }
 	      
 	      
 	      //채팅방 생성
 	      if(RoomList.get(Integer.toString(chatRoom.getRoom_no())) == null && chatMessage.getChat_message().equals("ENTER-CHAT")) {
-	         chatRoom = adminChatService.addChatRoom(chatMessage.getMember_email());
 	         chatMessage.setChat_message("상담사 연결을 요청하셨습니다. \n연결 후 빠른 답변을 위해 문의 내용을 남겨주세요.");
 	         chatMessage.setMember_email("admin");
 	         
@@ -96,7 +90,7 @@ public class AdminChatHandler extends TextWebSocketHandler{
 	         sessionList.put(session, Integer.toString(chatRoom.getRoom_no()));
 	         RoomList.put(Integer.toString(chatRoom.getRoom_no()), sessionInfo);
 	         log.info("[ChatSys] "+chatRoom.getRoom_no()+" 번 채팅방 생성");
-	         TextMessage textMessage = new TextMessage(chatMessage.getMember_name() + "," + chatMessage.getMember_email() + "," + chatMessage.getChat_message() +","+ chatMessage.getChat_type() + "," + chatMessage.getChat_no() + "," + chatTime );
+	         TextMessage textMessage = new TextMessage(chatMessage.getMember_name() + "," + chatMessage.getMember_email() + "," + chatMessage.getChat_message() +","+ + chatMessage.getChat_no() + "," + chatTime );
 	         for(WebSocketSession sess : RoomList.get(Integer.toString(chatRoom.getRoom_no()))) {
 	             log.info("[ChatSys] "+Integer.toString(chatRoom.getRoom_no())+" 방 접속인원  "+sess );
 	             sess.sendMessage(textMessage);
@@ -110,7 +104,7 @@ public class AdminChatHandler extends TextWebSocketHandler{
 	         chatMessage.setChat_message("상담사가 연결되었습니다.");
 	         chatMessage.setMember_email("admin");
 	         log.info("[ChatSys] "+Integer.toString(chatRoom.getRoom_no())+" 번 채팅방 입장");
-	         TextMessage textMessage = new TextMessage(chatMessage.getMember_name() + "," + chatMessage.getMember_email() + "," + chatMessage.getChat_message() +","+ chatMessage.getChat_type() + "," + chatMessage.getChat_no()+ "," + chatTime);
+	         TextMessage textMessage = new TextMessage(chatMessage.getMember_name() + "," + chatMessage.getMember_email() + "," + chatMessage.getChat_message() +","+  chatMessage.getChat_no()+ "," + chatTime);
 	         
 	         for(WebSocketSession sess : RoomList.get(Integer.toString(chatRoom.getRoom_no()))) {
 	             log.info("[ChatSys] "+Integer.toString(chatRoom.getRoom_no())+" 방 접속인원 "+sess);
@@ -121,7 +115,7 @@ public class AdminChatHandler extends TextWebSocketHandler{
 	      } 
 	      //메세지 전송
 	      else if(RoomList.get(Integer.toString(chatRoom.getRoom_no())) != null && !chatMessage.getChat_message().equals("ENTER-CHAT") && chatRoom != null) {
-	         TextMessage textMessage = new TextMessage(chatMessage.getMember_name() + "," + chatMessage.getMember_email() + "," + chatMessage.getChat_message() +","+ chatMessage.getChat_type() + "," + chatMessage.getChat_no()+ "," + chatTime);
+	         TextMessage textMessage = new TextMessage(chatMessage.getMember_name() + "," + chatMessage.getMember_email() + "," + chatMessage.getChat_message() +","+  + chatMessage.getChat_no()+ "," + chatTime);
 
 	         int sessionCount = 0;  
         	 for(WebSocketSession sess : RoomList.get(Integer.toString(chatRoom.getRoom_no()))) {
@@ -134,7 +128,7 @@ public class AdminChatHandler extends TextWebSocketHandler{
 	         try {
 	            log.info("[ChatSys]저장될 채팅데이터 : " + chatMessage.toString());
 	            
-	            ret = adminChatService.addMessage(chatMessage);
+	            ret = brandChatService.addMessage(chatMessage);
 	         } catch(Exception e) {
 	            log.info(e.getMessage());
 	         } finally {
@@ -166,44 +160,6 @@ public class AdminChatHandler extends TextWebSocketHandler{
 	  
 	   
 	
-	   @GetMapping(value = "/{room_no}")
-	   public String selectClientChatHistory(@PathVariable int room_no, WebSocketSession session) {
-			
-			try {
-				
-				
-				log.info("[ChatSys]현재 로그인한 유저 정보 불러오기...");
-				String session_member_email = session.getPrincipal().getName();
-			    
-			      
-			    log.info("[ChatSys]현재 로그인한 유저 정보 "+ session_member_email);
-			    
-			     
-			     List<ChatMessageDTO> chatHistory = null;
-			     ChatRoomDTO roomInfo = null;
-			     
-		         log.info("[ChatSys]채팅 히스토리 불러오기...");
-		         
-		         Map<String,Object> map = new HashMap<>();
-		         map.put("room_no",room_no);
-		         chatHistory = adminChatService.selectClientChatHistory(map);
-		         
-		         
-		         log.info("[ChatSys]채팅 히스토리 불러오기...완료 "+ chatHistory.size());
-		         
-		         log.info("[ChatSys]채팅방 불러오기...");
-		         roomInfo = adminChatService.getChatRoom(room_no);
-		         log.info("[ChatSys]채팅방 불러오기...완료 "+ roomInfo.getRoom_host());
-		         
-		         
-		         return "/adminChatRoom";
-		         
-				
-			} catch (Exception e) {
-				log.info(e.getMessage());
-			}
-			return "/500";
-			
-		}
+	   
 	
 }

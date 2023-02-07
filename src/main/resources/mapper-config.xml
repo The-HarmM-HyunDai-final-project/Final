@@ -42,5 +42,10 @@
 			type="com.theharmm.domain.ChatRoomDTO" />
 		<typeAlias alias="ChatMessageDTO"
 			type="com.theharmm.domain.ChatMessageDTO" />
+		<!-- BrandChatting -->
+		<typeAlias alias="BrandChatRoomDTO"
+			type="com.theharmm.domain.BrandChatRoomDTO" />
+		<typeAlias alias="BrandChatMessageDTO"
+			type="com.theharmm.domain.BrandChatMessageDTO" />
 	</typeAliases>
 </configuration>

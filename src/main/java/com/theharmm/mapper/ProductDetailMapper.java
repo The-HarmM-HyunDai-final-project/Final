@@ -53,4 +53,6 @@ public interface ProductDetailMapper{
 		//다음 결제번호 조회
 		public int selectPaySeqNextVal();
 
+		public List<ProductDTO> selectProductList();
+
 }
