@@ -99,10 +99,10 @@
 		</div>
 
 		<div data-v-013cc4d0="" data-v-47cbe816="" class="social_feeds2"
-			style="height: 1000px;">
+			style="height: 1500px;">
 			<div data-v-013cc4d0="" transition-duration="0" item-selector=".item"
 				gutter=".gutter_item" horizontal-order="true" class="masonry_posts"
-				style="position: relative; height: 1462px;">
+				style="position: relative; height: 2000px;">
 				<div data-v-013cc4d0="" class="gutter_item"></div>
 <%-- 				<div>${list}</div>
 				<div>${pageMaker }</div> --%>

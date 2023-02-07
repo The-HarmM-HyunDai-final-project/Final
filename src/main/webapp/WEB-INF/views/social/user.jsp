@@ -600,7 +600,8 @@
                 let data = {'contents':contents};
 
                    $.ajax({
-                    url: "http://127.0.0.1:5000/positiveNegativeResult", 
+                    //url: "http://127.0.0.1:5000/positiveNegativeResult", 
+                    url: "http://10.109.118.229:5000/positiveNegativeResult", 
                     method: 'post',
                     beforeSend : function(xhr){
                         xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);

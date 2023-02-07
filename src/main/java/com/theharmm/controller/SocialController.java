@@ -148,9 +148,9 @@ public class SocialController {
 				// 비율
 				double ratio = 3;
 				// 넓이 높이
-				int width = (int) (bo_image.getWidth() / ratio);
-				int height = (int) (bo_image.getHeight() / ratio);
-				Thumbnails.of(saveFile).size(width, height).toFile(thumbnailFile);
+//				int width = (int) (bo_image.getWidth() / ratio);
+//				int height = (int) (bo_image.getHeight() / ratio);
+//				Thumbnails.of(saveFile).size(width, height).toFile(thumbnailFile);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

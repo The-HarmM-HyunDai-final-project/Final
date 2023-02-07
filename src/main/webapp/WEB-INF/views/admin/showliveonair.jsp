@@ -383,7 +383,7 @@ Milligram CSS
             <div class="price_area">
 	            <b> 최고제시가격 : </b></br>
 	            <b id="max_price">${channelDTO.showlive_start_price}</b>
-	            <b>만원 </b>
+	            <b>원 </b>
             </div>
             
             <br />

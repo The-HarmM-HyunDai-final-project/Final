@@ -17,7 +17,7 @@
 						주소</h3>
 					<div class="input_item" data-v-1c44afeb="">
 						<input type="email" name="username"
-							placeholder="예) theharmm@theharmm.co.kr" autocomplete="off"
+							placeholder="예) theharm@theharm.co.kr" autocomplete="off"
 							class="input_txt" data-v-1c44afeb="">
 						<button type="button" class="btn input_delete"
 							style="display: none;" data-v-575aff82="" data-v-464f7370=""
