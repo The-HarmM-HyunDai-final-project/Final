@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.socket.WebSocketSession;
@@ -88,7 +89,7 @@ public class ExtraChatController {
 				MemberVO member = user.getMember();
 				
 				Map<String,Object> map = new HashMap<>();
-				
+			
 				List<BrandChatRoomDTO> brandChatRoomList  = brandChatService.getChatRoomList(map);
 				log.info("[ChatSys]현재 채팅방 리스트 정보 불러오기...");
 				
@@ -114,43 +115,42 @@ public class ExtraChatController {
 			
 	}
 	 
-	 @GetMapping("/brand/chat/{room_no}")
-	   public String selectChatRoom(@PathVariable int room_no, WebSocketSession session, Model model) {
+	 @GetMapping("/brand/{room_no}")
+	/* @ResponseBody */
+	   public String selectChatRoom(@PathVariable int room_no, Model model) {
 			
 			try {
 				
-				CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-				log.info("[ChatSys]현재 로그인한 유저 정보 불러오기...");
-				String session_member_email = session.getPrincipal().getName();
-			    
-			      
-			    log.info("[ChatSys]현재 로그인한 유저 정보 "+ session_member_email);
-			    
-			    MemberVO member = user.getMember();
-			    
-			     List<BrandChatMessageDTO> chatHistory = null;
-			     BrandChatRoomDTO roomInfo = null;
-			     
-		         log.info("[ChatSys]채팅 히스토리 불러오기...");
-		         
-		         Map<String,Object> map = new HashMap<>();
-		         map.put("room_no",room_no);
-		         chatHistory = brandChatService.selectChatHistory(map);
-		         
-		         
-		         log.info("[ChatSys]채팅 히스토리 불러오기...완료 "+ chatHistory.size());
-		         
-		         log.info("[ChatSys]채팅방 불러오기...");
-		         roomInfo = brandChatService.getChatRoom(room_no);
-		         log.info("[ChatSys]채팅방 불러오기...완료 "+ roomInfo.getRoom_no());
-		         
-		         
-		         model.addAttribute("brandChatRoomDTO",roomInfo);
-		         model.addAttribute("brandChatMessageList",chatHistory);
-		         model.addAttribute("memberInfo",member);
-		         
+				log.info("room_no-----"+room_no);
+			
+			  CustomUser user = (CustomUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			  log.info("[ChatSys]현재 로그인한 유저 정보 불러오기...");
+			  
+			  MemberVO member = user.getMember(); 
+			  
+			  log.info("[ChatSys]현재 로그인한 유저 정보 "+member.getMember_email());
+			  
+			  List<BrandChatMessageDTO> chatHistory = null; BrandChatRoomDTO roomInfo = null;
+			  
+			  log.info("[ChatSys]채팅 히스토리 불러오기...");
+			  
+			  Map<String,Object> map = new HashMap<>(); map.put("room_no",room_no);
+			  chatHistory = brandChatService.selectChatHistory(map);
+			  
+			  
+			  log.info("[ChatSys]채팅 히스토리 불러오기...완료 "+ chatHistory.size());
+			  
+			  log.info("[ChatSys]채팅방 불러오기..."); 
+			  roomInfo = brandChatService.getChatRoom(room_no); 
+			  log.info("[ChatSys]채팅방 불러오기...완료 "+roomInfo.getRoom_no());
+			  
+			  
+			  model.addAttribute("brandChatRoomDTO",roomInfo);
+			  model.addAttribute("brandChatMessageList",chatHistory);
+			  model.addAttribute("memberInfo",member);
+			  log.info(member);
+		        
 		         return "brandChatContents";
-		         
 				
 			} catch (Exception e) {
 				log.info(e.getMessage());
@@ -158,6 +158,8 @@ public class ExtraChatController {
 			return "/500";
 			
 		}
+	 
+	 
 
 	
 	

@@ -10,9 +10,12 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -21,6 +24,8 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.theharmm.domain.BrandChatMessageDTO;
 import com.theharmm.domain.BrandChatRoomDTO;
+import com.theharmm.domain.MemberVO;
+import com.theharmm.security.domain.CustomUser;
 import com.theharmm.service.BrandChatService;
 
 import lombok.extern.log4j.Log4j;
@@ -63,32 +68,22 @@ public class BrandChatHandler extends TextWebSocketHandler{
 		  String chatTime = df.format(cal.getTime());
 	      
 	      
-	      if(chatMessage.getRoom_no()==0) {
-	    	  chatRoom = new BrandChatRoomDTO();
-	    	  chatRoom.setRoom_no(0);
-	      }
-	      else if(chatMessage.getRoom_no()==0){
-	    	  
-	    	  chatMessage.setRoom_no(chatRoom.getRoom_no());
-	    	 
-	    	  System.out.println("문의: "+chatRoom.toString());
-	      }
-	      else {
-	    	  chatRoom = brandChatService.getChatRoom(chatMessage.getRoom_no());
-	    	  chatMessage.setRoom_no(chatRoom.getRoom_no());
-	    	  System.out.println("상담사: "+chatRoom.toString());
-	      }
+	     chatRoom = brandChatService.getChatRoom(chatMessage.getRoom_no());
+	     chatMessage.setRoom_no(chatRoom.getRoom_no());
+	     log.info("방정보: "+chatRoom.toString());
+	      
 	      
 	      
 	      //채팅방 생성
 	      if(RoomList.get(Integer.toString(chatRoom.getRoom_no())) == null && chatMessage.getChat_message().equals("ENTER-CHAT")) {
-	         chatMessage.setChat_message("상담사 연결을 요청하셨습니다. \n연결 후 빠른 답변을 위해 문의 내용을 남겨주세요.");
-	         chatMessage.setMember_email("admin");
-	         
+	        
+	    	 
 	    	 ArrayList<WebSocketSession> sessionInfo = new ArrayList<WebSocketSession>();
+	    	 chatMessage.setChat_message(chatMessage.getMember_name()+"님이 대화방을 생성 하였습니다.");
 	         sessionInfo.add(session);
 	         sessionList.put(session, Integer.toString(chatRoom.getRoom_no()));
 	         RoomList.put(Integer.toString(chatRoom.getRoom_no()), sessionInfo);
+	         brandChatService.addUserCount(chatRoom.getRoom_no());
 	         log.info("[ChatSys] "+chatRoom.getRoom_no()+" 번 채팅방 생성");
 	         TextMessage textMessage = new TextMessage(chatMessage.getMember_name() + "," + chatMessage.getMember_email() + "," + chatMessage.getChat_message() +","+ + chatMessage.getChat_no() + "," + chatTime );
 	         for(WebSocketSession sess : RoomList.get(Integer.toString(chatRoom.getRoom_no()))) {
@@ -99,10 +94,10 @@ public class BrandChatHandler extends TextWebSocketHandler{
 	      } 
 	      //채팅방 입장
 	      else if(RoomList.get(Integer.toString(chatRoom.getRoom_no())) != null && chatMessage.getChat_message().equals("ENTER-CHAT") && chatRoom != null) {
-	         RoomList.get(Integer.toString(chatRoom.getRoom_no())).add(session);
+	         chatMessage.setChat_message(chatMessage.getMember_name()+"님이 입장하였습니다.");
+	    	  RoomList.get(Integer.toString(chatRoom.getRoom_no())).add(session);
 	         sessionList.put(session, Integer.toString(chatRoom.getRoom_no()));
-	         chatMessage.setChat_message("상담사가 연결되었습니다.");
-	         chatMessage.setMember_email("admin");
+	         brandChatService.addUserCount(chatRoom.getRoom_no());
 	         log.info("[ChatSys] "+Integer.toString(chatRoom.getRoom_no())+" 번 채팅방 입장");
 	         TextMessage textMessage = new TextMessage(chatMessage.getMember_name() + "," + chatMessage.getMember_email() + "," + chatMessage.getChat_message() +","+  chatMessage.getChat_no()+ "," + chatTime);
 	         
@@ -115,8 +110,13 @@ public class BrandChatHandler extends TextWebSocketHandler{
 	      } 
 	      //메세지 전송
 	      else if(RoomList.get(Integer.toString(chatRoom.getRoom_no())) != null && !chatMessage.getChat_message().equals("ENTER-CHAT") && chatRoom != null) {
-	         TextMessage textMessage = new TextMessage(chatMessage.getMember_name() + "," + chatMessage.getMember_email() + "," + chatMessage.getChat_message() +","+  + chatMessage.getChat_no()+ "," + chatTime);
-
+	    	  boolean closeYn = false;
+	    	  if(chatMessage.getChat_message().equals("CLOSE-CHAT")) {
+	    		  closeYn = true;
+	    		  chatMessage.setChat_message(chatMessage.getMember_name()+"님이 퇴장하였습니다.");
+	    	  }
+	    	  TextMessage textMessage = new TextMessage(chatMessage.getMember_name() + "," + chatMessage.getMember_email() + "," + chatMessage.getChat_message() +","+  + chatMessage.getChat_no()+ "," + chatTime);
+	         
 	         int sessionCount = 0;  
         	 for(WebSocketSession sess : RoomList.get(Integer.toString(chatRoom.getRoom_no()))) {
                  log.info("[ChatSys] "+Integer.toString(chatRoom.getRoom_no())+" 방 접속인원 "+ sess);
@@ -127,8 +127,10 @@ public class BrandChatHandler extends TextWebSocketHandler{
 	         int ret = 0;
 	         try {
 	            log.info("[ChatSys]저장될 채팅데이터 : " + chatMessage.toString());
-	            
-	            ret = brandChatService.addMessage(chatMessage);
+	            if(!closeYn) {
+	            	ret = brandChatService.addMessage(chatMessage);
+	            }
+	           
 	         } catch(Exception e) {
 	            log.info(e.getMessage());
 	         } finally {
@@ -155,8 +157,7 @@ public class BrandChatHandler extends TextWebSocketHandler{
 	      }
 	      
 	   }
-	   
-	   
+
 	  
 	   
 	

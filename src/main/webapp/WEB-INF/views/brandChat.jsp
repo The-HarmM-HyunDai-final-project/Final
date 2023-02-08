@@ -4,6 +4,8 @@
 	data-os="window 10.0" data-browser="chrome 109.0.0.0"
 	data-version="20230202141000">
 <head>
+<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
+<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
 <link rel="icon" type="image/png" sizes="32x32"
 	href="/nstatic/icons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16"
@@ -2311,7 +2313,7 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active,
 				<div class="chat_list_wrap ">
 					<ul class="chat_list">
 						<c:forEach var="brandChatRoom" items="${brandChatRoomList}">
-						<li class=""><a class="chat_list_link" onclick='selectBrandChatRoom();'><div
+						<li class=""><a class="chat_list_link" onclick='selectBrandChatRoom(${brandChatRoom.room_no});'><div
 									class="info_area">
 									<div class="check_wrap">
 										<input type="checkbox"><label for="check_delete1"><span
@@ -2394,11 +2396,10 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active,
 									<form class="KEP-ChatInputArea__form" id="chatForm" 
 										enctype="multipart/form-data">
 										<input type="text" placeholder="채팅방을 선택 후 대화하실 수 있습니다"  disabled
-											class="KEP-ChatInputArea__input" id="inputText"
-											name="inputText">
+											class="KEP-ChatInputArea__input">
 										
 										<button class="KEP-ChatInputArea__btnSend" aria-label="전송" disabled
-											type="submit">
+											type="button">
 											<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
 												xmlns="http://www.w3.org/2000/svg">
 						                        <path fill="currentColor"
@@ -2412,37 +2413,6 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active,
 							</div>
 
 						</div>
-					</div>
-					<div class="chat_faq_area">
-						<div class="chat_composite_option_area hide ">
-							<strong class="blind">옵션 사항을 선택해주세요</strong>
-							<ul class="list_btn_option"></ul>
-						</div>
-						<div class="ly_chat_toast hide" style="opacity: 0;">
-							<div class="chat_toast">
-								<svg width="20" height="20" class="ico_show_recent">
-									<use
-										xlink:href="/nstatic/svg/icons.svg?20230202141000#fn-newtalk-bullet_thin"></use></svg>
-							</div>
-						</div>
-					</div>
-					<div class="chat_ly_banner circle hide">
-						<a target="_blank" title="새창"><img
-							src="/nstatic/images/pc/pc_user/@img_banner_alarm.png?20230202141000"
-							alt="나의 주문정보 알림. 네이버페이 알림, 이제 네이버 알림으로 받아보세요." width="170"
-							height="170"></a>
-						<button type="button" class="btn_close">
-							<span><i class="ico_popup_close" aria-label="닫기"></i></span>
-						</button>
-					</div>
-					<div class="chat_ly_banner hide">
-						<a class="chat_banner bg_blue" target="_blank" title="새창"><img
-							src="/nstatic/images/pc/pc_user/banner_survey3.png?20230202141000"
-							width="388" height="83"
-							alt="영어사전 영어톡톡 체험하기는 영어사전에서 다시 참여할 수 있습니다."><span
-							class="img_banner"><img
-								src="/nstatic/images/pc/pc_user/banner_survey4.png?20230202141000"
-								width="105" height="83" alt="영어사전 이미지"></span></a>
 					</div>
 				</footer>
 			</section>
@@ -2508,8 +2478,44 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active,
 	</div>
 	
 	<script>
-		function selectBrandChatRoom(){
-			alert(this);
+	
+	var room_no = "";
+   		
+   		
+	
+	    //여기다 미림아아ㅏ아아ㅏㅏ 
+		function selectBrandChatRoom(room_number){
+			//alert(room_number);
+			console.log("room_number" + room_number);
+			
+			
+			
+			
+			room_no = room_number;
+			
+			let csrfHeaderName ="${_csrf.headerName}";
+		    let csrfTokenValue="${_csrf.token}";
+		    
+		    
+		    
+		    
+		   
+		    $.ajax({
+		       url:"/extra/brand/"+room_no,
+		       method: 'get',
+/* 		       beforeSend : function(xhr){
+		           xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+		       }, */ 
+		      
+		       success: function(res){ 
+		          $("#content").html(res);
+		       
+		       },
+		       error: function(){
+		    	   alert("fail");
+		       }
+		    }) 
+			
 		}
 	</script>
 	

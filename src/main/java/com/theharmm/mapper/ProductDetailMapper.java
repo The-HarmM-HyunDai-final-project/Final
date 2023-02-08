@@ -19,7 +19,7 @@ public interface ProductDetailMapper{
 		public ProductSizeDTO selectSaleProductSize(Map<String, Object> productInfoMap);
 		
 		
-		//판매관련
+		//구매, 판매관련
 
 		public List<ProductSizeDTO> selectBuyProductSizeList(ProductDetailDTO productDetailDTO);
 
