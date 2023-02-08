@@ -41,6 +41,7 @@ function getReviewList(keyword,sentiment_result){
           
           if(sentiment_result=='P'){
         	  
+        	  
         	  $("#positivePostList").html(res); 
         	  //$("#positiveTab").trigger("click");
           }

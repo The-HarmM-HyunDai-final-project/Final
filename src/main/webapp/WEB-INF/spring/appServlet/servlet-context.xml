@@ -31,10 +31,12 @@
 	<beans:bean id="BJchattingHandler" class="com.theharmm.handler.BJChattingHandler"/>
 	<beans:bean id="echoHandler" class="com.theharmm.handler.EchoHandler" />
 	<beans:bean id="adminChatHandler" class="com.theharmm.handler.AdminChatHandler" />
+	<beans:bean id="brandChatHandler" class="com.theharmm.handler.BrandChatHandler" />
 	
 
  	<websocket:handlers allowed-origins="*">
  		<websocket:mapping handler="adminChatHandler" path="/admin/chat" />
+ 		<websocket:mapping handler="brandChatHandler" path="/brand/chat" />
 		<websocket:mapping handler="chattingHandler" path="/chatting"/>
 		<websocket:mapping handler="BJchattingHandler" path="/BJchatting"/>
 		<websocket:mapping handler="echoHandler" path="/echo" />

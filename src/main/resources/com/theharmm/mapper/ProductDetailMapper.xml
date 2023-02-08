@@ -220,4 +220,17 @@
          ]]>
 	</select>
 	
+	<!--전체 상품 리스트-->
+	<select id="selectProductList"
+		resultType="productDTO">
+		 <![CDATA[
+		 SELECT *
+		   FROM (
+		   SELECT PID, PNAME_E, PNAME_K, RELEASE_PRICE, IMG1 , BRAND
+           FROM RESELL_PRODUCT
+           )
+          WHERE ROWNUM <= 100
+		  ]]>
+	</select>
+	
 </mapper>

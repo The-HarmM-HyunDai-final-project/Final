@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.theharmm.mapper.BrandChatMapper">
+		
+	<select id="getChatRoomList" parameterType="Map" resultType="BrandChatRoomDTO">
+	SELECT *
+	  FROM BRAND_CHAT_ROOM
+	 ORDER BY MEMBER_COUNT DESC, ROOM_NO ASC
+	</select>
+
+	<select id="getChatRoom" parameterType="Integer" resultType="BrandChatRoomDTO">
+	SELECT *
+	  FROM BRAND_CHAT_ROOM
+	 WHERE ROOM_NO=#{room_no}
+	</select>
+	
+	<insert id="addMessage" parameterType="BrandChatMessageDTO">
+	INSERT INTO BRAND_CHAT_MESSAGE(ROOM_NO, MEMBER_EMAIL, CHAT_MESSAGE, CHAT_DATE)
+	VALUES(#{room_no}, #{member_email}, #{chat_message}, SYSDATE)
+	</insert>
+	
+	
+	<select id="selectChatHistory" parameterType="Map" resultType="BrandChatMessageDTO">
+	SELECT T2.CHAT_NO ,T2.CHAT_MESSAGE, T2.ROOM_NO, T2.MEMBER_EMAIL, T2.CHAT_DATE, T1.BRAND, T3.MEMBER_NAME, T3.MEMBER_NICKNAME
+   	  FROM BRAND_CHAT_ROOM T1, BRAND_CHAT_MESSAGE T2, MEMBER T3
+	 WHERE T1.ROOM_NO = T2.ROOM_NO
+	   AND T2.MEMBER_EMAIL = T3.MEMBER_EMAIL
+	   AND T1.ROOM_NO = #{room_no}
+	 ORDER BY T2.CHAT_NO ASC
+	</select>
+	
+	
+	<update id="addUserCount" parameterType="BrandChatRoomDTO">
+	UPDATE BRAND_CHAT_ROOM SET member_count = member_count+1
+	WHERE room_no = #{room_no}
+	</update>
+	
+	<update id="subtractUserCount" parameterType="BrandChatRoomDTO">
+	UPDATE BRAND_CHAT_ROOM SET member_count = member_count-1
+	WHERE room_no = #{room_no}
+	</update>
+	
+	<select id="selectRoomMemberCount" parameterType="Integer" resultType="Integer">
+	SELECT MEMBER_COUNT
+	FROM BRAND_CHAT_ROOM
+	WHERE ROOM_NO = #{room_no}
+	</select>
+</mapper>

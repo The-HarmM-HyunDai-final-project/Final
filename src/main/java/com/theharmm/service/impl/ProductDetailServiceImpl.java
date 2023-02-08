@@ -128,4 +128,10 @@ public class ProductDetailServiceImpl implements ProductDetailService{
 		return productDetailMapper.selectPaySeqNextVal();
 	}
 
+
+	@Override
+	public List<ProductDTO> selectProductList() {
+		return productDetailMapper.selectProductList();
+	}
+
 }
