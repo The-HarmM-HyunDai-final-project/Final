@@ -33,13 +33,5 @@ public class ProductService {
 		//categoryPager.put("cri", cri);
 		return mapper.selectOneProduct(pid);
 	}
-	
-	/*
-	 * // 필터링 적용 후 데이터 가져오기 public ProductDTO searchProducts(Criteria cri) {
-	 * log.info("searchProductService.............." + cri); HashMap<String, Object>
-	 * categoryPager = new HashMap<String, Object>(); categoryPager.put("cri", cri);
-	 * return new ProductPageDTO(mapper.countProducts(categoryPager),
-	 * mapper.selectProducts(categoryPager)); }
-	 */
 
 }

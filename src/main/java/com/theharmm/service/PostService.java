@@ -21,14 +21,8 @@ public interface PostService {
    /* 포스트 하나 가져오기 */
    public PostVO postGetOne(int post_id);
    
+	/* 포스트 id로 사진 가져오기 */
    public List<SocialVO> socialByPostid(int post_id);
-   
-   //신미림 - 긍정 리뷰 리스트 조회
-   public List<PostVO> selectPositivePostList(int pid);
-
-   //신미림 - 부정 리뷰 리스트 조회
-   public List<PostVO> selectNegativePostList(int pid);
-
    
    /* 사용자별 포스트 리스트 */
    public List<PostVO> postGetByMailList(PostCriteria postcri , String member_email);
@@ -69,6 +63,13 @@ public interface PostService {
 
    /* 신미림 - 부정리뷰 평균 */
    public double selectNegativePostAvg(int pid);
+   
+   
+   //신미림 - 긍정 리뷰 리스트 조회
+   public List<PostVO> selectPositivePostList(int pid);
+
+   //신미림 - 부정 리뷰 리스트 조회
+   public List<PostVO> selectNegativePostList(int pid);
 
 
 }

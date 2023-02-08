@@ -24,6 +24,7 @@ public class ReplyController {
 	@Autowired
 	ReplyService replyservice;
 	
+	// 댓글 등록
 	@RequestMapping(value = "social/insertReply", produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public String insertReply(String member_email, int post_id, String content,
@@ -56,6 +57,8 @@ public class ReplyController {
 		return json;
 	}
 	
+	// 부모와 자식으로 그룹화된 리스트를 가져와 대댓글 표현
+	// ajax로 수행
 	@GetMapping(value = "social/getReplyList", produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public String getReplyList (@RequestParam(defaultValue = "0") int post_id) {

@@ -4010,32 +4010,5 @@
 	}
 
 	var newDiv;
-
-	/* 	function Ccheck(element) {
-	 console.log("카테고리 함수");
-	 const category = element.getElementsByClassName('link_txt')[0].innerHTML;
-	 console.log(category);
-	 console.log(element.parentNode.parentNode.parentNode);
-	 const tmp = element.parentNode.parentNode.parentNode;
-	 console.log(tmp.getElementsByClassName('placeholder')[0].innerHTML);
-	 tmp.getElementsByClassName('placeholder')[0].innerHTML = category;
-	 console.log("변경후"+ tmp.getElementsByClassName('placeholder')[0].innerHTML);
-	
-	 var newDiv = document.createElement("div");
-	 let html_tmp = ""
-	 html_tmp += "<div data-v-9bcf6292='' class='tag_item'>";
-	 html_tmp += "	<span data-v-9bcf6292='' class='tag'>"+ category +"</span>";
-	 html_tmp += "	<svg data-v-9bcf6292='' xmlns='http://www.w3.org/2000/svg' class='ico-delete-gray icon sprite-icons'>";
-	 html_tmp += "		<use data-v-9bcf6292='' href='/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-delete-gray'";
-		html_tmp += "			xlink:href='/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-delete-gray'>";
-	 html_tmp += "		</use>";
-	 html_tmp += "	</svg>";
-	 html_tmp += "</div>";
-	 newDiv.innerHTML = html_tmp;
-	
-	 var p = document.getElementById("filter_tag"); // <p "id=p"> 태그의 DOM 객체 찾기
-	 p.appendChild(newDiv);
-	
-	 } */
 </script>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

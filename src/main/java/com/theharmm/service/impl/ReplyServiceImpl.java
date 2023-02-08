@@ -37,23 +37,7 @@ public class ReplyServiceImpl implements ReplyService {
 		// 통합
 		List<List<ReplyDTO>> newBoardReplyList = new ArrayList<>();
 
-		// parentid가 없으면 부모 -> 내가 답글 달고자 하는 사람의 id // depth 에 최상위 부모id 입력
-
-		// 1.부모와 자식 분리
-		/*
-		 * for (ReplyDTO boardReply: boardReplyList) { if (boardReply.getParent_id() ==
-		 * 0) { boardReplyListParent.add(boardReply); } else {
-		 * boardReplyListChild.add(boardReply); } }
-		 * 
-		 * // 2.부모를 돌린다. for (ReplyDTO boardReplyParent: boardReplyListParent) { //2-1.
-		 * 부모는무조건 넣는다. newBoardReplyList.add(boardReplyParent); // 3.자식을 돌린다. for
-		 * (ReplyDTO boardReplyChild: boardReplyListChild) { // 3-1. 부모의 자식인 것들만 넣는다. if
-		 * (boardReplyParent.getSid() == boardReplyChild.getParent_id()) {
-		 * newBoardReplyList.add(boardReplyChild); }
-		 * 
-		 * } }
-		 */
-
+		// 전체 댓글 리스트를 조회하며 부모 댓글, 자식 댓글을 분리 한다
 		for (ReplyDTO boardReply : boardReplyList) {
 			if (boardReply.getParent_id() == 0) {
 				boardReplyListParent.add(boardReply);
@@ -62,6 +46,7 @@ public class ReplyServiceImpl implements ReplyService {
 			}
 		}
 		
+		// 부모댓글당 달리는 자식 댓글을 모아 리스트를 만든다
 		for (int i = 0; i < boardReplyListParent.size(); i++) {
 			List<ReplyDTO> tmp = new ArrayList<>();
 			tmp.add(boardReplyListParent.get(i));
@@ -88,31 +73,37 @@ public class ReplyServiceImpl implements ReplyService {
 		return replymapper.getChildReplyList(post_id, depth);
 	}
 
+	// 알람 등록
 	@Override
 	public int insertAlarm(AlarmDTO alarm) {
 		return replymapper.insertAlarm(alarm);
 	}
 
+	// 알람 삭제
 	@Override
 	public int deleteAlarm(int alarmid) {
 		return replymapper.deleteAlarm(alarmid);
 	}
 
+	// 알람 리스트
 	@Override
 	public List<AlarmDTO> getAlarmList(String receiverEmail) {
 		return replymapper.alarmList(receiverEmail);
 	}
 
+	// 알람 개수
 	@Override
 	public int countAlarm(String receiverEmail) {
 		return replymapper.countAlarm(receiverEmail);
 	}
 
+	// 알람 id 불러오기
 	@Override
 	public int getAlarmid() {
 		return replymapper.alarmid() ;
 	}
 
+	// sid로 member email 가져오기
 	@Override
 	public String getMember_email(int sid) {
 		return replymapper.getMember_email(sid);

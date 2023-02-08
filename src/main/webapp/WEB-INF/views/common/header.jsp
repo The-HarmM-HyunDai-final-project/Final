@@ -2207,83 +2207,6 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 		     $("#chatArea").append(tmphtml);
 			 $('.KEP-ChatArea').scrollTop($('.KEP-ChatArea')[0].scrollHeight);
 			 $("#inputText").val("");
-
-/* 		     $.ajax({
-		         type : "post",
-		         enctype : "multipart/form-data",
-		         url : "/chatbotSend",
-		         data : formData,
-		         processData : false, // 필수
-		         contentType : false, // 필수
-		         beforeSend: function(xhr) {
-		             xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-		         },
-		         dataType: "json",
-		         success:function (result) {
-		        	 tmpresponse = "";
-		        	 tmpresponse +=
-		        		 
-		             console.log(result);
-		        	
- 		        	 tmpres = 
-		        	 `
-		             <div class="KEP-Receiver">
-		                 <div class="KEP-Receiver__avatar">
-		                     <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-		                         <defs>
-		                             <path id="shapeSquircle"
-		                                 d="M17 0C29.4003 0 34 4.59973 34 17C34 29.4003 29.4003 34 17 34C4.59973 34 0 29.4003 0 17C0 4.59973 4.59973 0 17 0Z">
-		                             </path>
-		                             <clipPath id="clipSquircle">
-		                                 <use xlink:href="#shapeSquircle"></use>
-		                             </clipPath>
-		                         </defs>
-		                         <image width="100%" height="100%" preserveAspectRatio="xMidYMid slice"
-		                             clip-path="url(#clipSquircle)"
-		                             xlink:href="/resources/images/logo_the.png">
-		                         </image>
-		                     </svg>
-		                 </div>
-		                 <div class="KEP-Receiver__msgArea">
-		                     <div class="KEP-Receiver__nickName">Theharm</div>
-		                     <div class="KEP-Receiver__blocksArea">
-		                         <div class="KEP-Receiver__speech">`+result.msg+`<br>`+result.button+`<span class="KEP-Receiver__time">`+result.chatTime+`</span>
-		                         </div>
-		                     </div>
-		                 </div>
-		             </div>
-		 			`
-		 
-		          $("#chatArea").append(tmpres); 
-		 		  $('.KEP-ChatArea').scrollTop($('.KEP-ChatArea')[0].scrollHeight);
- 		          $(".connectAdmin").on("click", function (e) {
- 		        	 console.log("connectAdmin");
-
-                    if (mid == "") {
-                        alert("로그인 후 상담직원 연결을 이용해 주세요");
-                        return;
-                    }
-                    
-                    // 관리자에게 알람 부분
-                    if (socket) {
-                       // let socketMsg = "admin," + mid +","+ "admin" +","+ "admin" +","+ " ";
-                        console.log("관리자 호출 msgmsg : " + socketMsg);
-                        socket.send(socketMsg);
-                    }   
-
- 		        	sock=new SockJS("http://localhost:8080/admin/chat");
- 			   		console.log(sock);
- 			   		sock.onmessage = onMessage;
- 			   		sock.onopen = onOpen;
- 			   		sock.onclose = onClose;
- 		          });
- 		   		
- 		   		
-		         },
-		         error:function (e) {
-		             alert("오류 발생" + e);
-		         }
-		     }); */
 		     
 			 }
 			 else{
@@ -2291,9 +2214,7 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 				
 			 }
 		 })
-		 
-		
-        
+  
 	});	
 	
 </script>

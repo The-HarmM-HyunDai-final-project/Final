@@ -10,25 +10,38 @@
 		values(seq_style_reply.NEXTVAL, #{member_email}, #{post_id}, #{content},#{parent_id}, #{depth})
 	</insert>
 	
+	<!-- 댓글 리스트 가져오기 -->
 	<select id="getReplyList" resultType="com.theharmm.domain.ReplyDTO" parameterType="int">
 		select * from style_reply where post_id = #{post_id} order by regdate asc
-	</select>
-	
-	
-	<!-- 부모 댓글만 가져오기 -->
-	<select id="getParentReplyList" resultType="com.theharmm.domain.ReplyDTO" parameterType="int">
-		select * from style_reply where post_id = #{post_id} and parent_id = 0 order by regdate asc
-	</select>
-	
-	<!-- 자식 댓글중 특정 부모의 댓글만 가져오기 -->
-	<select id="getChildReplyList" resultType="com.theharmm.domain.ReplyDTO" parameterType="int">
-		select * from style_reply where post_id = #{post_id} and parent_id != 0 and depth = #{depth} order by regdate asc
 	</select>
 	
 	<!-- 댓글 id로 작성자 가지고 오기 -->
 	<select id="getMember_email" resultType="String" parameterType="int">
 		select member_email from style_reply where sid = #{sid}
 	</select>
+
+	<!-- 가장 최근 등록된 알람 가져오기 -->
+	<select id="alarmid" resultType="int">
+		select max(alarmid) from alarm
+	</select>
+
+
+	<!-- 부모 댓글만 가져오기 -->
+	<select id="getParentReplyList"
+		resultType="com.theharmm.domain.ReplyDTO" parameterType="int">
+		select * from
+		style_reply where post_id = #{post_id} and parent_id = 0 order by
+		regdate asc
+	</select>
+
+	<!-- 자식 댓글중 특정 부모의 댓글만 가져오기 -->
+	<select id="getChildReplyList"
+		resultType="com.theharmm.domain.ReplyDTO" parameterType="int">
+		select * from
+		style_reply where post_id = #{post_id} and parent_id != 0 and depth =
+		#{depth} order by regdate asc
+	</select>
+	
 	
 	<!-- 알람 등록 -->
 	<insert id="insertAlarm">
@@ -36,20 +49,20 @@
 		values(alarm_seq.NEXTVAL, #{cmd}, #{caller}, #{receiver},#{receiverEmail}, #{seq})
 	</insert>
 
+ 	<!-- 알람 삭제 -->
 	<delete id="deleteAlarm" parameterType="int">
 		delete from alarm where alarmid = #{alarmid}
 	</delete>
 	
+	<!-- 알람 리스트 -->
 	<select id="alarmList" resultType="com.theharmm.domain.AlarmDTO" parameterType="String">
 		select * from alarm where receiverEmail = #{receiverEmail}
 	</select>
 	
+	<!-- 알람 개수 -->
 	<select id="countAlarm" resultType="int" parameterType="String">
 		select count(*) from alarm where receiverEmail = #{receiverEmail}
 	</select>
 
-	<select id="alarmid" resultType="int">
-		select max(alarmid) from alarm
-	</select>	
 
 </mapper>

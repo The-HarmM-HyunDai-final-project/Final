@@ -29,13 +29,6 @@ public class ProductController {
 	@ResponseBody
 	public String getProductList(@RequestParam(defaultValue = "1") int page, String type, String keyword, String bkeyword, @RequestParam(defaultValue = "1") int ckeyword
 			, @RequestParam(defaultValue = "0") int startp, @RequestParam(defaultValue = "0") int endp, String ssize, String lsize) {
-		
-		log.info("ajax 제품 리스트 출력");
-		log.info(type);
-		log.info(keyword);
-		log.info(bkeyword);
-		log.info(ckeyword);
-		log.info(ssize);
 		Criteria cri = new Criteria();
 		
 		cri.setAmount(12);
@@ -82,12 +75,6 @@ public class ProductController {
 	@GetMapping("/productlist")
 	public String productList(Model model) {
 		log.info("제품 리스트 출력");
-		// 세션에서 mid가져오기
-		//String mid = principal.getName();
-		// int count = mywishservice.countLikes(mid);
-		
-		//model.addAttribute("wishCnt",count);
-		//model.addAttribute("mid", mid);
 		return "product/productlist";
 	}
 	
@@ -104,13 +91,7 @@ public class ProductController {
 		cri.setPageNum(page);
 		cri.setType("K");
 		cri.setKeyword(keyword);
-		//cri.setBkeyword("");
-		//cri.setCkeyword(1);
-		//cri.setStartp(0);
-		//cri.setEndp(0);
-		//cri.setSsize("");
-		//cri.setLsize("");
-		
+
 		log.info(cri);
 		ProductPageDTO products = productservice.getProducts(cri);
 		log.info(products);

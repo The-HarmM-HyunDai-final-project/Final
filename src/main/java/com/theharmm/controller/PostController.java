@@ -68,7 +68,7 @@ public class PostController {
    }
    
    
-   /* 포스트 관리(포스트목록) 페이지 접속 */
+   /* 포스트 관리(포스트목록) 페이지 접속 - 사용자 */
    @RequestMapping(value = "/social/user", method = RequestMethod.GET)
    public void postManageGET(PostCriteria postcri, Model model) throws Exception {
 	      CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -100,7 +100,7 @@ public class PostController {
       model.addAttribute("followingCnt", followingCnt);
    }
    
-   /* 포스트 관리(포스트목록) 페이지 접속 */
+   /* 포스트 관리(포스트목록) 페이지 접속 - 다른 사용자 */
    @RequestMapping(value = "/social/trending", method = RequestMethod.GET)
    public String postManageGET(PostCriteria postcri, Model model, @RequestParam(defaultValue = " ") String email, @RequestParam(defaultValue = "") String member_email) throws Exception {
       
@@ -188,9 +188,7 @@ public class PostController {
       return "redirect:/social/user";
    }
 
-   /* 포스트 상세 */
-   
-
+   /* 포스트 상세 - 사용자 */
    @GetMapping("/social/user/details")
    public String getPostDetail(int post_id, Model model,String user) {
       logger.info("getPostDetail.........." + post_id);
@@ -243,8 +241,7 @@ public class PostController {
       return "social/userdetail";
    }
    
-   /* 포스트 상세 */
-
+   /* 포스트 상세 - 다른 사용자*/
    @GetMapping("/social/trending/details")
    public String getPostDetails(int post_id, Model model,String user) {
       logger.info("getPostDetail.........." + post_id);
@@ -292,6 +289,7 @@ public class PostController {
       return "social/userdetail";
    }
    
+	/* 팔로우 삽입 */
    @RequestMapping(value = "/social/insertFollow", produces = "application/json; charset=UTF-8")
    @ResponseBody
    public String insertFollow(@RequestParam("follower") String follower, @RequestParam("following") String following) {
@@ -321,6 +319,7 @@ public class PostController {
       return json;
    }
    
+	/* 팔로우 삭제 */
    @RequestMapping(value = "/social/deleteFollow", produces = "application/json; charset=UTF-8")
    @ResponseBody
    public String deleteLike(@RequestParam("follower") String follower, @RequestParam("following") String following) {
@@ -349,6 +348,7 @@ public class PostController {
       
    }
    
+	/* 팔로워 리스트 */
    @RequestMapping(value = "/social/followList", produces = "application/json; charset=UTF-8")
    @ResponseBody
    public String followList(@RequestParam("email") String email) {

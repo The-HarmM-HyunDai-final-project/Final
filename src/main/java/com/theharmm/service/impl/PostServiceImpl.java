@@ -59,7 +59,7 @@ public class PostServiceImpl implements PostService {
       });
    }
 
-   /* 포스트 리스트 */
+   /* 전체 포스트 리스트 */
    @Override
    public List<PostVO> postGetList(PostCriteria postcri) {
       logger.info("postGetTotalList()..........");
@@ -72,14 +72,28 @@ public class PostServiceImpl implements PostService {
       return postMapper.postGetTotal(postcri);
    }
 
+   /* 포스트 id로 포스트 하나 가져오기 */
    @Override
    public PostVO postGetOne(int post_id) {
       return postMapper.postGetOne(post_id);
    }
 
+   /* 포스트 id로 소셜 가져오기 */
    @Override
    public List<SocialVO> socialByPostid(int post_id) {
       return socialMapper.socialByPostid(post_id);
+   }
+   
+	/* 사용자 별로 포스트 가져오기 */
+   @Override
+   public List<PostVO> postGetByMailList(PostCriteria postcri, String member_email) {
+      return postMapper.postGetByMailList(postcri,member_email);
+   }
+
+	/* 사용자별 포스트 전체 갯수 가져오기 */
+   @Override
+   public int postGetByMailTotal(String member_email) {
+      return postMapper.postGetByMailTotal(member_email);
    }
    
    @Override
@@ -92,47 +106,43 @@ public class PostServiceImpl implements PostService {
       return postMapper.selectNegativePostList(pid);
    }
 
-
-   @Override
-   public List<PostVO> postGetByMailList(PostCriteria postcri, String member_email) {
-      return postMapper.postGetByMailList(postcri,member_email);
-   }
-
-   @Override
-   public int postGetByMailTotal(String member_email) {
-      return postMapper.postGetByMailTotal(member_email);
-   }
-
+	/* 팔로우 삽입 */
    @Override
    public int insertFollow(String follower, String following) {
       return postMapper.insertFollow(follower, following);
    }
 
+	/* 팔로우 리스트 */
    @Override
    public List<String> getFollowerList(String member_email) {
       return postMapper.followerList(member_email);
    }
 
+	/* 팔로잉 리스트 */
    @Override
    public List<String> getFollowingList(String member_email) {
       return postMapper.followingList(member_email);
    }
 
+	/* 팔로우 개수 세기 */
    @Override
    public int countFollower(String member_email) {
       return postMapper.followerTotal(member_email);
    }
 
+	/* 팔로잉 개수 세기 */
    @Override
    public int countFollowing(String member_email) {
       return postMapper.followingTotal(member_email);
    }
 
+	/* 팔로우 삭제 */
    @Override
    public int deleteFollow(String follower, String following) {
       return postMapper.deleteFollow(follower, following);
    }
 
+	/* 팔로잉 중인지 체크 */
    @Override
    public boolean checkFollow(String follower, String following) {
       int cnt = postMapper.countFollow(follower, following);

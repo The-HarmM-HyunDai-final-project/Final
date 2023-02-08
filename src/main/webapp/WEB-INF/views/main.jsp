@@ -2,14 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
-<iframe style="position:absolute;top:0;left:0;width:100%;height:100%;"
-    src="https://www.youtube.com/embed/dbrGzkVPpEc?playlist=dbrGzkVPpEc&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;controls=0&amp;showinfo=0"
-    title="YouTube video player" frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
-</iframe>
+<img src="/resources/images/main.png" style = "width:100%; height:580px; z-index:1; position: absolute;">
 
-<link href="${pageContext.request.contextPath}/resources/css/banner.css" rel="stylesheet" type="text/css">
-<div class="container" data-v-7f67e7a6="" data-v-3007c576="">
+<link href="/resources/css/banner.css" rel="stylesheet" type="text/css" >
+<div class="container" data-v-7f67e7a6="" data-v-3007c576="" style = "z-index:10;position: relative;">
 	<div class="home lg" data-v-7f67e7a6="">
 		<div class="download_banner lg" data-v-1b035e08="" data-v-7f67e7a6=""
 			style="display: none;">
@@ -36,7 +32,7 @@
 							data-v-1b035e08=""></use></svg></a>
 			</div>
 		</div>
-		<div class="home_card_list" data-v-2e68e8ca="" data-v-7f67e7a6="" style="margin-top : 700px">
+		<div class="home_card_list" data-v-2e68e8ca="" data-v-7f67e7a6="" style="margin-top : 300px">
 		
 		<!-- banner -->
 
@@ -1104,7 +1100,7 @@
 															src="https://kream-phinf.pstatic.net/MjAyMjA3MDVfMjAg/MDAxNjU3MDA2NzQ0NjIy.vr6Z9QBBM9PZFiuOqmzBguXP_xV_ZrthuDmgrk4t58gg.4eMX2ZlLB24Q1lEWPiPedCsG4b2bOamh9M1rxs2FJ9Ug.JPEG/p_a11a34235e17468b9da39e671729944f.jpeg?type=s"
 															loading="lazy" class="image"></picture>
 													</div>
-													<p data-v-7f55a410="" class="user_name">@jx_xn</p></a>
+													<p data-v-7f55a410="" class="user_name"></p></a>
 											</div>
 										</div>
 									</div>

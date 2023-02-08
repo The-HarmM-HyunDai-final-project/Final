@@ -25,6 +25,7 @@ public class AlarmController {
 	@Autowired
 	ReplyService replyservice;
 	
+	// 알람 개수 세기
 	@RequestMapping(value = "/countAlarm", produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public int countAlarm() {
@@ -34,7 +35,7 @@ public class AlarmController {
 		return alarmCnt;
 	}
 	
-	
+	// 알람 삭제
 	@RequestMapping(value = "/deleteAlarm", produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public int deleteAlarm(@RequestParam("alarmid") int alarmid) {
@@ -43,6 +44,7 @@ public class AlarmController {
 		return result;
 	}
 	
+	// 알람 리스트
 	@RequestMapping(value = "/getAlarmList", produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public String getAlarmList() {

@@ -42,9 +42,8 @@ public class EchoHandler extends TextWebSocketHandler {
 		
 	}
 	
-	//소켓에 메세지를 보냈을때 이 메소드가 실행
-	
-	//protocol : cmd , 댓글작성자, 게시글 작성자 , seq (reply , user2 , user1 , 12)
+	//소켓에 메세지를 보냈을때 이 메소드가 실행	
+	//protocol : cmd , 댓글작성자, 게시글 작성자 , seq (필요한 요소)
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		String msg = message.getPayload();
@@ -58,16 +57,11 @@ public class EchoHandler extends TextWebSocketHandler {
 				String receiver = strs[2];
 				String receiverUsername = strs[3];
 				String seq = strs[4];	
-				
-				
+	
 				// 작성자가 로그인해서 있다면
-				WebSocketSession boardWriterSession = userSessionsMap.get(receiverUsername);
-				
+				WebSocketSession boardWriterSession = userSessionsMap.get(receiverUsername);			
 				
 				if("reply".equals(cmd) && boardWriterSession != null) {	
-					
-					//receiver = replyservice.getMember_email(Integer.parseInt(receiver));
-					//receiverUsername = replyservice.getMember_email(Integer.parseInt(receiverUsername));
 
 					log.info("소켓 실행");
 					AlarmDTO alarm = new AlarmDTO();
@@ -82,8 +76,7 @@ public class EchoHandler extends TextWebSocketHandler {
 					log.info("알람 insert " + result);
 					
 					int nowAlarmid = replyservice.getAlarmid();
-					
-					
+										
 					TextMessage tmpMsg = new TextMessage(caller + "님이 " + 
 										"<a type='external' href='${pageContext.request.contextPath}/social/user/details?post_id="+seq+"'>" + seq + "</a> 번 게시글에 댓글을 남겼습니다.!"+ nowAlarmid+"! ");
 					boardWriterSession.sendMessage(tmpMsg); //로그인해있는 유저에게 보내기
@@ -106,9 +99,7 @@ public class EchoHandler extends TextWebSocketHandler {
 					TextMessage tmpMsg = new TextMessage(caller + "님이 " + receiver +
 							 "님을 팔로우를 시작했습니다.!"+ nowAlarmid+"! ");
 					boardWriterSession.sendMessage(tmpMsg);
-					
-					
-					
+	
 				}else if("followdel".equals(cmd) && boardWriterSession != null) {
 					log.info("소켓 실행");
 					AlarmDTO alarm = new AlarmDTO();
@@ -155,14 +146,6 @@ public class EchoHandler extends TextWebSocketHandler {
 					alarm.setReceiver(receiver);
 					alarm.setReceiverEmail(receiverUsername);
 					alarm.setSeq(seq);
-					
-					int result = replyservice.insertAlarm(alarm);
-					log.info("dm" + result);
-					
-					int nowAlarmid = replyservice.getAlarmid();
-					
-					TextMessage tmpMsg = new TextMessage(seq +"!"+ nowAlarmid+"!dm!"+caller);
-					boardWriterSession.sendMessage(tmpMsg);
 
 				} else {
 					log.info("여기 실행");
@@ -178,19 +161,6 @@ public class EchoHandler extends TextWebSocketHandler {
 		userSessionsMap.remove(session.getId());
 		sessions.remove(session);
 	}
-	
-	//웹소켓에 member email 가져오기
-	//접속한 유저의 http세션을 조회하여 member_email 을 얻는 함수
-
-	/*
-	 * private String getEmail(WebSocketSession session) { Map<String, Object>
-	 * httpSession = session.getAttributes(); log.info(httpSession); MemberVO
-	 * loginUser = (MemberVO) httpSession.get("membervo");
-	 * 
-	 * if (loginUser == null) { return session.getId(); } else { return
-	 * loginUser.getMember_email(); } }
-	 */
-	
 	// 로그 메시지
 	private void log(String logmsg) {
 		System.out.println(new Date() + " : " + logmsg);

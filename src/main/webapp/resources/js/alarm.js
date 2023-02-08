@@ -4,13 +4,12 @@
    var socket = null;
 
    $(document).ready(function (){
-      
       connectWs();
    });
 
    function connectWs(){
       
-      //sock = new SockJS('/replyEcho');
+	  // 소켓 생성
       sock = new SockJS('http://localhost:8080/echo');
       socket = sock;
 
@@ -36,7 +35,6 @@
             });   
 
 
-         
          //alert(list[0] + list[1]);
          console.log("여기 실행");
          
@@ -106,7 +104,4 @@
     sock.onerror = function (err) {console.log('Errors : ' , err);};
     
   /*  test************************************************ */
-   
-
-
    }
