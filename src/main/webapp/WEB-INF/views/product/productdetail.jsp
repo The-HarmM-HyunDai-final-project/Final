@@ -842,10 +842,10 @@ function layerViewImg(post_id,member_email,sentiment_result){
 					<h3 class="sec-title"><em>긍정 스타일</em></h3>
 					<div class="review-total">
 						<div class="member-total-point">
-							
+							<h4 class="tit">별점</h4>
 							<p class="point size-l">
-								<span class="ico" style="width: 50%;">별점</span> 
-								<span class="num">4.9</span>
+								<span class="ico" style="width: ${positivePostAvg}%;">별점</span> 
+								<span class="num">${positivePostAvg/20}</span>
 							</p>
 						</div>
 						<div class="graph" data-v-04d43b10="" data-v-69832834=""
@@ -955,8 +955,8 @@ function layerViewImg(post_id,member_email,sentiment_result){
 						<div class="member-total-point">
 							<h4 class="tit">별점</h4>
 							<p class="point size-l">
-								<span class="ico" style="width: 98%;">별점</span> <span
-									class="num">4.9</span>
+								<span class="ico" style="width: ${negativePostAvg}%;">별점</span> <span
+									class="num">${negativePostAvg/20}</span>
 							</p>
 						</div>
 						<div class="graph" data-v-04d43b10="" data-v-69832834=""
@@ -1022,7 +1022,7 @@ function layerViewImg(post_id,member_email,sentiment_result){
 													<li><button>style상세보기</button></li>
 												</ul>
 	
-												<div class="txt-box" style="font-size:large;font-weight: bold;"> ${positivePost.contents }</div>
+												<div class="txt-box" style="font-size:large;font-weight: bold;"> ${negativePost.contents }</div>
 												
 												
 											</div>

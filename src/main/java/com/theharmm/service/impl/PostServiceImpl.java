@@ -174,5 +174,15 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public List<PostVO> selectKeywordPostList(Map<String, Object> postInfo) {
 		return postMapper.selectKeywordPostList(postInfo);
+	}
+
+	@Override
+	public double selectPositivePostAvg(int pid) {
+		return postMapper.selectPositivePostAvg(pid);
+	}
+
+	@Override
+	public double selectNegativePostAvg(int pid) {
+		return postMapper.selectNegativePostAvg(pid);
 	}   
 }
