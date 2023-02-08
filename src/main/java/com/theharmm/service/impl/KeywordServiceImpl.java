@@ -16,7 +16,7 @@ import com.theharmm.service.KeywordService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
-
+/*신미림 작성*/
 @Log4j
 @Service
 @AllArgsConstructor

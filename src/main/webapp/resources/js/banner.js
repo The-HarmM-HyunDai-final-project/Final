@@ -1,3 +1,5 @@
+
+/*신미림작성*/
 var slideIndex = 0;
 showSlides();
 

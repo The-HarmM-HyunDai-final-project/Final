@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.theharmm.domain.KeywordDTO;
 import com.theharmm.domain.ProductDTO;
-
+/*신미림 작성*/
 public interface KeywordMapper {
 
 	//키워드 가지고 오기 

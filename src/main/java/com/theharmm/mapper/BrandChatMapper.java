@@ -8,7 +8,7 @@ import com.theharmm.domain.BrandChatMessageDTO;
 import com.theharmm.domain.BrandChatRoomDTO;
 import com.theharmm.domain.ChatMessageDTO;
 import com.theharmm.domain.ChatRoomDTO;
-
+/*신미림 작성*/
 public interface BrandChatMapper {
 	BrandChatRoomDTO getChatRoom(int room_no) throws SQLException;
 

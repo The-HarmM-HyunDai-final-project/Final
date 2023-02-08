@@ -51,22 +51,22 @@ public interface PostMapper {
    
    /* 팔로잉 취소 */
    public int deleteFollow(@Param("follower_id") String follower_id, @Param("following_id") String following_id);
-   
+   /*신미림 작성*/
    public List<PostVO> selectPositivePostList(int pid);
-
+   /*신미림 작성*/
    public List<PostVO> selectNegativePostList(int pid);
 
 
    /* 팔로잉 중인지 체크 */
    public int countFollow(@Param("follower_id") String follower_id, @Param("following_id") String following_id);
 
-   
+   /*신미림 작성*/
    public int mergeKeywordList(KeywordDTO keywordDTO);
    
-
+   /*신미림 작성*/
    public List<PostVO> selectKeywordPostList(Map<String, Object> postInfo);
-
+   /*신미림 작성*/
    public double selectPositivePostAvg(int pid);
-
+   /*신미림 작성*/
    public double selectNegativePostAvg(int pid);
 }

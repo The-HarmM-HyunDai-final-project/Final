@@ -1,9 +1,4 @@
-/**
- * 
- */
-/**
- * 
- */
+/*신미림작성*/
 
    var links = document.querySelectorAll('.deadline_tab a');
         Array.prototype.forEach.call(links, function(elem){    

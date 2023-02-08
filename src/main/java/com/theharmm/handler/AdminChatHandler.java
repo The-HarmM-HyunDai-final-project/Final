@@ -27,7 +27,7 @@ import com.theharmm.security.domain.CustomUser;
 import com.theharmm.service.AdminChatService;
 
 import lombok.extern.log4j.Log4j;
-
+/*신미림 작성*/
 @Log4j
 @Controller
 public class AdminChatHandler extends TextWebSocketHandler{

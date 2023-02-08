@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.theharmm.domain.ChatMessageDTO;
 import com.theharmm.domain.ChatRoomDTO;
-
+/*신미림 작성*/
 public interface AdminChatService {
 	ChatRoomDTO getChatRoom(int room_no) throws Exception;
 

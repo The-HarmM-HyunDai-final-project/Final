@@ -1,5 +1,5 @@
 /**
- * 
+ *신미림 작성 
  */
 $(function(){
   $('.tabcontent > section').hide();

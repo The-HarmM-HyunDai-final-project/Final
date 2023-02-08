@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.theharmm.domain.BrandChatMessageDTO;
 import com.theharmm.domain.BrandChatRoomDTO;
-
+/*신미림 작성*/
 public interface BrandChatService {
 	
 	List<BrandChatRoomDTO> getChatRoomList(Map<String, Object> map) throws Exception;

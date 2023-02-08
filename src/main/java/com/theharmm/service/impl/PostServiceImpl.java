@@ -81,12 +81,13 @@ public class PostServiceImpl implements PostService {
    public List<SocialVO> socialByPostid(int post_id) {
       return socialMapper.socialByPostid(post_id);
    }
-   
+   /*신미림 작성*/
    @Override
    public List<PostVO> selectPositivePostList(int pid) {
       return postMapper.selectPositivePostList(pid);
    }
 
+   /*신미림 작성*/
    @Override
    public List<PostVO> selectNegativePostList(int pid) {
       return postMapper.selectNegativePostList(pid);
@@ -143,7 +144,8 @@ public class PostServiceImpl implements PostService {
       }
    }
 
-	@Override
+   /*신미림 작성*/
+   @Override
 	public int mergeKeywordList(PostVO post, List<String> keyword_list) {
 		int cnt = 0;
 		KeywordDTO keywordDTO = new KeywordDTO();
@@ -170,17 +172,19 @@ public class PostServiceImpl implements PostService {
 		
 		return cnt;
 	}  
-	
+	/*신미림 작성*/
 	@Override
 	public List<PostVO> selectKeywordPostList(Map<String, Object> postInfo) {
 		return postMapper.selectKeywordPostList(postInfo);
 	}
 
+	/*신미림 작성*/
 	@Override
 	public double selectPositivePostAvg(int pid) {
 		return postMapper.selectPositivePostAvg(pid);
 	}
 
+	/*신미림 작성*/
 	@Override
 	public double selectNegativePostAvg(int pid) {
 		return postMapper.selectNegativePostAvg(pid);

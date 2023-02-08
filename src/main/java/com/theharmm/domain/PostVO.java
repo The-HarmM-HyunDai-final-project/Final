@@ -34,9 +34,11 @@ public class PostVO {
 	private int pid2;
 	
 	/* percent 긍부정 결과 퍼센트 */
+	/*신미림 수정*/
 	private double sentiment_percent;
 	
 	/* percent 긍부정 결과 p or n */
+	/*신미림 수정*/
 	private String sentiment_result;
 	
 	/* 등록일자 */

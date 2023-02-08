@@ -1,5 +1,5 @@
 /**
- * 
+ * 신미림 작성
  */
 
 const swiper = new Swiper('.swiper-container', {

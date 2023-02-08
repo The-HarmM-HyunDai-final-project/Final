@@ -170,7 +170,7 @@ public class PostController {
 
    }
 
-   /* 포스트 등록 */
+   /* 포스트 등록  - 미림수정*/
    @PostMapping("/social/user/postEnroll")
    public String postEnrollPOST(PostVO post,@RequestParam List<String> keyword_list ,RedirectAttributes rttr) throws Exception{
       logger.info("postEnrollPOST......" + post);
