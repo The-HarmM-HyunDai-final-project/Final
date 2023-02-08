@@ -455,7 +455,7 @@
             </button>
         </header>
         <!-- 채팅 영역 -->
-        <div class="KEP-ChatArea" style="background-image: url(/resources/images/back.jpg) !important; " id = "chatArea">
+ 
          <div class="KEP-ChatArea" style="background-image: url() !important; " id = "chatArea">
 
 <%--             <div class="KEP-Receiver">
