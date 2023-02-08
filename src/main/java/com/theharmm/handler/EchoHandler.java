@@ -48,6 +48,7 @@ public class EchoHandler extends TextWebSocketHandler {
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		String msg = message.getPayload();
+		log.info(message);
 		if(StringUtils.isNotEmpty(msg)) {
 			String[] strs = msg.split(",");
 			
@@ -84,7 +85,7 @@ public class EchoHandler extends TextWebSocketHandler {
 					
 					
 					TextMessage tmpMsg = new TextMessage(caller + "님이 " + 
-										"<a type='external' href='${pageContext.request.contextPath}/social/user/details?post_id="+seq+"'>" + seq + "</a> 번 게시글에 댓글을 남겼습니다.!"+ nowAlarmid);
+										"<a type='external' href='${pageContext.request.contextPath}/social/user/details?post_id="+seq+"'>" + seq + "</a> 번 게시글에 댓글을 남겼습니다.!"+ nowAlarmid+"! ");
 					boardWriterSession.sendMessage(tmpMsg); //로그인해있는 유저에게 보내기
 					
 				}else if("followin".equals(cmd) && boardWriterSession != null) {
@@ -103,7 +104,7 @@ public class EchoHandler extends TextWebSocketHandler {
 					int nowAlarmid = replyservice.getAlarmid();
 					
 					TextMessage tmpMsg = new TextMessage(caller + "님이 " + receiver +
-							 "님을 팔로우를 시작했습니다.!"+ nowAlarmid);
+							 "님을 팔로우를 시작했습니다.!"+ nowAlarmid+"! ");
 					boardWriterSession.sendMessage(tmpMsg);
 					
 					
@@ -124,7 +125,7 @@ public class EchoHandler extends TextWebSocketHandler {
 					int nowAlarmid = replyservice.getAlarmid();
 					
 					TextMessage tmpMsg = new TextMessage(caller + "님이 " + receiver +
-							 "님을 팔로우 취소 했습니다.!"+ nowAlarmid);
+							 "님을 팔로우 취소 했습니다.!"+ nowAlarmid+"! ");
 					boardWriterSession.sendMessage(tmpMsg);
 
 				}else if("admin".equals(cmd) && boardWriterSession != null) {
@@ -142,9 +143,29 @@ public class EchoHandler extends TextWebSocketHandler {
 					
 					int nowAlarmid = replyservice.getAlarmid();
 					
-					TextMessage tmpMsg = new TextMessage(caller + "님이 관리자를 호출 했습니다.!"+ nowAlarmid);
+					TextMessage tmpMsg = new TextMessage(caller + "님이 관리자를 호출 했습니다.!"+ nowAlarmid+"! ");
 					boardWriterSession.sendMessage(tmpMsg);
 
+				}else if("dm".equals(cmd) && boardWriterSession != null) {
+					log.info("소켓 실행");
+					AlarmDTO alarm = new AlarmDTO();
+					alarm.setAlarmid(0);
+					alarm.setCaller(caller);
+					alarm.setCmd(cmd);
+					alarm.setReceiver(receiver);
+					alarm.setReceiverEmail(receiverUsername);
+					alarm.setSeq(seq);
+					
+					int result = replyservice.insertAlarm(alarm);
+					log.info("dm" + result);
+					
+					int nowAlarmid = replyservice.getAlarmid();
+					
+					TextMessage tmpMsg = new TextMessage(seq +"!"+ nowAlarmid+"!dm!"+caller);
+					boardWriterSession.sendMessage(tmpMsg);
+
+				} else {
+					log.info("여기 실행");
 				}
 			}
 		}

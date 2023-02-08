@@ -4962,18 +4962,20 @@ select.select-sm {
 
 .board-list .list-content .files .img-file {
     display: inline-block;
-    width: 100px;
-    height: 100px;
+    width: 280px;
+    height: 390px;
     border: 1px solid #ddd;
     overflow: hidden;
+    border-radius: 20px;
 }
 
 .board-list .list-content .files .img-file button {
-    width: 100px;
-    height: 100px;
+    width: 280px;
+    height: 390px;
     text-align: center;
     background-size: cover;
     background-position: 50% 50%;
+    border-radius: 20px;
 }
 
 .board-list .list-content .files .img-file img {
@@ -10140,7 +10142,7 @@ select.select-sm {
     position: relative;
     padding-top: 26px;
     padding-left: 20px;
-    padding-bottom: 60px;
+/*     padding-bottom: 60px; */
 }
 
 .product-detail-review-list .board-list.board-review .list-content .review-group .files {

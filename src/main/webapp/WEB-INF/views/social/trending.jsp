@@ -214,6 +214,9 @@
 									<button data-v-575aff82="" data-v-625671d1=""
 										data-v-cf374a10="" type="button" id="followBtn"
 										class="btn solid medium btn_follow medium">${userCheck}</button>
+									<button data-v-575aff82="" data-v-625671d1="" style = "margin-left:20px"
+										data-v-cf374a10="" type="button" id="sendMsg"
+										class="btn outlinegrey medium btn_follow medium" >메세지 보내기</button>
 								</div>
 							</c:if>
 							<c:if test="${userCheck eq '팔로잉'}">
@@ -222,6 +225,9 @@
 									<button data-v-575aff82="" data-v-625671d1=""
 										data-v-cf374a10="" type="button" id="followBtn"
 										class="btn outlinegrey medium btn_follow medium">${userCheck}</button>
+									<button data-v-575aff82="" data-v-625671d1="" style = "margin-left:20px"
+										data-v-cf374a10="" type="button" id="sendMsg"
+										class="btn outlinegrey medium btn_follow medium">메세지 보내기</button>
 								</div>
 							</c:if>
 
@@ -1107,6 +1113,33 @@
                        });   
                      } 
                      
+            		 $("#sendMsg").on("click", function (e) {
+            			 
+            			 let following = document.getElementById("member_email").innerText;
+            			 ouser = document.getElementById("member_email").innerText;
+            			 //showAlarmList ();
+            			 console.log("챗봇클릭" + ouser);
+            			 if (document.getElementById('chatbotcontainer').style.display == 'none') {
+            				 document.getElementById('chatbotcontainer').style.display = 'block';
+            			 } else {
+            				 document.getElementById('chatbotcontainer').style.display = 'none';				 
+            			 }
+            			 
+                		 $("#chatName").html(following);
+                		 
+                		 document.getElementById('rec1').style.display = 'none';
+                		 $("#inputText").attr("placeholder", "메세지를 전송해주세요");
+                		 $("#sendUser").val(following);
+            			
+            		 });
+            		 
+            		 $("#chatcloseBtn").on("click", function (e) {
+            			 document.getElementById('chatbotcontainer').style.display = 'none';
+            		 });      
+                     
+            			
+            			let chatMode = "bot";
+            			// submit 했을 때 처리
                });
 </script>
 

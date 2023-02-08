@@ -841,7 +841,7 @@ function layerViewImg(post_id,member_email,sentiment_result){
 					<h3 class="sec-title"><em>긍정 스타일</em></h3>
 					<div class="review-total">
 						<div class="member-total-point">
-							<h4 class="tit">별점</h4>
+							
 							<p class="point size-l">
 								<span class="ico" style="width: 50%;">별점</span> 
 								<span class="num">4.9</span>
@@ -860,15 +860,15 @@ function layerViewImg(post_id,member_email,sentiment_result){
 					<div class="product-detail-review-list">
 						<div class="head">
 							<div id="prdReviewFilter" class="opt">
-								<button type="button" class="custom-btn btn-1"
+								<button type="button" class="custom-btn btn-1" style="margin-left:40px"
 									onclick="getReviewList('${poskeywordBestList[0].keyword}','P');">
 									<span>${poskeywordBestList[0].keyword}</span>
 								</button>
-								<button type="button" class="custom-btn btn-1"
+								<button type="button" class="custom-btn btn-1"style="margin-left:40px"
 									onclick="getReviewList('${poskeywordBestList[1].keyword}','P');">
 									<span>${poskeywordBestList[1].keyword}</span>
 								</button>
-								<button type="button" class="custom-btn btn-1"
+								<button type="button" class="custom-btn btn-1"style="margin-left:40px"
 									onclick="getReviewList('${poskeywordBestList[2].keyword}','P');">
 									<span>${poskeywordBestList[2].keyword}</span>
 								</button>
@@ -912,7 +912,7 @@ function layerViewImg(post_id,member_email,sentiment_result){
 													
 												</ul>
 	
-												<div class="txt-box"> ${positivePost.contents }</div>
+												<div class="txt-box" style="font-size:large;font-weight: bold;"> ${positivePost.contents }</div>
 												
 												
 											</div>
@@ -971,15 +971,15 @@ function layerViewImg(post_id,member_email,sentiment_result){
 					<div class="product-detail-review-list">
 						<div class="head">
 							  <div id="prdReviewFilter" class="opt">
-								<button type="button" class="custom-btn btn-1"
+								<button type="button" class="custom-btn btn-1" style="margin-left:40px"
 									onclick="getReviewList('${negkeywordBestList[0].keyword}','N');">
 									<span>${negkeywordBestList[0].keyword}</span>
 								</button>
-								<button type="button" class="custom-btn btn-1"
+								<button type="button" class="custom-btn btn-1" style="margin-left:40px"
 									onclick="getReviewList('${negkeywordBestList[1].keyword}','N');">
 									<span>${negkeywordBestList[1].keyword}</span>
 								</button>
-								<button type="button" class="custom-btn btn-1"
+								<button type="button" class="custom-btn btn-1" style="margin-left:40px"
 									onclick="getReviewList('${negkeywordBestList[2].keyword}','N');">
 									<span>${negkeywordBestList[2].keyword}</span>
 								</button>
@@ -1021,7 +1021,7 @@ function layerViewImg(post_id,member_email,sentiment_result){
 													<li><button>style상세보기</button></li>
 												</ul>
 	
-												<div class="txt-box"> ${negativePost.contents }</div>
+												<div class="txt-box" style="font-size:large;font-weight: bold;"> ${positivePost.contents }</div>
 												
 												
 											</div>

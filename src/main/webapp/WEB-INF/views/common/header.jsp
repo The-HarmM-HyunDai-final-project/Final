@@ -243,7 +243,7 @@
 									<notification-indicator> <a
 										class="Header-link notification-indicator position-relative tooltipped tooltipped-sw"
 										id="AppHeader-notifications-button"> <span
-										data-target="notification-indicator.badge"
+										data-target="notification-indicator.badge" style="font-size:larger"
 										class="mail-status unread" style="color: gray" id="alarmCnt">
 											0 </span> <svg aria-hidden="true" height="16" viewBox="0 0 16 16"
 											version="1.1" width="16" data-view-component="true"
@@ -374,7 +374,7 @@
 
 					<!-- 챗봇 모달 -->
 					<!--  채팅 -->
-						<div href="javascript:void(0)" class="chat_message">
+<!-- 						<div href="javascript:void(0)" class="chat_message">
 				<a role="button" class="chat_open_btn" id="chatBtn"></a>
 				<div class="chat_open_wrap">
 					<span class="chat_btn_txt_wrap">
@@ -384,7 +384,7 @@
 					</span>
 					<button class="chat_close_btn">close</button>
 				</div>
-			</div>
+			</div> -->
 					<!-- 챗봇 모달 -->
 <div class="KEP-WebChatArea " style = "display: none" id="chatbotcontainer">
     <div class="KEP-FloatingButtonBlock">
@@ -422,7 +422,7 @@
                                     </image>
                                 </svg>
                             </div>
-                            <span class="KEP-ChatHeader__botItemName">TheHarm</span>
+                            <span class="KEP-ChatHeader__botItemName" id = "chatName">Direct</span>
                         </li>
                         <li class="KEP-ChatHeader__botItem" obbi="6304614a9798e74cfeaf6ad5"
                             ebbi="kepr4KuE1z5ROGtanfL0VF73Q" buildertype="">
@@ -455,9 +455,10 @@
             </button>
         </header>
         <!-- 채팅 영역 -->
-        <div class="KEP-ChatArea" style="background-image: url() !important; " id = "chatArea">
+        <div class="KEP-ChatArea" style="background-image: url(/resources/images/back.jpg) !important; " id = "chatArea">
+         <div class="KEP-ChatArea" style="background-image: url() !important; " id = "chatArea">
 
-            <div class="KEP-Receiver">
+<%--             <div class="KEP-Receiver">
                 <div class="KEP-Receiver__avatar">
                     <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
@@ -482,7 +483,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --%>
 <!--             <div class="KEP-Sender">
                 <div class="KEP-Sender__msgArea">
                     <div class="KEP-Sender__blocksArea">
@@ -574,8 +575,8 @@
             <form class="KEP-ChatInputArea__form" id="chatForm" enctype="multipart/form-data">
                 <input type="text" placeholder="궁금한 점을 입력해주세요" class="KEP-ChatInputArea__input" id="inputText" name="inputText" >
                 <!-- 1:1 문의 대량 테스트를 위해 1000자 제한 임시 제거 -->
-                <!-- <input type="text" placeholder="궁금한 점을 입력해주세요" class="KEP-ChatInputArea__input" maxlength="1000"/>-->
-                <button class="KEP-ChatInputArea__btnSend" aria-label="전송" type="submit">
+                <!-- <input type="text" placeholder="질문을 작성해주세요♥" class="KEP-ChatInputArea__input" maxlength="1000"/>-->
+                <button class="KEP-ChatInputArea__btnSend" aria-label="전송" type="submit" id = "sendDm">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"
                             d="M4.00073 2C4.1736 2 4.34351 2.04482 4.4939 2.13007L19.9321 10.8818C20.4125 11.1542 20.5813 11.7645 20.3089 12.2449C20.2197 12.4023 20.0894 12.5326 19.9321 12.6218L4.4939 21.3735C4.01344 21.6459 3.40316 21.4772 3.1308 20.9968C3.04555 20.8464 3.00073 20.6765 3.00073 20.5036L3 13.05L11.2188 11.7518L3 10.452L3.00073 3C3.00073 2.44771 3.44845 2 4.00073 2Z">
@@ -2148,16 +2149,29 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 		
 		let chatMode = "bot";
 		// submit 했을 때 처리
-		 $('#chatForm').on('submit', function (event) {
+		 $('#sendDm').on('click', function (event) {
 		     event.preventDefault();
 		     
-		      let csrfHeaderName ="${_csrf.headerName}";
+             
+		     let csrfHeaderName ="${_csrf.headerName}";
 		     let csrfTokenValue="${_csrf.token}";
 		     
 		     formData = new FormData($('#chatForm')[0]);
 			 console.log(formData);
 			 inputText = $("#inputText").val();
 			 console.log(inputText);
+			 
+			 if(mid == "") {
+				 alert("로그인 후 이용해 주세요");
+				 return;
+			 }
+			 
+             if (socket) {
+                 let socketMsg = "dm," + mid +","+ ouser +","+ ouser +","+ inputText;
+                 console.log("msgmsg : " + socketMsg);
+                 socket.send(socketMsg);
+              }
+             
 			 if(chatMode == "bot"){
 				 
 			 
@@ -2191,7 +2205,7 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 			 $('.KEP-ChatArea').scrollTop($('.KEP-ChatArea')[0].scrollHeight);
 			 $("#inputText").val("");
 
-		     $.ajax({
+/* 		     $.ajax({
 		         type : "post",
 		         enctype : "multipart/form-data",
 		         url : "/chatbotSend",
@@ -2249,7 +2263,7 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
                     
                     // 관리자에게 알람 부분
                     if (socket) {
-                        let socketMsg = "admin," + mid +","+ "admin" +","+ "admin" +","+ " ";
+                       // let socketMsg = "admin," + mid +","+ "admin" +","+ "admin" +","+ " ";
                         console.log("관리자 호출 msgmsg : " + socketMsg);
                         socket.send(socketMsg);
                     }   
@@ -2266,7 +2280,7 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
 		         error:function (e) {
 		             alert("오류 발생" + e);
 		         }
-		     });
+		     }); */
 		     
 			 }
 			 else{
