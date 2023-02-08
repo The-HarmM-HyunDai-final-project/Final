@@ -79,7 +79,7 @@ public class BrandChatHandler extends TextWebSocketHandler{
 	        
 	    	 
 	    	 ArrayList<WebSocketSession> sessionInfo = new ArrayList<WebSocketSession>();
-	    	 chatMessage.setChat_message(chatMessage.getMember_name()+"님이 대화방을 생성 하였습니다.");
+	    	 chatMessage.setChat_message(chatMessage.getMember_name()+"님이 빈 대화방에 입장하였습니다.");
 	         sessionInfo.add(session);
 	         sessionList.put(session, Integer.toString(chatRoom.getRoom_no()));
 	         RoomList.put(Integer.toString(chatRoom.getRoom_no()), sessionInfo);
@@ -114,6 +114,7 @@ public class BrandChatHandler extends TextWebSocketHandler{
 	    	  if(chatMessage.getChat_message().equals("CLOSE-CHAT")) {
 	    		  closeYn = true;
 	    		  chatMessage.setChat_message(chatMessage.getMember_name()+"님이 퇴장하였습니다.");
+	    		 afterConnectionClosed(session,new CloseStatus(0));
 	    	  }
 	    	  TextMessage textMessage = new TextMessage(chatMessage.getMember_name() + "," + chatMessage.getMember_email() + "," + chatMessage.getChat_message() +","+  + chatMessage.getChat_no()+ "," + chatTime);
 	         
@@ -150,6 +151,7 @@ public class BrandChatHandler extends TextWebSocketHandler{
 	   
 	   @Override
 	   public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+		
 	      count--;
 	      log.info("[ChatSys] "+session.getId()+" 연결끊김 => 총 접속 인원 : "+count+" 명" );
 	      if(sessionList.get(session) != null) {

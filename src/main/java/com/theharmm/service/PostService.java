@@ -23,10 +23,10 @@ public interface PostService {
    
    public List<SocialVO> socialByPostid(int post_id);
    
-   //긍정 리뷰 리스트 조회
+   //신미림 - 긍정 리뷰 리스트 조회
    public List<PostVO> selectPositivePostList(int pid);
 
-   //부정 리뷰 리스트 조회
+   //신미림 - 부정 리뷰 리스트 조회
    public List<PostVO> selectNegativePostList(int pid);
 
    
@@ -63,6 +63,12 @@ public interface PostService {
 
    /* 키워드를 포함한 리뷰 조회 */
    public List<PostVO> selectKeywordPostList(Map<String, Object> postInfo);
+
+   /* 신미림 - 긍정리뷰 평균 */
+   public double selectPositivePostAvg(int pid);
+
+   /* 신미림 - 부정리뷰 평균 */
+   public double selectNegativePostAvg(int pid);
 
 
 }

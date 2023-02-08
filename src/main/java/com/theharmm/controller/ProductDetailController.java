@@ -62,6 +62,12 @@ public class ProductDetailController {
 		
 		//부정리뷰
 		List<PostVO> negativePostList = postService.selectNegativePostList(pid);
+		
+		//긍정리뷰 평균
+		double positivePostAvg = postService.selectPositivePostAvg(pid);
+				
+		//부정리뷰 평균
+		double negativePostAvg = postService.selectNegativePostAvg(pid);
 
 	
 		//체결거래 
@@ -85,6 +91,9 @@ public class ProductDetailController {
 		model.addAttribute("sellDTO", sellDTO);
 		model.addAttribute("positivePostList", positivePostList);
 		model.addAttribute("negativePostList", negativePostList);
+		model.addAttribute("positivePostAvg", positivePostAvg);
+		model.addAttribute("negativePostAvg", negativePostAvg);
+		
 		model.addAttribute("allSignContractList", allSignContractList);
 		model.addAttribute("allSellBidList", allSellBidList);
 		model.addAttribute("allBuyBidList", allBuyBidList);

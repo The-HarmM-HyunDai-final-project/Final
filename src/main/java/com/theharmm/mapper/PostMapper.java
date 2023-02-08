@@ -65,4 +65,8 @@ public interface PostMapper {
    
 
    public List<PostVO> selectKeywordPostList(Map<String, Object> postInfo);
+
+   public double selectPositivePostAvg(int pid);
+
+   public double selectNegativePostAvg(int pid);
 }

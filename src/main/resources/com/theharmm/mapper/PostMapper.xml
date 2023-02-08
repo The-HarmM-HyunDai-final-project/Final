@@ -163,5 +163,35 @@
            AND T1.CONTENTS LIKE '%'|| #{keyword}|| '%'
            AND ( T2.FILE_NAME LIKE '%.jpg' OR T2.FILE_NAME LIKE '%.png' OR T2.POST_ID IS NULL)
      </select>
+     
+      <!-- 긍정리뷰 평균-->
+   <select id="selectPositivePostAvg" resultType="Double" parameterType="Integer">
+   <![CDATA[  
+      SELECT CASE WHEN AVG(SENTIMENT_PERCENT) >= 80 THEN 100
+                  WHEN AVG(SENTIMENT_PERCENT) >= 60 THEN 80
+                  WHEN AVG(SENTIMENT_PERCENT) >= 40 THEN 60
+                  WHEN AVG(SENTIMENT_PERCENT) >= 20 THEN 40
+                  ELSE 20
+                  END AS AVERAGE
+        FROM POST
+       WHERE SENTIMENT_RESULT = 'P'
+         AND ( PID0 = #{pid} OR PID1 = #{pid} OR PID2 = #{pid} )
+       ]]>
+   </select>
+   
+    <!-- 부정리뷰 평균-->
+   <select id="selectNegativePostAvg" resultType="Double" parameterType="Integer">
+      <![CDATA[  
+       SELECT CASE WHEN AVG(SENTIMENT_PERCENT) >= 80 THEN 20
+                  WHEN AVG(SENTIMENT_PERCENT) >= 60 THEN 40
+                  WHEN AVG(SENTIMENT_PERCENT) >= 40 THEN 60
+                  WHEN AVG(SENTIMENT_PERCENT) >= 20 THEN 80
+                  ELSE 100
+                  END AS AVERAGE
+        FROM POST
+       WHERE SENTIMENT_RESULT = 'N'
+         AND ( PID0 = #{pid} OR PID1 = #{pid} OR PID2 = #{pid} )
+       ]]>
+   </select>
          
 </mapper>
