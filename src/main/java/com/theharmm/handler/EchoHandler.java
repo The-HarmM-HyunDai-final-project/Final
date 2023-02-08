@@ -146,6 +146,9 @@ public class EchoHandler extends TextWebSocketHandler {
 					alarm.setReceiver(receiver);
 					alarm.setReceiverEmail(receiverUsername);
 					alarm.setSeq(seq);
+					
+					TextMessage tmpMsg = new TextMessage(seq +"!"+"0"+"!dm!"+caller);
+					boardWriterSession.sendMessage(tmpMsg);
 
 				} else {
 					log.info("여기 실행");

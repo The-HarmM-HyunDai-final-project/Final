@@ -2176,9 +2176,7 @@ button + .KEP-ChatInputArea__form .KEP-ChatInputArea__input {
               }
              
 			 if(chatMode == "bot"){
-				 
-			 
-			 
+ 
 		     tmphtml = "";
 		     tmphtml += 
 			     `
