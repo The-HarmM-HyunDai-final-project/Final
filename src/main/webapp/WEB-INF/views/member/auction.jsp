@@ -160,7 +160,7 @@
 								<div data-v-5acef129="" class="user_detail">
 									<div data-v-5acef129="" class="user_thumb">
 										<img data-v-5acef129=""
-											src="${pageContext.request.contextPath}/resources/images/test2.jpg"
+											src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png"
 											alt="사용자 이미지" class="thumb_img">
 									</div>
 									<div data-v-5acef129="" class="user_info">

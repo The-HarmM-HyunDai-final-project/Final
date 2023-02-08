@@ -478,7 +478,7 @@
 																	</svg><img
 																class="CardThumbnail_image_d88Hz"
 																alt="${item.product_name}" referrerpolicy="no-referrer"
-																src=""
+																src="${item.prouct_img1}"
 																width="55" height="55" draggable="false" loading="eager"/></span>
 															<div class="ProductBox_info_z1aIE">
 																<span class="ProductBox_name_zybcC">${item.product_name}</span>
