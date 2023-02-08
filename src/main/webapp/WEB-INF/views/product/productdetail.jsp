@@ -1019,7 +1019,6 @@ function layerViewImg(post_id,member_email,sentiment_result){
 														</div>
 													</li> -->
 													<li><span class="date">${negativePost.register_date }</span></li>
-													<li><button>style상세보기</button></li>
 												</ul>
 	
 												<div class="txt-box" style="font-size:large;font-weight: bold;"> ${negativePost.contents }</div>
@@ -1198,14 +1197,14 @@ config${i}
 
 
 <script>
-var keyword_list = new Array();
-var count_list = new Array();
+var keyword_list1 = new Array();
+var count_list1 = new Array();
 
  
 
 <c:forEach var="keywordBest" items="${poskeywordBestList}">
-keyword_list.push("${keywordBest.keyword}");
-count_list.push("${keywordBest.count}");
+keyword_list1.push("${keywordBest.keyword}");
+count_list1.push("${keywordBest.count}");
 </c:forEach>
 
 var ctx = document.getElementById('keyword_canvas1').getContext('2d');
@@ -1215,7 +1214,7 @@ var chart = new Chart(ctx, {
 
     // The data for our dataset
     data: {
-        labels: keyword_list,
+        labels: keyword_list1,
         datasets: [{
             label: '긍정 키워드 TOP5',
             backgroundColor: [
@@ -1231,7 +1230,7 @@ var chart = new Chart(ctx, {
                  'rgba(204, 204, 204, 1.5)',
                  'rgba(204, 204, 204, 1.5)',
                  'rgba(204, 204, 204, 1.5)'],
-            data: count_list
+            data: count_list1
         }]
     },
 
@@ -1272,14 +1271,14 @@ var chart = new Chart(ctx, {
 </script>
 
 <script>
-var keyword_list = new Array();
-var count_list = new Array();
+var keyword_list2 = new Array();
+var count_list2 = new Array();
 
  
 
 <c:forEach var="keywordBest" items="${negkeywordBestList}">
-keyword_list.push("${keywordBest.keyword}");
-count_list.push("${keywordBest.count}");
+keyword_list2.push("${keywordBest.keyword}");
+count_list2.push("${keywordBest.count}");
 </c:forEach>
 
 var ctx = document.getElementById('keyword_canvas2').getContext('2d');
@@ -1289,7 +1288,7 @@ var chart = new Chart(ctx, {
 
     // The data for our dataset
     data: {
-        labels: keyword_list,
+        labels: keyword_list2,
         datasets: [{
             label: '비판 키워드 TOP5',
             backgroundColor: [
@@ -1305,7 +1304,7 @@ var chart = new Chart(ctx, {
                 'rgba(204, 204, 204, 1.5)',
                 'rgba(204, 204, 204, 1.5)',
                 'rgba(204, 204, 204, 1.5)'],
-            data: count_list
+            data: count_list2
         }]
     },
 

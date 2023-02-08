@@ -120,9 +120,9 @@
 												strokewidth="1.25"></path>
 						                </svg>
 									</button>
-									<form class="KEP-ChatInputArea__form" id="chatForm"
+									<form class="KEP-ChatInputArea__form" id="brandChatForm"
 										enctype="multipart/form-data">
-										<input type="text" placeholder="대화 내용을 입력해주세요"
+										<input type="text" placeholder="대화 내용을 입력해주세요" onkeyup="enterkey()"
 											class="KEP-ChatInputArea__input" id="brandInputText"
 											name="brandInputText"/>
 										<!-- 1:1 문의 대량 테스트를 위해 1000자 제한 임시 제거 -->
@@ -147,6 +147,14 @@
 			</section>
 			
 <script>
+function enterkey() {
+	if (window.event.keyCode == 13) {
+    	
+    	$(".KEP-ChatInputArea__btnSend").trigger('click'); 
+    	return;
+    }
+}
+
 let sock = null;
 var formDate = "";
 var inputText = "";
@@ -301,15 +309,13 @@ function onOpen() {
 		}
 
 $('.KEP-ChatInputArea__btnSend').on('click', function (event) {
-	
+	if(document.getElementById("brandInputText").value==null || document.getElementById("brandInputText").value==""){
+		alert("채팅을	입력해주세요.");
+		return;
+	}
 	sendMessage();
 });
 
-$('.KEP-ChatInputArea__btnSend').keydown(function (key) {
-    if (key.keyCode == 13) {
-        alert("엔터키 누름");
-    }
-});
 
 </script>
 	<script nomodule=""

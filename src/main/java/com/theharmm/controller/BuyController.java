@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,7 @@ import com.theharmm.domain.MemberAddressDTO;
 import com.theharmm.domain.MemberVO;
 import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.ProductSizeDTO;
+import com.theharmm.security.domain.CustomUser;
 import com.theharmm.service.MemberInfoService;
 import com.theharmm.service.ProductDetailService;
 
@@ -62,10 +64,11 @@ public class BuyController {
 	//즉시구매, 구매입찰 선택 
 	@GetMapping("/{pid}")
 	 public String buyProduct(@PathVariable int pid,@RequestParam String size, Model model) {
+		CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    MemberVO memberInfo = user.getMember();
 		log.info("buyProduct 실행");
 		int shippingFee = 3000;
 		int fee = 30000;
-		//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		
 		ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 		
@@ -81,6 +84,7 @@ public class BuyController {
 		model.addAttribute("productDetailDTO",productDetailDTO);
 		model.addAttribute("productSaleSizeDTO",productSaleSizeDTO);
 		model.addAttribute("productBuySizeDTO",productBuySizeDTO);
+		model.addAttribute("memberInfo",memberInfo);
 		return "product/buy_buy";
 	}
 	
@@ -91,13 +95,11 @@ public class BuyController {
 		log.info("orderProduct 실행");
 		int shippingFee = 3000;
 		int fee = 30000;
-		//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		MemberVO user = new MemberVO();
-		user.setMember_email("tlsalfla96@naver.com");
-		user.setMember_name("신미림");
-		user.setMember_phone("01053030542");
+		CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		MemberVO memberInfo = user.getMember();
+		
 		Map<String,Object> memberInfoMap = new HashMap<String,Object>();
-		memberInfoMap.put("member_email",user.getMember_email());
+		memberInfoMap.put("member_email",memberInfo.getMember_email());
 		MemberAddressDTO addressDTO = memberInfoService.selectMemberMainAddress(memberInfoMap);
 		model.addAttribute("addressDTO", addressDTO);
 		log.info("AddressDTO : "+ addressDTO);
@@ -159,8 +161,8 @@ public class BuyController {
 	 public String updateBuyOrder(@RequestParam String imp_uid, @RequestParam String type, @RequestParam String merchant_uid, @RequestParam String buyer_email,@RequestParam int pid,@RequestParam int totalPrice,@RequestParam String model_size,@RequestParam int saleid) {
 		log.info("updateBuyOrder 실행");
 		log.info(imp_uid + merchant_uid + buyer_email + pid+totalPrice+model_size+saleid);
-		//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		
+		CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		MemberVO memberInfo = user.getMember();
 		Map<String,Object> saleInfoMap = new HashMap<String,Object>();
 		saleInfoMap.put("type",type);
 		//saleInfoMap.put("buyid", buyer_email);
@@ -170,16 +172,7 @@ public class BuyController {
 		//판매입찰 데이터 업데이트 - 구매완료 처리
 		productDetailService.updateBuyOrder(saleInfoMap);// 판매입찰로 올라온 데이터가 진행완료 처리 되는거임 
 		
-		//여기서 구매입찰로 들어온 경우는 최종가격에 수수료 제거 해줘야함 !!!!!! 
 		
-//		if(type.equals("즉시구매")) {
-//			price = productSizeDTO.getPrice();
-//			fee = (int)(productSizeDTO.getPrice()*0.015);
-//		}
-//		else if(type.equals("구매입찰")) {
-//			fee =(int)(productSizeDTO.getPrice()*0.03);
-//		}
-//		
 		return "success";
 	}
 	
@@ -190,16 +183,13 @@ public class BuyController {
 			 @RequestParam int price,@RequestParam int totalPrice,@RequestParam String model_size,@RequestParam int dDay) {
 		log.info("insertBidBuyOrder 실행");
 		log.info(imp_uid + merchant_uid + buyer_email + pid+totalPrice+model_size);
-		//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		MemberVO user = new MemberVO();
-		user.setMember_email("tlsalfla96@naver.com");
-		user.setMember_name("신미림");
-		user.setMember_phone("01053030542");
+		CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		MemberVO memberInfo = new MemberVO();
 		
 		//구매입찰 데이터 등록(insert)
 		Map<String,Object> buyInfoMap = new HashMap<String,Object>();
 		buyInfoMap.put("type",type);
-		buyInfoMap.put("member_email",user.getMember_email());
+		buyInfoMap.put("member_email",memberInfo.getMember_email());
 		buyInfoMap.put("pid",pid);
 		buyInfoMap.put("price",price);
 		buyInfoMap.put("dDay",dDay);
@@ -216,11 +206,9 @@ public class BuyController {
 			 @RequestParam int totalPrice, @RequestParam int price,
 			 @RequestParam int fee,@RequestParam int shippingFee, Model model) {
 		log.info("buyProductComplete 실행");
-		//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		MemberVO user = new MemberVO();
-		user.setMember_email("tlsalfla96@naver.com");
-		user.setMember_name("신미림");
-		user.setMember_phone("01053030542");
+		CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		MemberVO memberInfo = new MemberVO();
+		
 		
 		//상품정보 가져오기
 		ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
@@ -244,11 +232,8 @@ public class BuyController {
 				 @RequestParam int fee,@RequestParam int shippingFee,@RequestParam String size,
 				 @RequestParam int dDay, Model model) {
 			log.info("buyBidProductComplete 실행");
-			//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			MemberVO user = new MemberVO();
-			user.setMember_email("tlsalfla96@naver.com");
-			user.setMember_name("신미림");
-			user.setMember_phone("01053030542");
+			CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			MemberVO memberInfo = new MemberVO();
 			
 			Calendar cal = Calendar.getInstance();
 		    cal.setTime(new Date());

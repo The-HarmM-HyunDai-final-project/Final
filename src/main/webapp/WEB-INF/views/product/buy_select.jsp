@@ -173,6 +173,7 @@ $(function(){
                            </div>
                            <!--즉시구매, 구매입찰 버튼 -->
                            <form id ="selectBuySizeAction" method ="get" action="/buy/${productDetailDTO.pid}">
+           			          
                              <input type="hidden" id="selectBuySize" name="size"/>
 						     <div data-v-28c27354="" data-v-b6b7a1e8="" class="order_btn_area">
 							  <a data-v-c631041c="" data-v-28c27354="" href="#" onclick ="document.getElementById('selectBuySizeAction').submit()"

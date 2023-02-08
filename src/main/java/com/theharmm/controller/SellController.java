@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,7 @@ import com.theharmm.domain.MemberAddressDTO;
 import com.theharmm.domain.MemberVO;
 import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.ProductSizeDTO;
+import com.theharmm.security.domain.CustomUser;
 import com.theharmm.service.MemberInfoService;
 import com.theharmm.service.ProductDetailService;
 
@@ -46,7 +48,7 @@ public class SellController {
 		@GetMapping("/select/{pid}")
 		 public String selectSellProductSize(@PathVariable int pid,@RequestParam(required = false) String size, Model model) {
 			log.info("selectSellProductSize 실행");
-			//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			
 			ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 			List<ProductSizeDTO> productBuySizeList = productDetailService.selectBuyProductSizeList(productDetailDTO);
 			log.info("productDetailDTO : "+productDetailDTO.toString());
@@ -56,6 +58,7 @@ public class SellController {
 			model.addAttribute("productBuySizeList",productBuySizeList);
 			
 			
+			
 			return "product/sell_select";
 		}
 		
@@ -63,7 +66,8 @@ public class SellController {
 		@GetMapping("/{pid}")
 		 public String sellProduct(@PathVariable int pid,@RequestParam String size, Model model) {
 			log.info("sellProduct 실행");
-			//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			MemberVO memberInfo = user.getMember();
 			ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 			
 			Map<String,Object> productInfoMap = new HashMap<String,Object>();
@@ -78,6 +82,7 @@ public class SellController {
 			model.addAttribute("productDetailDTO",productDetailDTO);
 			model.addAttribute("productSaleSizeDTO",productSaleSizeDTO);
 			model.addAttribute("productBuySizeDTO",productBuySizeDTO);
+			model.addAttribute("memberInfo",memberInfo);
 			
 			return "product/sell_sell";
 		}
@@ -88,16 +93,14 @@ public class SellController {
 		 public String orderSellProduct(@PathVariable int pid,@RequestParam String size,@RequestParam String type,@RequestParam int price,@RequestParam(required=false,defaultValue = "0") int dDay,
 				 Model model) {
 			log.info("orderSellProduct 실행");
-			//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			MemberVO user = new MemberVO();
-			user.setMember_email("tlsalfla96@naver.com");
-			user.setMember_name("신미림");
-			user.setMember_phone("01053030542");
+			CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			MemberVO memberInfo = user.getMember();
+			
 			Map<String,Object> memberInfoMap = new HashMap<String,Object>();
-			memberInfoMap.put("member_email",user.getMember_email());
+			memberInfoMap.put("member_email",memberInfo.getMember_email());
 			MemberAddressDTO addressDTO = memberInfoService.selectMemberMainAddress(memberInfoMap);
 			AccountDTO accountDTO = memberInfoService.selectMemberMainAccount(memberInfoMap);
-			model.addAttribute("memberDTO", user);
+			model.addAttribute("memberDTO", memberInfo);
 			model.addAttribute("addressDTO", addressDTO);
 			model.addAttribute("accountDTO", accountDTO);
 			log.info("MemberDTO : "+ user);
@@ -162,7 +165,9 @@ public class SellController {
 		@ResponseBody
 		 public String regAccount(@RequestParam String member_email, @RequestParam String bank_name, @RequestParam String account_number, @RequestParam String account_owner) {
 			log.info("regAccount 실행");
-			//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			MemberVO memberInfo = user.getMember();
+			
 			Map<String,Object> memberInfoMap = new HashMap<>();
 			memberInfoMap.put("member_email",member_email);
 			log.info(member_email+bank_name+account_number+account_owner);
@@ -195,18 +200,15 @@ public class SellController {
 				 @RequestParam int totalPrice,@RequestParam String accountNumber, @RequestParam int price,
 				 @RequestParam int fee,Model model) {
 			log.info("sellProductComplete 실행");
-			//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			MemberVO user = new MemberVO();
-			user.setMember_email("tlsalfla96@naver.com");
-			user.setMember_name("신미림");
-			user.setMember_phone("01053030542");
+			CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			MemberVO memberInfo = user.getMember();
 			
 			//상품정보 가져오기
 			ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 			
 			//계좌정보 가져오기
 			Map<String,Object> accountInfoMap = new HashMap<String,Object>();
-			accountInfoMap.put("member_email",user.getMember_email());
+			accountInfoMap.put("member_email",memberInfo.getMember_email());
 			accountInfoMap.put("bank_number",accountNumber);
 			AccountDTO accountDTO = memberInfoService.selectMemberAccount(accountInfoMap);
 			
@@ -231,25 +233,22 @@ public class SellController {
 		 public String sellBidProductComplete(@RequestParam int pid,@RequestParam int totalPrice,@RequestParam String accountNumber,
 				 @RequestParam int price,@RequestParam int fee,@RequestParam String size,@RequestParam int dDay,Model model) {
 			log.info("sellBidProductComplete 실행");
-			//CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			MemberVO user = new MemberVO();
-			user.setMember_email("tlsalfla96@naver.com");
-			user.setMember_name("신미림");
-			user.setMember_phone("01053030542");
+			CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			MemberVO memberInfo = user.getMember();
 			
 			//상품정보 가져오기
 			ProductDetailDTO productDetailDTO = productDetailService.selectProductDetail(pid);
 			
 			//계좌정보 가져오기
 			Map<String,Object> accountInfoMap = new HashMap<String,Object>();
-			accountInfoMap.put("member_email",user.getMember_email());
+			accountInfoMap.put("member_email",memberInfo.getMember_email());
 			accountInfoMap.put("bank_number",accountNumber);
 			AccountDTO accountDTO = memberInfoService.selectMemberAccount(accountInfoMap);
 			
 			//판매입찰 데이터 등록(insert)
 			Map<String,Object> saleInfoMap = new HashMap<String,Object>();
 			saleInfoMap.put("pid",pid);
-			saleInfoMap.put("member_email",user.getMember_email());
+			saleInfoMap.put("member_email",memberInfo.getMember_email());
 			saleInfoMap.put("price",price);
 			saleInfoMap.put("size_type",size);
 			saleInfoMap.put("dDay",dDay);
