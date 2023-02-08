@@ -8,7 +8,7 @@ import com.theharmm.domain.ProductDTO;
 import com.theharmm.domain.ProductDetailDTO;
 import com.theharmm.domain.ProductSizeDTO;
 import com.theharmm.domain.SellDTO;
-
+/*신미림 작성*/
 
 public interface ProductDetailMapper{
 	

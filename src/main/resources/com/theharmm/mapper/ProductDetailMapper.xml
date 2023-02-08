@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.theharmm.mapper.ProductDetailMapper">
-
+<!-- 미림작성 -->
 	
 	<!--  제품 상세 조회 -->
 	<select id="selectProductDetail"
