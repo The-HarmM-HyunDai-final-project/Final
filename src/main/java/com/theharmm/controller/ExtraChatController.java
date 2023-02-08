@@ -155,7 +155,7 @@ public class ExtraChatController {
 			} catch (Exception e) {
 				log.info(e.getMessage());
 			}
-			return "/500";
+			return "redirect:/member/loginpage";
 			
 		}
 	 
