@@ -42,10 +42,6 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 		clearSession(request);
         SavedRequest savedRequest = requestCache.getRequest(request, response);
         
-        /**
-         * prevPage�� �����ϴ� ��� = ����ڰ� ���� /member/loginpage ��η� �α��� ��û
-         * ���� Session�� prevPage attribute ����( ���� url �������ϱ� �ʿ������ ����)
-         */
         String prevPage = (String) request.getSession().getAttribute("prevPage");
         if (prevPage != null) {
             request.getSession().removeAttribute("prevPage");
@@ -54,10 +50,6 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
         // �⺻ URI
         String uri = "/";
         
-        /**
-         * savedRequest �����ϴ� ��� = ���� ������ ���� ������ ���� (�̰Թ�������?)
-         * Security Filter�� ���ͼ�Ʈ�Ͽ� savedRequest�� ���� ���� (���ͼ�Ʈ�ؼ� ������ ������ �ᱹ ������ �ʿ��ؼ� �α����� �ߴٴ°� ! -> �׷� ���� url�� �־����)
-         */
         if (savedRequest != null) {
             uri = savedRequest.getRedirectUrl();
         } else if (prevPage != null && !prevPage.equals("")) {
@@ -80,22 +72,8 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
 		log.warn("������ ����: " + roleNames);
 
-//		response.sendRedirect("/");
-		
-//		if (roleNames.contains("ROLE_ADMIN")) {
-//			response.sendRedirect("/sample/admin");
-//			return;
-//		}//end if
-//
-//		if (roleNames.contains("ROLE_MEMBER")) {
-//			response.sendRedirect("/sample/member");
-//			return;
-//		}//end if
-
-
 	}//end onAuthenticationSuccess
 	
-    // �α��� ���� �Ŀ� ���� �� �����ִ� ���� ���� ����
     protected void clearSession(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {

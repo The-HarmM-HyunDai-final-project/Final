@@ -184,7 +184,7 @@ public class BuyController {
 		log.info("insertBidBuyOrder 실행");
 		log.info(imp_uid + merchant_uid + buyer_email + pid+totalPrice+model_size);
 		CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		MemberVO memberInfo = new MemberVO();
+		MemberVO memberInfo = user.getMember();
 		
 		//구매입찰 데이터 등록(insert)
 		Map<String,Object> buyInfoMap = new HashMap<String,Object>();
@@ -207,7 +207,7 @@ public class BuyController {
 			 @RequestParam int fee,@RequestParam int shippingFee, Model model) {
 		log.info("buyProductComplete 실행");
 		CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		MemberVO memberInfo = new MemberVO();
+		MemberVO memberInfo =  user.getMember();
 		
 		
 		//상품정보 가져오기
@@ -233,7 +233,7 @@ public class BuyController {
 				 @RequestParam int dDay, Model model) {
 			log.info("buyBidProductComplete 실행");
 			CustomUser user = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			MemberVO memberInfo = new MemberVO();
+			MemberVO memberInfo = user.getMember();
 			
 			Calendar cal = Calendar.getInstance();
 		    cal.setTime(new Date());

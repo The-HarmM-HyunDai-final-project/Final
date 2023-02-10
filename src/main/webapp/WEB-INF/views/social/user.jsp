@@ -282,7 +282,7 @@
 													<div data-v-47728778="" class="social_img_box vertical">
 														<picture data-v-878ec45c="" data-v-47728778=""
 															class="picture social_img"> <img
-															referrerpolicy="no-referrer"
+															referrerpolicy="no-referrer" 
 															src="${pageContext.request.contextPath}/${item.upload_path}/${item.uuid}_${item.file_name}"
 															loading="auto" class="image"></picture>
 													</div>
@@ -601,7 +601,7 @@
 
                    $.ajax({
                     //url: "http://127.0.0.1:5000/positiveNegativeResult", 
-                    url: "http://10.109.118.229:5000/positiveNegativeResult", 
+                    url: "http://127.0.0.1:5000/positiveNegativeResult", 
                     method: 'post',
                     beforeSend : function(xhr){
                         xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
