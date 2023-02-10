@@ -22,14 +22,10 @@ public class CustomUserDetailsService implements UserDetailsService{
 		// TODO Auto-generated method stub
 		MemberVO m = new MemberVO();
 		m.setMember_email(username);
-		
-		
-//		log.warn("Query by username :" + username);
+
 		MemberVO vo = member.read(m);		
 		log.warn(vo.toString());
-//		log.warn("Query by memebr maper :" +vo);
-			
-		//���׽�
+
 		return ( vo == null 
 				? null 
 				: new CustomUser(vo) );

@@ -108,32 +108,7 @@ public class ChattingHandler extends TextWebSocketHandler{
         } catch (IOException e) {
             e.printStackTrace();
         }
-		//-------------
-		
-		
-		
-		
-//		//메시지 타입이 경매, 채팅인지 구분
-//		String messageType = message.getPayload().split(":")[0];
-//		
-//		
-//		//초기 타입, 메시지(메시지는 "TALK:~~~~" or "AUCTION:~~~" 이런식으로 js에서 보내지는 String을 : 기준으로 앞에는 TYPE을 뒤에는 순수 메시지를 가져옴)
-//		MessageType sendType = MessageType.TALK;
-//		String sendMessage = getMessageFromPayLoad(message.getPayload());
-//		
-//		//TYPE: 메시지내용 으로 메시지가 오기때문에 처음 :(콜론)이 오는 위치 이후가 우리가 원하는 메시지 내용이므로 그렇게 날려버림 
-//		if(messageType.equals("AUCTION")) {
-//			log.warn("옥션이구만!");
-//			sendType = MessageType.AUCTION;
-//		}
-//		
-//		//메시지 생성
-//		ShowLiveMessage showLiveMessage = createMessage(userId, roomNo, sendType);
-//		showLiveMessage.setMessage(sendMessage);
-//		
-//		log.warn(showLiveMessage.toString());
-//		ShowLiveChannel showliveChannel = showLiveChannelStore.getChannelByRoomNo(roomNo);
-//		showliveChannel.handleMessage(session, showLiveMessage);
+
 	}
 	//클라이언트와 연결이 끊어진 경우(채팅방을 나간 경우) remove로 해당 세션을 제거함
 	@Override
