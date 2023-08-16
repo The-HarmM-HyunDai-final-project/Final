@@ -1,8 +1,5 @@
 # The Harm
 
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/68410186/224285603-5a24ed74-3d27-467f-a06f-1c1ed2d9be18.png" width="300" height="300">
-</div>
 
 # Introduce
 
