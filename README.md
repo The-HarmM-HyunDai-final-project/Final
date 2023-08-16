@@ -38,6 +38,8 @@
 |  <img width="329" src="https://user-images.githubusercontent.com/68410186/224297931-f12a3350-18d6-40ec-bcd1-95c6340e66e4.png"/> |  <img width="329" src="https://user-images.githubusercontent.com/68410186/224298094-2867074b-f3dc-4782-b9f4-3fecb5b327eb.png"/>|  <img width="329" src="https://user-images.githubusercontent.com/68410186/224298257-7db67943-86c4-4dde-9e0d-2db0f6030176.png"/>|  
 | 리셀-구매   |  리셀-판매   |    |  
 | <img width="329" src="https://user-images.githubusercontent.com/68410186/224298549-b8b9d6f0-dfdc-45a9-b872-e82abfd3aa4a.png"/>   |  <img width="329" src="https://user-images.githubusercontent.com/68410186/224298613-d8ffa706-e33e-40f7-87da-a1ce326cb504.png"/>     ||
+|긍부정리뷰|
+|다대다 채팅|
 | 커뮤니티-스타일등록   |  커뮤니티-스타일목록   |  커뮤니티-스타일 상세페이지  |  
 | <img width="329" src="https://user-images.githubusercontent.com/68410186/224299144-3de935f8-13c3-474d-90a0-06d4491f9029.png"/>   | <img width="329" src="https://user-images.githubusercontent.com/68410186/224299454-7d1e0f20-123a-4869-aa10-cd873d346acb.png"/>| <img width="329" src="https://user-images.githubusercontent.com/68410186/224299299-ed05035c-609b-4cb7-b2de-bacd75c8cbf7.png"/>|
 | 경매-라이브 커머스 방   |  경매-입찰,낙찰   |  관리자  |  
